@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Víctor Arenas - Futuro Sin Manual | Fynkus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-industrial: #0f1419;
+            --slate-system: #1e293b;
+            --navy-trust: #1e3a5f;
+            --amber-caution: #f59e0b;
+            --green-go: #10b981;
+            --red-stop: #ef4444;
+        }
+
+        html {
+            background: #0f1419 !important;
+            background-color: #0f1419 !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif !important;
+            background: #0f1419 !important;
+            background-color: #0f1419 !important;
+            color: #e2e8f0 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-uncertain {
+            background: linear-gradient(135deg, #f59e0b 0%, #10b981 50%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-guide {
+            color: #f59e0b;
+        }
+
+        /* Process Background */
+        .process-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .decision-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-shift 20s linear infinite;
+        }
+
+        @keyframes grid-shift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .process-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #f59e0b, transparent);
+            border-radius: 50%;
+            animation: node-decision 3s infinite;
+        }
+
+        @keyframes node-decision {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
+                opacity: 0.9;
+                transform: scale(1.3);
+            }
+        }
+
+        .uncertainty-wave {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), rgba(239, 68, 68, 0.3), transparent);
+            animation: wave-uncertain 7s infinite;
+        }
+
+        @keyframes wave-uncertain {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .signal-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(245, 158, 11, 0.15);
+            animation: ring-signal 14s infinite;
+        }
+
+        @keyframes ring-signal {
+            0%, 100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        .path-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent);
+            animation: path-move 8s infinite;
+        }
+
+        @keyframes path-move {
+            0%, 100% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Fade animations */
+        .guide-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: guideRise 0.8s forwards;
+        }
+
+        @keyframes guideRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .process-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: processEmerge 0.8s forwards;
+        }
+
+        @keyframes processEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Guide Card */
+        .guide-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(30, 41, 59, 0.4));
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .guide-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #f59e0b, #10b981, #ef4444);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .guide-card:hover::after {
+            transform: scaleY(1);
+        }
+
+        .guide-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 
+                0 0 40px rgba(245, 158, 11, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Process Button */
+        .btn-guide {
+            background: linear-gradient(135deg, #f59e0b, #fb923c);
+            box-shadow: 
+                0 0 30px rgba(245, 158, 11, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-guide:hover {
+            box-shadow: 
+                0 0 50px rgba(16, 185, 129, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-guide {
+            border: 2px solid #f59e0b;
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-guide:hover {
+            background: rgba(245, 158, 11, 0.15);
+            box-shadow: 0 0 35px rgba(245, 158, 11, 0.4);
+            border-color: #10b981;
+        }
+
+        /* Profile Frame */
+        .profile-guide {
+            border: 3px solid #f59e0b;
+            box-shadow: 
+                0 0 50px rgba(245, 158, 11, 0.5),
+                inset 0 0 30px rgba(30, 41, 59, 0.1);
+        }
+
+        /* Badge */
+        .badge-guide {
+            background: linear-gradient(135deg, #f59e0b, #fb923c);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0f1419 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1419;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f59e0b, #10b981);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-guide {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: #fbbf24;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-guide {
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.6));
+        }
+
+        /* Stat box */
+        .stat-guide {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(30, 41, 59, 0.3));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .guide-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f59e0b, #10b981, #ef4444, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Semaphore traffic light */
+        .semaphore-box {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 20, 25, 0.8));
+            border: 3px solid rgba(245, 158, 11, 0.3);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .semaphore-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+            animation: scan-decision 4s infinite;
+        }
+
+        @keyframes scan-decision {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .traffic-light {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .light-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .light-red {
+            background: radial-gradient(circle, #ef4444, #991b1b);
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+            animation: light-pulse-red 2s infinite;
+        }
+
+        .light-amber {
+            background: radial-gradient(circle, #f59e0b, #b45309);
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
+            animation: light-pulse-amber 2s infinite 0.7s;
+        }
+
+        .light-green {
+            background: radial-gradient(circle, #10b981, #047857);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+            animation: light-pulse-green 2s infinite 1.4s;
+        }
+
+        @keyframes light-pulse-red {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes light-pulse-amber {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes light-pulse-green {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* GUIDE letter */
+        .guide-letter {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(30, 41, 59, 0.3));
+            border: 2px solid rgba(245, 158, 11, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .guide-letter:hover {
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .guide-initial {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b, #fb923c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2rem;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Takeaway box */
+        .takeaway-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(30, 41, 59, 0.3));
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Experience badge */
+        .experience-badge {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #fbbf24;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Metric box */
+        .metric-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(30, 41, 59, 0.3));
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f59e0b, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Process Background -->
+    <div class="process-bg">
+        <div class="decision-grid"></div>
+        
+        <!-- Process Nodes -->
+        <div class="process-node" style="top: 20%; left: 20%; animation-delay: 0s;"></div>
+        <div class="process-node" style="top: 40%; left: 70%; animation-delay: 1s;"></div>
+        <div class="process-node" style="top: 60%; left: 30%; animation-delay: 2s;"></div>
+        <div class="process-node" style="top: 78%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="process-node" style="top: 48%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Uncertainty Waves -->
+        <div class="uncertainty-wave" style="top: 28%;"></div>
+        <div class="uncertainty-wave" style="top: 55%; animation-delay: 2s;"></div>
+        <div class="uncertainty-wave" style="top: 75%; animation-delay: 4s;"></div>
+        
+        <!-- Signal Rings -->
+        <div class="signal-ring" style="width: 280px; height: 280px; top: 15%; right: 10%;"></div>
+        <div class="signal-ring" style="width: 240px; height: 240px; bottom: 20%; left: 12%; animation-delay: 7s;"></div>
+        
+        <!-- Path Lines -->
+        <div class="path-line" style="width: 300px; top: 35%; left: 15%;"></div>
+        <div class="path-line" style="width: 280px; top: 65%; right: 10%; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0f1419 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0f1419 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 guide-rise">
+                    <span class="tag-guide inline-block">
+                        ⚠️ IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-center mb-6 leading-tight guide-rise delay-1">
+                    <span class="text-white">Un Futuro</span><br>
+                    <span class="gradient-uncertain">Sin Manual de Instrucciones</span>
+                </h1>
+
+                <div class="guide-divider mb-8 guide-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-amber-300 mb-4 max-w-4xl mx-auto guide-rise delay-2 font-bold">
+                    Cómo usar la IA hoy sin destruir tu negocio mañana
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto guide-rise delay-3">
+                    Procesos, roles y decisiones. No herramientas de moda.
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 guide-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-guide text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Navegar Sin Manual
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="process-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-guide rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/692e3d131f60a10d1f81021f.jpeg"
+                                    alt="Víctor Arenas Mico"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-guide rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">CEO</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="guide-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Víctor Arenas Mico
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-guide text-lg font-bold">CEO y Fundador</span><br>
+                            <span class="text-gray-400 text-base">Fynkus Global Solutions SL</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                <span class="text-guide font-bold">15 años</span> como Administrador de fincas en Valencia. Programador web en Londres. Fundó Fynkus en 2015.
+                            </p>
+                            <p>
+                                Plataforma ERP+CRM en la nube: <span class="text-guide font-semibold">500+ despachos, 30,000 comunidades</span>. Especialista en IA práctica y operativa.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="experience-badge">🇪🇸 Valencia</span>
+                                <span class="experience-badge">🇬🇧 Londres</span>
+                                <span class="experience-badge">💼 Operativo</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-guide text-center">
+                                <div class="text-2xl font-bold gradient-uncertain">500+</div>
+                                <div class="text-xs text-gray-500">Despachos</div>
+                            </div>
+                            <div class="stat-guide text-center">
+                                <div class="text-2xl font-bold gradient-uncertain">30k</div>
+                                <div class="text-xs text-gray-500">Comunidades</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Reality -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1419, #1e293b) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="guide-card rounded-3xl p-12 md:p-16 text-center guide-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        <span class="gradient-uncertain">Primer Momento Histórico</span>
+                    </h2>
+
+                    <div class="guide-divider my-8"></div>
+
+                    <p class="text-2xl text-white mb-6 font-bold">
+                        Un tecnólogo no puede anticipar con claridad qué viene después
+                    </p>
+
+                    <p class="text-xl text-gray-300">
+                        Velocidad de cambio, <span class="text-guide font-bold">"cisnes negros"</span> tecnológicos, avalancha de modelos. Cualquier plan a 5 años queda viejo en meses.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Strategy -->
+        <section class="py-20 px-6" style="background-color: #0f1419 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 guide-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">La </span><span class="gradient-uncertain">Estrategia</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Si no podemos predecir el futuro...
+                    </p>
+                </div>
+
+                <div class="guide-card rounded-2xl p-10 text-center guide-rise delay-1">
+                    <p class="text-2xl text-white font-bold mb-6">
+                        Diseñar cómo trabajamos con la IA <span class="gradient-uncertain">ahora</span>
+                    </p>
+                    <p class="text-xl text-gray-300">
+                        Foco en <span class="text-guide font-bold">procesos, roles y decisiones</span>
+                    </p>
+                    <p class="text-lg text-gray-400 mt-4">
+                        No en la herramienta de moda
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semaphore Model -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1419, #1e293b) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 guide-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Modelo </span><span class="gradient-uncertain">Semáforo</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Colaboración humano-máquina: quién decide qué
+                    </p>
+                </div>
+
+                <div class="semaphore-box guide-rise delay-1">
+                    <div class="traffic-light relative z-10">
+                        <div class="text-center">
+                            <div class="light-circle light-red mx-auto mb-3">
+                                <span class="text-white text-sm">🚫</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Reglas</h3>
+                            <p class="text-sm text-gray-400">Automatización completa</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="light-circle light-amber mx-auto mb-3">
+                                <span class="text-white text-sm">⚠️</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">IA</h3>
+                            <p class="text-sm text-gray-400">Propuesta + supervisión</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="light-circle light-green mx-auto mb-3">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Persona</h3>
+                            <p class="text-sm text-gray-400">Última palabra</p>
+                        </div>
+                    </div>
+
+                    <p class="text-lg text-gray-200 mt-8 relative z-10">
+                        Definir <span class="text-guide font-bold">cuándo el humano tiene la última palabra</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUIDE Framework -->
+        <section class="py-20 px-6" style="background-color: #0f1419 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 guide-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Marco </span><span class="gradient-uncertain">GUIDE</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Metodología práctica para transformar ideas IA en proyectos gobernados
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-5 gap-6">
+                    <div class="guide-letter guide-rise delay-1">
+                        <div class="guide-initial">G</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Goal</h3>
+                        <p class="text-sm text-gray-400">Objetivo claro</p>
+                    </div>
+
+                    <div class="guide-letter guide-rise delay-2">
+                        <div class="guide-initial">U</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Users</h3>
+                        <p class="text-sm text-gray-400">Usuarios finales</p>
+                    </div>
+
+                    <div class="guide-letter guide-rise delay-3">
+                        <div class="guide-initial">I</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Intelligence</h3>
+                        <p class="text-sm text-gray-400">Tipo de IA</p>
+                    </div>
+
+                    <div class="guide-letter guide-rise delay-4">
+                        <div class="guide-initial">D</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Data</h3>
+                        <p class="text-sm text-gray-400">Trazabilidad</p>
+                    </div>
+
+                    <div class="guide-letter guide-rise delay-5">
+                        <div class="guide-initial">E</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Evidence</h3>
+                        <p class="text-sm text-gray-400">Evidencia medible</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 guide-card rounded-2xl p-8 text-center guide-rise delay-6">
+                    <p class="text-lg text-gray-200">
+                        Con trazabilidad de datos, cuidado de privacidad y protección de información sensible, <span class="text-guide font-bold">sin frenar la experimentación</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Experience -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1419, #1e293b) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 guide-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-uncertain">Experiencias Reales</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Aplicando IA en Fynkus - Administración de condominios España
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="guide-card p-8 rounded-xl guide-rise delay-1">
+                        <div class="text-4xl mb-4 icon-guide">📄</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Lectura de Documentos</h3>
+                        <p class="text-gray-300">Integración de modelos IA para procesamiento automático</p>
+                    </div>
+
+                    <div class="guide-card p-8 rounded-xl guide-rise delay-2">
+                        <div class="text-4xl mb-4 icon-guide">🏷️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Clasificación de Incidencias</h3>
+                        <p class="text-gray-300">Categorización inteligente y priorización</p>
+                    </div>
+
+                    <div class="guide-card p-8 rounded-xl guide-rise delay-3">
+                        <div class="text-4xl mb-4 icon-guide">💬</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Propuestas de Respuesta</h3>
+                        <p class="text-gray-300">Generación contextual de comunicaciones</p>
+                    </div>
+
+                    <div class="guide-card p-8 rounded-xl guide-rise delay-4">
+                        <div class="text-4xl mb-4 icon-guide">🤖</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Agentes Completos</h3>
+                        <p class="text-gray-300">Ejecutan pasos completos de procesos end-to-end</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 Takeaways -->
+        <section class="py-20 px-6" style="background-color: #0f1419 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 guide-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">3 </span><span class="gradient-uncertain">Takeaways</span> <span class="text-white">Concretos</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="takeaway-box guide-rise delay-1">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-guide">1️⃣</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Mapa de Procesos</h3>
+                                <p class="text-gray-300">Dónde tiene sentido usar agentes de IA en tu organización</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="takeaway-box guide-rise delay-2">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-guide">2️⃣</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Lista de Decisiones</h3>
+                                <p class="text-gray-300">Que nunca debes delegar en la máquina</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="takeaway-box guide-rise delay-3">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-guide">3️⃣</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-white">Lenguaje Común</h3>
+                                <p class="text-gray-300">Para hablar de ética, riesgo y ventaja competitiva en la era de la IA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Metrics -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1419, #1e293b) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="metric-box guide-rise delay-1">
+                        <div class="metric-value mb-3">500+</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Despachos</h3>
+                        <p class="text-sm text-gray-400">Usando Fynkus</p>
+                    </div>
+
+                    <div class="metric-box guide-rise delay-2">
+                        <div class="metric-value mb-3">30k</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Comunidades</h3>
+                        <p class="text-sm text-gray-400">Gestionadas</p>
+                    </div>
+
+                    <div class="metric-box guide-rise delay-3">
+                        <div class="metric-value mb-3">15</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Años</h3>
+                        <p class="text-sm text-gray-400">Experiencia real</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1e293b, #0f1419) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="guide-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-uncertain">Navega</span> <span class="text-white">el Futuro</span><br>
+                        <span class="text-white">con </span><span class="gradient-uncertain">Procesos Claros</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Aprende a diseñar cómo trabajar con IA hoy, sin destruir tu negocio mañana
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-guide text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-guide px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="guide-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-guide">⚠️</div>
+                            <h4 class="font-bold text-white mb-2">Sin Manual</h4>
+                            <p class="text-sm text-gray-400">Futuro incierto</p>
+                        </div>
+                        <div class="guide-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-guide">🚦</div>
+                            <h4 class="font-bold text-white mb-2">Modelo Semáforo</h4>
+                            <p class="text-sm text-gray-400">Decisión clara</p>
+                        </div>
+                        <div class="guide-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-guide">🎯</div>
+                            <h4 class="font-bold text-white mb-2">Marco GUIDE</h4>
+                            <p class="text-sm text-gray-400">Proyectos gobernados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0f1419 !important; border-top: 1px solid rgba(245, 158, 11, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-uncertain mb-2">Fynkus Global Solutions SL</h3>
+                    <p class="text-gray-500 text-sm">Plataforma ERP+CRM con IA práctica</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0f1419';
+            document.body.style.backgroundColor = '#0f1419';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0f1419';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.guide-rise, .process-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

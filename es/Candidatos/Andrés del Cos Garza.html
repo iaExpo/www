@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrés del Cos - Motor Humano de la IA | Escala Mi Negocio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-business: #1a0f0a;
+            --corporate-dark: #2d1810;
+            --warm-red: #dc2626;
+            --energy-orange: #ea580c;
+            --bright-amber: #f59e0b;
+            --vibrant-yellow: #fbbf24;
+        }
+
+        html {
+            background: #1a0f0a !important;
+            background-color: #1a0f0a !important;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif !important;
+            background: #1a0f0a !important;
+            background-color: #1a0f0a !important;
+            color: #fef3c7 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-motor {
+            background: linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-energy {
+            color: #ea580c;
+        }
+
+        /* Motor Background */
+        .motor-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .gear-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 35%, rgba(220, 38, 38, 0.05) 2px, transparent 2px),
+                radial-gradient(circle at 75% 65%, rgba(234, 88, 12, 0.05) 2px, transparent 2px);
+            background-size: 100px 100px, 120px 120px;
+            animation: gear-rotate 30s linear infinite;
+        }
+
+        @keyframes gear-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .human-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #ea580c, transparent);
+            border-radius: 50%;
+            animation: human-pulse 3s infinite;
+        }
+
+        @keyframes human-pulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(234, 88, 12, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(220, 38, 38, 0.8);
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        .energy-wave {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(234, 88, 12, 0.4), transparent);
+            animation: wave-energy 6s infinite;
+        }
+
+        @keyframes wave-energy {
+            0%, 100% {
+                opacity: 0.2;
+                transform: translateX(-50%);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateX(50%);
+            }
+        }
+
+        .business-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(245, 158, 11, 0.15);
+            animation: circle-expand 12s infinite;
+        }
+
+        @keyframes circle-expand {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Fade animations */
+        .motor-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: motorRise 0.8s forwards;
+        }
+
+        @keyframes motorRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .business-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: businessEmerge 0.8s forwards;
+        }
+
+        @keyframes businessEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Motor Card */
+        .motor-card {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.08), rgba(45, 24, 16, 0.4));
+            border: 2px solid rgba(234, 88, 12, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .motor-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #dc2626, #ea580c, #f59e0b);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .motor-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .motor-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(245, 158, 11, 0.6);
+            box-shadow: 
+                0 0 40px rgba(234, 88, 12, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Motor Button */
+        .btn-motor {
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+            box-shadow: 
+                0 0 30px rgba(234, 88, 12, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-motor:hover {
+            box-shadow: 
+                0 0 50px rgba(220, 38, 38, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-motor {
+            border: 2px solid #ea580c;
+            color: #ea580c;
+            background: rgba(234, 88, 12, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-motor:hover {
+            background: rgba(234, 88, 12, 0.15);
+            box-shadow: 0 0 35px rgba(234, 88, 12, 0.4);
+            border-color: #f59e0b;
+        }
+
+        /* Profile Frame */
+        .profile-motor {
+            border: 3px solid #ea580c;
+            box-shadow: 
+                0 0 50px rgba(234, 88, 12, 0.5),
+                inset 0 0 30px rgba(220, 38, 38, 0.1);
+        }
+
+        /* Badge */
+        .badge-motor {
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+            box-shadow: 0 0 25px rgba(234, 88, 12, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #1a0f0a !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a0f0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #dc2626, #ea580c);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-motor {
+            background: rgba(234, 88, 12, 0.15);
+            border: 1px solid rgba(234, 88, 12, 0.4);
+            color: #fbbf24;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-motor {
+            filter: drop-shadow(0 0 12px rgba(234, 88, 12, 0.6));
+        }
+
+        /* Stat box */
+        .stat-motor {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(45, 24, 16, 0.3));
+            border: 1px solid rgba(234, 88, 12, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .motor-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #dc2626, #ea580c, #f59e0b, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(234, 88, 12, 0.5);
+        }
+
+        /* Element badge */
+        .element-badge {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(234, 88, 12, 0.15));
+            border: 2px solid rgba(234, 88, 12, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .element-badge:hover {
+            border-color: rgba(245, 158, 11, 0.6);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(234, 88, 12, 0.3);
+        }
+
+        .element-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #dc2626, #ea580c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2rem;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Motor Background -->
+    <div class="motor-bg">
+        <div class="gear-pattern"></div>
+        
+        <!-- Human Nodes -->
+        <div class="human-node" style="top: 20%; left: 18%; animation-delay: 0s;"></div>
+        <div class="human-node" style="top: 40%; left: 72%; animation-delay: 1s;"></div>
+        <div class="human-node" style="top: 62%; left: 25%; animation-delay: 2s;"></div>
+        <div class="human-node" style="top: 78%; left: 70%; animation-delay: 1.5s;"></div>
+        <div class="human-node" style="top: 50%; right: 15%; animation-delay: 2.5s;"></div>
+        
+        <!-- Energy Waves -->
+        <div class="energy-wave" style="top: 25%;"></div>
+        <div class="energy-wave" style="top: 50%; animation-delay: 2s;"></div>
+        <div class="energy-wave" style="top: 75%; animation-delay: 4s;"></div>
+        
+        <!-- Business Circles -->
+        <div class="business-circle" style="width: 300px; height: 300px; top: 18%; right: 12%;"></div>
+        <div class="business-circle" style="width: 250px; height: 250px; bottom: 22%; left: 15%; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #1a0f0a !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #1a0f0a !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 motor-rise">
+                    <span class="tag-motor inline-block">
+                        ⚙️ IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight motor-rise delay-1">
+                    <span class="text-white">El </span><span class="gradient-motor">Motor Humano</span><br>
+                    <span class="text-white">de la IA</span>
+                </h1>
+
+                <div class="motor-divider mb-8 motor-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-orange-300 mb-4 max-w-4xl mx-auto motor-rise delay-2 font-bold">
+                    Lo Necesario Para Implementar IA En Tu Negocio
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto motor-rise delay-3">
+                    La transformación ocurre cuando las personas adoptan nuevas formas de trabajar
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 motor-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-motor text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Activar el Motor
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="business-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-motor rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c6b5a16bfee598bc3e37a.jpg"
+                                    alt="Andrés del Cos Garza"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-motor rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">Fundador</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="motor-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Andrés del Cos Garza
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-energy text-lg font-bold">Fundador</span><br>
+                            <span class="text-gray-400 text-base">Escala Mi Negocio</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Fundador de Escala Mi Negocio, firma enfocada en <span class="text-energy font-bold">modernizar PYMEs mediante inteligencia artificial</span> aplicada a problemas reales.
+                            </p>
+                            <p>
+                                Ex-Director de B2C Sales en <span class="text-energy font-semibold">DiDi Food Latinoamérica</span>, liderando estrategias regionales de crecimiento en mercados competitivos.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-motor text-center">
+                                <div class="text-2xl font-bold gradient-motor">PYMEs</div>
+                                <div class="text-xs text-gray-500">Especialización</div>
+                            </div>
+                            <div class="stat-motor text-center">
+                                <div class="text-2xl font-bold gradient-motor">DiDi</div>
+                                <div class="text-xs text-gray-500">Ex-Director LATAM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Truth -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a0f0a, #2d1810) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="motor-card rounded-3xl p-12 md:p-16 text-center motor-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        <span class="text-white">La tecnología </span><span class="gradient-motor">por sí sola</span><br>
+                        <span class="gradient-motor">no transforma</span><span class="text-white"> empresas</span>
+                    </h2>
+
+                    <div class="motor-divider my-8"></div>
+
+                    <p class="text-2xl text-gray-200 max-w-3xl mx-auto">
+                        La transformación ocurre cuando las personas adoptan nuevas formas de trabajar, toman decisiones basadas en datos y colaboran alrededor de un <span class="text-energy font-bold">propósito común</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The 5 Elements -->
+        <section class="py-20 px-6" style="background-color: #1a0f0a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 motor-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-motor">5 Elementos</span> <span class="text-white">Organizacionales</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Que permiten que la IA genere valor real
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Element 1 -->
+                    <div class="element-badge motor-rise delay-1">
+                        <div class="element-number">1</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Liderazgo que Impulse el Cambio</h3>
+                        <p class="text-gray-300">
+                            La adopción de IA requiere <span class="text-energy font-bold">dirección clara, visión y congruencia diaria</span>. Sin líderes que marquen el ritmo y eliminen barreras, los proyectos se diluyen o quedan aislados
+                        </p>
+                    </div>
+
+                    <!-- Element 2 -->
+                    <div class="element-badge motor-rise delay-2">
+                        <div class="element-number">2</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Cultura de Innovación y Participación</h3>
+                        <p class="text-gray-300">
+                            La IA prospera en equipos que se sienten seguros para <span class="text-energy font-bold">experimentar, fallar rápido y proponer mejoras</span>. La participación activa asegura que la tecnología responda a problemas reales del negocio
+                        </p>
+                    </div>
+
+                    <!-- Element 3 -->
+                    <div class="element-badge motor-rise delay-3">
+                        <div class="element-number">3</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Obsesión con los Datos</h3>
+                        <p class="text-gray-300">
+                            La IA solo funciona cuando la organización <span class="text-energy font-bold">migra de la intuición al análisis disciplinado</span>. Cada área debe generar, usar y proteger datos confiables para respaldar decisiones
+                        </p>
+                    </div>
+
+                    <!-- Element 4 -->
+                    <div class="element-badge motor-rise delay-4">
+                        <div class="element-number">4</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Incentivos Bien Diseñados</h3>
+                        <p class="text-gray-300">
+                            Las personas adoptan la IA cuando <span class="text-energy font-bold">esfuerzos, métricas e incentivos están alineados</span> con los resultados esperados. Los incentivos correctos convierten resistencia en colaboración
+                        </p>
+                    </div>
+
+                    <!-- Element 5 -->
+                    <div class="element-badge motor-rise delay-5">
+                        <div class="element-number">5</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Capacitación en Nuevas Tecnologías</h3>
+                        <p class="text-gray-300">
+                            El talento es la pieza central. <span class="text-energy font-bold">Equipos entrenados trabajan con la tecnología, no contra ella</span>, acelerando impacto y evitando dependencia externa
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Human Catalyst -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a0f0a, #2d1810) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="motor-card rounded-3xl p-12 md:p-16 text-center motor-rise">
+                    <div class="mb-8">
+                        <span class="tag-motor inline-block">El Catalizador</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">La </span><span class="gradient-motor">interacción humana</span><br>
+                        <span class="text-white">es el verdadero catalizador de la IA</span>
+                    </h2>
+
+                    <div class="motor-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                        Este modelo enfatiza que implementar IA no es un proyecto técnico, sino un <span class="text-energy font-bold">proceso humano</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- For PYMEs -->
+        <section class="py-20 px-6" style="background-color: #1a0f0a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 motor-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Para </span><span class="gradient-motor">PYMEs</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="motor-card p-8 rounded-xl text-center motor-rise delay-1">
+                        <div class="text-5xl mb-4 icon-motor">📈</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Aumentar Productividad</h3>
+                        <p class="text-sm text-gray-400">Operar con más eficiencia eliminando tareas manuales</p>
+                    </div>
+
+                    <div class="motor-card p-8 rounded-xl text-center motor-rise delay-2">
+                        <div class="text-5xl mb-4 icon-motor">💰</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Reducir Costos</h3>
+                        <p class="text-sm text-gray-400">Disminuir gastos innecesarios y optimizar recursos</p>
+                    </div>
+
+                    <div class="motor-card p-8 rounded-xl text-center motor-rise delay-3">
+                        <div class="text-5xl mb-4 icon-motor">😊</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Mejor Calidad de Vida</h3>
+                        <p class="text-sm text-gray-400">Liberar tiempo para trabajo de mayor valor</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Not a Technical Project -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a0f0a, #2d1810) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="motor-card rounded-3xl p-12 md:p-16 text-center motor-rise">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">Implementar IA </span><span class="gradient-motor">no es un proyecto técnico,</span><br>
+                        <span class="text-white">sino un </span><span class="gradient-motor">proceso humano</span>
+                    </h2>
+
+                    <div class="motor-divider my-8"></div>
+
+                    <p class="text-2xl text-gray-200 mb-8">
+                        Cuando estas cinco piezas están alineadas, la IA deja de ser un experimento y se convierte en una <span class="text-energy font-bold">ventaja competitiva sostenible</span>
+                    </p>
+
+                    <div class="grid md:grid-cols-5 gap-4 mt-12">
+                        <div>
+                            <div class="text-4xl mb-2 icon-motor">👔</div>
+                            <p class="text-sm font-bold text-white">Liderazgo</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-2 icon-motor">🚀</div>
+                            <p class="text-sm font-bold text-white">Cultura</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-2 icon-motor">📊</div>
+                            <p class="text-sm font-bold text-white">Datos</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-2 icon-motor">🎯</div>
+                            <p class="text-sm font-bold text-white">Incentivos</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-2 icon-motor">🎓</div>
+                            <p class="text-sm font-bold text-white">Capacitación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision -->
+        <section class="py-20 px-6" style="background-color: #1a0f0a !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="motor-card rounded-3xl p-12 md:p-16 text-center motor-rise">
+                    <div class="mb-8">
+                        <span class="tag-motor inline-block">Visión</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="gradient-motor">La mayor oportunidad de productividad</span><br>
+                        <span class="text-white">para las PYMEs en décadas</span>
+                    </h2>
+
+                    <div class="motor-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                        Las empresas que adopten IA con <span class="text-energy font-bold">propósito —no por moda—</span> serán las que crezcan más rápido, gasten menos y construyan mejores entornos laborales en el futuro
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #2d1810, #1a0f0a) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="motor-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-motor">Activa el Motor Humano</span><br>
+                        <span class="text-white">de la IA en tu Negocio</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre los 5 elementos organizacionales que convierten la IA en ventaja competitiva
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-motor text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-motor px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="motor-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-motor">⚙️</div>
+                            <h4 class="font-bold text-white mb-2">Motor Humano</h4>
+                            <p class="text-sm text-gray-400">5 elementos clave</p>
+                        </div>
+                        <div class="motor-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-motor">🏢</div>
+                            <h4 class="font-bold text-white mb-2">PYMEs</h4>
+                            <p class="text-sm text-gray-400">Especialización</p>
+                        </div>
+                        <div class="motor-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-motor">🚀</div>
+                            <h4 class="font-bold text-white mb-2">Escala Mi Negocio</h4>
+                            <p class="text-sm text-gray-400">IA práctica y real</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #1a0f0a !important; border-top: 1px solid rgba(234, 88, 12, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-motor mb-2">Escala Mi Negocio</h3>
+                    <p class="text-gray-500 text-sm">Modernizando PYMEs con IA aplicada a problemas reales</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#1a0f0a';
+            document.body.style.backgroundColor = '#1a0f0a';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#1a0f0a';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.motor-rise, .business-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felipe Salas - Convergencia Humanidad+Tecnología | IA LATAM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-void: #0d0221;
+            --dark-purple: #1a0b3d;
+            --cyber-cyan: #00d9ff;
+            --neon-magenta: #ff006e;
+            --electric-purple: #8338ec;
+            --bright-pink: #ff5db1;
+        }
+
+        html {
+            background: #0d0221 !important;
+            background-color: #0d0221 !important;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif !important;
+            background: #0d0221 !important;
+            background-color: #0d0221 !important;
+            color: #f0f9ff !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-convergence {
+            background: linear-gradient(135deg, #00d9ff 0%, #8338ec 50%, #ff006e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-cyan {
+            color: #00d9ff;
+        }
+
+        /* Convergence Background */
+        .convergence-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .neural-net {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 110, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: neural-pulse 10s infinite;
+        }
+
+        @keyframes neural-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .convergence-line {
+            position: absolute;
+            height: 2px;
+            transform-origin: left center;
+            animation: converge 8s infinite ease-in-out;
+        }
+
+        .convergence-line::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #00d9ff, #ff006e);
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
+        }
+
+        @keyframes converge {
+            0%, 100% {
+                transform: scaleX(0.5) translateX(-50%);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scaleX(1) translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .dna-helix {
+            position: absolute;
+            width: 4px;
+            height: 200px;
+            animation: helix-spin 15s infinite linear;
+        }
+
+        @keyframes helix-spin {
+            0% { transform: rotate(0deg) translateX(30px); }
+            100% { transform: rotate(360deg) translateX(30px); }
+        }
+
+        .fusion-sphere {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(131, 56, 236, 0.3), transparent 70%);
+            animation: fusion-expand 20s infinite ease-in-out;
+        }
+
+        @keyframes fusion-expand {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
+        /* Fade animations */
+        .future-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: futureRise 0.8s forwards;
+        }
+
+        @keyframes futureRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .converge-in {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: convergeIn 0.8s forwards;
+        }
+
+        @keyframes convergeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Future Card */
+        .future-card {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(255, 0, 110, 0.08));
+            border: 2px solid rgba(131, 56, 236, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent,
+                rgba(0, 217, 255, 0.2),
+                transparent 30%
+            );
+            animation: card-scan 4s linear infinite;
+        }
+
+        @keyframes card-scan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .future-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 217, 255, 0.6);
+            box-shadow: 
+                0 0 40px rgba(131, 56, 236, 0.4),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Convergence Button */
+        .btn-convergence {
+            background: linear-gradient(135deg, #00d9ff, #8338ec, #ff006e);
+            background-size: 200% 200%;
+            box-shadow: 
+                0 0 30px rgba(131, 56, 236, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .btn-convergence:hover {
+            box-shadow: 
+                0 0 50px rgba(0, 217, 255, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-convergence {
+            border: 2px solid #00d9ff;
+            color: #00d9ff;
+            background: rgba(0, 217, 255, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-convergence:hover {
+            background: rgba(0, 217, 255, 0.15);
+            box-shadow: 0 0 35px rgba(0, 217, 255, 0.5);
+            border-color: #ff006e;
+        }
+
+        /* Profile Frame */
+        .profile-convergence {
+            border: 3px solid;
+            border-image: linear-gradient(135deg, #00d9ff, #ff006e) 1;
+            box-shadow: 
+                0 0 50px rgba(131, 56, 236, 0.5),
+                inset 0 0 30px rgba(0, 217, 255, 0.1);
+        }
+
+        /* Badge */
+        .badge-convergence {
+            background: linear-gradient(135deg, #8338ec, #ff006e);
+            box-shadow: 0 4px 20px rgba(131, 56, 236, 0.5);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0d0221 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d0221;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00d9ff, #ff006e);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-convergence {
+            background: rgba(131, 56, 236, 0.15);
+            border: 1px solid rgba(0, 217, 255, 0.4);
+            color: #00d9ff;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-convergence {
+            filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.8));
+        }
+
+        /* Stat box */
+        .stat-convergence {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 110, 0.1));
+            border: 1px solid rgba(131, 56, 236, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .convergence-divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d9ff, #8338ec, #ff006e);
+            margin: 0 auto;
+            animation: divider-pulse 2s infinite;
+        }
+
+        @keyframes divider-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Plus symbol */
+        .plus-symbol {
+            display: inline-block;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #00d9ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        /* Question badge */
+        .question-badge {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(255, 0, 110, 0.15));
+            border: 2px solid rgba(131, 56, 236, 0.4);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            font-size: 1.25rem;
+            display: inline-block;
+            color: #00d9ff;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Convergence Background -->
+    <div class="convergence-bg">
+        <div class="neural-net"></div>
+        
+        <!-- Convergence Lines -->
+        <div class="convergence-line" style="width: 40%; top: 20%; left: 0;"></div>
+        <div class="convergence-line" style="width: 35%; top: 40%; right: 0; animation-delay: 1s;"></div>
+        <div class="convergence-line" style="width: 45%; top: 60%; left: 0; animation-delay: 2s;"></div>
+        <div class="convergence-line" style="width: 38%; top: 80%; right: 0; animation-delay: 3s;"></div>
+        
+        <!-- DNA Helixes -->
+        <div class="dna-helix" style="top: 15%; left: 25%; background: linear-gradient(180deg, #00d9ff, #ff006e);"></div>
+        <div class="dna-helix" style="top: 45%; right: 20%; background: linear-gradient(180deg, #ff006e, #8338ec); animation-delay: 5s;"></div>
+        
+        <!-- Fusion Spheres -->
+        <div class="fusion-sphere" style="width: 300px; height: 300px; top: 10%; right: 10%;"></div>
+        <div class="fusion-sphere" style="width: 250px; height: 250px; bottom: 15%; left: 15%; background: radial-gradient(circle, rgba(0, 217, 255, 0.2), transparent 70%); animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0d0221 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0d0221 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 future-rise">
+                    <span class="tag-convergence inline-block">
+                        🔮 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight future-rise delay-1">
+                    <span class="gradient-convergence">Convergencia</span>
+                </h1>
+
+                <div class="convergence-divider mb-8 future-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-white mb-4 max-w-4xl mx-auto future-rise delay-2 font-bold">
+                    El futuro <span class="gradient-convergence">Humanidad</span><span class="plus-symbol">+</span><span class="gradient-convergence">Tecnología</span>
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto future-rise delay-3">
+                    Nueva realidad, nuevos paradigmas
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 future-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-convergence text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Explorar el Futuro
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="converge-in delay-5">
+                        <div class="relative">
+                            <div class="profile-convergence rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69172ce51c143a4c4c055cbd.png"
+                                    alt="Felipe Salas Saavedra"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-convergence rounded-xl px-6 py-3">
+                                <div class="text-sm font-bold text-white">Socio Fundador</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="future-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Felipe Salas Saavedra
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-cyan text-lg font-bold">Fundador y CEO - IA LATAM</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Ingeniero Civil Industrial (U. de Chile) | MBA (U. Adolfo Ibáñez). Emprendedor desde 1993 con <span class="text-cyan font-bold">más de 32 proyectos realizados</span>.
+                            </p>
+                            <p>
+                                Participa en <span class="text-cyan font-semibold">aprox 15 sociedades</span> en distintos rubros: mundo cripto, computer vision, proteína de insectos, plataformas digitales, ticketing y más.
+                            </p>
+                            <p class="text-sm">
+                                Co-Fundador TOC Biometrics | Socio Director Grupo Porta | Fundador Full Runners
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-convergence text-center">
+                                <div class="text-2xl font-bold gradient-convergence">32+</div>
+                                <div class="text-xs text-gray-500">Proyectos</div>
+                            </div>
+                            <div class="stat-convergence text-center">
+                                <div class="text-2xl font-bold gradient-convergence">15</div>
+                                <div class="text-xs text-gray-500">Sociedades</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- State of the Art -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d0221, #1a0b3d) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-convergence">El Estado del Arte</span>
+                    </h2>
+                    <div class="convergence-divider mb-8"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="future-card p-8 rounded-xl text-center relative z-10 future-rise delay-1">
+                        <div class="text-5xl mb-4 icon-convergence">🤖</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Nuevas Tecnologías</h3>
+                        <p class="text-sm text-gray-400">IA de última generación</p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl text-center relative z-10 future-rise delay-2">
+                        <div class="text-5xl mb-4 icon-convergence">🧬</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Avances Médicos</h3>
+                        <p class="text-sm text-gray-400">Biotecnología avanzada</p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl text-center relative z-10 future-rise delay-3">
+                        <div class="text-5xl mb-4 icon-convergence">🧠</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Neurociencia</h3>
+                        <p class="text-sm text-gray-400">Comprensión profunda</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Convergence -->
+        <section class="py-20 px-6" style="background-color: #0d0221 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="future-card rounded-3xl p-12 md:p-16 text-center relative z-10 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8">
+                        <span class="text-white">La </span><span class="gradient-convergence">Convergencia</span>
+                    </h2>
+
+                    <div class="convergence-divider my-8"></div>
+
+                    <p class="text-2xl text-gray-200 leading-relaxed mb-12">
+                        La convergencia entre <span class="text-cyan font-bold">humanidad</span> <span class="plus-symbol">+</span> <span class="text-cyan font-bold">tecnología</span> nos presenta un futuro cercano totalmente nuevo
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="text-4xl mb-3 icon-convergence">👤</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Humanidad</h3>
+                            <p class="text-sm text-gray-400">Biología, conciencia, valores</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-3 icon-convergence">⚡</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Tecnología</h3>
+                            <p class="text-sm text-gray-400">IA, biotech, neurociencia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Questions -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d0221, #1a0b3d) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Nuevas </span><span class="gradient-convergence">Preguntas</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-1">
+                        <div class="question-badge mb-4">
+                            ¿Nueva Biología?
+                        </div>
+                        <p class="text-gray-400">
+                            Transformaciones fundamentales en nuestra comprensión de la vida
+                        </p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-2">
+                        <div class="question-badge mb-4">
+                            ¿Nuevos Valores?
+                        </div>
+                        <p class="text-gray-400">
+                            Redefinición de lo que consideramos importante y valioso
+                        </p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-3">
+                        <div class="question-badge mb-4">
+                            ¿Nueva Moral?
+                        </div>
+                        <p class="text-gray-400">
+                            Ética en una era de capacidades aumentadas
+                        </p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-4">
+                        <div class="question-badge mb-4">
+                            ¿Nueva Conciencia?
+                        </div>
+                        <p class="text-gray-400">
+                            Expansión de la percepción y el entendimiento humano
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deep Changes -->
+        <section class="py-20 px-6" style="background-color: #0d0221 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="future-card rounded-3xl p-12 md:p-16 text-center relative z-10 future-rise">
+                    <div class="mb-8">
+                        <span class="tag-convergence inline-block">Transformación</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="gradient-convergence">Profundos Cambios</span><br>
+                        <span class="text-white">Sociales</span>
+                    </h2>
+
+                    <div class="convergence-divider my-8"></div>
+
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Una realidad distinta que transformará la sociedad, las relaciones humanas, el trabajo, la educación y nuestra existencia misma
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d0221, #1a0b3d) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-convergence">Trayectoria</span> <span class="text-white">Emprendedora</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-1">
+                        <div class="text-4xl mb-4 icon-convergence">🚀</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Desde 1993</h3>
+                        <p class="text-sm text-gray-400">Más de 30 años innovando</p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-2">
+                        <div class="text-4xl mb-4 icon-convergence">🏃</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Deportista</h3>
+                        <p class="text-sm text-gray-400">Maratonista y triatleta</p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-3">
+                        <div class="text-4xl mb-4 icon-convergence">🌎</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Internacional</h3>
+                        <p class="text-sm text-gray-400">Operaciones en Sudamérica y UK</p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-4">
+                        <div class="text-4xl mb-4 icon-convergence">🤝</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">M&A</h3>
+                        <p class="text-sm text-gray-400">6 procesos con empresas internacionales</p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-5">
+                        <div class="text-4xl mb-4 icon-convergence">🎓</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Mentor</h3>
+                        <p class="text-sm text-gray-400">Start-Up Chile, Mentores de Impacto</p>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl relative z-10 future-rise delay-6">
+                        <div class="text-4xl mb-4 icon-convergence">🔬</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Tech desde 2000</h3>
+                        <p class="text-sm text-gray-400">IA desde 2016</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1a0b3d, #0d0221) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="future-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">Prepárate para el</span><br>
+                        <span class="gradient-convergence">Futuro Convergente</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Una nueva realidad donde humanidad y tecnología se fusionan, creando paradigmas completamente nuevos
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-convergence text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-convergence px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="future-card p-6 rounded-xl relative z-10">
+                            <div class="text-3xl mb-3 icon-convergence">🔮</div>
+                            <h4 class="font-bold text-white mb-2">Nuevos Paradigmas</h4>
+                            <p class="text-sm text-gray-400">Realidad transformada</p>
+                        </div>
+                        <div class="future-card p-6 rounded-xl relative z-10">
+                            <div class="text-3xl mb-3 icon-convergence">🚀</div>
+                            <h4 class="font-bold text-white mb-2">32+ Proyectos</h4>
+                            <p class="text-sm text-gray-400">Experiencia comprobada</p>
+                        </div>
+                        <div class="future-card p-6 rounded-xl relative z-10">
+                            <div class="text-3xl mb-3 icon-convergence">🌟</div>
+                            <h4 class="font-bold text-white mb-2">IA LATAM</h4>
+                            <p class="text-sm text-gray-400">Liderando el futuro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0d0221 !important; border-top: 1px solid rgba(131, 56, 236, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-convergence mb-2">IA LATAM</h3>
+                    <p class="text-gray-500 text-sm">Convergencia Humanidad + Tecnología</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0d0221';
+            document.body.style.backgroundColor = '#0d0221';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0d0221';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.future-rise, .converge-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

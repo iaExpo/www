@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Forero - Automatización con IA | Nextgen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-bg: #050b1a;
+            --darker-blue: #0a1628;
+            --electric-blue: #00d4ff;
+            --neon-cyan: #00ffff;
+            --deep-blue: #0052ff;
+            --purple-neon: #b24bf3;
+        }
+
+        html {
+            background: #050b1a !important;
+            background-color: #050b1a !important;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif !important;
+            background: #050b1a !important;
+            background-color: #050b1a !important;
+            color: #e0e7ff !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .neon-text {
+            color: #00d4ff;
+            text-shadow: 
+                0 0 10px #00d4ff,
+                0 0 20px #00d4ff,
+                0 0 30px #00d4ff,
+                0 0 40px #00d4ff;
+        }
+
+        .gradient-neon {
+            background: linear-gradient(135deg, #00d4ff 0%, #00ffff 50%, #b24bf3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animated Tech Background */
+        .tech-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.6), transparent);
+            height: 2px;
+            animation: circuit-flow 4s infinite;
+        }
+
+        @keyframes circuit-flow {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        .glowing-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Hexagon Pattern */
+        .hex-pattern {
+            background-image: 
+                radial-gradient(circle at center, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Fade and Slide Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 0.6s forwards;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+
+        /* Tech Card */
+        .tech-card {
+            background: linear-gradient(135deg, rgba(0, 82, 255, 0.1), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 
+                0 0 30px rgba(0, 212, 255, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Neon Button */
+        .neon-btn {
+            position: relative;
+            background: linear-gradient(135deg, #0052ff, #00d4ff);
+            box-shadow: 
+                0 0 20px rgba(0, 212, 255, 0.5),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .neon-btn:hover {
+            box-shadow: 
+                0 0 40px rgba(0, 212, 255, 0.8),
+                0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .neon-btn-outline {
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .neon-btn-outline:hover {
+            background: rgba(0, 212, 255, 0.15);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Profile Glow */
+        .profile-cyber {
+            border: 3px solid #00d4ff;
+            box-shadow: 
+                0 0 50px rgba(0, 212, 255, 0.6),
+                inset 0 0 30px rgba(0, 212, 255, 0.1);
+        }
+
+        /* Scanline Effect */
+        .scanline {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scanline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            animation: scan 3s infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #050b1a !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050b1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #0052ff, #00d4ff);
+            border-radius: 5px;
+        }
+
+        /* Quote style */
+        .cyber-quote {
+            border-left: 4px solid #00d4ff;
+            padding-left: 20px;
+            font-style: italic;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Tech Icon Glow */
+        .icon-cyber {
+            filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.7));
+        }
+    </style>
+</head>
+<body>
+    <!-- Tech Animated Background -->
+    <div class="tech-bg">
+        <!-- Circuit Lines -->
+        <div class="circuit-line" style="width: 400px; top: 15%; left: 0; animation-delay: 0s;"></div>
+        <div class="circuit-line" style="width: 350px; top: 35%; right: 0; animation-delay: 1s;"></div>
+        <div class="circuit-line" style="width: 450px; top: 55%; left: 0; animation-delay: 2s;"></div>
+        <div class="circuit-line" style="width: 300px; top: 75%; right: 0; animation-delay: 3s;"></div>
+        
+        <!-- Glowing Dots -->
+        <div class="glowing-dot" style="top: 20%; left: 10%; animation-delay: 0.5s;"></div>
+        <div class="glowing-dot" style="top: 40%; right: 15%; animation-delay: 1.5s;"></div>
+        <div class="glowing-dot" style="top: 60%; left: 25%; animation-delay: 2.5s;"></div>
+        <div class="glowing-dot" style="bottom: 20%; right: 20%; animation-delay: 3.5s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #050b1a !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20 hex-pattern" style="background-color: #050b1a !important;">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12 fade-in-up">
+                    <span class="inline-block text-electric-blue text-xs font-bold tracking-[0.3em] uppercase px-6 py-2 rounded-full border border-electric-blue/40 bg-electric-blue/10 scanline">
+                        ⚡ Automatización de Empresas
+                    </span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-8 leading-tight fade-in-up delay-1">
+                    <span class="neon-text">DEJA DE PERDER</span><br>
+                    <span class="text-white">TIEMPO</span>
+                </h1>
+
+                <p class="text-2xl md:text-3xl text-center text-gray-300 mb-6 fade-in-up delay-2 max-w-4xl mx-auto">
+                    Cómo un chatbot puede convertir tu <span class="gradient-neon font-bold">caos</span> en un negocio que <span class="gradient-neon font-bold">vende solo</span>
+                </p>
+
+                <div class="flex justify-center gap-6 mb-16 fade-in-up delay-3">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="neon-btn text-white px-10 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Registrarme Ahora
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-20">
+                    <div class="zoom-in delay-4">
+                        <div class="relative">
+                            <div class="profile-cyber rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69137634042d13103eb96072.jpg"
+                                    alt="Diego Adolfo Forero Garzón"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-6 -right-6 bg-gradient-to-br from-electric-blue to-purple-neon rounded-xl px-6 py-3 scanline">
+                                <div class="text-sm font-bold text-white">CEO @ Nextgen</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in-up delay-5">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            <span class="gradient-neon">Diego Adolfo</span><br>
+                            <span class="text-white">Forero Garzón</span>
+                        </h2>
+                        <div class="space-y-4 text-lg text-gray-300 leading-relaxed">
+                            <p>
+                                Ingeniero de sistemas y administrador de empresas con <span class="text-electric-blue font-bold">más de 12 años en tecnología</span>.
+                            </p>
+                            <p>
+                                Descubrí el poder de la automatización con IA cuando empecé a crear asistentes que agendaban, recordaban y registraban tareas automáticamente.
+                            </p>
+                            <p class="text-electric-blue font-semibold">
+                                El resultado: menos tiempo perdido, menos errores y más tiempo para atender bien a las personas.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="tech-card rounded-xl p-5 text-center">
+                                <div class="text-3xl font-black gradient-neon">12+</div>
+                                <div class="text-sm text-gray-400">Años Tech</div>
+                            </div>
+                            <div class="tech-card rounded-xl p-5 text-center">
+                                <div class="text-3xl font-black gradient-neon">24/7</div>
+                                <div class="text-sm text-gray-400">Automatización</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #050b1a, #0a1628) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="cyber-quote text-2xl md:text-3xl mb-16 fade-in-up">
+                    "La mayoría de emprendedores no fracasan por falta de talento, sino por falta de <span class="neon-text font-bold">sistema</span>."
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="tech-card p-8 rounded-2xl fade-in-up delay-1">
+                        <div class="text-5xl mb-4 icon-cyber">🔥</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Apagando Incendios</h3>
+                        <p class="text-gray-400">Vives respondiendo mensajes urgentes y enviando cotizaciones a mano</p>
+                    </div>
+
+                    <div class="tech-card p-8 rounded-2xl fade-in-up delay-2">
+                        <div class="text-5xl mb-4 icon-cyber">⛓️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Esclavitud Digital</h3>
+                        <p class="text-gray-400">Crees que estar ocupado es productividad. No lo es.</p>
+                    </div>
+
+                    <div class="tech-card p-8 rounded-2xl fade-in-up delay-3">
+                        <div class="text-5xl mb-4 icon-cyber">⏰</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Sin Sistema</h3>
+                        <p class="text-gray-400">Tu negocio solo funciona si tú estás presente</p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center fade-in-up delay-4">
+                    <div class="text-3xl md:text-4xl font-bold mb-4">
+                        <span class="text-white">Si tu negocio depende de que </span>
+                        <span class="neon-text">tú estés presente</span>
+                        <span class="text-white"> para que funcione...</span>
+                    </div>
+                    <div class="text-2xl md:text-3xl text-gray-400">
+                        No tienes un negocio, tienes un <span class="text-red-400 font-bold">empleo mal pagado</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="py-20 px-6" style="background-color: #050b1a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-6xl font-black mb-6">
+                        La <span class="gradient-neon">Solución Real</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Un chatbot conectado con automatización inteligente (n8n + IA) que transforma completamente tu forma de trabajar
+                    </p>
+                </div>
+
+                <div class="tech-card rounded-3xl p-10 md:p-16 mb-12 fade-in-up delay-1 scanline">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+                        <span class="neon-text">Flujo Completo</span> <span class="text-white">de Automatización</span>
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-6 fade-in-up delay-2">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-electric-blue to-deep-blue flex items-center justify-center font-bold text-xl">
+                                1
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-electric-blue">Captura de Leads</h4>
+                                <p class="text-gray-300">Desde WhatsApp, redes sociales y formularios automáticamente</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6 fade-in-up delay-3">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-electric-blue to-deep-blue flex items-center justify-center font-bold text-xl">
+                                2
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-electric-blue">IA que Entiende</h4>
+                                <p class="text-gray-300">Comprende la intención real del cliente sin que tengas que intervenir</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6 fade-in-up delay-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-electric-blue to-deep-blue flex items-center justify-center font-bold text-xl">
+                                3
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-electric-blue">Respuestas Automáticas</h4>
+                                <p class="text-gray-300">Seguimiento y cierre sin perder el toque humano</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6 fade-in-up delay-5">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-electric-blue to-deep-blue flex items-center justify-center font-bold text-xl">
+                                4
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2 text-electric-blue">Sistema 24/7</h4>
+                                <p class="text-gray-300">Conversaciones que se convierten en clientes mientras duermes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Grid -->
+                <div class="grid md:grid-cols-3 gap-8 fade-in-up delay-6">
+                    <div class="tech-card p-8 rounded-2xl text-center">
+                        <div class="text-5xl mb-4">🎯</div>
+                        <h4 class="text-xl font-bold mb-3 gradient-neon">No Teoría</h4>
+                        <p class="text-gray-400">Sistemas reales que funcionan ahora</p>
+                    </div>
+
+                    <div class="tech-card p-8 rounded-2xl text-center">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h4 class="text-xl font-bold mb-3 gradient-neon">Libertad Mental</h4>
+                        <p class="text-gray-400">Recupera tu tiempo y energía</p>
+                    </div>
+
+                    <div class="tech-card p-8 rounded-2xl text-center">
+                        <div class="text-5xl mb-4">⚡</div>
+                        <h4 class="text-xl font-bold mb-3 gradient-neon">Foco Real</h4>
+                        <p class="text-gray-400">Concéntrate en lo que importa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #050b1a, #0a1628) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="tech-card rounded-3xl p-10 md:p-16 fade-in-up">
+                    <div class="text-center mb-12">
+                        <div class="inline-block mb-4">
+                            <span class="text-purple-neon text-sm font-bold tracking-widest uppercase">Nextgen</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 gradient-neon">
+                            La Misión
+                        </h2>
+                    </div>
+
+                    <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                        <p>
+                            De ahí nació <span class="text-electric-blue font-bold">Nextgen</span>: llevar esta misma fórmula a más negocios para que:
+                        </p>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 my-8">
+                            <div class="text-center">
+                                <div class="text-4xl font-black neon-text mb-2">↓</div>
+                                <div class="text-sm">Ahorren Tiempo</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-black neon-text mb-2">↑</div>
+                                <div class="text-sm">Aumenten Ingresos</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-black neon-text mb-2">✓</div>
+                                <div class="text-sm">No Pierdan Clientes</div>
+                            </div>
+                        </div>
+
+                        <p class="text-center text-xl text-electric-blue font-semibold">
+                            Por procesos lentos o respuestas tardías
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What You'll Learn -->
+        <section class="py-20 px-6" style="background-color: #050b1a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">En Esta </span><span class="neon-text">Ponencia</span>
+                    </h2>
+                    <p class="text-xl text-gray-300">Te mostraré sistemas reales, no robots mágicos</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="tech-card p-8 rounded-2xl fade-in-up delay-1">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-cyber">🤖</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Chatbots Inteligentes</h3>
+                                <p class="text-gray-400">Cómo construir sistemas que convierten conversaciones en clientes automáticamente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card p-8 rounded-2xl fade-in-up delay-2">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-cyber">🔗</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">n8n + IA</h3>
+                                <p class="text-gray-400">Automatización inteligente que trabaja 24/7 mientras piensas en tu próximo proyecto</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card p-8 rounded-2xl fade-in-up delay-3">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-cyber">💬</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Sin Perder lo Humano</h3>
+                                <p class="text-gray-400">Automatiza respuestas sin que tus clientes sientan que hablan con una máquina</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-card p-8 rounded-2xl fade-in-up delay-4">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-cyber">🎯</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Recupera Tu Tiempo</h3>
+                                <p class="text-gray-400">Libertad mental y foco en lo que realmente importa para tu negocio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #0a1628, #050b1a) !important;">
+            <div class="absolute inset-0 hex-pattern opacity-30"></div>
+            
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="fade-in-up">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8">
+                        <span class="text-white">Prepárate Para </span><br>
+                        <span class="neon-text">Reprogramar</span> <span class="text-white">Tu Forma de Trabajar</span>
+                    </h2>
+                    
+                    <p class="text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                        La automatización no es reemplazo humano, es <span class="gradient-neon font-bold">libertad mental</span> y foco en lo que importa
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="neon-btn text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="neon-btn-outline px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6 mt-16">
+                        <div class="tech-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-cyber">⚡</div>
+                            <h4 class="font-bold text-white mb-2">Casos Reales</h4>
+                            <p class="text-sm text-gray-400">Sistemas que funcionan ahora</p>
+                        </div>
+                        <div class="tech-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-cyber">🎯</div>
+                            <h4 class="font-bold text-white mb-2">Implementación</h4>
+                            <p class="text-sm text-gray-400">Aplica desde el primer día</p>
+                        </div>
+                        <div class="tech-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-cyber">🚀</div>
+                            <h4 class="font-bold text-white mb-2">Resultados</h4>
+                            <p class="text-sm text-gray-400">Tu negocio vende solo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #050b1a !important; border-top: 1px solid rgba(0, 212, 255, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-neon mb-2">Nextgen</h3>
+                    <p class="text-gray-400">Automatización Inteligente para tu Negocio</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#050b1a';
+            document.body.style.backgroundColor = '#050b1a';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#050b1a';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up, .zoom-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

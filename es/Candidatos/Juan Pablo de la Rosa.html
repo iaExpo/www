@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Pablo de la Rosa - IA Como un Medio | Braian</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-pragmatic: #0d1b2a;
+            --strategy-blue: #1b4965;
+            --value-green: #059669;
+            --purpose-orange: #fb8500;
+            --tool-cyan: #14b8a6;
+            --impact-gold: #ca8a04;
+        }
+
+        html {
+            background: #0d1b2a !important;
+            background-color: #0d1b2a !important;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif !important;
+            background: #0d1b2a !important;
+            background-color: #0d1b2a !important;
+            color: #e2e8f0 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-purpose {
+            background: linear-gradient(135deg, #fb8500 0%, #059669 50%, #14b8a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-means {
+            color: #14b8a6;
+        }
+
+        /* Purpose Background */
+        .purpose-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .cycle-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(251, 133, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(251, 133, 0, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-cycle 25s linear infinite;
+        }
+
+        @keyframes grid-cycle {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .agent-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #fb8500, transparent);
+            border-radius: 50%;
+            animation: node-agent 3.5s infinite;
+        }
+
+        @keyframes node-agent {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(251, 133, 0, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(5, 150, 105, 0.7);
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        .value-flow {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(251, 133, 0, 0.4), rgba(20, 184, 166, 0.4), transparent);
+            animation: flow-value 8s infinite;
+        }
+
+        @keyframes flow-value {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleX(0.9);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scaleX(1);
+            }
+        }
+
+        .means-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(20, 184, 166, 0.15);
+            animation: ring-means 15s infinite;
+        }
+
+        @keyframes ring-means {
+            0%, 100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        .tangible-pulse {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.5), transparent);
+            animation: pulse-tangible 6s infinite;
+        }
+
+        @keyframes pulse-tangible {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Fade animations */
+        .means-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: meansRise 0.8s forwards;
+        }
+
+        @keyframes meansRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .purpose-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: purposeEmerge 0.8s forwards;
+        }
+
+        @keyframes purposeEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Means Card */
+        .means-card {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(27, 73, 101, 0.4));
+            border: 2px solid rgba(20, 184, 166, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .means-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #fb8500, #059669, #14b8a6);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .means-card:hover::after {
+            transform: scaleY(1);
+        }
+
+        .means-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(5, 150, 105, 0.6);
+            box-shadow: 
+                0 0 40px rgba(251, 133, 0, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Pragmatic Button */
+        .btn-means {
+            background: linear-gradient(135deg, #fb8500, #059669);
+            box-shadow: 
+                0 0 30px rgba(251, 133, 0, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-means:hover {
+            box-shadow: 
+                0 0 50px rgba(5, 150, 105, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-means {
+            border: 2px solid #fb8500;
+            color: #fb8500;
+            background: rgba(251, 133, 0, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-means:hover {
+            background: rgba(251, 133, 0, 0.15);
+            box-shadow: 0 0 35px rgba(251, 133, 0, 0.4);
+            border-color: #059669;
+        }
+
+        /* Profile Frame */
+        .profile-means {
+            border: 3px solid #fb8500;
+            box-shadow: 
+                0 0 50px rgba(251, 133, 0, 0.5),
+                inset 0 0 30px rgba(27, 73, 101, 0.1);
+        }
+
+        /* Badge */
+        .badge-means {
+            background: linear-gradient(135deg, #fb8500, #059669);
+            box-shadow: 0 0 25px rgba(251, 133, 0, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0d1b2a !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d1b2a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #fb8500, #059669);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-means {
+            background: rgba(251, 133, 0, 0.15);
+            border: 1px solid rgba(251, 133, 0, 0.4);
+            color: #fed7aa;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-means {
+            filter: drop-shadow(0 0 12px rgba(251, 133, 0, 0.6));
+        }
+
+        /* Stat box */
+        .stat-means {
+            background: linear-gradient(135deg, rgba(251, 133, 0, 0.15), rgba(27, 73, 101, 0.3));
+            border: 1px solid rgba(251, 133, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .means-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #fb8500, #059669, #14b8a6, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(251, 133, 0, 0.5);
+        }
+
+        /* VS Box */
+        .vs-box {
+            background: linear-gradient(135deg, rgba(27, 73, 101, 0.4), rgba(13, 27, 42, 0.6));
+            border: 3px solid rgba(251, 133, 0, 0.3);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vs-divider {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #fb8500, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 0 30px rgba(251, 133, 0, 0.6);
+            z-index: 10;
+        }
+
+        .vs-side {
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .vs-end {
+            background: linear-gradient(135deg, rgba(148, 163, 184, 0.2), rgba(27, 73, 101, 0.2));
+            border: 2px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .vs-means {
+            background: linear-gradient(135deg, rgba(251, 133, 0, 0.2), rgba(5, 150, 105, 0.15));
+            border: 2px solid rgba(251, 133, 0, 0.4);
+        }
+
+        /* Cycle stage */
+        .cycle-stage {
+            background: linear-gradient(135deg, rgba(251, 133, 0, 0.1), rgba(27, 73, 101, 0.3));
+            border: 2px solid rgba(251, 133, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .cycle-number {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #fb8500, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(251, 133, 0, 0.6);
+        }
+
+        /* Timeline */
+        .timeline-box {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(27, 73, 101, 0.3));
+            border: 2px solid rgba(5, 150, 105, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .timeline-box:hover {
+            border-color: rgba(251, 133, 0, 0.6);
+            box-shadow: 0 0 30px rgba(5, 150, 105, 0.3);
+            transform: scale(1.05);
+        }
+
+        .timeline-value {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fb8500, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        /* Experience badge */
+        .experience-badge {
+            background: rgba(20, 184, 166, 0.15);
+            border: 1px solid rgba(20, 184, 166, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #99f6e4;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Discovery card */
+        .discovery-card {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(27, 73, 101, 0.3));
+            border: 2px solid rgba(20, 184, 166, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .discovery-card:hover {
+            border-color: rgba(251, 133, 0, 0.5);
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.3);
+        }
+
+        /* BRAIAN box */
+        .braian-box {
+            background: linear-gradient(135deg, rgba(251, 133, 0, 0.15), rgba(5, 150, 105, 0.1));
+            border: 3px solid rgba(251, 133, 0, 0.4);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .braian-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 133, 0, 0.1), transparent 70%);
+            animation: braian-pulse 4s infinite;
+        }
+
+        @keyframes braian-pulse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 5%) scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Purpose Background -->
+    <div class="purpose-bg">
+        <div class="cycle-grid"></div>
+        
+        <!-- Agent Nodes -->
+        <div class="agent-node" style="top: 20%; left: 18%; animation-delay: 0s;"></div>
+        <div class="agent-node" style="top: 40%; left: 72%; animation-delay: 1s;"></div>
+        <div class="agent-node" style="top: 60%; left: 28%; animation-delay: 2s;"></div>
+        <div class="agent-node" style="top: 78%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="agent-node" style="top: 48%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Value Flows -->
+        <div class="value-flow" style="width: 300px; top: 25%; left: 15%;"></div>
+        <div class="value-flow" style="width: 280px; top: 55%; right: 10%; animation-delay: 3s;"></div>
+        <div class="value-flow" style="width: 260px; top: 72%; left: 18%; animation-delay: 6s;"></div>
+        
+        <!-- Means Rings -->
+        <div class="means-ring" style="width: 300px; height: 300px; top: 15%; right: 10%;"></div>
+        <div class="means-ring" style="width: 260px; height: 260px; bottom: 20%; left: 12%; animation-delay: 7s;"></div>
+        
+        <!-- Tangible Pulses -->
+        <div class="tangible-pulse" style="top: 30%;"></div>
+        <div class="tangible-pulse" style="top: 60%; animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0d1b2a !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0d1b2a !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 means-rise">
+                    <span class="tag-means inline-block">
+                        🎯 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-center mb-6 leading-tight means-rise delay-1">
+                    <span class="text-white">La IA Como un </span><span class="gradient-purpose">Medio</span>
+                </h1>
+
+                <div class="means-divider mb-8 means-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-orange-300 mb-4 max-w-4xl mx-auto means-rise delay-2 font-bold">
+                    No Como un Fin
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto means-rise delay-3">
+                    Innovando con Propósito. Resultados en Semanas, no Meses.
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 means-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-means text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Generar Valor Real
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="purpose-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-means rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69399087eac0a82054cb337c.jpg"
+                                    alt="Juan Pablo de la Rosa Moro"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-means rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">CEO</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="means-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Juan Pablo de la Rosa Moro
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-means text-lg font-bold">CEO & Co-Fundador</span><br>
+                            <span class="text-gray-400 text-base">Braian LLC | Technogi</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                <span class="text-means font-bold">20+ años</span> transformando desafíos de negocio en oportunidades. Enfoque pragmático que convierte innovación en <span class="text-means font-semibold">resultados tangibles</span>.
+                            </p>
+                            <p>
+                                Experto en IA Generativa. Creador del marco <span class="text-means font-bold">Ciclo de Generación de Valor</span>. Implementación estratégica sin procesos complejos.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="experience-badge">🚀 BRAIAN</span>
+                                <span class="experience-badge">📊 20+ Años</span>
+                                <span class="experience-badge">⚡ Pragmático</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-means text-center">
+                                <div class="text-2xl font-bold gradient-purpose">Technogi</div>
+                                <div class="text-xs text-gray-500">CEO</div>
+                            </div>
+                            <div class="stat-means text-center">
+                                <div class="text-2xl font-bold gradient-purpose">BRAIAN</div>
+                                <div class="text-xs text-gray-500">Co-Fundador</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Means vs End -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d1b2a, #1b4965) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 means-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-purpose">Medio vs Fin</span>
+                    </h2>
+                </div>
+
+                <div class="vs-box means-rise delay-1">
+                    <div class="vs-divider">VS</div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="vs-side vs-end">
+                            <div class="text-5xl mb-4 text-center">⚠️</div>
+                            <h3 class="text-2xl font-bold mb-4 text-white text-center">IA Como un Fin</h3>
+                            <p class="text-gray-300 text-center mb-4">Experimentación sin propósito</p>
+                            <ul class="text-sm text-gray-300 space-y-2">
+                                <li>• Tecnología por tecnología</li>
+                                <li>• Sin criterios de negocio claros</li>
+                                <li>• Proyectos sin impacto medible</li>
+                                <li>• Procesos largos y complejos</li>
+                            </ul>
+                        </div>
+
+                        <div class="vs-side vs-means">
+                            <div class="text-5xl mb-4 text-center">✅</div>
+                            <h3 class="text-2xl font-bold mb-4 text-white text-center">IA Como un Medio</h3>
+                            <p class="text-orange-300 text-center mb-4">Propósito + Estrategia</p>
+                            <ul class="text-sm text-gray-300 space-y-2">
+                                <li>• Aplicada con propósito claro</li>
+                                <li>• Criterios de negocio definidos</li>
+                                <li>• Impacto tangible medible</li>
+                                <li>• Resultados en semanas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Cycle -->
+        <section class="py-20 px-6" style="background-color: #0d1b2a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 means-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Ciclo de </span><span class="gradient-purpose">Generación de Valor</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Marco estructurado con IA Generativa
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="cycle-stage means-rise delay-1">
+                        <div class="cycle-number">1</div>
+                        <h3 class="text-xl font-bold mb-2 text-white ml-8">Identificar Oportunidad</h3>
+                        <p class="text-gray-300 ml-8">Dónde la IA puede generar mayor impacto</p>
+                    </div>
+
+                    <div class="cycle-stage means-rise delay-2">
+                        <div class="cycle-number">2</div>
+                        <h3 class="text-xl font-bold mb-2 text-white ml-8">Definir Propósito</h3>
+                        <p class="text-gray-300 ml-8">Conectar con objetivos de negocio claros</p>
+                    </div>
+
+                    <div class="cycle-stage means-rise delay-3">
+                        <div class="cycle-number">3</div>
+                        <h3 class="text-xl font-bold mb-2 text-white ml-8">Implementar con Criterio</h3>
+                        <p class="text-gray-300 ml-8">Ejecución estratégica sin complejidad</p>
+                    </div>
+
+                    <div class="cycle-stage means-rise delay-4">
+                        <div class="cycle-number">4</div>
+                        <h3 class="text-xl font-bold mb-2 text-white ml-8">Medir Valor Tangible</h3>
+                        <p class="text-gray-300 ml-8">Resultados concretos y medibles</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRAIAN Platform -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d1b2a, #1b4965) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="braian-box means-rise">
+                    <div class="relative z-10">
+                        <div class="text-6xl mb-6">🤖</div>
+                        <h2 class="text-4xl md:text-5xl font-black mb-6">
+                            <span class="gradient-purpose">BRAIAN</span>
+                        </h2>
+                        
+                        <div class="means-divider my-6"></div>
+                        
+                        <p class="text-2xl text-white font-bold mb-4">
+                            Plataforma de Agentes Inteligentes
+                        </p>
+                        
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                            Ejemplifica cómo implementar soluciones de IA generativa que <span class="text-means font-bold">expanden la productividad</span> y entregan resultados concretos
+                        </p>
+
+                        <div class="mt-8">
+                            <span class="tag-means inline-block">Demostración en Vivo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="py-20 px-6" style="background-color: #0d1b2a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 means-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-purpose">Velocidad de Implementación</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="timeline-box means-rise delay-1">
+                        <div class="timeline-value mb-3">Semanas</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Con BRAIAN</h3>
+                        <p class="text-gray-300">Resultados concretos rápidamente</p>
+                    </div>
+
+                    <div class="timeline-box means-rise delay-2">
+                        <div class="timeline-value mb-3">Meses</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Enfoque Tradicional</h3>
+                        <p class="text-gray-300">Procesos extensos y complejos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discoveries -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d1b2a, #1b4965) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 means-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Los Asistentes </span><span class="gradient-purpose">Descubrirán</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="discovery-card means-rise delay-1">
+                        <div class="text-4xl mb-4 icon-means">📊</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Estructurar Proyectos</h3>
+                        <p class="text-gray-300">Que realmente generen valor medible</p>
+                    </div>
+
+                    <div class="discovery-card means-rise delay-2">
+                        <div class="text-4xl mb-4 icon-means">✨</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Casos de Éxito</h3>
+                        <p class="text-gray-300">Aprendizajes prácticos aplicables</p>
+                    </div>
+
+                    <div class="discovery-card means-rise delay-3">
+                        <div class="text-4xl mb-4 icon-means">👔</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Papel Estratégico</h3>
+                        <p class="text-gray-300">CEOs, CTOs, COOs en liderazgo IA</p>
+                    </div>
+
+                    <div class="discovery-card means-rise delay-4">
+                        <div class="text-4xl mb-4 icon-means">🎯</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">IA Trabajando para la Empresa</h3>
+                        <p class="text-gray-300">Y no al revés</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Central Message -->
+        <section class="py-20 px-6" style="background-color: #0d1b2a !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="means-card rounded-3xl p-12 md:p-16 text-center means-rise">
+                    <div class="mb-8">
+                        <span class="tag-means inline-block">Mensaje Central</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="gradient-purpose">La innovación no es un fin</span>
+                    </h2>
+
+                    <div class="means-divider my-8"></div>
+
+                    <p class="text-2xl text-white font-bold mb-4">
+                        Sino un medio
+                    </p>
+
+                    <p class="text-xl text-gray-300">
+                        La IA cobra sentido cuando se conecta con <span class="text-means font-bold">propósito, estrategia y resultados reales</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1b4965, #0d1b2a) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="means-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">Innovación con </span><span class="gradient-purpose">Propósito</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Experimenta cómo convertir la IA en impacto tangible con el Ciclo de Generación de Valor
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-means text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-means px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="means-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-means">🎯</div>
+                            <h4 class="font-bold text-white mb-2">Propósito</h4>
+                            <p class="text-sm text-gray-400">No tecnología vacía</p>
+                        </div>
+                        <div class="means-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-means">🤖</div>
+                            <h4 class="font-bold text-white mb-2">BRAIAN</h4>
+                            <p class="text-sm text-gray-400">Agentes inteligentes</p>
+                        </div>
+                        <div class="means-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-means">⚡</div>
+                            <h4 class="font-bold text-white mb-2">Semanas</h4>
+                            <p class="text-sm text-gray-400">No meses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0d1b2a !important; border-top: 1px solid rgba(251, 133, 0, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-purpose mb-2">Braian LLC | Technogi</h3>
+                    <p class="text-gray-500 text-sm">IA Generativa con Propósito</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0d1b2a';
+            document.body.style.backgroundColor = '#0d1b2a';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0d1b2a';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.means-rise, .purpose-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

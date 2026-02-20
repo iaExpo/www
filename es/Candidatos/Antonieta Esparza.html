@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonieta Esparza - ISO 42001 | AIA Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-violet: #1a0b2e;
+            --dark-purple: #2d1b4e;
+            --royal-purple: #6a3ba8;
+            --bright-purple: #8b5fbf;
+            --mint-accent: #6ee7b7;
+            --light-mint: #a7f3d0;
+        }
+
+        html {
+            background: #1a0b2e !important;
+            background-color: #1a0b2e !important;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif !important;
+            background: #1a0b2e !important;
+            background-color: #1a0b2e !important;
+            color: #f3f4f6 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+
+        .gradient-cert {
+            background: linear-gradient(135deg, #6a3ba8 0%, #8b5fbf 50%, #6ee7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-purple {
+            color: #8b5fbf;
+        }
+
+        /* Certification Background */
+        .cert-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .cert-seal {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 2px solid rgba(106, 59, 168, 0.2);
+            animation: seal-rotate 40s linear infinite;
+        }
+
+        .cert-seal::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border-radius: 50%;
+            border: 1px dashed rgba(110, 231, 183, 0.3);
+        }
+
+        @keyframes seal-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .iso-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(106, 59, 168, 0.03) 50px, rgba(106, 59, 168, 0.03) 52px);
+        }
+
+        .standard-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 95, 191, 0.2), transparent 70%);
+            animation: glow-pulse 20s infinite ease-in-out;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 0.6;
+            }
+        }
+
+        /* Fade animations */
+        .standard-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: standardRise 0.8s forwards;
+        }
+
+        @keyframes standardRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cert-emerge {
+            opacity: 0;
+            transform: scale(0.93);
+            animation: certEmerge 0.8s forwards;
+        }
+
+        @keyframes certEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Certification Card */
+        .cert-card {
+            background: linear-gradient(135deg, rgba(106, 59, 168, 0.15), rgba(45, 27, 78, 0.3));
+            border: 2px solid rgba(106, 59, 168, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .cert-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #6ee7b7, #8b5fbf);
+            opacity: 0;
+            transition: opacity 0.4s;
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+
+        .cert-card:hover::after {
+            opacity: 1;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(110, 231, 183, 0.6);
+            box-shadow: 
+                0 0 40px rgba(106, 59, 168, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Professional Button */
+        .btn-cert {
+            background: linear-gradient(135deg, #6a3ba8, #8b5fbf);
+            box-shadow: 
+                0 8px 25px rgba(106, 59, 168, 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-cert:hover {
+            box-shadow: 
+                0 12px 35px rgba(139, 95, 191, 0.6),
+                0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-cert {
+            border: 2px solid #8b5fbf;
+            color: #8b5fbf;
+            background: rgba(106, 59, 168, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-cert:hover {
+            background: rgba(106, 59, 168, 0.15);
+            box-shadow: 0 0 35px rgba(106, 59, 168, 0.4);
+            border-color: #6ee7b7;
+        }
+
+        /* Profile Frame */
+        .profile-cert {
+            border: 3px solid #8b5fbf;
+            box-shadow: 
+                0 0 50px rgba(106, 59, 168, 0.5),
+                inset 0 0 30px rgba(106, 59, 168, 0.1);
+        }
+
+        /* Badge */
+        .badge-cert {
+            background: linear-gradient(135deg, #6a3ba8, #8b5fbf);
+            box-shadow: 0 4px 20px rgba(106, 59, 168, 0.5);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #1a0b2e !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a0b2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6a3ba8, #8b5fbf);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-cert {
+            background: rgba(106, 59, 168, 0.15);
+            border: 1px solid rgba(106, 59, 168, 0.4);
+            color: #a7f3d0;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-cert {
+            filter: drop-shadow(0 0 12px rgba(110, 231, 183, 0.6));
+        }
+
+        /* Stat box */
+        .stat-cert {
+            background: linear-gradient(135deg, rgba(106, 59, 168, 0.15), rgba(45, 27, 78, 0.2));
+            border: 1px solid rgba(106, 59, 168, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .cert-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6a3ba8, #6ee7b7, transparent);
+            margin: 0 auto;
+        }
+
+        /* ISO Badge */
+        .iso-standard {
+            background: linear-gradient(135deg, rgba(106, 59, 168, 0.2), rgba(110, 231, 183, 0.15));
+            border: 2px solid rgba(110, 231, 183, 0.4);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            color: #6ee7b7;
+        }
+
+        /* Checkmark */
+        .checkmark {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #6ee7b7, #8b5fbf);
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .checkmark::after {
+            content: '✓';
+            position: absolute;
+            color: #1a0b2e;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+        }
+
+        /* Accreditation badge */
+        .accred-badge {
+            background: linear-gradient(135deg, rgba(106, 59, 168, 0.15), rgba(110, 231, 183, 0.1));
+            border: 1px solid rgba(110, 231, 183, 0.3);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: inline-block;
+            color: #a7f3d0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Certification Background -->
+    <div class="cert-bg">
+        <div class="iso-pattern"></div>
+        
+        <!-- Cert Seals -->
+        <div class="cert-seal" style="top: 15%; left: 10%; animation-duration: 45s;"></div>
+        <div class="cert-seal" style="top: 50%; right: 8%; animation-duration: 50s; animation-delay: 5s;"></div>
+        <div class="cert-seal" style="bottom: 20%; left: 15%; animation-duration: 55s; animation-delay: 10s;"></div>
+        
+        <!-- Standard Glows -->
+        <div class="standard-glow" style="top: 10%; left: 20%; animation-duration: 25s;"></div>
+        <div class="standard-glow" style="top: 60%; right: 15%; animation-duration: 28s; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #1a0b2e !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #1a0b2e !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 standard-rise">
+                    <span class="tag-cert inline-block">
+                        🏆 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight standard-rise delay-1">
+                    <span class="text-white">Sistema de Gestión de</span><br>
+                    <span class="gradient-cert">Inteligencia Artificial</span>
+                </h1>
+
+                <div class="cert-divider mb-8 standard-rise delay-2"></div>
+
+                <div class="text-center mb-12 standard-rise delay-2">
+                    <div class="iso-standard">
+                        ISO 42001
+                    </div>
+                </div>
+
+                <p class="text-lg text-center text-gray-400 mb-12 max-w-3xl mx-auto standard-rise delay-3">
+                    Marco internacional para desarrollo y uso responsable y seguro de sistemas de IA
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 standard-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-cert text-white px-12 py-5 rounded-lg font-bold text-lg inline-block text-center">
+                        Conoce Más
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="cert-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-cert rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691b21888753b69663b2beef.jpg"
+                                    alt="Antonieta Esparza Serra"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-cert rounded-xl px-6 py-3">
+                                <div class="text-sm font-bold text-white">COO</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="standard-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Antonieta Esparza Serra
+                        </h2>
+                        
+                        <div class="mb-6" style="display: flex; align-items: center; gap: 20px;">
+                          <span class="text-purple text-lg font-bold">COO - AIA Consulting</span>
+                          <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/692618dc76cd822c44cfc8b3.jpg"
+                               alt="AIA Consulting"
+                               style="width: 120px; height: auto; border-radius: 15px;" />
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Ingeniera en alimentos con <span class="text-purple font-bold">Master en sistemas de gestión integrados</span>. Directora de operaciones en AIA Consulting, México durante <span class="text-purple font-semibold">20 años</span>.
+                            </p>
+                            <p>
+                                Miembro del sistema nacional de evaluación de la conformidad en <span class="text-purple font-semibold">México, España, Costa Rica y Uruguay</span>.
+                            </p>
+                            <p class="text-sm">
+                                15 años de participación en entidades públicas en proyectos tecnológicos y científicos
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-cert text-center">
+                                <div class="text-2xl font-bold gradient-cert">20</div>
+                                <div class="text-xs text-gray-500">Años AIA</div>
+                            </div>
+                            <div class="stat-cert text-center">
+                                <div class="text-2xl font-bold gradient-cert">4</div>
+                                <div class="text-xs text-gray-500">Países</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is ISO 42001 -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a0b2e, #2d1b4e) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 standard-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-cert">¿Qué es ISO 42001?</span>
+                    </h2>
+                    <div class="cert-divider mb-8"></div>
+                </div>
+
+                <div class="cert-card rounded-3xl p-12 md:p-16 standard-rise delay-1">
+                    <p class="text-xl text-gray-200 leading-relaxed mb-8">
+                        Norma internacional que especifica los requisitos para un <span class="text-purple font-bold">Sistema de Gestión de IA (SGIA)</span>, asegurando que las organizaciones desarrollen y utilicen sistemas de IA de forma responsable y segura.
+                    </p>
+
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="cert-card p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-3 icon-cert">⚖️</div>
+                            <h3 class="font-bold text-white mb-2">Equidad</h3>
+                            <p class="text-sm text-gray-400">Principios éticos</p>
+                        </div>
+
+                        <div class="cert-card p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-3 icon-cert">🔍</div>
+                            <h3 class="font-bold text-white mb-2">Transparencia</h3>
+                            <p class="text-sm text-gray-400">Claridad en procesos</p>
+                        </div>
+
+                        <div class="cert-card p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-3 icon-cert">🔒</div>
+                            <h3 class="font-bold text-white mb-2">Confidencialidad</h3>
+                            <p class="text-sm text-gray-400">Protección de datos</p>
+                        </div>
+
+                        <!-- Cuadrito que diga Productividad, Eficiencia y Eficacia  -->
+
+                        <div class="cert-card p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-3 icon-cert">🔒</div>
+                            <h3 class="font-bold text-white mb-2">Productividad</h3>
+                            <p class="text-sm text-gray-400">Eficiencia y Eficacia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applicability -->
+        <section class="py-20 px-6" style="background-color: #1a0b2e !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 standard-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">¿Para </span><span class="gradient-cert">Quién?</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="cert-card p-10 rounded-xl standard-rise delay-1">
+                        <div class="text-5xl mb-4 icon-cert">🏭</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Organizaciones que Crean IA</h3>
+                        <p class="text-gray-300">
+                            Empresas que desarrollan productos, servicios o sistemas basados en inteligencia artificial
+                        </p>
+                    </div>
+
+                    <div class="cert-card p-10 rounded-xl standard-rise delay-2">
+                        <div class="text-5xl mb-4 icon-cert">💼</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Organizaciones que Usan IA</h3>
+                        <p class="text-gray-300">
+                            Empresas que implementan y utilizan sistemas de IA en sus operaciones y procesos
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What it Provides -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a0b2e, #2d1b4e) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 standard-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">La Norma </span><span class="gradient-cert">Proporciona</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="cert-card p-8 rounded-xl standard-rise delay-1">
+                        <div class="flex items-start gap-4">
+                            <div class="checkmark"></div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Marco para Gestión de Riesgos</h3>
+                                <p class="text-sm text-gray-400">Gestionar riesgos y oportunidades asociados con la IA: sesgos, falta de transparencia y ciberseguridad</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card p-8 rounded-xl standard-rise delay-2">
+                        <div class="flex items-start gap-4">
+                            <div class="checkmark"></div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Alineación Innovación-Gobernanza</h3>
+                                <p class="text-sm text-gray-400">Equilibrio entre desarrollo tecnológico y control organizacional</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card p-8 rounded-xl standard-rise delay-3">
+                        <div class="flex items-start gap-4">
+                            <div class="checkmark"></div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Enfoque Sistemático</h3>
+                                <p class="text-sm text-gray-400">Metodología estructurada para la implementación responsable de IA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="py-20 px-6" style="background-color: #1a0b2e !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 standard-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-cert">Beneficios</span> <span class="text-white">de la Implementación</span>
+                    </h2>
+                </div>
+
+                <div class="cert-card rounded-3xl p-12 md:p-16 text-center standard-rise delay-1">
+                    <div class="grid md:grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <div class="text-5xl mb-4 icon-cert">📋</div>
+                            <h3 class="text-xl font-bold mb-3 text-white">Metodología Simple y Confiable</h3>
+                            <p class="text-gray-400">Framework estructurado y probado internacionalmente</p>
+                        </div>
+
+                        <div>
+                            <div class="text-5xl mb-4 icon-cert">🏆</div>
+                            <h3 class="text-xl font-bold mb-3 text-white">Diferenciador Competitivo</h3>
+                            <p class="text-gray-400">Ventaja comercial frente a competidores</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-divider my-8"></div>
+
+                    <p class="text-2xl font-bold gradient-cert mb-4">
+                        Confiabilidad para Clientes Finales
+                    </p>
+                    <p class="text-gray-300">
+                        El sistema representa un compromiso con la mejora verificable con estándares internacionales
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accreditations -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a0b2e, #2d1b4e) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 standard-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-cert">Calificación</span> <span class="text-white">Internacional</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Miembro de sistemas nacionales de evaluación de la conformidad
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="cert-card p-8 rounded-xl standard-rise delay-1">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-3xl icon-cert">🇲🇽</div>
+                            <h3 class="text-lg font-bold text-white">EMA - México</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">Entidad Mexicana de Acreditación</p>
+                        <div class="mt-3">
+                            <span class="accred-badge">Evaluadora y Experta</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-card p-8 rounded-xl standard-rise delay-2">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-3xl icon-cert">🇪🇸</div>
+                            <h3 class="text-lg font-bold text-white">ENAC - España</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">Entidad Nacional de Acreditación</p>
+                        <div class="mt-3">
+                            <span class="accred-badge">Evaluadora y Experta</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-card p-8 rounded-xl standard-rise delay-3">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-3xl icon-cert">🇨🇷</div>
+                            <h3 class="text-lg font-bold text-white">ECA - Costa Rica</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">Ente Costarricense de Acreditación</p>
+                        <div class="mt-3">
+                            <span class="accred-badge">Evaluadora y Experta</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-card p-8 rounded-xl standard-rise delay-4">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-3xl icon-cert">🇺🇾</div>
+                            <h3 class="text-lg font-bold text-white">OUA - Uruguay</h3>
+                        </div>
+                        <p class="text-sm text-gray-400">Organismo Uruguayo de Acreditación</p>
+                        <div class="mt-3">
+                            <span class="accred-badge">Evaluadora y Experta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #2d1b4e, #1a0b2e) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="standard-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-cert">Asume</span> <span class="text-white">Tu Compromiso</span><br>
+                        <span class="text-white">con la </span><span class="gradient-cert">IA Responsable</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo implementar un Sistema de Gestión de IA según estándares internacionales
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-cert text-white px-12 py-6 rounded-lg font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-cert px-12 py-6 rounded-lg font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="cert-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-cert">📜</div>
+                            <h4 class="font-bold text-white mb-2">ISO 42001</h4>
+                            <p class="text-sm text-gray-400">Estándar internacional</p>
+                        </div>
+                        <div class="cert-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-cert">✅</div>
+                            <h4 class="font-bold text-white mb-2">20 Años</h4>
+                            <p class="text-sm text-gray-400">Experiencia en Sistemas de Gestión</p>
+                        </div>
+                        <div class="cert-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-cert">🌎</div>
+                            <h4 class="font-bold text-white mb-2">4 Países</h4>
+                            <p class="text-sm text-gray-400">Evaluación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #1a0b2e !important; border-top: 1px solid rgba(106, 59, 168, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-cert mb-2">AIA Consulting</h3>
+                    <p class="text-gray-500 text-sm">Sistemas de Gestión Integradoss</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#1a0b2e';
+            document.body.style.backgroundColor = '#1a0b2e';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#1a0b2e';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.standard-rise, .cert-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osvaldo Ramírez - Visión al Retorno | Panamerican Business School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-executive: #0a1628;
+            --navy-corporate: #1e3a5f;
+            --financial-blue: #0369a1;
+            --roi-green: #059669;
+            --value-gold: #d97706;
+            --steel-grey: #475569;
+        }
+
+        html {
+            background: #0a1628 !important;
+            background-color: #0a1628 !important;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif !important;
+            background: #0a1628 !important;
+            background-color: #0a1628 !important;
+            color: #e2e8f0 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-roi {
+            background: linear-gradient(135deg, #0369a1 0%, #059669 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-value {
+            color: #d97706;
+        }
+
+        /* Financial Background */
+        .financial-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .metrics-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(3, 105, 161, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(3, 105, 161, 0.04) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: grid-metrics 30s linear infinite;
+        }
+
+        @keyframes grid-metrics {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(80px, 80px); }
+        }
+
+        .kpi-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #d97706, transparent);
+            border-radius: 50%;
+            animation: node-kpi 3.5s infinite;
+        }
+
+        @keyframes node-kpi {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(5, 150, 105, 0.7);
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        .value-stream {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(217, 119, 6, 0.4), rgba(5, 150, 105, 0.4), transparent);
+            animation: stream-value 9s infinite;
+        }
+
+        @keyframes stream-value {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleX(0.9);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scaleX(1);
+            }
+        }
+
+        .corporate-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(3, 105, 161, 0.15);
+            animation: ring-corporate 16s infinite;
+        }
+
+        @keyframes ring-corporate {
+            0%, 100% {
+                transform: scale(0.9) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1) rotate(180deg);
+                opacity: 0.2;
+            }
+        }
+
+        .growth-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.5), transparent);
+            animation: line-growth 7s infinite;
+        }
+
+        @keyframes line-growth {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Fade animations */
+        .roi-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: roiRise 0.8s forwards;
+        }
+
+        @keyframes roiRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .value-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: valueEmerge 0.8s forwards;
+        }
+
+        @keyframes valueEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* ROI Card */
+        .roi-card {
+            background: linear-gradient(135deg, rgba(3, 105, 161, 0.08), rgba(30, 58, 95, 0.4));
+            border: 2px solid rgba(3, 105, 161, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .roi-card::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #0369a1, #059669, #d97706);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .roi-card:hover::after {
+            transform: scaleY(1);
+        }
+
+        .roi-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(5, 150, 105, 0.6);
+            box-shadow: 
+                0 0 40px rgba(3, 105, 161, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Executive Button */
+        .btn-roi {
+            background: linear-gradient(135deg, #0369a1, #059669);
+            box-shadow: 
+                0 0 30px rgba(3, 105, 161, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-roi:hover {
+            box-shadow: 
+                0 0 50px rgba(5, 150, 105, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-roi {
+            border: 2px solid #d97706;
+            color: #d97706;
+            background: rgba(217, 119, 6, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-roi:hover {
+            background: rgba(217, 119, 6, 0.15);
+            box-shadow: 0 0 35px rgba(217, 119, 6, 0.4);
+            border-color: #059669;
+        }
+
+        /* Profile Frame */
+        .profile-roi {
+            border: 3px solid #0369a1;
+            box-shadow: 
+                0 0 50px rgba(3, 105, 161, 0.5),
+                inset 0 0 30px rgba(30, 58, 95, 0.1);
+        }
+
+        /* Badge */
+        .badge-roi {
+            background: linear-gradient(135deg, #0369a1, #059669);
+            box-shadow: 0 0 25px rgba(3, 105, 161, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0a1628 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1628;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #0369a1, #059669);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-roi {
+            background: rgba(217, 119, 6, 0.15);
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            color: #fbbf24;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-roi {
+            filter: drop-shadow(0 0 12px rgba(217, 119, 6, 0.6));
+        }
+
+        /* Stat box */
+        .stat-roi {
+            background: linear-gradient(135deg, rgba(3, 105, 161, 0.15), rgba(30, 58, 95, 0.3));
+            border: 1px solid rgba(3, 105, 161, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .roi-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #0369a1, #059669, #d97706, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(3, 105, 161, 0.5);
+        }
+
+        /* KPI Metric Box */
+        .kpi-metric {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.15), rgba(30, 58, 95, 0.3));
+            border: 2px solid rgba(5, 150, 105, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .kpi-metric:hover {
+            border-color: rgba(217, 119, 6, 0.6);
+            box-shadow: 0 0 30px rgba(5, 150, 105, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .kpi-value {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #059669, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* C-level badge */
+        .clevel-badge {
+            background: rgba(3, 105, 161, 0.15);
+            border: 1px solid rgba(3, 105, 161, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #7dd3fc;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Journey step */
+        .journey-step {
+            background: linear-gradient(135deg, rgba(3, 105, 161, 0.1), rgba(30, 58, 95, 0.3));
+            border: 2px solid rgba(3, 105, 161, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .journey-step::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #0369a1, #059669);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(3, 105, 161, 0.6);
+        }
+
+        /* Impact stat */
+        .impact-stat {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(30, 58, 95, 0.3));
+            border: 2px solid rgba(217, 119, 6, 0.4);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Sector pill */
+        .sector-pill {
+            background: rgba(5, 150, 105, 0.15);
+            border: 1px solid rgba(5, 150, 105, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #6ee7b7;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Question box */
+        .question-box {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(30, 58, 95, 0.3));
+            border-left: 4px solid #d97706;
+            padding: 2rem;
+            border-radius: 0 12px 12px 0;
+            font-size: 1.75rem;
+            font-weight: 700;
+            font-style: italic;
+            text-align: center;
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Financial Background -->
+    <div class="financial-bg">
+        <div class="metrics-grid"></div>
+        
+        <!-- KPI Nodes -->
+        <div class="kpi-node" style="top: 20%; left: 18%; animation-delay: 0s;"></div>
+        <div class="kpi-node" style="top: 40%; left: 72%; animation-delay: 1s;"></div>
+        <div class="kpi-node" style="top: 60%; left: 28%; animation-delay: 2s;"></div>
+        <div class="kpi-node" style="top: 78%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="kpi-node" style="top: 48%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Value Streams -->
+        <div class="value-stream" style="width: 300px; top: 25%; left: 15%;"></div>
+        <div class="value-stream" style="width: 280px; top: 55%; right: 10%; animation-delay: 3s;"></div>
+        <div class="value-stream" style="width: 260px; top: 72%; left: 18%; animation-delay: 6s;"></div>
+        
+        <!-- Corporate Rings -->
+        <div class="corporate-ring" style="width: 300px; height: 300px; top: 15%; right: 10%;"></div>
+        <div class="corporate-ring" style="width: 260px; height: 260px; bottom: 20%; left: 12%; animation-delay: 8s;"></div>
+        
+        <!-- Growth Lines -->
+        <div class="growth-line" style="top: 30%;"></div>
+        <div class="growth-line" style="top: 60%; animation-delay: 3.5s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0a1628 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0a1628 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 roi-rise">
+                    <span class="tag-roi inline-block">
+                        💼 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-center mb-6 leading-tight roi-rise delay-1">
+                    <span class="text-white">De la Visión</span><br>
+                    <span class="gradient-roi">al Retorno de Inversión</span>
+                </h1>
+
+                <div class="roi-divider mb-8 roi-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-emerald-300 mb-4 max-w-4xl mx-auto roi-rise delay-2 font-bold">
+                    Cómo convertir historias de IA en resultados medibles
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto roi-rise delay-3">
+                    De algoritmos a margen, productividad y riesgo controlado
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 roi-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-roi text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Generar Retorno Real
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="value-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-roi rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/692f44370b5011493ea50997.jpg"
+                                    alt="Osvaldo Ramírez Hurtado"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-roi rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">AI-Head</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="roi-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Osvaldo Ramírez Hurtado
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-value text-lg font-bold">AI-Head Research, Strategy & Analytics</span><br>
+                            <span class="text-gray-400 text-base">Panamerican Business School</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Estrategias de IA traducidas en <span class="text-value font-bold">KPIs duros</span>: reducción de costos, crecimiento rentable y ventaja competitiva en % y USD.
+                            </p>
+                            <p>
+                                Colaboración directa con <span class="text-value font-semibold">CEOs, CFOs, CTOs, CIOs, CAIOs y CDOs</span>. Center for AI and Digital Policy (CAIDP).
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="clevel-badge">💰 ROI Medible</span>
+                                <span class="clevel-badge">📊 KPIs Duros</span>
+                                <span class="clevel-badge">🎯 C-Level</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-roi text-center">
+                                <div class="text-2xl font-bold gradient-roi">AI-First</div>
+                                <div class="text-xs text-gray-500">Estrategia</div>
+                            </div>
+                            <div class="stat-roi text-center">
+                                <div class="text-2xl font-bold gradient-roi">USD</div>
+                                <div class="text-xs text-gray-500">Retorno Real</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Question -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1628, #1e3a5f) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="roi-card rounded-3xl p-12 md:p-16 roi-rise">
+                    <div class="question-box">
+                        "¿Y cuánto valor real generó todo esto?"
+                    </div>
+
+                    <div class="roi-divider my-8"></div>
+
+                    <p class="text-xl text-white text-center mb-6">
+                        La distancia entre la narrativa de la IA y los resultados en el estado de resultados sigue siendo, en muchas organizaciones, <span class="text-value font-bold">un abismo</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI Metrics -->
+        <section class="py-20 px-6" style="background-color: #0a1628 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 roi-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-roi">Métricas que Importan</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Cada iniciativa de IA vinculada con KPIs duros
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="kpi-metric roi-rise delay-1">
+                        <div class="kpi-value mb-3">15-30%</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Reducción Costos Operativos</h3>
+                        <p class="text-sm text-gray-400">Doble dígito medible</p>
+                    </div>
+
+                    <div class="kpi-metric roi-rise delay-2">
+                        <div class="kpi-value mb-3">20-40%</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Incremento Productividad</h3>
+                        <p class="text-sm text-gray-400">Ganancia operativa</p>
+                    </div>
+
+                    <div class="kpi-metric roi-rise delay-3">
+                        <div class="kpi-value mb-3">+NPS</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Mejoras en NPS y CSAT</h3>
+                        <p class="text-sm text-gray-400">Cuantificadas claramente</p>
+                    </div>
+
+                    <div class="kpi-metric roi-rise delay-4">
+                        <div class="kpi-value mb-3">$1M+</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Ahorros Recurrentes Anuales</h3>
+                        <p class="text-sm text-gray-400">En operaciones intensivas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Journey -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1628, #1e3a5f) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 roi-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">El </span><span class="gradient-roi">Viaje Completo</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="journey-step roi-rise delay-1">
+                        <h3 class="text-xl font-bold mb-2 text-white">1. Reconocimiento</h3>
+                        <p class="text-gray-300">"Probar IA" ya no es suficiente - la alta dirección necesita resultados tangibles</p>
+                    </div>
+
+                    <div class="journey-step roi-rise delay-2">
+                        <h3 class="text-xl font-bold mb-2 text-white">2. Casos de Uso Ancla</h3>
+                        <p class="text-gray-300">Uno o dos casos que sí mueven la aguja del negocio</p>
+                    </div>
+
+                    <div class="journey-step roi-rise delay-3">
+                        <h3 class="text-xl font-bold mb-2 text-white">3. Piloto con Métricas Claras</h3>
+                        <p class="text-gray-300">Construcción de prueba de valor creíble desde el inicio</p>
+                    </div>
+
+                    <div class="journey-step roi-rise delay-4">
+                        <h3 class="text-xl font-bold mb-2 text-white">4. Choque con Realidad</h3>
+                        <p class="text-gray-300">Datos, talento, riesgo, compliance - abordaje sistemático</p>
+                    </div>
+
+                    <div class="journey-step roi-rise delay-5">
+                        <h3 class="text-xl font-bold mb-2 text-white">5. Conversación C-Level</h3>
+                        <p class="text-gray-300">Ya no se habla de algoritmos, sino de margen, productividad y riesgo controlado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Cases -->
+        <section class="py-20 px-6" style="background-color: #0a1628 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 roi-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-roi">Casos Reales</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Latinoamérica - Sectores de alto impacto
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center mb-12">
+                    <div class="sector-pill roi-rise delay-1">✈️ Aerolíneas</div>
+                    <div class="sector-pill roi-rise delay-2">🏦 Servicios Financieros</div>
+                    <div class="sector-pill roi-rise delay-3">🏛️ Servicios Públicos</div>
+                </div>
+
+                <div class="roi-card rounded-2xl p-10 text-center roi-rise delay-4">
+                    <p class="text-2xl text-white font-bold mb-6">
+                        IA dejó de ser un experimento aislado
+                    </p>
+                    <p class="text-xl text-gray-300">
+                        Para convertirse en un <span class="text-value font-bold">motor tangible</span> de eficiencia, ingresos y mejor experiencia del cliente
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Script -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1628, #1e3a5f) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 roi-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Guion </span><span class="gradient-roi">Estructurado</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="roi-card p-8 rounded-xl roi-rise delay-1">
+                        <div class="text-4xl mb-4 icon-roi">💼</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Formular Problema</h3>
+                        <p class="text-gray-300">En lenguaje de negocio, no técnico</p>
+                    </div>
+
+                    <div class="roi-card p-8 rounded-xl roi-rise delay-2">
+                        <div class="text-4xl mb-4 icon-roi">🎯</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Prueba de Valor</h3>
+                        <p class="text-gray-300">Diseño creíble desde el día uno</p>
+                    </div>
+
+                    <div class="roi-card p-8 rounded-xl roi-rise delay-3">
+                        <div class="text-4xl mb-4 icon-roi">💰</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Argumentos Financieros</h3>
+                        <p class="text-gray-300">Traducir resultados técnicos a USD</p>
+                    </div>
+
+                    <div class="roi-card p-8 rounded-xl roi-rise delay-4">
+                        <div class="text-4xl mb-4 icon-roi">🗺️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Hoja de Ruta AI-First</h3>
+                        <p class="text-gray-300">Defendible ante comité de inversión</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- C-Level Focus -->
+        <section class="py-20 px-6" style="background-color: #0a1628 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="roi-card rounded-3xl p-12 md:p-16 text-center roi-rise">
+                    <div class="mb-8">
+                        <span class="tag-roi inline-block">Colaboración Directa</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="gradient-roi">CEOs, CFOs, CTOs, CIOs, CAIOs, CDOs</span>
+                    </h2>
+
+                    <div class="roi-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200">
+                        Traducir lenguaje técnico en decisiones de <span class="text-value font-bold">portafolio, inversión (CAPEX/OPEX), riesgo y gobernanza</span>
+                    </p>
+
+                    <p class="text-lg text-gray-400 mt-6">
+                        Evitando la "IA de laboratorio" y las promesas sin sustento financiero
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Priority -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1628, #1e3a5f) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="impact-stat rounded-2xl roi-rise">
+                    <div class="text-5xl mb-6 icon-roi">🎯</div>
+                    <h2 class="text-3xl font-bold mb-6 text-white">
+                        La Prioridad es Siempre la Misma
+                    </h2>
+                    <p class="text-2xl text-white font-bold">
+                        Cada dólar invertido en IA tiene una <span class="gradient-roi">hipótesis explícita de retorno</span>
+                    </p>
+                    <p class="text-xl text-gray-300 mt-4">
+                        Y un horizonte claro de <span class="text-value font-bold">payback</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1e3a5f, #0a1628) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="roi-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">Una Historia de IA</span><br>
+                        <span class="gradient-roi">Que Termina en Retorno</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        No en la diapositiva final, sino en el estado de resultados
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-roi text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-roi px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="roi-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-roi">💰</div>
+                            <h4 class="font-bold text-white mb-2">KPIs Duros</h4>
+                            <p class="text-sm text-gray-400">%, USD, Payback</p>
+                        </div>
+                        <div class="roi-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-roi">📊</div>
+                            <h4 class="font-bold text-white mb-2">Casos Reales</h4>
+                            <p class="text-sm text-gray-400">Latinoamérica</p>
+                        </div>
+                        <div class="roi-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-roi">🎯</div>
+                            <h4 class="font-bold text-white mb-2">C-Level</h4>
+                            <p class="text-sm text-gray-400">CEO, CFO, CTO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0a1628 !important; border-top: 1px solid rgba(3, 105, 161, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-roi mb-2">Panamerican Business School</h3>
+                    <p class="text-gray-500 text-sm">Estrategia AI-First con retorno medible</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0a1628';
+            document.body.style.backgroundColor = '#0a1628';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0a1628';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.roi-rise, .value-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

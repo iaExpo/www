@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noelia González - ¡Hola, IA! | UCC Argentina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-navy: #1a2332;
+            --warm-coral: #ff6b6b;
+            --bright-orange: #ff8c42;
+            --soft-blue: #4a90e2;
+            --light-blue: #7db3e8;
+            --cream: #fff5f0;
+        }
+
+        html {
+            background: #1a2332 !important;
+            background-color: #1a2332 !important;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif !important;
+            background: #1a2332 !important;
+            background-color: #1a2332 !important;
+            color: #fff5f0 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+        }
+
+        .handwritten {
+            font-family: 'Satisfy', cursive;
+        }
+
+        .gradient-warm {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 50%, #4a90e2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-coral {
+            color: #ff6b6b;
+        }
+
+        /* Warm Background */
+        .warm-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .warm-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.2), transparent 70%);
+            animation: warm-float 20s infinite ease-in-out;
+        }
+
+        @keyframes warm-float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.4;
+            }
+            33% {
+                transform: translate(60px, -80px) scale(1.1);
+                opacity: 0.6;
+            }
+            66% {
+                transform: translate(-40px, 50px) scale(0.95);
+                opacity: 0.5;
+            }
+        }
+
+        .connecting-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ff8c42;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 140, 66, 0.8);
+            animation: connect-pulse 3s infinite;
+        }
+
+        @keyframes connect-pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        .wave-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.4), transparent);
+            animation: wave-move 5s infinite;
+        }
+
+        @keyframes wave-move {
+            0%, 100% {
+                transform: translateX(-20%);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(20%);
+                opacity: 0.7;
+            }
+        }
+
+        /* Fade animations */
+        .rise-up {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: riseUp 0.8s forwards;
+        }
+
+        @keyframes riseUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gentle-in {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: gentleIn 0.8s forwards;
+        }
+
+        @keyframes gentleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Warm Card */
+        .warm-card {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(74, 144, 226, 0.08));
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .warm-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 140, 66, 0.6);
+            box-shadow: 
+                0 0 40px rgba(255, 107, 107, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Human Button */
+        .btn-human {
+            background: linear-gradient(135deg, #ff6b6b, #ff8c42);
+            box-shadow: 
+                0 8px 25px rgba(255, 107, 107, 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s;
+        }
+
+        .btn-human:hover {
+            box-shadow: 
+                0 12px 35px rgba(255, 107, 107, 0.6),
+                0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-human {
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-human:hover {
+            background: rgba(255, 107, 107, 0.15);
+            box-shadow: 0 0 35px rgba(255, 107, 107, 0.4);
+            border-color: #ff8c42;
+        }
+
+        /* Profile Frame */
+        .profile-warm {
+            border: 4px solid #ff6b6b;
+            box-shadow: 
+                0 0 50px rgba(255, 107, 107, 0.5),
+                inset 0 0 30px rgba(255, 107, 107, 0.1);
+        }
+
+        /* Badge */
+        .badge-warm {
+            background: linear-gradient(135deg, #ff6b6b, #ff8c42);
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.5);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #1a2332 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a2332;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff6b6b, #ff8c42);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-warm {
+            background: rgba(255, 107, 107, 0.15);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            color: #fff5f0;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Icon glow */
+        .icon-warm {
+            filter: drop-shadow(0 0 12px rgba(255, 107, 107, 0.6));
+        }
+
+        /* Quote box */
+        .quote-box {
+            border-left: 4px solid #ff6b6b;
+            padding-left: 24px;
+            font-style: italic;
+            background: linear-gradient(90deg, rgba(255, 107, 107, 0.1), transparent);
+        }
+
+        /* Stat highlight */
+        .stat-warm {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(74, 144, 226, 0.1));
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Heart pulse */
+        .heart-pulse {
+            animation: heartPulse 2s infinite;
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Divider */
+        .warm-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, #ff8c42, transparent);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Warm Background -->
+    <div class="warm-bg">
+        <!-- Warm Circles -->
+        <div class="warm-circle" style="width: 350px; height: 350px; top: 10%; left: 8%; animation-duration: 22s;"></div>
+        <div class="warm-circle" style="width: 280px; height: 280px; top: 55%; right: 12%; animation-duration: 25s; animation-delay: 3s; background: radial-gradient(circle, rgba(74, 144, 226, 0.2), transparent 70%);"></div>
+        <div class="warm-circle" style="width: 320px; height: 320px; bottom: 15%; left: 18%; animation-duration: 28s; animation-delay: 6s;"></div>
+        
+        <!-- Connecting Dots -->
+        <div class="connecting-dot" style="top: 22%; left: 28%; animation-delay: 0.5s;"></div>
+        <div class="connecting-dot" style="top: 48%; right: 32%; animation-delay: 1.5s;"></div>
+        <div class="connecting-dot" style="bottom: 28%; left: 38%; animation-delay: 2.5s;"></div>
+        
+        <!-- Wave Lines -->
+        <div class="wave-line" style="width: 350px; top: 30%; left: 0;"></div>
+        <div class="wave-line" style="width: 400px; top: 60%; right: 0; animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #1a2332 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #1a2332 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 rise-up">
+                    <span class="tag-warm inline-block">
+                        👋 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight rise-up delay-1">
+                    <span class="handwritten text-6xl md:text-8xl gradient-warm">¡Hola, IA!</span><br>
+                    <span class="text-white">¿Nos Conocemos?</span>
+                </h1>
+
+                <div class="warm-divider mb-8 rise-up delay-2"></div>
+
+                <p class="text-xl md:text-2xl text-center text-gray-300 mb-4 max-w-4xl mx-auto rise-up delay-2 font-semibold">
+                    Cómo enseñar IA a adultos y cambiar el mundo laboral sin dejar a nadie atrás
+                </p>
+
+                <p class="text-lg text-center text-coral mb-12 max-w-3xl mx-auto rise-up delay-3">
+                    Democratizando la IA con un enfoque humano, empático y accesible
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 rise-up delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-human text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Conocer la Experiencia
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="gentle-in delay-5">
+                        <div class="relative">
+                            <div class="profile-warm rounded-3xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c7b9fbe6cf0ab672fa00c.jpg"
+                                    alt="Noelia González Pereyra"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-5 -right-5 badge-warm rounded-xl px-8 py-4">
+                                <div class="text-sm font-bold text-white">Directora</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="rise-up delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Noelia González Pereyra
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-coral text-lg font-bold">Universidad Católica de Córdoba - Argentina</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Consultora en comunicación y marketing digital con <span class="text-coral font-bold">más de 19 años de experiencia</span> diseñando estrategias efectivas para empresas e instituciones educativas.
+                            </p>
+                            <p>
+                                Como docente de IA aplicada, combino experiencia técnica con habilidades pedagógicas para capacitar a líderes en entornos desafiantes.
+                            </p>
+                            <p>
+                                Directora de <span class="text-coral font-semibold">Voiceinteractivos</span> y creadora del curso "¡Hola, IA! ¿Nos conocemos?"
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-warm text-center">
+                                <div class="text-2xl font-bold gradient-warm">200+</div>
+                                <div class="text-xs text-gray-500">Personas Capacitadas</div>
+                            </div>
+                            <div class="stat-warm text-center">
+                                <div class="text-2xl font-bold gradient-warm">19</div>
+                                <div class="text-xs text-gray-500">Años Experiencia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a2332, #2d3748) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12 rise-up">
+                    <h2 class="text-4xl md:text-6xl font-black mb-6">
+                        <span class="gradient-warm">El Propósito</span>
+                    </h2>
+                    <div class="warm-divider mb-8"></div>
+                </div>
+
+                <div class="quote-box text-xl md:text-2xl mb-12 p-8 rounded-xl warm-card rise-up delay-1">
+                    <p class="text-gray-200 leading-relaxed">
+                        "Democratizar la IA, acercarla con un lenguaje humano y enseñar a usarla sin miedo, sin vergüenza y sin la sensación de ser 'analfabetos digitales'"
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="warm-card p-8 rounded-2xl text-center rise-up delay-2">
+                        <div class="text-5xl mb-4 icon-warm heart-pulse">❤️</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Sin Miedo</h3>
+                        <p class="text-sm text-gray-400">Aprender con confianza y seguridad</p>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-2xl text-center rise-up delay-3">
+                        <div class="text-5xl mb-4 icon-warm">🤝</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Sin Vergüenza</h3>
+                        <p class="text-sm text-gray-400">Un espacio de respeto y empatía</p>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-2xl text-center rise-up delay-4">
+                        <div class="text-5xl mb-4 icon-warm">✨</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Accesible</h3>
+                        <p class="text-sm text-gray-400">Conocimiento para todos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="py-20 px-6" style="background-color: #1a2332 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 rise-up">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Un </span><span class="gradient-warm">Caso de Éxito</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Tres ediciones en la UCC + capacitaciones online e in company
+                    </p>
+                </div>
+
+                <div class="warm-card rounded-3xl p-12 md:p-16 mb-12 rise-up delay-1">
+                    <div class="grid md:grid-cols-3 gap-8 text-center">
+                        <div>
+                            <div class="text-5xl font-black gradient-warm mb-3">200+</div>
+                            <div class="text-gray-400">Personas Capacitadas</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-black gradient-warm mb-3">3</div>
+                            <div class="text-gray-400">Ediciones del Curso</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-black gradient-warm mb-3">100%</div>
+                            <div class="text-gray-400">Transformación Real</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center rise-up delay-2">
+                    <p class="text-2xl text-white mb-4">
+                        <span class="gradient-warm font-bold">"Cuando el conocimiento se vuelve accesible,</span>
+                    </p>
+                    <p class="text-2xl gradient-warm font-bold">
+                        la transformación es inmediata"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What They Learned -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a2332, #2d3748) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 rise-up">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Más Que </span><span class="gradient-warm">Prompts</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Aprendieron a transformar su vida profesional y personal
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="warm-card p-8 rounded-xl rise-up delay-1">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-warm">✍️</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Escribir Mejor</h3>
+                                <p class="text-sm text-gray-400">Comunicarse con claridad y efectividad</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-xl rise-up delay-2">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-warm">📋</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Planificar su Trabajo</h3>
+                                <p class="text-sm text-gray-400">Organizar tareas con eficiencia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-xl rise-up delay-3">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-warm">📚</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Estudiar con Eficiencia</h3>
+                                <p class="text-sm text-gray-400">Aprender más en menos tiempo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-xl rise-up delay-4">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-warm">📊</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Preparar Presentaciones</h3>
+                                <p class="text-sm text-gray-400">Comunicar ideas con impacto</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-xl rise-up delay-5">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-warm">⚙️</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Optimizar Procesos</h3>
+                                <p class="text-sm text-gray-400">Hacer más con menos esfuerzo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-xl rise-up delay-6">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-warm">💪</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Confiar en Sí Mismos</h3>
+                                <p class="text-sm text-gray-400">"Perder el miedo" a la tecnología</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Learning -->
+        <section class="py-20 px-6" style="background-color: #1a2332 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="warm-card rounded-3xl p-12 md:p-16 text-center rise-up">
+                    <div class="mb-8">
+                        <span class="tag-warm inline-block">Mi Mayor Aprendizaje</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">Este grupo etario —muchas veces subestimado— no solo </span><span class="gradient-warm">puede</span><span class="text-white">, sino que </span><span class="gradient-warm">quiere aprender IA</span>
+                    </h2>
+
+                    <div class="warm-divider my-8"></div>
+
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                        Y necesita un enfoque pedagógico distinto:
+                    </p>
+
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="rise-up delay-1">
+                            <div class="text-4xl mb-3 icon-warm">💡</div>
+                            <div class="font-bold gradient-warm">Claro</div>
+                        </div>
+                        <div class="rise-up delay-2">
+                            <div class="text-4xl mb-3 icon-warm">❤️</div>
+                            <div class="font-bold gradient-warm">Empático</div>
+                        </div>
+                        <div class="rise-up delay-3">
+                            <div class="text-4xl mb-3 icon-warm">⚡</div>
+                            <div class="font-bold gradient-warm">Práctico</div>
+                        </div>
+                        <div class="rise-up delay-4">
+                            <div class="text-4xl mb-3 icon-warm">🤝</div>
+                            <div class="font-bold gradient-warm">Humano</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #1a2332, #2d3748) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 rise-up">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-warm">Mi Visión</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="warm-card p-8 rounded-xl rise-up delay-1">
+                        <div class="flex items-start gap-6">
+                            <div class="text-4xl icon-warm">🌉</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Reducir Brechas</h3>
+                                <p class="text-gray-300">Formar en IA a adultos es una forma directa de reducir brechas digitales y generacionales</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-xl rise-up delay-2">
+                        <div class="flex items-start gap-6">
+                            <div class="text-4xl icon-warm">📈</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Mejorar la Empleabilidad</h3>
+                                <p class="text-gray-300">Preparar a miles de profesionales para los próximos años con herramientas actuales</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="warm-card p-8 rounded-xl rise-up delay-3">
+                        <div class="flex items-start gap-6">
+                            <div class="text-4xl icon-warm">💫</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Sentirse Útiles</h3>
+                                <p class="text-gray-300">Un futuro donde las personas adultas puedan elegir mejorar sus perfiles y seguir siendo competitivas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 rise-up delay-4">
+                    <p class="text-3xl font-bold gradient-warm mb-4">
+                        "Ser cada vez más humanos,
+                    </p>
+                    <p class="text-3xl font-bold text-white">
+                        es mi forma de impactar"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links -->
+        <section class="py-20 px-6" style="background-color: #1a2332 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="warm-card rounded-3xl p-12 text-center rise-up">
+                    <h2 class="text-3xl font-bold mb-8 text-white">
+                        <span class="gradient-warm">Conoce Más</span>
+                    </h2>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <a href="https://www.linkedin.com/in/noeliagonzalezpereyra/" target="_blank" rel="noopener noreferrer" class="warm-card p-6 rounded-xl hover:scale-105 transition-transform">
+                            <div class="text-3xl mb-3">💼</div>
+                            <h3 class="font-bold text-white mb-2">LinkedIn</h3>
+                            <p class="text-sm text-gray-400">Conéctate conmigo</p>
+                        </a>
+
+                        <a href="https://fjs.ucc.edu.ar/hola-ia-nos-conocemos-curso-para-aprender-ia-desde-cero-2025-10" target="_blank" rel="noopener noreferrer" class="warm-card p-6 rounded-xl hover:scale-105 transition-transform">
+                            <div class="text-3xl mb-3">🎓</div>
+                            <h3 class="font-bold text-white mb-2">Curso UCC</h3>
+                            <p class="text-sm text-gray-400">Información completa</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #2d3748, #1a2332) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="rise-up">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">Cambiemos el Mundo</span><br>
+                        <span class="gradient-warm">Sin Dejar a Nadie Atrás</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo la IA puede ser accesible, humana y transformadora para todos
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-human text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-human px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="warm-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-warm">❤️</div>
+                            <h4 class="font-bold text-white mb-2">Enfoque Humano</h4>
+                            <p class="text-sm text-gray-400">Con empatía y respeto</p>
+                        </div>
+                        <div class="warm-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-warm">✨</div>
+                            <h4 class="font-bold text-white mb-2">Resultados Reales</h4>
+                            <p class="text-sm text-gray-400">200+ personas transformadas</p>
+                        </div>
+                        <div class="warm-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-warm">🎓</div>
+                            <h4 class="font-bold text-white mb-2">Universidad UCC</h4>
+                            <p class="text-sm text-gray-400">Respaldo académico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #1a2332 !important; border-top: 1px solid rgba(255, 107, 107, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-warm mb-2">¡Hola, IA! ¿Nos conocemos?</h3>
+                    <p class="text-gray-500 text-sm">Universidad Católica de Córdoba - Argentina</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#1a2332';
+            document.body.style.backgroundColor = '#1a2332';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#1a2332';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.rise-up, .gentle-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

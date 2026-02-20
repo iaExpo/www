@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentaciones | IA Expo Internacional® 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-deep:    #002855;
+            --blue-primary: #0057B8;
+            --blue-mid:     #1A7FE8;
+            --blue-light:   #EBF4FF;
+            --cyan:         #00C2FF;
+            --gold:         #C9A84C;
+            --white:        #FFFFFF;
+            --gray-50:      #F7F9FC;
+            --gray-100:     #EEF2F7;
+            --gray-300:     #CBD5E1;
+            --gray-500:     #64748B;
+            --gray-700:     #334155;
+            --text:         #0F172A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--gray-50);
+            color: var(--text);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--blue-deep);
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 2rem 7rem;
+            text-align: center;
+        }
+
+        .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(0,194,255,0.12);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .hero-ring-1 { width: 500px; height: 500px; }
+        .hero-ring-2 { width: 750px; height: 750px; border-color: rgba(0,194,255,0.07); }
+        .hero-ring-3 { width: 1050px; height: 1050px; border-color: rgba(0,194,255,0.04); }
+
+        .hero-glow {
+            position: absolute;
+            width: 350px; height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,87,184,0.5) 0%, transparent 70%);
+            top: -100px; right: -80px;
+        }
+        .hero-glow-2 {
+            position: absolute;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,194,255,0.2) 0%, transparent 70%);
+            bottom: 0; left: 50px;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cyan);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.75rem;
+        }
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            display: inline-block;
+            width: 30px; height: 1px;
+            background: var(--cyan);
+            opacity: 0.6;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.6rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .hero h1 em { font-style: normal; color: var(--cyan); }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+            margin-top: 1.25rem;
+        }
+
+        /* ── STATS ── */
+        .stats-strip {
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--gray-100);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .stat {
+            padding: 1.4rem 3rem;
+            text-align: center;
+            border-right: 1px solid var(--gray-100);
+        }
+        .stat:last-child { border-right: none; }
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--blue-primary);
+            line-height: 1;
+        }
+        .stat-lbl {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+
+        /* ── CONTROLS ── */
+        .controls-wrap {
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+            padding: 0 2rem;
+        }
+        .controls-inner {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .search-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 220px;
+        }
+        .search-icon {
+            position: absolute;
+            left: 1rem; top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+            pointer-events: none;
+        }
+        .search-wrap input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1.5px solid var(--gray-100);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            color: var(--text);
+            background: var(--gray-50);
+            transition: all 0.2s;
+        }
+        .search-wrap input:focus {
+            outline: none;
+            border-color: var(--blue-primary);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(0,87,184,0.08);
+        }
+        .search-wrap input::placeholder { color: var(--gray-500); font-weight: 300; }
+        .divider { width: 1px; height: 32px; background: var(--gray-100); flex-shrink: 0; }
+        .filter-btns { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 0.55rem 1rem;
+            border: 1.5px solid var(--gray-100);
+            border-radius: 8px;
+            background: transparent;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--gray-500);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .filter-btn:hover { border-color: var(--blue-primary); color: var(--blue-primary); background: var(--blue-light); }
+        .filter-btn.active { background: var(--blue-primary); border-color: var(--blue-primary); color: var(--white); }
+        .filter-btn.active.magistral-btn {
+            background: linear-gradient(135deg, var(--gold), #B8860B);
+            border-color: var(--gold);
+        }
+        .filter-btn.vision-btn:hover { border-color: #7c3aed; color: #7c3aed; background: #f3e8ff; }
+        .filter-btn.active.vision-btn { background: #7c3aed; border-color: #7c3aed; color: var(--white); }
+
+        /* ── CONTENT ── */
+        .content-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            margin-top: 2.5rem;
+        }
+        .section-header:first-child { margin-top: 0; }
+        .section-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--blue-primary); flex-shrink: 0; }
+        .section-dot.gold { background: var(--gold); }
+        .section-title-text { font-size: 0.72rem; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 2px; }
+        .section-line { flex: 1; height: 1px; background: var(--gray-100); }
+        .section-count { font-size: 0.72rem; color: var(--gray-500); font-weight: 500; }
+
+        /* ── MAGISTRAL CARDS ── */
+        .magistral-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .card-magistral {
+            background: linear-gradient(135deg, var(--blue-deep) 0%, #003F8A 100%);
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(201,168,76,0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-magistral:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,40,85,0.35);
+        }
+        .card-magistral::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .card-magistral::after {
+            content: '';
+            position: absolute;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,194,255,0.12) 0%, transparent 70%);
+            top: -60px; right: -60px;
+            pointer-events: none;
+        }
+        .card-magistral-inner {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .magistral-photo-wrap {
+            flex-shrink: 0;
+        }
+        .magistral-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(201,168,76,0.5);
+            display: block;
+            background: rgba(255,255,255,0.06);
+        }
+        .magistral-photo-placeholder {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(201,168,76,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .magistral-content { flex: 1; }
+        .magistral-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(201,168,76,0.15);
+            border: 1px solid rgba(201,168,76,0.4);
+            color: var(--gold);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            border-radius: 50px;
+            margin-bottom: 1.25rem;
+        }
+        .magistral-badge::before { content: '★'; font-size: 0.7rem; }
+        .magistral-num { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; margin-bottom: 0.5rem; }
+        .magistral-speaker {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        .magistral-title { font-size: 0.9rem; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.5; margin-bottom: 1.75rem; }
+        .btn-download-magistral {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--gold);
+            color: #1a1000;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+        .btn-download-magistral:hover { background: #e0be66; transform: scale(1.03); box-shadow: 0 6px 20px rgba(201,168,76,0.35); }
+
+        /* ── REGULAR CARDS ── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1rem;
+        }
+        .card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .card:hover { border-color: rgba(0,87,184,0.2); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,40,85,0.08); }
+        .card-top-bar { height: 3px; }
+        .bar-business  { background: linear-gradient(90deg, var(--blue-primary), var(--blue-mid)); }
+        .bar-health    { background: linear-gradient(90deg, #16a34a, #4ade80); }
+        .bar-education { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+        .bar-ethics    { background: linear-gradient(90deg, #dc2626, #f87171); }
+        .bar-vision    { background: linear-gradient(90deg, #6d28d9, #c084fc); }
+        .card-photo-row {
+            display: flex;
+            justify-content: center;
+            padding: 1.25rem 1.4rem 0;
+        }
+        .card-photo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gray-100);
+            background: var(--gray-50);
+            display: block;
+        }
+        .card-photo-placeholder {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            border: 2px solid var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--blue-primary);
+        }
+        .card-body { padding: 1rem 1.4rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+        .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+        .card-num { font-size: 0.68rem; font-weight: 700; color: var(--blue-primary); letter-spacing: 1.5px; opacity: 0.6; }
+        .card-tag { font-size: 0.66rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tag-business  { background: var(--blue-light); color: var(--blue-primary); }
+        .tag-health    { background: #dcfce7; color: #166534; }
+        .tag-education { background: #f3e8ff; color: #6b21a8; }
+        .tag-ethics    { background: #fee2e2; color: #991b1b; }
+        .tag-vision    { background: #ede9fe; color: #6d28d9; }
+        .card-speaker { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 0.4rem; text-align: center; }
+        .card-title { font-size: 0.82rem; color: var(--gray-500); line-height: 1.55; font-weight: 300; flex: 1; margin-bottom: 1.25rem; text-align: center; }
+        .card-footer { display: flex; }
+        .btn-download {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--blue-light);
+            color: var(--blue-primary);
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 1.5px solid transparent;
+        }
+        .btn-download:hover { background: var(--blue-primary); color: var(--white); border-color: var(--blue-primary); }
+        .pdf-badge {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: #EF4444;
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 0.18rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        /* ── NO RESULTS ── */
+        .no-results { display: none; text-align: center; padding: 5rem 2rem; color: var(--gray-500); }
+        .no-results-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.25; }
+        .no-results h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gray-700); margin-bottom: 0.5rem; }
+
+        /* ── FOOTER ── */
+        .footer { background: var(--blue-deep); padding: 2.5rem 2rem; text-align: center; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+        .footer-sub { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+        .footer-sub a { color: var(--cyan); text-decoration: none; }
+        .footer-sub a:hover { text-decoration: underline; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { padding: 3.5rem 1.5rem 5rem; }
+            .stats-strip { flex-wrap: wrap; }
+            .stat { padding: 1.1rem 1.5rem; flex: 1 1 40%; border-bottom: 1px solid var(--gray-100); }
+            .magistral-grid { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .controls-inner { flex-direction: column; align-items: stretch; }
+            .divider { display: none; }
+            .search-wrap { min-width: 100%; }
+            .filter-btns { justify-content: flex-start; }
+            .card-magistral-inner { flex-direction: column; align-items: center; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .filter-btn { font-size: 0.75rem; padding: 0.5rem 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-ring hero-ring-3"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-inner">
+        <div class="hero-eyebrow">IA Para la Vida Real</div>
+        <h1>IA Expo Internacional® <em>2026</em></h1>
+        <p class="hero-sub">Presentaciones Oficiales de los Conferencistas</p>
+        <p class="hero-sub" style="margin-top:0.4rem;font-size:0.88rem;opacity:0.7;">31 de enero de 2026 &nbsp;·&nbsp; Ciudad de México</p>
+    </div>
+</header>
+
+<!-- STATS -->
+<div class="stats-strip">
+    <div class="stat"><div class="stat-num">18</div><div class="stat-lbl">Presentaciones</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-lbl">Magistrales</div></div>
+    <div class="stat"><div class="stat-num">16+</div><div class="stat-lbl">Conferencistas</div></div>
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">Países</div></div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls-wrap">
+    <div class="controls-inner">
+        <div class="search-wrap">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Buscar por conferencista o tema...">
+        </div>
+        <div class="divider"></div>
+        <div class="filter-btns">
+            <button class="filter-btn active"           onclick="filterCards('all', this)">Todas</button>
+            <button class="filter-btn magistral-btn"    onclick="filterCards('magistral', this)">★ Magistrales</button>
+            <button class="filter-btn vision-btn"       onclick="filterCards('vision', this)">Visión</button>
+            <button class="filter-btn"                  onclick="filterCards('education', this)">Educación</button>
+            <button class="filter-btn"                  onclick="filterCards('ethics', this)">Ética</button>
+            <button class="filter-btn"                  onclick="filterCards('health', this)">Medicina</button>
+            <button class="filter-btn"                  onclick="filterCards('business', this)">Negocios</button>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+    <div id="magistralSection">
+        <div class="section-header">
+            <div class="section-dot gold"></div>
+            <span class="section-title-text">Sesiones Magistrales</span>
+            <div class="section-line"></div>
+            <span class="section-count">2 presentaciones</span>
+        </div>
+        <div class="magistral-grid" id="magistralGrid"></div>
+    </div>
+
+    <div id="regularSection">
+        <div class="section-header">
+            <div class="section-dot"></div>
+            <span class="section-title-text" id="regularSectionLabel">Presentaciones</span>
+            <div class="section-line"></div>
+            <span class="section-count" id="regularCount"></span>
+        </div>
+        <div class="cards-grid" id="cardsGrid"></div>
+    </div>
+
+    <div class="no-results" id="noResults">
+        <div class="no-results-icon">🔍</div>
+        <h3>No se encontraron presentaciones</h3>
+        <p>Intenta con otro término de búsqueda o categoría</p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-logo">IA Expo Internacional® 2026</div>
+    <p class="footer-sub">
+        31 de enero de 2026 &nbsp;·&nbsp; Ciudad de México &nbsp;·&nbsp;
+        <a href="https://iaExpo.ai">iaExpo.ai</a><br>
+        © 1998–2026 Digital Gap, Inc. Todos los derechos reservados.
+    </p>
+</footer>
+
+<script>
+    const PHOTOS_RAW = 'https://raw.githubusercontent.com/iaExpo/2026.Conferencistas/main/';
+    const FILES_RAW  = 'https://raw.githubusercontent.com/iaExpo/2026.Presentaciones/main/';
+
+    const presentations = [
+        // ── MAGISTRALES ──
+        { num:'01', category:'magistral',  speaker:'Edgar González',           photo:'EdgarGonzález.jpg',           file:'DeHomoSapiensATecnoSapiens.pdf',                title:'De Homo Sapiens a TecnoSapiens' },
+        { num:'18', category:'magistral',  speaker:'Dr. Jorge Lozoya',          photo:'Dr.JorgeLozoya.jpg',          file:'MovilidadAutónomaEnMéxico.pdf',                 title:'Movilidad Autónoma en México' },
+        // ── VISIÓN ──
+        { num:'02', category:'vision',     speaker:'Felipe Salas',              photo:'FelipeSalas.jpg',              file:'ConvergencIAySuperinteligencia.pdf',            title:'ConvergencIA y Superinteligencia' },
+        { num:'09', category:'vision',     speaker:'Dr. Javier Novoa',          photo:'Dr.JavierNovoa.jpg',           file:'FuturoDelEmpleoACincoAños.pdf',                 title:'Futuro del Empleo a Cinco Años' },
+        // ── NEGOCIOS ──
+        { num:'03', category:'business',   speaker:'Martín Sierra',             photo:'MartínSierra.jpg',             file:'IAOculta.pdf',                                  title:'IA Oculta' },
+        { num:'04', category:'business',   speaker:'Diego Ganoza',              photo:'DiegoGanoza.jpg',              file:'VibeMarketing.pdf',                             title:'Vibe Marketing' },
+        { num:'05', category:'business',   speaker:'Osvaldo Ramírez',           photo:'OsvaldoRamírez.jpg',           file:'DeLaVisiónAlRetornoDeInversión.pdf',            title:'De la Visión al Retorno de Inversión' },
+        { num:'06', category:'business',   speaker:'Andrés Del Cos Garza',      photo:'AndrésDelCosGarza.jpg',        file:'MotorHumanoDeLaIA.pdf',                         title:'El Motor Humano de la IA' },
+        { num:'07', category:'business',   speaker:'Dr. Gabriel Barrera',       photo:'Dr.GabrielBarrera.jpg',        file:'IAProductividadEnOrganizacionesModernas.pdf',   title:'IA y Productividad en Organizaciones Modernas' },
+        { num:'08', category:'business',   speaker:'José Antonio González',     photo:'JoséAntonioGonzález.jpg',      file:'VozDelClienteConIA.pdf',                        title:'Voz del Cliente con IA' },
+        // ── MEDICINA ──
+        { num:'10', category:'health',     speaker:'Dr. Jaime Garcia',          photo:'Dr.JaimeGarcía.jpg',           file:'IARadiologíaOncológica.pdf',                    title:'IA en Radiología Oncológica' },
+        { num:'11', category:'health',     speaker:'Dra. Lilian Navarro',       photo:'Dra.LilianNavarro.jpg',        file:'IADiagnósticoCáncerDeMama.pdf',                 title:'IA en el Diagnóstico de Cáncer de Mama' },
+        { num:'12', category:'health',     speaker:'Dr. Ricardo Becerra',       photo:'Dr.RicardoBecerra.jpg',        file:'IAFuturoDeRadiología.pdf',                      title:'IA: El Futuro de la Radiología' },
+        { num:'13', category:'health',     speaker:'Dr. Carlo Angello Sánchez', photo:'Dr.CarloAngelloSánchez.jpg',   file:'IAPalancaEstratégicaParaSectorSalud.pdf',       title:'IA como Palanca Estratégica para el Sector Salud' },
+        // ── ÉTICA ──
+        { num:'14', category:'ethics',     speaker:'Antonieta Esparza',         photo:'AntonietaEparza.jpg',         file:'ISO42001-SistemadeGestiónIA.pdf',               title:'ISO 42001: Sistema de Gestión de IA' },
+        { num:'15', category:'ethics',     speaker:'Randy Valverde',            photo:'RandyValverde.jpg',            file:'IAÉticayGestiónDelConocimiento.pdf',            title:'IA: Ética y Gestión del Conocimiento' },
+        // ── EDUCACIÓN ──
+        { num:'16', category:'education',  speaker:'Max Quiroz',                photo:'MaxQuiroz.jpg',                file:'IAyEducación.pdf',                              title:'IA y Educación' },
+        { num:'17', category:'education',  speaker:'Noelia González',           photo:'NoeliaGonzález.jpg',           file:'¡HolaIA!¿NosConocemos?.pdf',                    title:'Hola IA, Nos Conocemos' },
+    ];
+
+    const categoryConfig = {
+        business:  { label: 'Negocios',  barClass: 'bar-business',  tagClass: 'tag-business'  },
+        health:    { label: 'Medicina',  barClass: 'bar-health',    tagClass: 'tag-health'    },
+        education: { label: 'Educación', barClass: 'bar-education', tagClass: 'tag-education' },
+        ethics:    { label: 'Ética',     barClass: 'bar-ethics',    tagClass: 'tag-ethics'    },
+        vision:    { label: 'Visión',    barClass: 'bar-vision',    tagClass: 'tag-vision'    },
+    };
+
+    const catLabels = {
+        business: 'Negocios', health: 'Medicina',
+        education: 'Educación', ethics: 'Ética', vision: 'Visión'
+    };
+
+    function getInitials(name) {
+        return name.replace(/^(Dr\.|Dra\.)\s*/i, '')
+                   .split(' ').slice(0,2)
+                   .map(w => w[0]).join('').toUpperCase();
+    }
+
+    function speakerPhotoHTML(photo, name, cls, placeholderCls) {
+        const src = PHOTOS_RAW + encodeURIComponent(photo);
+        return `<img
+            class="${cls}"
+            src="${src}"
+            alt="${name}"
+            onerror="this.outerHTML='<div class=\\'${placeholderCls}\\'>${getInitials(name)}</div>'"
+        >`;
+    }
+
+    function buildMagistralCard(p) {
+        const url = FILES_RAW + encodeURIComponent(p.file);
+        const photoHTML = speakerPhotoHTML(p.photo, p.speaker, 'magistral-photo', 'magistral-photo-placeholder');
+        return `
+            <div class="card-magistral" data-category="${p.category}" data-search="${p.speaker.toLowerCase()} ${p.title.toLowerCase()}">
+                <div class="card-magistral-inner">
+                    <div class="magistral-photo-wrap">${photoHTML}</div>
+                    <div class="magistral-content">
+                        <div class="magistral-badge">Sesión Magistral</div>
+                        <div class="magistral-num">PRESENTACIÓN #${p.num}</div>
+                        <div class="magistral-speaker">${p.speaker}</div>
+                        <div class="magistral-title">${p.title}</div>
+                        <a href="${url}" download="${p.file}" class="btn-download-magistral">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Descargar Presentación
+                        </a>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    function buildCard(p) {
+        const url = FILES_RAW + encodeURIComponent(p.file);
+        const cfg = categoryConfig[p.category] || {};
+        const photoHTML = speakerPhotoHTML(p.photo, p.speaker, 'card-photo', 'card-photo-placeholder');
+        return `
+            <div class="card" data-category="${p.category}" data-search="${p.speaker.toLowerCase()} ${p.title.toLowerCase()}">
+                <div class="card-top-bar ${cfg.barClass}"></div>
+                <span class="pdf-badge">PDF</span>
+                <div class="card-photo-row">${photoHTML}</div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="card-num">#${p.num}</span>
+                        <span class="card-tag ${cfg.tagClass}">${cfg.label}</span>
+                    </div>
+                    <div class="card-speaker">${p.speaker}</div>
+                    <div class="card-title">${p.title}</div>
+                    <div class="card-footer">
+                        <a href="${url}" download="${p.file}" class="btn-download">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Descargar PDF
+                        </a>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    let currentFilter = 'all';
+
+    function filterCards(category, btn) {
+        currentFilter = category;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyFilters();
+    }
+
+    function applyFilters() {
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+        const magistrales = presentations.filter(p => {
+            if (p.category !== 'magistral') return false;
+            if (currentFilter !== 'all' && currentFilter !== 'magistral') return false;
+            if (query && !p.speaker.toLowerCase().includes(query) && !p.title.toLowerCase().includes(query)) return false;
+            return true;
+        });
+
+        const regulares = presentations.filter(p => {
+            if (p.category === 'magistral') return false;
+            if (currentFilter !== 'all' && p.category !== currentFilter) return false;
+            if (query && !p.speaker.toLowerCase().includes(query) && !p.title.toLowerCase().includes(query)) return false;
+            return true;
+        });
+
+        const magSection = document.getElementById('magistralSection');
+        const regSection = document.getElementById('regularSection');
+        const noResults  = document.getElementById('noResults');
+        const magGrid    = document.getElementById('magistralGrid');
+        const regGrid    = document.getElementById('cardsGrid');
+        const regCount   = document.getElementById('regularCount');
+        const regLabel   = document.getElementById('regularSectionLabel');
+
+        const total = magistrales.length + regulares.length;
+
+        if (total === 0) {
+            magSection.style.display = 'none';
+            regSection.style.display = 'none';
+            noResults.style.display  = 'block';
+            return;
+        }
+
+        noResults.style.display = 'none';
+
+        if (magistrales.length > 0) {
+            magSection.style.display = 'block';
+            magGrid.innerHTML = magistrales.map(buildMagistralCard).join('');
+        } else {
+            magSection.style.display = 'none';
+        }
+
+        if (regulares.length > 0) {
+            regSection.style.display = 'block';
+            const label = (currentFilter !== 'all' && currentFilter !== 'magistral')
+                ? catLabels[currentFilter] || 'Presentaciones'
+                : 'Presentaciones';
+            regLabel.textContent = label;
+            regCount.textContent = `${regulares.length} ${regulares.length === 1 ? 'presentación' : 'presentaciones'}`;
+            regGrid.innerHTML = regulares.map(buildCard).join('');
+        } else {
+            regSection.style.display = 'none';
+        }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    applyFilters();
+</script>
+</body>
+</html>

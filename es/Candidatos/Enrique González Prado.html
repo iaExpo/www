@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrique González - IA con Propósito | Grupo Cal y Mayor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-strategy: #0a1f1a;
+            --navy-corporate: #0c1e2d;
+            --strategic-green: #047857;
+            --emerald-purpose: #10b981;
+            --gold-vision: #d97706;
+            --bright-gold: #f59e0b;
+        }
+
+        html {
+            background: #0a1f1a !important;
+            background-color: #0a1f1a !important;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif !important;
+            background: #0a1f1a !important;
+            background-color: #0a1f1a !important;
+            color: #d1fae5 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-purpose {
+            background: linear-gradient(135deg, #047857 0%, #10b981 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-strategic {
+            color: #047857;
+        }
+
+        /* Strategy Background */
+        .strategy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .strategic-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(4, 120, 87, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(4, 120, 87, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 2px, transparent 2px);
+            background-size: 60px 60px, 60px 60px, 80px 80px;
+            animation: grid-strategic 25s linear infinite;
+        }
+
+        @keyframes grid-strategic {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 60px 60px, 60px 60px, 80px 80px; }
+        }
+
+        .decision-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #10b981, transparent);
+            border-radius: 50%;
+            animation: node-strategy 4s infinite;
+        }
+
+        @keyframes node-strategy {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(4, 120, 87, 0.8);
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .strategic-path {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(4, 120, 87, 0.4), rgba(16, 185, 129, 0.4), transparent);
+            animation: path-flow 8s infinite;
+        }
+
+        @keyframes path-flow {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scaleX(0.9);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scaleX(1);
+            }
+        }
+
+        .compass-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(217, 119, 6, 0.15);
+            animation: compass-rotate 20s linear infinite;
+        }
+
+        @keyframes compass-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .purpose-beam {
+            position: absolute;
+            width: 2px;
+            height: 120px;
+            background: linear-gradient(180deg, transparent, rgba(217, 119, 6, 0.3), transparent);
+            animation: beam-scan 10s infinite;
+        }
+
+        @keyframes beam-scan {
+            0%, 100% {
+                opacity: 0.2;
+                transform: translateX(0);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateX(100px);
+            }
+        }
+
+        /* Fade animations */
+        .strategy-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: strategyRise 0.8s forwards;
+        }
+
+        @keyframes strategyRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .purpose-emerge {
+            opacity: 0;
+            transform: scale(0.94);
+            animation: purposeEmerge 0.8s forwards;
+        }
+
+        @keyframes purposeEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Strategy Card */
+        .strategy-card {
+            background: linear-gradient(135deg, rgba(4, 120, 87, 0.08), rgba(12, 30, 45, 0.4));
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .strategy-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #047857, #10b981, #d97706);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .strategy-card:hover::after {
+            transform: scaleY(1);
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(217, 119, 6, 0.6);
+            box-shadow: 
+                0 0 40px rgba(16, 185, 129, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Purpose Button */
+        .btn-purpose {
+            background: linear-gradient(135deg, #047857, #10b981);
+            box-shadow: 
+                0 0 30px rgba(16, 185, 129, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-purpose:hover {
+            box-shadow: 
+                0 0 50px rgba(4, 120, 87, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-purpose {
+            border: 2px solid #047857;
+            color: #047857;
+            background: rgba(4, 120, 87, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-purpose:hover {
+            background: rgba(4, 120, 87, 0.15);
+            box-shadow: 0 0 35px rgba(4, 120, 87, 0.4);
+            border-color: #10b981;
+        }
+
+        /* Profile Frame */
+        .profile-strategy {
+            border: 3px solid #047857;
+            box-shadow: 
+                0 0 50px rgba(16, 185, 129, 0.5),
+                inset 0 0 30px rgba(4, 120, 87, 0.1);
+        }
+
+        /* Badge */
+        .badge-strategy {
+            background: linear-gradient(135deg, #047857, #10b981);
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0a1f1a !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1f1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #047857, #10b981);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-strategy {
+            background: rgba(4, 120, 87, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #6ee7b7;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-strategy {
+            filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.6));
+        }
+
+        /* Stat box */
+        .stat-strategy {
+            background: linear-gradient(135deg, rgba(4, 120, 87, 0.15), rgba(12, 30, 45, 0.2));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .strategy-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #047857, #10b981, #d97706, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Step badge */
+        .step-badge {
+            background: linear-gradient(135deg, rgba(4, 120, 87, 0.2), rgba(16, 185, 129, 0.15));
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .step-badge::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #047857, #10b981);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+        }
+
+        /* Arrow icon */
+        .arrow-strategy {
+            display: inline-block;
+            color: #d97706;
+            font-size: 1.5em;
+            font-weight: 900;
+            filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.6));
+        }
+
+        /* ISO badge */
+        .iso-badge {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(245, 158, 11, 0.1));
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #fbbf24;
+            font-weight: 700;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Strategy Background -->
+    <div class="strategy-bg">
+        <div class="strategic-grid"></div>
+        
+        <!-- Decision Nodes -->
+        <div class="decision-node" style="top: 20%; left: 20%; animation-delay: 0s;"></div>
+        <div class="decision-node" style="top: 40%; left: 75%; animation-delay: 1.5s;"></div>
+        <div class="decision-node" style="top: 60%; left: 30%; animation-delay: 3s;"></div>
+        <div class="decision-node" style="top: 78%; left: 68%; animation-delay: 2s;"></div>
+        <div class="decision-node" style="top: 48%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Strategic Paths -->
+        <div class="strategic-path" style="width: 280px; top: 25%; left: 15%;"></div>
+        <div class="strategic-path" style="width: 240px; top: 52%; right: 12%; animation-delay: 3s;"></div>
+        <div class="strategic-path" style="width: 260px; top: 75%; left: 20%; animation-delay: 6s;"></div>
+        
+        <!-- Compass Rings -->
+        <div class="compass-ring" style="width: 280px; height: 280px; top: 18%; right: 10%;"></div>
+        <div class="compass-ring" style="width: 240px; height: 240px; bottom: 22%; left: 12%; animation-delay: 10s;"></div>
+        
+        <!-- Purpose Beams -->
+        <div class="purpose-beam" style="top: 15%; left: 35%;"></div>
+        <div class="purpose-beam" style="top: 20%; right: 30%; animation-delay: 5s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0a1f1a !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0a1f1a !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 strategy-rise">
+                    <span class="tag-strategy inline-block">
+                        🎯 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight strategy-rise delay-1">
+                    <span class="text-white">IA con</span><br>
+                    <span class="gradient-purpose">Propósito</span>
+                </h1>
+
+                <div class="strategy-divider mb-8 strategy-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-emerald-300 mb-4 max-w-4xl mx-auto strategy-rise delay-2 font-bold">
+                    Cómo Convertir la Moda en Estrategia
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto strategy-rise delay-3">
+                    De piloto experimental a ventaja competitiva sostenible
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 strategy-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-purpose text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Definir la Estrategia
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="purpose-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-strategy rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f182a64711d53e03e54ebd.jpeg"
+                                    alt="Enrique González Prado"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-strategy rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">Director</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="strategy-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Enrique González Prado
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-strategic text-lg font-bold">Director de Innovación y Desarrollo</span><br>
+                            <span class="text-gray-400 text-base">Grupo Cal y Mayor</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Ingeniero en Computación con <span class="text-strategic font-bold">Máster en Energías Renovables</span>. Más de 30 años en tecnologías de información, innovación y creatividad.
+                            </p>
+                            <p>
+                                Experto en desarrollo de sistemas, <span class="text-strategic font-semibold">planeación estratégica</span> y normativas ISO. Conferencista en ingeniería, tecnologías e IA.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="iso-badge">ISO</span>
+                                <span class="iso-badge">30+ años</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-strategy text-center">
+                                <div class="text-2xl font-bold gradient-purpose">30+</div>
+                                <div class="text-xs text-gray-500">Años Experiencia</div>
+                            </div>
+                            <div class="stat-strategy text-center">
+                                <div class="text-2xl font-bold gradient-purpose">ISO</div>
+                                <div class="text-xs text-gray-500">Normativas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1f1a, #0c1e2d) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="strategy-card rounded-3xl p-12 md:p-16 text-center strategy-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        <span class="text-white">El desafío: traducir el </span><span class="gradient-purpose">potencial de la IA</span><br>
+                        <span class="text-white">en </span><span class="gradient-purpose">resultados estratégicos</span><span class="text-white"> concretos</span>
+                    </h2>
+
+                    <div class="strategy-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                        Más allá del entusiasmo inicial, muchas organizaciones enfrentan el mismo reto: <span class="text-strategic font-bold">pasar de la moda tecnológica a la ventaja competitiva real</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Central Approach -->
+        <section class="py-20 px-6" style="background-color: #0a1f1a !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="strategy-card rounded-3xl p-12 md:p-16 text-center strategy-rise">
+                    <div class="mb-8">
+                        <span class="tag-strategy inline-block">Enfoque Central</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">La IA </span><span class="gradient-purpose">no debe verse</span><br>
+                        <span class="text-white">como un proyecto aislado</span>
+                    </h2>
+
+                    <div class="strategy-divider my-8"></div>
+
+                    <p class="text-2xl text-white mb-4 font-bold">
+                        Sino como un <span class="gradient-purpose">componente estratégico</span> del modelo de negocio
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Steps -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1f1a, #0c1e2d) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 strategy-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">De Piloto a </span><span class="gradient-purpose">Despliegue</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Pasos clave para escalar
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="step-badge strategy-rise delay-1">
+                        <h3 class="text-xl font-bold mb-3 text-white text-center">Alinear con Objetivos Corporativos</h3>
+                        <p class="text-gray-300 text-center">
+                            La tecnología debe responder directamente a las prioridades del negocio
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center strategy-rise delay-2">
+                        <span class="arrow-strategy">↓</span>
+                    </div>
+
+                    <div class="step-badge strategy-rise delay-2">
+                        <h3 class="text-xl font-bold mb-3 text-white text-center">Diseñar Hoja de Ruta</h3>
+                        <p class="text-gray-300 text-center">
+                            Basada en prioridades de negocio, no en tendencias tecnológicas
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center strategy-rise delay-3">
+                        <span class="arrow-strategy">↓</span>
+                    </div>
+
+                    <div class="step-badge strategy-rise delay-3">
+                        <h3 class="text-xl font-bold mb-3 text-white text-center">Gestionar el Cambio Organizacional</h3>
+                        <p class="text-gray-300 text-center">
+                            Preparar a la organización para adoptar nuevas formas de trabajo
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center strategy-rise delay-4">
+                        <span class="arrow-strategy">↓</span>
+                    </div>
+
+                    <div class="step-badge strategy-rise delay-4">
+                        <h3 class="text-xl font-bold mb-3 text-white text-center">Establecer Métricas de Impacto</h3>
+                        <p class="text-gray-300 text-center">
+                            Que conecten directamente con el valor generado para el negocio
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Examples -->
+        <section class="py-20 px-6" style="background-color: #0a1f1a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 strategy-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-purpose">Ejemplos</span> <span class="text-white">Reales</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Cómo empresas han usado la IA estratégicamente
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="strategy-card p-8 rounded-xl strategy-rise delay-1">
+                        <div class="text-4xl mb-4 icon-strategy">⚙️</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Optimizar Procesos</h3>
+                        <p class="text-sm text-gray-400">Mejora operativa y eficiencia</p>
+                    </div>
+
+                    <div class="strategy-card p-8 rounded-xl strategy-rise delay-2">
+                        <div class="text-4xl mb-4 icon-strategy">💎</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Rediseñar Propuesta de Valor</h3>
+                        <p class="text-sm text-gray-400">Diferenciación competitiva</p>
+                    </div>
+
+                    <div class="strategy-card p-8 rounded-xl strategy-rise delay-3">
+                        <div class="text-4xl mb-4 icon-strategy">🤝</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Mejorar Experiencia del Cliente</h3>
+                        <p class="text-sm text-gray-400">Satisfacción y lealtad</p>
+                    </div>
+
+                    <div class="strategy-card p-8 rounded-xl strategy-rise delay-4">
+                        <div class="text-4xl mb-4 icon-strategy">🛡️</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Anticiparse a Riesgos</h3>
+                        <p class="text-sm text-gray-400">Gestión proactiva</p>
+                    </div>
+
+                    <div class="strategy-card p-8 rounded-xl strategy-rise delay-5">
+                        <div class="text-4xl mb-4 icon-strategy">💰</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Abrir Nuevas Líneas de Ingresos</h3>
+                        <p class="text-sm text-gray-400">Crecimiento sostenible</p>
+                    </div>
+
+                    <div class="strategy-card p-8 rounded-xl strategy-rise delay-6">
+                        <div class="text-4xl mb-4 icon-strategy">🚀</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Reinventar la Organización</h3>
+                        <p class="text-sm text-gray-400">Transformación digital</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Critical Success Factors -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1f1a, #0c1e2d) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 strategy-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-purpose">Factores Críticos</span> <span class="text-white">de Éxito</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="strategy-card p-10 rounded-2xl text-center strategy-rise delay-1">
+                        <div class="text-6xl mb-6 icon-strategy">👔</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Liderazgo Transformador</h3>
+                        <p class="text-gray-300">
+                            Dirección clara y compromiso visible desde la alta dirección
+                        </p>
+                    </div>
+
+                    <div class="strategy-card p-10 rounded-2xl text-center strategy-rise delay-2">
+                        <div class="text-6xl mb-6 icon-strategy">🎓</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Inversión en Talento</h3>
+                        <p class="text-gray-300">
+                            Desarrollo continuo de capacidades y habilidades
+                        </p>
+                    </div>
+
+                    <div class="strategy-card p-10 rounded-2xl text-center strategy-rise delay-3">
+                        <div class="text-6xl mb-6 icon-strategy">🌱</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Cultura de Innovación</h3>
+                        <p class="text-gray-300">
+                            Mentalidad orientada a la experimentación y mejora continua
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Vision -->
+        <section class="py-20 px-6" style="background-color: #0a1f1a !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="strategy-card rounded-3xl p-12 md:p-16 text-center strategy-rise">
+                    <div class="mb-8">
+                        <span class="tag-strategy inline-block">Visión Estratégica</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="gradient-purpose">Más que una tendencia pasajera,</span><br>
+                        <span class="text-white">la IA es una herramienta clave para</span>
+                    </h2>
+
+                    <div class="strategy-divider my-8"></div>
+
+                    <div class="grid md:grid-cols-3 gap-6 text-left">
+                        <div>
+                            <div class="text-4xl mb-3 icon-strategy">🔄</div>
+                            <p class="font-bold text-white mb-2">Reinventar</p>
+                            <p class="text-sm text-gray-400">La organización</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-3 icon-strategy">💪</div>
+                            <p class="font-bold text-white mb-2">Fortalecer</p>
+                            <p class="text-sm text-gray-400">Posición competitiva</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-3 icon-strategy">🎯</div>
+                            <p class="font-bold text-white mb-2">Preparar</p>
+                            <p class="text-sm text-gray-400">Para el futuro digital</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #0c1e2d, #0a1f1a) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="strategy-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">Toma </span><span class="gradient-purpose">Decisiones Informadas</span><br>
+                        <span class="text-white">y </span><span class="gradient-purpose">Sostenibles</span><span class="text-white"> en torno a la IA</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Convierte la inteligencia artificial de experimento a componente estratégico de tu modelo de negocio
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-purpose text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-purpose px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="strategy-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-strategy">🎯</div>
+                            <h4 class="font-bold text-white mb-2">IA con Propósito</h4>
+                            <p class="text-sm text-gray-400">De moda a estrategia</p>
+                        </div>
+                        <div class="strategy-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-strategy">📊</div>
+                            <h4 class="font-bold text-white mb-2">30+ Años</h4>
+                            <p class="text-sm text-gray-400">Experiencia TI</p>
+                        </div>
+                        <div class="strategy-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-strategy">🏢</div>
+                            <h4 class="font-bold text-white mb-2">Grupo Cal y Mayor</h4>
+                            <p class="text-sm text-gray-400">Innovación estratégica</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0a1f1a !important; border-top: 1px solid rgba(16, 185, 129, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-purpose mb-2">Grupo Cal y Mayor</h3>
+                    <p class="text-gray-500 text-sm">Innovación y Desarrollo Estratégico</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0a1f1a';
+            document.body.style.backgroundColor = '#0a1f1a';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0a1f1a';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.strategy-rise, .purpose-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

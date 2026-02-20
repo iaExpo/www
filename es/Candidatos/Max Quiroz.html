@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Quiroz - IA y Educación | Max & Ruth Training</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Exo+2:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-metal: #0f1b2d;
+            --dark-steel: #1a2332;
+            --metal-blue: #2c4a6e;
+            --bright-steel: #4682b4;
+            --silver-blue: #6ba3d0;
+            --light-silver: #b0c4de;
+        }
+
+        html {
+            background: #0f1b2d !important;
+            background-color: #0f1b2d !important;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif !important;
+            background: #0f1b2d !important;
+            background-color: #0f1b2d !important;
+            color: #e8f1f7 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 800;
+        }
+
+        .gradient-metal {
+            background: linear-gradient(135deg, #4682b4 0%, #6ba3d0 50%, #b0c4de 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-steel {
+            color: #4682b4;
+        }
+
+        /* Metallic Background */
+        .metal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .metal-plate {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 30% 30%, rgba(70, 130, 180, 0.2), rgba(44, 74, 110, 0.1));
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float-plate 25s infinite ease-in-out;
+        }
+
+        @keyframes float-plate {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.4;
+            }
+            33% {
+                transform: translate(80px, -100px) rotate(120deg);
+                opacity: 0.6;
+            }
+            66% {
+                transform: translate(-60px, 60px) rotate(240deg);
+                opacity: 0.5;
+            }
+        }
+
+        .circuit-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(70, 130, 180, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(70, 130, 180, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: grid-scroll 30s linear infinite;
+        }
+
+        @keyframes grid-scroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 80px 80px; }
+        }
+
+        .reflection-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(176, 196, 222, 0.4), transparent);
+            animation: reflect 4s infinite;
+        }
+
+        @keyframes reflect {
+            0%, 100% {
+                opacity: 0.2;
+                transform: translateX(-10%);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateX(10%);
+            }
+        }
+
+        /* Fade animations */
+        .steel-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: steelRise 0.9s forwards;
+        }
+
+        @keyframes steelRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .forge-in {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: forgeIn 0.8s forwards;
+        }
+
+        @keyframes forgeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Metal Card */
+        .metal-card {
+            background: linear-gradient(135deg, rgba(70, 130, 180, 0.12), rgba(44, 74, 110, 0.08));
+            border: 1px solid rgba(70, 130, 180, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metal-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(176, 196, 222, 0.15), transparent);
+            transform: rotate(0deg);
+            transition: transform 0.8s;
+        }
+
+        .metal-card:hover::before {
+            transform: rotate(180deg);
+        }
+
+        .metal-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(107, 163, 208, 0.6);
+            box-shadow: 
+                0 0 40px rgba(70, 130, 180, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Steel Button */
+        .btn-steel {
+            background: linear-gradient(135deg, #2c4a6e, #4682b4);
+            box-shadow: 
+                0 8px 25px rgba(70, 130, 180, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .btn-steel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-steel:hover::after {
+            left: 100%;
+        }
+
+        .btn-steel:hover {
+            box-shadow: 
+                0 12px 35px rgba(70, 130, 180, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-steel {
+            border: 2px solid #4682b4;
+            color: #4682b4;
+            background: rgba(70, 130, 180, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-steel:hover {
+            background: rgba(70, 130, 180, 0.15);
+            box-shadow: 0 0 40px rgba(70, 130, 180, 0.4);
+            border-color: #6ba3d0;
+        }
+
+        /* Profile Frame */
+        .profile-metal {
+            border: 3px solid #4682b4;
+            box-shadow: 
+                0 0 50px rgba(70, 130, 180, 0.5),
+                inset 0 0 30px rgba(70, 130, 180, 0.1);
+        }
+
+        /* Badge */
+        .badge-metal {
+            background: linear-gradient(135deg, #2c4a6e, #4682b4);
+            box-shadow: 0 4px 20px rgba(70, 130, 180, 0.5);
+            border: 1px solid rgba(176, 196, 222, 0.3);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0f1b2d !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1b2d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #2c4a6e, #4682b4);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-metal {
+            background: rgba(70, 130, 180, 0.15);
+            border: 1px solid rgba(70, 130, 180, 0.4);
+            color: #b0c4de;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Icon shine */
+        .icon-metal {
+            filter: drop-shadow(0 0 12px rgba(107, 163, 208, 0.6));
+        }
+
+        /* Number badge */
+        .number-metal {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2c4a6e, #4682b4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 20px rgba(70, 130, 180, 0.4);
+            border: 1px solid rgba(176, 196, 222, 0.2);
+        }
+
+        /* Divider */
+        .metal-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4682b4, transparent);
+            margin: 0 auto;
+        }
+
+        /* Stat highlight */
+        .stat-metal {
+            background: linear-gradient(135deg, rgba(70, 130, 180, 0.15), rgba(44, 74, 110, 0.1));
+            border: 1px solid rgba(70, 130, 180, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-metal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6ba3d0, transparent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Metallic Background -->
+    <div class="metal-bg">
+        <div class="circuit-grid"></div>
+        
+        <!-- Metal Plates -->
+        <div class="metal-plate" style="top: 10%; left: 5%; animation-duration: 28s;"></div>
+        <div class="metal-plate" style="top: 50%; right: 10%; animation-duration: 32s; animation-delay: 3s;"></div>
+        <div class="metal-plate" style="bottom: 15%; left: 20%; animation-duration: 30s; animation-delay: 6s;"></div>
+        
+        <!-- Reflection Lines -->
+        <div class="reflection-line" style="width: 350px; top: 25%; left: 0; animation-delay: 0s;"></div>
+        <div class="reflection-line" style="width: 400px; top: 50%; right: 0; animation-delay: 2s;"></div>
+        <div class="reflection-line" style="width: 380px; top: 75%; left: 0; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0f1b2d !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0f1b2d !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 steel-rise">
+                    <span class="tag-metal inline-block">
+                        🎓 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight steel-rise delay-1">
+                    <span class="text-white">Inteligencia Artificial</span><br>
+                    <span class="gradient-metal">y Educación</span>
+                </h1>
+
+                <div class="metal-divider mb-8 steel-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-steel mb-12 max-w-4xl mx-auto steel-rise delay-2 font-bold">
+                    ¿El Futuro Que Esperábamos?
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 steel-rise delay-3">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-steel text-white px-12 py-5 rounded-lg font-bold text-lg inline-block text-center relative z-10">
+                        Descubrir el Futuro
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="forge-in delay-4">
+                        <div class="relative">
+                            <div class="profile-metal rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e411c86a0a9157dc8db981.jpeg"
+                                    alt="Max Quiroz Martínez"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-metal rounded-xl px-6 py-3">
+                                <div class="text-sm font-bold text-white">Director</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="steel-rise delay-5">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Max Quiroz Martínez
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-steel text-lg font-bold">Max & Ruth Training</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Con <span class="text-steel font-bold">más de 30 años de experiencia</span> en educación a distancia y en línea, ha estado en la vanguardia de la transformación educativa desde el nacimiento de la Universidad Virtual del Tecnológico de Monterrey.
+                            </p>
+                            <p>
+                                Ha guiado a <span class="text-steel font-semibold">miles de personas</span> a desarrollar sus potencialidades como instructores, coaches, capacitadores y conferencistas.
+                            </p>
+                            <p class="text-sm">
+                                Creador de <span class="gradient-metal font-bold">Cursos Que Dejan Huella®</span>
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-metal text-center">
+                                <div class="text-2xl font-bold gradient-metal">30+</div>
+                                <div class="text-xs text-gray-500">Años Experiencia</div>
+                            </div>
+                            <div class="stat-metal text-center">
+                                <div class="text-2xl font-bold gradient-metal">Miles</div>
+                                <div class="text-xs text-gray-500">Personas Impactadas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Context -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1b2d, #1a2332) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12 steel-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">La </span><span class="gradient-metal">Transformación</span><br>
+                        <span class="text-white">Ya Está Aquí</span>
+                    </h2>
+                    <div class="metal-divider mb-8"></div>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        La Inteligencia Artificial se ha consolidado como uno de los factores de transformación más significativos en el ámbito educativo
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-1">
+                        <div class="text-5xl mb-4 icon-metal">🎓</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Educación Básica</h3>
+                        <p class="text-sm text-gray-400">Transformando el aprendizaje desde la base</p>
+                    </div>
+
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-2">
+                        <div class="text-5xl mb-4 icon-metal">🏢</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Capacitación Corporativa</h3>
+                        <p class="text-sm text-gray-400">Redefiniendo el desarrollo profesional</p>
+                    </div>
+
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-3">
+                        <div class="text-5xl mb-4 icon-metal">🚀</div>
+                        <h3 class="text-lg font-bold mb-3 text-white">Experiencias de Aprendizaje</h3>
+                        <p class="text-sm text-gray-400">Nueva forma de concebir, diseñar e impartir</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Five Areas -->
+        <section class="py-20 px-6" style="background-color: #0f1b2d !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 steel-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-metal">Cinco Áreas Clave</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Donde la IA está generando cambios de fondo
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Area 1 -->
+                    <div class="metal-card p-8 rounded-xl steel-rise delay-1">
+                        <div class="flex items-start gap-6">
+                            <div class="number-metal flex-shrink-0">1</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Conocimiento de la Audiencia</h3>
+                                <p class="text-gray-300">Mediante analítica avanzada, la IA permite comprender con mayor detalle los perfiles, necesidades y estilos de aprendizaje de los estudiantes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area 2 -->
+                    <div class="metal-card p-8 rounded-xl steel-rise delay-2">
+                        <div class="flex items-start gap-6">
+                            <div class="number-metal flex-shrink-0">2</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Diseño de Contenidos Personalizados</h3>
+                                <p class="text-gray-300">Las herramientas inteligentes facilitan la creación de programas alineados con objetivos de aprendizaje específicos y demandas del entorno laboral</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area 3 -->
+                    <div class="metal-card p-8 rounded-xl steel-rise delay-3">
+                        <div class="flex items-start gap-6">
+                            <div class="number-metal flex-shrink-0">3</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Desarrollo Ágil de Materiales</h3>
+                                <p class="text-gray-300">La IA acelera la producción de recursos innovadores y de alta calidad, desde simulaciones interactivas hasta materiales multimedia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area 4 -->
+                    <div class="metal-card p-8 rounded-xl steel-rise delay-4">
+                        <div class="flex items-start gap-6">
+                            <div class="number-metal flex-shrink-0">4</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Impartición de Contenidos</h3>
+                                <p class="text-gray-300">Los sistemas basados en IA actúan como asistentes docentes, ampliando la capacidad de acompañamiento individual y mejorando la experiencia formativa</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area 5 -->
+                    <div class="metal-card p-8 rounded-xl steel-rise delay-5">
+                        <div class="flex items-start gap-6">
+                            <div class="number-metal flex-shrink-0">5</div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3 text-white">Evaluación Integral</h3>
+                                <p class="text-gray-300">Más allá de medir conocimientos, la IA posibilita evaluaciones multidimensionales que consideran la efectividad del curso, el desempeño del instructor y el impacto organizacional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Purpose -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1b2d, #1a2332) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="metal-card rounded-3xl p-12 md:p-16 text-center steel-rise">
+                    <div class="mb-8">
+                        <span class="tag-metal inline-block">Objetivo</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">Ofrecer una visión </span><span class="gradient-metal">clara y estructurada</span><br>
+                        <span class="text-white">del potencial de la IA en la educación</span>
+                    </h2>
+
+                    <div class="metal-divider my-8"></div>
+
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Apoyada en ejemplos prácticos y casos de uso actuales, abriendo el debate sobre los desafíos éticos, tecnológicos y pedagógicos
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Message -->
+        <section class="py-20 px-6" style="background-color: #0f1b2d !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 steel-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">El </span><span class="gradient-metal">Presente</span><br>
+                        <span class="text-white">en Evolución</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-1">
+                        <div class="text-5xl mb-4 icon-metal">⏰</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">No Es Futuro Distante</h3>
+                        <p class="text-sm text-gray-400">Es una realidad presente que demanda acción hoy</p>
+                    </div>
+
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-2">
+                        <div class="text-5xl mb-4 icon-metal">🎯</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Decisiones Estratégicas</h3>
+                        <p class="text-sm text-gray-400">El momento de capitalizar la IA es ahora</p>
+                    </div>
+
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-3">
+                        <div class="text-5xl mb-4 icon-metal">💎</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Valor Real</h3>
+                        <p class="text-sm text-gray-400">Para instituciones, empresas y sociedad</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Whom -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1b2d, #1a2332) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 steel-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-metal">¿Para Quién?</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-1">
+                        <div class="text-5xl mb-4 icon-metal">👨‍💼</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Empresarios</h3>
+                        <p class="text-sm text-gray-400">Líderes que buscan innovar en formación corporativa</p>
+                    </div>
+
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-2">
+                        <div class="text-5xl mb-4 icon-metal">📊</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Directivos</h3>
+                        <p class="text-sm text-gray-400">Tomadores de decisión en instituciones educativas</p>
+                    </div>
+
+                    <div class="metal-card p-8 rounded-xl text-center steel-rise delay-3">
+                        <div class="text-5xl mb-4 icon-metal">🎓</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Profesionales</h3>
+                        <p class="text-sm text-gray-400">Educadores y capacitadores del futuro</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1a2332, #0f1b2d) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="steel-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-metal">Transforma</span> <span class="text-white">la Educación</span><br>
+                        <span class="text-white">con </span><span class="gradient-metal">IA Estratégica</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo capitalizar la Inteligencia Artificial para generar valor real en tu institución o empresa
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-steel text-white px-12 py-6 rounded-lg font-bold text-xl inline-block text-center relative z-10">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-steel px-12 py-6 rounded-lg font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="metal-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-metal">📚</div>
+                            <h4 class="font-bold text-white mb-2">Casos Prácticos</h4>
+                            <p class="text-sm text-gray-400">Ejemplos reales aplicables</p>
+                        </div>
+                        <div class="metal-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-metal">🎯</div>
+                            <h4 class="font-bold text-white mb-2">Visión Estratégica</h4>
+                            <p class="text-sm text-gray-400">Decisiones informadas</p>
+                        </div>
+                        <div class="metal-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-metal">✨</div>
+                            <h4 class="font-bold text-white mb-2">30+ Años</h4>
+                            <p class="text-sm text-gray-400">Experiencia comprobada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0f1b2d !important; border-top: 1px solid rgba(70, 130, 180, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-metal mb-2">Max & Ruth Training</h3>
+                    <p class="text-gray-500 text-sm">Cursos Que Dejan Huella® con IA</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0f1b2d';
+            document.body.style.backgroundColor = '#0f1b2d';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0f1b2d';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.steel-rise, .forge-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

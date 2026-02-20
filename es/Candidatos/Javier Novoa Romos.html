@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Javier Novoa - Futuro del Empleo con IA | Cultura Ágil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-future: #0a1929;
+            --horizon-blue: #0d2847;
+            --transform-blue: #1e40af;
+            --sky-future: #3b82f6;
+            --bright-cyan: #06b6d4;
+            --electric-blue: #0ea5e9;
+        }
+
+        html {
+            background: #0a1929 !important;
+            background-color: #0a1929 !important;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif !important;
+            background: #0a1929 !important;
+            background-color: #0a1929 !important;
+            color: #dbeafe !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-future {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-transform {
+            color: #3b82f6;
+        }
+
+        /* Future Background */
+        .future-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .horizon-waves {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(30, 64, 175, 0.03) 50px,
+                    rgba(30, 64, 175, 0.03) 52px
+                );
+            animation: wave-move 20s linear infinite;
+        }
+
+        @keyframes wave-move {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(52px); }
+        }
+
+        .evolution-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #3b82f6, transparent);
+            border-radius: 50%;
+            animation: evolve-pulse 3.5s infinite;
+        }
+
+        @keyframes evolve-pulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(6, 182, 212, 0.8);
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        .change-stream {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+            animation: stream-flow 7s infinite;
+        }
+
+        @keyframes stream-flow {
+            0%, 100% {
+                opacity: 0.2;
+                transform: translateX(-100%);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateX(100%);
+            }
+        }
+
+        .transformation-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(6, 182, 212, 0.15);
+            animation: circle-transform 15s infinite;
+        }
+
+        @keyframes circle-transform {
+            0% {
+                transform: scale(0.8) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .timeline-beam {
+            position: absolute;
+            width: 3px;
+            height: 100px;
+            background: linear-gradient(180deg, transparent, rgba(30, 64, 175, 0.4), transparent);
+            animation: beam-timeline 12s infinite;
+        }
+
+        @keyframes beam-timeline {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateY(50px);
+            }
+        }
+
+        /* Fade animations */
+        .future-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: futureRise 0.8s forwards;
+        }
+
+        @keyframes futureRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .transform-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: transformEmerge 0.8s forwards;
+        }
+
+        @keyframes transformEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Future Card */
+        .future-card {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(13, 40, 71, 0.4));
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .future-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #06b6d4);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .future-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .future-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 
+                0 0 40px rgba(59, 130, 246, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Transform Button */
+        .btn-future {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            box-shadow: 
+                0 0 30px rgba(59, 130, 246, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-future:hover {
+            box-shadow: 
+                0 0 50px rgba(6, 182, 212, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-future {
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-future:hover {
+            background: rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 35px rgba(59, 130, 246, 0.4);
+            border-color: #06b6d4;
+        }
+
+        /* Profile Frame */
+        .profile-future {
+            border: 3px solid #3b82f6;
+            box-shadow: 
+                0 0 50px rgba(59, 130, 246, 0.5),
+                inset 0 0 30px rgba(30, 64, 175, 0.1);
+        }
+
+        /* Badge */
+        .badge-future {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0a1929 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1929;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #1e40af, #3b82f6);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-future {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-future {
+            filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6));
+        }
+
+        /* Stat box */
+        .stat-future {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.15), rgba(13, 40, 71, 0.3));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .future-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #1e40af, #3b82f6, #06b6d4, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Wave badge */
+        .wave-badge {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.2), rgba(59, 130, 246, 0.15));
+            border: 2px solid rgba(59, 130, 246, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+            animation: badge-sweep 3s infinite;
+        }
+
+        @keyframes badge-sweep {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .wave-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Timeline connector */
+        .timeline-connector {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(180deg, #3b82f6, #06b6d4);
+            margin: 0 auto;
+        }
+
+        /* Book badge */
+        .book-badge {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(14, 165, 233, 0.1));
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #7dd3fc;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Skill pill */
+        .skill-pill {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.15), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.75rem 1.25rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #93c5fd;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .skill-pill:hover {
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Future Background -->
+    <div class="future-bg">
+        <div class="horizon-waves"></div>
+        
+        <!-- Evolution Nodes -->
+        <div class="evolution-node" style="top: 18%; left: 20%; animation-delay: 0s;"></div>
+        <div class="evolution-node" style="top: 35%; left: 72%; animation-delay: 1s;"></div>
+        <div class="evolution-node" style="top: 55%; left: 28%; animation-delay: 2s;"></div>
+        <div class="evolution-node" style="top: 72%; left: 65%; animation-delay: 1.5s;"></div>
+        <div class="evolution-node" style="top: 42%; right: 15%; animation-delay: 2.5s;"></div>
+        
+        <!-- Change Streams -->
+        <div class="change-stream" style="top: 22%;"></div>
+        <div class="change-stream" style="top: 48%; animation-delay: 2s;"></div>
+        <div class="change-stream" style="top: 68%; animation-delay: 4s;"></div>
+        
+        <!-- Transformation Circles -->
+        <div class="transformation-circle" style="width: 280px; height: 280px; top: 15%; right: 10%;"></div>
+        <div class="transformation-circle" style="width: 240px; height: 240px; bottom: 20%; left: 12%; animation-delay: 7s;"></div>
+        
+        <!-- Timeline Beams -->
+        <div class="timeline-beam" style="top: 20%; left: 40%;"></div>
+        <div class="timeline-beam" style="top: 25%; right: 35%; animation-delay: 6s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0a1929 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0a1929 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 future-rise">
+                    <span class="tag-future inline-block">
+                        🔮 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight future-rise delay-1">
+                    <span class="text-white">El </span><span class="gradient-future">Futuro del Empleo</span><br>
+                    <span class="text-white">con IA</span>
+                </h1>
+
+                <div class="future-divider mb-8 future-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-blue-300 mb-4 max-w-4xl mx-auto future-rise delay-2 font-bold">
+                    Cómo Liderar el Cambio en los Próximos Cinco Años
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto future-rise delay-3">
+                    ¿Qué trabajos desaparecerán, cuáles nacerán y cómo prepararnos?
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 future-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-future text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Anticiparse al Cambio
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="transform-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-future rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6900d8e4e1e5532bbe50e496.jpeg"
+                                    alt="Dr. Javier Novoa Ramos"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-future rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">Director General</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="future-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Dr. Javier Novoa Ramos
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-transform text-lg font-bold">Director General</span><br>
+                            <span class="text-gray-400 text-base">Cultura Ágil</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Experto en cultura y desarrollo organizacional con <span class="text-transform font-bold">más de 25 años</span> transformando empresas y formando líderes.
+                            </p>
+                            <p>
+                                Autor del libro <span class="text-transform font-semibold">"Cultura Organizacional Ágil"</span>. Ha capacitado a más de 3,000 ejecutivos en cambio, productividad y liderazgo.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="book-badge">📚 Autor</span>
+                                <span class="book-badge">🎓 Coach Certificado</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-future text-center">
+                                <div class="text-2xl font-bold gradient-future">25+</div>
+                                <div class="text-xs text-gray-500">Años Experiencia</div>
+                            </div>
+                            <div class="stat-future text-center">
+                                <div class="text-2xl font-bold gradient-future">3,000+</div>
+                                <div class="text-xs text-gray-500">Ejecutivos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Waves -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1929, #0d2847) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-future">Tres Olas</span> <span class="text-white">de Cambio</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        En los próximos cinco años
+                    </p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="wave-badge future-rise delay-1">
+                        <div class="wave-number">1</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Automatización de Tareas Administrativas</h3>
+                        <p class="text-gray-300">
+                            Primera ola: procesos repetitivos y administrativos serán transformados
+                        </p>
+                    </div>
+
+                    <div class="timeline-connector future-rise delay-2"></div>
+
+                    <div class="wave-badge future-rise delay-2">
+                        <div class="wave-number">2</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Transformación de Puestos de Mediana Especialización</h3>
+                        <p class="text-gray-300">
+                            Segunda ola: roles de complejidad media evolucionarán hacia colaboración humano-IA
+                        </p>
+                    </div>
+
+                    <div class="timeline-connector future-rise delay-3"></div>
+
+                    <div class="wave-badge future-rise delay-3">
+                        <div class="wave-number">3</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Evolución de Profesiones de Alta Complejidad</h3>
+                        <p class="text-gray-300">
+                            Tercera ola: incluso las profesiones más complejas se redefinirán con IA como aliado
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hybrid Model -->
+        <section class="py-20 px-6" style="background-color: #0a1929 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="future-card rounded-3xl p-12 md:p-16 text-center future-rise">
+                    <div class="mb-8">
+                        <span class="tag-future inline-block">Modelo Híbrido</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">Más que una amenaza, la IA representa una </span><span class="gradient-future">oportunidad</span><br>
+                        <span class="text-white">para redefinir el </span><span class="gradient-future">valor del trabajo humano</span>
+                    </h2>
+
+                    <div class="future-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                        Dando paso a un modelo híbrido en el que <span class="text-transform font-bold">persona e inteligencia artificial colaboran como aliados</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Human Reasoning Evolution -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1929, #0d2847) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">El </span><span class="gradient-future">Razonamiento Humano</span><br>
+                        <span class="text-white">Cambia Radicalmente</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="future-card p-8 rounded-xl future-rise delay-1">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-4xl icon-future">🔄</div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-bold text-white">De Lineal a Conversacional</h3>
+                                <p class="text-sm text-gray-400">Pensamiento adaptativo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl future-rise delay-2">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-4xl icon-future">🎯</div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-bold text-white">De Cálculo a Interpretación</h3>
+                                <p class="text-sm text-gray-400">Toma de decisiones</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl future-rise delay-3">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-4xl icon-future">🧩</div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-bold text-white">De Rígido a Flexible</h3>
+                                <p class="text-sm text-gray-400">Conocimiento contextual</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="future-card p-8 rounded-xl future-rise delay-4">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="text-4xl icon-future">🔮</div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-bold text-white">De Limitado a Predictivo</h3>
+                                <p class="text-sm text-gray-400">Anticipar escenarios</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soft Skills -->
+        <section class="py-20 px-6" style="background-color: #0a1929 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-future">Habilidades Blandas</span> <span class="text-white">Críticas</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 mb-8">
+                        Los profesionistas tendrán que reinventarse continuamente
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <div class="skill-pill future-rise delay-1">🤝 Colaboración y Liderazgo</div>
+                    <div class="skill-pill future-rise delay-2">💪 Resiliencia y Manejo del Cambio</div>
+                    <div class="skill-pill future-rise delay-3">❤️ Empatía e Inteligencia Emocional</div>
+                    <div class="skill-pill future-rise delay-4">💡 Creatividad e Innovación</div>
+                </div>
+
+                <div class="mt-16 future-card rounded-3xl p-10 text-center future-rise delay-5">
+                    <h3 class="text-2xl font-bold mb-4 text-white">
+                        Lo que marcará la diferencia será nuestra capacidad de:
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <div>
+                            <div class="text-5xl mb-3 icon-future">✨</div>
+                            <p class="font-bold text-white">Crear</p>
+                        </div>
+                        <div>
+                            <div class="text-5xl mb-3 icon-future">👔</div>
+                            <p class="font-bold text-white">Liderar</p>
+                        </div>
+                        <div>
+                            <div class="text-5xl mb-3 icon-future">🤝</div>
+                            <p class="font-bold text-white">Conectar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Areas -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1929, #0d2847) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">El </span><span class="gradient-future">Impacto</span> <span class="text-white">Será Profundo</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-5 gap-6">
+                    <div class="future-card p-6 rounded-xl text-center future-rise delay-1">
+                        <div class="text-4xl mb-3 icon-future">💼</div>
+                        <h4 class="font-bold text-white mb-2">Economía</h4>
+                    </div>
+
+                    <div class="future-card p-6 rounded-xl text-center future-rise delay-2">
+                        <div class="text-4xl mb-3 icon-future">🎓</div>
+                        <h4 class="font-bold text-white mb-2">Educación</h4>
+                    </div>
+
+                    <div class="future-card p-6 rounded-xl text-center future-rise delay-3">
+                        <div class="text-4xl mb-3 icon-future">🏛️</div>
+                        <h4 class="font-bold text-white mb-2">Política</h4>
+                    </div>
+
+                    <div class="future-card p-6 rounded-xl text-center future-rise delay-4">
+                        <div class="text-4xl mb-3 icon-future">🏠</div>
+                        <h4 class="font-bold text-white mb-2">Vida Cotidiana</h4>
+                    </div>
+
+                    <div class="future-card p-6 rounded-xl text-center future-rise delay-5">
+                        <div class="text-4xl mb-3 icon-future">❤️</div>
+                        <h4 class="font-bold text-white mb-2">Valores</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Real Challenge -->
+        <section class="py-20 px-6" style="background-color: #0a1929 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="future-card rounded-3xl p-12 md:p-16 text-center future-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        <span class="text-white">El verdadero desafío </span><span class="gradient-future">no es tecnológico,</span><br>
+                        <span class="gradient-future">sino humano</span>
+                    </h2>
+
+                    <div class="future-divider my-8"></div>
+
+                    <p class="text-2xl text-white mb-8">
+                        Cómo respondemos como sociedad
+                    </p>
+
+                    <p class="text-xl text-gray-300">
+                        El futuro del empleo pertenece a la <span class="text-transform font-bold">inteligencia humana capaz de adaptarse, liderar y darle sentido</span> a esta transformación
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #0d2847, #0a1929) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="future-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-future">Prepárate</span> <span class="text-white">para Liderar</span><br>
+                        <span class="text-white">la </span><span class="gradient-future">Transformación</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo anticiparte al cambio del empleo con IA y fortalecer las habilidades que marcarán la diferencia
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-future text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-future px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="future-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-future">🔮</div>
+                            <h4 class="font-bold text-white mb-2">3 Olas de Cambio</h4>
+                            <p class="text-sm text-gray-400">Próximos 5 años</p>
+                        </div>
+                        <div class="future-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-future">📚</div>
+                            <h4 class="font-bold text-white mb-2">Autor</h4>
+                            <p class="text-sm text-gray-400">Cultura Organizacional Ágil</p>
+                        </div>
+                        <div class="future-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-future">🎓</div>
+                            <h4 class="font-bold text-white mb-2">3,000+</h4>
+                            <p class="text-sm text-gray-400">Ejecutivos capacitados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0a1929 !important; border-top: 1px solid rgba(59, 130, 246, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-future mb-2">Cultura Ágil</h3>
+                    <p class="text-gray-500 text-sm">Transformando empresas y formando líderes</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0a1929';
+            document.body.style.backgroundColor = '#0a1929';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0a1929';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.future-rise, .transform-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

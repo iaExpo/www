@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jorge Lozoya - El Fantástico | Tecnológico de Monterrey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-autonomous: #0a1929;
+            --tech-racing: #0284c7;
+            --electric-green: #10b981;
+            --alebrije-orange: #f97316;
+            --metallic-grey: #64748b;
+            --sensor-cyan: #06b6d4;
+        }
+
+        html {
+            background: #0a1929 !important;
+            background-color: #0a1929 !important;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif !important;
+            background: #0a1929 !important;
+            background-color: #0a1929 !important;
+            color: #e0f2fe !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-fantastico {
+            background: linear-gradient(135deg, #f97316 0%, #10b981 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-autonomous {
+            color: #06b6d4;
+        }
+
+        /* Autonomous Background */
+        .autonomous-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .radar-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-radar 22s linear infinite;
+        }
+
+        @keyframes grid-radar {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .convoy-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #f97316, transparent);
+            border-radius: 50%;
+            animation: node-convoy 3.5s infinite;
+        }
+
+        @keyframes node-convoy {
+            0%, 100% {
+                box-shadow: 0 0 18px rgba(249, 115, 22, 0.5);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        .trajectory-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.4), rgba(6, 182, 212, 0.4), transparent);
+            animation: line-trajectory 7s infinite;
+        }
+
+        @keyframes line-trajectory {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleX(0.9);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scaleX(1);
+            }
+        }
+
+        .detection-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(6, 182, 212, 0.15);
+            animation: ring-detection 13s infinite;
+        }
+
+        @keyframes ring-detection {
+            0%, 100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        .v2v-pulse {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.5), transparent);
+            animation: pulse-v2v 6s infinite;
+        }
+
+        @keyframes pulse-v2v {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Fade animations */
+        .auto-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: autoRise 0.8s forwards;
+        }
+
+        @keyframes autoRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fantastico-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: fantasticoEmerge 0.8s forwards;
+        }
+
+        @keyframes fantasticoEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Autonomous Card */
+        .auto-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(2, 132, 199, 0.4));
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .auto-card::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #f97316, #10b981, #06b6d4);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .auto-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .auto-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 
+                0 0 40px rgba(6, 182, 212, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Racing Button */
+        .btn-auto {
+            background: linear-gradient(135deg, #f97316, #10b981);
+            box-shadow: 
+                0 0 30px rgba(249, 115, 22, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-auto:hover {
+            box-shadow: 
+                0 0 50px rgba(16, 185, 129, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-auto {
+            border: 2px solid #f97316;
+            color: #f97316;
+            background: rgba(249, 115, 22, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-auto:hover {
+            background: rgba(249, 115, 22, 0.15);
+            box-shadow: 0 0 35px rgba(249, 115, 22, 0.4);
+            border-color: #10b981;
+        }
+
+        /* Profile Frame */
+        .profile-auto {
+            border: 3px solid #06b6d4;
+            box-shadow: 
+                0 0 50px rgba(6, 182, 212, 0.5),
+                inset 0 0 30px rgba(2, 132, 199, 0.1);
+        }
+
+        /* Badge */
+        .badge-auto {
+            background: linear-gradient(135deg, #f97316, #10b981);
+            box-shadow: 0 0 25px rgba(249, 115, 22, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0a1929 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1929;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f97316, #10b981);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-auto {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            color: #fed7aa;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-auto {
+            filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.6));
+        }
+
+        /* Stat box */
+        .stat-auto {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(2, 132, 199, 0.3));
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .auto-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f97316, #10b981, #06b6d4, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+        }
+
+        /* Metric big */
+        .metric-big {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(2, 132, 199, 0.3));
+            border: 2px solid rgba(249, 115, 22, 0.4);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .metric-big:hover {
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 35px rgba(249, 115, 22, 0.3);
+            transform: scale(1.05);
+        }
+
+        .metric-value {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f97316, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        /* Academic badge */
+        .academic-badge {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #7dd3fc;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Tech feature */
+        .tech-feature {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(2, 132, 199, 0.3));
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .tech-feature:hover {
+            border-color: rgba(249, 115, 22, 0.5);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Collaboration logo */
+        .collab-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(2, 132, 199, 0.2));
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* El Fantástico box */
+        .fantastico-box {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(16, 185, 129, 0.15));
+            border: 3px solid rgba(249, 115, 22, 0.4);
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fantastico-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.1), transparent 70%);
+            animation: fantastico-aura 5s infinite;
+        }
+
+        @keyframes fantastico-aura {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 5%) scale(1.1); }
+        }
+
+        /* Challenge box */
+        .challenge-box {
+            background: linear-gradient(135deg, rgba(100, 116, 139, 0.2), rgba(2, 132, 199, 0.3));
+            border-left: 4px solid #64748b;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Result highlight */
+        .result-highlight {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.15));
+            border: 3px solid rgba(16, 185, 129, 0.5);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        /* Year badge */
+        .year-badge {
+            background: rgba(249, 115, 22, 0.15);
+            border: 2px solid rgba(249, 115, 22, 0.4);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            color: #fed7aa;
+            font-weight: 900;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Autonomous Background -->
+    <div class="autonomous-bg">
+        <div class="radar-grid"></div>
+        
+        <!-- Convoy Nodes -->
+        <div class="convoy-node" style="top: 20%; left: 18%; animation-delay: 0s;"></div>
+        <div class="convoy-node" style="top: 40%; left: 72%; animation-delay: 1s;"></div>
+        <div class="convoy-node" style="top: 60%; left: 28%; animation-delay: 2s;"></div>
+        <div class="convoy-node" style="top: 78%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="convoy-node" style="top: 48%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Trajectory Lines -->
+        <div class="trajectory-line" style="width: 300px; top: 25%; left: 15%;"></div>
+        <div class="trajectory-line" style="width: 280px; top: 55%; right: 10%; animation-delay: 2.5s;"></div>
+        <div class="trajectory-line" style="width: 260px; top: 72%; left: 18%; animation-delay: 5s;"></div>
+        
+        <!-- Detection Rings -->
+        <div class="detection-ring" style="width: 300px; height: 300px; top: 15%; right: 10%;"></div>
+        <div class="detection-ring" style="width: 260px; height: 260px; bottom: 20%; left: 12%; animation-delay: 6s;"></div>
+        
+        <!-- V2V Pulses -->
+        <div class="v2v-pulse" style="top: 30%;"></div>
+        <div class="v2v-pulse" style="top: 60%; animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0a1929 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0a1929 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 auto-rise">
+                    <span class="tag-auto inline-block">
+                        🚗 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-center mb-6 leading-tight auto-rise delay-1">
+                    <span class="text-white">Vehículos Autónomos</span><br>
+                    <span class="gradient-fantastico">en el Entorno Social</span>
+                </h1>
+
+                <div class="auto-divider mb-8 auto-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-orange-300 mb-4 max-w-4xl mx-auto auto-rise delay-2 font-bold">
+                    El Fantástico: Movilidad Segura, Limpia y Para Todos
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto auto-rise delay-3">
+                    440 km en modo totalmente autónomo. Carrera Panamericana 2025.
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 auto-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-auto text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Descubrir la Innovación
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="fantastico-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-auto rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6940a5bd96e7537d7fee3463.jpg"
+                                    alt="Dr. Jorge de Jesús Lozoya Santos"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-auto rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">Dr.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="auto-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Dr. Jorge de Jesús Lozoya Santos
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-autonomous text-lg font-bold">Desarrollo Negocios Nacionales</span><br>
+                            <span class="text-gray-400 text-base">Tecnológico de Monterrey</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                <span class="text-autonomous font-bold">20+ años</span> en sistemas embebidos, control automático y movilidad inteligente. Líder del <span class="text-autonomous font-semibold">Proyecto Insignia en Movilidad</span>.
+                            </p>
+                            <p>
+                                Profesor investigador. SNI Nivel I. Academia Mexicana de Ciencias. <span class="text-autonomous font-bold">50+ publicaciones científicas</span>.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="academic-badge">🎓 SNI Nivel I</span>
+                                <span class="academic-badge">🔬 Academia</span>
+                                <span class="academic-badge">📚 50+ Pub</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-auto text-center">
+                                <div class="text-2xl font-bold gradient-fantastico">Tec</div>
+                                <div class="text-xs text-gray-500">Monterrey</div>
+                            </div>
+                            <div class="stat-auto text-center">
+                                <div class="text-2xl font-bold gradient-fantastico">Movilidad</div>
+                                <div class="text-xs text-gray-500">Inteligente</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- El Fantástico -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1929, #0284c7) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="fantastico-box auto-rise">
+                    <div class="relative z-10">
+                        <div class="mb-6 text-center">
+                            <img src="https://di-uploads-pod28.dealerinspire.com/maseratioffortlauderdale/uploads/2024/12/gc-folgore-model-info-v01.png" alt="Maserati GranCabrio Folgore" class="mx-auto max-w-md w-full h-auto rounded-lg" style="filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6));">
+                        </div>
+                        <h2 class="text-4xl md:text-5xl font-black mb-6 text-center">
+                            <span class="gradient-fantastico">El Fantástico</span>
+                        </h2>
+                        
+                        <div class="auto-divider my-6"></div>
+                        
+                        <p class="text-2xl text-white font-bold mb-4 text-center">
+                            Maserati GranCabrio Folgore 2025
+                        </p>
+                        
+                        <p class="text-xl text-gray-200 max-w-3xl mx-auto text-center mb-6">
+                            Modificado por estudiantes mexicanos. Decorado con <span class="text-orange-400 font-bold">motivos de alebrijes</span>. Vehículo autónomo que simboliza movilidad segura, limpia y para todos.
+                        </p>
+
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="tag-auto">🇲🇽 Mexicano</span>
+                            <span class="tag-auto">🎨 Alebrijes</span>
+                            <span class="tag-auto">⚡ Eléctrico</span>
+                            <span class="tag-auto">🤖 Autónomo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big Metrics -->
+        <section class="py-20 px-6" style="background-color: #0a1929 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 auto-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-fantastico">Hito Histórico</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="metric-big auto-rise delay-1">
+                        <div class="metric-value mb-3">440</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Kilómetros</h3>
+                        <p class="text-sm text-gray-400">Modo autónomo</p>
+                    </div>
+
+                    <div class="metric-big auto-rise delay-2">
+                        <div class="metric-value mb-3">3.5K</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Kilómetros</h3>
+                        <p class="text-sm text-gray-400">Carrera completa</p>
+                    </div>
+
+                    <div class="metric-big auto-rise delay-3">
+                        <div class="metric-value mb-3">75</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Años</h3>
+                        <p class="text-sm text-gray-400">Carrera Panamericana</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panamericana -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1929, #0284c7) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 auto-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Carrera </span><span class="gradient-fantastico">Panamericana</span>
+                    </h2>
+                    <div class="mt-6">
+                        <span class="year-badge">75ª Edición 2025</span>
+                    </div>
+                </div>
+
+                <div class="auto-card rounded-2xl p-10 auto-rise delay-1">
+                    <p class="text-xl text-white mb-6 font-bold text-center">
+                        Única competencia de automovilismo deportivo con etapas de velocidad en carretera abierta
+                    </p>
+                    
+                    <p class="text-lg text-gray-300 text-center mb-6">
+                        Recorriendo más de <span class="text-orange-400 font-bold">3,500 km</span> de sur a norte por México
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-6 mt-8">
+                        <div class="collab-box">
+                            <h3 class="text-lg font-bold text-white mb-2">Inicio Simbólico</h3>
+                            <p class="text-sm text-gray-300">11 octubre - Palacio Bellas Artes CDMX</p>
+                        </div>
+                        <div class="collab-box">
+                            <h3 class="text-lg font-bold text-white mb-2">Salida Oficial</h3>
+                            <p class="text-sm text-gray-300">12 octubre 7:00 am - Campus Santa Fe</p>
+                        </div>
+                    </div>
+
+                    <p class="text-center text-cyan-300 mt-8 font-bold text-lg">
+                        Transformada en "Laboratorio en Movimiento" por primera vez en 75 años
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology -->
+        <section class="py-20 px-6" style="background-color: #0a1929 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 auto-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-fantastico">Tecnología de Vanguardia</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="tech-feature auto-rise delay-1">
+                        <div class="text-4xl mb-3 icon-auto">📡</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Sensores Láser + Radares</h3>
+                        <p class="text-gray-300">Detección perimetral avanzada</p>
+                    </div>
+
+                    <div class="tech-feature auto-rise delay-2">
+                        <div class="text-4xl mb-3 icon-auto">🧠</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">IA de Percepción</h3>
+                        <p class="text-gray-300">Procesamiento en tiempo real</p>
+                    </div>
+
+                    <div class="tech-feature auto-rise delay-3">
+                        <div class="text-4xl mb-3 icon-auto">🤝</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Interacción Cognitiva</h3>
+                        <p class="text-gray-300">Hombre-vehículo inteligente</p>
+                    </div>
+
+                    <div class="tech-feature auto-rise delay-4">
+                        <div class="text-4xl mb-3 icon-auto">🔄</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Comunicación V2V</h3>
+                        <p class="text-gray-300">Vehículo-a-vehículo en tiempo real</p>
+                    </div>
+                </div>
+
+                <div class="auto-card rounded-xl p-8 mt-8 auto-rise delay-5">
+                    <p class="text-center text-lg text-gray-200">
+                        Recopilando datos continuos sobre <span class="text-autonomous font-bold">tráfico, seguridad vial y planificación urbana</span> para entornos mexicanos complejos
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaboration -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1929, #0284c7) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 auto-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Colaboración </span><span class="gradient-fantastico">Estratégica</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="collab-box auto-rise delay-1">
+                        <div class="text-4xl mb-3">🏫</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Tecnológico de Monterrey</h3>
+                        <p class="text-sm text-gray-300">Proyecto Insignia en Movilidad</p>
+                    </div>
+
+                    <div class="collab-box auto-rise delay-2">
+                        <div class="text-4xl mb-3">🇮🇹</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Politécnico di Milano</h3>
+                        <p class="text-sm text-gray-300">AIDA Team - Dr. Sergio Savaresi</p>
+                    </div>
+
+                    <div class="collab-box auto-rise delay-3">
+                        <div class="text-4xl mb-3">🏎️</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Maserati México</h3>
+                        <p class="text-sm text-gray-300">Rodnei Silva - Director</p>
+                    </div>
+
+                    <div class="collab-box auto-rise delay-4">
+                        <div class="text-4xl mb-3">🏁</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Carrera Panamericana</h3>
+                        <p class="text-sm text-gray-300">75ª edición histórica</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges -->
+        <section class="py-20 px-6" style="background-color: #0a1929 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 auto-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-fantastico">Desafíos Superados</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="challenge-box auto-rise delay-1">
+                        <h3 class="text-lg font-bold text-white mb-2">Realidad Vial Mexicana</h3>
+                        <p class="text-gray-300">Terrenos geográficos y climáticos variados, tráfico impredecible</p>
+                    </div>
+
+                    <div class="challenge-box auto-rise delay-2">
+                        <h3 class="text-lg font-bold text-white mb-2">Etapas Alta Velocidad</h3>
+                        <p class="text-gray-300">Carretera abierta con condiciones extremas de racing</p>
+                    </div>
+
+                    <div class="challenge-box auto-rise delay-3">
+                        <h3 class="text-lg font-bold text-white mb-2">Sintonización Conjunta</h3>
+                        <p class="text-gray-300">Investigadores italianos y mexicanos calibrando autonomía</p>
+                    </div>
+
+                    <div class="challenge-box auto-rise delay-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Convoyes con Intervalos</h3>
+                        <p class="text-gray-300">Pruebas exhaustivas con 30 segundos de separación</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1929, #0284c7) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16 auto-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Éxito </span><span class="gradient-fantastico">Rotundo</span>
+                    </h2>
+                </div>
+
+                <div class="result-highlight auto-rise delay-1 mb-8">
+                    <div class="text-6xl mb-4">✅</div>
+                    <h3 class="text-3xl font-bold mb-4 text-white">440 km Autónomos</h3>
+                    <p class="text-xl text-gray-200">
+                        Convoy cubrió la distancia en <span class="text-emerald-400 font-bold">modo totalmente autónomo</span>, demostrando fiabilidad en carreteras mexicanas
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="auto-card p-6 rounded-xl text-center auto-rise delay-2">
+                        <div class="text-3xl mb-3 icon-auto">🌎</div>
+                        <h4 class="font-bold text-white mb-2">Referente Global</h4>
+                        <p class="text-sm text-gray-400">México en innovación automotriz</p>
+                    </div>
+                    <div class="auto-card p-6 rounded-xl text-center auto-rise delay-3">
+                        <div class="text-3xl mb-3 icon-auto">📊</div>
+                        <h4 class="font-bold text-white mb-2">Datos Reales</h4>
+                        <p class="text-sm text-gray-400">Validación en condiciones extremas</p>
+                    </div>
+                    <div class="auto-card p-6 rounded-xl text-center auto-rise delay-4">
+                        <div class="text-3xl mb-3 icon-auto">🏎️</div>
+                        <h4 class="font-bold text-white mb-2">Legado Cultural</h4>
+                        <p class="text-sm text-gray-400">Carrera + futuro sostenible</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future -->
+        <section class="py-20 px-6" style="background-color: #0a1929 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="auto-card rounded-3xl p-12 md:p-16 text-center auto-rise">
+                    <div class="mb-8">
+                        <span class="tag-auto inline-block">2026 y Más Allá</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="gradient-fantastico">100% Autónomo</span>
+                    </h2>
+
+                    <div class="auto-divider my-8"></div>
+
+                    <p class="text-2xl text-white font-bold mb-4">
+                        El Fantástico evolucionará a totalmente autónomo
+                    </p>
+
+                    <p class="text-xl text-gray-300">
+                        Contribuyendo a <span class="text-autonomous font-bold">ciudades inteligentes más seguras e inclusivas</span> mediante soluciones derivadas de esta hazaña
+                    </p>
+
+                    <p class="text-lg text-cyan-300 mt-6 font-bold">
+                        Uniendo academia, industria y pasión por el automovilismo
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #0284c7, #0a1929) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="auto-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-fantastico">Movilidad del Futuro</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Segura, limpia y para todos. Tecnología autónoma validada en carreteras mexicanas.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-auto text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-auto px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="auto-card p-6 rounded-xl">
+                            <div class="mb-3 flex justify-center">
+                                <img src="https://di-uploads-pod28.dealerinspire.com/maseratioffortlauderdale/uploads/2024/12/gc-folgore-model-info-v01.png" alt="Maserati" class="w-16 h-auto" style="filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.6));">
+                            </div>
+                            <h4 class="font-bold text-white mb-2">El Fantástico</h4>
+                            <p class="text-sm text-gray-400">Alebrijes + Autonomía</p>
+                        </div>
+                        <div class="auto-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-auto">🏁</div>
+                            <h4 class="font-bold text-white mb-2">440 km</h4>
+                            <p class="text-sm text-gray-400">Totalmente autónomo</p>
+                        </div>
+                        <div class="auto-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-auto">🌆</div>
+                            <h4 class="font-bold text-white mb-2">Ciudades Inteligentes</h4>
+                            <p class="text-sm text-gray-400">Futuro sostenible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0a1929 !important; border-top: 1px solid rgba(6, 182, 212, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-fantastico mb-2">Tecnológico de Monterrey</h3>
+                    <p class="text-gray-500 text-sm">Proyecto Insignia en Movilidad</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0a1929';
+            document.body.style.backgroundColor = '#0a1929';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0a1929';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.auto-rise, .fantastico-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

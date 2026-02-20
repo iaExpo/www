@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Domínguez - IA con Rumbo | GoZen AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700;800&family=Barlow:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-teal: #0d1f2d;
+            --dark-aqua: #1a3a4a;
+            --aqua-main: #00bfa6;
+            --bright-aqua: #00e5cc;
+            --light-aqua: #4dd0c2;
+            --soft-cyan: #80e6d9;
+        }
+
+        html {
+            background: #0d1f2d !important;
+            background-color: #0d1f2d !important;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif !important;
+            background: #0d1f2d !important;
+            background-color: #0d1f2d !important;
+            color: #e8f5f3 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 800;
+        }
+
+        .gradient-aqua {
+            background: linear-gradient(135deg, #00bfa6 0%, #00e5cc 50%, #4dd0c2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-aqua {
+            color: #00bfa6;
+        }
+
+        /* Aqua Background */
+        .aqua-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .governance-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 191, 166, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 191, 166, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-flow 40s linear infinite;
+        }
+
+        @keyframes grid-flow {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        .aqua-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 229, 204, 0.25), transparent 70%);
+            animation: orb-drift 25s infinite ease-in-out;
+        }
+
+        @keyframes orb-drift {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translate(70px, -90px);
+                opacity: 0.7;
+            }
+        }
+
+        .framework-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 191, 166, 0.5), transparent);
+            animation: framework-scan 4s infinite;
+        }
+
+        @keyframes framework-scan {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleX(0.8);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scaleX(1);
+            }
+        }
+
+        /* Fade animations */
+        .structure-in {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: structureIn 0.8s forwards;
+        }
+
+        @keyframes structureIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .framework-enter {
+            opacity: 0;
+            transform: scale(0.92);
+            animation: frameworkEnter 0.8s forwards;
+        }
+
+        @keyframes frameworkEnter {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Governance Card */
+        .governance-card {
+            background: linear-gradient(135deg, rgba(0, 191, 166, 0.12), rgba(26, 58, 74, 0.3));
+            border: 2px solid rgba(0, 191, 166, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .governance-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00bfa6, #00e5cc, #4dd0c2);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+
+        .governance-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .governance-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 229, 204, 0.6);
+            box-shadow: 
+                0 0 40px rgba(0, 191, 166, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Professional Button */
+        .btn-governance {
+            background: linear-gradient(135deg, #00bfa6, #00e5cc);
+            box-shadow: 
+                0 8px 25px rgba(0, 191, 166, 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-governance:hover {
+            box-shadow: 
+                0 12px 35px rgba(0, 229, 204, 0.6),
+                0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-governance {
+            border: 2px solid #00bfa6;
+            color: #00bfa6;
+            background: rgba(0, 191, 166, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-governance:hover {
+            background: rgba(0, 191, 166, 0.15);
+            box-shadow: 0 0 35px rgba(0, 191, 166, 0.4);
+            border-color: #00e5cc;
+        }
+
+        /* Profile Frame */
+        .profile-governance {
+            border: 3px solid #00bfa6;
+            box-shadow: 
+                0 0 50px rgba(0, 191, 166, 0.5),
+                inset 0 0 30px rgba(0, 191, 166, 0.1);
+        }
+
+        /* Badge */
+        .badge-governance {
+            background: linear-gradient(135deg, #00bfa6, #00e5cc);
+            box-shadow: 0 4px 20px rgba(0, 191, 166, 0.5);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0d1f2d !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d1f2d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00bfa6, #00e5cc);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-governance {
+            background: rgba(0, 191, 166, 0.15);
+            border: 1px solid rgba(0, 191, 166, 0.4);
+            color: #80e6d9;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-governance {
+            filter: drop-shadow(0 0 12px rgba(0, 191, 166, 0.6));
+        }
+
+        /* Phase badge */
+        .phase-badge {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #00bfa6, #00e5cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 191, 166, 0.4);
+            border: 1px solid rgba(128, 230, 217, 0.3);
+        }
+
+        /* Stat box */
+        .stat-governance {
+            background: linear-gradient(135deg, rgba(0, 191, 166, 0.15), rgba(26, 58, 74, 0.2));
+            border: 1px solid rgba(0, 191, 166, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .governance-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00bfa6, #00e5cc, transparent);
+            margin: 0 auto;
+        }
+
+        /* ISO badge */
+        .iso-badge {
+            background: linear-gradient(135deg, rgba(0, 191, 166, 0.2), rgba(0, 229, 204, 0.15));
+            border: 2px solid rgba(0, 191, 166, 0.4);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Aqua Background -->
+    <div class="aqua-bg">
+        <div class="governance-grid"></div>
+        
+        <!-- Aqua Orbs -->
+        <div class="aqua-orb" style="width: 300px; height: 300px; top: 12%; left: 8%; animation-duration: 28s;"></div>
+        <div class="aqua-orb" style="width: 250px; height: 250px; top: 55%; right: 12%; animation-duration: 32s; animation-delay: 3s;"></div>
+        <div class="aqua-orb" style="width: 280px; height: 280px; bottom: 18%; left: 15%; animation-duration: 30s; animation-delay: 6s;"></div>
+        
+        <!-- Framework Lines -->
+        <div class="framework-line" style="width: 400px; top: 28%; left: 0;"></div>
+        <div class="framework-line" style="width: 350px; top: 52%; right: 0; animation-delay: 2s;"></div>
+        <div class="framework-line" style="width: 380px; top: 76%; left: 0; animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0d1f2d !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0d1f2d !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 structure-in">
+                    <span class="tag-governance inline-block">
+                        📊 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight structure-in delay-1">
+                    <span class="gradient-aqua">IA con Rumbo</span>
+                </h1>
+
+                <div class="governance-divider mb-8 structure-in delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-white mb-4 max-w-4xl mx-auto structure-in delay-2 font-bold">
+                    Del Piloto al Impacto Escalable con ISO 42001
+                </p>
+
+                <p class="text-lg text-center text-gray-400 mb-12 max-w-3xl mx-auto structure-in delay-3">
+                    Transformando experimentos de IA en capacidades institucionales gobernadas
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 structure-in delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-governance text-white px-12 py-5 rounded-lg font-bold text-lg inline-block text-center">
+                        Descubrir el Modelo
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="framework-enter delay-5">
+                        <div class="relative">
+                            <div class="profile-governance rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/692221d06984f1b92c28643c.jpg"
+                                    alt="Luis Héctor Domínguez Lara"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-governance rounded-xl px-6 py-3">
+                                <div class="text-sm font-bold text-white">Co-Founder</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="structure-in delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Luis Héctor Domínguez Lara
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-aqua text-lg font-bold">CEO & Co-Founder - GoZen AI</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Ingeniero en Sistemas con trayectoria como <span class="text-aqua font-bold">Sr. IT Project Manager</span> en el sector financiero y tecnológico.
+                            </p>
+                            <p>
+                                Especializado en <span class="text-aqua font-semibold">ciclo de vida de la IA</span> y aplicación de marcos como ISO 42001, ISO 31000, COSO ERM e ISO 37000.
+                            </p>
+                            <p class="text-sm italic text-soft-cyan">
+                                "La IA debe ser tan ética y gobernada como innovadora y poderosa"
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-governance text-center">
+                                <div class="text-2xl font-bold gradient-aqua">ISO</div>
+                                <div class="text-xs text-gray-500">42001 Certified</div>
+                            </div>
+                            <div class="stat-governance text-center">
+                                <div class="text-2xl font-bold gradient-aqua">PMO</div>
+                                <div class="text-xs text-gray-500">AI Expert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d1f2d, #1a3a4a) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12 structure-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">El </span><span class="gradient-aqua">Problema</span>
+                    </h2>
+                    <div class="governance-divider mb-8"></div>
+                </div>
+
+                <div class="governance-card rounded-2xl p-10 text-center structure-in delay-1">
+                    <p class="text-2xl text-gray-200 leading-relaxed mb-6">
+                        La mayoría de las organizaciones ya <span class="text-aqua font-bold">"juegan" con la IA</span>,<br>
+                        pero muy pocas la gestionan como un <span class="gradient-aqua font-bold">activo estratégico</span>
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <div>
+                            <div class="text-3xl mb-2 icon-governance">⚠️</div>
+                            <div class="text-sm text-gray-400">Sin Gobierno</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl mb-2 icon-governance">📉</div>
+                            <div class="text-sm text-gray-400">Sin Métricas Claras</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl mb-2 icon-governance">🔌</div>
+                            <div class="text-sm text-gray-400">Sin Conexión al Negocio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GoZen AI Origin -->
+        <section class="py-20 px-6" style="background-color: #0d1f2d !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 structure-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-aqua">GoZen AI</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Nacida de una inconformidad clara
+                    </p>
+                </div>
+
+                <div class="governance-card rounded-3xl p-12 md:p-16 structure-in delay-1">
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Ver proyectos de IA brillantes en demostraciones, pero frágiles en la realidad. Organizaciones que se enamoraban del <span class="text-aqua font-bold">"wow" tecnológico</span>, pero olvidaban gobernar la IA con el mismo rigor con el que se gobierna el negocio.
+                    </p>
+
+                    <div class="governance-divider my-8"></div>
+
+                    <h3 class="text-2xl font-bold mb-6 text-center gradient-aqua">
+                        Una firma distinta
+                    </h3>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="governance-card p-6 rounded-xl text-center">
+                            <div class="text-3xl mb-3 icon-governance">📋</div>
+                            <h4 class="font-bold text-white mb-2">Assessment</h4>
+                            <p class="text-sm text-gray-400">Evalúa la madurez</p>
+                        </div>
+                        <div class="governance-card p-6 rounded-xl text-center">
+                            <div class="text-3xl mb-3 icon-governance">🤝</div>
+                            <h4 class="font-bold text-white mb-2">Co-Creación</h4>
+                            <p class="text-sm text-gray-400">Soluciones con áreas de negocio</p>
+                        </div>
+                        <div class="governance-card p-6 rounded-xl text-center">
+                            <div class="text-3xl mb-3 icon-governance">🚀</div>
+                            <h4 class="font-bold text-white mb-2">PMO AI Implant</h4>
+                            <p class="text-sm text-gray-400">Acompañamiento híbrido</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Moments -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d1f2d, #1a3a4a) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 structure-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Tres Momentos </span><span class="gradient-aqua">Clave</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Del piloto al impacto escalable
+                    </p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Moment 1 -->
+                    <div class="governance-card p-10 rounded-2xl structure-in delay-1">
+                        <div class="flex items-start gap-6">
+                            <div class="phase-badge flex-shrink-0">1</div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-3 text-white">Assessment de Madurez</h3>
+                                <p class="text-gray-300 mb-4">
+                                    Entender capacidades reales, riesgos y oportunidades de la organización
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="iso-badge text-aqua">Diagnóstico</span>
+                                    <span class="iso-badge text-aqua">Riesgos</span>
+                                    <span class="iso-badge text-aqua">Oportunidades</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Moment 2 -->
+                    <div class="governance-card p-10 rounded-2xl structure-in delay-2">
+                        <div class="flex items-start gap-6">
+                            <div class="phase-badge flex-shrink-0">2</div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-3 text-white">Co-Creación de Soluciones</h3>
+                                <p class="text-gray-300 mb-4">
+                                    Diseñar productos y casos de uso de IA centrados en valor y cumplimiento
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="iso-badge text-aqua">Valor de Negocio</span>
+                                    <span class="iso-badge text-aqua">Cumplimiento</span>
+                                    <span class="iso-badge text-aqua">Casos de Uso</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Moment 3 -->
+                    <div class="governance-card p-10 rounded-2xl structure-in delay-3">
+                        <div class="flex items-start gap-6">
+                            <div class="phase-badge flex-shrink-0">3</div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-3 text-white">PMO & AI Implant</h3>
+                                <p class="text-gray-300 mb-4">
+                                    Ejecutar, medir y escalar bajo una metodología híbrida entre Product Owner y Project Manager
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="iso-badge text-aqua">Ejecución</span>
+                                    <span class="iso-badge text-aqua">Métricas</span>
+                                    <span class="iso-badge text-aqua">Escalabilidad</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frameworks -->
+        <section class="py-20 px-6" style="background-color: #0d1f2d !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 structure-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-aqua">Marcos</span> <span class="text-white">de Referencia</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Alineados con estándares internacionales
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="governance-card p-8 rounded-xl structure-in delay-1">
+                        <div class="text-4xl mb-4 icon-governance">📜</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">ISO 42001</h3>
+                        <p class="text-sm text-gray-400">Sistema de gestión de IA</p>
+                    </div>
+
+                    <div class="governance-card p-8 rounded-xl structure-in delay-2">
+                        <div class="text-4xl mb-4 icon-governance">⚖️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">ISO 31000</h3>
+                        <p class="text-sm text-gray-400">Gestión de riesgos</p>
+                    </div>
+
+                    <div class="governance-card p-8 rounded-xl structure-in delay-3">
+                        <div class="text-4xl mb-4 icon-governance">🔒</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">COSO ERM</h3>
+                        <p class="text-sm text-gray-400">Enterprise Risk Management</p>
+                    </div>
+
+                    <div class="governance-card p-8 rounded-xl structure-in delay-4">
+                        <div class="text-4xl mb-4 icon-governance">🏛️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">ISO 37000</h3>
+                        <p class="text-sm text-gray-400">Gobernanza organizacional</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objectives -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0d1f2d, #1a3a4a) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 structure-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Objetivos de la </span><span class="gradient-aqua">Ponencia</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="governance-card p-8 rounded-xl structure-in delay-1">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-governance">⚠️</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Demostrar Riesgos</h3>
+                                <p class="text-sm text-gray-400">Por qué la IA sin gobernanza incrementa riesgos legales, reputacionales y operativos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="governance-card p-8 rounded-xl structure-in delay-2">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-governance">🗺️</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Presentar el Modelo</h3>
+                                <p class="text-sm text-gray-400">El modelo de negocio de GoZen AI como hoja de ruta para el ciclo de vida de IA</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="governance-card p-8 rounded-xl structure-in delay-3">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-governance">💼</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Compartir Ejemplos</h3>
+                                <p class="text-sm text-gray-400">Cómo institucionalizar la IA en el sector público y privado</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="governance-card p-8 rounded-xl structure-in delay-4">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-governance">🎯</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Inspirar Evolución</h3>
+                                <p class="text-sm text-gray-400">De "experimentar con IA" a "dirigir IA con rumbo, métricas y control"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Purpose -->
+        <section class="py-20 px-6" style="background-color: #0d1f2d !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="governance-card rounded-3xl p-12 md:p-16 text-center structure-in">
+                    <div class="mb-8">
+                        <span class="tag-governance inline-block">Propósito de GoZen AI</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">Ayudar a que la IA en las instituciones sea </span><br>
+                        <span class="gradient-aqua">útil, segura y sostenible</span>
+                    </h2>
+
+                    <div class="governance-divider my-8"></div>
+
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Convirtiendo cada proyecto en una ventaja competitiva medible, y no en un experimento pasajero
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1a3a4a, #0d1f2d) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="structure-in">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">De Experimentos a</span><br>
+                        <span class="gradient-aqua">Capacidades Institucionales</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo gobernar la IA con rumbo, métricas y control
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-governance text-white px-12 py-6 rounded-lg font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-governance px-12 py-6 rounded-lg font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="governance-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-governance">📊</div>
+                            <h4 class="font-bold text-white mb-2">Modelo Práctico</h4>
+                            <p class="text-sm text-gray-400">Implementable desde día 1</p>
+                        </div>
+                        <div class="governance-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-governance">🎯</div>
+                            <h4 class="font-bold text-white mb-2">ISO 42001</h4>
+                            <p class="text-sm text-gray-400">Estándares internacionales</p>
+                        </div>
+                        <div class="governance-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-governance">✅</div>
+                            <h4 class="font-bold text-white mb-2">Casos Reales</h4>
+                            <p class="text-sm text-gray-400">Experiencias medibles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0d1f2d !important; border-top: 1px solid rgba(0, 191, 166, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-aqua mb-2">GoZen AI</h3>
+                    <p class="text-gray-500 text-sm">Consultoría, Gobierno e Implementación Responsable de IA</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0d1f2d';
+            document.body.style.backgroundColor = '#0d1f2d';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0d1f2d';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.structure-in, .framework-enter').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

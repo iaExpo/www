@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jaime García - IA en Diagnóstico Médico | Médica Sur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;700;900&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-radiology: #0c1821;
+            --diagnostic-blue: #1a2f3f;
+            --radiant-cyan: #06b6d4;
+            --scan-green: #14b8a6;
+            --bright-teal: #2dd4bf;
+            --light-scan: #5eead4;
+        }
+
+        html {
+            background: #0c1821 !important;
+            background-color: #0c1821 !important;
+        }
+
+        body {
+            font-family: 'Ubuntu', sans-serif !important;
+            background: #0c1821 !important;
+            background-color: #0c1821 !important;
+            color: #ccfbf1 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Saira', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-diagnostic {
+            background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 50%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-radiant {
+            color: #06b6d4;
+        }
+
+        /* Radiology Background */
+        .radiology-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .scan-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 184, 166, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            animation: grid-scan 25s linear infinite;
+        }
+
+        @keyframes grid-scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(20px); }
+        }
+
+        .scan-beam {
+            position: absolute;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(180deg, 
+                transparent, 
+                rgba(6, 182, 212, 0.15) 50%, 
+                transparent);
+            animation: beam-scan 8s infinite ease-in-out;
+        }
+
+        @keyframes beam-scan {
+            0%, 100% {
+                top: -150px;
+                opacity: 0.3;
+            }
+            50% {
+                top: 50%;
+                opacity: 0.7;
+            }
+        }
+
+        .diagnostic-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #14b8a6;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.8);
+            animation: particle-float 12s infinite ease-in-out;
+        }
+
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translate(80px, -80px);
+                opacity: 1;
+            }
+        }
+
+        .imaging-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(6, 182, 212, 0.2);
+            animation: ring-pulse 10s infinite;
+        }
+
+        @keyframes ring-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        /* Fade animations */
+        .diagnose-in {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: diagnoseIn 0.8s forwards;
+        }
+
+        @keyframes diagnoseIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scan-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: scanEmerge 0.8s forwards;
+        }
+
+        @keyframes scanEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Diagnostic Card */
+        .diagnostic-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(26, 47, 63, 0.4));
+            border: 2px solid rgba(20, 184, 166, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diagnostic-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(6, 182, 212, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            animation: card-shine 3s infinite;
+        }
+
+        @keyframes card-shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .diagnostic-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 
+                0 0 40px rgba(20, 184, 166, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Diagnostic Button */
+        .btn-diagnostic {
+            background: linear-gradient(135deg, #06b6d4, #14b8a6);
+            box-shadow: 
+                0 0 30px rgba(6, 182, 212, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-diagnostic:hover {
+            box-shadow: 
+                0 0 50px rgba(20, 184, 166, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-diagnostic {
+            border: 2px solid #06b6d4;
+            color: #06b6d4;
+            background: rgba(6, 182, 212, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-diagnostic:hover {
+            background: rgba(6, 182, 212, 0.15);
+            box-shadow: 0 0 35px rgba(6, 182, 212, 0.4);
+            border-color: #14b8a6;
+        }
+
+        /* Profile Frame */
+        .profile-radiology {
+            border: 3px solid #06b6d4;
+            box-shadow: 
+                0 0 50px rgba(6, 182, 212, 0.5),
+                inset 0 0 30px rgba(20, 184, 166, 0.1);
+        }
+
+        /* Badge */
+        .badge-radiology {
+            background: linear-gradient(135deg, #06b6d4, #14b8a6);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0c1821 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0c1821;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #06b6d4, #14b8a6);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-radiology {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(20, 184, 166, 0.4);
+            color: #5eead4;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-radiology {
+            filter: drop-shadow(0 0 12px rgba(20, 184, 166, 0.8));
+        }
+
+        /* Stat box */
+        .stat-radiology {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(26, 47, 63, 0.3));
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .radiology-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #06b6d4, #14b8a6, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Specialty badge */
+        .specialty-badge {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(20, 184, 166, 0.15));
+            border: 2px solid rgba(20, 184, 166, 0.4);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            display: inline-block;
+            color: #5eead4;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* X-ray overlay */
+        .xray-effect {
+            position: relative;
+        }
+
+        .xray-effect::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(20, 184, 166, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .xray-effect:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Radiology Background -->
+    <div class="radiology-bg">
+        <div class="scan-grid"></div>
+        
+        <!-- Scan Beams -->
+        <div class="scan-beam" style="animation-delay: 0s;"></div>
+        <div class="scan-beam" style="animation-delay: 4s;"></div>
+        
+        <!-- Diagnostic Particles -->
+        <div class="diagnostic-particle" style="top: 15%; left: 20%; animation-delay: 0s;"></div>
+        <div class="diagnostic-particle" style="top: 35%; left: 70%; animation-delay: 2s;"></div>
+        <div class="diagnostic-particle" style="top: 60%; left: 25%; animation-delay: 4s;"></div>
+        <div class="diagnostic-particle" style="top: 75%; left: 68%; animation-delay: 6s;"></div>
+        <div class="diagnostic-particle" style="top: 45%; right: 15%; animation-delay: 3s;"></div>
+        
+        <!-- Imaging Rings -->
+        <div class="imaging-ring" style="width: 300px; height: 300px; top: 20%; right: 10%;"></div>
+        <div class="imaging-ring" style="width: 250px; height: 250px; bottom: 25%; left: 15%; animation-delay: 5s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0c1821 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0c1821 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 diagnose-in">
+                    <span class="tag-radiology inline-block">
+                        🔬 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight diagnose-in delay-1">
+                    <span class="text-white">Inteligencia Artificial en el</span><br>
+                    <span class="gradient-diagnostic">Diagnóstico Médico</span>
+                </h1>
+
+                <div class="radiology-divider mb-8 diagnose-in delay-2"></div>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto diagnose-in delay-3">
+                    Aplicaciones de IA en el Departamento de Radiología de Médica Sur
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 diagnose-in delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-diagnostic text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Explorar Aplicaciones
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="scan-emerge delay-5">
+                        <div class="relative xray-effect">
+                            <div class="profile-radiology rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69014c7fef266f7e03940660.jpeg"
+                                    alt="Dr. Jaime García Gómez"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-radiology rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">Radiología</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="diagnose-in delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Dr. Jaime García Gómez
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-radiant text-lg font-bold">Radiología Oncológica</span><br>
+                            <span class="text-gray-400 text-base">Médica Sur • Ciudad de México</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Radiólogo especializado en <span class="text-radiant font-bold">radiología oncológica</span>, con expertise en diagnóstico y manejo imagenológico de patologías oncológicas.
+                            </p>
+                            <p>
+                                Utiliza técnicas avanzadas de imagen para apoyar tratamientos contra el cáncer: <span class="text-radiant font-semibold">resonancias magnéticas, tomografías computarizadas</span> y estudios intervencionistas.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-radiology text-center">
+                                <div class="text-2xl font-bold gradient-diagnostic">Médica Sur</div>
+                                <div class="text-xs text-gray-500">Hospital</div>
+                            </div>
+                            <div class="stat-radiology text-center">
+                                <div class="text-2xl font-bold gradient-diagnostic">Oncológica</div>
+                                <div class="text-xs text-gray-500">Especialidad</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symposium -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0c1821, #1a2f3f) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12 diagnose-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-diagnostic">Simposio</span>
+                    </h2>
+                    <div class="radiology-divider mb-8"></div>
+                </div>
+
+                <div class="diagnostic-card rounded-3xl p-12 md:p-16 text-center diagnose-in delay-1">
+                    <h3 class="text-3xl font-bold mb-6 text-white">
+                        Inteligencia Artificial en el Diagnóstico de Enfermedades
+                    </h3>
+                    
+                    <p class="text-xl text-gray-200 leading-relaxed mb-8">
+                        Aplicaciones de IA utilizadas en el <span class="text-radiant font-bold">Departamento de Radiología del Hospital Médica Sur</span> y su utilidad en las diferentes especialidades
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Specialties -->
+        <section class="py-20 px-6" style="background-color: #0c1821 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 diagnose-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Tres </span><span class="gradient-diagnostic">Especialidades</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="diagnostic-card p-10 rounded-2xl text-center diagnose-in delay-1">
+                        <div class="text-6xl mb-6 icon-radiology">🎗️</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Radiología Oncológica</h3>
+                        <p class="text-gray-300 mb-6">
+                            IA para detección temprana de tumores, seguimiento terapéutico y planificación de radioterapia
+                        </p>
+                        <div class="specialty-badge w-full">
+                            Diagnóstico de Cáncer
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card p-10 rounded-2xl text-center diagnose-in delay-2">
+                        <div class="text-6xl mb-6 icon-radiology">🩺</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Imagen de la Mama</h3>
+                        <p class="text-gray-300 mb-6">
+                            Sistemas inteligentes para screening mamográfico y detección precoz de lesiones
+                        </p>
+                        <div class="specialty-badge w-full">
+                            Mamografía Avanzada
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card p-10 rounded-2xl text-center diagnose-in delay-3">
+                        <div class="text-6xl mb-6 icon-radiology">💉</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Radiología Intervencionista</h3>
+                        <p class="text-gray-300 mb-6">
+                            IA para guía procedimental, planificación de intervenciones y análisis de resultados
+                        </p>
+                        <div class="specialty-badge w-full">
+                            Procedimientos Guiados
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Benefits -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0c1821, #1a2f3f) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 diagnose-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-diagnostic">Beneficios</span> <span class="text-white">de la IA</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="diagnostic-card p-8 rounded-xl diagnose-in delay-1">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-radiology">🎯</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Precisión Diagnóstica</h3>
+                                <p class="text-sm text-gray-400">Detección temprana con mayor exactitud y reducción de falsos negativos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card p-8 rounded-xl diagnose-in delay-2">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-radiology">⚡</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Velocidad de Análisis</h3>
+                                <p class="text-sm text-gray-400">Procesamiento rápido de imágenes complejas y priorización de casos urgentes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card p-8 rounded-xl diagnose-in delay-3">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-radiology">📊</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Análisis Cuantitativo</h3>
+                                <p class="text-sm text-gray-400">Mediciones objetivas y comparaciones longitudinales precisas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-card p-8 rounded-xl diagnose-in delay-4">
+                        <div class="flex items-start gap-4">
+                            <div class="text-3xl icon-radiology">🤝</div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 text-white">Apoyo al Radiólogo</h3>
+                                <p class="text-sm text-gray-400">Segunda opinión automatizada y reducción de fatiga diagnóstica</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Focus -->
+        <section class="py-20 px-6" style="background-color: #0c1821 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="diagnostic-card rounded-3xl p-12 md:p-16 text-center diagnose-in">
+                    <div class="mb-8">
+                        <span class="tag-radiology inline-block">Tecnología Médica</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">La importancia de la </span><span class="gradient-diagnostic">precisión diagnóstica</span><br>
+                        <span class="text-white">en el combate al cáncer</span>
+                    </h2>
+
+                    <div class="radiology-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
+                        Beneficiando a pacientes en <span class="text-radiant font-bold">etapas clave de su tratamiento</span> mediante técnicas avanzadas de imagen
+                    </p>
+
+                    <div class="grid md:grid-cols-3 gap-6 mt-8">
+                        <div>
+                            <div class="text-4xl mb-3 icon-radiology">🔍</div>
+                            <p class="font-bold text-white">Resonancia Magnética</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-3 icon-radiology">💿</div>
+                            <p class="font-bold text-white">Tomografía Computarizada</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl mb-3 icon-radiology">🔬</div>
+                            <p class="font-bold text-white">Estudios Intervencionistas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medical Standards -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0c1821, #1a2f3f) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 diagnose-in">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-diagnostic">Estándares</span> <span class="text-white">Profesionales</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="diagnostic-card p-10 rounded-xl diagnose-in delay-1">
+                        <div class="text-5xl mb-4 icon-radiology">🏥</div>
+                        <h3 class="text-xl font-bold mb-4 text-white">Médica Sur</h3>
+                        <p class="text-gray-300">
+                            Hospital de referencia en Ciudad de México con departamento de radiología de vanguardia
+                        </p>
+                    </div>
+
+                    <div class="diagnostic-card p-10 rounded-xl diagnose-in delay-2">
+                        <div class="text-5xl mb-4 icon-radiology">📜</div>
+                        <h3 class="text-xl font-bold mb-4 text-white">Consejo Mexicano</h3>
+                        <p class="text-gray-300">
+                            Alineado con estándares del Consejo Mexicano de Radiología e Imagen, promoviendo actualización continua
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1a2f3f, #0c1821) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="diagnose-in">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">Transformando el</span><br>
+                        <span class="gradient-diagnostic">Diagnóstico Médico</span><br>
+                        <span class="text-white">con Inteligencia Artificial</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre las aplicaciones de IA en radiología oncológica, imagen de mama y procedimientos intervencionistas
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-diagnostic text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-diagnostic px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="diagnostic-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-radiology">🎗️</div>
+                            <h4 class="font-bold text-white mb-2">Radiología Oncológica</h4>
+                            <p class="text-sm text-gray-400">Diagnóstico de cáncer</p>
+                        </div>
+                        <div class="diagnostic-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-radiology">🩺</div>
+                            <h4 class="font-bold text-white mb-2">Imagen de Mama</h4>
+                            <p class="text-sm text-gray-400">Detección precoz</p>
+                        </div>
+                        <div class="diagnostic-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-radiology">💉</div>
+                            <h4 class="font-bold text-white mb-2">Intervencionista</h4>
+                            <p class="text-sm text-gray-400">Procedimientos guiados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0c1821 !important; border-top: 1px solid rgba(6, 182, 212, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-diagnostic mb-2">Médica Sur</h3>
+                    <p class="text-gray-500 text-sm">Hospital de Excelencia • Ciudad de México</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0c1821';
+            document.body.style.backgroundColor = '#0c1821';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0c1821';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.diagnose-in, .scan-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

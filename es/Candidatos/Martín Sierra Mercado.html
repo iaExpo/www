@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martín Sierra - IA Oculta | Aeroméxico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-steel: #0a1520;
+            --midnight-corporate: #1e2a3a;
+            --steel-blue: #475569;
+            --silver-alert: #94a3b8;
+            --sky-warning: #38bdf8;
+            --bright-cyan: #06b6d4;
+        }
+
+        html {
+            background: #0a1520 !important;
+            background-color: #0a1520 !important;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif !important;
+            background: #0a1520 !important;
+            background-color: #0a1520 !important;
+            color: #cbd5e1 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-hidden {
+            background: linear-gradient(135deg, #475569 0%, #94a3b8 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-alert {
+            color: #38bdf8;
+        }
+
+        /* Hidden Background */
+        .hidden-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .erosion-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(71, 85, 105, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(71, 85, 105, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: erode-grid 20s linear infinite;
+        }
+
+        @keyframes erode-grid {
+            0% { 
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.2;
+                transform: scale(1.05);
+            }
+            100% { 
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+
+        .cannibal-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #38bdf8, transparent);
+            border-radius: 50%;
+            animation: particle-consume 5s infinite;
+        }
+
+        @keyframes particle-consume {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(148, 163, 184, 0.6);
+                opacity: 0.8;
+                transform: scale(1.5);
+            }
+        }
+
+        .warning-pulse {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+            animation: pulse-warning 6s infinite;
+        }
+
+        @keyframes pulse-warning {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .disruption-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(71, 85, 105, 0.15);
+            animation: ring-disrupt 16s infinite;
+        }
+
+        @keyframes ring-disrupt {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        .signal-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.4), transparent);
+            animation: signal-scan 10s infinite;
+        }
+
+        @keyframes signal-scan {
+            0%, 100% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Fade animations */
+        .hidden-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: hiddenRise 0.8s forwards;
+        }
+
+        @keyframes hiddenRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alert-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: alertEmerge 0.8s forwards;
+        }
+
+        @keyframes alertEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Hidden Card */
+        .hidden-card {
+            background: linear-gradient(135deg, rgba(71, 85, 105, 0.08), rgba(30, 42, 58, 0.4));
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .hidden-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #475569, #94a3b8, #38bdf8);
+            transform: scaleY(0);
+            transition: transform 0.4s;
+        }
+
+        .hidden-card:hover::after {
+            transform: scaleY(1);
+        }
+
+        .hidden-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 
+                0 0 40px rgba(56, 189, 248, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Alert Button */
+        .btn-hidden {
+            background: linear-gradient(135deg, #475569, #38bdf8);
+            box-shadow: 
+                0 0 30px rgba(56, 189, 248, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-hidden:hover {
+            box-shadow: 
+                0 0 50px rgba(148, 163, 184, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-hidden {
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-hidden:hover {
+            background: rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.4);
+            border-color: #94a3b8;
+        }
+
+        /* Profile Frame */
+        .profile-hidden {
+            border: 3px solid #475569;
+            box-shadow: 
+                0 0 50px rgba(56, 189, 248, 0.5),
+                inset 0 0 30px rgba(71, 85, 105, 0.1);
+        }
+
+        /* Badge */
+        .badge-hidden {
+            background: linear-gradient(135deg, #475569, #38bdf8);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0a1520 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1520;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #475569, #38bdf8);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-hidden {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: #7dd3fc;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-hidden {
+            filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.6));
+        }
+
+        /* Stat box */
+        .stat-hidden {
+            background: linear-gradient(135deg, rgba(71, 85, 105, 0.15), rgba(30, 42, 58, 0.3));
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .hidden-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #475569, #94a3b8, #38bdf8, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        /* Warning box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(71, 85, 105, 0.15));
+            border-left: 4px solid #38bdf8;
+            padding: 2rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Cert badge */
+        .cert-badge {
+            background: rgba(148, 163, 184, 0.15);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Risk indicator */
+        .risk-indicator {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(71, 85, 105, 0.1));
+            border: 2px solid rgba(56, 189, 248, 0.4);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .risk-indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+            animation: scan-risk 3s infinite;
+        }
+
+        @keyframes scan-risk {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        /* Learning number */
+        .learning-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #475569, #38bdf8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden Background -->
+    <div class="hidden-bg">
+        <div class="erosion-pattern"></div>
+        
+        <!-- Cannibal Particles -->
+        <div class="cannibal-particle" style="top: 20%; left: 22%; animation-delay: 0s;"></div>
+        <div class="cannibal-particle" style="top: 40%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="cannibal-particle" style="top: 60%; left: 30%; animation-delay: 3s;"></div>
+        <div class="cannibal-particle" style="top: 78%; left: 70%; animation-delay: 2s;"></div>
+        <div class="cannibal-particle" style="top: 50%; right: 20%; animation-delay: 2.5s;"></div>
+        
+        <!-- Warning Pulses -->
+        <div class="warning-pulse" style="top: 28%;"></div>
+        <div class="warning-pulse" style="top: 55%; animation-delay: 2s;"></div>
+        <div class="warning-pulse" style="top: 75%; animation-delay: 4s;"></div>
+        
+        <!-- Disruption Rings -->
+        <div class="disruption-ring" style="width: 300px; height: 300px; top: 15%; right: 10%;"></div>
+        <div class="disruption-ring" style="width: 250px; height: 250px; bottom: 20%; left: 12%; animation-delay: 8s;"></div>
+        
+        <!-- Signal Lines -->
+        <div class="signal-line" style="width: 300px; top: 35%; left: 15%;"></div>
+        <div class="signal-line" style="width: 280px; top: 65%; right: 10%; animation-delay: 5s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0a1520 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0a1520 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 hidden-rise">
+                    <span class="tag-hidden inline-block">
+                        ⚠️ IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight hidden-rise delay-1">
+                    <span class="gradient-hidden">IA Oculta</span>
+                </h1>
+
+                <div class="hidden-divider mb-8 hidden-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-sky-300 mb-4 max-w-4xl mx-auto hidden-rise delay-2 font-bold">
+                    Cómo la IA está Canibalizando Silenciosamente tu Modelo de Negocio
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto hidden-rise delay-3">
+                    La amenaza no viene de fuera. Viene de dentro.
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 hidden-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-hidden text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Anticipar la Disrupción
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="alert-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-hidden rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e40df26a0a9172928d155f.jpeg"
+                                    alt="Martín Sierra Mercado"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-hidden rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">Gerente</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="hidden-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Martín Sierra Mercado
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-alert text-lg font-bold">Gerente Portafolio de Proyectos y Proveedores de TI</span><br>
+                            <span class="text-gray-400 text-base">Aeroméxico</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Líder estratégico con <span class="text-alert font-bold">más de tres décadas</span> en gestión de proyectos, gobierno corporativo de TI y dirección de portafolios.
+                            </p>
+                            <p>
+                                Maestría en Alta Dirección Empresarial, cursando <span class="text-alert font-semibold">Doctorado en Administración</span>. Estudios en IA y diseño de productos en MIT.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="cert-badge">PMP®</span>
+                                <span class="cert-badge">PMO-CP®</span>
+                                <span class="cert-badge">Scrum Master</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-hidden text-center">
+                                <div class="text-2xl font-bold gradient-hidden">30+</div>
+                                <div class="text-xs text-gray-500">Años Experiencia</div>
+                            </div>
+                            <div class="stat-hidden text-center">
+                                <div class="text-2xl font-bold gradient-hidden">PMO+VMO</div>
+                                <div class="text-xs text-gray-500">Aeroméxico</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Paradox -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1520, #1e2a3a) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="hidden-card rounded-3xl p-12 md:p-16 text-center hidden-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        <span class="text-white">La </span><span class="gradient-hidden">Paradoja</span>
+                    </h2>
+
+                    <div class="hidden-divider my-8"></div>
+
+                    <p class="text-2xl text-white mb-6 font-bold">
+                        Mientras los líderes creen que están ganando ventaja competitiva...
+                    </p>
+
+                    <p class="text-xl text-gray-300">
+                        Sus organizaciones están <span class="text-alert font-bold">erosionando silenciosamente</span> sus propios diferenciadores
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Hidden Threat -->
+        <section class="py-20 px-6" style="background-color: #0a1520 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 hidden-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-hidden">La Amenaza</span> <span class="text-white">Invisible</span>
+                    </h2>
+                </div>
+
+                <div class="warning-box hidden-rise delay-1">
+                    <p class="text-2xl text-white mb-6 font-bold">
+                        La IA, implementada de manera aislada y fragmentada, debilita procesos clave:
+                    </p>
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl mb-2 icon-hidden">👥</div>
+                            <p class="text-sm text-alert font-bold">Atención al Cliente</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-2 icon-hidden">💰</div>
+                            <p class="text-sm text-alert font-bold">Control Financiero</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-2 icon-hidden">📊</div>
+                            <p class="text-sm text-alert font-bold">Gestión de Datos</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-2 icon-hidden">✨</div>
+                            <p class="text-sm text-alert font-bold">Experiencia Usuario</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Message -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1520, #1e2a3a) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="hidden-card rounded-3xl p-12 md:p-16 text-center hidden-rise">
+                    <div class="mb-8">
+                        <span class="tag-hidden inline-block">Mensaje Central</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="gradient-hidden">La IA no va a destruir primero a tus competidores,</span><br>
+                        <span class="text-white">va a transformar tu propio modelo de negocio </span><span class="gradient-hidden">desde adentro</span>
+                    </h2>
+
+                    <div class="hidden-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200">
+                        A menos que se gestione con <span class="text-alert font-bold">visión corporativa</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Four Key Learnings -->
+        <section class="py-20 px-6" style="background-color: #0a1520 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 hidden-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Cuatro </span><span class="gradient-hidden">Aprendizajes</span> <span class="text-white">Clave</span>
+                    </h2>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="risk-indicator hidden-rise delay-1">
+                        <div class="learning-number mb-3 mx-auto">1</div>
+                        <h3 class="text-xl font-bold mb-3 text-white relative z-10">Identificar Signos Tempranos</h3>
+                        <p class="text-gray-300 relative z-10">
+                            Reconocer la canibalización interna en su organización antes de que sea crítica
+                        </p>
+                    </div>
+
+                    <div class="risk-indicator hidden-rise delay-2">
+                        <div class="learning-number mb-3 mx-auto">2</div>
+                        <h3 class="text-xl font-bold mb-3 text-white relative z-10">Comprender las Vulnerabilidades</h3>
+                        <p class="text-gray-300 relative z-10">
+                            Por qué centrarse solo en eficiencias y ahorros genera debilidades estructurales
+                        </p>
+                    </div>
+
+                    <div class="risk-indicator hidden-rise delay-3">
+                        <div class="learning-number mb-3 mx-auto">3</div>
+                        <h3 class="text-xl font-bold mb-3 text-white relative z-10">Redefinir la IA como Palanca</h3>
+                        <p class="text-gray-300 relative z-10">
+                            Más allá de casos de uso operativos: reinvención estratégica
+                        </p>
+                    </div>
+
+                    <div class="risk-indicator hidden-rise delay-4">
+                        <div class="learning-number mb-3 mx-auto">4</div>
+                        <h3 class="text-xl font-bold mb-3 text-white relative z-10">Nuevo Rol de Liderazgo</h3>
+                        <p class="text-gray-300 relative z-10">
+                            De gestores de proyectos a arquitectos de ecosistemas de IA con gobernanza y ética
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2026 Warning -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a1520, #1e2a3a) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="hidden-card rounded-3xl p-12 md:p-16 text-center hidden-rise">
+                    <div class="mb-8">
+                        <span class="tag-hidden inline-block">⚠️ 2026</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">El verdadero riesgo </span><span class="gradient-hidden">no será quedarse atrás</span>
+                    </h2>
+
+                    <div class="hidden-divider my-8"></div>
+
+                    <p class="text-2xl text-white mb-4 font-bold">
+                        Sino no entender cómo la IA está reconfigurando silenciosamente
+                    </p>
+
+                    <p class="text-xl text-alert">
+                        Lo que hoy da valor a su negocio
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Approach -->
+        <section class="py-20 px-6" style="background-color: #0a1520 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 hidden-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-hidden">Enfoque de Liderazgo</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="hidden-card p-8 rounded-xl text-center hidden-rise delay-1">
+                        <div class="text-5xl mb-4 icon-hidden">🎯</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Visión Estratégica</h3>
+                        <p class="text-sm text-gray-400">Anticipar riesgos y oportunidades</p>
+                    </div>
+
+                    <div class="hidden-card p-8 rounded-xl text-center hidden-rise delay-2">
+                        <div class="text-5xl mb-4 icon-hidden">💡</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Pensamiento Innovador</h3>
+                        <p class="text-sm text-gray-400">Capitalizar el cambio acelerado</p>
+                    </div>
+
+                    <div class="hidden-card p-8 rounded-xl text-center hidden-rise delay-3">
+                        <div class="text-5xl mb-4 icon-hidden">❤️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Enfoque Humano</h3>
+                        <p class="text-sm text-gray-400">Tecnología, negocios y talento</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1e2a3a, #0a1520) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="hidden-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">Adelántate a la </span><span class="gradient-hidden">Disrupción Interna</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo convertir la amenaza oculta de la IA en una oportunidad estratégica de reinvención
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-hidden text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-hidden px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="hidden-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-hidden">⚠️</div>
+                            <h4 class="font-bold text-white mb-2">IA Oculta</h4>
+                            <p class="text-sm text-gray-400">Canibalización interna</p>
+                        </div>
+                        <div class="hidden-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-hidden">✈️</div>
+                            <h4 class="font-bold text-white mb-2">Aeroméxico</h4>
+                            <p class="text-sm text-gray-400">PMO + VMO</p>
+                        </div>
+                        <div class="hidden-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-hidden">🎓</div>
+                            <h4 class="font-bold text-white mb-2">MIT</h4>
+                            <p class="text-sm text-gray-400">IA y diseño productos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0a1520 !important; border-top: 1px solid rgba(56, 189, 248, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-hidden mb-2">Aeroméxico</h3>
+                    <p class="text-gray-500 text-sm">Portafolio de Proyectos y Proveedores de TI</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0a1520';
+            document.body.style.backgroundColor = '#0a1520';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0a1520';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hidden-rise, .alert-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

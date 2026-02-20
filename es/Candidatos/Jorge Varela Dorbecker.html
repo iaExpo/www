@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge Varela - Transformación Digital | Grupo Scanda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-cyber: #0c1821;
+            --strategic-blue: #0369a1;
+            --transform-copper: #ea580c;
+            --tech-teal: #0d9488;
+            --corporate-grey: #475569;
+            --innovation-cyan: #06b6d4;
+        }
+
+        html {
+            background: #0c1821 !important;
+            background-color: #0c1821 !important;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif !important;
+            background: #0c1821 !important;
+            background-color: #0c1821 !important;
+            color: #e0f2fe !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Rubik', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-transform {
+            background: linear-gradient(135deg, #ea580c 0%, #0d9488 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-cyber {
+            color: #06b6d4;
+        }
+
+        /* Cybernetic Background */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .digital-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-digital 20s linear infinite;
+        }
+
+        @keyframes grid-digital {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        .transform-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ea580c, transparent);
+            border-radius: 50%;
+            animation: node-transform 3.5s infinite;
+        }
+
+        @keyframes node-transform {
+            0%, 100% {
+                box-shadow: 0 0 12px rgba(234, 88, 12, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(13, 148, 136, 0.7);
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        .circuit-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(234, 88, 12, 0.3), rgba(6, 182, 212, 0.3), transparent);
+            animation: line-circuit 7s infinite;
+        }
+
+        @keyframes line-circuit {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleX(0.9);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scaleX(1);
+            }
+        }
+
+        .strategy-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(6, 182, 212, 0.12);
+            animation: ring-strategy 14s infinite;
+        }
+
+        @keyframes ring-strategy {
+            0%, 100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.2;
+            }
+        }
+
+        .innovation-pulse {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(13, 148, 136, 0.4), transparent);
+            animation: pulse-innovation 6s infinite;
+        }
+
+        @keyframes pulse-innovation {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Fade animations */
+        .cyber-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cyberRise 0.8s forwards;
+        }
+
+        @keyframes cyberRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .transform-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: transformEmerge 0.8s forwards;
+        }
+
+        @keyframes transformEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* Transform Card */
+        .transform-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(3, 105, 161, 0.4));
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .transform-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ea580c, #0d9488, #06b6d4);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .transform-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .transform-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(13, 148, 136, 0.6);
+            box-shadow: 
+                0 0 40px rgba(6, 182, 212, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Strategic Button */
+        .btn-transform {
+            background: linear-gradient(135deg, #ea580c, #0d9488);
+            box-shadow: 
+                0 0 30px rgba(234, 88, 12, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-transform:hover {
+            box-shadow: 
+                0 0 50px rgba(13, 148, 136, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-transform {
+            border: 2px solid #ea580c;
+            color: #ea580c;
+            background: rgba(234, 88, 12, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-transform:hover {
+            background: rgba(234, 88, 12, 0.15);
+            box-shadow: 0 0 35px rgba(234, 88, 12, 0.4);
+            border-color: #0d9488;
+        }
+
+        /* Profile Frame */
+        .profile-transform {
+            border: 3px solid #06b6d4;
+            box-shadow: 
+                0 0 50px rgba(6, 182, 212, 0.5),
+                inset 0 0 30px rgba(3, 105, 161, 0.1);
+        }
+
+        /* Badge */
+        .badge-transform {
+            background: linear-gradient(135deg, #ea580c, #0d9488);
+            box-shadow: 0 0 25px rgba(234, 88, 12, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0c1821 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0c1821;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ea580c, #0d9488);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-transform {
+            background: rgba(234, 88, 12, 0.15);
+            border: 1px solid rgba(234, 88, 12, 0.4);
+            color: #fed7aa;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-transform {
+            filter: drop-shadow(0 0 12px rgba(234, 88, 12, 0.6));
+        }
+
+        /* Stat box */
+        .stat-transform {
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.15), rgba(3, 105, 161, 0.3));
+            border: 1px solid rgba(234, 88, 12, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .transform-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ea580c, #0d9488, #06b6d4, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(234, 88, 12, 0.5);
+        }
+
+        /* Journey box */
+        .journey-box {
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(3, 105, 161, 0.3));
+            border-left: 4px solid #ea580c;
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            transition: all 0.3s;
+        }
+
+        .journey-box:hover {
+            border-color: #0d9488;
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
+        }
+
+        /* Role card */
+        .role-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(3, 105, 161, 0.3));
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .role-card:hover {
+            border-color: rgba(234, 88, 12, 0.5);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ea580c, #0d9488);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border-radius: 12px;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.5);
+        }
+
+        /* Academic badge */
+        .academic-badge {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #7dd3fc;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Timeline marker */
+        .timeline-marker {
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ea580c, #0d9488);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(234, 88, 12, 0.6);
+        }
+
+        /* Pillar box */
+        .pillar-box {
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(3, 105, 161, 0.3));
+            border: 2px solid rgba(13, 148, 136, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .pillar-box:hover {
+            border-color: rgba(234, 88, 12, 0.6);
+            box-shadow: 0 0 30px rgba(13, 148, 136, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Decades badge */
+        .decades-badge {
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.2), rgba(13, 148, 136, 0.15));
+            border: 2px solid rgba(234, 88, 12, 0.4);
+            padding: 1.5rem 3rem;
+            border-radius: 16px;
+            font-size: 2rem;
+            color: #fed7aa;
+            font-weight: 900;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Investment card */
+        .investment-card {
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.15), rgba(3, 105, 161, 0.3));
+            border: 2px solid rgba(234, 88, 12, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .investment-card:hover {
+            border-color: rgba(13, 148, 136, 0.5);
+            box-shadow: 0 0 25px rgba(234, 88, 12, 0.3);
+        }
+
+        /* Panel highlight */
+        .panel-highlight {
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.2), rgba(13, 148, 136, 0.15));
+            border: 3px solid rgba(234, 88, 12, 0.5);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(234, 88, 12, 0.1), transparent 70%);
+            animation: panel-glow 5s infinite;
+        }
+
+        @keyframes panel-glow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cybernetic Background -->
+    <div class="cyber-bg">
+        <div class="digital-grid"></div>
+        
+        <!-- Transform Nodes -->
+        <div class="transform-node" style="top: 20%; left: 18%; animation-delay: 0s;"></div>
+        <div class="transform-node" style="top: 40%; left: 72%; animation-delay: 1s;"></div>
+        <div class="transform-node" style="top: 60%; left: 28%; animation-delay: 2s;"></div>
+        <div class="transform-node" style="top: 78%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="transform-node" style="top: 48%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Circuit Lines -->
+        <div class="circuit-line" style="width: 300px; top: 25%; left: 15%;"></div>
+        <div class="circuit-line" style="width: 280px; top: 55%; right: 10%; animation-delay: 2.5s;"></div>
+        <div class="circuit-line" style="width: 260px; top: 72%; left: 18%; animation-delay: 5s;"></div>
+        
+        <!-- Strategy Rings -->
+        <div class="strategy-ring" style="width: 300px; height: 300px; top: 15%; right: 10%;"></div>
+        <div class="strategy-ring" style="width: 260px; height: 260px; bottom: 20%; left: 12%; animation-delay: 7s;"></div>
+        
+        <!-- Innovation Pulses -->
+        <div class="innovation-pulse" style="top: 30%;"></div>
+        <div class="innovation-pulse" style="top: 60%; animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0c1821 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0c1821 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 cyber-rise">
+                    <span class="tag-transform inline-block">
+                        🎯 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-center mb-6 leading-tight cyber-rise delay-1">
+                    <span class="text-white">Transformación Digital</span><br>
+                    <span class="gradient-transform">Impulsada por IA</span>
+                </h1>
+
+                <div class="transform-divider mb-8 cyber-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-orange-300 mb-4 max-w-4xl mx-auto cyber-rise delay-2 font-bold">
+                    De la Cibernética a la Innovación Empresarial
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto cyber-rise delay-3">
+                    Décadas de liderazgo en estrategia TI, educación en IA e inversiones en tecnologías emergentes
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 cyber-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-transform text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Panel de Expertos
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="transform-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-transform rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/695301b42bb72c77a44be8bb.jpg"
+                                    alt="Jorge Varela Dorbecker"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-transform rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">Chairman</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="cyber-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Jorge Varela Dorbecker
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-cyber text-lg font-bold">Chairman Consejo Ejecutivo</span><br>
+                            <span class="text-gray-400 text-base">Grupo Scanda</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Ejecutivo tecnológico y educador. <span class="text-cyber font-bold">Presidente Grupo Scanda</span> (servicios TI desde 1996). Director en Cybolt (ciberseguridad).
+                            </p>
+                            <p>
+                                Inversionista en IA: <span class="text-cyber font-semibold">Celestial Dynamics</span> (Solutions Partner Nvidia México). Coordina programa Ingeniería Cibernética en La Salle.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="academic-badge">🎓 La Salle</span>
+                                <span class="academic-badge">🎯 ITAM</span>
+                                <span class="academic-badge">💼 Scanda</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-transform text-center">
+                                <div class="text-2xl font-bold gradient-transform">1996</div>
+                                <div class="text-xs text-gray-500">Scanda</div>
+                            </div>
+                            <div class="stat-transform text-center">
+                                <div class="text-2xl font-bold gradient-transform">Nvidia</div>
+                                <div class="text-xs text-gray-500">Partner</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0c1821, #0369a1) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 cyber-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-transform">De la Cibernética</span><br>
+                        <span class="text-white">a la Innovación</span>
+                    </h2>
+                    <div class="mt-6">
+                        <span class="decades-badge">Décadas de Liderazgo</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4 max-w-4xl mx-auto">
+                    <div class="journey-box cyber-rise delay-1 relative">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Formación Cibernética</h3>
+                        <p class="text-gray-300">Licenciatura en Ingeniería Cibernética - Universidad La Salle. IA desde el plan de estudios.</p>
+                    </div>
+
+                    <div class="journey-box cyber-rise delay-2 relative">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Maestría Estratégica</h3>
+                        <p class="text-gray-300">Maestría en Administración con enfoque en Tecnología - ITAM</p>
+                    </div>
+
+                    <div class="journey-box cyber-rise delay-3 relative">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Liderazgo Empresarial</h3>
+                        <p class="text-gray-300">Presidente Grupo Scanda desde ~1996. Inteligencia de negocios, gestión TI, optimización.</p>
+                    </div>
+
+                    <div class="journey-box cyber-rise delay-4 relative">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Inversión en IA</h3>
+                        <p class="text-gray-300">Celestial Dynamics - Solutions Partner Nvidia en México. Desarrollo de IA empresarial.</p>
+                    </div>
+
+                    <div class="journey-box cyber-rise delay-5 relative">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Formación de Talento</h3>
+                        <p class="text-gray-300">Coordina programa Ingeniería Cibernética en La Salle. Siguiente generación IA.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multiple Roles -->
+        <section class="py-20 px-6" style="background-color: #0c1821 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 cyber-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Múltiples </span><span class="gradient-transform">Roles</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="role-card cyber-rise delay-1">
+                        <div class="role-icon">🏢</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Grupo Scanda</h3>
+                        <p class="text-sm text-cyan-300 font-bold mb-2">Chairman Consejo Ejecutivo</p>
+                        <p class="text-sm text-gray-400">Servicios TI, inteligencia de negocios</p>
+                    </div>
+
+                    <div class="role-card cyber-rise delay-2">
+                        <div class="role-icon">🛡️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Cybolt</h3>
+                        <p class="text-sm text-cyan-300 font-bold mb-2">Director</p>
+                        <p class="text-sm text-gray-400">Ciberseguridad empresarial</p>
+                    </div>
+
+                    <div class="role-card cyber-rise delay-3">
+                        <div class="role-icon">🎓</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Universidad La Salle</h3>
+                        <p class="text-sm text-cyan-300 font-bold mb-2">Coordinador</p>
+                        <p class="text-sm text-gray-400">Ingeniería Cibernética</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0c1821, #0369a1) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 cyber-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-transform">Inversión en IA</span>
+                    </h2>
+                </div>
+
+                <div class="investment-card max-w-4xl mx-auto cyber-rise delay-1">
+                    <div class="flex items-start gap-6">
+                        <div class="text-6xl icon-transform flex-shrink-0">🚀</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3 text-white">Celestial Dynamics</h3>
+                            <p class="text-lg text-cyan-300 font-bold mb-3">Solutions Partner de Nvidia en México</p>
+                            <p class="text-gray-300 mb-4">
+                                Pequeña empresa en CDMX que desarrolla e implementa soluciones de IA empresarial con soporte directo de Nvidia
+                            </p>
+                            <div class="flex gap-3 flex-wrap">
+                                <span class="tag-transform">💼 Inversionista</span>
+                                <span class="tag-transform">🤝 Nvidia Partner</span>
+                                <span class="tag-transform">🧠 IA Empresarial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Pillars -->
+        <section class="py-20 px-6" style="background-color: #0c1821 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 cyber-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Tres </span><span class="gradient-transform">Pilares</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="pillar-box cyber-rise delay-1">
+                        <div class="text-5xl mb-4 text-center icon-transform">💼</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white text-center">Estrategia TI</h3>
+                        <p class="text-gray-300 text-center">Décadas liderando transformación digital y gestión estratégica</p>
+                    </div>
+
+                    <div class="pillar-box cyber-rise delay-2">
+                        <div class="text-5xl mb-4 text-center icon-transform">🎓</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white text-center">Educación IA</h3>
+                        <p class="text-gray-300 text-center">Formando siguiente generación de profesionales en IA</p>
+                    </div>
+
+                    <div class="pillar-box cyber-rise delay-3">
+                        <div class="text-5xl mb-4 text-center icon-transform">🚀</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white text-center">Inversiones</h3>
+                        <p class="text-gray-300 text-center">Tecnologías emergentes con impacto empresarial</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0c1821, #0369a1) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 cyber-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-transform">Áreas de Expertise</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="transform-card p-8 rounded-xl cyber-rise delay-1">
+                        <div class="text-4xl mb-3 icon-transform">📊</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Inteligencia de Negocios</h3>
+                        <p class="text-gray-300">Business intelligence y analytics empresarial</p>
+                    </div>
+
+                    <div class="transform-card p-8 rounded-xl cyber-rise delay-2">
+                        <div class="text-4xl mb-3 icon-transform">⚙️</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Gestión TI</h3>
+                        <p class="text-gray-300">ITIL y optimización del desempeño</p>
+                    </div>
+
+                    <div class="transform-card p-8 rounded-xl cyber-rise delay-3">
+                        <div class="text-4xl mb-3 icon-transform">🤖</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Inteligencia Artificial</h3>
+                        <p class="text-gray-300">Desde cibernética hasta IA empresarial</p>
+                    </div>
+
+                    <div class="transform-card p-8 rounded-xl cyber-rise delay-4">
+                        <div class="text-4xl mb-3 icon-transform">🔒</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Ciberseguridad</h3>
+                        <p class="text-gray-300">Infraestructuras digitales seguras</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel Expert -->
+        <section class="py-20 px-6" style="background-color: #0c1821 !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="panel-highlight cyber-rise">
+                    <div class="relative z-10">
+                        <div class="mb-8">
+                            <span class="tag-transform inline-block">Panel de Expertos IA</span>
+                        </div>
+                        
+                        <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                            <span class="gradient-transform">Integración de IA</span><br>
+                            <span class="text-white">para el Futuro Empresarial</span>
+                        </h2>
+
+                        <div class="transform-divider my-8"></div>
+
+                        <p class="text-xl text-white font-bold mb-6">
+                            Perspectivas sobre eficiencia empresarial, seguridad y crecimiento
+                        </p>
+
+                        <p class="text-lg text-gray-300">
+                            En un panorama tecnológico en <span class="text-cyan-400 font-bold">rápida evolución</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thought Leadership -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0c1821, #0369a1) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 cyber-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Liderazgo de </span><span class="gradient-transform">Pensamiento</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="transform-card p-8 rounded-xl cyber-rise delay-1">
+                        <div class="text-4xl mb-4 icon-transform">🎤</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Conferencias</h3>
+                        <p class="text-gray-300">"Transformación Digital de las Empresas" - 2021</p>
+                    </div>
+
+                    <div class="transform-card p-8 rounded-xl cyber-rise delay-2">
+                        <div class="text-4xl mb-4 icon-transform">💬</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Foros</h3>
+                        <p class="text-gray-300">IMT Contact Forum - Tecnologías disruptivas</p>
+                    </div>
+                </div>
+
+                <div class="transform-card rounded-xl p-10 mt-8 text-center cyber-rise delay-3">
+                    <p class="text-xl text-white font-bold">
+                        Reconocido en publicaciones sobre innovación tecnológica
+                    </p>
+                    <p class="text-lg text-cyan-300 mt-4">
+                        Líder en tecnología empresarial para sectores público y privado
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #0369a1, #0c1821) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="cyber-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-transform">Conectando</span><br>
+                        <span class="text-white">Educación e Industria</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        De la cibernética a la innovación. Formando el futuro de la IA empresarial.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-transform text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-transform px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="transform-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-transform">🏢</div>
+                            <h4 class="font-bold text-white mb-2">Grupo Scanda</h4>
+                            <p class="text-sm text-gray-400">Desde 1996</p>
+                        </div>
+                        <div class="transform-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-transform">🎓</div>
+                            <h4 class="font-bold text-white mb-2">La Salle</h4>
+                            <p class="text-sm text-gray-400">Cibernética</p>
+                        </div>
+                        <div class="transform-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-transform">🚀</div>
+                            <h4 class="font-bold text-white mb-2">Nvidia Partner</h4>
+                            <p class="text-sm text-gray-400">Celestial Dynamics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0c1821 !important; border-top: 1px solid rgba(6, 182, 212, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-transform mb-2">Grupo Scanda</h3>
+                    <p class="text-gray-500 text-sm">Transformación digital e innovación empresarial</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0c1821';
+            document.body.style.backgroundColor = '#0c1821';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0c1821';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.cyber-rise, .transform-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

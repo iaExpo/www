@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Bastidas - Crea Tu Asistente de IA | Launch Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue-deep: #0a0e27;
+            --blue-dark: #0f172a;
+            --blue-mid: #1e293b;
+            --blue-accent: #3b82f6;
+            --cyan-bright: #06b6d4;
+            --cyan-glow: #22d3ee;
+            --purple-accent: #8b5cf6;
+        }
+
+        html {
+            background: #0a0e27 !important;
+            background-color: #0a0e27 !important;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif !important;
+            background: #0a0e27 !important;
+            background-color: #0a0e27 !important;
+            color: #e2e8f0 !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glow-box {
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(100px, -100px) scale(1.2);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-50px, -150px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translate(150px, -50px) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        /* Neural Network Lines */
+        .neural-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            animation: pulse-line 3s infinite;
+        }
+
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Fade In Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Slide Up Animation */
+        .slide-up {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUp 0.8s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scale In Animation */
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: scaleIn 0.6s forwards;
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Stagger delays */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
+
+        /* Card Hover Effect */
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.4);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        /* Button Pulse */
+        .btn-pulse {
+            animation: btnPulse 2s infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+            }
+        }
+
+        /* Link button styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Rotating Border */
+        .rotating-border {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rotating-border::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(59, 130, 246, 0.5), transparent 30%);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .rotating-border::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--blue-dark);
+            border-radius: inherit;
+        }
+
+        /* Icon Glow */
+        .icon-glow {
+            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6));
+        }
+
+        /* Grid Pattern */
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--blue-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #06b6d4);
+            border-radius: 4px;
+        }
+
+        /* Profile Image Glow */
+        .profile-glow {
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.6);
+            border: 3px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* Override any GHL default styles */
+        div[class*="hl_page-preview"] {
+            background-color: #0a0e27 !important;
+        }
+
+        .hl_page-preview--content {
+            background-color: #0a0e27 !important;
+        }
+
+        #content {
+            background-color: #0a0e27 !important;
+        }
+
+        main {
+            background-color: #0a0e27 !important;
+        }
+
+        /* Force dark background on all containers */
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0a0e27 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="particle" style="width: 300px; height: 300px; top: 10%; left: 10%; animation-duration: 25s;"></div>
+        <div class="particle" style="width: 200px; height: 200px; top: 60%; left: 70%; animation-duration: 18s; animation-delay: 3s;"></div>
+        <div class="particle" style="width: 250px; height: 250px; top: 30%; right: 5%; animation-duration: 22s; animation-delay: 5s;"></div>
+        
+        <!-- Neural Lines -->
+        <div class="neural-line" style="width: 300px; top: 20%; left: 10%; transform: rotate(-45deg);"></div>
+        <div class="neural-line" style="width: 400px; top: 50%; right: 10%; transform: rotate(30deg); animation-delay: 1s;"></div>
+        <div class="neural-line" style="width: 350px; bottom: 20%; left: 30%; transform: rotate(-20deg); animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0a0e27 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20 grid-pattern" style="background-color: #0a0e27 !important; background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px) !important; background-size: 50px 50px !important;">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="inline-block">
+                        <span class="text-cyan-bright text-sm font-semibold tracking-widest uppercase fade-in px-4 py-2 rounded-full border border-cyan-bright/30 bg-cyan-bright/10">
+                            🚀 Automatización de Empresas
+                        </span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight slide-up">
+                        Crea Tu <span class="gradient-text">Asistente de IA</span> y Tu Mente Maestra Digital
+                    </h1>
+                    
+                    <p class="text-xl text-gray-300 leading-relaxed slide-up delay-1">
+                        De WhatsApp a Tu Propio Chat Privado: Transforma tu conocimiento en sistemas inteligentes que liberan tu tiempo y escalan tu negocio.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 slide-up delay-2">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 btn-pulse inline-block text-center">
+                            Reservar Mi Lugar
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 slide-up delay-3">
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">24/7</div>
+                            <div class="text-sm text-gray-400">Atención Automatizada</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">100%</div>
+                            <div class="text-sm text-gray-400">Personalizable</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">∞</div>
+                            <div class="text-sm text-gray-400">Escalabilidad</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Profile Image -->
+                <div class="flex justify-center scale-in delay-2">
+                    <div class="rotating-border rounded-3xl p-1">
+                        <div class="relative z-10 rounded-3xl overflow-hidden profile-glow">
+                            <img 
+                                src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69376d892922aead080c0dd0.jpg" 
+                                alt="Diego Bastidas - CEO Launch Planner"
+                                class="w-full h-auto max-w-md"
+                            />
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-dark via-blue-dark/90 to-transparent p-8">
+                                <h3 class="text-2xl font-bold text-white">Diego Bastidas, Luz Forero</h3>
+                                <p class="text-cyan-bright font-semibold">Fundadores Launch Planner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="py-20 px-6 bg-gradient-to-b from-blue-deep to-blue-dark" style="background: linear-gradient(to bottom, #0a0e27, #0f172a) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text slide-up">
+                    ¿Mueres de Éxito?
+                </h2>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed slide-up delay-1">
+                    Muchos emprendedores logran vender, crecen rápido... y de pronto se encuentran <span class="text-cyan-bright font-semibold">atrapados en mensajes, soporte, seguimiento, operaciones y tareas repetitivas</span> que consumen su tiempo y su energía.
+                </p>
+                
+                <!-- Pain Points -->
+                <div class="grid md:grid-cols-3 gap-6 mt-16">
+                    <div class="feature-card p-8 rounded-2xl slide-up delay-2">
+                        <div class="text-5xl mb-4">⏰</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Ya No Tienes Tiempo</h3>
+                        <p class="text-gray-400">El éxito te ha dejado sin espacio para pensar estratégicamente</p>
+                    </div>
+                    
+                    <div class="feature-card p-8 rounded-2xl slide-up delay-3">
+                        <div class="text-5xl mb-4">📱</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Atrapado en Mensajes</h3>
+                        <p class="text-gray-400">WhatsApp y soporte consumen toda tu energía diaria</p>
+                    </div>
+                    
+                    <div class="feature-card p-8 rounded-2xl slide-up delay-4">
+                        <div class="text-5xl mb-4">🔄</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Tareas Repetitivas</h3>
+                        <p class="text-gray-400">Respondes las mismas preguntas una y otra vez</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="py-20 px-6" style="background-color: #0a0e27 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 slide-up">
+                        La <span class="gradient-text">Solución Inteligente</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto slide-up delay-1">
+                        Transforma tu conocimiento en dos sistemas de inteligencia artificial que trabajan para ti, liberan tu agenda y te devuelven foco estratégico.
+                    </p>
+                </div>
+
+                <!-- System 1: WhatsApp Assistant -->
+                <div class="glow-box rounded-3xl p-12 mb-12 slide-up delay-2 bg-gradient-to-br from-blue-mid/50 to-blue-dark/50">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="inline-block mb-4">
+                                <span class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                                    SISTEMA 1 - En Vivo
+                                </span>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-6 text-white">
+                                Asistente de Chat en WhatsApp
+                            </h3>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                Aprende a crear un agente inteligente en GHL capaz de transformar completamente tu operación de atención al cliente.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="icon-glow text-cyan-bright text-2xl">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Atención 24/7</h4>
+                                        <p class="text-gray-400 text-sm">Responde mensajes en WhatsApp sin descanso</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="icon-glow text-cyan-bright text-2xl">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Contexto Real del Negocio</h4>
+                                        <p class="text-gray-400 text-sm">Responde con información actualizada y precisa</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="icon-glow text-cyan-bright text-2xl">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Precalificación Automática</h4>
+                                        <p class="text-gray-400 text-sm">Filtra leads y genera seguimiento inteligente</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="icon-glow text-cyan-bright text-2xl">✓</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Integración con CRM</h4>
+                                        <p class="text-gray-400 text-sm">Conecta con flujos, pipelines y calendarios</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card p-8 rounded-2xl">
+                            <div class="text-6xl mb-6 text-center icon-glow">🤖</div>
+                            <div class="space-y-3 text-center">
+                                <div class="bg-blue-600/20 rounded-lg p-4 border border-blue-500/30">
+                                    <p class="text-sm text-gray-300">Flujos Automatizados</p>
+                                </div>
+                                <div class="bg-cyan-600/20 rounded-lg p-4 border border-cyan-500/30">
+                                    <p class="text-sm text-gray-300">Pipelines Inteligentes</p>
+                                </div>
+                                <div class="bg-purple-600/20 rounded-lg p-4 border border-purple-500/30">
+                                    <p class="text-sm text-gray-300">Gestión de Calendarios</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System 2: Digital Master Mind -->
+                <div class="glow-box rounded-3xl p-12 slide-up delay-3 bg-gradient-to-br from-purple-900/30 to-blue-dark/50">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="feature-card p-8 rounded-2xl order-2 md:order-1">
+                            <div class="text-6xl mb-6 text-center icon-glow">🧠</div>
+                            <div class="space-y-4">
+                                <div class="bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-lg p-4 border border-purple-500/30">
+                                    <h4 class="font-bold text-white mb-2">Tu Personalidad</h4>
+                                    <p class="text-sm text-gray-300">Piensa y responde como tú</p>
+                                </div>
+                                <div class="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-lg p-4 border border-blue-500/30">
+                                    <h4 class="font-bold text-white mb-2">Tu Metodología</h4>
+                                    <p class="text-sm text-gray-300">Aplica tu sabiduría única</p>
+                                </div>
+                                <div class="bg-gradient-to-r from-cyan-600/20 to-purple-600/20 rounded-lg p-4 border border-cyan-500/30">
+                                    <h4 class="font-bold text-white mb-2">Cerebro Externo</h4>
+                                    <p class="text-sm text-gray-300">Chat privado que razona por ti</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-1 md:order-2">
+                            <div class="inline-block mb-4">
+                                <span class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                                    SISTEMA 2 - Demo Conceptual
+                                </span>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-6 text-white">
+                                Tu Mente Maestra Digital
+                            </h3>
+                            <p class="text-gray-300 mb-6 leading-relaxed">
+                                Un chat privado en OpenWebUI que captura tu personalidad, estilo y metodología. Tu cerebro externo que piensa como tú.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="icon-glow text-purple-400 text-2xl">◆</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Plataforma Privada</h4>
+                                        <p class="text-gray-400 text-sm">Control total sobre tus datos y conocimiento</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="icon-glow text-purple-400 text-2xl">◆</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Memoria Persistente</h4>
+                                        <p class="text-gray-400 text-sm">Aprende y mejora con cada interacción</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="icon-glow text-purple-400 text-2xl">◆</div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Membresía Premium</h4>
+                                        <p class="text-gray-400 text-sm">Monetiza tu sabiduría mediante roles de acceso</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Concepts -->
+        <section class="py-20 px-6 bg-gradient-to-b from-blue-deep to-blue-mid" style="background: linear-gradient(to bottom, #0a0e27, #1e293b) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 slide-up">
+                        <span class="gradient-text">Pilar Conceptual</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto slide-up delay-1">
+                        La diferencia entre automatizar y verdaderamente escalar
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="feature-card p-10 rounded-2xl slide-up delay-2">
+                        <div class="text-5xl mb-6">🎯</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Delega Tareas, No Criterio</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Aprende a distinguir entre las tareas que pueden automatizarse completamente y las decisiones estratégicas que requieren tu juicio único. La IA debe ejecutar, tú decides.
+                        </p>
+                    </div>
+
+                    <div class="feature-card p-10 rounded-2xl slide-up delay-3">
+                        <div class="text-5xl mb-6">💡</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Prompts Inteligentes</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Descubre cómo crear instrucciones que razonan como una extensión de tu mente, no solo responden preguntas. La verdadera magia está en cómo estructuras el pensamiento.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Diego -->
+        <section class="py-20 px-6" style="background-color: #0a0e27 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="glow-box rounded-3xl p-12 bg-gradient-to-br from-blue-dark/80 to-blue-mid/50">
+                    <div class="grid md:grid-cols-3 gap-12 items-center">
+                        <div class="md:col-span-1">
+                            <img 
+                                src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c61014b7535eb211986e2.jpg" 
+                                alt="Diego Bastidas"
+                                class="rounded-2xl profile-glow w-full"
+                            />
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <div class="inline-block mb-4">
+                                <span class="gradient-text text-sm font-bold tracking-wider uppercase">Tu Instructor</span>
+                            </div>
+                            <h2 class="text-4xl font-bold mb-6 text-white">Diego Bastidas</h2>
+                            <div class="space-y-4 text-gray-300 leading-relaxed">
+                                <p>
+                                    <span class="text-cyan-bright font-semibold">Ingeniero de software, arquitecto de sistemas y estratega digital</span> especializado en automatización y escalabilidad empresarial.
+                                </p>
+                                <p>
+                                    CEO de <span class="text-blue-400 font-semibold">Launch Planner</span> y creador de la metodología <span class="gradient-text font-bold">LANZA FÁCIL</span>.
+                                </p>
+                                <p>
+                                    Con años de experiencia transformando operaciones empresariales mediante inteligencia artificial, Diego ayuda a emprendedores a recuperar su tiempo y multiplicar su impacto sin sacrificar calidad.
+                                </p>
+                            </div>
+
+                            <div class="mt-8 grid grid-cols-2 gap-4">
+                                <div class="bg-blue-600/20 rounded-lg p-4 border border-blue-500/30">
+                                    <div class="text-2xl font-bold gradient-text">10+</div>
+                                    <div class="text-sm text-gray-400">Años de Experiencia</div>
+                                </div>
+                                <div class="bg-cyan-600/20 rounded-lg p-4 border border-cyan-500/30">
+                                    <div class="text-2xl font-bold gradient-text">500+</div>
+                                    <div class="text-sm text-gray-400">Empresas Transformadas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 bg-gradient-to-b from-blue-mid to-blue-deep relative overflow-hidden" style="background: linear-gradient(to bottom, #1e293b, #0a0e27) !important;">
+            <div class="absolute inset-0 grid-pattern opacity-50"></div>
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <h2 class="text-5xl md:text-6xl font-bold mb-8 slide-up">
+                    ¿Listo Para <span class="gradient-text">Recuperar Tu Tiempo?</span>
+                </h2>
+                <p class="text-2xl text-gray-300 mb-12 slide-up delay-1">
+                    Transforma tu conocimiento en sistemas que trabajan para ti
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center slide-up delay-2">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 text-white px-12 py-5 rounded-full font-bold text-xl hover:shadow-2xl transition-all duration-300 btn-pulse transform hover:scale-105 inline-block text-center">
+                        Asegurar Mi Cupo Ahora
+                    </a>
+                    <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="border-2 border-cyan-500 text-cyan-400 px-12 py-5 rounded-full font-bold text-xl hover:bg-cyan-500/10 transition-all duration-300 inline-block text-center">
+                        Más Información
+                    </a>
+                </div>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 slide-up delay-3">
+                    <div class="feature-card p-6 rounded-xl">
+                        <div class="text-3xl mb-3">🎓</div>
+                        <h4 class="font-bold text-white mb-2">Aprende Haciendo</h4>
+                        <p class="text-sm text-gray-400">Construcción en vivo del asistente</p>
+                    </div>
+                    <div class="feature-card p-6 rounded-xl">
+                        <div class="text-3xl mb-3">⚡</div>
+                        <h4 class="font-bold text-white mb-2">Resultados Inmediatos</h4>
+                        <p class="text-sm text-gray-400">Implementa desde el primer día</p>
+                    </div>
+                    <div class="feature-card p-6 rounded-xl">
+                        <div class="text-3xl mb-3">🚀</div>
+                        <h4 class="font-bold text-white mb-2">Escala Sin Límites</h4>
+                        <p class="text-sm text-gray-400">Tu negocio funciona sin ti</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6 bg-blue-deep border-t border-blue-500/20" style="background-color: #0a0e27 !important; border-top: 1px solid rgba(59, 130, 246, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-text mb-2">Launch Planner</h3>
+                    <p class="text-gray-400">Transformando empresas con inteligencia artificial</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0a0e27';
+            document.body.style.backgroundColor = '#0a0e27';
+            
+            // Force background on all potential wrapper elements
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0a0e27';
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.slide-up, .fade-in, .scale-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for buttons and links
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

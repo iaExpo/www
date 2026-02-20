@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Antonio González - Voz del Cliente con IA | Zahoree AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-cx: #0f1419;
+            --midnight-blue: #1e3a5f;
+            --vibrant-orange: #f97316;
+            --warm-amber: #fb923c;
+            --sky-experience: #38bdf8;
+            --bright-cyan: #22d3ee;
+        }
+
+        html {
+            background: #0f1419 !important;
+            background-color: #0f1419 !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif !important;
+            background: #0f1419 !important;
+            background-color: #0f1419 !important;
+            color: #e0f2fe !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-voc {
+            background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-cx {
+            color: #f97316;
+        }
+
+        /* VoC Background */
+        .voc-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .voice-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(249, 115, 22, 0.03) 80px,
+                    rgba(249, 115, 22, 0.03) 82px
+                );
+            animation: wave-voice 15s linear infinite;
+        }
+
+        @keyframes wave-voice {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(82px); }
+        }
+
+        .customer-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #f97316, transparent);
+            border-radius: 50%;
+            animation: customer-pulse 3s infinite;
+        }
+
+        @keyframes customer-pulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(56, 189, 248, 0.8);
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        .experience-stream {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.4), rgba(56, 189, 248, 0.4), transparent);
+            animation: stream-cx 8s infinite;
+        }
+
+        @keyframes stream-cx {
+            0%, 100% {
+                opacity: 0.2;
+                transform: translateX(-50%);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateX(50%);
+            }
+        }
+
+        .sound-ripple {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(251, 146, 60, 0.15);
+            animation: ripple-sound 14s infinite;
+        }
+
+        @keyframes ripple-sound {
+            0% {
+                transform: scale(0.7);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .audio-bar {
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(180deg, rgba(249, 115, 22, 0.4), transparent);
+            animation: bar-bounce 2s infinite;
+        }
+
+        @keyframes bar-bounce {
+            0%, 100% {
+                height: 20px;
+                opacity: 0.4;
+            }
+            50% {
+                height: 60px;
+                opacity: 0.8;
+            }
+        }
+
+        /* Fade animations */
+        .voc-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: vocRise 0.8s forwards;
+        }
+
+        @keyframes vocRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cx-emerge {
+            opacity: 0;
+            transform: scale(0.94);
+            animation: cxEmerge 0.8s forwards;
+        }
+
+        @keyframes cxEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+
+        /* VoC Card */
+        .voc-card {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(30, 58, 95, 0.4));
+            border: 2px solid rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .voc-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f97316, #fb923c, #38bdf8);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .voc-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .voc-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 
+                0 0 40px rgba(249, 115, 22, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* CX Button */
+        .btn-voc {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            box-shadow: 
+                0 0 30px rgba(249, 115, 22, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-voc:hover {
+            box-shadow: 
+                0 0 50px rgba(56, 189, 248, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-voc {
+            border: 2px solid #f97316;
+            color: #f97316;
+            background: rgba(249, 115, 22, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-voc:hover {
+            background: rgba(249, 115, 22, 0.15);
+            box-shadow: 0 0 35px rgba(249, 115, 22, 0.4);
+            border-color: #38bdf8;
+        }
+
+        /* Profile Frame */
+        .profile-voc {
+            border: 3px solid #f97316;
+            box-shadow: 
+                0 0 50px rgba(249, 115, 22, 0.5),
+                inset 0 0 30px rgba(251, 146, 60, 0.1);
+        }
+
+        /* Badge */
+        .badge-voc {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            box-shadow: 0 0 25px rgba(249, 115, 22, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0f1419 !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f1419;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f97316, #fb923c);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-voc {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            color: #fed7aa;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-voc {
+            filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.6));
+        }
+
+        /* Stat box */
+        .stat-voc {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(30, 58, 95, 0.3));
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .voc-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f97316, #fb923c, #38bdf8, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+        }
+
+        /* Recognition badge */
+        .recognition-badge {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(34, 211, 238, 0.1));
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #7dd3fc;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* TCX badge */
+        .tcx-badge {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(251, 146, 60, 0.15));
+            border: 2px solid rgba(249, 115, 22, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .tcx-badge:hover {
+            border-color: rgba(56, 189, 248, 0.6);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Impact metric */
+        .impact-metric {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(30, 58, 95, 0.2));
+            border: 2px solid rgba(249, 115, 22, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Sector pill */
+        .sector-pill {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #7dd3fc;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Global presence */
+        .presence-flag {
+            font-size: 1.5em;
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
+        }
+    </style>
+</head>
+<body>
+    <!-- VoC Background -->
+    <div class="voc-bg">
+        <div class="voice-wave"></div>
+        
+        <!-- Customer Nodes -->
+        <div class="customer-node" style="top: 18%; left: 20%; animation-delay: 0s;"></div>
+        <div class="customer-node" style="top: 38%; left: 72%; animation-delay: 1s;"></div>
+        <div class="customer-node" style="top: 58%; left: 28%; animation-delay: 2s;"></div>
+        <div class="customer-node" style="top: 75%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="customer-node" style="top: 45%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Experience Streams -->
+        <div class="experience-stream" style="top: 25%;"></div>
+        <div class="experience-stream" style="top: 50%; animation-delay: 2s;"></div>
+        <div class="experience-stream" style="top: 70%; animation-delay: 4s;"></div>
+        
+        <!-- Sound Ripples -->
+        <div class="sound-ripple" style="width: 280px; height: 280px; top: 18%; right: 12%;"></div>
+        <div class="sound-ripple" style="width: 240px; height: 240px; bottom: 22%; left: 15%; animation-delay: 7s;"></div>
+        
+        <!-- Audio Bars -->
+        <div class="audio-bar" style="top: 30%; left: 45%; animation-delay: 0s;"></div>
+        <div class="audio-bar" style="top: 30%; left: 48%; animation-delay: 0.3s;"></div>
+        <div class="audio-bar" style="top: 30%; left: 51%; animation-delay: 0.6s;"></div>
+        <div class="audio-bar" style="top: 30%; left: 54%; animation-delay: 0.9s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0f1419 !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0f1419 !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 voc-rise">
+                    <span class="tag-voc inline-block">
+                        🎙️ IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight voc-rise delay-1">
+                    <span class="gradient-voc">Voz del Cliente</span><br>
+                    <span class="text-white">con IA</span>
+                </h1>
+
+                <div class="voc-divider mb-8 voc-rise delay-2"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-orange-300 mb-4 max-w-4xl mx-auto voc-rise delay-2 font-bold">
+                    Experiencia del Cliente Transformativa (TCX)
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto voc-rise delay-3">
+                    Transformando agentes humanos en superagentes
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 voc-rise delay-4">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-voc text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Descubrir TCX
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="cx-emerge delay-5">
+                        <div class="relative">
+                            <div class="profile-voc rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691e3812300f06e22c8d5d28.jpg"
+                                    alt="José Antonio González Barreda"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-voc rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">CEO</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="voc-rise delay-6">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            José Antonio González Barreda
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-cx text-lg font-bold">CEO y Fundador</span><br>
+                            <span class="text-gray-400 text-base">Zahoree AI</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Con <span class="text-cx font-bold">más de 35 años de experiencia</span>, ha fundado diversas empresas enfocadas en tecnologías de vanguardia.
+                            </p>
+                            <p>
+                                Egresado de la <span class="text-cx font-semibold">Universidad de Texas en Austin</span>, originario de Ciudad Juárez, Chihuahua. Compañía global de CX con presencia en US, México, España, Egipto y Filipinas.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="recognition-badge">Inc. 5000 (4x)</span>
+                                <span class="recognition-badge">FT 2023</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-voc text-center">
+                                <div class="text-2xl font-bold gradient-voc">35+</div>
+                                <div class="text-xs text-gray-500">Años Experiencia</div>
+                            </div>
+                            <div class="stat-voc text-center">
+                                <div class="text-2xl font-bold gradient-voc">4x</div>
+                                <div class="text-xs text-gray-500">Inc. 5000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TCX Model -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1419, #1e3a5f) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 voc-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Modelo </span><span class="gradient-voc">TCX</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Experiencia del Cliente Transformativa
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="tcx-badge voc-rise delay-1">
+                        <div class="text-5xl mb-4 icon-voc">🎙️</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Voz del Cliente (VoC)</h3>
+                        <p class="text-gray-300">
+                            Análisis innovador aplicable en múltiples ámbitos para automatización de QA
+                        </p>
+                    </div>
+
+                    <div class="tcx-badge voc-rise delay-2">
+                        <div class="text-5xl mb-4 icon-voc">⚡</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Superagentes</h3>
+                        <p class="text-gray-300">
+                            Transformación y potenciamiento de agentes humanos en un nuevo modelo de fuerza laboral
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries -->
+        <section class="py-20 px-6" style="background-color: #0f1419 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 voc-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-voc">Sectores</span> <span class="text-white">de Vanguardia</span>
+                    </h2>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <div class="sector-pill voc-rise delay-1">🏠 IoT & Hogares Inteligentes</div>
+                    <div class="sector-pill voc-rise delay-2">💰 FinTech</div>
+                    <div class="sector-pill voc-rise delay-3">🛒 e-Commerce</div>
+                    <div class="sector-pill voc-rise delay-4">🏥 HealthTech</div>
+                    <div class="sector-pill voc-rise delay-5">🤖 Asistentes IA Médicos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Features -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1419, #1e3a5f) !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 voc-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Nuestra </span><span class="gradient-voc">Solución</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="voc-card p-8 rounded-xl text-center voc-rise delay-1">
+                        <div class="text-5xl mb-4 icon-voc">🤖</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">IA Predictiva y Generativa</h3>
+                        <p class="text-sm text-gray-400">Vanguardia de aplicaciones en la industria</p>
+                    </div>
+
+                    <div class="voc-card p-8 rounded-xl text-center voc-rise delay-2">
+                        <div class="text-5xl mb-4 icon-voc">⚙️</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Automatización QA</h3>
+                        <p class="text-sm text-gray-400">Aseguramiento de calidad en operaciones</p>
+                    </div>
+
+                    <div class="voc-card p-8 rounded-xl text-center voc-rise delay-3">
+                        <div class="text-5xl mb-4 icon-voc">📊</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Gestión de Volumen</h3>
+                        <p class="text-sm text-gray-400">Manejo masivo de datos mediante automatización</p>
+                    </div>
+
+                    <div class="voc-card p-8 rounded-xl text-center voc-rise delay-4">
+                        <div class="text-5xl mb-4 icon-voc">🔄</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Retroalimentación</h3>
+                        <p class="text-sm text-gray-400">Inteligencia para mejora continua</p>
+                    </div>
+
+                    <div class="voc-card p-8 rounded-xl text-center voc-rise delay-5">
+                        <div class="text-5xl mb-4 icon-voc">📈</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Métricas de Éxito</h3>
+                        <p class="text-sm text-gray-400">Impacto tangible y medible</p>
+                    </div>
+
+                    <div class="voc-card p-8 rounded-xl text-center voc-rise delay-6">
+                        <div class="text-5xl mb-4 icon-voc">💡</div>
+                        <h3 class="text-xl font-bold mb-3 text-white">Inteligencia de Negocio</h3>
+                        <p class="text-sm text-gray-400">Insights para productos y servicios</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Areas -->
+        <section class="py-20 px-6" style="background-color: #0f1419 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 voc-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-voc">Impacto</span> <span class="text-white">Tangible</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="impact-metric voc-rise delay-1">
+                        <div class="text-4xl mb-3 icon-voc">⚡</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Productividad</h3>
+                        <p class="text-sm text-gray-400">Automatización y eficiencia operativa</p>
+                    </div>
+
+                    <div class="impact-metric voc-rise delay-2">
+                        <div class="text-4xl mb-3 icon-voc">🎯</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Calidad</h3>
+                        <p class="text-sm text-gray-400">Inteligencia de producto y negocio</p>
+                    </div>
+
+                    <div class="impact-metric voc-rise delay-3">
+                        <div class="text-4xl mb-3 icon-voc">😊</div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Experiencia</h3>
+                        <p class="text-sm text-gray-400">Clientes y usuarios satisfechos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Presence -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0f1419, #1e3a5f) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="voc-card rounded-3xl p-12 md:p-16 text-center voc-rise">
+                    <div class="mb-8">
+                        <span class="tag-voc inline-block">Presencia Global</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                        <span class="gradient-voc">Compañía Global</span><span class="text-white"> de CX</span>
+                    </h2>
+
+                    <div class="voc-divider my-8"></div>
+
+                    <div class="flex flex-wrap gap-4 justify-center mb-8">
+                        <span class="presence-flag">🇺🇸</span>
+                        <span class="presence-flag">🇲🇽</span>
+                        <span class="presence-flag">🇪🇸</span>
+                        <span class="presence-flag">🇪🇬</span>
+                        <span class="presence-flag">🇵🇭</span>
+                    </div>
+
+                    <p class="text-lg text-gray-300">
+                        Estados Unidos • México • España • Egipto • Filipinas
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recognition -->
+        <section class="py-20 px-6" style="background-color: #0f1419 !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 voc-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-voc">Reconocimientos</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="voc-card p-10 rounded-2xl text-center voc-rise delay-1">
+                        <div class="text-6xl mb-4 icon-voc">🏆</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Inc. 5000</h3>
+                        <p class="text-gray-300 mb-4">
+                            Reconocido en <span class="text-cx font-bold">cuatro ocasiones</span>
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            Una de las empresas privadas de mayor crecimiento en Estados Unidos
+                        </p>
+                    </div>
+
+                    <div class="voc-card p-10 rounded-2xl text-center voc-rise delay-2">
+                        <div class="text-6xl mb-4 icon-voc">📰</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Financial Times 2023</h3>
+                        <p class="text-gray-300 mb-4">
+                            Reconocimiento en <span class="text-cx font-bold">las Américas</span>
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            Entre las empresas de mayor crecimiento en la región
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1e3a5f, #0f1419) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="voc-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="gradient-voc">Transforma</span> <span class="text-white">tu</span><br>
+                        <span class="text-white">Experiencia del Cliente</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo la IA combinada con TCX puede revolucionar tu atención al cliente y convertir agentes en superagentes
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-voc text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-voc px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="voc-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-voc">🎙️</div>
+                            <h4 class="font-bold text-white mb-2">Voz del Cliente</h4>
+                            <p class="text-sm text-gray-400">Análisis con IA</p>
+                        </div>
+                        <div class="voc-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-voc">⚡</div>
+                            <h4 class="font-bold text-white mb-2">Superagentes</h4>
+                            <p class="text-sm text-gray-400">Modelo TCX</p>
+                        </div>
+                        <div class="voc-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-voc">🌎</div>
+                            <h4 class="font-bold text-white mb-2">Presencia Global</h4>
+                            <p class="text-sm text-gray-400">5 países</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0f1419 !important; border-top: 1px solid rgba(249, 115, 22, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-voc mb-2">Zahoree AI</h3>
+                    <p class="text-gray-500 text-sm">Experiencia del Cliente global con IA</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0f1419';
+            document.body.style.backgroundColor = '#0f1419';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0f1419';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.voc-rise, .cx-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

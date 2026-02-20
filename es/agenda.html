@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - IA Expo Internacional® 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            animation: pulse 20s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(180deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-weight: 700;
+            letter-spacing: -1px;
+            animation: slideDown 0.6s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .header .event-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+        
+        .event-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.15);
+            padding: 14px 28px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .event-detail:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            padding: 50px;
+            background: #fafbfc;
+        }
+        
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(5, 117, 230, 0.4);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: bounceIn 1s ease;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(5, 117, 230, 0.5);
+        }
+        
+        .welcome-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .welcome-section h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .block {
+            margin-bottom: 60px;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .block-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 28px 35px;
+            border-radius: 12px 12px 0 0;
+            font-size: 1.6em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(30, 60, 114, 0.3);
+            letter-spacing: -0.5px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .block-header:hover {
+            transform: translateX(5px);
+        }
+        
+        .block-header .icon {
+            font-size: 1.2em;
+            animation: rotateIcon 3s ease-in-out infinite;
+        }
+        
+        @keyframes rotateIcon {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+        
+        .session {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            padding: 35px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .session:hover {
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            box-shadow: 0 8px 30px rgba(30, 60, 114, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .session:last-child {
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .session::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .session:hover::before {
+            opacity: 1;
+        }
+        
+        .time {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 12px 26px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.05em;
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+            letter-spacing: 0.5px;
+            min-width: 150px;
+            text-align: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .time:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
+        }
+        
+        .session-content {
+            flex: 1;
+        }
+        
+        .session-title {
+            font-size: 1.5em;
+            color: #1a202c;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+        }
+        
+        .speaker {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            border-radius: 12px;
+            border-left: 4px solid #2a5298;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .speaker:hover {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.15);
+        }
+        
+        .speaker-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2a5298;
+            box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .speaker:hover .speaker-photo {
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(30, 60, 114, 0.4);
+        }
+        
+        .speaker-icon {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+        
+        .speaker:hover .speaker-icon {
+            transform: scale(1.2);
+        }
+        
+        .speaker-name {
+            font-weight: 600;
+            color: #1e3c72;
+            font-size: 1.2em;
+        }
+        
+        .break-session {
+            background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 50px 0;
+            font-size: 1.4em;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(5, 117, 230, 0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .break-session:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(5, 117, 230, 0.5);
+        }
+        
+        .panel-session {
+            background: linear-gradient(135deg, #0575e6 0%, #00416a 100%);
+        }
+        
+        .panelist {
+            background: rgba(255,255,255,0.15);
+            padding: 16px 24px;
+            border-radius: 10px;
+            margin: 12px 0;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .panelist:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(5px);
+        }
+        
+        .special-session {
+            background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);
+            color: white;
+            padding: 45px;
+            border-radius: 15px;
+            margin: 50px 0;
+            box-shadow: 0 15px 40px rgba(5, 117, 230, 0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .special-session:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 50px rgba(5, 117, 230, 0.6);
+        }
+        
+        .special-session .session-container {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .special-session .time {
+            min-width: 150px;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .special-session .speaker {
+            background: rgba(255,255,255,0.15);
+            border-left: 4px solid white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .special-session .speaker:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        
+        .special-session .speaker-name {
+            color: white;
+        }
+        
+        .closing-session {
+            background: linear-gradient(135deg, #1e3c72 0%, #0f2027 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 15px 40px rgba(30, 60, 114, 0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .closing-session:hover {
+            transform: scale(1.01);
+        }
+        
+        .closing-session h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .participant {
+            background: white;
+            padding: 18px 24px;
+            border-radius: 12px;
+            margin: 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .participant:hover {
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.2);
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .badge {
+            background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-left: 10px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(5, 117, 230, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .footer-note {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            color: #475569;
+            font-style: italic;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        @media (max-width: 1024px) {
+            .content {
+                padding: 35px;
+            }
+            
+            .header h1 {
+                font-size: 2.8em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .header .subtitle {
+                font-size: 0.95em;
+                letter-spacing: 1px;
+            }
+            
+            .event-details {
+                gap: 15px;
+            }
+            
+            .event-detail {
+                font-size: 0.95em;
+                padding: 12px 20px;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .block-header {
+                font-size: 1.2em;
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .session {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .time {
+                width: 100%;
+                padding: 12px 20px;
+            }
+            
+            .speaker {
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .speaker-photo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .special-session {
+                padding: 30px 20px;
+            }
+            
+            .special-session .session-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .special-session .time {
+                width: 100%;
+            }
+            
+            .download-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+            
+            .closing-session {
+                padding: 35px 20px;
+            }
+            
+            .closing-session h2 {
+                font-size: 1.8em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .session-title {
+                font-size: 1.2em;
+            }
+            
+            .block-header {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://drive.google.com/file/d/1eAxasQUG7H3M0xzIp_ZMWMMaQTKrrheT/view?usp=sharing" class="download-btn" target="_blank">
+        📥 Descargar Agenda
+    </a>
+
+    <section id="agenda">
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>IA Expo Internacional® 2026</h1>
+                <p class="subtitle">Inteligencia Artificial para la Vida Real</p>
+                <div class="event-details">
+                    <div class="event-detail">
+                        📍 Salón A · Hotel Westin Santa Fe · CDMX
+                    </div>
+                    <div class="event-detail">
+                        📅 31 de enero de 2026
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="welcome-section">
+                <h2>🟢 Agenda para Asistentes</h2>
+            </div>
+
+            <div class="session" style="border-radius: 12px; border: 1px solid #bbdefb; box-shadow: 0 2px 8px rgba(30, 60, 114, 0.1);">
+                <div class="time">08:00 – 09:00</div>
+                <div class="session-content">
+                    <div class="session-title">✅ Registro y Bienvenida</div>
+                </div>
+            </div>
+
+            <div class="session" style="border-radius: 12px; border: 1px solid #bbdefb; margin-top: 20px; box-shadow: 0 2px 8px rgba(30, 60, 114, 0.1);">
+                <div class="time">08:50 – 09:00</div>
+                <div class="session-content">
+                    <div class="session-title">🎉 Inauguración Oficial</div>
+                    <a href="https://iaexpo.ai/eduardoperez" target="_blank" style="text-decoration: none;">
+                        <div class="speaker">
+                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68fd526647cb3b6233d1c33c.jpeg" alt="Dr. Eduardo Pérez" class="speaker-photo">
+                            <span class="speaker-name">Dr. Eduardo "Lalo" Pérez</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="special-session" style="margin-top: 40px; background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);">
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <span class="badge" style="font-size: 1.3em; padding: 12px 30px; background: linear-gradient(135deg, #0575e6 0%, #021b79 100%); box-shadow: 0 4px 12px rgba(5, 117, 230, 0.4);">✨ SESIÓN MAGISTRAL DE APERTURA</span>
+                </div>
+                <div class="session-container">
+                    <div class="time" style="font-size: 1.2em; background: rgba(255,255,255,0.25);">09:00 – 09:45</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/edgargonzalez" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f7cee457ab48d092417ed1.jpeg" alt="Luis Edgar González" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Luis Edgar González Allegre</div>
+                                    <div style="color: white; margin-top: 8px; opacity: 0.95; font-weight: 600;">
+                                        De Homo Sapiens a TecnoSapiens
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="block-header">
+                    <span class="icon">🌍</span>
+                    <span>VISIÓN Y FUTURO DE LA INTELIGENCIA ARTIFICIAL</span>
+                </div>
+
+                <div class="session">
+                    <div class="time">09:45 – 10:15</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/felipesalassaavedra" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69172ce51c143a4c4c055cbd.png" alt="Felipe Salas" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Felipe Salas</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Convergencia: Nueva Realidad, Nuevos Paradigmas</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">10:15 – 10:45</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/martinsierramercado" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e40df26a0a9172928d155f.jpeg" alt="Martín Sierra Mercado" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Martín Sierra Mercado</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">La IA Oculta: Canibalizando Silenciosamente tu Modelo de Negocio</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">10:45 – 11:15</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/diegoganozaferrer" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6921cefaa6ad0819d5dee29b.png" alt="Diego Ganoza Ferrer" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Diego Ganoza Ferrer</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Vibe Marketing: Cuando la Emoción Se Encuentra con la Tecnología</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="block-header" style="background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);">
+                    <span class="icon">💼</span>
+                    <span>EMPRESA, PRODUCTIVIDAD Y ROI DE LA IA</span>
+                </div>
+
+                <div class="session">
+                    <div class="time">11:15 – 11:45</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/osvaldoramirezhurtado" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/692f44370b5011493ea50997.jpg" alt="Osvaldo Ramírez Hurtado" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Osvaldo Ramírez Hurtado</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">De la Visión al Retorno de Inversión</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">11:45 – 12:15</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/andresdelcosgarza" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c6b5a16bfee598bc3e37a.jpg" alt="Andrés del Cos" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Andrés del Cos Garza</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Motor Humano de la IA: Lo Necesario paa Implementar IA en tu Negocio</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">12:15 – 12:45</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/gabrielbarreradelgadillo" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f3c02fa144cd636ceba21f.png" alt="Dr. Gabriel Barrera Delgadillo" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Gabriel Barrera Delgadillo</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">IA Aplicada en Grandes Proyectos de Infraestructuras Urbanas</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">12:45 – 13:15</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/joseantoniogonzalesbarreda" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691e3812300f06e22c8d5d28.jpg" alt="José Antonio González Barreda" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">José Antonio González Barreda</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Voz del Cliente con IA: Transformando Agentes Humanos en Superagentes</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">13:15 – 13:45</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/javiernovoaramos" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6900d8e4e1e5532bbe50e496.jpeg" alt="Dr. Javier Novoa" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Dr. Javier Novoa</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Futuro del Empleo con IA: Cómo Liderar Cambios en los Próximos Cinco Años</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="break-session">
+                <div>🍽️ RECESO PARA COMIDA</div>
+                <div style="font-size: 0.9em; margin-top: 12px; opacity: 0.9;">13:45 – 14:45 (1 hora)</div>
+                <div style="font-size: 0.85em; margin-top: 10px; opacity: 0.85;">Consumo libre · Coffee break continuo disponible</div>
+            </div>
+
+            <div class="block">
+                <div class="block-header" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">
+                    <span class="icon">🩺</span>
+                    <span>IA EN MEDICINA Y SALUD</span>
+                </div>
+
+                <div class="session" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+                    <div class="time" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">14:45 – 15:45</div>
+                    <div class="session-content">
+                        <div class="session-title">🏥 Simposio: Inteligencia Artificial en Radiología</div>
+                        <a href="https://iaexpo.ai/jaimegarciagomez" target="_blank" style="text-decoration: none;">
+                            <div class="participant">
+                                <span>👨‍⚕️</span>
+                                <span style="font-weight: 600; color: #1a202c;">Dr. Jaime I. García Gómez</span>
+                            </div>
+                        </a>
+                        <div class="participant">
+                            <span>👩‍⚕️</span>
+                            <span style="font-weight: 600; color: #1a202c;">Dra. Lilian Mónica Navarro</span>
+                        </div>
+                        <div class="participant">
+                            <span>👨‍⚕️</span>
+                            <span style="font-weight: 600; color: #1a202c;">Dr. Ricardo Becerra Ulloa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time" style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);">15:45 – 16:15</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/carloangellosanchez" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c843db55a596cfd3258b7.jpg" alt="Dr. Carlo Angello Sánchez" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Dr. Carlo Angello Sánchez</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Talento Médico Aumentado: La IA Cómo Palanca Estratégica del Sector Salud</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="block-header" style="background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);">
+                    <span class="icon">⚖️</span>
+                    <span>IA ÉTICA, GOBERNANZA Y REGULACIÓN</span>
+                </div>
+
+                <div class="session">
+                    <div class="time">16:15 – 16:45</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/antonietaesparza" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691b21888753b69663b2beef.jpg" alt="Antonieta Esparza" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Antonieta Esparza</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Sistema de Gestión de IA: Marco Internacional Para Uso Responsable de Sistemas de IA</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">16:45 – 17:15</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/randyalexandervalverde" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69123464eb424868148b40e5.png" alt="Randy Alexander Valverde" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Randy Alexander Valverde</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">IA Ética y Gestión de Conocimiento: Nuevo Paradigma de Valor Organizacional</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="block-header" style="background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);">
+                    <span class="icon">🎓</span>
+                    <span>EDUCACIÓN Y EMPLEABILIDAD EN LA ERA DE IA</span>
+                </div>
+
+                <div class="session">
+                    <div class="time">17:15 – 17:45</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/maxquiroz" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e411c86a0a9157dc8db981.jpeg" alt="Max Quiroz" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Max Quiroz</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">Inteligencia Artificial y Educación: ¿El Futuro Que Esperábamos?</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="session">
+                    <div class="time">17:45 – 18:00</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/noeliagonzalez" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c7b9fbe6cf0ab672fa00c.jpg" alt="Noelia González Pereyra" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Noelia González Pereyra</div>
+                                    <div style="color: #718096; margin-top: 5px; font-weight: 500;">¡Hola IA! ¿Nos Conocemos? Cómo Canmbiar el Mundo Laboral y Enseñar IA Sin Dejar a Nadie Atrás</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-session" style="background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);">
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <span class="badge" style="font-size: 1.3em; padding: 12px 30px; background: linear-gradient(135deg, #0575e6 0%, #021b79 100%); box-shadow: 0 4px 12px rgba(5, 117, 230, 0.4);">⭐ SESIÓN MAGISTRAL DE CLAUSURA</span>
+                </div>
+                <div class="session-container">
+                    <div class="time" style="font-size: 1.2em; background: rgba(255,255,255,0.25);">18:00 – 18:30</div>
+                    <div class="session-content">
+                        <a href="https://iaexpo.ai/jorgedejesuslozoya" target="_blank" style="text-decoration: none;">
+                            <div class="speaker">
+                                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6940a5bd96e7537d7fee3463.jpg" alt="Dr. Jorge de Jesús Lozoya Santos" class="speaker-photo">
+                                <div>
+                                    <div class="speaker-name">Dr. Jorge de Jesús Lozoya Santos</div>
+                                    <div style="color: white; margin-top: 8px; opacity: 0.95; font-weight: 600;">
+                                        IA en Movimiento: Autonomía, Control y el Futuro de la Movilidad Inteligente
+                                    </div>
+                                    <div style="color: white; margin-top: 8px; opacity: 0.85; font-weight: 500;">
+                                        🏎️ Presentación y demostración del Maserati Autónomo
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="block-header panel-session">
+                    <span class="icon">🟣</span>
+                    <span>PANEL DE DISCUSIÓN FINAL</span>
+                </div>
+
+                <div class="session" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+                    <div class="time" style="background: linear-gradient(135deg, #0575e6 0%, #021b79 100%);">18:30 – 19:15</div>
+                    <div class="session-content">
+                        <div class="session-title" style="color: #1a202c; margin-bottom: 20px;">
+                            🌎 La Inteligencia Artificial en Latinoamérica
+                        </div>
+                        <div style="font-weight: 700; color: #1a202c; margin-bottom: 15px; font-size: 1.1em;">Panelistas preliminares:</div>
+                        <div class="panelist">
+                            <span>💼</span>
+                            <span><strong>Itzul Girón</strong> — CEO, Celestial Dynamics (NVIDIA Partner)</span>
+                        </div>
+                        <div class="panelist">
+                            <span>💼</span>
+                            <span><strong>Jorge Varela</strong> — Grupo Scanda · Inversionista IA</span>
+                        </div>
+                        <div class="panelist">
+                            <span>💼</span>
+                            <span><strong>Alejandro Jiménez</strong> — NVIDIA México</span>
+                        </div>
+                        <div class="panelist">
+                            <span>💼</span>
+                            <span><strong>Glenda Michel</strong> — Meta México</span>
+                        </div>
+                        <div style="text-align: center; margin-top: 25px; padding: 20px; background: rgba(30, 60, 114, 0.1); border-radius: 10px; backdrop-filter: blur(10px); border: 1px solid rgba(30, 60, 114, 0.2);">
+                            <div style="font-weight: 700; color: #1a202c; font-size: 1.1em;">
+                                🎤 Moderador: <span style="color: #1e3c72;">Dr. Eduardo "Lalo" Pérez</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="closing-session">
+                <h2>🤝 CIERRE & NETWORKING</h2>
+                <div style="font-size: 1.6em; margin-top: 20px; font-weight: 700;">19:15 – 20:00</div>
+                <div style="font-size: 1.2em; margin-top: 15px; opacity: 0.9;">
+                    Networking y Cierre Oficial
+                </div>
+            </div>
+
+            <div class="footer-note">
+                <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 15px;">
+                    ☕ Coffee break continuo disponible durante todo el evento
+                </p>
+                <p style="font-size: 1.1em;">
+                    Nos vemos el 31 de enero de 2026 en el Hotel Westin Santa Fe, CDMX
+                </p>
+                <p style="font-size: 0.8em;"><br>
+                    Nota: La agenda puede cambiar sin notificación alguna. Revisa esta página con frecuencia.ß
+                </p>
+            </div>
+        </div>
+    </div>
+    </section>
+</body>
+</html>

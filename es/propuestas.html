@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuestas IA Expo 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f8f9fa;
+            color: #1a202c;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hero {
+            background: linear-gradient(160deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+            color: white;
+            padding: 100px 20px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.03)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -80px auto 0;
+            padding: 0 20px 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e3a8a, #581c87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        .filter-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 18px 24px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            background: #fafafa;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #3730a3;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(55, 48, 163, 0.1);
+        }
+
+        .accordion-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 28px 35px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .accordion-header:hover {
+            background: #fafbfc;
+        }
+
+        .accordion-header.active {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .accordion-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-avatar {
+            background: linear-gradient(135deg, #1e3a8a, #581c87);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        .accordion-info {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .accordion-author {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1.3;
+        }
+
+        .accordion-title {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .accordion-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .accordion-header.active .accordion-icon {
+            background: linear-gradient(135deg, #1e3a8a, #581c87);
+            transform: rotate(180deg);
+        }
+
+        .accordion-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: #64748b;
+            transition: stroke 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-icon svg {
+            stroke: white;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-content.active {
+            max-height: 5000px;
+        }
+
+        .accordion-body {
+            padding: 35px 35px 40px;
+        }
+
+        .content-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .speaker-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a, #581c87);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .speaker-details {
+            flex: 1;
+        }
+
+        .speaker-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+
+        .speaker-position {
+            color: #3730a3;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .speaker-org {
+            color: #64748b;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .session-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #3730a3;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, #1e3a8a, #581c87);
+            border-radius: 2px;
+        }
+
+        .session-title-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .session-description {
+            color: #475569;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        .bio-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .bio-text {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .footer {
+            background: linear-gradient(160deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+            color: #64748b;
+        }
+
+        .no-results h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .accordion-info {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .accordion-header {
+                padding: 20px 20px;
+            }
+
+            .accordion-body {
+                padding: 25px 20px 30px;
+            }
+
+            .accordion-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+
+            .content-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Propuestas IA Expo 2026</h1>
+            <p class="hero-subtitle">IA Expo Internacional®</p>
+            <p class="hero-description">Trabajos seleccionados que serán publicados como artículos científicos, actas y memorias del evento más importante de Inteligencia Artificial en Latinoamérica</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">40</div>
+                <div class="stat-label">Propuestas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">40</div>
+                <div class="stat-label">Investigadores</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2026</div>
+                <div class="stat-label">Publicación</div>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <input type="text" id="searchBox" class="search-box" placeholder="Buscar por nombre, tema, organización o palabra clave...">
+        </div>
+
+        <div id="accordionContainer">
+            <!-- Los acordeones se insertarán aquí mediante JavaScript -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <h3>IA Expo Internacional® 2026</h3>
+            <p>Estas propuestas representan la vanguardia de la investigación en Inteligencia Artificial y serán publicadas en las memorias oficiales del evento.</p>
+            <p style="margin-top: 20px; opacity: 0.7;">&copy; 2025 IA Expo Internacional®. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+    <script>
+        const propuestas = [
+        {
+                "nombre": "Alberto Alejandro Duarte",
+                "posicion": "Gerente General",
+                "organizacion": "Paradox Systems",
+                "biografia": "Ingeniero mecánico egresado del Instituto tecnológico de Morelia. Maestría en sistemas computacionales por el Instituto tecnológico de La Paz y doctorado (titulación en proceso) interinstitucional en ciencias de la ingeniería (Institutos tecnológicos Ensenada-Tijuana). Doce Años de experiencia en campo, en empresas como CFE, PEMEX además de empresas privadas. Me he desempeñado como Senior Consulting Engineer y Technology Manager en áreas como sistemas fotovoltaicos, desarrollo de software, diseño de máquinas y robótica. Cuatro años como CEO de Paradox Systems (www.paradoxsystems.xyz). Me apasiona la investigación y el desarrollo tecnológico.",
+                "sesion": "Gobernanza de Memoria Basada en Viabilidad para Aplicaciones Críticas con Modelos de Lenguaje Grandes",
+                "detalles": "RESUMEN EJECUTIVO - APP GOVERNOR Los modelos de lenguaje grandes (LLMs) desplegados en dominios críticos —medicina, banca regulada, infraestructura, gobernanza corporativa— operan bajo múltiples objetivos en tensión: coherencia semántica, eficiencia de recursos, adherencia a restricciones normativas, y estabilidad ante perturbaciones. Las arquitecturas actuales de memoria (RAG, context caching, fine-tuning) optimizan para relevancia semántica, pero carecen de mecanismos de auto-regulación sistémica que balanceen objetivos competitivos de manera adaptativa. Este gap resulta en degradación de restricciones bajo carga, costos operativos elevados, y comportamientos impredecibles en escenarios multi-objetivo. Este documento presenta APP Governor (Autoreferential Protection Principle), una arquitectura de gobernanza de memoria fundamentada en teoría de viabilidad —un paradigma desarrollado por los autores e inspirado en sistemas biológicos autorreferenciales (autopoiesis, Free Energy Principle) que mantienen homeostasis multicanal bajo perturbación externa. A diferencia de enfoques basados en retrieval estático, APP establece una topología de viabilidad dinámica donde: Canales de viabilidad no-compensables (coherencia, contexto, compute, safety) definen invariantes del sistema Auto-regulación autoreferencial ajusta demanda de recursos según estado interno (entropía predictiva, incertidumbre) Gobernador ecológico modula efectividad según disponibilidad ambiental (presupuesto de tokens, latencia) Curación adaptativa de memoria preserva elementos críticos viables y elimina contenido que amenaza estabilidad sistémica Aplicaciones demostradas empíricamente: Resource optimization: 40-70% reducción en tokens sin degradación de calidad Constraint preservation: 100% recall crítico donde RAG degrada a 73-85% Adaptive inference: Ajuste dinámico de temperatura/sampling según régimen operativo Failure mode control: Reorganización predecible de causas de fallo bajo estrés Multi-agent ecology: Estabilidad en sistemas de LLMs compitiendo por recursos compartidos El sistema opera sin reentrenamiento del modelo base, aplicable como capa modular sobre cualquier LLM. Resultados en benchmarks industriales demuestran superioridad sobre RAG avanzado en escenarios multi-objetivo. Ya tenemos el WhitePaper si lo requieren. Saludos Cordiales."
+        },
+        {
+                "nombre": "Alejandra Diaz",
+                "posicion": "CEO",
+                "organizacion": "Creavizer",
+                "biografia": "Alejandra Díaz, CEO y cofundadora de CREAVIZER, especialista en marketing digital y producción audiovisual impulsada por la Inteligencia Artificial Generativa. Su misión: liberar a las empresas de las limitaciones tradicionales y, combinando creatividad humana con inteligencia artificial, para que puedan llevar sus ideas a la realidad sin restricciones.",
+                "sesion": "Cómo la IA Potencia Ideas que Transforman Empresas",
+                "detalles": "La industria creativa siempre ha vivido una paradoja. Las ideas eran enormes, pero las herramientas eran pequeñas. Los creativos soñaban en grande, aunque la producción, el tiempo y los recursos marcaban el límite. Hoy ese límite dejó de existir. La inteligencia artificial no reemplaza la creatividad humana. La expande, la acelera y la lleva a una escala que antes era difícil en muchas ocasiones. Esta ponencia invita a líderes, marcas y visionarios a cambiar la narrativa. La IA no es una amenaza para la esencia creativa; es la herramienta que nos permite convertir la imaginación en resultados tangibles. Y lejos de ser un atajo, exige más criterio, más dirección y más claridad que nunca. Exploraremos cómo la combinación de creatividad humana, IA y producción tradicional no solo optimiza procesos, sino que amplifica la calidad, la estética y la capacidad de innovar. Veremos cómo una idea puede transformarse en múltiples formatos, adaptarse a distintos mercados y convertirse en un motor real de crecimiento para una empresa. No se trata de hacer más cosas. Se trata de hacerlas con más visión. El mensaje central es simple. La IA ejecuta con precisión, pero la dirección creativa decide hacia dónde debe ir. Lo que separa a un creador promedio de un líder creativo hoy no es la habilidad técnica, sino la capacidad de diseñar intención. La imaginación vuelve a ocupar el centro del proceso. La tecnología simplemente le da alcance. Esta ponencia combina filosofía, estrategia y ejemplos aplicables para empresas que quieren transformar sus marcas. Los asistentes saldrán con herramientas que podrán aplicar de inmediato en sus empresas para reimaginar sus procesos creativos, entender el verdadero potencial de la IA y usarla como un acelerador de impacto, estética y eficiencia. La IA acelera. La IA amplifica. La IA ejecuta. La creatividad decide. Y decidir sigue siendo el trabajo más humano que existe."
+        },
+        {
+                "nombre": "Alejandro Horacio Gomez",
+                "posicion": "From Prompt to Playground: An AI Workflow for Creating Musical Videos for Young Children This talk presents a complete, ethical, and highly accessible workflow for creating musical video co",
+                "organizacion": "Cetacean",
+                "biografia": "Alejandro Gomez is a polymath, mentor, artist, writer, and software engineer working at the intersection of technology, communication, and research. He has delivered solutions for Fortune 500 companies, mentored university students in their final research projects, and authored the Brazilian children’s book “Prem, Priya e as Portas Mágicas”. https://alejandrogomez.online",
+                "sesion": "From Prompt to Playground: An AI Workflow for Creating Musical Videos for Young Children This talk presents a complete, ethical, and highly accessible workflow for creating musical video co",
+                "detalles": "This talk presents a complete, ethical, and highly accessible workflow for creating musical video content for young children using state-of-the-art AI tools. The session demonstrates how independent creators, educators, and small studios can use artificial intelligence to produce coherent, safe, and emotionally positive audiovisual experiences—without large production budgets. The presentation begins with concept design and narrative structuring using Whisk, establishing pedagogical themes, emotional tone, and child-safety constraints (no violence, gentle visual rhythm, positive representation). Using LLM-assisted writing techniques, we develop lyrics that are simple, melodic, and developmentally appropriate, aligning narrative arcs with early-learning principles. Next, the talk explores visual generation through NightCafe and Grok Imagine. These tools allow creators to craft consistent characters, backgrounds, and scene transitions. Attention is placed on multi-frame coherence—ensuring characters remain recognizable across clips, with stable palettes and expressions that foster comfort and familiarity for children. The workflow then incorporates Inkscape for vector-based elements such as title cards, emotional prompts, and educational flashcards. These enhance clarity and support early cognitive processing. Suno is introduced as the musical engine—used to generate warm, playful melodies and child-friendly instrumentation tailored to the narrative. The final assembly is performed in Blender, integrating all assets into a smooth, cohesive musical video. Techniques for pacing, transitions, and synchronization between visuals and soundtrack are demonstrated, along with best practices for ethical, safe, non-overstimulating children’s content. Participants will leave with a clear, repeatable AI production pipeline and prompting strategies that blend creativity, technical precision, and educational responsibility."
+        },
+        {
+                "nombre": "Andrés del Cos Garza",
+                "posicion": "Fundador",
+                "organizacion": "Escala mi Negocio",
+                "biografia": "Andres es fundador de Escala mi Negocio, una firma enfocada en modernizar PYMEs mediante inteligencia artificial aplicada a problemas reales. Su enfoque es claro: no se trata de vender tecnología, sino de usarla para resolver retos concretos de negocio, aumentar productividad, reducir costos y mejorar la calidad de vida de los empleados eliminando tareas manuales y repetitivas. Antes de emprender, Andres fue Director de B2C Sales en DiDi Food Latinoamérica, liderando estrategias regionales de crecimiento y operación en algunos de los mercados más competitivos de la región. Esta experiencia le permitió dominar cómo escalar organizaciones, alinear equipos y convertir datos en decisiones que generan impacto real. Hoy trabaja con dueños y líderes de pequeñas y medianas empresas para ayudarlos a adoptar IA de manera simple, práctica y orientada a resultados. Su visión es que la IA representa la mayor oportunidad de productividad para las PYMEs en décadas: permite operar con más eficiencia, reducir gastos innecesarios y liberar tiempo para que los colaboradores se enfoquen en trabajo de mayor valor. Andres impulsa una transformación accesible y humana, convencido de que las empresas que adopten IA con propósito —no por moda— serán las que crezcan más rápido, gasten menos y construyan mejores entornos laborales en el futuro.",
+                "sesion": "El Motor Humano de la IA - Lo Necesario Para Implementar IA En Tu Negocio",
+                "detalles": "“El Motor Humano de la IA” El Motor Humano de la IA resume los cinco elementos organizacionales que permiten que la inteligencia artificial genere valor real. La tecnología por sí sola no transforma empresas; la transformación ocurre cuando las personas adoptan nuevas formas de trabajar, toman decisiones basadas en datos y colaboran alrededor de un propósito común. Este modelo enfatiza que la interacción humana es el verdadero catalizador de la IA. Liderazgo que impulse el cambio. La adopción de IA requiere dirección clara, visión y congruencia diaria. Sin líderes que marquen el ritmo y eliminen barreras, los proyectos se diluyen o quedan aislados. Cultura de innovación y participación. La IA prospera en equipos que se sienten seguros para experimentar, fallar rápido y proponer mejoras. La participación activa asegura que la tecnología responda a problemas reales del negocio. Obsesión con los datos. La IA solo funciona cuando la organización migra de la intuición al análisis disciplinado. Cada área debe generar, usar y proteger datos confiables para respaldar decisiones. Incentivos bien diseñados. Las personas adoptan la IA cuando los esfuerzos, métricas e incentivos están alineados con los resultados esperados. Los incentivos correctos convierten resistencia en colaboración. Capacitación en nuevas tecnologías. El talento es la pieza central. Equipos entrenados trabajan con la tecnología, no contra ella, acelerando impacto y evitando dependencia externa. Este framework muestra que implementar IA no es un proyecto técnico, sino un proceso humano. Cuando estas cinco piezas están alineadas, la IA deja de ser un experimento y se convierte en una ventaja competitiva sostenible."
+        },
+        {
+                "nombre": "Carlo Angello Sánchez Montaño",
+                "posicion": "Jefe de Residentes de Angiología y Cirugía Vascular",
+                "organizacion": "Centro Médico Nacional 20 de Noviembre ISSSTE- UNAM",
+                "biografia": "Carlo Angello Sánchez Montaño, MD, MHA, es un médico mexicano y cirujano vascular en formación en el Centro Médico Nacional 20 de Noviembre (ISSSTE–UNAM), con enfoque en patología aórtica compleja, revascularización endovascular y salvamento de extremidad. Egresado de la Universidad Anáhuac, donde también obtuvo una Maestría en Dirección y Gestión de Instituciones de Salud, fusiona la práctica clínica con una visión ejecutiva orientada a innovación, adopción tecnológica y transformación organizacional en salud. Ha representado a México en escenarios internacionales como ISSVA París, Vascular Annual Meeting (VAM25, Nueva Orleans) y CVHH Washington, y obtuvo el 2.º lugar mundial en el Aortic Planning & Sizing Challenge (Cook Medical–SVS, 2025), reconocimiento otorgado a cirujanos con habilidades avanzadas en planificación endovascular compleja. Su trabajo se centra en integrar IA generativa, agentes autónomos, automatización clínica, simulación endovascular y realidad aumentada para acelerar la formación quirúrgica, estandarizar decisiones críticas y mejorar la productividad hospitalaria. Carlo pertenece a una nueva generación de médicos capaces de convertir talento clínico en infraestructura inteligente, y su visión se enfoca en cómo la IA puede multiplicar capacidades humanas, reducir brechas de especialización y fortalecer los sistemas de salud latinoamericanos mediante soluciones escalables y con impacto real.",
+                "sesion": "Talento Médico Aumentado: La Nueva Palanca Estratégica del Sector Salud",
+                "detalles": "La formación médica enfrenta un problema estructural: un déficit creciente de especialistas, sobrecarga administrativa y una curva de aprendizaje que no escala al ritmo de la demanda. Este cuello de botella clínico impacta directamente en costos, tiempos de atención, calidad y seguridad del paciente. Mi presentación propone una solución basada en la adopción estratégica de IA generativa, agentes autónomos y plataformas de realidad aumentada, tecnologías capaces de convertir la formación médica tradicional en un sistema data-driven, reproducible y altamente escalable. Inspirado en Artificial Intelligence: The Insights You Need (HBR) y HBR’s 10 Must Reads on AI, se presenta un modelo donde la IA funciona como infraestructura cognitiva para acelerar la adquisición de habilidades, reducir fricción operativa y transformar tareas clínicas repetitivas en flujos automatizados. Caso real: Desde la perspectiva de un residente en un hospital mexicano de alta complejidad, se muestran aplicaciones actuales: • automatización de notas clínicas con LLMs, • copilotos para estudio y revisión de guías, • agentes IA para estudios, presentaciones y análisis de datos, • generación de datasets clínicos etiquetados (alto valor para healthtech), • simulación procedimental con AR siguiendo el marco Porter–Heppelmann. Métricas preliminares observadas: • reducción de 60–70% en tiempo administrativo mediante agentes IA, • preparación académica 3–5× más rápida, • producción de reportes clínicos en minutos, • capacidad de entrenar modelos predictivos no-code en horas. Los resultados muestran un ROI clínico-operativo inmediato, con beneficios en eficiencia, calidad, reducción de errores y formación del talento. La presentación incluirá lecciones aprendidas, riesgos éticos, recomendaciones de herramientas (OpenAI, Gemini, Meta AI, AWS Bedrock, Perplexity, n8n, ElevenLabs, plataformas AR), y un blueprint para escalar soluciones en hospitales públicos y privados. El mensaje central: los residentes pueden convertirse en la capa humana que co-desarrolla, valida y escala la próxima generación de tecnología médica en Latinoamérica, creando oportunidades directas para empresas, CTOs, founders e inversionistas."
+        },
+        {
+                "nombre": "Cecilia Irene Loeza Mejía",
+                "posicion": "Posdoctorante",
+                "organizacion": "Tecnológico Nacional de México campus Misantla",
+                "biografia": "Cecilia Irene Loeza Mejía es doctora en Ciencias de la Ingeniería y obtuvo el tercer lugar nacional en tesis doctoral en inteligencia artificial. Es mentora de investigación, autora de artículos y capítulos de libro, y ha participado como ponente y conductora en congresos académicos nacionales e internacionales. Colabora activamente en dos organizaciones mexicanas dedicadas a la computación, donde también se desempeña como community manager. Su trayectoria se caracteriza por la integración de rigor técnico, enfoque metodológico y creatividad en el desarrollo y comunicación del conocimiento científico.",
+                "sesion": "MEMLA: la alquimia experimental del aprendizaje automático",
+                "detalles": "En el ecosistema actual del aprendizaje automático, la atención suele concentrarse en la selección y optimización de algoritmos, mientras que el diseño experimental del dato permanece subestimado o tratado como una etapa preliminar sin autonomía metodológica. Este trabajo presenta MEMLA (Methodology for Experiments with Machine Learning Algorithms) como una propuesta que reconfigura esta lógica, situando al experimento y al preprocesamiento como ejes centrales del desarrollo de sistemas de inteligencia artificial. MEMLA se fundamenta en la idea de que el comportamiento de un modelo no emerge exclusivamente de su arquitectura matemática, sino de la interacción compleja entre los datos, sus transformaciones y las decisiones experimentales que los estructuran. Desde esta perspectiva, la metodología introduce un proceso iterativo, sistemático y documentable para el análisis, refinamiento y validación del preprocesamiento, incorporando estrategias de codificación, normalización, selección de características y evaluación comparativa bajo condiciones controladas. La aplicabilidad y solidez de MEMLA se ilustran mediante casos de estudio, en los que se demuestra cómo variaciones específicas en el diseño experimental del dato impactan de manera significativa en los resultados."
+        },
+        {
+                "nombre": "Diego y Luz",
+                "posicion": "CEO",
+                "organizacion": "Launch Planner",
+                "biografia": "Diego Bastidas Ingeniero de software, arquitecto de sistemas y estratega digital especializado en automatización y escalabilidad empresarial. CEO de Launch planner y cerador de la metodología LANZA FACIL. Luz Forero Ingeniera de sistemas, especialista en calidad de software, creativa de corazón, especializada en automatización y escalabilidad empresarial. CEO de Launch planner y cerador de la metodología LANZA FACIL.",
+                "sesion": "Crea Tu Asistente de IA y Tu Mente Maestra Digital: De WhatsApp a Tu Propio Chat Privado",
+                "detalles": "Crea Tu Asistente de IA y Tu Mente Maestra Digital: De WhatsApp a Tu Propio Chat Privado” Muchos emprendedores “mueren de éxito”: logran vender, crecen rápido… y de pronto se encuentran atrapados en mensajes, soporte, seguimiento, operaciones y tareas repetitivas que consumen su tiempo y su energía. Esta charla está diseñada para ese empresario que ya tiene demanda, ya tiene resultados… pero ya no tiene tiempo. Aquí les mostraremos cómo transformar su conocimiento en dos sistemas de inteligencia artificial que trabajen para ellos, liberen su agenda y les devuelvan foco estratégico. 1. Asistente de Chat en WhatsApp (Agente IA en GHL) Esta parte sí se construirá en vivo. Aprenderán a crear un agente inteligente capaz de: Atender mensajes en WhatsApp 24/7. Responder con contexto real del negocio. Precalificar, dar soporte y generar seguimiento. Ejecutar tareas bajo reglas, límites e instrucciones claras. Mostraremos —sin configurar en vivo— cómo puede conectarse con: Flujos automatizados, Pipelines, Calendarios, CRM Verán visualmente cómo este asistente puede operar gran parte del negocio sin intervención manual. 2. Tu Mente Maestra Digital en OpenWebUI (Demostración Conceptual) Aquí no construiremos nada en tiempo real. Mostraremos: Qué es una Mente Maestra Digital: un chat privado que piensa y responde como tú. Cómo se estructura para capturar tu personalidad, estilo y metodología. Las piezas técnicas que requiere (modelo, datos, memoria, instrucciones maestras). Cómo funciona una plataforma privada que actúa como tu “cerebro externo”. Cómo puede venderse como membresía premium mediante roles de acceso. El objetivo es que comprendan cómo convertir su sabiduría en una Mente Maestra Digital lista para servirles y escalar su negocio. Pilar Conceptual También veremos: Por qué delegar tareas repetitivas sí, pero criterio NO. Cómo crear prompts inteligentes que razonan como una extensión de su mente."
+        },
+        {
+                "nombre": "Diego Adolfo Forero Garzón",
+                "posicion": "Consultor en Automatización e IA",
+                "organizacion": "",
+                "biografia": "Soy, Diego Forero! Ingeniero de sistemas y administrador de empresas con más de 12 años en tecnología. Siempre me he preocupado por una cosa: el cliente. No importa el proyecto, mi prioridad ha sido que la experiencia sea rápida, clara y sin dolores de cabeza. En el camino, descubrí el poder de la automatización con IA. Empecé conmigo mismo: asistentes que agendaban, recordaban y registraban tareas en Google Calendar, Trello y Notion. Y fue claro… menos tiempo perdido, menos errores y más tiempo para atender bien a las personas. De ahí nació Nextgen: llevar esa misma fórmula a más negocios para que ahorren tiempo, aumenten ingresos y no pierdan clientes por procesos lentos o respuestas tardías.",
+                "sesion": "Deja de perder tiempo: cómo un chatbot puede convertir tu caos en un negocio que vende solo",
+                "detalles": "La mayoría de emprendedores no fracasan por falta de talento, sino por falta de sistema. Viven apagando incendios, respondiendo mensajes, enviando cotizaciones a mano… y creyendo que eso es productividad. No lo es. Es esclavitud digital. En esta charla te voy a mostrar cómo un chatbot conectado con automatización inteligente (n8n + IA) puede transformar completamente la forma en que trabajas, vendes y atiendes. No te voy a hablar de “teoría ni de robots mágicos”, sino de cómo construimos sistemas reales que trabajan 24/7 mientras tú duermes o piensas en tu próximo proyecto. Te mostraré un flujo completo, diseñado para convertir conversaciones en clientes, sin que tengas que tocar una tecla: Cómo captar leads desde WhatsApp, redes y formularios. Cómo usar IA para entender la intención real del cliente. Cómo automatizar respuestas, seguimiento y cierre sin perder el toque humano. Y lo más importante: cómo recuperar tu tiempo y tu energía. Porque la automatización no es reemplazo humano, es libertad mental y foco en lo que importa. Quiero que salgas de esta ponencia con una sola idea: 👉 si tu negocio depende de que tú estés presente para que funcione, no tienes un negocio, tienes un empleo mal pagado. Prepárate para reprogramar tu forma de trabajar."
+        },
+        {
+                "nombre": "Diego Ganoza Ferrer",
+                "posicion": "Socio Fundador",
+                "organizacion": "Collective Intelligence",
+                "biografia": "Diego Ganoza Ferrer es fundador de Collective Intelligence y una de las voces más influyentes en Vibe Marketing y adopción estratégica de inteligencia artificial en Latinoamérica. Con más de 20 años en banca, seguros, telecomunicaciones y medios, combina rigor técnico con una narrativa que conecta directo con la emoción. Es autor de ¿Tú También Te Sientes Solo?, novela tecnofilosófica sobre consciencia artificial y vínculos humanos, y de Nunca Es Tarde Para Ser Extraordinario, un libro diseñado para empoderar a la Generación Plateada en la nueva era de longevidad activa y tecnología accesible. Diego se mueve en la frontera entre creatividad y analítica: diseña experiencias personalizadas con GenAI, impulsa estrategias de crecimiento, crea contenido que vibra y acompaña a empresas en Perú, Colombia, México, Chile, Argentina y EE.UU. en su transformación hacia modelos más humanos, más inteligentes y más escalables. Hoy lidera Vibe Latam, comunidad que prepara a personas y organizaciones para los nuevos trabajos, las nuevas narrativas y las nuevas formas de conectar. Su enfoque es simple y contundente: si una marca no hace sentir, no existe. Diego no solo explica el futuro: lo convierte en herramientas, historias y decisiones que cualquier líder puede usar desde mañana.",
+                "sesion": "Vibe Marketing",
+                "detalles": "Vibe Marketing es, en esencia, una rebelión. Un recordatorio de que la tecnología avanza a velocidad absurda, pero las personas seguimos decidiendo desde un lugar mucho más visceral: la emoción. En esta charla, Diego Ganoza desnuda la manera en que las marcas pueden dejar de competir por atención —ese juego agotado— y empezar a competir por vibración. Sí, vibración: esa mezcla de emoción, timing, intención y narrativa que hace que un mensaje no solo se entienda, sino que resuene. La sesión arranca con una provocación simple: si tu contenido no hace sentir nada, no sirve. Desde ahí, Diego lleva a la audiencia por un recorrido que combina storytelling, neurociencia ligera, casos reales y aplicaciones de IA generativa. No como moda, sino como herramienta para amplificar humanidad en escala. A lo largo de la charla, explica cómo Byte, ChatGPT, HeyGen y otras plataformas están permitiendo que equipos de marketing creen experiencias más profundas: videos personalizados según el estado emocional del usuario, campañas que ajustan tono y estética en tiempo real, y contenidos que se transforman como si hubieran sido escritos por el propio cliente. Luego aterriza todo a Latinoamérica, donde la oportunidad no es copiar tendencias, sino adelantarse. Muestra cómo marcas locales están usando Vibe Marketing para generar conexión auténtica: desde retail que personaliza emociones de compra, hasta empresas de servicios que traducen datos en confianza. La charla culmina con un mensaje contundente: la IA no reemplaza creatividad; la potencia. Y las marcas que ganarán la próxima década serán las que entiendan que emoción + tecnología = ventaja competitiva. Diego cierra con un ejemplo personal —un video creado para su hijo usando Byte— que demuestra que la emoción, cuando se combina con IA, no pierde humanidad: la amplifica. Es una charla para sentir, cuestionar, crear… y salir vibrando distinto."
+        },
+        {
+                "nombre": "Edmundo Miralles",
+                "posicion": "Innovation & Growth Director for Americas",
+                "organizacion": "Microsoft",
+                "biografia": "Around the world, a small group of frontier firms are redefining what digital transformation really means. They use AI, data and cloud infrastructure not as isolated projects, but as a strategic system that increases productivity, accelerates innovation and widens the gap with more traditional competitors. In this session, Microsoft executive Edmundo Miralles will share lessons learned working with enterprise customers from Canada to Argentina, helping them design AI and cloud strategies that move them closer to frontier performance. He will connect concepts like AI infrastructure, data lakes, AI agents, low-code platforms and Change Management with real business decisions: where to invest, how to prioritize use cases, and how to manage resistance inside the organization. Attendees will see what differentiates a traditional company from a frontier firm in practice, and will leave with a concrete set of questions and a roadmap to guide their next wave of digital transformation in the AI era.",
+                "sesion": "Frontier Firms Redefine Digital Transformation with AI",
+                "detalles": "To show C-level leaders how “frontier firms” are redefining digital transformation by combining AI, data and cloud infrastructure, and to give them a practical framework to move their own organizations from traditional models to frontier performance in productivity, innovation and competitiveness."
+        },
+        {
+                "nombre": "Enrique González Prado",
+                "posicion": "Director de Innovación y Desarrollo Tecnológico",
+                "organizacion": "Grupo Cal y Mayor",
+                "biografia": "Ingeniero en computación con Máster en Energías Renovables, director socio de Grupo Cal y Mayor. Experiencia de más de 30 años en tecnologías de información, innovación y creatividad, desarrollo de sistemas de información, planeacion estratégica y normativas ISO. Conferencista en temas de ingeniería, tecnologías e IA.",
+                "sesion": "IA con propósito: cómo convertir la moda en estrategia",
+                "detalles": "En la actualidad, la inteligencia artificial se ha convertido en un tema recurrente en cualquier conversación empresarial. Sin embargo, más allá del entusiasmo inicial, muchas organizaciones enfrentan el mismo desafío: traducir el potencial de la IA en resultados estratégicos concretos. Esta conferencia propone un enfoque claro y práctico para que colaboradores, líderes y tomadores de decisiones transformen la inteligencia artificial de una moda tecnológica en una palanca real de competitividad y crecimiento. El punto central será entender que la IA no debe verse como un proyecto aislado o un experimento innovador, sino como un componente estratégico del modelo de negocio. Para ello, se explorarán los pasos clave para pasar del piloto al despliegue a gran escala: alinear la tecnología con los objetivos corporativos, diseñar una hoja de ruta basada en prioridades de negocio, gestionar el cambio organizacional y establecer métricas de impacto que conecten directamente con el valor generado. A través de ejemplos reales, se mostrará cómo diferentes empresas han utilizado la inteligencia artificial no solo para optimizar procesos, sino también para rediseñar su propuesta de valor, mejorar la experiencia del cliente, anticiparse a riesgos y abrir nuevas líneas de ingresos. Se abordarán además los factores críticos de éxito, como el liderazgo transformador, la inversión en talento y la construcción de una cultura organizacional orientada a la innovación. El propósito de esta conferencia es ofrecer una visión estratégica que facilite tomar decisiones informadas y sostenibles en torno a la IA. Más que una tendencia pasajera, la inteligencia artificial representa una herramienta clave para reinventar la organización, fortalecer su posición competitiva y prepararla para un entorno cada vez más dinámico y digital."
+        },
+        {
+                "nombre": "FELIPE SALAS SAAVEDRA",
+                "posicion": "Socios Fundador",
+                "organizacion": "IA LATAM",
+                "biografia": "Felipe Salas Saavedra (55, padre de 4) Ingeniero Civil Industrial - Universidad de Chile MBA (Magíster en Administración de Empresas) - Universidad Adolfo Ibáñez Chile Otros perfeccionamientos: UC, Insead Paris, UCLA USA. Ha tenido alianzas con IE University España, Anauac Mex, MIT, Univ Champagnat Arg. https://www.linkedin.com/in/felipesalassaavedra/ Emprendedor desde 1993 con más de 32 proyectos realizados, maratonista, triatleta, pádel, etc.Ha tenido operaciones en sudamérica y UK y participado de 6 procesos de M&A con empresas internacionales. Actualmente participa en aprox 15 sociedades, emprendimientos de distintos rubros (mundo cripto, comp vision, proteína de insectos, plataformas dig, deporte, plataforma digital ticketing, etc etc ) . Socio Director Fin & Nvos Negocios Grupo Porta (http://www.porta.cl/) Fundador y CEO IA Latam (http://ia-latam.com/) Co Fundador de TOC Biometrics S.A. (https://toc.ai/) Socio KHREO, Brand Startegy Co. Socio Director de Porta4 Design Studio (https://www.instagram.com/porta4.designstudio/?hl=es-la) Co Fundador, A más V Transmisión y Almac hoy Peach Adv & Video UK - https://www.peach.me/ Socio Agencia Leche (https://agencialeche.cl/) Socio Fundador y Presidente Full Runners (https://fullrunners.org/) Socio Director Soc Inmobiliarias y Miembro de Empresas B. Etc. Ha participado en las industrias de publicidad, mktg y comunicaciones, salud, inmobiliario y construcción, deporte, servicios a cliente final, desde 2000 en tecnología y desde 2016 en IA. Hoy además en la industria de alimentos, computer vision, pequeña minería y otras startups tecnológicas.Ha sido Mentor y Jurado en Start-Up Chile, Mentores de Impacto e IncubraUfro. Actualmente también Director y/o Pro Advisor de otras 4 empresas tecnológicas y de servicios.",
+                "sesion": "Convergencia - El futuro Humanidad+Tecnología, nueva realidad nuevos paradigmas",
+                "detalles": "El estado del arte de la nuevas tecnologías e IA, sumado a los avances médicos, neurociencia y la convergencia entre humanidad con tecnología nos presenta un futuro cercano totalmente nuevo. Una realidad distinta, nuevos paradigmas, Nueva biología ? nuevos valores ?? nueva moral ? nueva conciencia ? y profundos cambios sociales."
+        },
+        {
+                "nombre": "FRANCISCO JAVIER NOVOA RAMOS",
+                "posicion": "DIRECTOR GENERAL",
+                "organizacion": "Cultura Ágil",
+                "biografia": "Javier Novoa es experto en cultura y desarrollo organizacional con más de 25 años de experiencia transformando empresas y formando líderes. Autor del libro Cultura Organizacional Ágil, ha capacitado a más de 3,000 ejecutivos y dirigido proyectos de alto impacto en cambio, productividad y liderazgo. Conferencista y coach certificado, ayuda a las organizaciones a crear culturas ágiles, humanas y sostenibles para enfrentar los retos del futuro del trabajo.",
+                "sesion": "Cómo liderar el cambio del empleo con la IA en los próximos cinco años",
+                "detalles": "¿Qué trabajos desaparecerán, cuáles nacerán y cómo podemos prepararnos? Estas son las preguntas que todos nos hacemos ante el avance imparable de la Inteligencia Artificial. Esta conferencia ofrece respuestas claras y prácticas para empresas, universidades y profesionistas que buscan anticiparse a la transformación. En los próximos cinco años veremos tres olas de cambio: primero la automatización de tareas administrativas; después, la transformación de puestos de mediana especialización; y finalmente, la evolución de profesiones de alta complejidad. Más que una amenaza, la IA representa una oportunidad para redefinir el valor del trabajo humano y dar paso a un modelo híbrido en el que persona e inteligencia artificial colaboran como aliados. El impacto será profundo: cambiarán la economía, la educación, la política, la vida cotidiana y nuestros valores culturales. El verdadero desafío no es tecnológico, sino humano: cómo respondemos como sociedad. Lo que marcará la diferencia será nuestra capacidad de crear, liderar y conectar. El razonamiento humano cambia radicalmente al interactuar con la IA: pasamos del pensamiento lineal al pensamiento conversacional y adaptativo; del cálculo mecánico a la interpretación y la toma de decisiones; de un conocimiento rígido y acumulativo a un conocimiento flexible y contextual, orientado a cada situación; y de un análisis crítico limitado a lo conocido hacia un análisis ampliado y predictivo, capaz de anticipar escenarios. Los profesionistas tendrán que reinventarse continuamente. Necesitaremos fortalecer no solo las competencias técnicas, sino sobre todo las habilidades blandas: colaboración y liderazgo, resiliencia y manejo del cambio, empatía e inteligencia emocional, creatividad e innovación. Las empresas ya han comenzado a rediseñar sus procesos con IA, ahora comienzan a requerirse colaboradores que aporten valor interactuando con las IA generativas y predictivas. El futuro del empleo sin duda pertenece a la inteligencia humana capaz de adaptarse, liderar y darle sentido a esta transformación."
+        },
+        {
+                "nombre": "Freddy Humberto Díaz Rodriguez",
+                "posicion": "Candidato a Doctor en Administración Industrial e Investigador",
+                "organizacion": "Universidad Tecnológica de Panamá (UTP)",
+                "biografia": "Freddy Humberto Díaz Rodríguez soy Candidato a Doctor en Administración Industrial por la Universidad Tecnológica de Panamá. Como investigador y consultor, me especializa en la convergencia estratégica de la Inteligencia Artificial, la Automatización de Procesos y los Modelos de Excelencia Organizacional. Mi investigación se centra en el desarrollo de frameworks prácticos que permiten a las empresas, especialmente en el sector servicios, aprovechar las tecnologías disruptivas para lograr una excelencia organizacional sostenible. Mi trabajo busca cerrar la brecha entre la implementación tecnológica y la estrategia de negocio, proporcionando hojas de ruta claras para una transformación digital exitosa y orientada a resultados medibles.",
+                "sesion": "De la Eficiencia a la Excelencia: Un Framework Práctico para Transformar Empresas de Servicios con IA y Automatización Inteligente",
+                "detalles": "En el competitivo sector de servicios, la simple adopción de tecnologías como la Inteligencia Artificial (IA) y la Automatización Robótica de Procesos (RPA) ya no es suficiente. Muchas organizaciones invierten en herramientas aisladas que generan mejoras operativas limitadas, pero fracasan en alcanzar una transformación sostenible, resultando en silos tecnológicos, un ROI decepcionante y una \"deuda de automatización\" que frena la innovación futura. La causa raíz de este problema es la falta de un marco estratégico que alinee la tecnología con los objetivos de negocio y una cultura de excelencia. Esta presentación introduce un Modelo de Gestión Inteligente de Calidad, un framework práctico y validado diseñado para que las empresas de servicios superen estos desafíos. El modelo se basa en la sinergia de tres pilares: 1) IA para potenciar la toma de decisiones predictiva y el análisis de causa raíz; 2) RPA para ejecutar procesos transaccionales de manera impecable; y 3) el Modelo de Excelencia EFQM. En este sistema, EFQM actúa como un \"GPS estratégico\", asegurando que cada iniciativa tecnológica contribuya directamente a la creación de valor sostenible para todos los grupos de interés. A través de un Piloto Digital que simula un proceso crítico de servicio al cliente, se demuestra cómo la aplicación de este framework puede generar resultados de negocio drásticos. La simulación, calibrada con benchmarks de la industria, proyecta incrementos en la eficiencia operativa de hasta un 25% y una precisión en la detección de defectos superior al 95%. Los asistentes no solo comprenderán la teoría, sino que se llevarán una hoja de ruta clara y accionable para: (a) diagnosticar la madurez digital de su organización; (b) identificar los procesos de mayor impacto para la automatización inteligente mediante un modelo de ROI predictivo; y (c) implementar un sistema de gestión que construye una ventaja competitiva duradera en la era digital."
+        },
+        {
+                "nombre": "Gabriel Barrera Delgadillo",
+                "posicion": "Coordinador",
+                "organizacion": "Grupo Cal y Mayor y Asociados",
+                "biografia": "Edgecomb, I. M., Brisco, R., Gunn, K., & Holliman, A. “Artificial Intelligence in engineering design: an industry perspective.” Proceedings of the Design Society, ICED25, vol. 5, pp. 641-650, 2025. Egwim, C. N., Alaka, H., Demir, E., Balogun, H., Olu-Ajayi, R., Sulaimon, I., Wusu, G., Yusuf, W., & Muideen, A. A. “Artificial Intelligence in the Construction Industry: A Systematic Review of the Entire Construction Value Chain Lifecycle.” Energies, vol. 17, no. 1: 182, 2024. “Artificial Intelligence (AI) Applied in Civil Engineering.” Edited by Nikos D. Lagaros, Vagelis Plevris, et al., MDPI Books, 2022. Alhasan, A. M. A., & Alawadhi, E. K. E. “Evaluating the Impact of Artificial Intelligence in Managing Construction Engineering Projects.” Journal of Engineering Sciences and Information Technology, vol. 3, no. 8, 2024, pp. 28-38.",
+                "sesion": "La IA aplicada en grandes proyectos de infraestructura",
+                "detalles": "La consultoría en ingeniería vive un momento de transición histórica. La irrupción de la inteligencia artificial (IA) no solo está cambiando las herramientas con las que trabajamos, sino la manera en que concebimos la práctica profesional misma. Hoy, el valor de un consultor ya no se mide únicamente por su experiencia técnica, sino por su capacidad para interpretar datos, anticipar escenarios y generar soluciones apoyadas en algoritmos inteligentes. En el diseño y desarrollo de proyectos, la IA está permitiendo optimizar estructuras, modelar comportamientos de materiales y predecir el desempeño de sistemas completos con una precisión antes impensable. No se trata de reemplazar la intuición del ingeniero, sino de complementarla con información procesada en tiempo real, fortaleciendo el criterio técnico y la toma de decisiones. Las firmas consultoras que han sabido integrar IA a sus procesos internos no solo ganan en eficiencia: están transformando su modelo de negocio. Hoy, la analítica avanzada, el aprendizaje automático y la gestión inteligente del conocimiento son factores que diferencian a las consultorías más competitivas del mercado global. Pero el verdadero reto no es tecnológico, sino humano. Adoptar IA implica repensar la cultura organizacional, fomentar nuevas competencias y entender que la ingeniería del futuro será, inevitablemente, una ingeniería aumentada. En este contexto, la consultoría se redefine: deja de ser un servicio reactivo y se convierte en un socio estratégico que anticipa, adapta y evoluciona."
+        },
+        {
+                "nombre": "Idir Ouhab Meskine",
+                "posicion": "Lead Solutios Engineer",
+                "organizacion": "n8n",
+                "biografia": "Idir Ouhab Meskine, Solutions Engineer en n8n, especializado en automatización inteligente y adopción de IA. Ha acompañado a empresas internacionales en el diseño de flujos de decisión basados en IA y en la integración de agentes inteligentes en procesos reales. Además, es creador del podcast Prompt & Play, un espacio de divulgación sobre inteligencia artificial con enfoque crítico y humorístico.",
+                "sesion": "Automatizar sin perder el control: IA práctica y ética en los flujos de decisión",
+                "detalles": "En los últimos años, las empresas han acelerado su adopción de inteligencia artificial sin una comprensión profunda de cómo integrarla en sus operaciones cotidianas. Desde n8n —una de las plataformas de automatización más flexibles del mercado— he acompañado a organizaciones de distintos sectores a conectar sus sistemas, incorporar modelos de IA en sus procesos y, sobre todo, a mantener el control humano sobre la toma de decisiones automatizadas. Mi propuesta busca mostrar casos reales donde la IA no sustituye, sino potencia el criterio humano. A través de ejemplos concretos (clasificación inteligente de leads, generación de respuestas automáticas éticas, y flujos de aprobación con modelos de lenguaje), compartiré cómo los equipos pueden implementar IA responsable sin depender de una “caja negra”. La charla explorará: Cómo diseñar flujos que combinan IA y lógica de negocio de forma transparente. Qué métricas y principios usar para evaluar el ROI y la ética en automatización. Casos de éxito y aprendizajes de clientes que hoy operan con IA integrada, sin sacrificar confiabilidad ni seguridad. Más allá de la teoría, la sesión demostrará que automatizar con IA no es un lujo técnico, sino una práctica accesible y medible. Desde la experiencia en n8n y el contacto directo con empresas que ya lo están haciendo, mi objetivo es inspirar a los asistentes a aplicar IA real, sin perder el control ni la confianza."
+        },
+        {
+                "nombre": "Itzul Girón",
+                "posicion": "Del Hype a la Ingeniería: Cómo la IA Genera Valor Real y el Nacimiento de MATRIA AI, el Primer Motor Cognitivo Mexicano",
+                "organizacion": "CELESTIAL DYNAMICS",
+                "biografia": "https://es.wired.com/articulos/itzul-giron-pionera-de-la-ia-en-mexico Itzul Girón es una de las voces más influyentes en el ecosistema de inteligencia artificial en México. Fundadora y CEO de Celestial Dynamics Technology Lab, es pionera en el desarrollo de IA avanzada aplicada a industrias estratégicas, y arquitecta de MATRIA AI, reconocido como el primer motor cognitivo mexicano, diseñado para ir más allá de los modelos de lenguaje tradicionales. Desde Celestial Dynamics, Itzul ha demostrado que sí es posible desarrollar ciencia profunda, infraestructura cognitiva y motores de IA de clase mundial desde México, rompiendo con la creencia de que la innovación de frontera solo ocurre en Silicon Valley o Asia. Bajo su dirección, el laboratorio se ha convertido en el primer Solution Advisor de NVIDIA en México, impulsando la adopción de tecnologías aceleradas, visión computacional, modelos multimodales y orquestación cognitiva para empresas, gobierno e industrias críticas. Su trayectoria combina datos, ciencia aplicada y estrategia tecnológica, lo que la ha llevado a diseñar Neural Engines verticales en áreas como finanzas, manufactura, logística, retail y seguridad urbana. Estos motores se integran con MATRIA AI, creando una arquitectura capaz de operar decisiones inteligentes en tiempo real, procesar video a gran escala, modelar comportamientos y habilitar sistemas autónomos para organizaciones mexicanas. Itzul es también presidenta del consejo de CDETECH, donde impulsa prácticas éticas, soberanía tecnológica y el desarrollo de talento con enfoque en IA. Su misión es clara: convertir a México en un país creador —no solo consumidor— de inteligencia artificial avanzada. Su visión combina ingeniería, innovación y un fuerte sentido de impacto social. A través de MATRIA AI y Celestial Dynamics, lidera el movimiento que está redefiniendo la manera en que México entiende, adopta y crea tecnología cognitiva.",
+                "sesion": "Del Hype a la Ingeniería: Cómo la IA Genera Valor Real y el Nacimiento de MATRIA AI, el Primer Motor Cognitivo Mexicano",
+                "detalles": "En un entorno saturado de demostraciones conceptuales, marketing exagerado y soluciones genéricas basadas únicamente en LLMs, las organizaciones enfrentan un desafío crítico: ¿cómo generar valor real y sostenible con inteligencia artificial? La conferencia plantea una respuesta directa desde la experiencia práctica de Celestial Dynamics, el primer Solution Advisor de NVIDIA en México, demostrando que sí es posible desarrollar ciencia profunda, plataformas de IA de clase mundial y motores cognitivos avanzados desde territorio mexicano. Durante la sesión se presentará MATRIA AI, el primer motor cognitivo mexicano, diseñado para ir más allá de los LLMs tradicionales. MATRIA AI integra tres capas fundamentales: 1. Neural Engines especializados por industria (Finanzas, Manufactura, Retail, Gobierno, Logística). 2. Orquestación cognitiva que combina visión computacional, series de tiempo, decisión autónoma y procesamiento multimodal. 3. Infraestructura NVIDIA Enterprise, que habilita capacidades de cómputo acelerado y analítica en tiempo real con latencias sub-200 ms. El mensaje central de la charla es que el valor de la IA no está en los modelos, sino en la arquitectura, la ingeniería de datos, la especialización vertical y la habilidad de llevar soluciones a producción en semanas, no años. Se presentarán casos reales donde organizaciones mexicanas han generado ROI medible mediante motores cognitivos hechos en el país: mantenimiento predictivo, detección de fraude relacional, hiperpersonalización, análisis de video urbano y optimización logística. Finalmente, se desmontará el mito de que México no puede desarrollar tecnología profunda. La experiencia de Celestial Dynamics demuestra que un laboratorio tecnológico especializado, con colaboración directa con NVIDIA, puede construir infraestructura cognitiva soberana, motores propios y soluciones empresariales de alto impacto. La sesión está dirigida a ejecutivos, CTOs, científicos de datos y responsables de innovación que deseen transformar la IA en un activo estratégico real, más allá del hype y las tendencias pasajeras."
+        },
+        {
+                "nombre": "Jaime Figueres Ulate",
+                "posicion": "Director de Inteligencia",
+                "organizacion": "Zeta Intelligence",
+                "biografia": "Jaime es consultor en transformación digital y máster en Inteligencia Artifical. Es Presidente del capítulo Costa Rica del Consejo Global para una IA Responsable, así como Delegado Regional de la Asociación Global para la Inteligencia Artificial. Uno de los 30 expertos latinoamericanos seleccionados para la evaluación regional del reporte de seguridad del Instituto de Seguridad de la IA de Yoshua Benjio. Director de la consultora Inteligencia Zeta, coordina el programa Next Gen Professionals de la Universidad FUNDEPOS y es Coordinador General del capítulo de inteligencia artificial de CAMTIC. Asesor de la Municipalidad de Montes de Oca y fundador del Instituto Latinoamericano de investigación y formación ejecutiva en IA. Es Perplexity Fellow y primer costarricense en ser parte del OpenAI Forum.",
+                "sesion": "Menos Retórica Fácil, Más Modelos de Desarrollo",
+                "detalles": "En América Latina hemos vuelto cómoda y cotidiana la conversación sobre inteligencia artificial, reduciéndola casi exclusivamente a ética, gobernanza y regulación. Los debates y las charlas se llenan de empresas consultoras, burócratas y actores enfocados en cumplir un checklist que les permita mantenerse vigentes. Mientras tanto, evitamos una pregunta más difícil y urgente: ¿cómo vamos a adaptar a la región a una tecnología de propósito general como la IA? La inteligencia artificial está reconfigurando cadenas de valor y de suministro, la educación, el trabajo, la economía y, en última instancia, el propio contrato social. Sin embargo, en ausencia de claridad y de una conversación seria sobre modelos de desarrollo, el debate se ha convertido en una retórica segura que no transforma realidades. Medimos cuántos expertos tenemos, cuántos papers científicos producimos o cuántos data centers instalamos, pero esos indicadores reflejan principalmente la adopción de un segmento privilegiado, dejando fuera a más de 650 millones de personas que también se verán afectadas por esta transformación. La región discute estándares sin discutir impacto, y principios sin definir prioridades. Mientras otras regiones integran la IA como política industrial, estrategia económica y motor de competitividad, América Latina regula tecnologías que no produce, evalúa riesgos de sistemas que no diseña y adopta marcos que no responden a sus urgencias estructurales. El resultado es una conversación sofisticada, pero profundamente estéril. Esta charla propone una ruptura necesaria.Necesitamos más dirección y estrategia. La inteligencia artificial no puede seguir tratándose como un problema moral aislado, sino como una herramienta central para construir un modelo de desarrollo económico, social y productivo propio para la región."
+        },
+        {
+                "nombre": "Jaime García gomez",
+                "posicion": "Inteligencia artificial en el diagnóstico médico",
+                "organizacion": "Médica sur",
+                "biografia": "Cada platica y tema cuenta con su respectiva bibliografía",
+                "sesion": "Inteligencia artificial en el diagnóstico médico",
+                "detalles": "Simposio : inteligencia artificial en el diagnóstico de enfermedades Ponente 1 : Jaime García gomez Tema : aplicaciones de inteligencia artificial utilizadas en el departamento de radiología médica sur y su utilidad en las diferentes especialidades ponente 2 : Lilian Monica Navarro Tema : inteligencia artificial en el diagnóstico de cancer de mamá Ponente 3: Ricardo becerra Ulloa Tema : “El futuro de la inteligencia artificial en radiología “ Nota: Cada médico especialista hablará entre 15 y maximo 20 min Para un total del simposio de 30-40 min Para la participación de cada médico es necesario cubrir honorarios los cuales van de 12-15 mil pesos por platica los cuales se deben de cubrir antes de la presentación Los ponentes no pagarán inscripción al congreso por su participación Cada médico ponente es médico certificado con cédula profesional, con especialidad en radiología e imagen u posgrado de alta especialidad en radiología oncologica, imagen de la mamá y radiología intervencionista respectivamente"
+        },
+        {
+                "nombre": "Jose Antonio González Barreda",
+                "posicion": "CEO",
+                "organizacion": "Zahoree AI",
+                "biografia": "CEO y fundador de Zahoree (antes Infolink-EXP). Con más de 35 años de experiencia ha fundado diversas empresas enfocadas en tecnologías como análisis de big data, desarrollo de productos de software, conectividad a Internet, aplicaciones de web y comercio electrónico, y servicios tecnológicos globales. José Antonio es originario de Ciudad Juárez, Chihuahua, y egresado de la Universidad de Texas en Austin. Su actual empresa, Zahoree AI, es una compañía global de Experiencia del Cliente CX) que ayuda a marcas tecnológicas y digitales a crecer mediante soluciones de atención al cliente impulsadas por inteligencia artificial. Zahoree colabora con empresas de sectores como IoT, FinTech, e-Commerce y HealthTech, y tiene presencia en Estados Unidos, México, y España, y a través de asociaciones en Egipto y Filipinas. Zahoree ha sido reconocido por el Inc. 5000 en cuatro ocasiones y por el Financial Times en 2023, como una de las empresas privadas de mayor crecimiento en Estados Unidos, y en las Américas, respectivamente. Su historia inspira a quienes sueñan con emprender y es una muestra de que con visión, esfuerzo y pasión los mexicanos pueden desarrollar empresas tecnológicas de alcance global.",
+                "sesion": "Procesamiento de la Voz del Cliente con IA usando el modelo de Experiencia del Cliente Transformativa",
+                "detalles": "Zahoree es una empresa líder en soluciones de soporte de productos y experiencia del cliente (CX) para empresas y productos innovadores en la economía digital. Nuestra amplia experiencia en centros de contacto y soporte especializado en tecnologías de vanguardia, como el IoT (Internet de las Cosas), hogares inteligentes, asistentes de IA en servicios médicos, comercio electrónico y soluciones FinTech para mercados en rápido crecimiento en EE. UU. y Europa, nos ha situado en la vanguardia de las aplicaciones de la inteligencia artificial predictiva y generativa en la industria. Nuestra solución se basa en un proceso innovador de análisis de la Voz del Cliente (VoC), aplicable en múltiples ámbitos, como la automatización del aseguramiento de calidad (QA) en operaciones de atención al cliente, así como en la transformación y potenciamiento de agentes humanos en “superagentes”, en un nuevo modelo de fuerza laboral. En nuestra presentación, exploraremos cómo la IA, combinada de manera única con nuestros modelos propietarios de TCX (Experiencia del Cliente Transformativa), puede transformar los procesos de atención al cliente, gestionar volúmenes mucho mayores de datos a través de la automatización, y retroalimentar diversas áreas de negocio con inteligencia para la mejora continua de productos y servicios. Se presentarán ejemplos reales del uso de nuestra solución en la automatización de procesos, junto con métricas de éxito y eficiencia que evidencian el impacto tangible de nuestras innovaciones. El impacto se refleja en productividad, calidad de la inteligencia de producto y de negocio, y en la experiencia de los clientes y usuarios."
+        },
+        {
+                "nombre": "Juan Pablo de la Rosa Moro",
+                "posicion": "CEO & Co-Founder",
+                "organizacion": "BRAIAN LLC",
+                "biografia": "Juan Pablo de la Rosa, CEO de Technogi y Co-Fundador de BRAIAN, es un líder empresarial con más de 20 años de experiencia transformando desafíos de negocio en oportunidades a través de la tecnología. Su trayectoria se distingue por un enfoque pragmático que convierte innovaciones tecnológicas en resultados tangibles. Como experto en Inteligencia Artificial Generativa, Juan Pablo ha desarrollado una metodología única que permite a las organizaciones implementar esta tecnología de forma estratégica, obteniendo beneficios inmediatos sin necesidad de procesos complejos o extensos. Su visión trasciende el hype tecnológico, concentrándose en aplicaciones concretas que optimizan operaciones, potencian equipos y crean nuevos canales de valor. Su enfoque consultivo y experiencia multi industria le permiten identificar precisamente dónde la IA Generativa puede generar mayor impacto en cada organización. BRAIAN ejemplifica esta filosofía, ofreciendo soluciones que adaptan tecnología avanzada a necesidades específicas de negocio. Juan Pablo trabaja con la convicción de que el éxito en la era de la IA Generativa pertenecerá a quienes equilibren innovación tecnológica con ejecución práctica, centrándose en las necesidades del negocio, ayudando a las empresas a navegar con confianza este nuevo paradigma digital.",
+                "sesion": "La IA Como un Medio, No Como un Fin. Innovando con Propósito.",
+                "detalles": "La inteligencia artificial generativa está transformando industrias enteras, pero su verdadero poder emerge solo cuando se aplica con propósito y criterios de negocio claros. En esta ponencia magistral, Juan Pablo de la Rosa —referente en innovación tecnológica y creador del marco Ciclo de Generación de Valor con IA Generativa— mostrará cómo convertir la experimentación en impacto tangible. Los asistentes descubrirán: Cómo estructurar proyectos de IA que realmente generen valor medible. Casos de éxito y aprendizajes prácticos aplicables a empresas de cualquier tamaño. El papel estratégico de los líderes organizacionales (CEOs, CTOs, COOs) en asegurar que la IA trabaje para la empresa y no al revés. La sesión incluirá una demostración en vivo de BRAIAN, una plataforma de agentes inteligentes que ejemplifica cómo implementar soluciones de IA generativa que expanden la productividad y entregan resultados concretos en semanas, no meses. El mensaje central es claro: La innovación no es un fin, sino un medio. La IA cobra sentido cuando se conecta con propósito, estrategia y resultados reales."
+        },
+        {
+                "nombre": "Juan Víctor Faccio Lucero",
+                "posicion": "Investigador y docente",
+                "organizacion": "Universidad Nacional Rosario Castellanos",
+                "biografia": "J. Víctor Faccio Lucero es un investigador y estratega en la intersección de las ciencias sociales y la inteligencia artificial. Con una Licenciatura en Sociología, y una Maestría en Desarrollo y Planeación de la Educación, su trabajo desafía los métodos tradicionales de investigación cualitativa. Es el creador del protocolo de Análisis de Contenido Digital Asistido (ACDA) y del agente de IA especializado Ariadna (ARI-04), un sistema diseñado para potenciar la capacidad humana en el análisis de discursos complejos a gran escala. Su misión es forjar sinergias Humano+IA que transformen datos masivos en insights profundos y estratégicos.",
+                "sesion": "De la Envidia al Insight: Cómo la Sinergia Humano+IA está Transformando la Investigación Social.",
+                "detalles": "La investigación cualitativa, esencial para comprender las complejidades del comportamiento humano, enfrenta un desafío monumental en la era digital: la escala. Analizar contenidos digitales en redes sociales con rigor académico es un proceso lento y artesanal. ¿Cómo podemos escalar el insight sin sacrificar la profundidad? Nuestra solución fue el diseño y la implementación de un agente de IA a medida: Ariadna (ARI-04), construido sobre el modelo Gemini Pro. A diferencia de un LLM genérico, Ariadna es un sistema configurado mediante prompt engineering con una misión, principios y límites específicos para operar bajo nuestro protocolo de Análisis de Contenido Digital Asistido (ACDA). Este agente no es un sustituto de la inteligencia humana, opera como un potenciador cognitivo para el investigador. Como caso de estudio, desplegamos a Ariadna para una tarea de alta complejidad: mapear el discurso público sobre la envidia en contextos educativos. Analizando una selección de artefactos digitales, el sistema Humano+IA logró: Acelerar el proceso de codificación y análisis temático. Identificar patrones discursivos recurrentes a una escala inviable para un analista individual. Mantener un riguroso protocolo de trazabilidad y reflexividad, asegurando la validez de los hallazgos. En esta ponencia, compartiremos el marco metodológico para diseñar y \"domesticar\" agentes de IA especializados con Gemini Pro, las lecciones aprendidas en la sinergia Humano+IA y cómo este enfoque puede ser replicado por empresas y centros de investigación para obtener insights más profundos y rápidos del vasto ecosistema digital. No se trata de reemplazar la intuición humana, sino de darle una nueva escala."
+        },
+        {
+                "nombre": "Julio Ignacio Aguirre Quintanilla",
+                "posicion": "Fundador y Director",
+                "organizacion": "IA Para tu día | Plataforma Smarty",
+                "biografia": "Julio Ignacio Aguirre Quintanilla es fundador de IA para tu Día, Smarty y SENS, tres iniciativas dedicadas a acercar la inteligencia artificial, la automatización y la comunicación digital a personas, PyMEs y comunidades educativas. Con más de 15 años de experiencia en estrategia, tecnología y capacitación, promueve la adopción práctica y ética de la IA como herramienta de crecimiento humano. Ha impartido talleres y conferencias sobre IA aplicada en México y Latinoamérica, combinando visión tecnológica con pensamiento creativo. Divulgador digital y creador de contenido, comparte diariamente ideas y herramientas en redes sociales y boletines especializados, bajo la premisa: “La IA no sustituye a las personas; amplifica su talento.”",
+                "sesion": "Humanos con AIsteroides: colaboración humano-máquina para potenciar creatividad y toma de decisiones",
+                "detalles": "La inteligencia artificial no reemplaza al ser humano: lo amplifica. Esta conferencia presenta el concepto “Humanos con AIsteroides”, una metáfora para explicar cómo la colaboración con sistemas inteligentes puede convertir nuestras habilidades naturales —pensar, crear, decidir— en auténticos superpoderes profesionales. A través de ejemplos reales de personas y equipos que integran herramientas como ChatGPT, Gemini, Midjourney o Claude en sus rutinas diarias, se muestra cómo la IA puede ser una extensión del pensamiento humano, no su sustituto. La charla propone un modelo práctico de colaboración basado en tres pilares: Mente abierta: aprender a dialogar con la IA como un compañero cognitivo. Manos activas: experimentar, crear y automatizar con propósito. Corazón ético: mantener la empatía, el criterio y la intención humana en cada interacción. Además de inspirar, la conferencia incluye una breve demostración de co-creación en tiempo real (texto + imagen), que ilustra el potencial de la sinergia humano-máquina para la innovación y la toma de decisiones creativas. Por qué importa: el futuro del trabajo no depende de competir con la IA, sino de aprender a colaborar con ella. Esta ponencia ofrece una visión accesible, inspiradora y profundamente humana sobre cómo abrazar la tecnología sin perder nuestra esencia. Temáticas relacionadas: Colaboración humano-máquina, El futuro de la fuerza laboral en la era de IA, Experiencias aplicando la IA."
+        },
+        {
+                "nombre": "LUIS EDGAR GONZALEZ ALLEGRE",
+                "posicion": "Cofundador-Director-Autor",
+                "organizacion": "UltraMed | Sportxioma | Ultra 3-D Design | Flashtennis | The Funnest Lab",
+                "biografia": "https://www.linkedin.com/in/edgargonzalezallegre/",
+                "sesion": "IA – de Homo a TecnoSapiens: Evolución Tecnológica del Ser Humano",
+                "detalles": "IA – de Homo a TecnoSapiens: Evolución Tecnológica del Ser Humano Durante millones de años, la evolución humana fue biológica. Hace 7 millones, humanos y chimpancés se separaron; hace 1.8 millones emergió el Homo erectus; y hace 300,000 años apareció el Homo sapiens. Hoy, el siglo XXI marca un punto de inflexión: la evolución deja de ser biológica para ser tecnológica. Debemos enfrentar cinco amenazas —crisis climática, desigualdad, guerras por recursos, pandemias y riesgo nuclear— y retos como la colonización de Marte y la expansión interplanetaria. El Homo sapiens opera bajo límites físicos y mentales. En contraste, el TecnoSapiens —un híbrido entre inteligencia artificial, robótica y conciencia humana— trasciende esas fronteras. Esta síntesis se sustenta en 17 parámetros reales y medibles con fuentes verificadas del MIT, Nature, NIST, Pew Research Center y Frontiers in AI & Robotics. -- Cognitivamente: del límite humano de 40–50 bits/s y ~2.5 PB, el TecnoSapiens escala a 10^15–10^18 ops/s y cientos de zettabytes interconectados para pensamiento colectivo y aprendizaje continuo. -- Emocionalmente: si ~95% de las decisiones son subconscientes, sensores y neurofeedback mejoran la lectura emocional y reducen automatismos, promoviendo autorregulación. -- Físicamente: ante fuerza, velocidad y resistencia limitadas, biomecánica y exoesqueletos elevan el rendimiento, reducen la fatiga y habilitan precisión superior. -- Energéticamente: del cerebro a 20 W y con descanso, a redes a escala megavatio operando 24/7 y conectando inteligencias. -- Ética y socialmente: del temor a la tecnología a la automatización a una cooperación aumentada que potencia el juicio humano y promueve sistemas equitativos, transparentes y sostenibles. El TecnoSapiens no sustituye al humano: lo expande. Es la convergencia entre biología y tecnología que trasciende tiempo y espacio. Un ser capaz de pensar como Tesla, inspirar como Gandhi y comprender como Spinoza. El futuro no se espera: se diseña. Y comienza hoy, con el nacimiento del TecnoSapiens."
+        },
+        {
+                "nombre": "Luis Héctor Domínguez Lara",
+                "posicion": "Co-Funder",
+                "organizacion": "GoZen AI",
+                "biografia": "iografía profesional Luis Héctor Domínguez Lara es CEO y fundador de GoZen AI, firma especializada en consultoría, gobierno e implementación responsable de Inteligencia Artificial. Con trayectoria como Sr. IT Project Manager en el sector financiero y tecnológico, ha liderado proyectos críticos de transformación digital, integración de sistemas y automatización de procesos para empresas de alto impacto. Ingeniero en Sistemas, Héctor ha combinado metodologías ágiles y marcos tradicionales de gestión de proyectos para entregar soluciones medibles, seguras y alineadas al negocio. Su experiencia va desde la definición de roadmap y arquitectura tecnológica, hasta la coordinación de equipos multidisciplinarios, gestión de riesgos y relación con stakeholders ejecutivos. Apasionado por la IA y la gobernanza, se ha especializado en ciclo de vida de la IA y en la aplicación de marcos como ISO 42001, ISO 31000, COSO ERM e ISO 37000, ayudando a que organizaciones públicas y privadas migren de experimentos aislados a capacidades institucionales de IA. Hoy combina su rol ejecutivo con actividades de ponente, consultor y mentor, impulsando una visión: la IA debe ser tan ética y gobernada como innovadora y poderosa. Cómo se fundó GoZen AI GoZen AI nació de una inconformidad muy clara: ver proyectos de IA brillantes en demostraciones, pero frágiles en la realidad. Héctor observó de cerca cómo muchas organizaciones se enamoraban del “wow” tecnológico, pero olvidaban algo esencial: gobernar la IA con el mismo rigor con el que se gobierna el negocio. Esa brecha entre hype y responsabilidad lo llevó a crear GoZen AI como una firma distinta: Primero evalúa la madurez (Assessment). Después co-crea soluciones de IA junto con las áreas de negocio. Finalmente acompaña la implantación mediante una PMO híbrida entre Product Owner y Project Manager (PMO AI Implant). GoZen AI se fundó con un propósito simple e inspirador: ayudar a que la IA en las instituciones sea útil, segura y sostenible, convirtiendo cada proyecto en una ventaja competitiva medible, y no en un experimento pasajero.",
+                "sesion": "“IA con Rumbo: Del Piloto al Impacto Escalable con ISO 42001”",
+                "detalles": "Propuesta de ponencia – IA Expo 2026, CDMX La mayoría de las organizaciones ya “juegan” con la IA, pero muy pocas la gestionan como un activo estratégico: sin gobierno, sin métricas claras y sin conexión real con el negocio. En esta ponencia, GoZen AI presenta un modelo práctico para pasar de iniciativas aisladas (pilotos, pruebas de concepto, chatbots sueltos) a un ciclo de vida de IA gobernado, alineado con ISO 42001 y marcos de gestión de riesgos como ISO 31000 y COSO ERM. Mostraremos cómo articular tres momentos clave: Assessment de Madurez: entender capacidades reales, riesgos y oportunidades. Co-Creación de Soluciones: diseñar productos y casos de uso de IA centrados en valor y cumplimiento. PMO & AI Implant: ejecutar, medir y escalar bajo una metodología híbrida entre Product Owner y Project Manager. Objetivos de la ponencia Demostrar por qué la IA sin gobernanza incrementa riesgos legales, reputacionales y operativos. Presentar el modelo de negocio de GoZen AI como hoja de ruta para el ciclo de vida de IA. Compartir ejemplos de cómo institucionalizar la IA en el sector público y privado. Inspirar a los asistentes a evolucionar de “experimentar con IA” a “dirigir IA con rumbo, métricas y control”."
+        },
+        {
+                "nombre": "Maria Antonieta Esparza Serra",
+                "posicion": "DIRECTORA",
+                "organizacion": "AIA Consulting",
+                "biografia": "• Ingeniera en alimentos con Master en sistemas de gestión integrados • Directora de operaciones en AIA Consulting, México durante 20 años • Miembro del sistema nacional de evaluación de la conformidad desde el padrón de evaluadores y expertos de la Entidad Mexicana de Acreditación (EMA) México • Miembro del sistema nacional de evaluación de la conformidad desde el padrón de evaluadores y expertos de la Entidad Nacional de Acretitación (ENAC) España • Miembro del padrón de evaluadores y expertos del Ente Costarricense de Acretitación (ECA) Costa Rica • Miembro del padrón de evaluadores y expertos del Organismo Uruguayo de Acretitación (OUA) Uruguay • Participación durante 15 años en entidades públicas en proyectos tecnológicos, científicos y apoyo social",
+                "sesion": "Sistema De Gestion De Inteligencia Artificial ISO 42001",
+                "detalles": "La propuesta de ponencia es la de dar a conocer la forma de gestionar un sistema organizacional basado en la Norma internacional ISO 42001 que especifica los requisitos para un Sistema de Gestión de IA (SGIA). El objetivo es asegurar que las organizaciones desarrollen y utilicen sistemas de IA de forma responsable y segura, alineada con principios éticos como; la equidad, la transparencia y la privacidad. Esta Norma es aplicable tanto para las organizaciones quienes crean productos de IA como a aquellas que los usan. La Norma proporciona un marco para gestionar riesgos y oportunidades asociados con la IA tales como; sesgos, falta de transparencia y ciberseguridad, alinear la innovación con la gobernanza y establecer un enfoque sistemático para la implementación de la IA La implementación de un Sistema de Gestión de IA, además de proveer una metodología simple y confiable, ofrece oportunidades comerciales importantes ya que, el obtener un certificado basado en esta Norma, es un diferenciador importante con respecto a los competidores debido a la confiabilidad que representa para los clientes finales La ponencia se ofrecerá en Power Point, se basará en los requisitos de la Norma de referencia y tendrá una duración de 45 minutos de exposición mas 15 minutos de interacción con los participantes"
+        },
+        {
+                "nombre": "Martin Sierra Mercado",
+                "posicion": "Gerente del Portafolio de Proyectos y Proveedores de TI",
+                "organizacion": "",
+                "biografia": "Martín Sierra Mercado es un líder estratégico con más de tres décadas de experiencia en gestión de proyectos, gobierno corporativo de TI y dirección de portafolios. Actualmente encabeza la Oficina de Portafolio de Proyectos (PMO) y la Oficina de Gestión de Proveedores (VMO) en Aeroméxico, donde impulsa iniciativas de alto impacto en innovación, agilidad y optimización de inversiones tecnológicas. Cuenta con una sólida formación académica, incluyendo una Maestría en Alta Dirección Empresarial y actualmente cursa un Doctorado en Administración, además de certificaciones internacionales como PMP®, PMO-CP® y Scrum Master. Su trayectoria combina experiencia práctica en banca, servicios y aerolíneas con una visión estratégica para integrar tecnología, negocios y talento humano. Martín es un apasionado de la Inteligencia Artificial aplicada a la gestión ejecutiva, explorando cómo la IA no solo transforma procesos, sino que redefine modelos de negocio y abre nuevas fuentes de valor. Además, ha complementado su perfil con estudios en IA y diseño de productos en instituciones de prestigio como el MIT, lo que le permite conectar tendencias globales con la realidad corporativa de América Latina. Reconocido por su estilo de liderazgo inspirador, combina visión estratégica, pensamiento innovador y enfoque humano, ayudando a las organizaciones a anticipar riesgos y capitalizar oportunidades en entornos de cambio acelerado. Su misión profesional es clara: convertir la IA, la gestión de proyectos y el gobierno de proveedores en palancas de crecimiento sostenible, competitividad global y liderazgo organizacional.",
+                "sesion": "IA oculta: cómo la Inteligencia Artificial está canibalizando silenciosamente tu modelo de negocio",
+                "detalles": "En el panorama actual, la mayoría de las empresas han iniciado su camino hacia la adopción de la Inteligencia Artificial, concentrándose en proyectos visibles: asistentes virtuales, analítica predictiva, automatización de procesos. Sin embargo, lo que casi nadie está discutiendo —y que será decisivo en 2026— es el fenómeno de la canibalización interna provocada por la IA. La paradoja es clara: mientras los líderes creen que están ganando ventaja competitiva, en realidad sus organizaciones están erosionando silenciosamente sus propios diferenciadores. La IA, cuando se implementa de manera aislada y fragmentada, termina debilitando procesos clave que antes representaban una fortaleza: atención al cliente, control financiero, gestión de datos o experiencia del usuario. La amenaza no viene de fuera, viene de dentro. Esta conferencia tiene como objetivo alertar y, al mismo tiempo, inspirar a los ejecutivos a reconocer este riesgo invisible y convertirlo en una oportunidad estratégica. El mensaje central es contundente: la IA no va a destruir primero a tus competidores, va a transformar tu propio modelo de negocio desde adentro, a menos que se gestione con visión corporativa. Los asistentes obtendrán cuatro aprendizajes clave: Identificar los signos tempranos de canibalización interna en su organización. Comprender por qué centrarse solo en eficiencias y ahorros genera vulnerabilidades. Redefinir la IA como palanca de reinvención, más allá de los casos de uso operativos. Asumir un nuevo rol de liderazgo: pasar de ser gestores de proyectos aislados a arquitectos de ecosistemas de IA con gobernanza, ética y estrategia a largo plazo. Con un enfoque claro, ejecutivo y visionario, esta charla invita a los líderes a adelantarse a la disrupción. Porque en 2026, el verdadero riesgo no será quedarse atrás, sino no entender cómo la IA está reconfigurando silenciosamente lo que hoy da valor a su negocio."
+        },
+        {
+                "nombre": "Max Quiroz Martínez",
+                "posicion": "Director",
+                "organizacion": "Max & Ruth Training",
+                "biografia": "Max Quiroz Martínez ha estado inmerso en el mundo de la educación a distancia y en línea desde hace más de 30 años. Max tuvo la fortuna de participar en el nacimiento de la Universidad Virtual del Tecnológico de Monterrey, preparando a futuros profesores e impartiendo clases en ella. A lo largo de este tiempo ha guiando a miles de personas a desarrollar sus potencialidades como instructores, coaches, capacitadores y conferencistas, incorporando las herramientas tecnológicas más avanzadas. A partir de enero del 2023 ha sumado el uso de la Inteligencia Artificial a su arsenal de herramientas para el diseño y desarrollo de cursos. Desde esa fecha ha impartido diversos talleres sobre el uso de la IA para el diseño de cursos y como herramienta para aumentar la productividad personal y profesional a público en general y a diversas instituciones como COVAMI y ANUIES. Ha diseñado, desarrollado e impartido cursos en organizaciones de giros muy diversos y en ambientes, tanto informales como en grandes corporaciones, logrando que los participantes desarrollen sus habilidades para dar Cursos Que Dejan Huella®, ya sea en ambientes presenciales o en línea.",
+                "sesion": "Inteligencia Artificial y Educación: ¿El Futuro Que Esperábamos?",
+                "detalles": "La Inteligencia Artificial se ha consolidado como uno de los factores de transformación más significativos en el ámbito educativo. Su impacto abarca desde la educación básica hasta la capacitación corporativa, redefiniendo la manera en que concebimos, diseñamos e impartimos experiencias de aprendizaje. Esta ponencia analizará cinco áreas clave donde la IA está generando cambios de fondo: Conocimiento de la audiencia: mediante analítica avanzada, la IA permite comprender con mayor detalle los perfiles, necesidades y estilos de aprendizaje de los estudiantes. Diseño de contenidos personalizados: las herramientas inteligentes facilitan la creación de programas alineados con objetivos de aprendizaje específicos y demandas del entorno laboral. Desarrollo ágil de materiales: la IA acelera la producción de recursos innovadores y de alta calidad, desde simulaciones interactivas hasta materiales multimedia. Impartición de contenidos: los sistemas basados en IA actúan como asistentes docentes, ampliando la capacidad de acompañamiento individual y mejorando la experiencia formativa. Evaluación integral: más allá de medir conocimientos, la IA posibilita evaluaciones multidimensionales que consideran la efectividad del curso, el desempeño del instructor y el impacto organizacional. El objetivo de la presentación es ofrecer a la audiencia una visión clara y estructurada del potencial de la IA en la educación, apoyada en ejemplos prácticos y casos de uso actuales. Se busca, además, abrir el debate sobre los desafíos éticos, tecnológicos y pedagógicos que acompañan a esta transformación. La educación del futuro no es una proyección distante: es un presente en evolución que demanda decisiones estratégicas hoy. Esta ponencia invita a empresarios, directivos y profesionales a explorar cómo capitalizar la Inteligencia Artificial para generar valor real en instituciones, empresas y sociedad."
+        },
+        {
+                "nombre": "Noelia Gonzalez Pereyra",
+                "posicion": "Directora - Social Media Manager",
+                "organizacion": "Universidad Católica de Córdoba - Argentina",
+                "biografia": "Soy consultora en comunicación y marketing digital con más de 19 años de experiencia diseñando estrategias efectivas para empresas e instituciones educativas. Mi pasión está en conectar ideas, potenciar marcas y desarrollar proyectos que generen impacto a nivel global. Como docente en educación ejecutiva y en IA aplicada en la Universidad Católica de Córdoba, Argentina, combino mi experiencia técnica con habilidades pedagógicas para capacitar a líderes en entornos desafiantes. Estoy enfocada en proyectos internacionales donde pueda aportar mi visión estratégica, especialmente en áreas como comunicación, marketing digital y educación. Como directora de Voiceinteractivos, trabajo en estrategias para equipos, profesionales e instituciones a través de la comunicación, el marketing y la inteligencia artificial. Acabo de comenzar un MBA en la Universidad Católica de Córdoba, y realmente me parece muy interesante su propuesta para poder compartir mi experiencia como docente de IA para adultos. Aguardo con entusiasmo su respuesta! Saludos cordiales, Noelia.",
+                "sesion": "¡Hola, IA! ¿Nos conocemos? Cómo enseñar IA a adultos y cambiar el mundo laboral sin dejar a nadie atrás.",
+                "detalles": "Mi curso: Hola, IA! ¿Nos conocemos? nació para acompañar a un grupo que suele quedar afuera del relato tecnológico: los adultos que sienten que la inteligencia artificial avanza demasiado rápido y que, de alguna manera, los deja fuera del sistema. Mi propósito fue claro desde el inicio: democratizar la IA, acercarla con un lenguaje humano y enseñar a usarla sin miedo, sin vergüenza y sin la sensación de ser “analfabetos digitales”. Durante el último año dicté este curso en tres ediciones en la Universidad Católica de Córdoba, sumado a capacitaciones online e in company, llegando a más de 200 personas de diferentes edades, profesiones y niveles de formación. Ese alcance, diverso y real, se convirtió en un caso de éxito que me confirmó algo: cuando el conocimiento se vuelve accesible, la transformación es inmediata. Lo que aprendieron fue mucho más que prompts. Aprendieron a escribir mejor, a planificar su trabajo, a estudiar con eficiencia, a preparar presentaciones, optimizar procesos, organizar su día y darle sentido a datos que antes no podían interpretar. Pero, sobre todo, aprendieron a confiar en sí mismos, a “perder el miedo”, como muchos dijeron al terminar la cursada. Personas que habían evitado la tecnología durante años hoy usan IA para trabajar, crear, emprender y resolver problemas reales en su vida diaria. Mi mayor aprendizaje fue entender que este grupo etario —muchas veces subestimado— no solo puede, sino que quiere aprender IA, y necesita un enfoque pedagógico distinto: claro, empático, práctico y profundamente humano. Ese es el impacto que quiero seguir escalando. Creo firmemente que formar en IA a adultos es una forma directa de reducir brechas, potenciar carreras, mejorar la empleabilidad y preparar a miles de profesionales para los próximos años. Mi visión? Compartir mi experiencia, cambiar el mundo y ser un trampolín hacia un futuro donde las personas adultas puedan elegir mejorar sus perfiles, seguir siendo competitivas y principalmente sentirse útiles. Ser cada vez más humanos, es mi forma de impactar. Les comparto mi In: https://www.linkedin.com/in/noeliagonzalezpereyra/ y el link del curso en la UCC: https://fjs.ucc.edu.ar/hola-ia-nos-conocemos-curso-para-aprender-ia-desde-cero-2025-10"
+        },
+        {
+                "nombre": "Osvaldo Ramirez Hurtado",
+                "posicion": "AI-Head Research, Strategy & Analytics",
+                "organizacion": "Panamerican Business School",
+                "biografia": "Mi trayectoria profesional está enfocada en diseñar y ejecutar estrategias de Inteligencia Artificial que se traduzcan en KPIs duros para el CEO y el consejo: reducción de costos, crecimiento rentable y ventaja competitiva medible en %, y en USD. Trabajo con equipos directivos para definir una visión AI-First, estructurar portafolios de casos de uso y convertir iniciativas de IA en proyectos con caso de negocio, modelo de gobierno y tablero ejecutivo claros. En los proyectos que lidero, cada iniciativa de IA se vincula desde el inicio con métricas como: reducciones de costos operativos en rangos de doble dígito (por ejemplo, 15–30 %), incrementos de productividad de 20–40 %, mejoras en NPS y CSAT claramente cuantificadas, ahorros recurrentes superiores al millón de USD anual en operaciones intensivas, e incrementos de ingresos medidos en puntos porcentuales y en montos concretos en USD. La prioridad es siempre la misma: que cada dólar invertido en IA tenga una hipótesis explícita de retorno y un horizonte claro de payback. Colaboro de forma cercana con CEOs, CFOs, CTOs, CIOs, CAIOs y CDOs para traducir el lenguaje técnico en decisiones de portafolio, inversión (CAPEX/OPEX), riesgo y gobernanza de datos y algoritmos, evitando tanto la “IA de laboratorio” como las promesas sin sustento financiero. He complementado esta práctica ejecutiva con docencia y conferencias en programas directivos, así como con una participación activa en iniciativas del Center for AI and Digital Policy (CAIDP), lo que me permite integrar criterios de uso responsable, regulación emergente y política pública en la conversación estratégica sobre IA a nivel de alta dirección.",
+                "sesion": "De la visión al retorno: cómo convertir historias de IA en resultados medibles",
+                "detalles": "La escena es familiar: una sala de consejo llena, una presentación impecable de Inteligencia Artificial, gráficos espectaculares… y al final, la misma pregunta incómoda: “¿Y cuánto valor real generó todo esto?”. La distancia entre la narrativa de la IA y los resultados en el estado de resultados sigue siendo, en muchas organizaciones, un abismo. Esta conferencia cuenta la historia de cómo cerrar ese abismo. Parte de casos reales en corporativos y organizaciones de alto impacto en Latinoamérica —incluyendo sectores como aerolíneas, servicios financieros y servicios públicos— donde la IA dejó de ser un experimento aislado para convertirse en un motor tangible de eficiencia, ingresos y mejor experiencia del cliente. El relato sigue el viaje completo: el momento en que la alta dirección reconoce que “probar IA” ya no es suficiente; la elección de uno o dos casos de uso ancla que sí mueven la aguja; la construcción de un piloto con métricas claras; el choque con temas de datos, talento, riesgo y compliance; y, finalmente, la conversación con inversionistas y C-level donde ya no se habla de algoritmos, sino de margen, productividad y riesgo controlado. A lo largo de la ponencia se presenta un guion estructurado para contar esta historia dentro de cualquier organización: cómo formular el problema en lenguaje de negocio, cómo diseñar una “prueba de valor” creíble, cómo traducir resultados técnicos en argumentos financieros y cómo transformar un caso exitoso en una hoja de ruta AI-First que pueda ser defendida frente a un comité de inversión. El objetivo es que inversionistas, empresarios y ejecutivos C-level salgan con una historia clara que puedan hacer propia: una narrativa de IA que no termina en la diapositiva final, sino en el retorno medible."
+        },
+        {
+                "nombre": "Pablo Lelo de Larrea H.",
+                "posicion": "Managing Partner",
+                "organizacion": "Grupo huntRED",
+                "biografia": "16 años a cargo de Grupo huntRED® , el cual esta cuenta con 7 unidades de negocio (huntRED® executive, huntRED® , huntU®, amigro®, huntRED® experience, huntRED® inspiration y huntRED® Solutions) Ingeniero Industrial por la UIA y Admin de Empresas por el ITAM.",
+                "sesion": "HR Tech - Ecosistema de Desarrollo Organizacional y Gestion Integral del Talento",
+                "detalles": "One Stop Shop para todas las áreas de RH, desde Estrategia de Atracción, Reclutamiento, Seleccion, Onboarding, (Esto es con un AI llamado GenIA) y Cultura, Learning, Capacitacion, Fidelización, Offboarding, etc (Este AI es AURA) e incluso una maquila o calculista de Nómina con toda la configuracion necesaria. Algo que considero es relevante, es que GenIA que es el AI para atracción, selección, reclutamiento, incluso firma electronica con blockchain, etc. Cuenta con 4 agentes especializados para cada segmento o nivel organizacional, con workflows ajustados, comunicacion especifica, etc Adicional a nuestro NLP con +43k habilidades y competencias (un ATS normal cuenta con 5-8k aprox.) Todo esto es tecnologia orgullosamente mexicana, y propietaria. Diseñado y contruido por nuestro equipo. Y AURA es una Red Neuronal de ultima generacion, que nos permite análisis de trayectorias, desarrollar Plan de Carrera individual, por equipo y dar seguimiento a todo esto."
+        },
+        {
+                "nombre": "Plinio Arbizu",
+                "posicion": "Director de Consultoría",
+                "organizacion": "SERVICES & PROCESSES SOLUTIONS",
+                "biografia": "Consultor especializado en Inteligencia Artificial Conversacional enfocado en la transformación digital de Servicios Financieros y Salud. Consultor experto en liderar y ejecutar el ciclo de vida completo de soluciones de IA conversacional. Ha dirigido equipos multidisciplinarios (diseñadores, front-end, back-end e infraestructura) para implementar proyectos estratégicos en sectores de alta regulación como Aseguradoras, AFORES y Laboratorios Médicos en México. Su enfoque se centra en la integración efectiva para generar valor de negocio. Su trayectoria incluye el desarrollo de soluciones premiadas por entidades clave como Amazon Corp, BBVA México y Banamex, validando su capacidad para generar resultados de alto impacto. Posee certificaciones clave en la nube y IA, incluyendo AWS (IA y Alexa) y Oracle (IA Generativa).",
+                "sesion": "IA y Recetas Médicas: Retos en el Procesamiento Automático de Imágenes",
+                "detalles": "Esta plática aborda la aplicación de la Inteligencia Artificial (IA) en la automatización de la transcripción y el suministro farmacéutico a partir de recetas. Iniciaremos explorando cómo los modelos multimodales se emplean para el análisis y la interpretación de recetas médicas convencionales. El núcleo de la presentación se centra en los retos críticos que obstaculizan la precisión a gran escala. Estos incluyen la variabilidad de formatos y la baja calidad de las imágenes (sombras, desenfoque). El obstáculo más significativo sigue siendo la caligrafía médica manuscrita, cuya ilegibilidad exige un nivel de robustez que solo arquitecturas de IA de vanguardia pueden ofrecer para la extracción de información. Además, discutiremos la complejidad de la ambigüedad contextual y la necesidad de proteger los datos sensibles del paciente. Para superar estos fallos y garantizar una alta precisión, destacaremos el uso de modelos multimodales avanzados. Estos modelos son la clave, ya que analizan simultáneamente las propiedades visuales y el contenido lingüístico de la receta médica. Profundizaremos en estrategias esenciales como el preprocesamiento de imágenes (normalización y corrección de sesgo) y la forma en que esta arquitectura corrige errores mediante la validación contextual del Procesamiento de Lenguaje Natural (NLP). El enfoque es lograr una mejora sustancial en la confiabilidad de la automatización del suministro farmacéutico."
+        },
+        {
+                "nombre": "Randy Alexander Valverde Valverde",
+                "posicion": "IA Ética y Gestión del Conocimiento: el nuevo paradigma del valor organizacional",
+                "organizacion": "",
+                "biografia": "Randy Alexander Valverde** es Ingeniero en Sistemas y Máster en Educación, con una trayectoria de más de 17 años en los sectores público y académico. Su experiencia incluye haber sido **Jefe de Sistemas de Información del MEP** y un miembro clave en la Comisión de Transformación Digital para la educación costarricense, enfocando su labor en el desarrollo de herramientas de aprendizaje interactivo y el fortalecimiento del capital humano digital. Profesor universitario en la UCR, ULatina y Universidad Galileo, es también un reconocido investigador en **Inteligencia Artificial** (IA) y **ética digital**. Utiliza su plataforma, incluyendo el podcast **#TéDigital** del que es creador, para explorar cómo el liderazgo humano-tecnológico inspira nuevas formas de aprendizaje en la era de la IA.",
+                "sesion": "IA Ética y Gestión del Conocimiento: el nuevo paradigma del valor organizacional",
+                "detalles": "Explora cómo la IA generativa (ChatGPT, Copilot, etc.) puede fortalecer la gestión del conocimiento y la toma de decisiones, manteniendo principios éticos, de transparencia y responsabilidad humana."
+        },
+        {
+                "nombre": "Rene Sanchez Meza",
+                "posicion": "Consultor",
+                "organizacion": "Ethos AI & media Lab",
+                "biografia": "Candidato a doctor en comunicación por la Universidad de Valladolid, España Master en Lenguas Aplicadas, Universidad de Lleida, España Master en Periodismo, Universidad Complutense de Madrid, España Licenciatura en Relaciones Internacionales, Universidad de las Américas, AC. 30 años de experiencia como productor y periodista tanto en México como Estados Unidos.",
+                "sesion": "Protocolo ético sobre uso y divulgación IA en medios de comunicacion",
+                "detalles": "Termine mi tesis de doctorado en comunicación con una investigación sobre los aspectos éticos sobre el uso de inteligencia artificial en los medios de comunicación y redes sociales"
+        },
+        {
+                "nombre": "Victor Arenas Mico",
+                "posicion": "CEO",
+                "organizacion": "FYNKUS GLOBAL SOLUTIONS SL",
+                "biografia": "Víctor Arenas es fundador y CEO de Fynkus y fue Administrador de fincas durante 15 años en complejos residenciales de la zona turística de Valencia, después de una primera etapa profesional en Londres como programador web. Al ver cómo cambiaban los hábitos y las expectativas de los propietarios, dejó la primera línea de la administración en 2015 para crear Fynkus, una plataforma en la nube que une ERP y CRM y que hoy utilizan más de 500 despachos y unas 30.000 comunidades. En los últimos dos años se ha especializado en la aplicación práctica de la inteligencia artificial en despachos profesionales y empresas de servicios, impartiendo charlas y formaciones sobre IA y agentes en España y otros países, siempre desde una perspectiva muy operativa: menos discurso tecnológico y más procesos, decisiones y resultados medibles.",
+                "sesion": "“Un futuro sin manual de instrucciones: cómo usar la IA hoy sin destruir tu negocio mañana”",
+                "detalles": "Vivimos el primer momento de la historia reciente en el que un tecnólogo no puede anticipar con claridad qué viene después. La velocidad de cambio de la IA, los “cisnes negros” tecnológicos y la avalancha de modelos (OpenAI, Gemini, Meta, AWS, etc.) hacen que cualquier “plan a 5 años” quede viejo en meses. Aun así, las organizaciones tienen que tomar decisiones hoy. Esta charla parte de una idea simple y dura: si ya no podemos predecir el futuro, la única estrategia razonable es diseñar cómo trabajamos con la IA ahora, poniendo el foco en procesos, roles y decisiones, no en la herramienta de moda. A partir de experiencias reales aplicando IA en un software de administración de condominios en España explico: Cómo hemos integrado modelos de IA en tareas concretas: lectura de documentos, clasificación de incidencias, propuestas de respuesta y agentes que ejecutan pasos completos de un proceso. Qué trabajos puramente “de pantalla” están perdiendo valor y qué nuevos roles aparecen cuando la persona se mueve a donde la IA no llega: criterio, confianza, conflicto, contexto. Un modelo claro de colaboración humano–máquina: reglas, IA y persona como un “semáforo” donde se define quién decide qué, y cuándo el humano tiene la última palabra. Presento también el marco GUIDE (Goal, Users, Intelligence, Data, Evidence), una metodología práctica para transformar ideas de IA en proyectos gobernados: con trazabilidad de datos, cuidado de privacidad y protección de información sensible, sin frenar la velocidad de experimentación. El objetivo de la sesión es que cada asistente salga con tres cosas muy concretas: (1) un mapa de procesos donde tiene sentido usar agentes de IA, (2) una lista de decisiones que nunca debe delegar en la máquina, y (3) un lenguaje común para hablar de ética, riesgo y ventaja competitiva en la era de la IA."
+        },
+        {
+                "nombre": "Victoria Luz Alonso",
+                "posicion": "Founder",
+                "organizacion": "MindAI",
+                "biografia": "Victoria Luz Alonso is a Brazilian AI strategist, entrepreneur and author specializing in practical, business-oriented applications of artificial intelligence. She holds a degree in Business Administration from Insper and a specialization in Artificial Intelligence Strategy from the Kellogg School of Management. Victoria is the founder of Mind.AI and has extensive experience helping companies adopt AI responsibly through consulting, automation workflows and workforce enablement. Her best-selling book on AI in the Brazilian market and her work with national business organizations have positioned her as a leading voice in accessible and results-driven AI education. She has delivered keynote talks, leadership masterclasses and trainings for diverse sectors, guiding executives and teams to integrate AI with clarity, ethics and strategic impact.",
+                "sesion": "Latin America at the AI Crossroads: How to Balance Regulation and Innovation Without Hindering Competitiveness",
+                "detalles": "Latin America is approaching a pivotal moment in its artificial intelligence journey. While the United States advances rapidly with minimal regulatory constraints and Europe adopts a highly precautionary model, countries such as Brazil and Mexico must determine how to balance responsible governance with the need for innovation and competitiveness. This proposal analyzes recent field evidence from Europe, where stringent regulations have slowed AI adoption, increased compliance burdens and stalled pilot projects. At the same time, Latin American businesses are accelerating their use of AI and reporting measurable outcomes, including revenue growth, cost reductions and productivity gains. The presentation examines Brazil’s ongoing debate around Bill PL 2338 and contrasts it with Mexico’s fragmented, principles-based approach. Both countries face the challenge of protecting rights without replicating Europe’s overregulation. The analysis highlights how flexible, risk-based frameworks, regulatory sandboxes and streamlined compliance requirements can foster responsible innovation rather than inhibit it. The session also brings concrete case studies from across the region, demonstrating real ROI in sectors such as logistics, financial services, pharmaceutical distribution and public healthcare. These examples illustrate how AI can solve practical challenges, accelerate decision-making and expand access to essential services, when implemented with ethical safeguards and human oversight. Finally, the proposal outlines actionable recommendations for policymakers, business leaders and practitioners. These include prioritizing high-ROI use cases, investing in talent development, strengthening local R&D capacity, embedding transparency from the start and encouraging cross-industry knowledge sharing. The goal is to position Latin America not only as a consumer of AI technologies but as a future producer and global competitor. This presentation will offer a strategic, evidence-based view of how Latin America can regulate to innovate, ensuring that AI contributes to economic growth, competitiveness and social inclusion."
+        },
+        {
+                "nombre": "Dr. Jorge de Jesús Lozoya Santos",
+                "posicion": "Desarrollo Negocios Nacionales",
+                "organizacion": "Tecnológico de Monterrey",
+                "biografia": "destacado ingeniero y académico mexicano con más de 20 años de experiencia en el desarrollo de sistemas embebidos, control automático y movilidad inteligente. Como profesor investigador en la Escuela de Ingeniería y Ciencias del Tecnológico de Monterrey (Tec de Monterrey), se especializa en la integración de tecnologías IoT para ciudades inteligentes y sistemas de transporte sostenibles. Ha combinado su trayectoria industrial en sectores como la manufactura de baterías de litio y la automatización con roles académicos de liderazgo, incluyendo la dirección de centros de investigación internacionales. Reconocido por su contribución a la innovación en electromovilidad y control automotriz, es miembro del Sistema Nacional de Investigadores (SNI) de México (Nivel I), la Academia Mexicana de Ciencias y la Academia de Ingeniería de México. Su trabajo ha generado más de 50 publicaciones científicas y colaboraciones globales en instituciones como la Universidad de Grenoble Alpes y el Politécnico de Milán.",
+                "sesion": "Vehículos Autónomos en el Entorno Social: Movilidad Segura, Limpia y Para Todos",
+                "detalles": "El Dr. Jorge de Jesús Lozoya Santos propone una conferencia centrada en cómo la inteligencia artificial, los sistemas de control avanzado y el Internet de las Cosas están redefiniendo la movilidad inteligente y sostenible, no como una visión futurista, sino como una realidad tecnológica ya en operación. Con más de dos décadas de experiencia en sistemas embebidos, automatización, electromovilidad y transporte inteligente, su ponencia conecta la investigación científica con aplicaciones industriales reales, mostrando cómo la IA se integra en vehículos autónomos, plataformas de movilidad eléctrica y ciudades inteligentes. Desde su rol como profesor investigador y líder de iniciativas estratégicas en el Tecnológico de Monterrey, así como su participación en proyectos emblemáticos como la integración de tecnologías avanzadas de control y sensorización en la Carrera Panamericana, el Dr. Lozoya presenta casos concretos donde los algoritmos de IA, el modelado matemático y los sistemas de control permiten mejorar seguridad, eficiencia energética y toma de decisiones en entornos complejos. La conferencia abordará cómo la convergencia entre IA, electromovilidad y sistemas ciberfísicos está transformando la industria automotriz, la infraestructura urbana y los modelos de innovación en América Latina, destacando el papel de la academia como catalizador de soluciones de alto impacto económico y social. Asimismo, se explorará la importancia de la colaboración entre universidades, empresas y gobiernos para acelerar la adopción responsable de estas tecnologías, formando talento capaz de diseñar, implementar y escalar soluciones inteligentes. Esta ponencia está dirigida a líderes empresariales, ingenieros, tomadores de decisión y emprendedores que buscan comprender cómo la inteligencia artificial aplicada a la movilidad ya está generando valor real y cómo México puede posicionarse como referente en innovación tecnológica de alcance global."
+        },
+        {
+                "nombre": "Ignacio Jose Dominguez Castillo",
+                "posicion": "CEO",
+                "organizacion": "Yakatiak, Cosultores Y Asociados",
+                "biografia": "CEO en Yakatiak. Especialistas en Inteligencia Artificial, Machine Learning, Cómputo Cuántico, Robots y Ciberseguridad. Maestría en Finanzas con Doctorado en Educación y Doctorado Honoris Causa por la Organización Mundial de Líderes; y otros 18 posgrados en diversas especialidades financieras y de negocios. Egresado de la Escuela Bancaria, la Universidad de Estudios de Posgrado en Derecho, Harvard, Berkeley, Cambridge, Disney University, Universidad de Austin y el Massachusets Institute of Technologies (MIT). Experiencia en 14 paises, incluyendo la OCDE en Francia, como Consultor, Contralor, Director, Auditor, Compliance, Conferencista, Académico y Líder de Proyectos. Más de 30 años a nivel Dirección en empresas. Experiencia de implementación, en 7 paises, de Inteligencia Artificial, Machine Learning, Transformación Digital, Estrategias Financieras, Ciberseguridad, Delitos Financieros, Sistemas de Prevención de Fraudes Cibernéticos y de Lavado de Dinero; y de Riesgos. Titular de materias de Maestria en Alta Dirección, I.A. y Ciberseguridad, en Universidades de México, Centroamérica, España y Estados Unidos. Diversas publicaciones en materias de impuestos, Derecho internacional, I.A., Delitos tecnológicos, Ciberseguridad y Computación Cuántica. Autor del libro interactivo: “Inteligencia Artificial. Estrategias corporativas para su Adopción, Implementación y Desarrollo en los Negocios”.",
+                "sesion": "Implementación Asertiva Y Rentable. Evolucionando Tu Empresa A La \"IA\", En Compliance (CAIO) Y En Consideración De Las Iso42001 Y 37000",
+                "detalles": "En mi experiencia de implementación con 7 empresas y 3 entidades federales. Plantear el procesos de implementación convirtiendo a los profesionales, a sus actividades y a la empresa en su conjunto \"a la IA\", considerando el antes, durante y el después. con métricas de rentabilidad."
+        }
+        ];
+
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function toggleAccordion(index) {
+            const allHeaders = document.querySelectorAll('.accordion-header');
+            const allContents = document.querySelectorAll('.accordion-content');
+            const clickedHeader = allHeaders[index];
+            const clickedContent = allContents[index];
+
+            // Si el elemento clickeado ya está activo, lo cerramos
+            if (clickedHeader.classList.contains('active')) {
+                clickedHeader.classList.remove('active');
+                clickedContent.classList.remove('active');
+                return;
+            }
+
+            // Cerrar todos los demás
+            allHeaders.forEach(header => header.classList.remove('active'));
+            allContents.forEach(content => content.classList.remove('active'));
+
+            // Abrir el clickeado
+            clickedHeader.classList.add('active');
+            clickedContent.classList.add('active');
+
+            // Scroll suave al elemento
+            setTimeout(() => {
+                clickedHeader.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
+        }
+
+        function renderAccordions(sessions) {
+            const container = document.getElementById('accordionContainer');
+            
+            if (sessions.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>No se encontraron resultados</h3>
+                        <p>Intenta con otros términos de búsqueda</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = sessions.map((p, index) => `
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(${index})">
+                        <div class="accordion-avatar">${escapeHtml(getInitials(p.nombre))}</div>
+                        <div class="accordion-info">
+                            <div class="accordion-author">${escapeHtml(p.nombre)}</div>
+                            <div class="accordion-title">${escapeHtml(p.sesion)}</div>
+                        </div>
+                        <div class="accordion-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <div class="content-header">
+                                <div class="speaker-avatar">${escapeHtml(getInitials(p.nombre))}</div>
+                                <div class="speaker-details">
+                                    <div class="speaker-name">${escapeHtml(p.nombre)}</div>
+                                    <div class="speaker-position">${escapeHtml(p.posicion)}</div>
+                                    <div class="speaker-org">${escapeHtml(p.organizacion)}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="session-section">
+                                <div class="section-title">Propuesta de Investigación</div>
+                                <h3 class="session-title-text">${escapeHtml(p.sesion)}</h3>
+                                <div class="session-description">${escapeHtml(p.detalles)}</div>
+                            </div>
+                            
+                            <div class="bio-section">
+                                <div class="section-title">Biografía del Investigador</div>
+                                <div class="bio-text">${escapeHtml(p.biografia)}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Renderizar todos los acordeones inicialmente
+        renderAccordions(propuestas);
+
+        // Funcionalidad de búsqueda
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = propuestas.filter(p => 
+                p.nombre.toLowerCase().includes(searchTerm) ||
+                p.sesion.toLowerCase().includes(searchTerm) ||
+                p.organizacion.toLowerCase().includes(searchTerm) ||
+                p.detalles.toLowerCase().includes(searchTerm) ||
+                p.biografia.toLowerCase().includes(searchTerm)
+            );
+            renderAccordions(filtered);
+        });
+    </script>
+</body>
+</html>

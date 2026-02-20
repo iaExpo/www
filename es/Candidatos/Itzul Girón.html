@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itzul Girón - MATRIA AI | Celestial Dynamics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-engine: #0a0a0a;
+            --carbon-core: #1a1410;
+            --copper-gpu: #d97706;
+            --amber-mx: #f59e0b;
+            --warm-tech: #fb923c;
+            --bright-gold: #fbbf24;
+        }
+
+        html {
+            background: #0a0a0a !important;
+            background-color: #0a0a0a !important;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif !important;
+            background: #0a0a0a !important;
+            background-color: #0a0a0a !important;
+            color: #fed7aa !important;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body * {
+            background-color: transparent;
+        }
+
+        section {
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+        }
+
+        .gradient-engine {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-matria {
+            color: #f59e0b;
+        }
+
+        /* Engine Background */
+        .engine-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .neural-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(217, 119, 6, 0.03) 80px,
+                    rgba(217, 119, 6, 0.03) 82px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(217, 119, 6, 0.03) 80px,
+                    rgba(217, 119, 6, 0.03) 82px
+                );
+            animation: grid-neural 30s linear infinite;
+        }
+
+        @keyframes grid-neural {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(82px, 82px); }
+        }
+
+        .engine-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #d97706, transparent);
+            border-radius: 50%;
+            animation: node-engine 3.5s infinite;
+        }
+
+        @keyframes node-engine {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(251, 146, 60, 0.8);
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        .cognitive-stream {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(217, 119, 6, 0.4), rgba(245, 158, 11, 0.4), transparent);
+            animation: stream-cognitive 9s infinite;
+        }
+
+        @keyframes stream-cognitive {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scaleX(0.85);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scaleX(1);
+            }
+        }
+
+        .gpu-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(217, 119, 6, 0.15);
+            animation: ring-gpu 16s infinite;
+        }
+
+        @keyframes ring-gpu {
+            0%, 100% {
+                transform: scale(0.9) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1) rotate(180deg);
+                opacity: 0.2;
+            }
+        }
+
+        .processing-pulse {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.5), transparent);
+            animation: pulse-process 6s infinite;
+        }
+
+        @keyframes pulse-process {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Fade animations */
+        .engine-rise {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: engineRise 0.8s forwards;
+        }
+
+        @keyframes engineRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .matria-emerge {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: matriaEmerge 0.8s forwards;
+        }
+
+        @keyframes matriaEmerge {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Delays */
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
+        .delay-5 { animation-delay: 0.75s; }
+        .delay-6 { animation-delay: 0.9s; }
+        .delay-7 { animation-delay: 1.05s; }
+        .delay-8 { animation-delay: 1.2s; }
+
+        /* Engine Card */
+        .engine-card {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.08), rgba(26, 20, 16, 0.4));
+            border: 2px solid rgba(217, 119, 6, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .engine-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d97706, #f59e0b, #fb923c);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .engine-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .engine-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(251, 146, 60, 0.6);
+            box-shadow: 
+                0 0 40px rgba(217, 119, 6, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* MATRIA Button */
+        .btn-engine {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            box-shadow: 
+                0 0 30px rgba(217, 119, 6, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .btn-engine:hover {
+            box-shadow: 
+                0 0 50px rgba(251, 146, 60, 0.7),
+                0 12px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-engine {
+            border: 2px solid #d97706;
+            color: #d97706;
+            background: rgba(217, 119, 6, 0.05);
+            transition: all 0.4s;
+        }
+
+        .btn-outline-engine:hover {
+            background: rgba(217, 119, 6, 0.15);
+            box-shadow: 0 0 35px rgba(217, 119, 6, 0.4);
+            border-color: #fb923c;
+        }
+
+        /* Profile Frame */
+        .profile-engine {
+            border: 3px solid #d97706;
+            box-shadow: 
+                0 0 50px rgba(217, 119, 6, 0.5),
+                inset 0 0 30px rgba(26, 20, 16, 0.1);
+        }
+
+        /* Badge */
+        .badge-engine {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            box-shadow: 0 0 25px rgba(217, 119, 6, 0.6);
+        }
+
+        /* Override GHL styles */
+        div[class*="hl_page-preview"],
+        .hl_page-preview--content,
+        #content,
+        main,
+        body > div,
+        body > section,
+        #root,
+        #app,
+        [id*="content"],
+        [class*="container"],
+        [class*="wrapper"] {
+            background-color: #0a0a0a !important;
+        }
+
+        /* Link styles */
+        a[href] {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a[href]:hover {
+            text-decoration: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #d97706, #f59e0b);
+            border-radius: 5px;
+        }
+
+        /* Tag style */
+        .tag-engine {
+            background: rgba(217, 119, 6, 0.15);
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            color: #fbbf24;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Icon glow */
+        .icon-engine {
+            filter: drop-shadow(0 0 12px rgba(217, 119, 6, 0.6));
+        }
+
+        /* Stat box */
+        .stat-engine {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(26, 20, 16, 0.3));
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        /* Divider */
+        .engine-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d97706, #f59e0b, #fb923c, transparent);
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(217, 119, 6, 0.5);
+        }
+
+        /* Layer box */
+        .layer-box {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(26, 20, 16, 0.3));
+            border: 2px solid rgba(217, 119, 6, 0.4);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .layer-box:hover {
+            border-color: rgba(251, 146, 60, 0.6);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(217, 119, 6, 0.3);
+        }
+
+        .layer-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.5);
+        }
+
+        /* Achievement badge */
+        .achievement-badge {
+            background: rgba(251, 146, 60, 0.15);
+            border: 1px solid rgba(251, 146, 60, 0.4);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #fdba74;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        /* Industry pill */
+        .industry-pill {
+            background: rgba(217, 119, 6, 0.2);
+            border: 1px solid rgba(217, 119, 6, 0.4);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #fbbf24;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .industry-pill:hover {
+            background: rgba(217, 119, 6, 0.3);
+            box-shadow: 0 0 20px rgba(217, 119, 6, 0.4);
+        }
+
+        /* NVIDIA logo styling */
+        .nvidia-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(118, 185, 0, 0.15), rgba(118, 185, 0, 0.05));
+            border: 1px solid rgba(118, 185, 0, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            color: #76b900;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .nvidia-partner-section {
+            background: linear-gradient(135deg, rgba(118, 185, 0, 0.1), rgba(0, 0, 0, 0.3));
+            border: 2px solid rgba(118, 185, 0, 0.4);
+            padding: 1.5rem 3rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 
+                0 0 40px rgba(118, 185, 0, 0.3),
+                0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nvidia-partner-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 60px rgba(118, 185, 0, 0.5),
+                0 15px 40px rgba(0, 0, 0, 0.6);
+            border-color: rgba(118, 185, 0, 0.6);
+        }
+
+        .nvidia-logo-img {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 0 20px rgba(118, 185, 0, 0.6));
+            animation: nvidia-glow 3s infinite;
+        }
+
+        @keyframes nvidia-glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(118, 185, 0, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 35px rgba(118, 185, 0, 1));
+            }
+        }
+
+        .nvidia-partner-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #76b900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(118, 185, 0, 0.5);
+        }
+
+        .nvidia-badge {
+            background: linear-gradient(135deg, #76b900, #5a8f00);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            box-shadow: 0 0 15px rgba(118, 185, 0, 0.4);
+        }
+
+        /* ROI metric */
+        .roi-metric {
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(26, 20, 16, 0.3));
+            border: 2px solid rgba(217, 119, 6, 0.4);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Engine Background -->
+    <div class="engine-bg">
+        <div class="neural-grid"></div>
+        
+        <!-- Engine Nodes -->
+        <div class="engine-node" style="top: 20%; left: 18%; animation-delay: 0s;"></div>
+        <div class="engine-node" style="top: 38%; left: 72%; animation-delay: 1s;"></div>
+        <div class="engine-node" style="top: 58%; left: 28%; animation-delay: 2s;"></div>
+        <div class="engine-node" style="top: 75%; left: 68%; animation-delay: 1.5s;"></div>
+        <div class="engine-node" style="top: 45%; right: 18%; animation-delay: 2.5s;"></div>
+        
+        <!-- Cognitive Streams -->
+        <div class="cognitive-stream" style="width: 300px; top: 25%; left: 15%;"></div>
+        <div class="cognitive-stream" style="width: 280px; top: 55%; right: 12%; animation-delay: 3s;"></div>
+        <div class="cognitive-stream" style="width: 260px; top: 72%; left: 20%; animation-delay: 6s;"></div>
+        
+        <!-- GPU Rings -->
+        <div class="gpu-ring" style="width: 300px; height: 300px; top: 15%; right: 10%;"></div>
+        <div class="gpu-ring" style="width: 260px; height: 260px; bottom: 20%; left: 12%; animation-delay: 8s;"></div>
+        
+        <!-- Processing Pulses -->
+        <div class="processing-pulse" style="top: 30%;"></div>
+        <div class="processing-pulse" style="top: 60%; animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10" style="background-color: #0a0a0a !important;">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #0a0a0a !important;">
+            <div class="max-w-7xl mx-auto">
+                <!-- Top Badge -->
+                <div class="text-center mb-8 engine-rise">
+                    <span class="tag-engine inline-block">
+                        🇲🇽 IA Expo Internacional
+                    </span>
+                </div>
+
+                <!-- NVIDIA Partner Line -->
+                <div class="text-center mb-8 engine-rise delay-1">
+                    <div class="nvidia-partner-section">
+                        <img 
+                            src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d@2x.png"
+                            alt="NVIDIA"
+                            class="nvidia-logo-img"
+                        />
+                        <span class="nvidia-partner-text">Partner</span>
+                    </div>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 leading-tight engine-rise delay-2">
+                    <span class="gradient-engine">MATRIA AI</span>
+                </h1>
+
+                <div class="engine-divider mb-8 engine-rise delay-3"></div>
+
+                <p class="text-2xl md:text-3xl text-center text-amber-300 mb-4 max-w-4xl mx-auto engine-rise delay-3 font-bold">
+                    El Primer Motor Cognitivo Mexicano
+                </p>
+
+                <p class="text-xl text-center text-gray-400 mb-12 max-w-3xl mx-auto engine-rise delay-4">
+                    Del Hype a la Ingeniería: Cómo la IA Genera Valor Real
+                </p>
+
+                <!-- CTA Button -->
+                <div class="flex justify-center mb-20 engine-rise delay-5">
+                    <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-engine text-white px-12 py-5 rounded-full font-bold text-lg inline-block text-center">
+                        Conocer MATRIA AI
+                    </a>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-16">
+                    <!-- Image -->
+                    <div class="matria-emerge delay-6">
+                        <div class="relative">
+                            <div class="profile-engine rounded-2xl overflow-hidden">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/692e306382f4c567647abd7d.jpg"
+                                    alt="Itzul Girón"
+                                    class="w-full h-auto"
+                                />
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 badge-engine rounded-full px-6 py-3">
+                                <div class="text-sm font-bold text-white">CEO</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="engine-rise delay-7">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">
+                            Itzul Girón
+                        </h2>
+                        
+                        <div class="mb-6">
+                            <span class="text-matria text-lg font-bold">CEO y Fundadora</span><br>
+                            <span class="text-gray-400 text-base">Celestial Dynamics Technology Lab</span>
+                        </div>
+                        
+                        <div class="space-y-4 text-base text-gray-300 leading-relaxed">
+                            <p>
+                                Pionera de la IA en México. <span class="text-matria font-bold">Primer Solution Advisor de NVIDIA en México</span>. Presidenta del consejo de CDETECH.
+                            </p>
+                            <p>
+                                Arquitecta de <span class="text-matria font-semibold">MATRIA AI</span>, el primer motor cognitivo mexicano que va más allá de los LLMs tradicionales.
+                            </p>
+                            <div class="flex gap-2 flex-wrap">
+                                <span class="achievement-badge">🏆 NVIDIA Partner</span>
+                                <span class="achievement-badge">🇲🇽 Pionera IA MX</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mt-8">
+                            <div class="stat-engine text-center">
+                                <div class="text-2xl font-bold gradient-engine">MATRIA</div>
+                                <div class="text-xs text-gray-500">Motor Cognitivo</div>
+                            </div>
+                            <div class="stat-engine text-center flex flex-col items-center justify-center">
+                                <img 
+                                    src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d@2x.png"
+                                    alt="NVIDIA"
+                                    style="height: 35px; width: auto; filter: drop-shadow(0 0 10px rgba(118, 185, 0, 0.5));"
+                                />
+                                <div class="text-xs text-gray-500 mt-2">Solution Advisor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a0a0a, #1a1410) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="engine-card rounded-3xl p-12 md:p-16 text-center engine-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        <span class="text-white">El </span><span class="gradient-engine">Desafío Crítico</span>
+                    </h2>
+
+                    <div class="engine-divider my-8"></div>
+
+                    <p class="text-2xl text-white mb-6 font-bold">
+                        En un entorno saturado de hype, demostraciones conceptuales y soluciones genéricas...
+                    </p>
+
+                    <p class="text-xl text-amber-200">
+                        ¿Cómo generar <span class="text-matria font-bold">valor real y sostenible</span> con inteligencia artificial?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATRIA AI Architecture -->
+        <section class="py-20 px-6" style="background-color: #0a0a0a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 engine-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="gradient-engine">MATRIA AI</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        Arquitectura de tres capas fundamentales
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="layer-box engine-rise delay-1">
+                        <div class="layer-number">1</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Neural Engines Especializados</h3>
+                        <p class="text-gray-300 mb-4">Por industria vertical</p>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="industry-pill">💰 Finanzas</span>
+                            <span class="industry-pill">🏭 Manufactura</span>
+                            <span class="industry-pill">🛒 Retail</span>
+                            <span class="industry-pill">🏛️ Gobierno</span>
+                            <span class="industry-pill">📦 Logística</span>
+                        </div>
+                    </div>
+
+                    <div class="layer-box engine-rise delay-2">
+                        <div class="layer-number">2</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">Orquestación Cognitiva</h3>
+                        <p class="text-gray-300">
+                            Combina visión computacional, series de tiempo, decisión autónoma y procesamiento multimodal
+                        </p>
+                    </div>
+
+                    <div class="layer-box engine-rise delay-3">
+                        <div class="layer-number">3</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">
+                            Infraestructura 
+                            <img 
+                                src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d@2x.png"
+                                alt="NVIDIA"
+                                style="height: 30px; width: auto; display: inline-block; vertical-align: middle; margin: 0 0.5rem; filter: drop-shadow(0 0 10px rgba(118, 185, 0, 0.6));"
+                            />
+                            Enterprise
+                        </h3>
+                        <p class="text-gray-300">
+                            Cómputo acelerado y analítica en tiempo real con <span class="text-matria font-bold">latencias sub-200 ms</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Message -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a0a0a, #1a1410) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="engine-card rounded-3xl p-12 md:p-16 text-center engine-rise">
+                    <div class="mb-8">
+                        <span class="tag-engine inline-block">Mensaje Central</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-relaxed">
+                        <span class="text-white">El valor de la IA </span><span class="gradient-engine">no está en los modelos</span>
+                    </h2>
+
+                    <div class="engine-divider my-8"></div>
+
+                    <p class="text-xl text-gray-200">
+                        Está en la <span class="text-matria font-bold">arquitectura</span>, la ingeniería de datos, la especialización vertical y la habilidad de llevar soluciones a producción en <span class="text-matria font-bold">semanas, no años</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Cases -->
+        <section class="py-20 px-6" style="background-color: #0a0a0a !important;">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 engine-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">Casos </span><span class="gradient-engine">Reales</span>
+                    </h2>
+                    <p class="text-xl text-gray-400">
+                        ROI medible en organizaciones mexicanas
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="roi-metric engine-rise delay-1">
+                        <div class="text-4xl mb-3 icon-engine">⚙️</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Mantenimiento Predictivo</h3>
+                        <p class="text-sm text-gray-400">Anticipación de fallas</p>
+                    </div>
+
+                    <div class="roi-metric engine-rise delay-2">
+                        <div class="text-4xl mb-3 icon-engine">🔍</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Detección de Fraude</h3>
+                        <p class="text-sm text-gray-400">Análisis relacional</p>
+                    </div>
+
+                    <div class="roi-metric engine-rise delay-3">
+                        <div class="text-4xl mb-3 icon-engine">🎯</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Hiperpersonalización</h3>
+                        <p class="text-sm text-gray-400">Experiencias adaptativas</p>
+                    </div>
+
+                    <div class="roi-metric engine-rise delay-4">
+                        <div class="text-4xl mb-3 icon-engine">📹</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Análisis Video Urbano</h3>
+                        <p class="text-sm text-gray-400">Seguridad inteligente</p>
+                    </div>
+
+                    <div class="roi-metric engine-rise delay-5">
+                        <div class="text-4xl mb-3 icon-engine">📦</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Optimización Logística</h3>
+                        <p class="text-sm text-gray-400">Rutas y recursos</p>
+                    </div>
+
+                    <div class="roi-metric engine-rise delay-6">
+                        <div class="text-4xl mb-3 icon-engine">🏭</div>
+                        <h3 class="text-lg font-bold mb-2 text-white">Manufactura Inteligente</h3>
+                        <p class="text-sm text-gray-400">Control de calidad</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breaking the Myth -->
+        <section class="py-20 px-6" style="background: linear-gradient(to bottom, #0a0a0a, #1a1410) !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="engine-card rounded-3xl p-12 md:p-16 text-center engine-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        <span class="gradient-engine">Rompiendo el Mito</span>
+                    </h2>
+
+                    <div class="engine-divider my-8"></div>
+
+                    <p class="text-2xl text-white mb-6 font-bold">
+                        México SÍ puede desarrollar tecnología profunda
+                    </p>
+
+                    <p class="text-xl text-gray-200">
+                        Celestial Dynamics demuestra que un laboratorio mexicano, con colaboración directa con <span class="text-matria font-bold">NVIDIA</span>, puede construir infraestructura cognitiva soberana, motores propios y soluciones empresariales de <span class="text-matria font-bold">alto impacto</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission -->
+        <section class="py-20 px-6" style="background-color: #0a0a0a !important;">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12 engine-rise">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6">
+                        <span class="text-white">La </span><span class="gradient-engine">Misión</span>
+                    </h2>
+                </div>
+
+                <div class="engine-card rounded-2xl p-10 text-center engine-rise delay-1">
+                    <p class="text-2xl text-white font-bold mb-6">
+                        Convertir a México en un país <span class="gradient-engine">creador</span>
+                    </p>
+                    <p class="text-xl text-gray-300">
+                        No solo consumidor de inteligencia artificial avanzada
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-32 px-6 relative overflow-hidden" style="background: linear-gradient(to bottom, #1a1410, #0a0a0a) !important;">
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="engine-rise">
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                        <span class="text-white">De </span><span class="gradient-engine">Hype</span><br>
+                        <span class="text-white">a </span><span class="gradient-engine">Ingeniería Real</span>
+                    </h2>
+                    
+                    <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                        Descubre cómo MATRIA AI y Celestial Dynamics están redefiniendo la manera en que México crea tecnología cognitiva
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                        <a href="https://iaExpo.ai/iax-registro" target="_blank" rel="noopener noreferrer" class="btn-engine text-white px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Asegurar Mi Lugar
+                        </a>
+                        <a href="https://iaExpo.ai" target="_blank" rel="noopener noreferrer" class="btn-outline-engine px-12 py-6 rounded-full font-bold text-xl inline-block text-center">
+                            Más Información
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="engine-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-engine">🇲🇽</div>
+                            <h4 class="font-bold text-white mb-2">Motor Mexicano</h4>
+                            <p class="text-sm text-gray-400">MATRIA AI</p>
+                        </div>
+                        <div class="engine-card p-6 rounded-xl flex flex-col items-center justify-center">
+                            <img 
+                                src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d@2x.png"
+                                alt="NVIDIA"
+                                style="height: 45px; width: auto; filter: drop-shadow(0 0 15px rgba(118, 185, 0, 0.6)); margin-bottom: 0.75rem;"
+                            />
+                            <h4 class="font-bold text-white mb-2">Partner</h4>
+                            <p class="text-sm text-gray-400">Solution Advisor</p>
+                        </div>
+                        <div class="engine-card p-6 rounded-xl">
+                            <div class="text-3xl mb-3 icon-engine">⚡</div>
+                            <h4 class="font-bold text-white mb-2">Valor Real</h4>
+                            <p class="text-sm text-gray-400">Semanas, no años</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-6" style="background-color: #0a0a0a !important; border-top: 1px solid rgba(217, 119, 6, 0.2) !important;">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold gradient-engine mb-2">Celestial Dynamics Technology Lab</h3>
+                    <p class="text-gray-500 text-sm mb-4">Infraestructura cognitiva soberana</p>
+                    <div class="flex justify-center items-center gap-3 mt-4">
+                        <span class="text-gray-400 text-sm">Powered by</span>
+                        <img 
+                            src="https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d@2x.png"
+                            alt="NVIDIA"
+                            style="height: 40px; width: auto; filter: drop-shadow(0 0 15px rgba(118, 185, 0, 0.6));"
+                        />
+                    </div>
+                </div>
+                <div class="text-sm text-gray-500">
+                    ® 2025 IA Expo Internacional. Todos los derechos reservados.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Force dark background on load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.style.backgroundColor = '#0a0a0a';
+            document.body.style.backgroundColor = '#0a0a0a';
+            
+            const wrappers = document.querySelectorAll('body > div, #root, #app, [id*="content"], main');
+            wrappers.forEach(el => {
+                el.style.backgroundColor = '#0a0a0a';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.engine-rise, .matria-emerge').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Button/Link effects
+        document.querySelectorAll('a[href], button').forEach(element => {
+            element.addEventListener('click', (e) => {
+                element.style.transform = 'scale(0.97)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

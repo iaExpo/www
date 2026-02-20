@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Fotográfica | IA Expo Internacional® 2026</title>
+    
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    
+    <!-- JSZip for downloading favorites -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0066CC;
+            --dark-blue: #003D7A;
+            --light-blue: #E6F2FF;
+            --accent: #00A3E0;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero Header */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 Q300,100 600,50 T1200,0 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 300;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .date {
+            font-size: 1rem;
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        /* Stats Bar */
+        .stats {
+            background: var(--white);
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
+        }
+
+        /* Carousel */
+        .carousel-section {
+            max-width: 1400px;
+            margin: 3rem auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            background: var(--white);
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .carousel-caption h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-caption p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Carousel Controls */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-blue);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 1rem;
+        }
+
+        .carousel-btn.next {
+            right: 1rem;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicator.active {
+            background: var(--white);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .carousel-indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Autoplay Controls */
+        .carousel-play-controls {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+        }
+
+        .play-pause-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-blue);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-pause-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* Controls */
+        .controls {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .download-all-btn {
+            padding: 0.9rem 2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .download-all-btn:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        /* Gallery Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 102, 204, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .photo-number {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--white);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* Favorite Button */
+        .favorite-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 5;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .favorite-btn.favorited {
+            background: #FF6B6B;
+            color: white;
+        }
+
+        .favorite-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Favorites Counter Badge */
+        .favorites-badge {
+            background: #FF6B6B;
+            color: white;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.9rem 1.5rem;
+            background: var(--white);
+            color: var(--text-dark);
+            border: 2px solid #E0E0E0;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-blue);
+            background: var(--light-blue);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .download-favorites-btn {
+            padding: 0.9rem 2rem;
+            background: #FF6B6B;
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            display: none;
+        }
+
+        .download-favorites-btn:hover {
+            background: #E85555;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .download-favorites-btn.show {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--light-blue);
+            border-top: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .carousel-section {
+                padding: 0 1rem;
+                margin: 2rem auto 1.5rem;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .carousel-btn.prev {
+                left: 0.5rem;
+            }
+
+            .carousel-btn.next {
+                right: 0.5rem;
+            }
+
+            .carousel-caption h3 {
+                font-size: 1.2rem;
+            }
+
+            .carousel-caption p {
+                font-size: 0.9rem;
+            }
+
+            .carousel-caption {
+                padding: 1.5rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-box {
+                max-width: 100%;
+            }
+
+            .filter-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .filter-btn {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .download-all-btn,
+            .download-favorites-btn {
+                width: 100%;
+            }
+
+            .favorite-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-wrapper {
+                aspect-ratio: 4/3;
+            }
+
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .play-pause-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .carousel-caption {
+                padding: 1rem;
+            }
+
+            .carousel-caption h3 {
+                font-size: 1rem;
+            }
+
+            .carousel-caption p {
+                font-size: 0.8rem;
+            }
+
+            .carousel-indicators {
+                bottom: 1rem;
+            }
+
+            .carousel-indicator {
+                width: 8px;
+                height: 8px;
+            }
+
+            .carousel-indicator.active {
+                width: 24px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+
+            .favorite-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+                top: 0.7rem;
+                right: 0.7rem;
+            }
+        }
+
+        /* Custom GLightbox styles */
+        .glightbox-clean .gslide-description {
+            background: rgba(0, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>IA Expo Internacional® 2026</h1>
+            <p class="subtitle">Galería Fotográfica Oficial</p>
+            <p class="date">31 de enero, 2026 • The Westin Santa Fe, CDMX</p>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number" id="photoCount">283</div>
+            <div class="stat-label">Fotografías</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">🎯</div>
+            <div class="stat-label">Alta Resolución</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">📸</div>
+            <div class="stat-label">Descarga Gratuita</div>
+        </div>
+    </div>
+
+    <!-- Carousel Section -->
+    <div class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack"></div>
+                
+                <!-- Navigation Buttons -->
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+                
+                <!-- Play/Pause Button -->
+                <div class="carousel-play-controls">
+                    <button class="play-pause-btn" id="playPauseBtn" onclick="toggleAutoplay()">⏸</button>
+                </div>
+                
+                <!-- Indicators -->
+                <div class="carousel-indicators" id="carouselIndicators"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <div class="search-box">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Buscar por número de foto... (ej: 001, 042)">
+        </div>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" id="filterAll" onclick="filterGallery('all')">
+                📸 Todas <span id="allCount"></span>
+            </button>
+            <button class="filter-btn" id="filterFavorites" onclick="filterGallery('favorites')">
+                ❤️ Favoritas <span class="favorites-badge" id="favCount" style="display: none;">0</span>
+            </button>
+        </div>
+        
+        <button class="download-favorites-btn" id="downloadFavBtn" onclick="downloadFavorites()">
+            ❤️ Descargar Favoritas
+        </button>
+        
+        <button class="download-all-btn" onclick="showDownloadAllInfo()">
+            <span>📦</span> Descargar Todas
+        </button>
+    </div>
+
+    <!-- Gallery Container -->
+    <div class="container">
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Cargando fotografías...</p>
+        </div>
+        <div class="gallery" id="gallery"></div>
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <h3>No se encontraron fotografías</h3>
+            <p>Intenta con otro número de foto</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 IA Expo Internacional® | Digital Gap, Inc.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Todas las fotografías son propiedad del evento</p>
+    </footer>
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <script>
+        // Configuración
+        const BASE_URL = 'https://raw.githubusercontent.com/iaExpo/2026/main/';
+        const TOTAL_PHOTOS = 284;
+        const MISSING_PHOTO = 10; // Foto que falta
+
+        // Generar array de números de fotos
+        function generatePhotoNumbers() {
+            const numbers = [];
+            for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+                if (i !== MISSING_PHOTO) {
+                    numbers.push(i);
+                }
+            }
+            return numbers;
+        }
+
+        const photoNumbers = generatePhotoNumbers();
+        let allPhotos = [];
+        let favorites = [];
+        let currentFilter = 'all';
+
+        // ========================================
+        // FAVORITES FUNCTIONALITY
+        // ========================================
+        
+        // Cargar favoritos del localStorage
+        function loadFavorites() {
+            const saved = localStorage.getItem('iaExpoFavorites');
+            favorites = saved ? JSON.parse(saved) : [];
+            updateFavoritesUI();
+        }
+        
+        // Guardar favoritos en localStorage
+        function saveFavorites() {
+            localStorage.setItem('iaExpoFavorites', JSON.stringify(favorites));
+            updateFavoritesUI();
+        }
+        
+        // Toggle favorito
+        function toggleFavorite(photoNum) {
+            const index = favorites.indexOf(photoNum);
+            
+            if (index > -1) {
+                // Quitar de favoritos
+                favorites.splice(index, 1);
+            } else {
+                // Agregar a favoritos
+                favorites.push(photoNum);
+            }
+            
+            saveFavorites();
+            
+            // Actualizar UI del botón específico
+            const items = document.querySelectorAll(`[data-photo-id="${photoNum}"]`);
+            items.forEach(item => {
+                const btn = item.querySelector('.favorite-btn');
+                if (btn) {
+                    const isFavorited = favorites.includes(photoNum);
+                    btn.classList.toggle('favorited', isFavorited);
+                    btn.innerHTML = isFavorited ? '❤️' : '🤍';
+                    btn.title = isFavorited ? 'Quitar de favoritos' : 'Agregar a favoritos';
+                }
+            });
+        }
+        
+        // Actualizar UI de favoritos (contadores y botones)
+        function updateFavoritesUI() {
+            const favCount = document.getElementById('favCount');
+            const downloadFavBtn = document.getElementById('downloadFavBtn');
+            
+            if (favorites.length > 0) {
+                favCount.textContent = favorites.length;
+                favCount.style.display = 'inline-block';
+                downloadFavBtn.classList.add('show');
+            } else {
+                favCount.style.display = 'none';
+                downloadFavBtn.classList.remove('show');
+            }
+            
+            // Actualizar contador de todas
+            document.getElementById('allCount').textContent = `(${photoNumbers.length})`;
+        }
+        
+        // Filtrar galería
+        function filterGallery(filter) {
+            currentFilter = filter;
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = ''; // Limpiar búsqueda
+            
+            // Actualizar botones de filtro
+            document.getElementById('filterAll').classList.toggle('active', filter === 'all');
+            document.getElementById('filterFavorites').classList.toggle('active', filter === 'favorites');
+            
+            let photosToShow;
+            
+            if (filter === 'favorites') {
+                if (favorites.length === 0) {
+                    photosToShow = [];
+                } else {
+                    photosToShow = favorites.sort((a, b) => a - b);
+                }
+            } else {
+                photosToShow = photoNumbers;
+            }
+            
+            loadGallery(photosToShow);
+        }
+        
+        // Descargar fotos favoritas como ZIP
+        async function downloadFavorites() {
+            if (favorites.length === 0) {
+                alert('No has seleccionado ninguna foto favorita aún.');
+                return;
+            }
+            
+            // Mostrar mensaje de progreso
+            const downloadBtn = document.getElementById('downloadFavBtn');
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '⏳ Preparando ZIP...';
+            downloadBtn.disabled = true;
+            
+            try {
+                const zip = new JSZip();
+                const folder = zip.folder('IA_Expo_2026_Favoritas');
+                
+                // Descargar cada foto y agregarla al ZIP
+                let completed = 0;
+                const total = favorites.length;
+                
+                for (const num of favorites) {
+                    const photoURL = getPhotoURL(num);
+                    const photoNum = padNumber(num);
+                    
+                    try {
+                        const response = await fetch(photoURL);
+                        const blob = await response.blob();
+                        folder.file(`iaExpo.2026.${photoNum}.jpg`, blob);
+                        
+                        completed++;
+                        downloadBtn.innerHTML = `⏳ ${completed}/${total}...`;
+                    } catch (error) {
+                        console.error(`Error descargando foto ${photoNum}:`, error);
+                    }
+                }
+                
+                downloadBtn.innerHTML = '📦 Creando ZIP...';
+                
+                // Generar y descargar el ZIP
+                const content = await zip.generateAsync({type: 'blob'}, (metadata) => {
+                    const percent = metadata.percent.toFixed(0);
+                    downloadBtn.innerHTML = `📦 ${percent}%`;
+                });
+                
+                // Crear link de descarga
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(content);
+                link.download = `IA_Expo_2026_Favoritas_${favorites.length}_fotos.zip`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                downloadBtn.innerHTML = '✅ ¡Descargado!';
+                
+                setTimeout(() => {
+                    downloadBtn.innerHTML = originalText;
+                    downloadBtn.disabled = false;
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Error creando ZIP:', error);
+                alert('Hubo un error al crear el archivo ZIP. Por favor intenta de nuevo.');
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.disabled = false;
+            }
+        }
+
+        // ========================================
+        // CAROUSEL FUNCTIONALITY
+        // ========================================
+        
+        let currentSlide = 0;
+        let autoplayInterval;
+        let isPlaying = true;
+        const AUTOPLAY_DELAY = 2000; // 2 segundos
+        
+        // Usar todas las fotos en orden aleatorio para el carrusel
+        function getRandomCarouselPhotos() {
+            // Crear una copia del array y barajarlo
+            const shuffled = [...photoNumbers].sort(() => Math.random() - 0.5);
+            return shuffled;
+        }
+        
+        const carouselPhotos = getRandomCarouselPhotos();
+        
+        // Inicializar carrusel
+        function initCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const indicators = document.getElementById('carouselIndicators');
+            
+            // Crear slides
+            carouselPhotos.forEach((num, index) => {
+                const photoURL = getPhotoURL(num);
+                const photoNum = padNumber(num);
+                
+                // Crear slide
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `
+                    <img src="${photoURL}" alt="IA Expo 2026 Foto ${photoNum}" loading="${index === 0 ? 'eager' : 'lazy'}">
+                    <div class="carousel-caption">
+                        <h3>IA Expo Internacional® 2026</h3>
+                        <p>Foto ${photoNum}</p>
+                    </div>
+                `;
+                track.appendChild(slide);
+                
+                // Crear indicador
+                const indicator = document.createElement('div');
+                indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
+                indicator.onclick = () => goToSlide(index);
+                indicators.appendChild(indicator);
+            });
+            
+            // Iniciar autoplay
+            startAutoplay();
+        }
+        
+        // Mover carrusel
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            
+            if (currentSlide < 0) {
+                currentSlide = carouselPhotos.length - 1;
+            } else if (currentSlide >= carouselPhotos.length) {
+                currentSlide = 0;
+            }
+            
+            updateCarousel();
+        }
+        
+        // Ir a slide específico
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoplay();
+        }
+        
+        // Actualizar visualización del carrusel
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            // Mover track
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Actualizar indicadores
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Autoplay
+        function startAutoplay() {
+            if (isPlaying) {
+                autoplayInterval = setInterval(() => {
+                    moveCarousel(1);
+                }, AUTOPLAY_DELAY);
+            }
+        }
+        
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+        
+        function resetAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+        
+        function toggleAutoplay() {
+            isPlaying = !isPlaying;
+            const btn = document.getElementById('playPauseBtn');
+            
+            if (isPlaying) {
+                btn.textContent = '⏸';
+                startAutoplay();
+            } else {
+                btn.textContent = '▶';
+                stopAutoplay();
+            }
+        }
+        
+        // ========================================
+        // GALLERY FUNCTIONALITY
+        // ========================================
+
+        // Formatear número con ceros
+        function padNumber(num) {
+            return String(num).padStart(3, '0');
+        }
+
+        // Generar URL de foto
+        function getPhotoURL(num) {
+            return `${BASE_URL}iaExpo.2026.${padNumber(num)}.jpg`;
+        }
+
+        // Crear elemento de galería
+        function createGalleryItem(num) {
+            const photoURL = getPhotoURL(num);
+            const photoNum = padNumber(num);
+            const isFavorited = favorites.includes(num);
+            
+            return `
+                <a href="${photoURL}" 
+                   class="glightbox gallery-item" 
+                   data-gallery="gallery"
+                   data-photo-num="${photoNum}"
+                   data-photo-id="${num}"
+                   data-title="IA Expo 2026 - Foto ${photoNum}">
+                    <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
+                            onclick="toggleFavorite(${num}); event.preventDefault(); event.stopPropagation();"
+                            title="${isFavorited ? 'Quitar de favoritos' : 'Agregar a favoritos'}">
+                        ${isFavorited ? '❤️' : '🤍'}
+                    </button>
+                    <img src="${photoURL}" 
+                         alt="IA Expo 2026 Foto ${photoNum}" 
+                         loading="lazy">
+                    <div class="overlay">
+                        <div class="photo-number">Foto ${photoNum}</div>
+                        <button class="download-btn" onclick="downloadPhoto('${photoURL}', '${photoNum}'); event.preventDefault(); event.stopPropagation();">
+                            ⬇️ Descargar
+                        </button>
+                    </div>
+                </a>
+            `;
+        }
+
+        // Cargar galería
+        function loadGallery(numbers = photoNumbers) {
+            const gallery = document.getElementById('gallery');
+            const loading = document.getElementById('loading');
+            const noResults = document.getElementById('noResults');
+
+            if (numbers.length === 0) {
+                gallery.innerHTML = '';
+                loading.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            gallery.innerHTML = numbers.map(num => createGalleryItem(num)).join('');
+            loading.style.display = 'none';
+
+            // Inicializar GLightbox
+            const lightbox = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                autoplayVideos: false,
+                closeOnOutsideClick: true,
+                skin: 'clean',
+                keyboardNavigation: true
+            });
+        }
+
+        // Función de búsqueda
+        function searchPhotos(query) {
+            const basePhotos = currentFilter === 'favorites' ? favorites : photoNumbers;
+            
+            if (!query) {
+                loadGallery(basePhotos);
+                return;
+            }
+
+            const filtered = basePhotos.filter(num => {
+                const photoNum = padNumber(num);
+                return photoNum.includes(query);
+            });
+
+            loadGallery(filtered);
+        }
+
+        // Descargar foto individual
+        function downloadPhoto(url, photoNum) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `iaExpo.2026.${photoNum}.jpg`;
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Mostrar info de descarga masiva
+        function showDownloadAllInfo() {
+            alert(`📦 Para descargar todas las fotografías:
+
+1. Visita: https://github.com/iaExpo/2026
+2. Haz clic en el botón verde "Code"
+3. Selecciona "Download ZIP"
+4. Descomprime el archivo
+
+¡Obtendrás las 283 fotografías del evento en alta resolución!
+
+Alternativamente, puedes clonar el repositorio con Git:
+git clone https://github.com/iaExpo/2026.git`);
+        }
+
+        // Event Listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchPhotos(e.target.value.trim());
+        });
+
+        // Cargar galería al inicio
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cargar favoritos
+            loadFavorites();
+            
+            // Inicializar carrusel
+            initCarousel();
+            
+            // Cargar galería
+            loadGallery();
+            
+            // Actualizar contador
+            document.getElementById('photoCount').textContent = photoNumbers.length;
+            
+            // Pausar carrusel en hover
+            const carousel = document.querySelector('.carousel-wrapper');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', () => {
+                    if (isPlaying) stopAutoplay();
+                });
+                carousel.addEventListener('mouseleave', () => {
+                    if (isPlaying) startAutoplay();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
