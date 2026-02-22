@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IA Expo Internacional® 2026 — Ciudad de México</title>
+<title>IA Expo Internacional<sup>®</sup> 2026 — Ciudad de México</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -90,7 +90,65 @@
   }
   .nav-links a:hover { color: var(--cyan); }
 
-  /* ─── HERO ──────────────────────────────────────────────── */
+  /* ─── NAV DROPDOWN ──────────────────────────────────────── */
+  .nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .nav-dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .nav-dropdown > a::after {
+    content: '▾';
+    font-size: 0.65rem;
+    opacity: 0.7;
+    transition: transform 0.2s;
+  }
+  .nav-dropdown:hover > a::after {
+    transform: rotate(180deg);
+  }
+  .nav-submenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(4,13,26,0.97);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    list-style: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0);
+    transition: opacity 0.2s;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .nav-dropdown:hover .nav-submenu {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .nav-submenu li a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.73rem;
+    letter-spacing: 0.1em;
+    color: var(--silver);
+    white-space: nowrap;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-submenu li a:hover {
+    color: var(--cyan);
+    background: rgba(0,207,255,0.06);
+  }
+  .nav-submenu li + li {
+    border-top: 1px solid var(--border);
+  }
+
   #hero {
     position: relative;
     min-height: 100vh;
@@ -170,8 +228,9 @@
   }
   .hero-ctas {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
     margin-bottom: 3.5rem;
   }
   .btn-primary {
@@ -224,7 +283,7 @@
     border-top: 1px solid var(--border);
     padding-top: 2rem;
   }
-  .stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; text-align: center; }
   .stat-number {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.4rem;
@@ -488,7 +547,7 @@
   }
   .sponsors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
     margin-top: 1rem;
   }
@@ -530,11 +589,31 @@
     line-height: 1.4;
     text-align: center;
   }
+  .sponsor-logo-wrap {
+    width: 130px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+  .sponsor-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+  }
+  .sponsor-card:hover .sponsor-logo {
+    opacity: 1;
+  }
   .sponsor-dot {
-    width: 6px; height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: var(--cyan);
-    margin: 0 auto;
     box-shadow: 0 0 8px var(--cyan);
   }
 
@@ -573,8 +652,8 @@
     box-shadow: 0 12px 40px rgba(240,192,64,0.1);
   }
   .sponsor-card.tech-giant .sponsor-dot {
-    background: var(--gold);
-    box-shadow: 0 0 8px var(--gold);
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
   }
 
   /* ─── FOOTER CTA ────────────────────────────────────────── */
@@ -610,49 +689,177 @@
     margin: 0 auto 2.5rem;
     line-height: 1.7;
   }
-  .cta-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    justify-content: center;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-  .cta-form input {
-    flex: 1;
-    min-width: 220px;
-    padding: 0.85rem 1.2rem;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 3px;
-    color: var(--white);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.25s;
-  }
-  .cta-form input:focus {
-    border-color: var(--electric);
-  }
-  .cta-form input::placeholder { color: rgba(255,255,255,0.35); }
-  .cta-form button {
-    padding: 0.85rem 1.8rem;
+  .cta-btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
     background: linear-gradient(135deg, var(--blue), var(--electric));
-    border: none;
     border-radius: 3px;
     color: #fff;
     font-family: 'Outfit', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
     transition: box-shadow 0.25s, transform 0.2s;
     box-shadow: 0 4px 24px rgba(10,95,255,0.4);
+    margin-top: 0.5rem;
   }
-  .cta-form button:hover {
+  .cta-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 36px rgba(10,95,255,0.6);
+  }
+
+
+  /* ─── HAMBURGER MENU ────────────────────────────────────── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 860px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: flex !important;
+      flex-direction: column;
+      position: fixed;
+      top: 0; right: 0;
+      width: 260px;
+      height: 100vh;
+      background: rgba(4,13,26,0.98);
+      backdrop-filter: blur(16px);
+      border-left: 1px solid var(--border);
+      padding: 5rem 2rem 2rem;
+      gap: 0;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      z-index: 150;
+      overflow-y: auto;
+    }
+    .nav-links.open {
+      transform: translateX(0);
+    }
+    .nav-links li {
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links li a {
+      display: block;
+      padding: 0.9rem 0;
+      font-size: 0.85rem;
+    }
+    .nav-dropdown { flex-direction: column; align-items: flex-start; }
+    .nav-dropdown > a { width: 100%; }
+    .nav-submenu {
+      position: static;
+      opacity: 1 !important;
+      pointer-events: all !important;
+      transform: none !important;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      padding: 0 0 0 1rem;
+      display: none;
+    }
+    .nav-submenu.open { display: block; }
+    .nav-submenu li { border-bottom: none; }
+    .nav-submenu li a {
+      padding: 0.5rem 0;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 140;
+    }
+    .nav-overlay.open { display: block; }
+  }
+
+  #contacto {
+    background: #030b18;
+    border-top: 1px solid var(--border);
+    padding: 5rem 6vw;
+  }
+  .contacto-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contacto-nav h4,
+  .contacto-info h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+    color: var(--cyan);
+    margin-bottom: 1.4rem;
+  }
+  .contacto-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .contacto-nav ul a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contacto-nav ul a:hover { color: var(--cyan); }
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contacto-item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contacto-item:hover { color: var(--cyan); }
+  .contacto-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: rgba(0,207,255,0.08);
+    border: 1px solid rgba(0,207,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+  @media (max-width: 640px) {
+    .contacto-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   }
 
   /* ─── FOOTER ────────────────────────────────────────────── */
@@ -690,7 +897,152 @@
     transform: translateY(0);
   }
 
-  /* ─── RESPONSIVE ────────────────────────────────────────── */
+  @media (max-width: 768px) { .sponsors-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .sponsors-grid { grid-template-columns: 1fr; } }
+  #carrusel {
+    padding: 5rem 6vw 4rem;
+    background: var(--deep);
+    position: relative;
+  }
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+  }
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+  }
+  .carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .carousel-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(4,13,26,0.85) 0%, transparent 100%);
+    padding: 2rem 1.5rem 1.2rem;
+  }
+  .carousel-caption p {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+  .carousel-btn {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(4,13,26,0.75);
+    border: 1px solid var(--border);
+    color: var(--white);
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+    transition: background 0.25s, border-color 0.25s;
+    backdrop-filter: blur(8px);
+  }
+  .carousel-btn:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+  }
+  .carousel-btn.prev { left: 1rem; }
+  .carousel-btn.next { right: 1rem; }
+  .carousel-indicators {
+    position: absolute;
+    bottom: 1.2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 0.4rem;
+    z-index: 10;
+  }
+  .carousel-indicator {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .carousel-indicator.active {
+    background: var(--cyan);
+    width: 26px;
+    border-radius: 4px;
+    border-color: var(--cyan);
+  }
+  .carousel-play-controls {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    z-index: 10;
+  }
+  .play-pause-btn {
+    background: rgba(4,13,26,0.75);
+    border: 1px solid var(--border);
+    color: var(--white);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.25s;
+    backdrop-filter: blur(8px);
+  }
+  .play-pause-btn:hover { background: var(--blue); border-color: var(--blue); }
+  .carousel-footer {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0.2rem;
+  }
+  .carousel-counter {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+  .carousel-link {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.25s;
+  }
+  .carousel-link:hover { color: var(--white); }
+  @media (max-width: 640px) {
+    #carrusel { padding: 4rem 1.2rem 3rem; }
+    .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+    .carousel-wrapper { aspect-ratio: 4/3; }
+  }
+
+
 
   /* Prevent horizontal overflow globally */
   html, body {
@@ -714,7 +1066,6 @@
   /* ── Mobile (max 640px) ── */
   @media (max-width: 640px) {
     nav { padding: 1rem 1.2rem; }
-    .nav-links { display: none; }
 
     section { padding: 4rem 1.2rem; }
 
@@ -743,15 +1094,6 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .cta-form {
-      flex-direction: column;
-    }
-    .cta-form input,
-    .cta-form button {
-      width: 100%;
-      min-width: unset;
-    }
-
     footer { flex-direction: column; text-align: center; }
     .footer-copy { text-align: center; }
 
@@ -775,11 +1117,24 @@
 <!-- ═══ NAV ═════════════════════════════════════════════════ -->
 <nav>
   <a href="#" class="nav-logo">IA<span>EXPO</span></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li class="nav-dropdown" id="navDropdown">
+      <a href="#" id="navDropdownToggle">IA Expo 2026</a>
+      <ul class="nav-submenu" id="navSubmenu">
+        <li><a href="https://iaExpo.ai/actas" target="_blank">Actas</a></li>
+        <li><a href="https://iaExpo.ai/presentaciones" target="_blank">Presentaciones</a></li>
+        <li><a href="https://iaExpo.ai/galeria" target="_blank">Galería</a></li>
+      </ul>
+    </li>
     <li><a href="#testimoniales">Testimoniales</a></li>
     <li><a href="#sponsors">Alianzas</a></li>
     <li><a href="#cta-2027">IA Expo 2027</a></li>
+    <li><a href="#contacto">Contacto</a></li>
   </ul>
+  <div class="nav-overlay" id="navOverlay"></div>
 </nav>
 
 <!-- ═══ HERO ═════════════════════════════════════════════════ -->
@@ -788,12 +1143,12 @@
   <div class="hero-gradient"></div>
 
   <div class="hero-content">
-    <div class="hero-eyebrow">31 de enero, 2026 &nbsp;·&nbsp; Ciudad de México</div>
+    <div class="hero-eyebrow">31 de enero de 2026 &nbsp;·&nbsp; Ciudad de México</div>
 
     <h1>Gracias por<br>hacer <em>historia</em><br>con nosotros</h1>
 
     <p class="hero-sub">
-      La IA Expo Internacional® 2026 reunió a los líderes más visionarios de la inteligencia artificial en un solo escenario — para transformar la conversación de teoría a realidad.
+      La IA Expo Internacional<sup>®</sup> 2026 reunió a los líderes más visionarios de la inteligencia artificial en un solo escenario — para transformar la conversación de teoría a realidad.
     </p>
 
     <div class="hero-ctas">
@@ -832,12 +1187,41 @@
   </div>
 </section>
 
+<!-- ═══ CARRUSEL DE FOTOS ════════════════════════════════════ -->
+<section id="carrusel">
+  <div class="section-header reveal" style="margin-bottom:2.5rem;">
+    <span class="section-label">Momentos del Evento</span>
+    <h2>IA Expo Internacional<sup>®</sup> 2026</h2>
+    <p>Revive los mejores momentos de un día histórico para la inteligencia artificial en América Latina.</p>
+  </div>
+
+  <div class="carousel-container reveal">
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack"></div>
+      <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+      <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+      <div class="carousel-play-controls">
+        <button class="play-pause-btn" id="playPauseBtn" onclick="toggleAutoplay()">⏸</button>
+      </div>
+      <div class="carousel-indicators" id="carouselIndicators"></div>
+    </div>
+  </div>
+
+  <div class="carousel-footer">
+    <span class="carousel-counter" id="carouselCounter">Foto 1 de 20</span>
+    <a href="https://iaExpo.ai/galeria" class="carousel-link">
+      Ver galería completa
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
 <!-- ═══ TESTIMONIALES ════════════════════════════════════════ -->
 <section id="testimoniales">
   <div class="section-header reveal">
     <span class="section-label">Lo que dicen</span>
     <h2>Voces del <span class="blue">Evento</span></h2>
-    <p>Asistentes, speakers y aliados comparten su experiencia en la IA Expo Internacional® 2026.</p>
+    <p>Asistentes, speakers y aliados comparten su experiencia en la IA Expo Internacional<sup>®</sup> 2026.</p>
   </div>
 
   <div class="testimonials-grid">
@@ -955,10 +1339,7 @@
 
   </div>
 
-  <div class="video-instruction reveal">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    Para agregar videos reales: reemplaza el bloque <code style="background:rgba(0,207,255,0.1);padding:0.1rem 0.4rem;border-radius:2px;">video-placeholder</code> con un iframe de YouTube, Vimeo, o un tag &lt;video&gt; directo.
-  </div>
+
 </section>
 
 <!-- ═══ SPONSORS / ALIADOS ═══════════════════════════════════ -->
@@ -971,66 +1352,10 @@
 
   <div class="sponsors-grid">
 
-    <!-- Digital Gap, Inc. -->
-    <div class="sponsor-card tech-giant reveal">
-      <div class="sponsor-dot"></div>
-      <div class="sponsor-icon">💡</div>
-      <div class="sponsor-name">Digital Gap, Inc.</div>
-      <div class="sponsor-role">Organizador del Evento</div>
-    </div>
-
-    <!-- Asteri Eventos -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--silver);"></div>
-      <div class="sponsor-icon">✨</div>
-      <div class="sponsor-name">Asteri Eventos</div>
-      <div class="sponsor-role">Producción &amp; Experiencia de Eventos</div>
-    </div>
-
-    <!-- Creavizer -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--silver);"></div>
-      <div class="sponsor-icon">📣</div>
-      <div class="sponsor-name">Creavizer</div>
-      <div class="sponsor-role">IA Marketing &amp; Publicidad</div>
-    </div>
-
-    <!-- Vele Comunicación -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--silver);"></div>
-      <div class="sponsor-icon">📡</div>
-      <div class="sponsor-name">Vele Comunicación</div>
-      <div class="sponsor-role">Comunicación &amp; Relaciones Públicas</div>
-    </div>
-
-    <!-- Tec de Monterrey -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--electric);box-shadow:0 0 8px var(--electric);"></div>
-      <div class="sponsor-icon">🎓</div>
-      <div class="sponsor-name">Tec de Monterrey</div>
-      <div class="sponsor-role">Aliado Académico — Movilidad Autónoma</div>
-    </div>
-
-    <!-- Médica Sur -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--electric);box-shadow:0 0 8px var(--electric);"></div>
-      <div class="sponsor-icon">🏥</div>
-      <div class="sponsor-name">Médica Sur</div>
-      <div class="sponsor-role">Aliado en IA para la Salud</div>
-    </div>
-
-    <!-- Celestial Dynamics -->
-    <div class="sponsor-card tech-giant reveal">
-      <div class="sponsor-dot"></div>
-      <div class="sponsor-icon">🌐</div>
-      <div class="sponsor-name">Celestial Dynamics</div>
-      <div class="sponsor-role">Innovación &amp; Estrategia</div>
-    </div>
-
     <!-- NVIDIA -->
     <div class="sponsor-card tech-giant reveal">
       <div class="sponsor-dot"></div>
-      <div class="sponsor-icon">⬛</div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Nvidia.jpg" alt="NVIDIA" class="sponsor-logo"></div>
       <div class="sponsor-name">NVIDIA</div>
       <div class="sponsor-role">Tecnología de IA &amp; Aceleración</div>
     </div>
@@ -1038,9 +1363,65 @@
     <!-- Meta -->
     <div class="sponsor-card tech-giant reveal">
       <div class="sponsor-dot"></div>
-      <div class="sponsor-icon">🔷</div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Meta.jpg" alt="Meta" class="sponsor-logo"></div>
       <div class="sponsor-name">Meta</div>
       <div class="sponsor-role">Plataformas &amp; IA Open Source</div>
+    </div>
+
+    <!-- Digital Gap, Inc. -->
+    <div class="sponsor-card tech-giant reveal">
+      <div class="sponsor-dot"></div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Digital%20Gap.jpg" alt="Digital Gap" class="sponsor-logo"></div>
+      <div class="sponsor-name">Digital Gap, Inc.</div>
+      <div class="sponsor-role">Organizador del Evento</div>
+    </div>
+
+    <!-- Celestial Dynamics -->
+    <div class="sponsor-card tech-giant reveal">
+      <div class="sponsor-dot"></div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Celestial%20Dynamics.jpg" alt="Celestial Dynamics" class="sponsor-logo"></div>
+      <div class="sponsor-name">Celestial Dynamics</div>
+      <div class="sponsor-role">Innovación &amp; Estrategia</div>
+    </div>
+
+    <!-- Tec de Monterrey -->
+    <div class="sponsor-card reveal">
+      <div class="sponsor-dot" style="background:var(--electric);box-shadow:0 0 8px var(--electric);"></div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Tec%20de%20Monterrey.jpg" alt="Tec de Monterrey" class="sponsor-logo"></div>
+      <div class="sponsor-name">Tec de Monterrey</div>
+      <div class="sponsor-role">Aliado Académico — Movilidad Autónoma</div>
+    </div>
+
+    <!-- Médica Sur -->
+    <div class="sponsor-card reveal">
+      <div class="sponsor-dot" style="background:var(--electric);box-shadow:0 0 8px var(--electric);"></div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/M%C3%A9dica%20Sur.jpg" alt="Médica Sur" class="sponsor-logo"></div>
+      <div class="sponsor-name">Médica Sur</div>
+      <div class="sponsor-role">Aliado en IA para la Salud</div>
+    </div>
+
+    <!-- Asteri Eventos -->
+    <div class="sponsor-card reveal">
+      <div class="sponsor-dot" style="background:var(--silver);"></div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Asteri%20Eventos.jpg" alt="Asteri Eventos" class="sponsor-logo"></div>
+      <div class="sponsor-name">Asteri Eventos</div>
+      <div class="sponsor-role">Producción &amp; Experiencia de Eventos</div>
+    </div>
+
+    <!-- Creavizer -->
+    <div class="sponsor-card reveal">
+      <div class="sponsor-dot" style="background:var(--silver);"></div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Creavizer.jpg" alt="Creavizer" class="sponsor-logo"></div>
+      <div class="sponsor-name">Creavizer</div>
+      <div class="sponsor-role">IA Marketing &amp; Publicidad</div>
+    </div>
+
+    <!-- Vele Comunicación -->
+    <div class="sponsor-card reveal">
+      <div class="sponsor-dot" style="background:var(--silver);"></div>
+      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Vele%20Comunicaci%C3%B3n.jpg" alt="Vele Comunicación" class="sponsor-logo"></div>
+      <div class="sponsor-name">Vele Comunicación</div>
+      <div class="sponsor-role">Comunicación &amp; Relaciones Públicas</div>
     </div>
 
   </div>
@@ -1052,30 +1433,191 @@
   </div>
 </section>
 
-<!-- ═══ CTA 2027 ══════════════════════════════════════════════ -->
+<!-- ═══ CTA INFO ══════════════════════════════════════════════ -->
 <section id="cta-2027">
   <div class="cta-inner">
     <span class="section-label">Próximamente</span>
-    <h2>IA Expo Internacional<span class="gold">®</span> <span class="blue">2027</span></h2>
+    <h2>IA Expo Internacional<sup>®</sup> <span class="blue">2027</span></h2>
     <p>La conversación continúa. Sé el primero en enterarte cuando abramos registros para la próxima edición.</p>
-    <form class="cta-form" onsubmit="return false;">
-      <input type="email" placeholder="Tu correo electrónico" name="email">
-      <button type="submit">Avísame</button>
-    </form>
+    <a href="https://iaExpo.ai/info" target="_blank" rel="noopener" class="cta-btn">Información IA Expo 2027</a>
+  </div>
+</section>
+
+<!-- ═══ CONTACTO ══════════════════════════════════════════════ -->
+<section id="contacto">
+  <div class="contacto-grid">
+
+    <!-- Navegación -->
+    <div class="contacto-nav reveal">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#">↑ Inicio</a></li>
+        <li><a href="#testimoniales">Testimoniales</a></li>
+        <li><a href="#sponsors">Alianzas Estratégicas</a></li>
+        <li><a href="#cta-2027">IA Expo 2027</a></li>
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div class="contacto-info reveal">
+      <h4>Contáctanos</h4>
+      <a href="mailto:iaExpo@iaExpo.ai" class="contacto-item">
+        <div class="contacto-icon">
+          <svg width="20" height="20" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="6" fill="url(#emailGrad)"/>
+            <defs>
+              <linearGradient id="emailGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#4F8EF7"/>
+                <stop offset="100%" stop-color="#A855F7"/>
+              </linearGradient>
+            </defs>
+            <path d="M6 10h20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2Z" fill="none" stroke="white" stroke-width="1.5"/>
+            <polyline points="4,10 16,19 28,10" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span>iaExpo@iaExpo.ai</span>
+      </a>
+      <a href="https://wa.me/525559632687" target="_blank" rel="noopener" class="contacto-item">
+        <div class="contacto-icon">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#25D366" d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.472 2.027 7.774L0 32l8.467-2.001A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0Z"/>
+            <path fill="#fff" d="M23.32 19.79c-.32-.16-1.887-.93-2.18-1.036-.292-.107-.504-.16-.716.16-.213.32-.822 1.036-.008 1.25-.293.107 1.01.606 1.01.606s.213.053.426-.267c.214-.32.854-1.07.854-1.07.107-.213.107-.427-.214-.587Zm-7.11 3.47c-1.6 0-3.147-.47-4.453-1.334l-.32-.2-3.307.78.793-3.2-.213-.32A7.893 7.893 0 0 1 7.44 16c0-4.693 3.84-8.533 8.56-8.533 2.293 0 4.453.906 6.08 2.506 1.6 1.6 2.507 3.734 2.507 6.027-.027 4.72-3.867 8.56-8.587 8.56Zm4.907-6.48c-.267-.133-1.574-.773-1.814-.86-.24-.08-.427-.12-.613.133-.187.254-.72.86-.88 1.04-.16.187-.32.2-.587.067-.267-.133-1.12-.413-2.133-1.307-.787-.706-1.32-1.573-1.48-1.84-.16-.266-.014-.413.12-.546.12-.12.267-.32.4-.48.133-.16.173-.267.267-.453.08-.187.04-.36-.027-.493-.067-.133-.613-1.48-.84-2.027-.226-.52-.44-.44-.613-.453h-.52c-.187 0-.48.067-.72.333-.24.267-.934.907-.934 2.227 0 1.32.96 2.587 1.094 2.773.133.187 1.88 2.88 4.56 4.04.64.28 1.133.44 1.52.56.64.2 1.227.173 1.68.107.52-.08 1.574-.64 1.8-1.254.227-.626.227-1.16.16-1.266-.08-.12-.24-.187-.507-.307Z"/>
+          </svg>
+        </div>
+        <span>+52 55 5963-2687</span>
+      </a>
+    </div>
+
   </div>
 </section>
 
 <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
 <footer>
-  <div class="footer-logo">IA<span>EXPO</span> Internacional<span>®</span></div>
+  <div class="footer-logo">IA<span>EXPO</span> Internacional<sup>®</sup></div>
   <div class="footer-copy">
-    © 2026 IA Expo Internacional® · Ciudad de México<br>
+    © 2025-2026 IA Expo Internacional<sup>®</sup> · Ciudad de México<br>
     <a href="https://iaExpo.ai" style="color:rgba(255,255,255,0.3);text-decoration:none;">iaExpo.ai</a>
   </div>
 </footer>
 
 <!-- ═══ SCROLL REVEAL JS ══════════════════════════════════════ -->
 <script>
+// ═══ CARRUSEL ═══════════════════════════════════════════════
+(function() {
+  const BASE_URL    = 'https://raw.githubusercontent.com/iaExpo/2026.Galeria/main/';
+  const TOTAL       = 100;
+  const SAMPLE_SIZE = 20;
+  const AUTOPLAY_MS = 3000;
+
+  function padNum(n) { return String(n).padStart(3, '0'); }
+  function photoURL(n) { return `${BASE_URL}iaExpo.2026.${padNum(n)}.jpg`; }
+
+  // Pick SAMPLE_SIZE random photos
+  const all = Array.from({length: TOTAL}, (_, i) => i + 1);
+  const photos = all.sort(() => Math.random() - 0.5).slice(0, SAMPLE_SIZE);
+
+  let current = 0;
+  let playing = true;
+  let timer;
+
+  function updateCarousel() {
+    document.getElementById('carouselTrack').style.transform = `translateX(-${current * 100}%)`;
+    document.querySelectorAll('.carousel-indicator').forEach((el, i) => {
+      el.classList.toggle('active', i === current);
+    });
+    document.getElementById('carouselCounter').textContent = `Foto ${current + 1} de ${photos.length}`;
+  }
+
+  window.moveCarousel = function(dir) {
+    current = (current + dir + photos.length) % photos.length;
+    updateCarousel();
+    resetAutoplay();
+  };
+
+  window.goToSlide = function(i) {
+    current = i;
+    updateCarousel();
+    resetAutoplay();
+  };
+
+  function startAutoplay() {
+    if (playing) timer = setInterval(() => moveCarousel(1), AUTOPLAY_MS);
+  }
+  function stopAutoplay()  { clearInterval(timer); }
+  function resetAutoplay() { stopAutoplay(); startAutoplay(); }
+
+  window.toggleAutoplay = function() {
+    playing = !playing;
+    document.getElementById('playPauseBtn').textContent = playing ? '⏸' : '▶';
+    playing ? startAutoplay() : stopAutoplay();
+  };
+
+  // Build carousel DOM
+  const track      = document.getElementById('carouselTrack');
+  const indicators = document.getElementById('carouselIndicators');
+
+  photos.forEach((num, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide';
+    slide.innerHTML = `
+      <img src="${photoURL(num)}" alt="IA Expo 2026 Foto ${padNum(num)}" loading="${i === 0 ? 'eager' : 'lazy'}">
+      <div class="carousel-caption"><p>Foto ${padNum(num)}</p></div>
+    `;
+    track.appendChild(slide);
+
+    const dot = document.createElement('div');
+    dot.className = `carousel-indicator${i === 0 ? ' active' : ''}`;
+    dot.onclick = () => goToSlide(i);
+    indicators.appendChild(dot);
+  });
+
+  updateCarousel();
+  startAutoplay();
+
+  // Pause on hover
+  const wrapper = document.querySelector('.carousel-wrapper');
+  if (wrapper) {
+    wrapper.addEventListener('mouseenter', () => { if (playing) stopAutoplay(); });
+    wrapper.addEventListener('mouseleave', () => { if (playing) startAutoplay(); });
+  }
+})();
+
+// ═══ HAMBURGER MENU ═════════════════════════════════════════
+(function() {
+  var toggle   = document.getElementById('navToggle');
+  var links    = document.getElementById('navLinks');
+  var overlay  = document.getElementById('navOverlay');
+  var dropdown = document.getElementById('navDropdownToggle');
+  var submenu  = document.getElementById('navSubmenu');
+
+  function closeMenu() {
+    toggle.classList.remove('open');
+    links.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  toggle.addEventListener('click', function() {
+    var isOpen = links.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    overlay.classList.toggle('open', isOpen);
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  // Toggle submenu on mobile tap
+  dropdown.addEventListener('click', function(e) {
+    if (window.innerWidth <= 860) {
+      e.preventDefault();
+      submenu.classList.toggle('open');
+    }
+  });
+
+  // Close menu when a link is clicked
+  links.querySelectorAll('a:not(#navDropdownToggle)').forEach(function(a) {
+    a.addEventListener('click', closeMenu);
+  });
+})();
+
 (function() {
   var els = document.querySelectorAll('.reveal');
   var observer = new IntersectionObserver(function(entries) {
