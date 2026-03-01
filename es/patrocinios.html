@@ -1,75 +1,1369 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Patrocinios — IA Expo Internacional® 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D48B;
+  --gold-bright: #FFD700;
+  --dark: #0A0A14;
+  --dark-card: #12121F;
+  --dark-surface: #1A1A2E;
+  --dark-elevated: #242440;
+  --platinum-color: #A8B8C8;
+  --platinum-bg: #3A4A5A;
+  --gold-tier: #B8860B;
+  --silver-color: #8C9BAA;
+  --silver-bg: #5A6370;
+  --white: #FFFFFF;
+  --text-primary: #F0EDE6;
+  --text-secondary: #A0A0B8;
+  --text-muted: #6B6B80;
+  --accent-blue: #4A6CF7;
+  --accent-emerald: #34D399;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+}
+
+/* ===== NOISE TEXTURE OVERLAY ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(74,108,247,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(201,168,76,0.05) 0%, transparent 50%),
+    var(--dark);
+  z-index: 0;
+}
+
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.15;
+}
+.hero-lines::before,
+.hero-lines::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 200%;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  animation: lineFloat 8s ease-in-out infinite;
+}
+.hero-lines::before { left: 15%; animation-delay: 0s; }
+.hero-lines::after { right: 20%; animation-delay: 4s; }
+
+@keyframes lineFloat {
+  0%, 100% { transform: translateY(-30%); }
+  50% { transform: translateY(-10%); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8px 24px;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 16px;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero h1 .gold-text {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-bright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.hero-stat-label {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeInUp 1s ease-out 1.2s both;
+}
+
+.hero-scroll span {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.4; transform: scaleY(0.6); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SECTION BASICS ===== */
+section {
+  padding: 80px 24px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 700px;
+}
+
+/* ===== WHY SPONSOR ===== */
+.why-section {
+  background: linear-gradient(180deg, var(--dark) 0%, var(--dark-card) 100%);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.why-card {
+  position: relative;
+  background: var(--dark-surface);
+  border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright), var(--gold));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.why-card:hover::before { transform: scaleX(1); }
+.why-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.why-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.why-card h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ===== AUDIENCE STRIP ===== */
+.audience-strip {
+  background: var(--dark-surface);
+  padding: 48px 24px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+
+.audience-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.audience-inner h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.audience-inner p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.audience-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.audience-tag {
+  padding: 8px 20px;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: rgba(201,168,76,0.05);
+  white-space: nowrap;
+}
+
+/* ===== TIERS ===== */
+.tiers-section {
+  background: var(--dark);
+  padding-top: 100px;
+}
+
+.tier-block {
+  margin-bottom: 80px;
+  scroll-margin-top: 40px;
+}
+
+.tier-header {
+  position: relative;
+  border-radius: 20px;
+  padding: 48px 36px 40px;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.tier-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+}
+
+/* Title Sponsor header */
+.tier-title-sponsor .tier-header {
+  background: linear-gradient(135deg, #0D0D1A 0%, #1A1520 50%, #0D0D1A 100%);
+  border: 1px solid rgba(201,168,76,0.4);
+  box-shadow: 0 0 80px rgba(201,168,76,0.1), inset 0 0 80px rgba(201,168,76,0.03);
+}
+
+.tier-platinum .tier-header {
+  background: linear-gradient(135deg, #0D1018 0%, #1A2030 50%, #0D1018 100%);
+  border: 1px solid rgba(168,184,200,0.3);
+  box-shadow: 0 0 60px rgba(168,184,200,0.05);
+}
+
+.tier-gold .tier-header {
+  background: linear-gradient(135deg, #14100A 0%, #1F1810 50%, #14100A 100%);
+  border: 1px solid rgba(184,134,11,0.3);
+  box-shadow: 0 0 60px rgba(184,134,11,0.05);
+}
+
+.tier-silver .tier-header {
+  background: linear-gradient(135deg, #101015 0%, #1A1A22 50%, #101015 100%);
+  border: 1px solid rgba(140,155,170,0.25);
+  box-shadow: 0 0 60px rgba(140,155,170,0.03);
+}
+
+.tier-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.tier-header h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin-bottom: 8px;
+}
+
+.tier-title-sponsor .tier-header h2 {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-bright), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tier-platinum .tier-header h2 { color: var(--platinum-color); }
+.tier-gold .tier-header h2 { color: #D4AF37; }
+.tier-silver .tier-header h2 { color: var(--silver-color); }
+
+.tier-price {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.tier-slots {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.tier-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 20px auto 0;
+  line-height: 1.6;
+}
+
+.urgency-badge {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 18px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: urgencyPulse 2s ease-in-out infinite;
+}
+
+.tier-title-sponsor .urgency-badge {
+  background: rgba(201,168,76,0.15);
+  color: var(--gold-bright);
+  border: 1px solid rgba(201,168,76,0.4);
+}
+
+@keyframes urgencyPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
+/* Benefit categories */
+.tier-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.benefit-category {
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 28px 24px;
+  transition: border-color 0.3s ease;
+}
+
+.benefit-category:hover {
+  border-color: rgba(201,168,76,0.2);
+}
+
+.benefit-cat-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.tier-title-sponsor .benefit-cat-title { color: var(--gold); }
+.tier-platinum .benefit-cat-title { color: var(--platinum-color); }
+.tier-gold .benefit-cat-title { color: #D4AF37; }
+.tier-silver .benefit-cat-title { color: var(--silver-color); }
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.benefit-check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.check-yes {
+  background: rgba(52,211,153,0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(52,211,153,0.3);
+}
+
+.benefit-item .highlight {
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.comparison-section {
+  background: var(--dark-card);
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.comp-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.comp-table thead th {
+  padding: 18px 14px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--dark-surface);
+  color: var(--text-muted);
+  border-bottom: 2px solid rgba(201,168,76,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.comp-table thead th:first-child { text-align: left; padding-left: 20px; }
+.comp-table thead th:nth-child(2) { color: var(--gold); }
+.comp-table thead th:nth-child(3) { color: var(--platinum-color); }
+.comp-table thead th:nth-child(4) { color: #D4AF37; }
+.comp-table thead th:nth-child(5) { color: var(--silver-color); }
+
+.comp-table tbody td {
+  padding: 12px 14px;
+  text-align: center;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.comp-table tbody td:first-child {
+  text-align: left;
+  padding-left: 20px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.comp-table tbody tr:hover { background: rgba(201,168,76,0.03); }
+
+.comp-table .cat-row td {
+  background: rgba(201,168,76,0.06);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+
+.comp-table .t-check { color: var(--accent-emerald); font-weight: 700; }
+.comp-table .t-x { color: #555; }
+.comp-table .t-val { color: var(--white); font-weight: 600; }
+
+/* ===== MICRO SPONSORSHIPS ===== */
+.micro-section {
+  background: linear-gradient(180deg, var(--dark-card) 0%, var(--dark) 100%);
+}
+
+.micro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.micro-card {
+  position: relative;
+  background: var(--dark-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.micro-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201,168,76,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.micro-card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.micro-card h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.micro-card .micro-price {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.micro-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.micro-includes {
+  list-style: none;
+  padding: 0;
+}
+
+.micro-includes li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 4px 0;
+  padding-left: 22px;
+  position: relative;
+}
+
+.micro-includes li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-emerald);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  position: relative;
+  padding: 100px 24px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 70%),
+    var(--dark);
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.cta-content p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 40px;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.cta-btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  color: var(--dark);
+  box-shadow: 0 4px 30px rgba(201,168,76,0.3);
+}
+
+.cta-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(201,168,76,0.4);
+}
+
+.cta-btn-secondary {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.4);
+}
+
+.cta-btn-secondary:hover {
+  background: rgba(201,168,76,0.1);
+  border-color: var(--gold);
+}
+
+.cta-contact {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta-contact a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.cta-contact a:hover { color: var(--gold); }
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: var(--dark);
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.footer .footer-brand {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ===== ANIMATIONS ON SCROLL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  section { padding: 60px 20px; }
+  .tier-header { padding: 36px 24px 32px; }
+  .tier-benefits { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { gap: 28px; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  section { padding: 48px 16px; }
+
+  .hero { min-height: 100svh; padding: 48px 16px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat { min-width: 80px; }
+
+  .why-grid { grid-template-columns: 1fr; }
+  .micro-grid { grid-template-columns: 1fr; }
+
+  .tier-header { padding: 28px 16px 24px; border-radius: 14px; }
+  .tier-benefits { grid-template-columns: 1fr; }
+  .benefit-category { padding: 24px 18px; }
+
+  .audience-tags { gap: 8px; }
+  .audience-tag { font-size: 0.78rem; padding: 6px 14px; }
+
+  .cta-section { padding: 60px 16px; }
+  .cta-btn { padding: 16px 28px; font-size: 0.95rem; }
+}
+
+/* Prevent any horizontal overflow */
+@media (max-width: 768px) {
+  .table-wrapper { margin-left: -8px; margin-right: -8px; border-radius: 10px; }
+  .comp-table { font-size: 0.8rem; }
+  .comp-table thead th { padding: 12px 8px; font-size: 0.7rem; }
+  .comp-table tbody td { padding: 10px 8px; }
+}
+</style>
 </head>
 <body>
-    <!-- Sponsorship Section -->
-    <section class="sponsorship-section" id="patrocinios">
-        <div class="section-header">
-            <div class="section-badge" style="background: rgba(255, 255, 255, 0.1); color: var(--white);">Patrocinios</div>
-            <h2 class="section-title">Paquetes de Patrocinio</h2>
-            <p class="section-subtitle">
-                Posiciona tu marca frente a los líderes de innovación tecnológica en América Latina.
-            </p>
-        </div>
-        
-        <div class="sponsorship-tiers">
-            <div class="tier-card">
-                <span class="tier-icon">💎</span>
-                <h3>Diamante</h3>
-                <p>Máxima visibilidad. Brand premium, keynote exclusivo, stand destacado y menciones especiales.</p>
-                <a href="https://iaexpo.ai/iax-diamante" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
-            
-            <div class="tier-card">
-                <span class="tier-icon">⚪</span>
-                <h3>Platino</h3>
-                <p>Alto impacto. Presencia destacada en materiales oficiales y networking VIP privilegiado.</p>
-                <a href="https://iaexpo.ai/iax-platino" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
-            
-            <div class="tier-card">
-                <span class="tier-icon">🥇</span>
-                <h3>Oro</h3>
-                <p>Excelente exposición. Stand estratégico y presencia en comunicaciones principales del evento.</p>
-                <a href="https://iaexpo.ai/iax-oro" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
-            
-            <div class="tier-card">
-                <span class="tier-icon">🥈</span>
-                <h3>Plata</h3>
-                <p>Presencia efectiva. Stand profesional y reconocimiento en materiales del evento.</p>
-                <a href="https://iaexpo.ai/iax-plata" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
-        </div>
 
-        <!-- Sponsors -->
-        <div style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%); padding: 30px 20px; text-align: center;">
-            <h2 style="color: #ffffff; font-size: 32px; margin-bottom: 15px; font-weight: 700; letter-spacing: 1px;">
-                PATROCINADORES
-            </h2>
-            <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); margin: 0 auto 40px auto; border-radius: 2px;"></div>
-            
-            <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap;">
-                
-                <!-- Digital Gap, Inc. - NIVEL ORO -->
-                <div style="background: rgba(255, 215, 0, 0.08); padding: 35px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); min-width: 300px; max-width: 300px; position: relative;">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FFD700, #FFA500); color: #1a1f3a; padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);">NIVEL ORO</div>
-                    <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691d121441c50173a292fadd.jpg" alt="Digital Gap, Inc. - Patrocinador Oro" style="width: 100%; height: auto; max-width: 270px; filter: brightness(1.15) drop-shadow(0 4px 8px rgba(255, 215, 0, 0.3));">
-                </div>
-                
-                <!-- Asteri Eventos - NIVEL PLATA -->
-                <div style="background: rgba(192, 192, 192, 0.06); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(192, 192, 192, 0.25); min-width: 280px; max-width: 280px; position: relative;">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #C0C0C0, #A8A8A8); color: #1a1f3a; padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);">NIVEL PLATA</div>
-                    <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691d12144b7535baf8340e92.jpg" alt="Asteri Eventos - Patrocinador Plata" style="width: 100%; height: auto; max-width: 250px; filter: brightness(1.1);">
-                </div>
-                
-                <!-- Creavizer - NIVEL PLATA -->
-                <div style="background: rgba(192, 192, 192, 0.06); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(192, 192, 192, 0.25); min-width: 280px; max-width: 280px; position: relative;">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #C0C0C0, #A8A8A8); color: #1a1f3a; padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);">NIVEL PLATA</div>
-                    <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691d1214c2cf86325af315bc.jpg" alt="Creavizer - Patrocinador Plata" style="width: 100%; height: auto; max-width: 250px; filter: brightness(1.1);">
-                </div> 
-            </div>
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Oportunidades de Patrocinio 2027</div>
+    <h1>Posiciona tu marca<br>en el <span class="gold-text">futuro de la IA</span></h1>
+    <p class="hero-subtitle">Sé parte del evento boutique de inteligencia artificial aplicada más relevante de Latinoamérica</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">250</div>
+        <div class="hero-stat-label">Líderes C-Level</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">7</div>
+        <div class="hero-stat-label">Tracks de Industria</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">3</div>
+        <div class="hero-stat-label">Días de Impacto</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">1</div>
+        <div class="hero-stat-label">Evento Único</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Explorar niveles</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ========== WHY SPONSOR ========== -->
+<section class="why-section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">¿Por qué patrocinar?</div>
+    <h2 class="section-title reveal">No es publicidad.<br>Es <span style="color:var(--gold)">posicionamiento estratégico.</span></h2>
+    <p class="section-desc reveal">IA Expo Internacional® no es un evento masivo. Es una experiencia curada donde cada asistente toma decisiones de inversión, adopción e implementación de IA. Tu marca no compite por atención — <strong style="color:var(--white)">la tiene garantizada.</strong></p>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-icon">🎯</span>
+        <h3>Audiencia Ultra-Segmentada</h3>
+        <p>250 tomadores de decisiones C-Level y directivos de las industrias más dinámicas. Sin distracciones. Sin ruido. Cada interacción cuenta.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">💎</span>
+        <h3>Entorno Premium Exclusivo</h3>
+        <p>Producción audiovisual de primer nivel, escenografía LED y una experiencia que posiciona a los patrocinadores como líderes de innovación.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🤝</span>
+        <h3>Networking de Alto Impacto</h3>
+        <p>Cenas privadas, cócteles exclusivos y sesiones de networking diseñadas para generar conexiones estratégicas reales.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🚀</span>
+        <h3>Thought Leadership</h3>
+        <p>Keynotes, paneles y demos que posicionan a tu marca como referente en IA aplicada frente a la audiencia que más importa.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">📊</span>
+        <h3>Retorno Medible</h3>
+        <p>Analytics post-evento, directorio de asistentes y reporte completo con datos de perfil e interacción para medir tu inversión.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-icon">🌎</span>
+        <h3>Expansión Regional</h3>
+        <p>IA Expo se expande a nuevas ciudades y países. Los patrocinadores de hoy tienen derecho de preferencia para las futuras ediciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AUDIENCE STRIP ========== -->
+<div class="audience-strip">
+  <div class="audience-inner reveal">
+    <h3>Tu marca frente a quienes deciden</h3>
+    <p>Nuestros asistentes representan los sectores más estratégicos de la economía</p>
+    <div class="audience-tags">
+      <span class="audience-tag">CEOs y Fundadores</span>
+      <span class="audience-tag">CTOs y CIOs</span>
+      <span class="audience-tag">Directores de Innovación</span>
+      <span class="audience-tag">VPs de Tecnología</span>
+      <span class="audience-tag">Inversionistas</span>
+      <span class="audience-tag">Líderes FinTech</span>
+      <span class="audience-tag">Directivos de Salud</span>
+      <span class="audience-tag">Abogados Corporativos</span>
+      <span class="audience-tag">Líderes Educativos</span>
+      <span class="audience-tag">Directores Creativos</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SPONSORSHIP TIERS ========== -->
+<section class="tiers-section">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:64px;">
+      <div class="section-eyebrow reveal" style="text-align:center">Niveles de Patrocinio</div>
+      <h2 class="section-title reveal" style="text-align:center; margin-left:auto; margin-right:auto;">Elige tu nivel de <span style="color:var(--gold)">impacto</span></h2>
+      <p class="section-desc reveal" style="margin:12px auto 0; text-align:center;">Cuatro niveles diseñados para diferentes objetivos estratégicos. Cada uno con beneficios claros y progresivos.</p>
+    </div>
+
+    <!-- ===== TITLE SPONSOR ===== -->
+    <div class="tier-block tier-title-sponsor reveal" id="title-sponsor">
+      <div class="tier-header">
+        <span class="tier-emoji">👑</span>
+        <h2>TITLE SPONSOR</h2>
+        <div class="tier-price">$1,000,000 MXN</div>
+        <div class="tier-slots">1 disponible — Exclusividad total</div>
+        <p class="tier-tagline">Tu marca se convierte en sinónimo del evento: "IA Expo Internacional® 2027 presentado por [Tu Marca]". Una sola empresa puede ocupar este lugar.</p>
+        <div class="urgency-badge">⚡ Solo 1 plaza disponible</div>
+      </div>
+      <div class="tier-benefits">
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Visibilidad y Marca</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Naming rights</span> — "IA Expo 2027 presentado por [Tu Marca]" en toda comunicación</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo <span class="highlight">principal y de mayor tamaño</span> en todo material gráfico, digital e impreso</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Branding prominente en <span class="highlight">escenografía principal y pantallas LED</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Video corporativo de <span class="highlight">hasta 3 minutos</span> en pantallas LED</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Naming de un track vertical</span> completo</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Mención especial en <span class="highlight">keynote de apertura</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">12+ publicaciones</span> en redes sociales</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Entrevista en video</span> profesional para canales de IA Expo</span></div>
         </div>
-    </section>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Presencia en el Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Stand premium doble</span> en ubicación privilegiada</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Keynote propia de 30 min</span> en escenario principal</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Participación garantizada en <span class="highlight">panel de alto nivel</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Demo de producto</span> en track vertical asignado</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Material promocional en <span class="highlight">kit de bienvenida</span> de cada asistente</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Señalización exclusiva en <span class="highlight">áreas de registro, networking y coffee breaks</span></span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Networking y Acceso</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">10 boletos VIP</span> incluidos</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">5 boletos generales</span> adicionales</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso a <span class="highlight">cena privada VIP</span> con ponentes y patrocinadores</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso al <span class="highlight">cóctel de bienvenida premium</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Networking privado</span> con ponentes internacionales</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Directorio completo</span> de asistentes</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Mesa reservada</span> en cena de clausura</span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Digital y Post-Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo destacado con enlace en <span class="highlight">iaExpo.ai</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Banner digital exclusivo</span> en página principal</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Mención en <span class="highlight">todas</span> las campañas de email marketing</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso a <span class="highlight">grabaciones</span> de todas las sesiones</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Reporte post-evento</span> con analytics detallados</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Derecho de preferencia</span> y precio congelado para 2028</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PLATINUM ===== -->
+    <div class="tier-block tier-platinum reveal" id="platinum">
+      <div class="tier-header">
+        <span class="tier-emoji">💎</span>
+        <h2>PLATINUM</h2>
+        <div class="tier-price">$400,000 MXN</div>
+        <div class="tier-slots">3 disponibles</div>
+        <p class="tier-tagline">Presencia estratégica de alto impacto. Visibilidad prominente, thought leadership y acceso directo a la audiencia clave.</p>
+      </div>
+      <div class="tier-benefits">
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Visibilidad y Marca</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo <span class="highlight">grande</span> en material gráfico, digital e impreso</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Branding en <span class="highlight">escenografía principal y pantallas LED</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Video corporativo de <span class="highlight">hasta 90 segundos</span> en pantallas LED</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Naming de track vertical</span> (sujeto a disponibilidad)</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Mención en <span class="highlight">keynote de apertura</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">8 publicaciones</span> en redes sociales</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Entrevista en video</span> profesional</span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Presencia en el Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Stand premium</span> en ubicación destacada</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Ponencia propia de 20 min</span> en escenario principal o de track</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Participación en <span class="highlight">panel de alto nivel</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Demo de producto</span> en track vertical</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Material en <span class="highlight">kit de bienvenida</span></span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Networking y Acceso</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">6 boletos VIP</span> incluidos</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">3 boletos generales</span> adicionales</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso a <span class="highlight">cena privada VIP</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso al <span class="highlight">cóctel de bienvenida</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Networking privado</span> con ponentes</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Directorio</span> de asistentes</span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Digital y Post-Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo con enlace en <span class="highlight">iaExpo.ai</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Banner digital</span> en página principal</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Mención en <span class="highlight">3 campañas</span> de email marketing</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso a <span class="highlight">grabaciones</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Reporte post-evento</span> con analytics</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Derecho de preferencia</span> para 2028</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== GOLD ===== -->
+    <div class="tier-block tier-gold reveal" id="gold">
+      <div class="tier-header">
+        <span class="tier-emoji">🥇</span>
+        <h2>GOLD</h2>
+        <div class="tier-price">$200,000 MXN</div>
+        <div class="tier-slots">5 disponibles</div>
+        <p class="tier-tagline">Visibilidad sólida y presencia significativa. La combinación ideal de exposición, contenido y acceso a la comunidad de IA Expo.</p>
+      </div>
+      <div class="tier-benefits">
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Visibilidad y Marca</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo <span class="highlight">mediano</span> en material gráfico y digital</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Video corporativo de <span class="highlight">hasta 60 segundos</span> en pantallas LED</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">4 publicaciones</span> en redes sociales</span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Presencia en el Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Stand estándar</span> en área de exhibición</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Participación en <span class="highlight">panel temático</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Demo de producto</span> en track vertical</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Material en <span class="highlight">kit de bienvenida</span></span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Networking y Acceso</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">4 boletos VIP</span> incluidos</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">2 boletos generales</span> adicionales</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso al <span class="highlight">cóctel de bienvenida</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Directorio</span> de asistentes</span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Digital y Post-Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo con enlace en <span class="highlight">iaExpo.ai</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Mención en <span class="highlight">2 campañas</span> de email marketing</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso a <span class="highlight">grabaciones</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Reporte post-evento</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Derecho de preferencia</span> para 2028</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SILVER ===== -->
+    <div class="tier-block tier-silver reveal" id="silver">
+      <div class="tier-header">
+        <span class="tier-emoji">🥈</span>
+        <h2>SILVER</h2>
+        <div class="tier-price">$100,000 MXN</div>
+        <div class="tier-slots">6–8 disponibles</div>
+        <p class="tier-tagline">Tu entrada estratégica al ecosistema. Asocia tu marca con el evento de IA más relevante de Latinoamérica con beneficios concretos.</p>
+      </div>
+      <div class="tier-benefits">
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Visibilidad y Marca</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo en material gráfico y digital</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Video de <span class="highlight">30 segundos</span> en pantallas LED</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">2 publicaciones</span> en redes sociales</span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Presencia en el Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Espacio compartido</span> en área de exhibición</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">Demo de producto</span> (formato breve)</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Material en <span class="highlight">kit de bienvenida</span></span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Networking y Acceso</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">2 boletos VIP</span> incluidos</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span><span class="highlight">1 boleto general</span> adicional</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso al <span class="highlight">cóctel de bienvenida</span></span></div>
+        </div>
+        <div class="benefit-category">
+          <div class="benefit-cat-title">Digital y Post-Evento</div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Logo con enlace en <span class="highlight">iaExpo.ai</span></span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Mención en <span class="highlight">1 campaña</span> de email</span></div>
+          <div class="benefit-item"><span class="benefit-check check-yes">✓</span><span>Acceso a <span class="highlight">grabaciones</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COMPARISON TABLE ========== -->
+<section class="comparison-section">
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <div class="section-eyebrow reveal" style="text-align:center">Vista rápida</div>
+      <h2 class="section-title reveal" style="text-align:center; margin-left:auto; margin-right:auto;">Comparativa de <span style="color:var(--gold)">beneficios</span></h2>
+    </div>
+    <div class="table-wrapper reveal">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Beneficio</th>
+            <th>👑 Title</th>
+            <th>💎 Platinum</th>
+            <th>🥇 Gold</th>
+            <th>🥈 Silver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="cat-row"><td colspan="5">Visibilidad y Marca</td></tr>
+          <tr><td>Naming rights del evento</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Logo en comunicación</td><td class="t-val">Principal</td><td class="t-val">Grande</td><td class="t-val">Mediano</td><td class="t-val">Pequeño</td></tr>
+          <tr><td>Mención en keynote</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Video en pantallas LED</td><td class="t-val">3 min</td><td class="t-val">90 seg</td><td class="t-val">60 seg</td><td class="t-val">30 seg</td></tr>
+          <tr><td>Naming de track vertical</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Branding en escenografía</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Posts en redes sociales</td><td class="t-val">12+</td><td class="t-val">8</td><td class="t-val">4</td><td class="t-val">2</td></tr>
+          <tr><td>Entrevista en video</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+
+          <tr class="cat-row"><td colspan="5">Presencia en Evento</td></tr>
+          <tr><td>Stand / Exhibición</td><td class="t-val">Premium doble</td><td class="t-val">Premium</td><td class="t-val">Estándar</td><td class="t-val">Compartido</td></tr>
+          <tr><td>Ponencia / Keynote propia</td><td class="t-val">30 min</td><td class="t-val">20 min</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Participación en panel</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td></tr>
+          <tr><td>Demo de producto</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+          <tr><td>Material en kit asistente</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+
+          <tr class="cat-row"><td colspan="5">Networking y Acceso</td></tr>
+          <tr><td>Boletos VIP incluidos</td><td class="t-val">10</td><td class="t-val">6</td><td class="t-val">4</td><td class="t-val">2</td></tr>
+          <tr><td>Boletos generales incluidos</td><td class="t-val">5</td><td class="t-val">3</td><td class="t-val">2</td><td class="t-val">1</td></tr>
+          <tr><td>Cena privada VIP</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Cóctel de bienvenida</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+          <tr><td>Networking con ponentes</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Directorio de asistentes</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td></tr>
+
+          <tr class="cat-row"><td colspan="5">Digital y Post-Evento</td></tr>
+          <tr><td>Logo en iaExpo.ai</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+          <tr><td>Banner en página principal</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td><td class="t-x">—</td></tr>
+          <tr><td>Campañas de email</td><td class="t-val">Todas</td><td class="t-val">3</td><td class="t-val">2</td><td class="t-val">1</td></tr>
+          <tr><td>Grabaciones del evento</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+          <tr><td>Reporte post-evento</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td></tr>
+          <tr><td>Derecho preferencia 2028</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-x">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MICRO-SPONSORSHIPS ========== -->
+<section class="micro-section">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:16px;">
+      <div class="section-eyebrow reveal" style="text-align:center">Oportunidades Adicionales</div>
+      <h2 class="section-title reveal" style="text-align:center; margin-left:auto; margin-right:auto;">Más formas de <span style="color:var(--gold)">conectar</span></h2>
+      <p class="section-desc reveal" style="margin:12px auto 0; text-align:center;">Oportunidades de visibilidad diseñadas para marcas que quieren estar presentes de manera creativa e impactante, sin importar el presupuesto.</p>
+    </div>
+
+    <div class="micro-grid">
+      <div class="micro-card reveal">
+        <span class="micro-card-icon">🎒</span>
+        <h3>Patrocinio de Bolsa de Registro</h3>
+        <span class="micro-price">Desde $40,000 MXN</span>
+        <p>Tu marca en las manos de los 250 asistentes desde el momento en que llegan. La bolsa de registro es el primer punto de contacto físico con el evento.</p>
+        <ul class="micro-includes">
+          <li>Logo impreso en la bolsa oficial del evento</li>
+          <li>Espacio para incluir materiales propios dentro de la bolsa</li>
+          <li>Mención como "Patrocinador de Welcome Kit"</li>
+          <li>1 boleto general incluido</li>
+        </ul>
+      </div>
+
+      <div class="micro-card reveal">
+        <span class="micro-card-icon">🎁</span>
+        <h3>Patrocinio de Goodies</h3>
+        <span class="micro-price">Desde $25,000 MXN</span>
+        <p>Incluye tu producto, muestra o artículo promocional directamente en el kit de bienvenida de cada asistente. Impacto garantizado, uno a uno.</p>
+        <ul class="micro-includes">
+          <li>Tu producto o goodie incluido en las 250 bolsas</li>
+          <li>Tarjeta promocional con tu mensaje o QR</li>
+          <li>Mención en redes sociales al presentar el kit</li>
+          <li>Logo en la lista de "colaboradores del evento"</li>
+        </ul>
+      </div>
+
+      <div class="micro-card reveal">
+        <span class="micro-card-icon">🌐</span>
+        <h3>Banner Digital en iaExpo.ai</h3>
+        <span class="micro-price">Desde $15,000 MXN / mes</span>
+        <p>Visibilidad digital continua en el sitio oficial del evento. Tu banner con enlace directo en las páginas más visitadas de iaExpo.ai.</p>
+        <ul class="micro-includes">
+          <li>Banner gráfico con enlace en página principal o sección</li>
+          <li>Exposición a todo el tráfico web del evento</li>
+          <li>Reportes mensuales de impresiones y clics</li>
+          <li>Opciones de ubicación: hero, sidebar o footer</li>
+        </ul>
+      </div>
+
+      <div class="micro-card reveal">
+        <span class="micro-card-icon">☕</span>
+        <h3>Patrocinio de Coffee Break</h3>
+        <span class="micro-price">Desde $50,000 MXN</span>
+        <p>Asocia tu marca con los momentos de networking más orgánicos del evento. Señalización exclusiva en la estación de café y snacks.</p>
+        <ul class="micro-includes">
+          <li>Branding en la estación de café/snacks</li>
+          <li>Señalización: "Coffee Break presentado por [Tu Marca]"</li>
+          <li>Servilletas, vasos o elementos con tu logo</li>
+          <li>2 boletos generales incluidos</li>
+        </ul>
+      </div>
+
+      <div class="micro-card reveal">
+        <span class="micro-card-icon">📱</span>
+        <h3>Patrocinio de App / WiFi</h3>
+        <span class="micro-price">Desde $35,000 MXN</span>
+        <p>Tu marca en cada conexión. Patrocina la red WiFi del evento o la pantalla de inicio de la app oficial con visibilidad constante durante los 3 días.</p>
+        <ul class="micro-includes">
+          <li>Nombre de red WiFi: "WiFi por [Tu Marca]"</li>
+          <li>Splash page de conexión con tu logo y mensaje</li>
+          <li>Opcionalmente: branding en la app del evento</li>
+          <li>1 boleto general incluido</li>
+        </ul>
+      </div>
+
+      <div class="micro-card reveal">
+        <span class="micro-card-icon">🎤</span>
+        <h3>Patrocinio de Sesión / Taller</h3>
+        <span class="micro-price">Desde $60,000 MXN</span>
+        <p>Asocia tu marca con una sesión o taller específico. "Taller de IA en FinTech presentado por [Tu Marca]" — posicionamiento directo en tu industria.</p>
+        <ul class="micro-includes">
+          <li>Naming de una sesión o taller específico</li>
+          <li>Logo en slide de apertura y cierre de la sesión</li>
+          <li>Mención verbal por el moderador</li>
+          <li>2 boletos VIP incluidos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="section-eyebrow reveal" style="text-align:center">Las plazas son limitadas</div>
+    <h2 class="reveal">Asegura tu lugar<br>antes que tu <span style="color:var(--gold)">competencia</span></h2>
+    <p class="reveal">Las plazas de patrocinio se asignan por orden de llegada y compromiso. No esperes a que el nivel que necesitas ya no esté disponible.</p>
+
+    <div class="cta-buttons reveal">
+      <a href="https://wa.me/525559632687?text=Hola%2C%20me%20interesa%20patrocinar%20IA%20Expo%202027.%20Quisiera%20más%20información." class="cta-btn cta-btn-primary" target="_blank" rel="noopener">
+        💬 Contactar por WhatsApp
+      </a>
+      <a href="mailto:iaExpo@iaExpo.ai?subject=Patrocinio%20IA%20Expo%202027&body=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20las%20oportunidades%20de%20patrocinio%20para%20IA%20Expo%202027." class="cta-btn cta-btn-secondary">
+        ✉️ Enviar Email
+      </a>
+    </div>
+
+    <div class="cta-contact reveal">
+      <a href="mailto:iaExpo@iaExpo.ai">iaExpo@iaExpo.ai</a>
+      <a href="https://wa.me/525559632687" target="_blank" rel="noopener">+52 55 5963-2687</a>
+      <a href="https://iaExpo.ai" target="_blank" rel="noopener">iaExpo.ai</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p><span class="footer-brand">IA Expo Internacional® 2027</span> — Digital Gap, Inc.<br>Ciudad de México · 28, 29 y 30 de Enero 2027<br>Todos los precios en pesos mexicanos (MXN). Sujeto a disponibilidad.</p>
+</footer>
+
+<script>
+// Intersection Observer for scroll reveal animations
+document.addEventListener('DOMContentLoaded', function() {
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(function(el) { observer.observe(el); });
+});
+</script>
+
 </body>
 </html>

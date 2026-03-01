@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>¡Gracias! — IA Expo 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --gold:    #c9a84c;
+      --gold-lt: #e8c97a;
+      --gold-dk: #8a6a1f;
+      --deep:    #04060f;
+      --navy:    #090e1f;
+      --mist:    rgba(201,168,76,.12);
+      --white:   #f5f0e8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--deep);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── STARFIELD ─────────────────────────────── */
+    #stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle var(--d) ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--min); transform: scale(1); }
+      50%       { opacity: var(--max); transform: scale(1.4); }
+    }
+
+    /* ─── HERO BANNER ───────────────────────────── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 55vh;
+      min-height: 340px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(.45) saturate(1.1);
+      transform: scale(1.04);
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.12); }
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(4,6,15,.2) 0%,
+        rgba(4,6,15,.1) 40%,
+        rgba(4,6,15,.95) 100%
+      );
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-54%);
+      text-align: center;
+      animation: fadeDown .9s ease both;
+    }
+
+    .badge-year {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.65rem, 1.5vw, .85rem);
+      font-weight: 600;
+      letter-spacing: .35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+
+    .badge-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--gold-lt) 0%, var(--gold) 55%, var(--gold-dk) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 28px rgba(201,168,76,.45));
+    }
+
+    /* ─── MAIN CARD ─────────────────────────────── */
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+    }
+
+    .card {
+      background: linear-gradient(160deg, rgba(12,18,38,.97) 0%, rgba(6,10,22,.97) 100%);
+      border: 1px solid rgba(201,168,76,.22);
+      border-radius: 4px;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.8rem, 6vw, 4.5rem);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      animation: fadeUp .9s .2s ease both;
+      box-shadow:
+        0 0 0 1px rgba(201,168,76,.06),
+        0 30px 80px rgba(0,0,0,.7),
+        0 0 120px rgba(201,168,76,.06);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(201,168,76,.07), transparent);
+      pointer-events: none;
+    }
+
+    /* ─── ICON ──────────────────────────────────── */
+    .icon-ring {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201,168,76,.4);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 2rem;
+      position: relative;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .icon-ring::before {
+      content: '';
+      position: absolute; inset: -7px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,.15);
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,.3); }
+      50%       { box-shadow: 0 0 0 12px rgba(201,168,76,.0); }
+    }
+
+    .icon-inner {
+      font-size: 2.4rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px rgba(201,168,76,.7));
+    }
+
+    /* ─── TYPOGRAPHY ────────────────────────────── */
+    .eyebrow {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1rem;
+      animation: fadeUp .8s .35s ease both;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.12;
+      text-align: center;
+      margin-bottom: 1.8rem;
+      animation: fadeUp .8s .45s ease both;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 0 auto 2.2rem;
+      max-width: 280px;
+      animation: fadeUp .8s .52s ease both;
+    }
+
+    .divider-line { flex: 1; height: 1px; background: rgba(201,168,76,.3); }
+    .divider-dot  { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+    .body-text {
+      font-size: clamp(.9rem, 1.8vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(245,240,232,.8);
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      animation: fadeUp .8s .6s ease both;
+    }
+
+    .body-text strong {
+      color: var(--gold-lt);
+      font-weight: 500;
+    }
+
+    /* ─── PROMISES STRIP ────────────────────────── */
+    .promises {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin: 2.5rem 0;
+      animation: fadeUp .8s .7s ease both;
+    }
+
+    .promise {
+      background: rgba(201,168,76,.05);
+      border: 1px solid rgba(201,168,76,.14);
+      border-radius: 4px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      transition: border-color .3s, background .3s;
+    }
+
+    .promise:hover {
+      background: rgba(201,168,76,.1);
+      border-color: rgba(201,168,76,.35);
+    }
+
+    .promise-icon { font-size: 1.6rem; margin-bottom: .7rem; display: block; }
+
+    .promise-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold-lt);
+      margin-bottom: .35rem;
+    }
+
+    .promise-desc {
+      font-size: .75rem;
+      font-weight: 300;
+      color: rgba(245,240,232,.6);
+      line-height: 1.6;
+    }
+
+    /* ─── PHOTO STRIP ────────────────────────────── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .8rem;
+      margin: 2.5rem 0;
+      animation: fadeUp .8s .78s ease both;
+    }
+
+    .photo-strip-item {
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+
+    .photo-strip-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(.6) saturate(.9);
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .photo-strip-item:hover img {
+      transform: scale(1.07);
+      filter: brightness(.75) saturate(1.1);
+    }
+
+    .photo-strip-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    /* ─── CTA BUTTON ─────────────────────────────── */
+    .cta-wrap {
+      text-align: center;
+      margin-top: 2.8rem;
+      animation: fadeUp .8s .85s ease both;
+    }
+
+    .cta-note {
+      font-size: .75rem;
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: rgba(245,240,232,.75);
+      margin-bottom: 1.4rem;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--deep);
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold));
+      padding: 1rem 3rem;
+      border-radius: 2px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      box-shadow: 0 0 30px rgba(201,168,76,.25);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,.15);
+      transform: translateX(-100%) skewX(-20deg);
+      transition: transform .5s;
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(201,168,76,.4); }
+    .btn-primary:hover::before { transform: translateX(200%) skewX(-20deg); }
+
+    /* ─── SIGNATURE ─────────────────────────────── */
+    .signature {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201,168,76,.12);
+      text-align: center;
+      animation: fadeUp .8s .95s ease both;
+    }
+
+    .sig-label {
+      font-size: .68rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.65);
+      margin-bottom: .6rem;
+    }
+
+    .sig-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .sig-title {
+      font-size: .75rem;
+      font-weight: 300;
+      color: rgba(245,240,232,.75);
+      margin-top: .2rem;
+      letter-spacing: .1em;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,.55);
+    }
+
+    footer span { color: var(--gold); }
+
+    /* ─── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translate(-50%,-60%); }
+      to   { opacity: 1; transform: translate(-50%,-54%); }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+
+    /* Tablet (≤ 768px) */
+    @media (max-width: 768px) {
+      .hero { height: 45vh; min-height: 260px; }
+      .wrapper { padding: 0 1rem 4rem; }
+      .card { padding: 2.2rem 1.4rem; }
+      .photo-strip { grid-template-columns: 1fr 1fr 1fr; gap: .5rem; }
+      .promises { grid-template-columns: 1fr; }
+      .badge-logo { font-size: clamp(2.6rem, 10vw, 4.5rem); }
+      .body-text { font-size: .9rem; }
+      .btn-primary { padding: .9rem 2rem; letter-spacing: .2em; }
+    }
+
+    /* Mobile (≤ 480px) */
+    @media (max-width: 480px) {
+      .hero { height: 40vh; min-height: 220px; }
+      .wrapper { padding: 0 .75rem 3rem; }
+      .card { padding: 2rem 1.1rem; border-radius: 3px; }
+      .photo-strip { grid-template-columns: 1fr 1fr; gap: .5rem; }
+      .photo-strip-item:last-child { display: none; }
+      .promises { grid-template-columns: 1fr; }
+      .icon-ring { width: 68px; height: 68px; }
+      h1 { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+      .badge-logo { font-size: clamp(2.2rem, 11vw, 3.8rem); }
+      .divider { max-width: 200px; }
+      .btn-primary { width: 100%; text-align: center; padding: 1rem 1rem; font-size: .72rem; }
+      .sig-name { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- STARFIELD -->
+<canvas id="stars"></canvas>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-img"
+       src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&q=80"
+       alt="Inteligencia Artificial"
+       onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600&q=80'"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-badge">
+    <p class="badge-year">✦ 2 0 2 7 ✦</p>
+    <div class="badge-logo">IA Expo</div>
+    <div class="badge-logo">Internacional<sup style="font-size:0.4em; vertical-align:super;">®</sup></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="wrapper">
+  <div class="card">
+
+    <!-- ICON -->
+    <div class="icon-ring">
+      <span class="icon-inner">✦</span>
+    </div>
+
+    <!-- HEADLINE -->
+    <p class="eyebrow">Confirmación de registro</p>
+
+    <h1>¡Bienvenido/a a<br/><span>algo extraordinario!</span></h1>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-dot"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- BODY -->
+    <p class="body-text">
+      Tu solicitud ha llegado a nuestras manos y estamos <strong>genuinamente emocionados</strong>
+      de tenerte aquí. En este momento acabas de dar uno de los pasos más inteligentes
+      del año: conectarte con la comunidad que está definiendo el futuro de la
+      inteligencia artificial en nuestra región.
+    </p>
+
+    <p class="body-text">
+      Muy pronto recibirás en tu correo toda la información que necesitas sobre
+      <strong>IA Expo 2027</strong> — el evento que reunirá a los líderes, innovadores
+      y visionarios que están transformando industrias completas con el poder de la IA.
+      <strong>No podíamos imaginar este evento sin ti.</strong>
+    </p>
+
+    <!-- PROMISES -->
+    <div class="promises">
+      <div class="promise">
+        <span class="promise-icon">🔬</span>
+        <p class="promise-title">Innovación Real</p>
+        <p class="promise-desc">Demostraciones en vivo de tecnología que cambiará tu industria</p>
+      </div>
+      <div class="promise">
+        <span class="promise-icon">🌐</span>
+        <p class="promise-title">Red de Élite</p>
+        <p class="promise-desc">Conecta con los líderes que están construyendo el mañana</p>
+      </div>
+      <div class="promise">
+        <span class="promise-icon">🚀</span>
+        <p class="promise-title">Visión 2027</p>
+        <p class="promise-desc">Tendencias exclusivas y estrategias que nadie más compartirá</p>
+      </div>
+    </div>
+
+    <!-- PHOTO STRIP -->
+    <div class="photo-strip">
+      <div class="photo-strip-item">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/images/Rob%C3%B3tica.jpg"
+             alt="Robótica e IA"
+             alt="Robótica"/>
+      </div>
+      <div class="photo-strip-item">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/images/Javier%20Novoa%20Conferencista.jpg"
+             alt="Conferencia tecnológica"
+             onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=75'"/>
+      </div>
+      <div class="photo-strip-item">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/images/Fant%C3%A1stico.jpg"
+             alt="Innovación digital"
+             alt="Fantástico"/>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <p class="cta-note">Mientras tanto, síguenos y forma parte de la conversación</p>
+      <a href="https://iaExpo.ai" class="btn-primary">Visita IA Expo 2027</a>
+    </div>
+
+    <!-- SIGNATURE -->
+    <div class="signature">
+      <p class="sig-label">Con gratitud y emoción,</p>
+      <p class="sig-name">El Equipo IA Expo</p>
+      <p class="sig-title">IA Expo 2027 — Donde el futuro se construye hoy</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2027 <span>IA Expo</span> — Todos los derechos reservados
+</footer>
+
+<script>
+  /* ── Starfield ── */
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const STARS = Array.from({ length: 180 }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    r: Math.random() * 1.4 + 0.2,
+    speed: Math.random() * .0004 + .0001,
+    phase: Math.random() * Math.PI * 2,
+  }));
+
+  function drawStars(t) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    STARS.forEach(s => {
+      const alpha = .25 + .55 * (Math.sin(t * s.speed * 1000 + s.phase) * .5 + .5);
+      ctx.beginPath();
+      ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(drawStars);
+  }
+  requestAnimationFrame(drawStars);
+</script>
+
+</body>
+</html>
