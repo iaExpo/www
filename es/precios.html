@@ -1,51 +1,918 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precios — IA Expo Internacional® 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #050508;
+    --deep: #080b14;
+    --card: #0d1120;
+    --card2: #111827;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --cyan: #00d4ff;
+    --cyan-dim: rgba(0,212,255,0.1);
+    --white: #f0ede8;
+    --gray: #8892a4;
+    --border: rgba(201,168,76,0.2);
+    --border-subtle: rgba(255,255,255,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 80px 24px 60px;
+    overflow: hidden;
+  }
+
+  .header-glow {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+    position: relative;
+  }
+
+  .header-line::before, .header-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    top: -1.5px;
+  }
+  .header-line::before { left: -6px; }
+  .header-line::after { right: -6px; }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    letter-spacing: 0.04em;
+    line-height: 0.9;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  h1 span {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-style: italic;
+    color: var(--gray);
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .badge-eb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+    border: 1px solid var(--gold);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-top: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .badge-eb::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px 80px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: 0.06em;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gray);
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .divider span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* PREMIUM CARD */
+  .premium-card {
+    position: relative;
+    background: linear-gradient(135deg, #0f1628 0%, #0a1020 50%, #12090a 100%);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 20px;
+    padding: 48px 40px;
+    overflow: hidden;
+    margin-bottom: 80px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  }
+
+  .premium-card::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .premium-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold), #a07830);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .premium-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .premium-info h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: 0.04em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .premium-info h2 span {
+    color: var(--gold);
+  }
+
+  .premium-desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .premium-price-box {
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 24px;
+  }
+
+  .price-label-sm {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .price-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .price-main .currency {
+    font-size: 28px;
+    color: var(--gold);
+    vertical-align: super;
+    font-size: 24px;
+  }
+
+  .price-usd {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 6px;
+  }
+
+  .price-note {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+
+  .features-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .features-list li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 7px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  /* PRICING TABLE */
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .pricing-table thead tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-table th {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0 16px 16px;
+    text-align: left;
+  }
+
+  .pricing-table th:last-child,
+  .pricing-table th:nth-child(2),
+  .pricing-table th:nth-child(3) {
+    text-align: right;
+  }
+
+  .pricing-table tbody tr {
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .pricing-table tbody tr:hover {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .pricing-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--white);
+    vertical-align: middle;
+  }
+
+  .pricing-table td:last-child {
+    text-align: right;
+    font-size: 13px;
+    color: var(--gray);
+    white-space: nowrap;
+  }
+
+  .pricing-table td:nth-child(2) {
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+
+  .pricing-table td:nth-child(3) {
+    text-align: right;
+    font-size: 13px;
+    color: #86efac;
+    white-space: nowrap;
+  }
+
+  .pkg-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .pkg-badge.taller { color: #7dd3fc; border-color: rgba(125,211,252,0.3); background: rgba(125,211,252,0.05); }
+  .pkg-badge.conf { color: #86efac; border-color: rgba(134,239,172,0.3); background: rgba(134,239,172,0.05); }
+  .pkg-badge.combo { color: #c4b5fd; border-color: rgba(196,181,253,0.3); background: rgba(196,181,253,0.05); }
+  .pkg-badge.vip { color: var(--gold-light); border-color: var(--border); background: var(--gold-dim); }
+
+  .row-group td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 28px;
+    padding-bottom: 4px;
+  }
+
+  .row-group td {
+    color: transparent;
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .num-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--border-subtle);
+    color: var(--gray);
+    border: 1px solid var(--border-subtle);
+    margin-right: 4px;
+  }
+
+  .savings {
+    font-size: 11px;
+    color: #86efac;
+    margin-left: 8px;
+  }
+
+  /* CONTACT BAR */
+  .contact-bar {
+    background: linear-gradient(135deg, var(--card), var(--card2));
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .contact-bar-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--white);
+  }
+
+  .contact-bar-text span {
+    color: var(--gold);
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .contact-btn.email {
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    color: var(--gold-light);
+  }
+
+  .contact-btn.whatsapp {
+    background: rgba(37,211,102,0.1);
+    border: 1px solid rgba(37,211,102,0.3);
+    color: #25d366;
+  }
+
+  .contact-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  /* PRICE STAGES */
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .stage-card {
+    background: var(--card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .stage-card:hover { transform: translateY(-3px); }
+
+  .stage-card.active {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), var(--card));
+  }
+
+  .stage-card.active::before {
+    content: 'ACTIVO AHORA';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .stage-card .stage-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-top: 12px;
+    margin-bottom: 6px;
+  }
+
+  .stage-card.active .stage-name { color: var(--gold-light); }
+
+  .stage-card .stage-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .stage-disc {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--white);
+  }
+
+  .stage-card.active .stage-disc { color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .section { padding: 20px 20px 60px; }
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 50px 20px 36px; }
+    .premium-card { padding: 28px 20px; }
+    .premium-grid { grid-template-columns: 1fr; gap: 24px; }
+    .features-list { grid-template-columns: 1fr 1fr; }
+    .stages { grid-template-columns: 1fr; gap: 10px; }
+    .stage-card { padding: 18px 16px; }
+    .contact-bar { flex-direction: column; text-align: center; }
+    .contact-links { justify-content: center; }
+
+    /* Table: hide Regular price on tablet, show lanzamiento + 25% */
+    .pricing-table th:last-child { display: none; }
+    .pricing-table td:last-child { display: none; }
+
+    /* Make table more compact */
+    .pricing-table td { padding: 12px 10px; font-size: 13px; }
+    .pricing-table th { padding: 0 10px 14px; font-size: 9px; }
+    .pricing-table td:nth-child(2) { font-size: 15px; }
+    .pricing-table td:nth-child(3) { font-size: 12px; }
+
+    /* Add MXN note below table */
+    .table-note { display: block; }
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 40px 16px 28px; }
+    .section { padding: 16px 16px 48px; }
+    .premium-card { padding: 24px 16px; }
+    .features-list { grid-template-columns: 1fr; }
+    .price-main { font-size: 42px; }
+
+    .pricing-table { font-size: 12px; }
+    .pricing-table td { padding: 10px 8px; }
+    .pricing-table th { padding: 0 8px 12px; letter-spacing: 0.1em; }
+    .num-badge { width: 18px; height: 18px; font-size: 10px; }
+    .pkg-badge { display: none; }
+
+    /* Stack contact buttons */
+    .contact-links { flex-direction: column; align-items: center; }
+    .contact-btn { width: 100%; justify-content: center; max-width: 280px; }
+
+    /* Stage cards horizontal scroll on very small */
+    .stages { grid-template-columns: repeat(3,1fr); gap: 8px; overflow-x: auto; }
+    .stage-card { padding: 16px 10px; min-width: 100px; }
+    .stage-disc { font-size: 26px; }
+    .stage-card .stage-name { font-size: 14px; }
+    .stage-card .stage-desc { font-size: 10px; }
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 10px;
+  }
+
+  .table-note {
+    display: none;
+    font-size: 11px;
+    color: var(--gray);
+    text-align: right;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
 <body>
-    <!-- Pricing Section -->
-    <section class="pricing-section" id="entradas">
-        <div class="section-header">
-            <div class="section-badge">Entradas</div>
-            <h2 class="section-title">Acceso al Evento</h2>
-            <p class="section-subtitle">
-                Inversión inteligente en tu desarrollo profesional. Precio de lanzamiento por tiempo limitado.
-            </p>
+
+<!-- HEADER -->
+<header>
+  <div class="header-glow"></div>
+  <div class="header-line"></div>
+  <p class="eyebrow">Inversión en tu futuro con IA</p>
+  <h1>Precios <span>IA Expo</span><br>Internacional<sup style="font-size: 54px;">®</sup> 2027</h1>
+  <p class="subtitle">Ciudad de México · Precios de Lanzamiento</p>
+  <div class="badge-eb">🔥 &nbsp;Precio de Lanzamiento — 50% de Descuento</div>
+  <p class="subtitle" style="margin-top:12px; font-size:14px; color: var(--gold); letter-spacing:0.1em;">Todos los precios son en pesos mexicanos (MXN)</p>
+</header>
+
+<div class="section">
+
+  <!-- ETAPAS DE PRECIO -->
+  <div class="divider"><span>Etapas de Precio</span></div>
+  <div class="stages">
+    <div class="stage-card active">
+      <div class="stage-disc">50% OFF</div>
+      <div class="stage-name">🔥 Lanzamiento</div>
+      <div class="stage-desc">Precio de lanzamiento<br>Disponible ahora</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-disc">25% OFF</div>
+      <div class="stage-name">⏰ Anticipado</div>
+      <div class="stage-desc">2 meses antes<br>del evento</div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-disc">—</div>
+      <div class="stage-name">📅 Regular</div>
+      <div class="stage-desc">1 mes antes<br>del evento</div>
+    </div>
+  </div>
+
+  <!-- MEMBRESÍA PREMIUM -->
+  <div class="divider"><span>Membresía Exclusiva</span></div>
+
+  <div class="premium-card">
+    <div class="premium-label">💎 &nbsp;Membresía Ejecutiva — Solo 10 Lugares</div>
+    <div class="premium-grid">
+      <div class="premium-info">
+        <h2>Membresía<br><span>Ejecutiva</span></h2>
+        <p class="premium-desc">Acceso completo al evento más retiro exclusivo en Cancún para ti y tu invitado. Diseñada para líderes empresariales que quieren estar en la vanguardia de la inteligencia artificial.</p>
+        <ul class="features-list">
+          <li>Acceso completo VIP al evento</li>
+          <li>Cóctel y cena de bienvenida</li>
+          <li>Asientos reservados — primeras filas</li>
+          <li>Cena de clausura exclusiva</li>
+          <li>Networking estructurado y exclusivo</li>
+          <li>Retiro presencial en Cancún</li>
+          <li>3 días / 2 noches ocupación doble</li>
+          <li>Tu invitado incluido (esposa, socio, etc.)</li>
+          <li>Sesiones de inversión y estrategia</li>
+          <li>Desayunos y cenas en el retiro</li>
+          <li>Hospedaje vía Access Fiesta Rewards</li>
+          <li>Participación en expansión IA Expo</li>
+        </ul>
+      </div>
+      <div class="premium-price-box">
+        <p class="price-label-sm">Precio único de membresía</p>
+        <div class="price-main">
+          <span class="currency">$</span>190,000
         </div>
-        
-        <div class="pricing-container">
-            <div class="pricing-card featured">
-                <div class="pricing-badge">⭐ Acceso Completo</div>
-                <div class="price-original">$400 USD</div>
-                <div class="price">$100<span class="price-currency">USD</span></div>
-                <div class="price-discount">75% OFF - Lanzamiento</div>
-                <ul class="pricing-features">
-                    <li>Acceso completo a las conferencias</li>
-                    <li>Zona de exhibición interactiva</li>
-                    <li>Panel de expertos internacionales</li>
-                    <li>Networking estructurado</li>
-                    <li>Videos post-evento en HD</li>
-                    <li>Memorias digitales completas</li>
-                    <li>Lunch & Coffee breaks</li>
-                    <li>Certificado oficial de asistencia</li>
-                    <li>Membresía comunidad IA Expo</li>
-                </ul>
-                <a href="https://iaexpo.ai/iax-registro" target="_blank" class="btn btn-primary" style="width: 100%;">Comprar Ahora →</a>
-            </div>
-            
-            <div class="pricing-card">
-                <div class="pricing-badge">🎓 Estudiantes</div>
-                <div class="price-original">$300 USD</div>
-                <div class="price">$75<span class="price-currency">USD</span></div>
-                <div class="price-discount">75% OFF - Early Bird</div>
-                <ul class="pricing-features">
-                    <li>Acceso a las conferencias</li>
-                    <li>Zona de exhibición interactiva</li>
-                    <li>Panel de expertos internacionales</li>
-                    <li>Networking estructurado</li>
-                    <li>Coffee breaks</li>
-                </ul>
-                <a href="https://iaexpo.ai/iax-estudiante" target="_blank" class="btn btn-secondary" style="width: 100%; background: var(--primary); color: var(--white); border: none;">Comprar Ahora →</a>
-            </div>
+        <p class="price-usd">≈ USD $10,000</p>
+        <p class="price-usd" style="margin-top:4px; font-size:11px;">Precio fijo · Sin early bird</p>
+        <span class="price-note">Solo 10 membresías disponibles</span>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-subtle);">
+          <p style="font-size: 11px; color: var(--gray); line-height: 1.6;">Incluye a tu invitado de elección —<br>esposa, socio, experto en IA o asistente.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA TALLER -->
+  <div class="divider reveal"><span>Taller</span></div>
+
+  <div style="margin-bottom: 48px;" class="reveal">
+    <p class="section-sub">Taller práctico — Jueves por la tarde</p>
+    <div class="table-wrapper"><table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Paquete</th>
+          <th>🔥 Lanzamiento</th>
+          <th>⏰ 25% Dto.</th>
+          <th>Precio Regular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="padding-top:8px; padding-bottom:0; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-style:italic; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; border:none;"><span class="pkg-badge taller">🎓 Taller</span></td></tr>
+        <tr><td>1 Boleto</td><td>$4,900</td><td>$7,400</td><td>$9,800</td></tr>
+        <tr><td>2 Boletos</td><td>$8,800</td><td>$13,300</td><td>$17,600</td></tr>
+        <tr><td>3 Boletos</td><td>$12,500</td><td>$18,800</td><td>$25,000</td></tr>
+        <tr><td>5 Boletos</td><td>$19,600</td><td>$29,400</td><td>$39,200</td></tr>
+      </tbody>
+    </table>
+      </div>
+  </div>
+
+  <!-- TABLA CONFERENCIAS -->
+  <div class="divider reveal"><span>Conferencias 2 Días</span></div>
+
+  <div style="margin-bottom: 48px;" class="reveal">
+    <p class="section-sub">Acceso completo a todos los tracks — Viernes y Sábado</p>
+    <div class="table-wrapper"><table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Paquete</th>
+          <th>🔥 Lanzamiento</th>
+          <th>⏰ 25% Dto.</th>
+          <th>Precio Regular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="padding-top:8px; padding-bottom:0; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-style:italic; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; border:none;"><span class="pkg-badge conf">📅 Conferencias 2 Días</span></td></tr>
+        <tr><td>1 Boleto</td><td>$14,900</td><td>$22,400</td><td>$29,800</td></tr>
+        <tr><td>2 Boletos</td><td>$26,800</td><td>$40,200</td><td>$53,600</td></tr>
+        <tr><td>3 Boletos</td><td>$38,000</td><td>$57,000</td><td>$76,000</td></tr>
+        <tr><td>5 Boletos</td><td>$59,600</td><td>$89,400</td><td>$119,200</td></tr>
+      </tbody>
+    </table>
+      </div>
+  </div>
+
+  <!-- TABLA TALLER + CONFERENCIAS -->
+  <div class="divider reveal"><span>Taller + Conferencias</span></div>
+
+  <div style="margin-bottom: 48px;" class="reveal">
+    <p class="section-sub">Acceso completo — Taller del jueves + 2 días de conferencias</p>
+    <div class="table-wrapper"><table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Paquete</th>
+          <th>🔥 Lanzamiento</th>
+          <th>⏰ 25% Dto.</th>
+          <th>Precio Regular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="padding-top:8px; padding-bottom:0; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-style:italic; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; border:none;"><span class="pkg-badge combo">🎓📅 Taller + Conferencias</span></td></tr>
+        <tr><td>1 Boleto</td><td>$17,900</td><td>$26,900</td><td>$35,800</td></tr>
+        <tr><td>2 Boletos</td><td>$32,200</td><td>$48,300</td><td>$64,400</td></tr>
+        <tr><td>3 Boletos</td><td>$45,600</td><td>$68,400</td><td>$91,200</td></tr>
+        <tr><td>5 Boletos</td><td>$71,600</td><td>$107,400</td><td>$143,200</td></tr>
+      </tbody>
+    </table>
+      </div>
+  </div>
+
+  <!-- TABLA VIP -->
+  <div class="divider reveal"><span>VIP — Disponibilidad Limitada</span></div>
+
+  <div style="margin-bottom: 60px;" class="reveal">
+    <p class="section-sub">Solo 20 boletos disponibles · Asientos reservados · Cóctel de bienvenida · Networking estructurado</p>
+    <div class="table-wrapper"><table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Paquete</th>
+          <th>🔥 Lanzamiento</th>
+          <th>⏰ 25% Dto.</th>
+          <th>Precio Regular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="padding-top:8px; padding-bottom:0; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-style:italic; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; border:none;"><span class="pkg-badge vip">⭐ VIP</span></td></tr>
+        <tr><td>1 Boleto VIP</td><td>$24,900</td><td>$37,400</td><td>$49,800</td></tr>
+        <tr><td>2 Boletos VIP</td><td>$44,800</td><td>$67,200</td><td>$89,600</td></tr>
+        <tr><td>3 Boletos VIP</td><td>$63,500</td><td>$95,300</td><td>$127,000</td></tr>
+        <tr><td>5 Boletos VIP</td><td>$99,600</td><td>$149,400</td><td>$199,200</td></tr>
+      </tbody>
+    </table>
+      </div>
+  </div>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar reveal">
+    <div class="contact-bar-text">
+      ¿Más de 5 personas? <span>Contáctanos para precios especiales.</span>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:iaExpo@iaExpo.ai" class="contact-btn email">
+        ✉ iaExpo@iaExpo.ai
+      </a>
+      <a href="https://wa.me/5255596326870" class="contact-btn whatsapp">
+        💬 WhatsApp +52 55 5963-2687
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">IA EXPO INTERNACIONAL<sup>®</sup></div>
+  <p class="footer-note">Precios en pesos mexicanos (MXN) · Documento interno · Sujeto a cambios</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
