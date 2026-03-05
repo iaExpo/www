@@ -57,92 +57,60 @@
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
   }
-
   .nav-inner {
     max-width: 1100px; margin: 0 auto;
     padding: 0 24px;
     display: flex; align-items: center; justify-content: space-between;
     height: 56px;
   }
-
   .nav-brand {
     font-size: 0.75rem; font-weight: 800;
     color: var(--cyan); letter-spacing: 1.5px;
-    text-transform: uppercase;
-    white-space: nowrap;
+    text-transform: uppercase; white-space: nowrap;
   }
-
-  /* Desktop tabs */
   .nav-desktop {
     display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;
     flex: 1; padding: 0 16px;
   }
-
   .tab-btn {
     background: var(--glass);
     border: 1px solid var(--glass-border);
     color: var(--text-muted);
-    padding: 7px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    transition: all 0.2s;
-    font-family: inherit;
-    white-space: nowrap;
+    padding: 7px 14px; border-radius: 8px;
+    cursor: pointer; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.3px; transition: all 0.2s;
+    font-family: inherit; white-space: nowrap;
   }
   .tab-btn:hover { border-color: var(--cyan); color: var(--cyan); }
   .tab-btn.active {
     background: linear-gradient(135deg, var(--blue-accent), #0A84FF);
-    border-color: var(--blue-accent);
-    color: #fff;
+    border-color: var(--blue-accent); color: #fff;
   }
-
-  /* Hamburger button */
   .hamburger {
     display: none;
     flex-direction: column; justify-content: center; align-items: center;
-    gap: 5px;
-    width: 40px; height: 40px;
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 10px;
-    cursor: pointer;
-    padding: 0;
-    transition: border-color 0.2s;
-    flex-shrink: 0;
+    gap: 5px; width: 40px; height: 40px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 10px; cursor: pointer; padding: 0;
+    transition: border-color 0.2s; flex-shrink: 0;
   }
   .hamburger:hover { border-color: var(--cyan); }
   .hamburger span {
     display: block; width: 20px; height: 2px;
-    background: var(--cyan);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: center;
+    background: var(--cyan); border-radius: 2px;
+    transition: all 0.3s ease; transform-origin: center;
   }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* Mobile dropdown */
   .nav-mobile {
-    display: none;
-    flex-direction: column;
+    display: none; flex-direction: column;
     background: rgba(3,11,26,0.98);
     border-top: 1px solid var(--glass-border);
-    padding: 12px 24px 16px;
-    gap: 8px;
+    padding: 12px 24px 16px; gap: 8px;
   }
   .nav-mobile.open { display: flex; }
-  .nav-mobile .tab-btn {
-    width: 100%;
-    text-align: left;
-    padding: 12px 16px;
-    font-size: 0.9rem;
-  }
-
-  /* Responsive breakpoint */
+  .nav-mobile .tab-btn { width: 100%; text-align: left; padding: 12px 16px; font-size: 0.9rem; }
   @media (max-width: 768px) {
     .nav-desktop { display: none; }
     .hamburger { display: flex; }
@@ -153,47 +121,25 @@
   header {
     background: linear-gradient(180deg, rgba(0,229,255,0.06) 0%, transparent 100%);
     border-bottom: 1px solid var(--glass-border);
-    padding: 60px 0 50px;
-    text-align: center;
+    padding: 60px 0 50px; text-align: center;
   }
   .badge {
     display: inline-block;
     background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(13,110,253,0.2));
-    border: 1px solid var(--cyan);
-    border-radius: 100px;
-    padding: 6px 20px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--cyan);
-    text-transform: uppercase;
-    margin-bottom: 24px;
+    border: 1px solid var(--cyan); border-radius: 100px;
+    padding: 6px 20px; font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; color: var(--cyan);
+    text-transform: uppercase; margin-bottom: 24px;
   }
   header h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    line-height: 1.1;
+    font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1;
     background: linear-gradient(135deg, #fff 0%, var(--cyan) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 12px;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 12px;
   }
-  .tagline {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-bottom: 32px;
-    font-weight: 300;
-  }
+  .tagline { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px; font-weight: 300; }
   .tagline span { color: var(--cyan); font-weight: 600; }
-
-  .header-stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 36px;
-  }
+  .header-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 36px; }
   .hstat { text-align: center; }
   .hstat .val {
     font-size: 2rem; font-weight: 900;
@@ -205,44 +151,33 @@
   /* SECTIONS */
   .section { padding: 40px 0; display: none; }
   .section.active { display: block; }
-
   .section-title {
-    font-size: 1.5rem; font-weight: 800;
-    color: var(--cyan);
-    margin-bottom: 28px;
-    display: flex; align-items: center; gap: 12px;
+    font-size: 1.5rem; font-weight: 800; color: var(--cyan);
+    margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
   }
   .section-title::after {
-    content: ''; flex: 1;
-    height: 1px;
+    content: ''; flex: 1; height: 1px;
     background: linear-gradient(90deg, var(--glass-border), transparent);
   }
 
   /* CARDS */
   .card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 28px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 28px;
     transition: border-color 0.2s, transform 0.2s;
   }
   .card:hover { border-color: rgba(0,229,255,0.35); transform: translateY(-2px); }
-
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
   @media(max-width:700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
-
   .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: #fff; }
   .card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
 
   /* IDEA CENTRAL */
   .idea-box {
     background: linear-gradient(135deg, rgba(0,229,255,0.08), rgba(13,110,253,0.12));
-    border: 1px solid var(--cyan);
-    border-radius: 16px;
-    padding: 32px;
-    margin-bottom: 28px;
-    text-align: center;
+    border: 1px solid var(--cyan); border-radius: 16px;
+    padding: 32px; margin-bottom: 28px; text-align: center;
   }
   .idea-box p { font-size: 1.05rem; line-height: 1.8; color: var(--text); }
   .idea-box strong { color: var(--cyan); }
@@ -250,31 +185,26 @@
   /* TRACKS */
   .track-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 16px; }
   .track-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 14px;
-    padding: 20px 22px;
-    display: flex; align-items: flex-start; gap: 16px;
-    transition: all 0.2s;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 14px; padding: 20px 22px;
+    display: flex; align-items: flex-start; gap: 16px; transition: all 0.2s;
   }
   .track-card:hover { border-color: rgba(0,229,255,0.4); transform: translateY(-2px); }
   .track-num {
     width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     font-weight: 900; font-size: 1rem;
-    background: linear-gradient(135deg, var(--blue-accent), var(--cyan));
-    color: #fff;
+    background: linear-gradient(135deg, var(--blue-accent), var(--cyan)); color: #fff;
   }
   .track-card h4 { font-size: 0.9rem; font-weight: 700; color: #fff; }
   .track-card p { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
 
-  /* AGENDA DAYS */
+  /* AGENDA */
   .day-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
   .day-btn {
     background: var(--glass); border: 1px solid var(--glass-border);
     color: var(--text-muted); padding: 10px 22px; border-radius: 10px;
-    cursor: pointer; font-family: inherit; font-weight: 700; font-size: 0.85rem;
-    transition: all 0.2s;
+    cursor: pointer; font-family: inherit; font-weight: 700; font-size: 0.85rem; transition: all 0.2s;
   }
   .day-btn.active {
     background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(13,110,253,0.3));
@@ -282,18 +212,12 @@
   }
   .day-content { display: none; }
   .day-content.active { display: block; }
-
-  .agenda-item {
-    display: flex; gap: 20px;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
+  .agenda-item { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
   .agenda-item:last-child { border-bottom: none; }
   .agenda-icon {
     width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    background: rgba(13,110,253,0.15);
+    font-size: 1.1rem; background: rgba(13,110,253,0.15);
   }
   .agenda-item h4 { font-size: 0.9rem; font-weight: 700; color: #fff; }
   .agenda-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
@@ -306,58 +230,32 @@
   .bar-bg { background: rgba(255,255,255,0.06); border-radius: 99px; height: 8px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--blue-accent), var(--cyan)); transition: width 0.8s ease; }
 
-  .budget-total {
-    margin-top: 24px;
-    background: linear-gradient(135deg, rgba(0,229,255,0.1), rgba(13,110,253,0.15));
-    border: 1px solid var(--cyan);
-    border-radius: 12px;
-    padding: 20px 24px;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 12px;
-  }
-  .budget-total .lbl { font-size: 0.85rem; color: var(--text-muted); }
-  .budget-total .val { font-size: 1.5rem; font-weight: 900; color: var(--cyan); }
-
   /* SPONSORS */
   .sponsor-tier {
-    border-radius: 14px;
-    padding: 22px 24px;
-    margin-bottom: 14px;
+    border-radius: 14px; padding: 22px 24px; margin-bottom: 14px;
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px;
-    border: 1px solid transparent;
-    transition: all 0.2s;
+    flex-wrap: wrap; gap: 12px; border: 1px solid transparent; transition: all 0.2s;
   }
   .sponsor-tier:hover { transform: translateX(4px); }
   .tier-title { font-weight: 800; font-size: 1.05rem; }
   .tier-slots { font-size: 0.78rem; color: var(--text-muted); margin-top: 3px; }
   .tier-price { font-size: 1.3rem; font-weight: 900; }
   .tier-total { font-size: 0.78rem; opacity: 0.7; }
-
   .t-title { border-color: rgba(255,213,79,0.4); background: rgba(255,213,79,0.06); }
-  .t-title .tier-title { color: var(--gold); }
-  .t-title .tier-price { color: var(--gold); }
+  .t-title .tier-title, .t-title .tier-price { color: var(--gold); }
   .t-plat { border-color: rgba(224,224,224,0.3); background: rgba(224,224,224,0.04); }
-  .t-plat .tier-title { color: var(--platinum); }
-  .t-plat .tier-price { color: var(--platinum); }
+  .t-plat .tier-title, .t-plat .tier-price { color: var(--platinum); }
   .t-gold { border-color: rgba(255,213,79,0.25); background: rgba(255,213,79,0.04); }
-  .t-gold .tier-title { color: #FFC107; }
-  .t-gold .tier-price { color: #FFC107; }
+  .t-gold .tier-title, .t-gold .tier-price { color: #FFC107; }
   .t-silver { border-color: rgba(176,190,197,0.25); background: rgba(176,190,197,0.04); }
-  .t-silver .tier-title { color: var(--silver); }
-  .t-silver .tier-price { color: var(--silver); }
+  .t-silver .tier-title, .t-silver .tier-price { color: var(--silver); }
 
   /* TICKETS */
   .ticket-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; }
   .ticket-card {
-    border-radius: 16px;
-    padding: 28px 24px;
-    text-align: center;
-    border: 1px solid var(--glass-border);
-    background: var(--glass);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.25s;
+    border-radius: 16px; padding: 28px 24px; text-align: center;
+    border: 1px solid var(--glass-border); background: var(--glass);
+    position: relative; overflow: hidden; transition: all 0.25s;
   }
   .ticket-card:hover { transform: translateY(-4px); }
   .ticket-card.featured {
@@ -367,9 +265,8 @@
   .ticket-badge {
     position: absolute; top: 12px; right: 12px;
     background: var(--cyan); color: #000;
-    font-size: 0.65rem; font-weight: 800;
-    padding: 3px 10px; border-radius: 99px;
-    letter-spacing: 1px;
+    font-size: 0.65rem; font-weight: 800; padding: 3px 10px;
+    border-radius: 99px; letter-spacing: 1px;
   }
   .ticket-card h4 { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; }
   .ticket-price { font-size: 2rem; font-weight: 900; color: var(--cyan); }
@@ -379,12 +276,8 @@
   /* KPIs */
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 16px; }
   .kpi-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 14px;
-    padding: 24px 20px;
-    text-align: center;
-    transition: all 0.2s;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 14px; padding: 24px 20px; text-align: center; transition: all 0.2s;
   }
   .kpi-card:hover { border-color: rgba(0,229,255,0.4); }
   .kpi-val { font-size: 2.2rem; font-weight: 900; background: linear-gradient(135deg, #fff, var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -394,23 +287,16 @@
   .narrative-pills { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
   .pill {
     background: linear-gradient(135deg, rgba(13,110,253,0.2), rgba(0,229,255,0.12));
-    border: 1px solid var(--glass-border);
-    border-radius: 99px;
-    padding: 10px 24px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--cyan);
-    letter-spacing: 1px;
+    border: 1px solid var(--glass-border); border-radius: 99px;
+    padding: 10px 24px; font-weight: 700; font-size: 0.95rem;
+    color: var(--cyan); letter-spacing: 1px;
   }
 
   /* FOOTER */
   footer {
-    text-align: center;
-    padding: 40px 0;
+    text-align: center; padding: 40px 0;
     border-top: 1px solid var(--glass-border);
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    margin-top: 40px;
+    color: var(--text-muted); font-size: 0.78rem; margin-top: 40px;
   }
   footer strong { color: var(--cyan); }
 </style>
@@ -420,7 +306,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-brand">IA Expo® 2027</div>
+    <a href="https://iaExpo.ai/panel" target="_blank" class="nav-brand" style="text-decoration:none;">IA Expo® 2027</a>
     <div class="nav-desktop">
       <button class="tab-btn active" onclick="showTab('concepto',this)">🧠 Concepto</button>
       <button class="tab-btn" onclick="showTab('agenda',this)">📅 Agenda</button>
@@ -452,9 +338,9 @@
     <p class="tagline">IA Para la Vida Real <span>2.0</span> — Aplicación, Adopción y Transformación</p>
     <div class="header-stats">
       <div class="hstat"><div class="val">3</div><div class="lbl">Días de evento</div></div>
-      <div class="hstat"><div class="val">250</div><div class="lbl">Asistentes meta</div></div>
+      <div class="hstat"><div class="val">220</div><div class="lbl">Asistentes meta</div></div>
       <div class="hstat"><div class="val">7</div><div class="lbl">Tracks temáticos</div></div>
-      <div class="hstat"><div class="val">$4M+</div><div class="lbl">Meta de ingresos MXN</div></div>
+      <div class="hstat"><div class="val">$6M+</div><div class="lbl">Meta de ingresos MXN</div></div>
     </div>
   </div>
 </header>
@@ -497,7 +383,7 @@
       </div>
       <div class="day-content" id="d2">
         <div class="agenda-item"><div class="agenda-icon">🌍</div><div><h4>Keynote internacional</h4><p>Apertura con ponente de impacto global — voz de referencia en IA</p></div></div>
-        <div class="agenda-item"><div class="agenda-icon">🎯</div><div><h4>Ponencias estratégicas por track</h4><p>Sesiones paralelas alineadas a los 6 tracks verticales</p></div></div>
+        <div class="agenda-item"><div class="agenda-icon">🎯</div><div><h4>Ponencias estratégicas por track</h4><p>Sesiones paralelas alineadas a los 7 tracks verticales</p></div></div>
         <div class="agenda-item"><div class="agenda-icon">💬</div><div><h4>Panel de alto nivel</h4><p>Líderes de industria debatiendo el futuro de la IA aplicada</p></div></div>
         <div class="agenda-item"><div class="agenda-icon">🔗</div><div><h4>Networking estructurado</h4><p>Sesiones diseñadas para conectar asistentes con intención</p></div></div>
       </div>
@@ -512,24 +398,55 @@
 
   <!-- PRESUPUESTO -->
   <div class="section" id="presupuesto">
-    <div class="section-title">Presupuesto de Egresos (MXN con IVA)</div>
-    <div class="card">
-      <div id="budgetBars">
-        <div class="budget-bar-wrap"><div class="budget-label"><span>1. Alimentos y Bebidas</span><span>$1,526,328</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="100"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>2. Equipo Audiovisual y Tecnología</span><span>$638,580</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="42"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>3. Venue / Salones</span><span>$545,200</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="36"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>4. Logística y Operaciones</span><span>$533,600</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="35"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>5. Speakers y Talento</span><span>$410,640</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="27"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>6. Marketing y Publicidad</span><span>$339,880</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="22"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>7. Retiro Premium Cancún</span><span>$304,054</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="20"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>8. Hospedaje Premium CDMX</span><span>$246,617</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="16"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>9. Materiales e Impresos</span><span>$184,730</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="12"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>10. Plataformas y Software</span><span>$38,280</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="3"></div></div></div>
-        <div class="budget-bar-wrap"><div class="budget-label"><span>11. Contingencia</span><span>$476,791</span></div><div class="bar-bg"><div class="bar-fill" style="width:0" data-w="31"></div></div></div>
+    <div class="section-title">Presupuesto de Egresos (MXN)</div>
+
+    <!-- Resumen ejecutivo -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:24px;">
+      <div class="kpi-card" style="text-align:left;">
+        <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total sin IVA</div>
+        <div style="font-size:1.6rem;font-weight:900;color:var(--cyan);">$5,112,690</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">10 categorías + contingencia 10%</div>
       </div>
-      <div class="budget-total">
-        <div><div class="lbl">Total con IVA</div><div class="val">$5,696,829 MXN</div></div>
-        <div style="text-align:right"><div class="lbl">Meta de ingresos</div><div class="val">$4,000,000 MXN</div></div>
+      <div class="kpi-card" style="text-align:left;">
+        <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Total con IVA (16%)</div>
+        <div style="font-size:1.6rem;font-weight:900;color:var(--platinum);">$5,930,720</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Costo total real del evento</div>
+      </div>
+      <div class="kpi-card" style="text-align:left;">
+        <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Meta de Ingresos</div>
+        <div style="font-size:1.6rem;font-weight:900;color:var(--gold);">$4,000,000</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Venta de boletos sin IVA</div>
+      </div>
+      <div class="kpi-card" style="text-align:left;border-color:rgba(255,80,80,0.35);background:rgba(255,80,80,0.06);">
+        <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">Déficit Actual</div>
+        <div style="font-size:1.6rem;font-weight:900;color:#FF5252;">−$1,112,690</div>
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Requiere ajuste de precios o patrocinios</div>
+      </div>
+    </div>
+
+    <!-- Detalles del evento -->
+    <div class="card" style="margin-bottom:20px;">
+      <h3 style="margin-bottom:16px;">📍 Detalles del Evento</h3>
+      <div style="display:flex;gap:32px;flex-wrap:wrap;">
+        <div><div style="font-size:0.78rem;color:var(--text-muted);">Venue</div><div style="font-weight:700;color:#fff;margin-top:4px;">Camino Real Polanco</div></div>
+        <div><div style="font-size:0.78rem;color:var(--text-muted);">Fechas</div><div style="font-weight:700;color:#fff;margin-top:4px;">28–30 Enero 2027</div></div>
+        <div><div style="font-size:0.78rem;color:var(--text-muted);">Asistentes</div><div style="font-weight:700;color:#fff;margin-top:4px;">220</div></div>
+        <div><div style="font-size:0.78rem;color:var(--text-muted);">Duración</div><div style="font-weight:700;color:#fff;margin-top:4px;">3 días</div></div>
+        <div><div style="font-size:0.78rem;color:var(--text-muted);">Escenario</div><div style="font-weight:700;color:#FF5252;margin-top:4px;">Conservador — venue más caro</div></div>
+        <div><div style="font-size:0.78rem;color:var(--text-muted);">Última actualización</div><div style="font-weight:700;color:#fff;margin-top:4px;">Feb 2026</div></div>
+      </div>
+    </div>
+
+    <!-- Notas importantes -->
+    <div class="card">
+      <h3 style="margin-bottom:16px;">📝 Notas Importantes</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:0.85rem;color:var(--text-muted);padding-left:16px;border-left:2px solid var(--cyan);">Precios estimados conservadores basados en investigación de mercado CDMX 2025–2026.</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);padding-left:16px;border-left:2px solid var(--cyan);">GFA Chapultepec o Westin Santa Fe serían ~20–30% menos que Camino Real Polanco.</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);padding-left:16px;border-left:2px solid var(--cyan);">IVA del 16% se aplica sobre todos los conceptos.</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);padding-left:16px;border-left:2px solid var(--cyan);">El servicio de alimentos del hotel suele incluirse como consumo mínimo para liberar la renta de salones.</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);padding-left:16px;border-left:2px solid var(--cyan);">Con Access FR Black se podrían negociar mejores tarifas en GFA Chapultepec y descuentos corporativos.</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);padding-left:16px;border-left:2px solid var(--cyan);">Los costos del Retiro Cancún están separados y se cubren con las 10 Membresías Premium ($190,000 c/u).</div>
       </div>
     </div>
   </div>
@@ -553,7 +470,7 @@
       <div><div class="tier-title">🥈 Silver</div><div class="tier-slots">6–8 disponibles</div></div>
       <div style="text-align:right"><div class="tier-price">$100,000 MXN</div><div class="tier-total">Ingreso potencial: $600,000–$800,000</div></div>
     </div>
-    <div class="card" style="margin-top:24px; display:flex; gap:40px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+    <div class="card" style="margin-top:24px;display:flex;gap:40px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
       <div><div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">Objetivo de patrocinadores</div><div style="font-size:1.6rem;font-weight:900;color:var(--cyan);">12 mínimo</div></div>
       <div><div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">Meta de ingresos por patrocinio</div><div style="font-size:1.6rem;font-weight:900;color:var(--gold);">50% del total</div></div>
       <div><div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px;">Máximo ingreso posible</div><div style="font-size:1.6rem;font-weight:900;color:var(--platinum);">~$4,000,000 MXN</div></div>
@@ -615,11 +532,10 @@
     <div class="section-title" style="margin-bottom:8px;">💡 Sugerencias para el Evento</div>
     <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:24px;">¿Tienes ideas para hacer IA Expo 2027 aún mejor? Compártelas aquí y las recibiremos al instante.</p>
     <div style="text-align:center;">
-    <a href="https://iaexpo.ai/sugerencia" target="_blank" style="display:inline-block; background:linear-gradient(135deg,var(--blue-accent),#0A84FF); border-radius:10px; padding:13px 32px; color:#fff; font-family:inherit; font-size:0.9rem; font-weight:700; text-decoration:none; letter-spacing:0.5px; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-      💡 Enviar Sugerencia
-    </a>
+      <a href="https://iaexpo.ai/sugerencia" target="_blank" style="display:inline-block;background:linear-gradient(135deg,var(--blue-accent),#0A84FF);border-radius:10px;padding:13px 32px;color:#fff;font-family:inherit;font-size:0.9rem;font-weight:700;text-decoration:none;letter-spacing:0.5px;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        💡 Enviar Sugerencia
+      </a>
     </div>
-
   </div>
 </div>
 
@@ -631,21 +547,16 @@
 </footer>
 
 <script>
-  // Track active section and sync both nav menus
   function showTab(id, btn) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    // sync desktop
     document.querySelectorAll('.nav-desktop .tab-btn').forEach(b => b.classList.remove('active'));
-    // sync mobile
     document.querySelectorAll('.nav-mobile .tab-btn').forEach(b => b.classList.remove('active'));
-    // mark active in both menus
     const idx = [...document.querySelectorAll('.nav-desktop .tab-btn')].findIndex(b => b.getAttribute('onclick').includes("'"+id+"'"));
     if (idx >= 0) {
       document.querySelectorAll('.nav-desktop .tab-btn')[idx].classList.add('active');
       document.querySelectorAll('.nav-mobile .tab-btn')[idx].classList.add('active');
     }
-    if (id === 'presupuesto') animateBars();
   }
 
   function showDay(id, btn) {
@@ -665,24 +576,6 @@
   function closeMenu() {
     document.getElementById('navMobile').classList.remove('open');
     document.getElementById('hamburgerBtn').classList.remove('open');
-  }
-
-  function enviarSugerencia() {
-    const body = document.getElementById('sugBody').value.trim();
-    if (!body) { alert('Por favor escribe tu sugerencia antes de enviar.'); return; }
-    const mailto = `mailto:iaExpo@iaExpo.ai,tere.olvera@iaExpo.ai,t.olvera12@gmail.com,lalo.perez@live.com?subject=${encodeURIComponent('Sugerencia para IA Expo 2027')}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    const msg = document.getElementById('sugMsg');
-    msg.style.display = 'inline';
-    setTimeout(() => msg.style.display = 'none', 5000);
-  }
-
-  function animateBars() {
-    setTimeout(() => {
-      document.querySelectorAll('.bar-fill').forEach(bar => {
-        bar.style.width = bar.dataset.w + '%';
-      });
-    }, 100);
   }
 </script>
 </body>

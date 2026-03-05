@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Expo 2027 — Presupuesto Interno</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060B14;
+    --surface: #0C1526;
+    --surface-2: #111D33;
+    --surface-3: #162440;
+    --border: rgba(255,255,255,0.06);
+    --border-gold: rgba(212,175,55,0.25);
+    --gold: #D4AF37;
+    --gold-light: #F0D060;
+    --gold-dim: rgba(212,175,55,0.15);
+    --cyan: #1E8FFF;
+    --cyan-dim: rgba(30,143,255,0.12);
+    --white: #F0F2F5;
+    --muted: #6B7A92;
+    --red: #FF4D6A;
+    --red-dim: rgba(255,77,106,0.12);
+    --green: #2DD4A0;
+    --green-dim: rgba(45,212,160,0.12);
+    --orange: #FF9F43;
+    --purple: #A78BFA;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    max-width: 100vw;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,175,55,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(30,143,255,0.03) 0%, transparent 50%),
+      var(--bg);
+  }
+
+  /* ─── UTILITY ─────────────────────────────────────────── */
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .gold { color: var(--gold); }
+  .cyan { color: var(--cyan); }
+  .red { color: var(--red); }
+  .green { color: var(--green); }
+  .muted { color: var(--muted); }
+  .orange { color: var(--orange); }
+
+  /* ─── HEADER ──────────────────────────────────────────── */
+  .header {
+    padding: 2.5rem 5vw 1.5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 5vw;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 100%;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    background: var(--gold-dim);
+    border: 1px solid var(--border-gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .header-badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .header h1 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .header h1 span { color: var(--gold); }
+  .header-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .header-meta-item {
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .header-meta-item strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+  .stamp {
+    text-align: right;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .stamp strong { color: var(--red); font-size: 0.8rem; }
+
+  /* ─── KPI CARDS ───────────────────────────────────────── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    gap: 1rem;
+    padding: 2rem 5vw;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .kpi:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,255,255,0.12);
+  }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
+  .kpi.gold-accent::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .kpi.cyan-accent::before { background: linear-gradient(90deg, var(--cyan), #60B8FF); }
+  .kpi.red-accent::before { background: linear-gradient(90deg, var(--red), #FF8099); }
+  .kpi.green-accent::before { background: linear-gradient(90deg, var(--green), #60EFCF); }
+  .kpi-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .kpi-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .kpi-sub {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.4rem;
+  }
+
+  /* ─── NAV TABS ────────────────────────────────────────── */
+  .section-nav {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0 5vw;
+    margin-bottom: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .section-nav::-webkit-scrollbar { display: none; }
+  .nav-pill {
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    background: transparent;
+    text-decoration: none;
+  }
+  .nav-pill:hover, .nav-pill.active {
+    background: var(--surface-2);
+    color: var(--white);
+    border-color: var(--border);
+  }
+
+  /* ─── CATEGORY BLOCKS ─────────────────────────────────── */
+  .content { padding: 1rem 5vw 4rem; }
+
+  .cat-block {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--surface);
+    scroll-margin-top: 1rem;
+  }
+  .cat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 1.5rem;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .cat-header:hover { background: var(--surface-3); }
+  .cat-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+    word-break: break-word;
+  }
+  .cat-icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .cat-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .cat-pct {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .cat-chevron {
+    transition: transform 0.3s;
+    color: var(--muted);
+    font-size: 0.7rem;
+  }
+  .cat-block.open .cat-chevron { transform: rotate(180deg); }
+
+  .cat-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .cat-block.open .cat-body {
+    max-height: 2000px;
+  }
+
+  .line-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.8rem;
+    padding: 0.7rem 1.5rem 0.7rem 2.8rem;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    font-size: 0.8rem;
+    transition: background 0.15s;
+    min-width: 0;
+  }
+  .line-item:last-child { border-bottom: none; }
+  .line-item:hover { background: rgba(255,255,255,0.02); }
+  .line-name { color: rgba(240,242,245,0.85); word-break: break-word; }
+  .line-detail {
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+    word-break: break-word;
+  }
+  .line-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ─── BAR CHART ───────────────────────────────────────── */
+  .chart-section {
+    padding: 0 5vw 2rem;
+  }
+  .chart-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .bar-chart { display: flex; flex-direction: column; gap: 0.55rem; }
+  .bar-row {
+    display: grid;
+    grid-template-columns: minmax(0, 160px) 1fr minmax(0, 90px);
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.75rem;
+  }
+  .bar-label {
+    text-align: right;
+    color: rgba(240,242,245,0.7);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+  .bar-track {
+    height: 22px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+  }
+  .bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 40px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15));
+    border-radius: 0 6px 6px 0;
+  }
+  .bar-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--white);
+  }
+
+  /* ─── FOOTER NOTES ────────────────────────────────────── */
+  .notes-section {
+    padding: 2rem 5vw;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+  .notes-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .note-item {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+  .note-item::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  /* ─── RESPONSIVE — TABLET ─────────────────────────────── */
+  @media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; padding: 1.5rem 4vw; }
+    .kpi { padding: 1rem 1.2rem; }
+    .kpi-value { font-size: 1.25rem; }
+    .header-meta { gap: 1rem; }
+    .header-top { flex-direction: column; }
+    .stamp { text-align: left; margin-top: 0.5rem; }
+    .bar-row { grid-template-columns: minmax(0, 110px) 1fr minmax(0, 85px); gap: 0.5rem; }
+    .bar-label { font-size: 0.65rem; }
+    .line-item { padding-left: 1.5rem; padding-right: 1rem; }
+    .cat-header { padding: 0.9rem 1rem; }
+    .cat-amount { font-size: 0.78rem; gap: 0.5rem; }
+    .cat-title { font-size: 0.8rem; }
+    .note-item { font-size: 0.72rem; }
+  }
+
+  /* ─── RESPONSIVE — MOBILE ───────────────────────────────── */
+  @media (max-width: 480px) {
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .kpi { padding: 0.9rem 1rem; border-radius: 10px; }
+    .kpi-value { font-size: 1.1rem; }
+    .kpi-label { font-size: 0.6rem; }
+    .kpi-sub { font-size: 0.62rem; }
+    .header { padding: 1.5rem 4vw 1.2rem; }
+    .header h1 { font-size: 1.3rem; }
+    .header-meta { gap: 0.6rem; }
+    .header-meta-item { font-size: 0.68rem; }
+    .header-badge { font-size: 0.6rem; padding: 0.25rem 0.7rem; }
+    .content, .chart-section, .notes-section { padding-left: 4vw; padding-right: 4vw; }
+    .section-nav { padding: 0 4vw; }
+    .bar-row { grid-template-columns: minmax(0, 80px) 1fr minmax(0, 75px); font-size: 0.65rem; gap: 0.4rem; }
+    .bar-value { font-size: 0.65rem; }
+    .cat-header { padding: 0.8rem 0.8rem; gap: 0.5rem; }
+    .cat-title { font-size: 0.75rem; gap: 0.4rem; }
+    .cat-icon { width: 24px; height: 24px; font-size: 0.75rem; border-radius: 6px; }
+    .cat-amount { font-size: 0.7rem; gap: 0.4rem; }
+    .cat-pct { font-size: 0.58rem; padding: 0.15rem 0.4rem; }
+    .line-item { padding: 0.6rem 0.8rem 0.6rem 1.2rem; font-size: 0.73rem; gap: 0.5rem; }
+    .line-amount { font-size: 0.73rem; }
+    .line-detail { font-size: 0.6rem; }
+    .note-item { font-size: 0.68rem; padding-left: 0.8rem; }
+    .nav-pill { font-size: 0.65rem; padding: 0.35rem 0.7rem; }
+  }
+
+  /* ─── ANIMATIONS ──────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ══════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-badge"><span class="dot"></span> Documento Interno — Solo Equipo Organizador</div>
+      <h1>Presupuesto de Egresos<br>IA Expo Internacional<span>®</span> 2027</h1>
+      <div class="header-meta">
+        <div class="header-meta-item">📍 <strong>Camino Real Polanco</strong></div>
+        <div class="header-meta-item">📅 <strong>28–30 Enero 2027</strong></div>
+        <div class="header-meta-item">👥 <strong>220 Asistentes</strong></div>
+        <div class="header-meta-item">⏱ <strong>3 Días</strong></div>
+      </div>
+    </div>
+    <div class="stamp">
+      Escenario Conservador<br>
+      <strong>Venue más caro</strong><br>
+      Última actualización: Feb 2026
+    </div>
+  </div>
+</header>
+
+<!-- ═══ KPI CARDS ═══════════════════════════════════════════ -->
+<div class="kpi-grid">
+  <div class="kpi gold-accent reveal">
+    <div class="kpi-label">Total Presupuesto (sin IVA)</div>
+    <div class="kpi-value gold mono">$5,112,690</div>
+    <div class="kpi-sub">10 categorías + contingencia 10%</div>
+  </div>
+  <div class="kpi cyan-accent reveal">
+    <div class="kpi-label">Total con IVA (16%)</div>
+    <div class="kpi-value cyan mono">$5,930,720</div>
+    <div class="kpi-sub">Costo total real del evento</div>
+  </div>
+  <div class="kpi green-accent reveal">
+    <div class="kpi-label">Meta de Ingresos</div>
+    <div class="kpi-value green mono">$5,954,600</div>
+    <div class="kpi-sub">Venta de boletos sin IVA</div>
+  </div>
+  <div class="kpi red-accent reveal">
+    <div class="kpi-label">Diferencia Actual</div>
+    <div class="kpi-value red mono">+$23,880</div>
+    <div class="kpi-sub">Usando la meta conservadora de ingresos.</div>
+  </div>
+</div>
+
+<!-- ═══ BAR CHART ══════════════════════════════════════════ -->
+<div class="chart-section reveal">
+  <div class="chart-title">Distribución por Categoría (sin IVA)</div>
+  <div class="bar-chart" id="barChart"></div>
+</div>
+
+<!-- ═══ CATEGORY NAV ═══════════════════════════════════════ -->
+<nav class="section-nav" id="categoryNav"></nav>
+
+<!-- ═══ DETAILED CATEGORIES ════════════════════════════════ -->
+<div class="content" id="categories"></div>
+
+<!-- ═══ NOTES ══════════════════════════════════════════════ -->
+<div class="notes-section reveal">
+  <div class="notes-title">Notas Importantes</div>
+  <div class="note-item">Los precios son estimados conservadores basados en investigación de mercado CDMX 2025-2026.</div>
+  <div class="note-item">Camino Real Polanco es el venue más caro de las 3 opciones. GFA Chapultepec o Westin Santa Fe serían ~20-30% menos.</div>
+  <div class="note-item">IVA del 16% se aplica sobre todos los conceptos.</div>
+  <div class="note-item">El servicio de alimentos del hotel suele incluirse como consumo mínimo para liberar la renta de salones.</div>
+  <div class="note-item">Con Access FR Black se podrían negociar mejores tarifas en GFA Chapultepec y descuentos corporativos.</div>
+  <div class="note-item">Los costos del Retiro Cancún están separados y se cubren con las 10 Membresías Premium ($190,000 c/u).</div>
+  <div class="note-item">Contacto: <strong>iaExpo@iaExpo.ai</strong> · WhatsApp: <strong>+52 55 5963-2687</strong></div>
+</div>
+
+<script>
+const SUBTOTAL = 4647900;
+
+const categories = [
+  {
+    id: 'venue', icon: '🏛', name: 'Venue / Salones', total: 805000, color: '#D4AF37',
+    items: [
+      { name: 'Salón principal conferencias (200-250 pers.)', detail: 'Camino Real Polanco — salón tipo Chapultepec', cost: '$120,000', qty: '1', days: '3', amount: 360000 },
+      { name: 'Salón taller/workshop (50-80 pers.)', detail: 'Salones modulares para talleres paralelos', cost: '$45,000', qty: '2', days: '3', amount: 270000 },
+      { name: 'Salón VIP / networking lounge', detail: 'Espacio exclusivo para Premium/VIP', cost: '$35,000', qty: '1', days: '3', amount: 105000 },
+      { name: 'Área de registro y recepción', detail: 'Foyer o lobby del salón principal', cost: '$15,000', qty: '1', days: '3', amount: 45000 },
+      { name: 'Montaje y desmontaje de salones', detail: 'Cargo único por configuración especial', cost: '$25,000', qty: '1', days: '1', amount: 25000 },
+    ]
+  },
+  {
+    id: 'alimentos', icon: '🍽', name: 'Alimentos y Bebidas', total: 1315800, color: '#FF9F43',
+    items: [
+      { name: 'Desayuno continental ejecutivo', detail: '$350/persona/día × 220 × 3 días', amount: 231000 },
+      { name: 'Coffee break AM', detail: '$280/persona/día × 220 × 3 días', amount: 184800 },
+      { name: 'Almuerzo / comida', detail: '$850/persona/día × 220 × 3 días — Menú 3 tiempos', amount: 561000 },
+      { name: 'Coffee break PM', detail: '$250/persona/día × 220 × 3 días', amount: 165000 },
+      { name: 'Cena de networking Día 1', detail: '$1,200/persona × 40 invitados', amount: 48000 },
+      { name: 'Cena de gala VIP Día 2', detail: '$1,800/persona × 40 invitados Premium+VIP', amount: 72000 },
+      { name: 'Estación permanente agua/refrescos/snacks', detail: '$18,000/día × 3 días', amount: 54000 },
+    ]
+  },
+  {
+    id: 'audiovisual', icon: '🎬', name: 'Equipo Audiovisual y Tecnología', total: 550500, color: '#1E8FFF',
+    items: [
+      { name: 'Pantalla LED principal (3×2m)', detail: '$15,000/día × 3 días', amount: 45000 },
+      { name: 'Proyectores profesionales 8000+ lúmenes', detail: '$8,000 × 2 unidades × 3 días', amount: 48000 },
+      { name: 'Sistema de audio profesional', detail: 'Bocinas, mezcladoras — sistema completo 250 pers.', amount: 54000 },
+      { name: 'Micrófonos inalámbricos', detail: '6 unidades (lavalier + mano) × 3 días', amount: 63000 },
+      { name: 'Podio / atril con iluminación', detail: '$5,000/día × 3 días', amount: 15000 },
+      { name: 'Laptops backup para ponentes', detail: '3 laptops × 3 días', amount: 22500 },
+      { name: 'Internet WiFi dedicado', detail: 'Banda ancha 100+ Mbps × 3 días', amount: 75000 },
+      { name: 'Streaming / transmisión en vivo', detail: 'Cámaras, switcher, operador', amount: 105000 },
+      { name: 'Grabación profesional multicámara', detail: 'Grabación HD completa 3 días', amount: 75000 },
+      { name: 'Técnicos audiovisuales en sitio', detail: '2 operadores × 3 días', amount: 48000 },
+    ]
+  },
+  {
+    id: 'marketing', icon: '📣', name: 'Marketing y Publicidad', total: 293000, color: '#A78BFA',
+    items: [
+      { name: 'Diseño identidad visual / branding', detail: 'Actualización marca, templates, assets digitales', amount: 45000 },
+      { name: 'Sitio web y landing pages (GHL)', detail: 'Mantenimiento y nuevas páginas GoHighLevel', amount: 15000 },
+      { name: 'Campaña pauta digital (Meta + Google)', detail: 'Presupuesto ads 3-4 meses pre-evento', amount: 120000 },
+      { name: 'Email marketing y automatización', detail: 'Secuencias, nurturing, recordatorios en GHL', amount: 8000 },
+      { name: 'Community management y redes', detail: 'Gestión de redes 4 meses pre-evento', amount: 35000 },
+      { name: 'Video promocional / teaser', detail: 'Producción de video corto para campaña', amount: 40000 },
+      { name: 'Relaciones públicas y medios', detail: 'Boletines, contacto medios tech/negocio', amount: 30000 },
+    ]
+  },
+  {
+    id: 'materiales', icon: '🖨', name: 'Materiales e Impresos', total: 160000, color: '#60EFCF',
+    items: [
+      { name: 'Gafetes / credenciales con lanyard', detail: '300 unidades (asistentes + staff + speakers)', amount: 24000 },
+      { name: 'Programa impreso del evento', detail: '300 folletos tipo tríptico o booklet A5', amount: 13500 },
+      { name: 'Señalética y banners roll-up', detail: '8 banners (verticales, patrocinadores, directorio)', amount: 28000 },
+      { name: 'Backdrop / escenografía escenario', detail: 'Estructura con branding IA Expo', amount: 45000 },
+      { name: 'Kit de bienvenida', detail: '250 kits: bolsa branded, libreta, pluma, info', amount: 37500 },
+      { name: 'Lonas exteriores y señalización hotel', detail: 'Directorio, flechas, bienvenida en lobby', amount: 12000 },
+    ]
+  },
+  {
+    id: 'speakers', icon: '🎤', name: 'Speakers y Talento', total: 354000, color: '#FF6B8A',
+    items: [
+      { name: 'Honorarios speakers invitados', detail: '8 speakers pagados × $25,000 promedio', amount: 200000 },
+      { name: 'Viáticos speakers foráneos', detail: '5 speakers: vuelo + hotel × $18,000', amount: 90000 },
+      { name: 'Transportación speakers', detail: '8 traslados aeropuerto/hotel/venue', amount: 24000 },
+      { name: 'Regalos / reconocimientos', detail: 'Detalle para los 16+ ponentes', amount: 40000 },
+    ]
+  },
+  {
+    id: 'logistica', icon: '⚙', name: 'Logística y Operaciones', total: 460000, color: '#38BDF8',
+    items: [
+      { name: 'Coordinador de evento profesional', detail: 'Event planner / coordinador general', amount: 60000 },
+      { name: 'Staff de apoyo en sitio', detail: '10 personas (edecanes, registro) × 3 días', amount: 105000 },
+      { name: 'Fotógrafo profesional', detail: 'Cobertura completa 3 días', amount: 45000 },
+      { name: 'Videógrafo (testimoniales + highlights)', detail: 'Video recap y testimoniales', amount: 60000 },
+      { name: 'Seguro de evento (RC)', detail: 'Responsabilidad civil y cobertura', amount: 25000 },
+      { name: 'Servicio de traducción simultánea', detail: 'Equipo + intérprete inglés-español × 3 días', amount: 105000 },
+      { name: 'Ambulancia / servicio médico', detail: 'Requerimiento para evento 250+ personas', amount: 24000 },
+      { name: 'Estacionamiento / valet parking', detail: 'Subsidio parcial × 3 días', amount: 36000 },
+    ]
+  },
+  {
+    id: 'plataformas', icon: '💻', name: 'Plataformas y Software', total: 26600, color: '#818CF8',
+    items: [
+      { name: 'GoHighLevel (licencia 6 meses)', detail: '~$97 USD/mes × 6 meses', amount: 9600 },
+      { name: 'Plataforma de registro / ticketing', detail: 'Eventbrite, Ticket Fairy o similar', amount: 8000 },
+      { name: 'Plataforma de streaming', detail: 'Vimeo Pro / YouTube Premium', amount: 4000 },
+      { name: 'Herramientas diseño y productividad', detail: 'Canva Pro, Adobe, etc.', amount: 5000 },
+    ]
+  },
+  {
+    id: 'cancun', icon: '🌴', name: 'Retiro Premium Cancún', total: 683000, color: '#F59E0B',
+    items: [
+      { name: 'Hospedaje 3 días/2 noches doble', detail: '10 habitaciones via Access FR Black × $32,800', amount: 328000 },
+      { name: 'Vuelos CDMX-Cancún redondos', detail: '20 personas × $6,000 promedio', amount: 120000 },
+      { name: 'Alimentos y actividades en retiro', detail: '20 personas × $4,500 × 2 días', amount: 180000 },
+      { name: 'Transportación aeropuerto-hotel', detail: '20 transfers redondos × $1,500', amount: 30000 },
+      { name: 'Salón de reuniones (medio día)', detail: 'Sesión estratégica exclusiva Premium', amount: 25000 },
+    ]
+  },
+];
+
+function fmt(n) {
+  return '$' + n.toLocaleString('es-MX');
+}
+
+// ─── RENDER BAR CHART ────────────────────────────────────
+const barContainer = document.getElementById('barChart');
+const maxCat = Math.max(...categories.map(c => c.total));
+
+categories.forEach(cat => {
+  const pct = ((cat.total / SUBTOTAL) * 100).toFixed(1);
+  const width = ((cat.total / maxCat) * 100).toFixed(1);
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.innerHTML = `
+    <div class="bar-label">${cat.name}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="width:0%;background:${cat.color};opacity:0.85;" data-width="${width}"></div>
+    </div>
+    <div class="bar-value mono">${fmt(cat.total)}</div>
+  `;
+  barContainer.appendChild(row);
+});
+
+// ─── RENDER NAV PILLS ────────────────────────────────────
+const nav = document.getElementById('categoryNav');
+categories.forEach(cat => {
+  const pill = document.createElement('a');
+  pill.className = 'nav-pill';
+  pill.href = '#' + cat.id;
+  pill.textContent = cat.icon + ' ' + cat.name.split('/')[0].split('y ')[0].trim();
+  nav.appendChild(pill);
+});
+
+// ─── RENDER CATEGORY BLOCKS ──────────────────────────────
+const container = document.getElementById('categories');
+categories.forEach((cat, idx) => {
+  const pct = ((cat.total / SUBTOTAL) * 100).toFixed(1);
+  const block = document.createElement('div');
+  block.className = 'cat-block reveal' + (idx < 3 ? ' open' : '');
+  block.id = cat.id;
+
+  let itemsHTML = cat.items.map(item => `
+    <div class="line-item">
+      <div>
+        <div class="line-name">${item.name}</div>
+        <div class="line-detail">${item.detail}</div>
+      </div>
+      <div class="line-amount mono">${fmt(item.amount)}</div>
+    </div>
+  `).join('');
+
+  block.innerHTML = `
+    <div class="cat-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="cat-title">
+        <div class="cat-icon" style="background:${cat.color}20;color:${cat.color}">${cat.icon}</div>
+        ${cat.name}
+      </div>
+      <div class="cat-amount">
+        <span class="cat-pct" style="background:${cat.color}18;color:${cat.color}">${pct}%</span>
+        <span class="mono" style="color:${cat.color}">${fmt(cat.total)}</span>
+        <span class="cat-chevron">▼</span>
+      </div>
+    </div>
+    <div class="cat-body">${itemsHTML}</div>
+  `;
+  container.appendChild(block);
+});
+
+// Contingencia
+const contBlock = document.createElement('div');
+contBlock.className = 'cat-block reveal';
+contBlock.innerHTML = `
+  <div class="cat-header" style="border-left: 3px solid var(--orange);">
+    <div class="cat-title">
+      <div class="cat-icon" style="background:rgba(255,159,67,0.15);color:var(--orange)">🛡</div>
+      Contingencia (10%)
+    </div>
+    <div class="cat-amount">
+      <span class="cat-pct" style="background:rgba(255,159,67,0.12);color:var(--orange)">10%</span>
+      <span class="mono orange">$464,790</span>
+    </div>
+  </div>
+`;
+container.appendChild(contBlock);
+
+// ─── ANIMATE ON SCROLL ───────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Animate bars
+setTimeout(() => {
+  document.querySelectorAll('.bar-fill').forEach(bar => {
+    bar.style.width = bar.dataset.width + '%';
+  });
+}, 400);
+</script>
+</body>
+</html>
