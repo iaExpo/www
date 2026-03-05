@@ -9,15 +9,15 @@
   :root {
     --gold: #C9A84C;
     --gold-light: #E8D48B;
-    --gold-dim: #8B7433;
+    --gold-dim: #B89A45;
     --dark-900: #0A0A0F;
     --dark-800: #12121A;
     --dark-700: #1A1A25;
     --dark-600: #222230;
     --dark-500: #2E2E3E;
-    --text-primary: #F0ECE2;
-    --text-secondary: #9995A0;
-    --text-muted: #5C586A;
+    --text-primary: #F5F2EA;
+    --text-secondary: #C4BFB4;
+    --text-muted: #8E8980;
     --accent-blue: #4A7CFF;
     --accent-green: #3ECF8E;
     --accent-red: #F0564A;
@@ -471,9 +471,258 @@
     .card-icon-wrap { width: 42px; height: 42px; min-width: 42px; border-radius: 10px; }
     .card-body h2 { font-size: 22px; }
   }
+  /* === TOP NAV === */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201,168,76,0.10);
+    padding: 0 48px;
+  }
+
+  .top-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-brand {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .nav-brand-icon {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-brand-icon svg { display: block; }
+
+  .nav-brand-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+  }
+
+  .nav-brand-text em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-left: 4px;
+    font-size: 15px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar { display: none; }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .nav-links a svg {
+    flex-shrink: 0;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-links a:hover svg { opacity: 1; }
+
+  .nav-links a:hover {
+    color: var(--text-primary);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-hamburger:hover { color: var(--gold); background: rgba(201,168,76,0.06); }
+
+  .nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 200;
+    flex-direction: column;
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  .nav-mobile-overlay.active { display: flex; }
+
+  .nav-mobile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .nav-mobile-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-mobile-close:hover { color: var(--gold); }
+
+  .nav-mobile-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-mobile-links a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    padding: 14px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-mobile-links a svg {
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .nav-mobile-links a:hover svg,
+  .nav-mobile-links a:active svg { opacity: 1; }
+
+  .nav-mobile-links a:hover,
+  .nav-mobile-links a:active {
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+
+  .nav-mobile-links .mob-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    width: 24px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .top-nav { padding: 0 28px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+  }
+
+  @media (max-width: 520px) {
+    .top-nav { padding: 0 16px; }
+  }
 </style>
 </head>
 <body>
+
+<!-- TOP NAVIGATION -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="https://iaExpo.ai" class="nav-brand">
+      <div class="nav-brand-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A0A0F" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="nav-brand-text">IA Expo<em>Panel</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://iaExpo.ai/meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3ECF8E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Meta</a></li>
+      <li><a href="https://iaExpo.ai/plan"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Planeaci&#243;n</a></li>
+      <li><a href="https://iaExpo.ai/cotizaciones"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3EC5CF" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Cotizaciones</a></li>
+      <li><a href="https://iaExpo.ai/presupuesto"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7CFF" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>Presupuesto</a></li>
+      <li><a href="https://iaExpo.ai/talleres"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E06090" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Talleres</a></li>
+      <li><a href="https://iaExpo.ai/conferencias"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5BA8F7" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.42A12.08 12.08 0 0 1 21 16.5c0 1-3.36 3.5-9 3.5s-9-2.5-9-3.5a12.08 12.08 0 0 1 2.84-5.92L12 14z"/><line x1="12" y1="14" x2="12" y2="22"/></svg>Conferencias</a></li>
+      <li><a href="https://iaExpo.ai/precios"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9B6DFF" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Precios</a></li>
+      <li><a href="https://iaExpo.ai/patrocinios"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F0A83E" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Patrocinios</a></li>
+      <li><a href="https://iaExpo.ai/gastos"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F0564A" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Gastos</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('mob-nav').classList.add('active')" aria-label="Abrir men&#250;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div id="mob-nav" class="nav-mobile-overlay">
+  <div class="nav-mobile-top">
+    <a href="https://iaExpo.ai" class="nav-brand">
+      <div class="nav-brand-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A0A0F" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="nav-brand-text">IA Expo<em>Panel</em></span>
+    </a>
+    <button class="nav-mobile-close" onclick="document.getElementById('mob-nav').classList.remove('active')" aria-label="Cerrar men&#250;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <ul class="nav-mobile-links">
+    <li><a href="https://iaExpo.ai/meta" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3ECF8E" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Meta</a></li>
+    <li><a href="https://iaExpo.ai/plan" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Planeaci&#243;n</a></li>
+    <li><a href="https://iaExpo.ai/cotizaciones" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3EC5CF" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Cotizaciones</a></li>
+    <li><a href="https://iaExpo.ai/presupuesto" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A7CFF" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg> Presupuesto</a></li>
+    <li><a href="https://iaExpo.ai/talleres" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E06090" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Talleres</a></li>
+    <li><a href="https://iaExpo.ai/conferencias" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA8F7" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.42A12.08 12.08 0 0 1 21 16.5c0 1-3.36 3.5-9 3.5s-9-2.5-9-3.5a12.08 12.08 0 0 1 2.84-5.92L12 14z"/><line x1="12" y1="14" x2="12" y2="22"/></svg> Conferencias</a></li>
+    <li><a href="https://iaExpo.ai/precios" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9B6DFF" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg> Precios</a></li>
+    <li><a href="https://iaExpo.ai/patrocinios" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0A83E" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Patrocinios</a></li>
+    <li><a href="https://iaExpo.ai/gastos" onclick="document.getElementById('mob-nav').classList.remove('active')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0564A" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Gastos</a></li>
+  </ul>
+</div>
 
 <div class="bg-grid"></div>
 <div class="bg-glow"></div>
@@ -511,13 +760,12 @@
   <div class="cards-grid">
 
     <!-- 01 Meta -->
-    <a href="https://iaExpo.ai/meta" target="_blank" class="panel-card card-meta">
+    <a href="https://iaExpo.ai/meta" class="panel-card card-meta">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">01</div>
           <h2>Meta</h2>
           <p class="card-desc">Objetivos de ingresos, KPIs del evento y proyecciones financieras.</p>
           <p class="card-url">iaExpo.ai/meta</p>
@@ -529,13 +777,12 @@
     </a>
 
     <!-- 02 Planeación -->
-    <a href="https://iaExpo.ai/plan" target="_blank" class="panel-card card-plan">
+    <a href="https://iaExpo.ai/plan" class="panel-card card-plan">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">02</div>
           <h2>Planeaci&#243;n</h2>
           <p class="card-desc">Cronograma maestro, hitos clave, responsables y seguimiento de entregables.</p>
           <p class="card-url">iaExpo.ai/plan</p>
@@ -547,13 +794,12 @@
     </a>
 
     <!-- 03 Cotizaciones -->
-    <a href="https://iaExpo.ai/cotizaciones" target="_blank" class="panel-card card-cotizaciones">
+    <a href="https://iaExpo.ai/cotizaciones" class="panel-card card-cotizaciones">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">03</div>
           <h2>Cotizaciones</h2>
           <p class="card-desc">Propuestas y comparativos de proveedores, venues y servicios.</p>
           <p class="card-url">iaExpo.ai/cotizaciones</p>
@@ -565,13 +811,12 @@
     </a>
 
     <!-- 04 Presupuesto -->
-    <a href="https://iaExpo.ai/presupuesto" target="_blank" class="panel-card card-presupuesto">
+    <a href="https://iaExpo.ai/presupuesto" class="panel-card card-presupuesto">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/><path d="M14 15h2M14 18h4"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">04</div>
           <h2>Presupuesto</h2>
           <p class="card-desc">Control financiero integral del evento con desglose por categor&#237;a.</p>
           <p class="card-url">iaExpo.ai/presupuesto</p>
@@ -583,13 +828,12 @@
     </a>
 
     <!-- 05 Talleres -->
-    <a href="https://iaExpo.ai/talleres" target="_blank" class="panel-card card-talleres">
+    <a href="https://iaExpo.ai/talleres" class="panel-card card-talleres">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">05</div>
           <h2>Talleres</h2>
           <p class="card-desc">Programaci&#243;n de workshops pr&#225;cticos, instructores y materiales.</p>
           <p class="card-url">iaExpo.ai/talleres</p>
@@ -601,13 +845,12 @@
     </a>
 
     <!-- 06 Conferencias -->
-    <a href="https://iaExpo.ai/conferencias" target="_blank" class="panel-card card-conferencias">
+    <a href="https://iaExpo.ai/conferencias" class="panel-card card-conferencias">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.42A12.08 12.08 0 0 1 21 16.5c0 1-3.36 3.5-9 3.5s-9-2.5-9-3.5a12.08 12.08 0 0 1 2.84-5.92L12 14z"/><line x1="12" y1="14" x2="12" y2="22"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">06</div>
           <h2>Conferencias</h2>
           <p class="card-desc">Agenda de ponencias, speakers confirmados y tracks tem&#225;ticos.</p>
           <p class="card-url">iaExpo.ai/conferencias</p>
@@ -619,13 +862,12 @@
     </a>
 
     <!-- 07 Precios -->
-    <a href="https://iaExpo.ai/precios" target="_blank" class="panel-card card-precios">
+    <a href="https://iaExpo.ai/precios" class="panel-card card-precios">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><circle cx="17" cy="15" r="1.5"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">07</div>
           <h2>Precios</h2>
           <p class="card-desc">Estructura de boletos, fases de venta y estrategia de pricing.</p>
           <p class="card-url">iaExpo.ai/precios</p>
@@ -637,13 +879,12 @@
     </a>
 
     <!-- 08 Patrocinios -->
-    <a href="https://iaExpo.ai/patrocinios" target="_blank" class="panel-card card-patrocinios">
+    <a href="https://iaExpo.ai/patrocinios" class="panel-card card-patrocinios">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">08</div>
           <h2>Patrocinios</h2>
           <p class="card-desc">Paquetes de patrocinio, prospectos activos y cierres confirmados.</p>
           <p class="card-url">iaExpo.ai/patrocinios</p>
@@ -655,13 +896,12 @@
     </a>
 
     <!-- 09 Gastos -->
-    <a href="https://iaExpo.ai/gastos" target="_blank" class="panel-card card-gastos">
+    <a href="https://iaExpo.ai/gastos" class="panel-card card-gastos">
       <div class="panel-card-inner">
         <div class="card-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <div class="card-body">
-          <div class="card-number">09</div>
           <h2>Gastos</h2>
           <p class="card-desc">Registro y control de egresos reales vs. presupuesto asignado.</p>
           <p class="card-url">iaExpo.ai/gastos</p>
