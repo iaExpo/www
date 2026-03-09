@@ -338,7 +338,7 @@
     <p class="tagline">IA Para la Vida Real <span>2.0</span> — Aplicación, Adopción y Transformación</p>
     <div class="header-stats">
       <div class="hstat"><div class="val">3</div><div class="lbl">Días de evento</div></div>
-      <div class="hstat"><div class="val">220</div><div class="lbl">Asistentes meta</div></div>
+      <div class="hstat"><div class="val" id="xlsx-capacidad-evento">220</div><div class="lbl">Asistentes meta</div></div>
       <div class="hstat"><div class="val">7</div><div class="lbl">Tracks temáticos</div></div>
       <div class="hstat"><div class="val">$6M+</div><div class="lbl">Meta de ingresos MXN</div></div>
     </div>
@@ -430,7 +430,7 @@
       <div style="display:flex;gap:32px;flex-wrap:wrap;">
         <div><div style="font-size:0.78rem;color:var(--text-muted);">Venue</div><div style="font-weight:700;color:#fff;margin-top:4px;">Camino Real Polanco</div></div>
         <div><div style="font-size:0.78rem;color:var(--text-muted);">Fechas</div><div style="font-weight:700;color:#fff;margin-top:4px;">28–30 Enero 2027</div></div>
-        <div><div style="font-size:0.78rem;color:var(--text-muted);">Asistentes</div><div style="font-weight:700;color:#fff;margin-top:4px;">220</div></div>
+        <div><div style="font-size:0.78rem;color:var(--text-muted);">Asistentes</div><div style="font-weight:700;color:#fff;margin-top:4px;" id="xlsx-capacidad-evento-2">220</div></div>
         <div><div style="font-size:0.78rem;color:var(--text-muted);">Duración</div><div style="font-weight:700;color:#fff;margin-top:4px;">3 días</div></div>
         <div><div style="font-size:0.78rem;color:var(--text-muted);">Escenario</div><div style="font-weight:700;color:#FF5252;margin-top:4px;">Conservador — venue más caro</div></div>
         <div><div style="font-size:0.78rem;color:var(--text-muted);">Última actualización</div><div style="font-weight:700;color:#fff;margin-top:4px;">Feb 2026</div></div>
@@ -547,6 +547,27 @@
 </footer>
 
 <script>
+  /* <<XLSX-SYNC:finanzas_valores>> */
+  // Actualizado automáticamente: 2026-03-09 10:11
+  const XLSX_DATA = {
+    capacidad_evento: 220,
+    capacidad_vips: 50,
+    capacidad_talleres: 20,
+  };
+  /* <</XLSX-SYNC:finanzas_valores>> */
+
+  // Inyecta valores del xlsx en los elementos enlazados
+  document.addEventListener('DOMContentLoaded', function () {
+    var enlaces = {
+      'xlsx-capacidad-evento':   XLSX_DATA.capacidad_evento,
+      'xlsx-capacidad-evento-2': XLSX_DATA.capacidad_evento,
+    };
+    Object.entries(enlaces).forEach(function([id, val]) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = val;
+    });
+  });
+
   function showTab(id, btn) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
