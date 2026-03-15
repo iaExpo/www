@@ -229,7 +229,6 @@
     <button class="ntab" onclick="show('agenda',this)">📅 Agenda</button>
     <button class="ntab" onclick="show('presupuesto',this)">💰 Presupuesto</button>
     <button class="ntab" onclick="show('ingresos',this)">📈 Ingresos</button>
-    <button class="ntab" onclick="show('paquetes',this)">🎟️ Paquetes</button>
     <button class="ntab" onclick="show('timeline',this)">🗓️ Timeline</button>
     <button class="ntab" onclick="show('replicacion',this)">🌎 Replicación</button>
   </div>
@@ -241,7 +240,6 @@
   <button class="ntab" onclick="show('agenda',this);closeNav()">📅 Agenda</button>
   <button class="ntab" onclick="show('presupuesto',this);closeNav()">💰 Presupuesto</button>
   <button class="ntab" onclick="show('ingresos',this);closeNav()">📈 Ingresos</button>
-  <button class="ntab" onclick="show('paquetes',this);closeNav()">🎟️ Paquetes</button>
   <button class="ntab" onclick="show('timeline',this);closeNav()">🗓️ Timeline</button>
   <button class="ntab" onclick="show('replicacion',this);closeNav()">🌎 Replicación</button>
 </div>
@@ -542,191 +540,298 @@
 <div class="section" id="ingresos">
   <div class="sec-title">📈 Estrategia de Ingresos</div>
 
+  <!-- KPI STRIP -->
   <div class="grid4" style="margin-bottom:24px;">
-    <div class="stat"><div class="lbl">Meta conservadora</div><div class="val" style="color:var(--cyan);">$6,000,000</div><div class="sub">1.4× presupuesto con IVA</div></div>
-    <div class="stat"><div class="lbl">Meta objetivo</div><div class="val" style="color:var(--gold);">$9,000,000</div><div class="sub">2× presupuesto con IVA</div></div>
-    <div class="stat"><div class="lbl">Meta ambiciosa</div><div class="val" style="color:var(--green);">$12,000,000+</div><div class="sub">3× presupuesto con IVA</div></div>
-    <div class="stat"><div class="lbl">Fuentes de ingreso</div><div class="val" style="color:var(--purple);">7</div><div class="sub">Flujos independientes</div></div>
-  </div>
-
-  <div class="card">
-    <div class="sub-title" style="margin-top:0;">Desglose por Fuente de Ingresos</div>
-
-    <div class="rev-row">
-      <div><div class="rev-name">👑 Patrocinios</div><div class="rev-detail">Title $1M · Platinum $400K×3 · Gold $200K×5 · Silver $100K×6 · Micro $45K×4</div></div>
-      <div style="text-align:right"><div class="rev-amount" style="color:var(--gold);">$4,380,000</div><div style="font-size:0.72rem;color:var(--muted);">Escenario completo</div></div>
+    <div class="stat">
+      <div class="lbl">Presupuesto</div>
+      <div class="val" style="color:var(--cyan);" id="ing-presupuesto">$3,912,167</div>
+      <div class="sub">Meta de egresos</div>
     </div>
-    <div class="rev-row">
-      <div><div class="rev-name">💎 Membresía VIP</div><div class="rev-detail">10 membresías × $190,000 — incluye retiro Cancún, reuniones virtuales, hospedaje + desayuno CDMX</div></div>
-      <div style="text-align:right"><div class="rev-amount" style="color:var(--cyan);">$1,900,000</div><div style="font-size:0.72rem;color:var(--muted);">Fijo — alta prioridad</div></div>
+    <div class="stat">
+      <div class="lbl">Boletos (todas las fases)</div>
+      <div class="val" style="color:var(--gold);">$6,227,200</div>
+      <div class="sub">100% de capacidad vendida</div>
     </div>
-    <div class="rev-row">
-      <div><div class="rev-name">🏪 Stands de Expo</div><div class="rev-detail">12 stands × $45,000 MXN promedio (incluye m², electricidad, Wi-Fi, 2 acreditaciones)</div></div>
-      <div style="text-align:right"><div class="rev-amount" style="color:var(--orange);">$540,000</div><div style="font-size:0.72rem;color:var(--muted);">12 stands disponibles</div></div>
+    <div class="stat">
+      <div class="lbl">Escenario conservador</div>
+      <div class="val" style="color:var(--green);">$7,292,200</div>
+      <div class="sub">Boletos + patrocinios mín.</div>
     </div>
-    <div class="rev-row">
-      <div><div class="rev-name">🎟️ Boletos de Conferencia</div><div class="rev-detail">Lanzamiento $4,900 (50) · Regular $6,900 (100) · Última fase $8,900 (40) · Promedio ~$6,600</div></div>
-      <div style="text-align:right"><div class="rev-amount" style="color:var(--platinum);">$1,254,000</div><div style="font-size:0.72rem;color:var(--muted);">190 boletos × $6,600 prom.</div></div>
-    </div>
-    <div class="rev-row">
-      <div><div class="rev-name">🛠️ Talleres</div><div class="rev-detail">F1: 4×5×$3,450=$69,000 · F2: 4×10×$3,500=$140,000 · F3: 4×5×$4,500=$90,000</div></div>
-      <div style="text-align:right"><div class="rev-amount" style="color:var(--purple);">$299,000</div><div style="font-size:0.72rem;color:var(--muted);">80 participantes total</div></div>
-    </div>
-    <div class="rev-row">
-      <div><div class="rev-name">🥂 Paquete Networking</div><div class="rev-detail">F1: 25×$4,900=$122,500 · F2: 25×$4,500=$112,500 · F3: 10×$5,500=$55,000</div></div>
-      <div style="text-align:right"><div class="rev-amount" style="color:var(--green);">$290,000</div><div style="font-size:0.72rem;color:var(--muted);">60 paquetes total</div></div>
-    </div>
-    <div class="rev-row">
-      <div><div class="rev-name">📚 Actas del Evento</div><div class="rev-detail">Versión digital incluida en todos los paquetes · Versión impresa premium $1,200 · Licencias institucionales</div></div>
-      <div style="text-align:right"><div class="rev-amount" style="color:var(--muted);">$60,000</div><div style="font-size:0.72rem;color:var(--muted);">Ingreso secundario</div></div>
-    </div>
-
-    <div class="totals-box">
-      <div class="t-item"><div class="lbl">Total proyectado</div><div class="val" style="color:var(--cyan);">$8,723,000</div></div>
-      <div class="t-item"><div class="lbl">Presupuesto con IVA</div><div class="val" style="color:var(--platinum);">$6,775,560</div></div>
-      <div class="t-item"><div class="lbl">Superávit proyectado</div><div class="val" style="color:var(--green);">+$1,947,440</div></div>
-      <div class="t-item"><div class="lbl">Multiplicador</div><div class="val" style="color:var(--gold);">1.29×</div></div>
+    <div class="stat">
+      <div class="lbl">Escenario optimista</div>
+      <div class="val" style="color:var(--purple);">$10,602,200</div>
+      <div class="sub">Boletos + patrocinios máx.</div>
     </div>
   </div>
-  <div class="note"><strong>Prioridad de ventas:</strong> Membresía VIP (10 cupos) y Title Sponsor (1 cupo) juntos generan $2.9M — el <strong>43% del presupuesto con IVA</strong>. El multiplicador actual es 1.28× con el escenario de ingresos proyectado. Para alcanzar 2× se recomienda ajustar la Membresía VIP a <strong>$220,000–$250,000 MXN</strong> considerando que ahora incluye doble ocupancia en Cancún y CDMX.</div>
+
+  <!-- TABLA DE PRECIOS POR FASE -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="sub-title" style="margin-top:0;">Precios por Paquete y Fase</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <th style="text-align:left;padding:10px 12px;color:var(--muted);font-weight:600;">Paquete</th>
+            <th style="text-align:center;padding:10px 8px;color:var(--muted);font-size:0.7rem;">Cap.</th>
+            <th style="text-align:right;padding:10px 12px;color:var(--green);font-weight:600;">🔥 Lanzamiento<br><span style="font-size:0.68rem;font-weight:400;">50% descuento</span></th>
+            <th style="text-align:right;padding:10px 12px;color:var(--cyan);font-weight:600;">⏰ Regular<br><span style="font-size:0.68rem;font-weight:400;">25% descuento</span></th>
+            <th style="text-align:right;padding:10px 12px;color:var(--orange);font-weight:600;">📅 Última Fase<br><span style="font-size:0.68rem;font-weight:400;">Precio lleno</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(255,213,79,0.04);">
+            <td style="padding:11px 12px;color:var(--gold);font-weight:600;">💎 Membresía VIP</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">10</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$190,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$190,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$190,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🥂 Networking Estructurado</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">20</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);font-weight:600;">$12,450</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);font-weight:600;">$18,750</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);font-weight:600;">$24,900</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🎟️ Conferencias 2 días</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">180</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);font-weight:600;">$8,900</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);font-weight:600;">$12,900</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);font-weight:600;">$16,900</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🛠️ Talleres (por taller)</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">20 c/u</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);font-weight:600;">$4,450</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);font-weight:600;">$7,750</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);font-weight:600;">$9,900</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 12px;">🏛️ Expo</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">220</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);font-weight:600;">$4,450</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);font-weight:600;">$7,750</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);font-weight:600;">$9,900</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:12px;font-size:0.75rem;color:var(--muted);">Todos los precios en pesos mexicanos (MXN) · Membresía VIP precio fijo en todas las fases</div>
+  </div>
+
+  <!-- DISTRIBUCIÓN DE FASES -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="sub-title" style="margin-top:0;">Distribución de Ventas por Fase</div>
+    <div class="grid3">
+      <div style="text-align:center;padding:16px;background:rgba(52,199,89,0.07);border-radius:12px;border:1px solid rgba(52,199,89,0.2);">
+        <div style="font-size:0.68rem;font-weight:800;color:var(--green);letter-spacing:2px;margin-bottom:8px;">🔥 LANZAMIENTO</div>
+        <div style="font-size:2.2rem;font-weight:900;color:var(--green);">50%</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:6px;">50% de descuento<br>Mayor volumen y urgencia</div>
+      </div>
+      <div style="text-align:center;padding:16px;background:rgba(0,229,255,0.05);border-radius:12px;border:1px solid rgba(0,229,255,0.2);">
+        <div style="font-size:0.68rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:8px;">⏰ REGULAR</div>
+        <div style="font-size:2.2rem;font-weight:900;color:var(--cyan);">35%</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:6px;">25% de descuento<br>Compradores que investigan</div>
+      </div>
+      <div style="text-align:center;padding:16px;background:rgba(255,159,10,0.07);border-radius:12px;border:1px solid rgba(255,159,10,0.2);">
+        <div style="font-size:0.68rem;font-weight:800;color:var(--orange);letter-spacing:2px;margin-bottom:8px;">📅 ÚLTIMA FASE</div>
+        <div style="font-size:2.2rem;font-weight:900;color:var(--orange);">15%</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:6px;">Precio lleno<br>Compradores de último minuto</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLA COMBINADA BOLETOS + PATROCINIOS -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="sub-title" style="margin-top:0;">Ingresos por Boletos — Distribución por Fase</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <th style="text-align:left;padding:10px 12px;color:var(--muted);font-weight:600;letter-spacing:0.5px;">Paquete</th>
+            <th style="text-align:center;padding:10px 8px;color:var(--muted);font-size:0.7rem;">Cap.</th>
+            <th style="text-align:right;padding:10px 12px;color:var(--green);font-weight:600;">🔥 Lanzamiento<br><span style="font-size:0.68rem;font-weight:400;">50% · 50% boletos</span></th>
+            <th style="text-align:right;padding:10px 12px;color:var(--cyan);font-weight:600;">⏰ Regular<br><span style="font-size:0.68rem;font-weight:400;">25% dto · 35% boletos</span></th>
+            <th style="text-align:right;padding:10px 12px;color:var(--orange);font-weight:600;">📅 Última Fase<br><span style="font-size:0.68rem;font-weight:400;">Precio lleno · 15%</span></th>
+            <th style="text-align:right;padding:10px 12px;color:var(--gold);font-weight:600;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(255,213,79,0.04);">
+            <td style="padding:11px 12px;color:var(--gold);font-weight:600;">💎 Membresía VIP</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">10</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);">$1,900,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--muted);font-size:0.75rem;">Precio fijo</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--muted);font-size:0.75rem;">Precio fijo</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$1,900,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🥂 Networking Estructurado</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">20</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);">$124,500</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$131,250</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);">$74,700</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$330,450</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🎟️ Conferencias 2 días</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">180</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);">$801,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$812,700</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);">$456,300</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$2,070,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🛠️ Talleres (4 × 20)</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">80</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);">$178,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$217,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);">$118,800</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$513,800</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🏛️ Expo</td>
+            <td style="text-align:center;padding:11px 8px;color:var(--muted);">220</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);">$489,500</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$596,750</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);">$326,700</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);font-weight:700;">$1,412,950</td>
+          </tr>
+          <tr style="background:rgba(255,255,255,0.04);font-weight:700;border-top:1px solid rgba(255,255,255,0.12);">
+            <td style="padding:12px 12px;color:var(--text);">Subtotal Boletos</td>
+            <td style="text-align:center;padding:12px 8px;color:var(--muted);">530</td>
+            <td style="text-align:right;padding:12px 12px;color:var(--green);">$3,493,000</td>
+            <td style="text-align:right;padding:12px 12px;color:var(--cyan);">$1,757,700</td>
+            <td style="text-align:right;padding:12px 12px;color:var(--orange);">$976,500</td>
+            <td style="text-align:right;padding:12px 12px;color:var(--gold);">$6,227,200</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TABLA PATROCINIOS + GRAN TOTAL -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="sub-title" style="margin-top:0;">Ingresos Totales — Boletos + Patrocinios por Escenario</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <th style="text-align:left;padding:10px 12px;color:var(--muted);font-weight:600;">Fuente</th>
+            <th style="text-align:right;padding:10px 12px;color:var(--green);font-weight:600;">🔵 Conservador<br><span style="font-size:0.68rem;font-weight:400;">Lanzamiento + Pat. mínimo</span></th>
+            <th style="text-align:right;padding:10px 12px;color:var(--cyan);font-weight:600;">🟡 Moderado<br><span style="font-size:0.68rem;font-weight:400;">Regular + Pat. moderado</span></th>
+            <th style="text-align:right;padding:10px 12px;color:var(--orange);font-weight:600;">🟢 Optimista<br><span style="font-size:0.68rem;font-weight:400;">Última fase + Pat. máx.</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">🎟️ Subtotal Boletos</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);">$3,493,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$1,757,700</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);">$976,500</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;padding-left:24px;color:var(--muted);font-size:0.78rem;">└ Membresía VIP (fija en todas las fases)</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);">$1,900,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);">$1,900,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--gold);">$1,900,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:11px 12px;">👑 Subtotal Patrocinios</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--green);">$1,065,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$3,160,000</td>
+            <td style="text-align:right;padding:11px 12px;color:var(--orange);">$4,375,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.75rem;color:var(--muted);">
+            <td style="padding:6px 12px 6px 24px;">└ Title Sponsor</td>
+            <td style="text-align:right;padding:6px 12px;">—</td>
+            <td style="text-align:right;padding:6px 12px;">$1,000,000</td>
+            <td style="text-align:right;padding:6px 12px;">$1,000,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.75rem;color:var(--muted);">
+            <td style="padding:6px 12px 6px 24px;">└ Platinum · Gold · Silver</td>
+            <td style="text-align:right;padding:6px 12px;">$800,000</td>
+            <td style="text-align:right;padding:6px 12px;">$2,400,000</td>
+            <td style="text-align:right;padding:6px 12px;">$3,800,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.75rem;color:var(--muted);">
+            <td style="padding:6px 12px 6px 24px;">└ Micro patrocinios</td>
+            <td style="text-align:right;padding:6px 12px;">$265,000</td>
+            <td style="text-align:right;padding:6px 12px;">$360,000</td>
+            <td style="text-align:right;padding:6px 12px;">$375,000</td>
+          </tr>
+          <tr style="background:rgba(255,255,255,0.04);font-weight:800;border-top:1px solid rgba(255,255,255,0.15);font-size:0.9rem;">
+            <td style="padding:14px 12px;color:var(--text);">TOTAL INGRESOS</td>
+            <td style="text-align:right;padding:14px 12px;color:var(--green);">$7,292,200</td>
+            <td style="text-align:right;padding:14px 12px;color:var(--cyan);">$9,387,200</td>
+            <td style="text-align:right;padding:14px 12px;color:var(--orange);">$10,602,200</td>
+          </tr>
+          <tr style="font-size:0.78rem;">
+            <td style="padding:10px 12px;color:var(--muted);" id="ing-vs-pres-label">vs Presupuesto $3,912,167</td>
+            <td style="text-align:right;padding:10px 12px;color:var(--green);" id="ing-vs-conservador">+$3,380,033</td>
+            <td style="text-align:right;padding:10px 12px;color:var(--cyan);" id="ing-vs-moderado">+$5,475,033</td>
+            <td style="text-align:right;padding:10px 12px;color:var(--orange);" id="ing-vs-optimista">+$6,690,033</td>
+          </tr>
+          <tr style="font-size:0.78rem;border-top:1px solid rgba(255,255,255,0.05);">
+            <td style="padding:10px 12px;color:var(--muted);">Margen sobre presupuesto</td>
+            <td style="text-align:right;padding:10px 12px;color:var(--green);" id="ing-margen-conservador">86%</td>
+            <td style="text-align:right;padding:10px 12px;color:var(--cyan);" id="ing-margen-moderado">140%</td>
+            <td style="text-align:right;padding:10px 12px;color:var(--orange);" id="ing-margen-optimista">171%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="note"><strong>Prioridad de ventas:</strong> La <strong>Membresía VIP</strong> (10 cupos × $190,000) se lanza primero y genera $1,900,000 fijos — el <strong>48% del presupuesto</strong> antes de vender cualquier otro boleto. El <strong>escenario conservador</strong> supera la meta de $6M con solo patrocinios mínimos y boletos al precio de lanzamiento. Cualquier boleto vendido en fase regular o última fase mejora el resultado automáticamente.</div>
 </div>
 
-<!-- ══════════ PAQUETES ══════════ -->
-<div class="section" id="paquetes">
-  <div class="sec-title">🎟️ Paquetes y Precios</div>
-
-  <div class="grid2" style="margin-bottom:20px;">
-
-    <div class="card" style="border-color:rgba(255,213,79,0.4);background:rgba(255,213,79,0.05);">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">💎 MEMBRESÍA VIP</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--gold);margin-bottom:4px;">$190,000 <span style="font-size:0.9rem;font-weight:400;">MXN</span></div>
-      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:14px;">10 cupos disponibles — exclusividad total</div>
-      <div style="font-size:0.82rem;color:var(--text);line-height:1.9;">
-        ✅ Acceso completo 3 días (conferencias + expo)<br>
-        ✅ 1 taller especializado incluido<br>
-        ✅ Paquete Networking completo (cóctel + cenas)<br>
-        ✅ Cena privada VIP noche 1<br>
-        ✅ Desayuno de despedida Domingo 31 Enero<br>
-        ✅ Hospedaje CDMX (28–31 enero, 3 noches)<br>
-        ✅ Retiro presencial Cancún (3 días / 2 noches)<br>
-        ✅ 4 reuniones virtuales anuales de seguimiento<br>
-        ✅ Actas del evento (digital + impresa)<br>
-        ✅ Mención como Miembro Ejecutivo
-      </div>
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="card" style="border-color:rgba(0,229,255,0.3);">
-        <div style="font-size:0.68rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:8px;">🥂 PAQUETE NETWORKING</div>
-        <div style="font-size:1.5rem;font-weight:900;color:var(--cyan);">$4,900 MXN <span style="font-size:0.75rem;color:var(--muted);">adicional</span></div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-top:6px;line-height:1.7;">Cóctel de bienvenida (Día 1) + Cena de clausura (Día 3). Se añade a cualquier boleto de conferencia.</div>
-      </div>
-      <div class="card">
-        <div style="font-size:0.68rem;font-weight:800;color:var(--purple);letter-spacing:2px;margin-bottom:8px;">🛠️ TALLERES</div>
-        <div style="font-size:1.5rem;font-weight:900;color:var(--purple);">$3,450 MXN <span style="font-size:0.75rem;color:var(--muted);">/ taller</span></div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-top:6px;line-height:1.7;">4 talleres disponibles · Máx. 20 personas c/u · Cupo limitado. Entregable tangible garantizado al finalizar.</div>
-      </div>
-      <div class="card">
-        <div style="font-size:0.68rem;font-weight:800;color:var(--orange);letter-spacing:2px;margin-bottom:8px;">🏪 STANDS DE EXPO</div>
-        <div style="font-size:1.5rem;font-weight:900;color:var(--orange);">$45,000 MXN <span style="font-size:0.75rem;color:var(--muted);">/ stand</span></div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-top:6px;line-height:1.7;">Incluye m², electricidad, Wi-Fi dedicado y 2 acreditaciones de expositor. 3 días de exposición.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="sub-title">🎟️ Fases de Venta — Conferencias</div>
-  <div class="grid3" style="margin-bottom:24px;">
-    <div class="card" style="text-align:center;">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--green);letter-spacing:2px;margin-bottom:10px;">FASE 1 — LANZAMIENTO</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--green);">$4,900</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">50 boletos disponibles<br>Apertura de ventas</div>
-    </div>
-    <div class="card" style="text-align:center;border-color:rgba(0,229,255,0.3);background:rgba(0,229,255,0.05);">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">FASE 2 — REGULAR</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--cyan);">$6,900</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">Fase principal de ventas<br>Mayor volumen</div>
-    </div>
-    <div class="card" style="text-align:center;">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--orange);letter-spacing:2px;margin-bottom:10px;">FASE 3 — ÚLTIMA FASE</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--orange);">$8,900</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">Últimos lugares<br>Precio premium</div>
-    </div>
-  </div>
-
-  <div class="sub-title">🥂 Fases de Venta — Paquete Networking</div>
-  <div class="grid3" style="margin-bottom:24px;">
-    <div class="card" style="text-align:center;">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--green);letter-spacing:2px;margin-bottom:10px;">FASE 1 — LANZAMIENTO</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--green);">$4,900</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">25 paquetes disponibles<br>Cóctel + Cena clausura</div>
-    </div>
-    <div class="card" style="text-align:center;border-color:rgba(0,229,255,0.3);background:rgba(0,229,255,0.05);">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">FASE 2 — REGULAR</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--cyan);">$6,900</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">Fase principal de ventas<br>Mayor volumen</div>
-    </div>
-    <div class="card" style="text-align:center;">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--orange);letter-spacing:2px;margin-bottom:10px;">FASE 3 — ÚLTIMA FASE</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--orange);">$8,900</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">Últimos lugares<br>Precio premium</div>
-    </div>
-  </div>
-
-  <div class="sub-title">🛠️ Fases de Venta — Talleres</div>
-  <div class="grid3">
-    <div class="card" style="text-align:center;">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--green);letter-spacing:2px;margin-bottom:10px;">FASE 1 — LANZAMIENTO</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--green);">$3,450</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">5 lugares por taller<br>Primeros inscritos</div>
-    </div>
-    <div class="card" style="text-align:center;border-color:rgba(0,229,255,0.3);background:rgba(0,229,255,0.05);">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">FASE 2 — REGULAR</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--cyan);">$5,450</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">10 lugares por taller<br>Fase principal</div>
-    </div>
-    <div class="card" style="text-align:center;">
-      <div style="font-size:0.68rem;font-weight:800;color:var(--orange);letter-spacing:2px;margin-bottom:10px;">FASE 3 — ÚLTIMA FASE</div>
-      <div style="font-size:2rem;font-weight:900;color:var(--orange);">$7,450</div>
-      <div style="font-size:0.78rem;color:var(--muted);margin-top:8px;">5 últimos lugares<br>Precio premium</div>
-    </div>
-  </div>
-</div>
 
 <!-- ══════════ TIMELINE ══════════ -->
 <div class="section" id="timeline">
   <div class="sec-title">🗓️ Timeline de Ejecución</div>
-  <div class="grid2">
-    <div>
-      <div class="sub-title" style="margin-top:0;">📌 Fase 1: Fundamentos (Mar – May 2026)</div>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Marzo 2026</div><div class="tl-title">Definición de venue y fechas</div><div class="tl-desc">Cotizaciones GFA Chapultepec y Westin. Negociación de consumo mínimo y renta de salones. Firma de contrato con venue seleccionado.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Abril 2026</div><div class="tl-title">Lanzamiento de patrocinios</div><div class="tl-desc">Presentación del dossier de patrocinios a empresas objetivo. Meta: Title Sponsor y 2 Platinum cerrados antes de junio.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Mayo 2026</div><div class="tl-title">Apertura Membresía VIP</div><div class="tl-desc">Lanzamiento exclusivo de los 10 cupos. Estrategia de invitación directa — no venta masiva. Meta: 5 membresías cerradas en este mes.</div></div>
-      </div>
 
-      <div class="sub-title">🚀 Fase 2: Construcción (Jun – Sep 2026)</div>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Junio 2026</div><div class="tl-title">Apertura de venta de stands</div><div class="tl-desc">Lanzamiento de los 12 espacios de expo. Patrocinadores tienen prioridad en selección de ubicación.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Julio 2026</div><div class="tl-title">Selección de ponentes y talleres</div><div class="tl-desc">Convocatoria abierta y por invitación. 7 tracks necesitan mínimo 3 ponentes cada uno. Validar 4 talleristas con perfil práctico.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Sep 2026</div><div class="tl-title">Lanzamiento Early Bird</div><div class="tl-desc">Apertura de 50 boletos fase lanzamiento ($4,900). Campaña de marketing digital, email y redes sociales.</div></div>
-      </div>
-    </div>
-    <div>
-      <div class="sub-title" style="margin-top:0;">⚡ Fase 3: Aceleración (Oct – Dic 2026)</div>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Octubre 2026</div><div class="tl-title">Apertura boletos fase regular</div><div class="tl-desc">Venta de hasta 100 boletos a $6,900. Activación de paquetes Networking. Campaña de PR en medios especializados.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Noviembre 2026</div><div class="tl-title">Confirmación de agenda y producción</div><div class="tl-desc">Programa definitivo publicado. Contratación de empresa de producción AV. Diseño de Actas iniciado.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Diciembre 2026</div><div class="tl-title">Recta final — boletos última fase</div><div class="tl-desc">Apertura de últimos 40 boletos a $8,900. Logística de hospedaje para Membresía VIP. Revisión financiera final.</div></div>
-      </div>
-
-      <div class="sub-title">🎯 Fase 4: Evento y Post (Ene 2027+)</div>
-      <div class="timeline">
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">20–27 Ene 2027</div><div class="tl-title">Semana previa: ensayos y montaje</div><div class="tl-desc">Coordinación final con venue, llegada de equipo técnico, ensayo general con ponentes.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">28–31 Ene 2027</div><div class="tl-title">IA Expo Internacional® 2027</div><div class="tl-desc">¡El evento! Días 28–30 evento principal. Día 31 desayuno y retiro Cancún Membresía VIP.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Feb 2027</div><div class="tl-title">Post-evento y publicación de Actas</div><div class="tl-desc">Encuestas de satisfacción, cierre financiero, publicación de Actas, evaluación del modelo para replicación.</div></div>
-      </div>
+  <!-- FASE 1 -->
+  <div class="card" style="margin-bottom:16px;border-color:rgba(52,199,89,0.3);background:rgba(52,199,89,0.03);">
+    <div class="sub-title" style="margin-top:0;color:var(--green);">📌 Fase 1 — Fundamentos &nbsp;<span style="font-size:0.75rem;font-weight:400;color:var(--muted);">Mar – May 2026</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot" style="border-color:var(--green);"></div><div class="tl-date" style="color:var(--green);">Marzo 2026</div><div class="tl-title">Definición de venue y fechas</div><div class="tl-desc">Cotizaciones GFA Chapultepec y Westin. Negociación de consumo mínimo y renta de salones. Firma de contrato con venue seleccionado.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="border-color:var(--green);"></div><div class="tl-date" style="color:var(--green);">Abril 2026</div><div class="tl-title">Lanzamiento de patrocinios</div><div class="tl-desc">Presentación del dossier de patrocinios a empresas objetivo. Meta: Title Sponsor y 2 Platinum cerrados antes de junio.</div></div>
+      <div class="tl-item" style="margin-bottom:0;"><div class="tl-dot" style="border-color:var(--green);"></div><div class="tl-date" style="color:var(--green);">Mayo 2026</div><div class="tl-title">Apertura Membresía VIP</div><div class="tl-desc">Lanzamiento exclusivo de los 10 cupos. Estrategia de invitación directa — no venta masiva. Meta: 5 membresías cerradas en este mes.</div></div>
     </div>
   </div>
+
+  <!-- FASE 2 -->
+  <div class="card" style="margin-bottom:16px;border-color:rgba(0,229,255,0.3);background:rgba(0,229,255,0.03);">
+    <div class="sub-title" style="margin-top:0;color:var(--cyan);">🚀 Fase 2 — Construcción &nbsp;<span style="font-size:0.75rem;font-weight:400;color:var(--muted);">Jun – Sep 2026</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Junio 2026</div><div class="tl-title">Apertura de venta de boletos de lanzamiento</div><div class="tl-desc">Lanzamiento de boletos con 50% de descuento. Patrocinadores y Membresía VIP tienen prioridad en selección de beneficios.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Julio 2026</div><div class="tl-title">Selección de ponentes y talleristas</div><div class="tl-desc">Convocatoria abierta y por invitación. 7 tracks necesitan mínimo 3 ponentes cada uno. Validar 4 talleristas con perfil práctico.</div></div>
+      <div class="tl-item" style="margin-bottom:0;"><div class="tl-dot"></div><div class="tl-date">Sep 2026</div><div class="tl-title">Cierre de fase de lanzamiento</div><div class="tl-desc">Campaña de marketing digital, email y redes sociales. Revisión de avance de ventas y ajuste de estrategia si es necesario.</div></div>
+    </div>
+  </div>
+
+  <!-- FASE 3 -->
+  <div class="card" style="margin-bottom:16px;border-color:rgba(255,159,10,0.3);background:rgba(255,159,10,0.03);">
+    <div class="sub-title" style="margin-top:0;color:var(--orange);">⚡ Fase 3 — Aceleración &nbsp;<span style="font-size:0.75rem;font-weight:400;color:var(--muted);">Oct – Dic 2026</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot" style="border-color:var(--orange);"></div><div class="tl-date" style="color:var(--orange);">Octubre 2026</div><div class="tl-title">Apertura boletos fase regular</div><div class="tl-desc">Venta de boletos con 25% de descuento. Activación de paquetes Networking Estructurado. Campaña de PR en medios especializados.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="border-color:var(--orange);"></div><div class="tl-date" style="color:var(--orange);">Noviembre 2026</div><div class="tl-title">Confirmación de agenda y producción</div><div class="tl-desc">Programa definitivo publicado. Contratación de empresa de producción AV. Diseño de materiales del evento iniciado.</div></div>
+      <div class="tl-item" style="margin-bottom:0;"><div class="tl-dot" style="border-color:var(--orange);"></div><div class="tl-date" style="color:var(--orange);">Diciembre 2026</div><div class="tl-title">Recta final — boletos última fase</div><div class="tl-desc">Apertura de últimos boletos a precio lleno. Logística de hospedaje para Membresía VIP. Revisión financiera final.</div></div>
+    </div>
+  </div>
+
+  <!-- FASE 4 -->
+  <div class="card" style="margin-bottom:0;border-color:rgba(255,213,79,0.3);background:rgba(255,213,79,0.03);">
+    <div class="sub-title" style="margin-top:0;color:var(--gold);">🎯 Fase 4 — Evento y Post &nbsp;<span style="font-size:0.75rem;font-weight:400;color:var(--muted);">Ene – Feb 2027</span></div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot" style="border-color:var(--gold);"></div><div class="tl-date" style="color:var(--gold);">20–27 Ene 2027</div><div class="tl-title">Semana previa: ensayos y montaje</div><div class="tl-desc">Coordinación final con venue, llegada de equipo técnico, ensayo general con ponentes.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="border-color:var(--gold);background:var(--gold);"></div><div class="tl-date" style="color:var(--gold);">28–31 Ene 2027</div><div class="tl-title" style="color:var(--gold);font-size:1rem;">🌟 IA Expo Internacional® 2027</div><div class="tl-desc">Días 28–30 evento principal. Día 31 desayuno de clausura y retiro Cancún Membresía VIP.</div></div>
+      <div class="tl-item" style="margin-bottom:0;"><div class="tl-dot" style="border-color:var(--gold);"></div><div class="tl-date" style="color:var(--gold);">Febrero 2027</div><div class="tl-title">Post-evento y cierre</div><div class="tl-desc">Encuestas de satisfacción, cierre financiero, evaluación del modelo para replicación en otras ciudades y países.</div></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══════════ REPLICACIÓN ══════════ -->
@@ -789,7 +894,7 @@
 
 <script>
   /* <<XLSX-SYNC:finanzas_valores>> */
-  // Actualizado automáticamente: 2026-03-13 19:05
+  // Actualizado automáticamente: 2026-03-15 14:07
   const XLSX_DATA = {
     capacidad_evento: 220,
     capacidad_vips: 50,
@@ -817,6 +922,12 @@
     total_sin_iva: 3280463.4396551726,
     total_con_iva: 4185871.349,
     superavit: 2042432.6810000003,
+    ing_vs_conservador: 3380032.6810000003,
+    ing_margen_conservador: 86.39795809817204,
+    ing_vs_moderado: 5475032.681,
+    ing_margen_moderado: 139.94883742343336,
+    ing_vs_optimista: 6690032.681,
+    ing_margen_optimista: 171.00579130419348,
   };
   /* <</XLSX-SYNC:finanzas_valores>> */
 
