@@ -247,6 +247,7 @@
     color:var(--muted); font-size:0.75rem; margin-top:20px;
   }
   footer strong { color:var(--cyan); }
+  @media(max-width:600px){ .payment-grid { grid-template-columns:1fr !important; } }
 
   @media(max-width:600px){
     .hero-title { font-size:2rem; }
@@ -258,15 +259,14 @@
 <body>
 
 <nav>
-  <a href="https://iaexpo.ai/plan" class="nav-brand">IA Expo® 2027</a>
-  <a href="plan.html" class="nav-link">← Ver Plan del Evento</a>
+  <a href="https://iaExpo.ai" class="nav-brand">IA Expo® 2027</a>
 </nav>
 
 <div class="wrap">
 
   <!-- ══════════ HERO ══════════ -->
   <div class="hero">
-    <div class="hero-badge">💎 Solo 10 Cupos · Membresía Élite</div>
+    <div class="hero-badge">💎 Solo 10 Cupos · Membresía IA Expo VIP</div>
     <div class="hero-title">
       La inversión más<br>inteligente de <span class="g">2026–2027</span>
     </div>
@@ -277,10 +277,10 @@
     </div>
 
     <div class="price-block">
-      <div class="price-cupos">🔴 Solo 10 lugares</div>
       <div class="price-label">Precio de Membresía VIP</div>
+      <div style="font-size:1.85rem;font-weight:800;color:var(--muted);text-decoration:line-through;margin-bottom:2px;opacity:0.75;">$305,900</div>
       <div class="price-amount">$190,000</div>
-      <div class="price-currency">pesos mexicanos · Precio único · Sin fases</div>
+      <div class="price-currency">pesos mexicanos · Precio único</div>
     </div>
 
     <br>
@@ -293,12 +293,32 @@
       <span class="amt">$115,900 MXN</span>
       <span style="color:#fff;">(38%)</span>
     </div>
+
+    <div style="height:28px;"></div>
+
+    <div style="display:inline-block;background:linear-gradient(135deg,rgba(255,213,79,0.15),rgba(255,183,77,0.08));border:2px solid rgba(255,213,79,0.55);border-radius:16px;padding:16px 36px;">
+      <div style="font-size:0.65rem;font-weight:800;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">Cupos disponibles</div>
+      <div style="font-size:2.2rem;font-weight:900;color:var(--gold);line-height:1;letter-spacing:-0.5px;">Solo 10 lugares</div>
+      <div style="font-size:0.75rem;color:var(--muted);margin-top:5px;">El número no se amplía bajo ninguna circunstancia</div>
+    </div>
   </div>
 
+  <style>
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  </style>
+
   <!-- PARA 2 PERSONAS -->
-  <div style="text-align:center; margin-bottom:16px;">
-    <div class="duo-badge">
-      👥 Todos los beneficios son para <strong style="color:#fff;">&nbsp;ti + 1 invitado/a&nbsp;</strong> — dos personas al precio de una membresía
+  <div style="background:linear-gradient(135deg,rgba(206,147,216,0.1),rgba(13,110,253,0.08));border:2px solid rgba(206,147,216,0.4);border-radius:16px;padding:22px 28px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <div style="font-size:2.6rem;flex-shrink:0;">👥</div>
+    <div style="flex:1;min-width:220px;">
+      <div style="font-size:0.68rem;font-weight:800;color:var(--purple);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:6px;">Membresía IA Expo VIP — Incluye a 2 personas</div>
+      <div style="font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:4px;">Tú <span style="color:var(--purple);">+</span> un invitado/a de tu elección</div>
+      <div style="font-size:0.84rem;color:var(--muted);line-height:1.6;">Hospedaje en Cancún, hospedaje en CDMX, comidas, acceso al evento y experiencias exclusivas — <strong style="color:#fff;">todo para dos personas</strong> al precio de una sola membresía.</div>
+    </div>
+    <div style="background:rgba(206,147,216,0.15);border:1px solid rgba(206,147,216,0.3);border-radius:12px;padding:14px 20px;text-align:center;flex-shrink:0;">
+      <div style="font-size:0.65rem;font-weight:800;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Costo por persona</div>
+      <div style="font-size:1.6rem;font-weight:900;color:var(--purple);">$95,000</div>
+      <div style="font-size:0.7rem;color:var(--muted);">MXN cada una</div>
     </div>
   </div>
 
@@ -318,8 +338,61 @@
     </div>
   </div>
 
+  <!-- ══════════ TABLA DE VALOR ══════════ -->
+  <div class="sec-title">📊 Tu inversión en la Membresía IA Expo VIP</div>
+
+  <div class="value-table">
+    <div class="vt-header">💎 Desglose de Valor — Membresía VIP (para 2 personas)</div>
+
+    <div class="vt-row">
+      <div class="vt-name"><span class="em">🥂</span> Paquete Networking Estructurado × 2 personas (precio público $24,900 c/u)</div>
+      <div class="vt-amount green">$49,800</div>
+    </div>
+    <div class="vt-row">
+      <div class="vt-name"><span class="em">🏝️</span> Retiro VIP Cancún — Live Aqua, Premium Ocean View 1 King (2 personas, 3 noches all-inclusive)</div>
+      <div class="vt-amount green">$32,400</div>
+    </div>
+    <div class="vt-row">
+      <div class="vt-name"><span class="em">🏨</span> Hospedaje CDMX — Gran Fiesta Americana Chapultepec (2 personas, 3 noches + desayunos)</div>
+      <div class="vt-amount green">$36,000</div>
+    </div>
+    <div class="vt-row">
+      <div class="vt-name"><span class="em">🍽️</span> Experiencias sociales VIP exclusivas (2 personas, 4 días)</div>
+      <div class="vt-amount green">$18,000</div>
+    </div>
+    <div class="vt-row">
+      <div class="vt-name"><span class="em">🏛️</span> Stand propio en IA Expo (espacio + montaje básico) + 3 acreditaciones de staff</div>
+      <div class="vt-amount green">$79,700</div>
+    </div>
+    <div class="vt-row">
+      <div class="vt-name"><span class="em">📣</span> Paquete de visibilidad y publicidad (equivalente micro-patrocinio)</div>
+      <div class="vt-amount green">$65,000</div>
+    </div>
+    <div class="vt-row">
+      <div class="vt-name"><span class="em">🚀</span> Acceso Mesa Estratégica IA Expo Global + derecho de primera opción 2028</div>
+      <div class="vt-amount green">$25,000</div>
+    </div>
+
+    <div class="vt-row total">
+      <div class="vt-name" style="font-weight:800;color:#fff;font-size:1rem;">✅ VALOR TOTAL DEL PAQUETE</div>
+      <div class="vt-amount green big">$305,900</div>
+    </div>
+    <div class="vt-row price-row">
+      <div class="vt-name" style="font-weight:800;color:var(--gold);font-size:1rem;">💎 Precio Membresía VIP</div>
+      <div class="vt-amount gold big">$190,000</div>
+    </div>
+    <div class="vt-row saving-row">
+      <div class="vt-name" style="font-weight:800;color:var(--cyan);font-size:1rem;">🎯 TU AHORRO TOTAL</div>
+      <div class="vt-amount cyan big">$115,900 &nbsp;<span style="font-size:1rem;font-weight:700;">(38%)</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px; background:rgba(255,183,77,0.07); border:1px solid rgba(255,183,77,0.25); border-radius:10px; padding:14px 18px; font-size:0.82rem; color:var(--muted); line-height:1.7;">
+    ⚠️ <strong style="color:var(--orange);">Importante:</strong> El valor de mercado mostrado corresponde a precios de lista para cada beneficio comprado por separado (hospedaje Cancún verificado en fiestamericanatravelty.com). Como miembro VIP accedes a todo el paquete integrado a un precio especial que no volverá a estar disponible en esta edición.
+  </div>
+
   <!-- ══════════ QUÉ INCLUYE ══════════ -->
-  <div class="sec-title">🎁 ¿Qué incluye tu Membresía VIP?</div>
+  <div class="sec-title">🎁 Detalles de tu Membresía IA Expo VIP</div>
 
   <!-- 1. NETWORKING ESTRUCTURADO -->
   <div class="benefit-card gold">
@@ -338,11 +411,11 @@
       </div>
     </div>
     <ul class="benefit-items">
-      <li>Acceso a los <strong>3 días completos</strong> del evento (Talleres · Conferencias · Expo)</li>
+      <li>Acceso a los <strong>3 días completos</strong> del evento (Conferencias · Expo · Networking)</li>
       <li>Sesiones <strong>1:1 de networking estructurado</strong> programadas por industria</li>
       <li><strong>Todas las comidas incluidas</strong>: coffee breaks, comidas, cóctel y cena de clausura</li>
       <li>Asientos <strong>preferenciales en primera zona</strong> para todas las keynotes</li>
-      <li>Acceso prioritario a los <strong>4 talleres especializados</strong> del Día 1</li>
+      <li><strong>Desayuno VIP exclusivo</strong> el domingo 31 de enero de 2027</li>
       <li><strong>Kit ejecutivo premium</strong> del evento + publicación Actas IA Expo 2027</li>
       <li>Acceso al <strong>panel de alto nivel</strong>: líderes de industria LATAM</li>
       <li>Acceso a la <strong>Expo de Stands</strong> durante los 3 días</li>
@@ -378,9 +451,6 @@
       <li>Participación en <strong>dinámicas de inteligencia colectiva</strong> sobre IA en negocios</li>
       <li>Fotografía y memoria del retiro <strong>como recuerdo del grupo fundador</strong></li>
     </ul>
-    <div style="margin-top:14px;font-size:0.75rem;color:var(--muted);">
-      📌 Precio confirmado vía fiestamericanatravelty.com — habitación Premium Ocean View 1 King, doble ocupación, 3 noches all-inclusive: $32,400 MXN
-    </div>
   </div>
 
   <!-- 3. HOSPEDAJE CDMX -->
@@ -419,7 +489,7 @@
         <div class="benefit-icon">🍽️</div>
         <div>
           <div class="benefit-num">Beneficio 04</div>
-          <div class="benefit-title">Experiencias Gastronómicas y Sociales VIP Exclusivas</div>
+          <div class="benefit-title">Experiencias Sociales VIP Exclusivas</div>
           <div class="benefit-subtitle">Solo para los 10 miembros VIP · No disponible en ningún otro paquete</div>
         </div>
       </div>
@@ -433,8 +503,6 @@
       <li><strong>Desayuno privado de clausura Día 4</strong> — sesión íntima de cierre y reflexión</li>
       <li>Mesa y área <strong>VIP reservada</strong> en todos los eventos sociales del programa</li>
       <li>Bebidas de bienvenida y amenidades premium en habitación del hotel</li>
-      <li>Acceso a la <strong>zona verde VIP</strong> durante los 3 días del evento</li>
-      <li>Servicio de anfitrión personal asignado a cada VIP durante el evento</li>
     </ul>
     <div style="margin-top:14px;font-size:0.75rem;color:var(--muted);">
       📌 Experiencias gastronómicas privadas (2 personas × 4 días): $18,000 MXN estimado
@@ -449,7 +517,7 @@
         <div>
           <div class="benefit-num">Beneficio 05</div>
           <div class="benefit-title">Stand Propio en la Expo + 3 Acreditaciones de Staff</div>
-          <div class="benefit-subtitle">Presencia física de tu empresa en IA Expo 2027 · Días 2 y 3 del evento</div>
+          <div class="benefit-subtitle">Presencia física de tu empresa en IA Expo 2027 · Viernes 29 y Sábado 30 de enero</div>
         </div>
       </div>
       <div class="benefit-value">
@@ -458,7 +526,7 @@
       </div>
     </div>
     <ul class="benefit-items">
-      <li><strong>Espacio de stand asignado</strong> en el área de Expo — acceso durante los 3 días del evento</li>
+      <li><strong>Espacio de stand asignado</strong> en el área de Expo — viernes 29 y sábado 30 de enero</li>
       <li>Flujo natural de <strong>220 asistentes de alta calidad</strong> que pasan por la zona de expo</li>
       <li><strong>3 acreditaciones adicionales</strong> para tu equipo de staff / promotores del stand</li>
       <li>Electricidad dedicada y <strong>Wi-Fi de alta velocidad</strong> en tu espacio</li>
@@ -480,7 +548,7 @@
         <div>
           <div class="benefit-num">Beneficio 06</div>
           <div class="benefit-title">Paquete de Visibilidad y Publicidad — Antes y Durante el Evento</div>
-          <div class="benefit-subtitle">Exposición de tu marca equivalente a un patrocinio · 1,000+ decisores en la audiencia</div>
+          <div class="benefit-subtitle">Exposición de tu marca equivalente a un patrocinio · 300+ líderes y expertos en IA</div>
         </div>
       </div>
       <div class="benefit-value">
@@ -490,9 +558,9 @@
     </div>
     <ul class="benefit-items">
       <li><strong>Logo de tu empresa/marca</strong> en todos los materiales oficiales del evento</li>
-      <li>Presencia en <strong>pantallas LED</strong> durante los 3 días (conferencias + expo)</li>
+      <li>Presencia en <strong>pantallas</strong> durante el evento (conferencias + expo)</li>
       <li><strong>3 posts patrocinados</strong> en redes del evento (LinkedIn · Instagram · X) con mención directa</li>
-      <li>Inclusión en <strong>email marketing</strong> a base de datos de más de 1,000 contactos de decisión</li>
+      <li>Inclusión en <strong>email marketing</strong> a base de datos de más de 300 líderes y expertos en IA</li>
       <li>Mención destacada en <strong>comunicados de prensa</strong> y cobertura mediática</li>
       <li>Perfil VIP en el <strong>directorio digital oficial</strong> de IA Expo 2027</li>
       <li>Crédito visible en la <strong>publicación oficial Actas del Evento</strong></li>
@@ -503,7 +571,7 @@
     </div>
   </div>
 
-  <!-- 6. MESA ESTRATÉGICA -->
+  <!-- 7. MESA ESTRATÉGICA -->
   <div class="benefit-card red">
     <div class="benefit-header">
       <div class="benefit-icon-title">
@@ -522,67 +590,67 @@
     <ul class="benefit-items">
       <li>Sesión privada de trabajo: <strong>expansión de IA Expo a otras ciudades y países</strong></li>
       <li><strong>Primer acceso</strong> a oportunidades de co-organización regional (Monterrey, GDL, Bogotá, Miami)</li>
-      <li><strong>Derecho de primera opción</strong> en Membresía VIP de IA Expo 2028 al mismo precio</li>
-      <li>Formas parte de los <strong>10 fundadores del ecosistema IA LATAM</strong> más influyente</li>
-      <li>Red de contacto directo y permanente con el <strong>equipo organizador</strong></li>
-      <li>Acceso a los <strong>resultados y aprendizajes post-evento</strong> (cierre financiero, métricas)</li>
+      <li><strong>Derecho de primera opción</strong> en Membresía VIP de IA Expo 2028 con precio preferencial</li>
+      <li>Formas parte de los <strong>10 fundadores del Ecosistema IA<sup>x</sup></strong> más influyente de LATAM</li>
+      <li>Red de contacto directo y permanente con el <strong>Comité Organizador</strong></li>
+      <li>Acceso a los <strong>resultados y aprendizajes post-evento</strong></li>
     </ul>
     <div style="margin-top:14px;font-size:0.75rem;color:var(--muted);">
       📌 Este beneficio no está disponible a la venta por separado en ningún precio — exclusivo para los 10 VIPs fundadores.
     </div>
   </div>
 
-  <!-- ══════════ TABLA DE VALOR ══════════ -->
-  <div class="sec-title">📊 Tu inversión vs. el valor que recibes</div>
+  <!-- ══════════ MÉTODOS DE PAGO ══════════ -->
+  <div class="sec-title">💳 Métodos de Pago</div>
 
-  <div class="value-table">
-    <div class="vt-header">💎 Desglose de Valor — Membresía VIP (para 2 personas)</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;" class="payment-grid">
 
-    <div class="vt-row">
-      <div class="vt-name"><span class="em">🥂</span> Paquete Networking Estructurado × 2 personas (precio público $24,900 c/u)</div>
-      <div class="vt-amount green">$49,800</div>
-    </div>
-    <div class="vt-row">
-      <div class="vt-name"><span class="em">🏝️</span> Retiro VIP Cancún — Live Aqua, Premium Ocean View 1 King (2 personas, 3 noches all-inclusive)</div>
-      <div class="vt-amount green">$32,400</div>
-    </div>
-    <div class="vt-row">
-      <div class="vt-name"><span class="em">🏨</span> Hospedaje CDMX — Gran Fiesta Americana Chapultepec (2 personas, 3 noches + desayunos)</div>
-      <div class="vt-amount green">$36,000</div>
-    </div>
-    <div class="vt-row">
-      <div class="vt-name"><span class="em">🍽️</span> Experiencias gastronómicas y sociales VIP exclusivas (2 personas, 4 días)</div>
-      <div class="vt-amount green">$18,000</div>
-    </div>
-    <div class="vt-row">
-      <div class="vt-name"><span class="em">🏛️</span> Stand propio en IA Expo (espacio + montaje básico) + 3 acreditaciones de staff</div>
-      <div class="vt-amount green">$79,700</div>
-    </div>
-    <div class="vt-row">
-      <div class="vt-name"><span class="em">📣</span> Paquete de visibilidad y publicidad (equivalente micro-patrocinio)</div>
-      <div class="vt-amount green">$65,000</div>
-    </div>
-    <div class="vt-row">
-      <div class="vt-name"><span class="em">🚀</span> Acceso Mesa Estratégica IA Expo Global + derecho de primera opción 2028</div>
-      <div class="vt-amount green">$25,000</div>
+    <div style="background:linear-gradient(135deg,rgba(0,230,118,0.08),rgba(0,229,255,0.04));border:2px solid rgba(0,230,118,0.4);border-radius:16px;padding:26px;position:relative;">
+      <div style="position:absolute;top:-13px;left:24px;background:var(--green);color:#000;font-size:0.65rem;font-weight:800;padding:4px 14px;border-radius:99px;letter-spacing:1.5px;">PAGO ÚNICO</div>
+      <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">Opción 1</div>
+      <div style="font-size:2.4rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:6px;">$190,000</div>
+      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Un solo pago en pesos mexicanos. Reserva tu lugar de forma inmediata. Sin cargos adicionales.</div>
     </div>
 
-    <div class="vt-row total">
-      <div class="vt-name" style="font-weight:800;color:#fff;font-size:1rem;">✅ VALOR TOTAL DEL PAQUETE</div>
-      <div class="vt-amount green big">$305,900</div>
+    <div style="background:linear-gradient(135deg,rgba(255,213,79,0.08),rgba(255,183,77,0.04));border:2px solid rgba(255,213,79,0.35);border-radius:16px;padding:26px;position:relative;">
+      <div style="position:absolute;top:-13px;left:24px;background:var(--gold);color:#000;font-size:0.65rem;font-weight:800;padding:4px 14px;border-radius:99px;letter-spacing:1.5px;">PLAN MENSUAL</div>
+      <div style="font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:10px;">Opción 2</div>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;">
+        <div style="font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;">$19,900</div>
+        <div style="font-size:0.9rem;color:var(--muted);">× 10 meses</div>
+      </div>
+      <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;">10 mensualidades iguales. Primer pago al confirmar la membresía. Todos los beneficios activos desde el inicio.</div>
     </div>
-    <div class="vt-row price-row">
-      <div class="vt-name" style="font-weight:800;color:var(--gold);font-size:1rem;">💎 Precio Membresía VIP</div>
-      <div class="vt-amount gold big">$190,000</div>
-    </div>
-    <div class="vt-row saving-row">
-      <div class="vt-name" style="font-weight:800;color:var(--cyan);font-size:1rem;">🎯 TU AHORRO TOTAL</div>
-      <div class="vt-amount cyan big">$115,900 &nbsp;<span style="font-size:1rem;font-weight:700;">(38%)</span></div>
-    </div>
+
+  </div>
+  <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:14px 20px;font-size:0.8rem;color:var(--muted);line-height:1.7;">
+    💡 <strong style="color:#fff;">Ambas opciones incluyen exactamente los mismos 7 beneficios.</strong> Se aceptan transferencia bancaria (SPEI), tarjeta de crédito/débito y factura electrónica (CFDI). Escríbenos para recibir los datos de pago.
   </div>
 
-  <div style="margin-top:14px; background:rgba(255,183,77,0.07); border:1px solid rgba(255,183,77,0.25); border-radius:10px; padding:14px 18px; font-size:0.82rem; color:var(--muted); line-height:1.7;">
-    ⚠️ <strong style="color:var(--orange);">Importante:</strong> El valor de mercado mostrado corresponde a precios de lista para cada beneficio comprado por separado (hospedaje Cancún verificado en fiestamericanatravelty.com). Como miembro VIP accedes a todo el paquete integrado a un precio especial que no volverá a estar disponible en esta edición.
+  <!-- ══════════ GARANTÍA ══════════ -->
+  <div class="sec-title">🛡️ Garantía y Política de Cancelación</div>
+
+  <div style="background:linear-gradient(135deg,rgba(206,147,216,0.07),rgba(13,110,253,0.05));border:1px solid rgba(206,147,216,0.3);border-radius:16px;padding:28px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+      <div style="font-size:2rem;">🛡️</div>
+      <div>
+        <div style="font-size:1.05rem;font-weight:800;color:#fff;">Cancela cuando quieras — sin preguntas</div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Tu inversión está protegida. Así de simple.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:16px;">
+        <div style="font-size:0.7rem;font-weight:800;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">💳 Pago único</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Si cancelas en cualquier momento, te reembolsamos la <strong style="color:#fff;">fracción proporcional</strong> del tiempo restante hasta el evento. Sin preguntas, sin penalizaciones.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:16px;">
+        <div style="font-size:0.7rem;font-weight:800;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">📅 Plan mensual</div>
+        <div style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Si cancelas en cualquier momento, simplemente <strong style="color:#fff;">se detienen los pagos restantes</strong>. No se cobra nada más. Sin preguntas, sin penalizaciones.</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding:14px;background:rgba(0,229,255,0.05);border-radius:10px;border:1px solid rgba(0,229,255,0.15);font-size:0.82rem;color:var(--muted);line-height:1.7;text-align:center;">
+      📩 Para cancelar basta con enviarnos un correo a <a href="mailto:info@iaExpo.ai" style="color:var(--cyan);font-weight:700;text-decoration:none;">info@iaExpo.ai</a>. Procesamos el reembolso en un máximo de 5 días hábiles.
+    </div>
   </div>
 
   <!-- ══════════ URGENCIA ══════════ -->
@@ -658,15 +726,18 @@
   <div class="cta-section">
     <div class="cta-title">¿Listo/a para ser parte del grupo fundador?</div>
     <div class="cta-sub">Quedan <strong style="color:var(--red);">8 cupos disponibles.</strong> El precio de $190,000 MXN es fijo — no hay fases ni descuentos adicionales.</div>
-    <a href="mailto:lalo3657@gmail.com?subject=Membresía%20VIP%20—%20IA%20Expo%20Internacional%202027&body=Hola%2C%20estoy%20interesado%2Fa%20en%20la%20Membresía%20VIP%20de%20IA%20Expo%20Internacional%C2%AE%202027.%20Por%20favor%20envíenme%20información%20adicional%20y%20el%20contrato." class="cta-btn">
+    <a href="mailto:info@iaExpo.ai?subject=Membresía%20VIP%20—%20IA%20Expo%20Internacional%202027&body=Hola%2C%20estoy%20interesado%2Fa%20en%20la%20Membresía%20VIP%20de%20IA%20Expo%20Internacional%C2%AE%202027.%20Por%20favor%20envíenme%20información%20adicional%20y%20el%20contrato." class="cta-btn">
       Quiero mi Membresía VIP →
     </a>
-    <div class="cta-contact">¿Preguntas? Escríbenos directamente a <a href="mailto:lalo3657@gmail.com">lalo3657@gmail.com</a></div>
+    <div class="cta-contact">¿Preguntas? Escríbenos directamente a <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a></div>
   </div>
 
 </div>
 
 <footer>
+  <div style="background:rgba(255,183,77,0.07);border:1px solid rgba(255,183,77,0.2);border-radius:10px;padding:12px 20px;margin-bottom:20px;font-size:0.78rem;color:var(--orange);line-height:1.6;">
+    ⚠️ <strong>Información preliminar sujeta a cambios.</strong> Los beneficios, precios, fechas y condiciones descritos en este documento son indicativos y pueden modificarse sin previo aviso hasta la firma del contrato de membresía.
+  </div>
   <strong>IA Expo Internacional® 2027</strong> · Gran Fiesta Americana Chapultepec, CDMX · 28–30 Enero 2027<br>
   <span style="margin-top:6px;display:block;">Membresía VIP — Documento confidencial de invitación. Precio en pesos mexicanos (MXN). Todos los derechos reservados.</span>
 </footer>
