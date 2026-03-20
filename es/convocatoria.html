@@ -27,8 +27,9 @@
     background:rgba(3,11,26,0.96); backdrop-filter:blur(12px);
     border-bottom:1px solid var(--border);
     display:flex; align-items:center; justify-content:space-between;
-    padding:0 28px; height:54px;
+    padding:0 16px; height:54px;
   }
+  @media(min-width:769px){ nav { padding:0 28px; } }
   .nav-brand { font-size:0.75rem; font-weight:800; color:var(--cyan); letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; }
   .nav-tabs { display:flex; gap:5px; flex-wrap:wrap; }
   .ntab {
@@ -102,6 +103,7 @@
   .meta-item .m-val.c-gold { color:var(--gold); }
   .meta-item .m-val.c-green { color:var(--green); }
   @media(max-width:700px){ .hero { padding:24px 22px; } .hero-title { font-size:1.7rem; } .meta-item { min-width:48%; } }
+  @media(max-width:480px){ .hero-title { font-size:1.45rem; } .meta-item { min-width:100%; border-right:none; border-bottom:1px solid var(--border); } .meta-item:last-child { border-bottom:none; } }
 
   /* STEPS */
   .steps { counter-reset: step; }
@@ -196,6 +198,7 @@
   }
   .cta-box h3 { font-size:1.4rem; font-weight:900; color:#fff; margin-bottom:10px; }
   .cta-box p { font-size:0.88rem; color:var(--muted); line-height:1.7; max-width:500px; margin:0 auto 24px; }
+  .cta-btns { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
   .btn-primary {
     display:inline-block; padding:14px 36px; border-radius:10px;
     background:linear-gradient(135deg,var(--blue),#0A84FF);
@@ -208,9 +211,19 @@
     display:inline-block; padding:13px 28px; border-radius:10px;
     background:transparent; color:var(--cyan); font-weight:700; font-size:0.88rem;
     text-decoration:none; border:1px solid rgba(0,229,255,0.4); cursor:pointer;
-    font-family:inherit; transition:all 0.2s; letter-spacing:0.5px; margin-left:12px;
+    font-family:inherit; transition:all 0.2s; letter-spacing:0.5px; margin-left:0;
   }
   .btn-outline:hover { background:rgba(0,229,255,0.08); }
+  @media(max-width:480px){ .cta-box { padding:24px 20px; } .btn-primary, .btn-outline { width:100%; text-align:center; } }
+
+  /* RESPONSIVE TABLES */
+  .table-wrap { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  @media(max-width:600px){
+    .table-wrap table thead .col-hide { display:none; }
+    .table-wrap table tbody .col-hide { display:none; }
+    .table-wrap table { font-size:0.78rem; }
+    .table-wrap table th, .table-wrap table td { padding:9px 8px !important; }
+  }
 
   /* REVENUE PROJECTION */
   .proj-row {
@@ -224,6 +237,19 @@
 
   footer { text-align:center; padding:36px 0; border-top:1px solid var(--border); color:var(--muted); font-size:0.75rem; margin-top:20px; }
   footer strong { color:var(--cyan); }
+
+  /* ── MOBILE GLOBAL ── */
+  @media(max-width:600px){
+    .wrap { padding:0 14px; }
+    .section { padding:24px 0 36px; }
+    .sec-title { font-size:1.1rem; }
+    .card { padding:18px 16px; }
+    .fee-price { font-size:2rem; }
+    .stat .val { font-size:1.3rem; }
+    .cta-box { padding:24px 18px; }
+    .cta-box h3 { font-size:1.15rem; }
+    footer { padding:24px 0; font-size:0.7rem; }
+  }
 </style>
 </head>
 <body>
@@ -237,7 +263,7 @@
     <button class="ntab" onclick="show('proceso',this)">🔄 Proceso</button>
     <button class="ntab" onclick="show('timeline',this)">🗓️ Fechas Clave</button>
     <button class="ntab" onclick="show('beneficios',this)">🏆 Beneficios</button>
-    <button class="ntab" onclick="show('estrategia',this)">📊 Estrategia</button>
+    <button class="ntab" onclick="show('tyc',this)">⚖️ Términos y Condiciones</button>
   </div>
   <button class="hamburger" id="hbtn" onclick="toggleNav()"><span></span><span></span><span></span></button>
 </nav>
@@ -248,7 +274,7 @@
   <button class="ntab" onclick="show('proceso',this);closeNav()">🔄 Proceso</button>
   <button class="ntab" onclick="show('timeline',this);closeNav()">🗓️ Fechas Clave</button>
   <button class="ntab" onclick="show('beneficios',this);closeNav()">🏆 Beneficios</button>
-  <button class="ntab" onclick="show('estrategia',this);closeNav()">📊 Estrategia</button>
+  <button class="ntab" onclick="show('tyc',this);closeNav()">⚖️ Términos y Condiciones</button>
 </div>
 
 <div class="wrap">
@@ -258,8 +284,8 @@
 
   <div class="hero">
     <div class="hero-eyebrow">📣 Convocatoria Oficial · Actas IA Expo Internacional® 2027</div>
-    <div class="hero-title">Publica tu investigación.<br>Conviértete en <span>conferencista</span>.</div>
-    <div class="hero-sub">Invitamos a investigadores, académicos, profesionales y emprendedores de habla hispana a someter artículos para publicación en las <strong style="color:#fff">Actas Oficiales IA Expo 2027</strong>. Los trabajos aceptados son candidatos directos a presentación en la conferencia más importante de Inteligencia Artificial en Latinoamérica.</div>
+    <div class="hero-title">Inspira a miles desde el escenario de<br><span>IA Expo Internacional<sup>®</sup> 2027</span>.</div>
+    <div class="hero-sub">¿Has transformado tu negocio, tu carrera, tu vocación o tu pasión aplicando herramientas de IA? <strong style="color:#fff">Comparte tu experiencia con IA</strong> y conviértete en conferencista de la IA Expo Internacional® 2027 — el encuentro más inspirador de inteligencia artificial en Latinoamérica. Tu experiencia puede cambiar la vida de alguien más.</div>
     <div class="hero-meta">
       <div class="meta-item">
         <div class="m-lbl">📅 Evento</div>
@@ -288,47 +314,62 @@
   <div class="grid2" style="margin-bottom:24px;">
     <div class="card">
       <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:12px;">¿QUÉ SON LAS ACTAS?</div>
-      <p style="font-size:0.85rem;color:var(--muted);line-height:1.8;">Las <strong style="color:#fff">Actas IA Expo Internacional® 2027</strong> son la publicación académica y profesional oficial del evento. Reúnen los mejores trabajos seleccionados por un comité de revisión de doble ciego, y son distribuidas física y digitalmente a todos los asistentes durante el evento.</p>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.8;">Las <strong style="color:#fff">Actas IA Expo Internacional® 2027</strong> son la memoria colectiva del evento — una publicación que reúne las experiencias, descubrimientos y resultados reales de personas que, como tú, ya están usando la inteligencia artificial para cambiar su mundo. Se distribuyen impresa y digitalmente a todos los asistentes y quedan disponibles para la comunidad global de IA.</p>
       <div class="chips" style="margin-top:14px;">
-        <span class="chip accent">Revisión por pares</span>
+        <span class="chip accent">Revisado por la comunidad IA<sup>x</sup></span>
         <span class="chip accent">ISSN asignado</span>
-        <span class="chip accent">Digital + Impreso</span>
+        <span class="chip accent">Digital</span>
       </div>
     </div>
     <div class="card">
       <div style="font-size:0.7rem;font-weight:800;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">¿QUIÉN PUEDE PARTICIPAR?</div>
       <ul class="req-list">
-        <li>Investigadores y académicos con trabajos originales sobre IA</li>
-        <li>Profesionales de industria con casos de implementación reales</li>
-        <li>Emprendedores con soluciones o modelos de negocio basados en IA</li>
-        <li>Equipos interdisciplinarios (máx. 4 autores por artículo)</li>
-        <li>Autores de cualquier país de habla hispana, inglesa o portuguesa</li>
+        <li>Visionarios e innovadores quienes analizan el impacto de la IA</li>
+        <li>Empresarios y líderes que han transformado su negocio con herramientas de IA</li>
+        <li>Expertos en IA con hallazgos aplicables al mundo real, transformaciones y resultados</li>
+        <li>Creativos, artistas y comunicadores que exploran la IA como aliada</li>
+        <li>Cualquier persona que haya usado IA en su vida personal, profesional o artística</li>
+        <li>Equipos de hasta 4 personas · Cualquier país de LATAM, España o EE.UU.</li>
       </ul>
     </div>
   </div>
 
   <!-- TIPOS DE TRABAJO -->
-  <div class="sec-title">📋 Tipos de Trabajo Aceptados</div>
-  <div class="grid3" style="margin-bottom:24px;">
-    <div class="card" style="border-color:rgba(0,229,255,0.25);">
-      <div style="font-size:1.4rem;margin-bottom:10px;">🔬</div>
-      <div style="font-weight:800;color:var(--cyan);margin-bottom:6px;">Artículo de Investigación</div>
-      <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Estudios empíricos, revisiones sistemáticas y propuestas metodológicas originales. <strong style="color:#fff">8–15 páginas.</strong></p>
-    </div>
+  <div class="sec-title">📋 Tipos de Artículo Aceptados</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px;">
     <div class="card" style="border-color:rgba(255,213,79,0.25);">
-      <div style="font-size:1.4rem;margin-bottom:10px;">🏭</div>
-      <div style="font-weight:800;color:var(--gold);margin-bottom:6px;">Caso de Implementación</div>
-      <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Proyectos de IA aplicada en empresas reales con métricas de impacto cuantificables. <strong style="color:#fff">6–10 páginas.</strong></p>
+      <div style="font-size:1.4rem;margin-bottom:10px;">🚀</div>
+      <div style="font-weight:800;color:var(--gold);margin-bottom:6px;">Caso de Transformación</div>
+      <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Cómo implementaste IA en tu empresa, equipo o industria con resultados medibles. Ideal para líderes empresariales y emprendedores. <strong style="color:#fff">6–10 páginas.</strong></p>
+    </div>
+    <div class="card" style="border-color:rgba(0,229,255,0.25);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">✨</div>
+      <div style="font-weight:800;color:var(--cyan);margin-bottom:6px;">Relato de Experiencia</div>
+      <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Comparte cómo usaste las herramientas de IA para simplificar tu trabajo o resolver un problema y qué resultados obtuviste en tu vida, empresa o proyecto creativo. <strong style="color:#fff">4–8 páginas.</strong></p>
     </div>
     <div class="card" style="border-color:rgba(0,230,118,0.25);">
-      <div style="font-size:1.4rem;margin-bottom:10px;">💡</div>
-      <div style="font-weight:800;color:var(--green);margin-bottom:6px;">Artículo de Posición</div>
-      <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Perspectivas críticas, tendencias del sector y propuestas de política o regulación. <strong style="color:#fff">5–8 páginas.</strong></p>
+      <div style="font-size:1.4rem;margin-bottom:10px;">🔬</div>
+      <div style="font-weight:800;color:var(--green);margin-bottom:6px;">Investigación Aplicada</div>
+      <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Estudios, análisis y hallazgos técnicos con aplicaciones reales y prácticas para la comunidad. Con rigor pero accesibles. <strong style="color:#fff">8–15 páginas.</strong></p>
+    </div>
+    <div class="card" style="border-color:rgba(206,147,216,0.25);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">🎨</div>
+      <div style="font-weight:800;color:var(--purple);margin-bottom:6px;">Exploración Artística</div>
+      <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;">Tu proceso creativo con herramientas de IA en diseño, música, escritura, arte visual, video o cualquier expresión artística. <strong style="color:#fff">4–8 páginas.</strong></p>
     </div>
   </div>
 
   <div class="note-cyan">
-    <strong>Formato requerido:</strong> Todos los artículos deben seguir la plantilla oficial IA Expo 2027 (disponible en iaExpo.ai/plantilla). Fuente Times New Roman 11pt, interlineado 1.15, márgenes 2.5 cm, resumen de 150–250 palabras, mínimo 10 referencias bibliográficas en formato APA 7a edición.
+    <strong>Formato IA Expo 2027:</strong> La plantilla oficial (disponible en iaExpo.ai/plantilla) es sencilla — con Word es suficiente. Lo más importante es que tu experiencia sea genuina, tu aprendizaje sea valioso y tu historia pueda inspirar a otros. Un resumen de 150 palabras y referencias básicas son todo lo que pedimos adicionalmente.
+  </div>
+
+  <div class="cta-box" style="margin-top:28px;">
+    <h3>Tu ExperiencIA merece un escenario. 🎤</h3>
+    <p>Miles de personas en LATAM están transformando su vida con IA — y la mayoría aún no lo sabe. Tú puedes ser quien los inspire. Descarga la plantilla, escribe tu experiencia y únete a la comunidad que está construyendo el futuro de la inteligencia artificial en nuestra región.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary">Enviar mi Artículo →</a>
+      <a href="#" class="btn-outline">Descargar Plantilla</a>
+    </div>
   </div>
 </div>
 
@@ -336,263 +377,230 @@
 <div class="section" id="tracks">
   <div class="sec-title">🎯 Ejes Temáticos — 7 Tracks</div>
 
-  <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:24px;">La convocatoria está organizada en 7 ejes temáticos que corresponden a los tracks del programa de conferencias. Al someter tu artículo, deberás seleccionar el eje principal y, opcionalmente, uno secundario. Los trabajos aceptados en cada eje son presentados en el track correspondiente durante los días 2 y 3 del evento.</p>
+  <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:24px;">La IA está transformando todos los ámbitos de la vida — y en IA Expo 2027 queremos escuchar esas historias de primera mano. Hay un espacio para ti sin importar en qué área usas la inteligencia artificial. Al enviar tu artículo, elige el eje que mejor describe tu experiencia. Los trabajos aceptados presentan en el track correspondiente ante más de 220 líderes, profesionales y emprendedores.</p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px;">
 
     <div class="track-card" style="border-top-color:var(--blue);">
       <div class="track-icon">💼</div>
       <div class="track-name">Track 1 · Negocios e Innovación</div>
-      <div class="track-desc">Transformación digital empresarial, automatización de procesos, IA generativa en operaciones, modelos de negocio habilitados por IA, productividad organizacional.</div>
+      <div class="track-desc">¿Usaste Copilot para generar reportes, ChatGPT para atender clientes o Claude para automatizar procesos? Comparte cómo la IA cambió la forma en que operas tu negocio o empresa.</div>
       <div class="chips">
-        <span class="chip">Estrategia</span><span class="chip">Automatización</span><span class="chip">ROI</span>
+        <span class="chip">Productividad</span><span class="chip">Automatización</span><span class="chip">ROI real</span>
       </div>
     </div>
 
     <div class="track-card" style="border-top-color:var(--green);">
       <div class="track-icon">💳</div>
       <div class="track-name">Track 2 · FinTech e Inversión</div>
-      <div class="track-desc">IA en servicios financieros, detección de fraude, robo-advisors, crédito alternativo, gestión de riesgos, algoritmos de inversión, banca abierta.</div>
+      <div class="track-desc">Experiencias usando IA para analizar mercados, gestionar finanzas personales o empresariales, detectar fraude o desarrollar soluciones financieras innovadoras en LATAM.</div>
       <div class="chips">
-        <span class="chip">Finanzas</span><span class="chip">Riesgo</span><span class="chip">RegTech</span>
+        <span class="chip">Finanzas</span><span class="chip">Inversión</span><span class="chip">Fintech</span>
       </div>
     </div>
 
     <div class="track-card" style="border-top-color:#EC407A;">
       <div class="track-icon">🏥</div>
       <div class="track-name">Track 3 · Medicina y Salud Digital</div>
-      <div class="track-desc">Diagnóstico asistido, procesamiento de imagen médica, modelos predictivos de salud, salud mental y IA, genómica computacional, sistemas clínicos de soporte.</div>
+      <div class="track-desc">Cómo los profesionales de salud, pacientes y cuidadores están usando IA — desde asistir diagnósticos hasta gestionar expedientes, mejorar el bienestar y apoyar la salud mental.</div>
       <div class="chips">
-        <span class="chip">Clínica</span><span class="chip">Diagnóstico</span><span class="chip">Genómica</span>
+        <span class="chip">Salud</span><span class="chip">Bienestar</span><span class="chip">Diagnóstico</span>
       </div>
     </div>
 
     <div class="track-card" style="border-top-color:var(--orange);">
       <div class="track-icon">⚖️</div>
       <div class="track-name">Track 4 · Marco Legal y Regulatorio</div>
-      <div class="track-desc">Regulación de IA en LATAM, propiedad intelectual, sesgo algorítmico y responsabilidad, cumplimiento normativo, gobernanza de datos, LegalTech.</div>
+      <div class="track-desc">Abogados, notarios y profesionales del derecho que usan IA en su práctica; reflexiones sobre propiedad intelectual, regulación en LATAM y los derechos en la era de la IA.</div>
       <div class="chips">
-        <span class="chip">Regulación</span><span class="chip">Gobernanza</span><span class="chip">IP</span>
+        <span class="chip">LegalTech</span><span class="chip">Regulación</span><span class="chip">Derechos digitales</span>
       </div>
     </div>
 
     <div class="track-card" style="border-top-color:var(--purple);">
       <div class="track-icon">🧭</div>
       <div class="track-name">Track 5 · Ética e Impacto Social</div>
-      <div class="track-desc">IA responsable, equidad y sesgo, transparencia algorítmica, inclusión digital, impacto en el empleo, IA para el bien común, derechos digitales.</div>
+      <div class="track-desc">Reflexiones honestas sobre el impacto humano de la IA — en el empleo, la inclusión, la equidad y la sociedad. ¿Cómo usamos la IA de forma responsable para construir un mejor futuro?</div>
       <div class="chips">
-        <span class="chip">Responsabilidad</span><span class="chip">Inclusión</span><span class="chip">Equidad</span>
+        <span class="chip">Responsabilidad</span><span class="chip">Inclusión</span><span class="chip">Humanismo</span>
       </div>
     </div>
 
     <div class="track-card" style="border-top-color:var(--gold);">
       <div class="track-icon">🎨</div>
       <div class="track-name">Track 6 · Artes y Creatividad</div>
-      <div class="track-desc">IA generativa en diseño y arte, música y audio con IA, producción audiovisual, industrias culturales, co-creación humano-máquina, entretenimiento.</div>
+      <div class="track-desc">Diseñadores, músicos, escritores, cineastas y artistas que colaboran con IA generativa. Muestra tu proceso creativo con Midjourney, Suno, RunwayML, ChatGPT o cualquier herramienta que uses.</div>
       <div class="chips">
-        <span class="chip">Generativa</span><span class="chip">Diseño</span><span class="chip">Cultura</span>
+        <span class="chip">Arte generativo</span><span class="chip">Música</span><span class="chip">Diseño</span>
       </div>
     </div>
 
     <div class="track-card" style="border-top-color:var(--cyan);">
       <div class="track-icon">📚</div>
       <div class="track-name">Track 7 · Educación y Empleabilidad</div>
-      <div class="track-desc">IA en el aula, personalización del aprendizaje, reskilling y upskilling, nuevos perfiles laborales, universidades y tecnología, futuro del trabajo.</div>
+      <div class="track-desc">Maestros, estudiantes, coaches y empresas que usan IA para aprender, enseñar y prepararse para el mercado laboral del futuro. ¿Cómo cambió tu forma de aprender y crecer con IA?</div>
       <div class="chips">
-        <span class="chip">EdTech</span><span class="chip">Futuro laboral</span><span class="chip">Talento</span>
+        <span class="chip">Aprendizaje</span><span class="chip">Futuro laboral</span><span class="chip">Talento</span>
       </div>
     </div>
 
   </div>
 
   <div class="note">
-    <strong>Subtemas transversales aceptados:</strong> Seguridad y ciberseguridad con IA · IA en agricultura y sustentabilidad · Movilidad autónoma · Smart Cities · Cadena de suministro inteligente · IA en gobierno y sector público. Si tu trabajo no encaja claramente en un track, selecciona el más cercano y menciónalo en la carta de presentación.
+    <strong>¿Tu historia no encaja en un solo track?</strong> No importa — la IA es transversal por naturaleza. También aceptamos experiencias en: agro e industria · turismo y hospitalidad · gobierno y sector público · seguridad digital · deportes y bienestar · emprendimiento social. Si tu experiencia es genuina y tu aprendizaje es valioso para la comunidad, queremos escucharte.
+  </div>
+
+  <div class="cta-box" style="margin-top:28px;">
+    <h3>Tu ExperiencIA merece un escenario. 🎤</h3>
+    <p>Miles de personas en LATAM están transformando su vida con IA — y la mayoría aún no lo sabe. Tú puedes ser quien los inspire. Descarga la plantilla, escribe tu experiencia y únete a la comunidad que está construyendo el futuro de la inteligencia artificial en nuestra región.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary">Enviar mi Artículo →</a>
+      <a href="#" class="btn-outline">Descargar Plantilla</a>
+    </div>
   </div>
 </div>
 
 <!-- ══════════ INSCRIPCIÓN ══════════ -->
 <div class="section" id="inscripcion">
-  <div class="sec-title">💳 Cuota de Inscripción — Requisito para Somisión</div>
+  <div class="sec-title">📋 Envío de Artículos — Sin Costo</div>
 
-  <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:24px;">Para garantizar la seriedad de los trabajos sometidos y asegurar la participación de los autores aceptados en el evento, <strong style="color:#fff">todos los autores principales deben cubrir una cuota de inscripción antes de someter su artículo.</strong> Esta cuota funciona como registro mínimo al evento y, en caso de aceptación, puede acreditarse contra cualquier paquete de asistencia.</p>
+  <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:24px;">En IA Expo Internacional® 2027 creemos que las buenas ideas no deben tener barreras. <strong style="color:#fff">Enviar tu artículo es completamente gratuito.</strong> Queremos que lo que te abra las puertas al escenario sea la calidad e impacto de tu experiencia — no el tamaño de tu bolsillo.</p>
 
-  <div class="grid2" style="margin-bottom:24px;">
-
-    <div class="fee-card early">
-      <div class="fee-tag green">🔥 Inscripción Temprana</div>
-      <div class="fee-price">$3,500</div>
-      <div class="fee-period">MXN · Envíos antes del 30 Jun 2026</div>
-      <div style="height:1px;background:rgba(0,230,118,0.2);margin:16px 0;"></div>
-      <div class="fee-item"><span>✓</span> Acceso al evento como asistente (pase Expo)</div>
-      <div class="fee-item"><span>✓</span> Acreditable al comprar cualquier paquete superior</div>
-      <div class="fee-item"><span>✓</span> Evaluación prioritaria por el comité</div>
-      <div class="fee-item"><span>✓</span> Notificación de resultado en Octubre 2026</div>
-      <div class="fee-item"><span>✓</span> Copia digital de las Actas si se acepta</div>
-      <div style="margin-top:16px;padding:10px 14px;background:rgba(0,230,118,0.08);border-radius:8px;font-size:0.78rem;color:var(--green);text-align:center;font-weight:700;">
-        AHORRA $1,000 vs. inscripción regular
-      </div>
+  <!-- LO QUE DEBES SABER -->
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:24px;">
+    <div class="card" style="border-color:rgba(0,229,255,0.3);background:rgba(0,229,255,0.04);">
+      <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:14px;">✅ LO QUE INCLUYE EL ENVÍO</div>
+      <ul class="req-list">
+        <li>Evaluación gratuita de tu artículo por el comité de IA Expo</li>
+        <li>Retroalimentación personalizada, seas seleccionado o no</li>
+        <li>Publicación en las Actas Oficiales si tu artículo es aceptado</li>
+        <li>Notificación de resultado en Octubre 2026</li>
+        <li>Consideración prioritaria para ediciones futuras del evento</li>
+      </ul>
     </div>
-
-    <div class="fee-card regular">
-      <div class="fee-tag cyan">⏰ Inscripción Regular</div>
-      <div class="fee-price">$4,500</div>
-      <div class="fee-period">MXN · Envíos del 1 Jul al 31 Ago 2026</div>
-      <div style="height:1px;background:rgba(0,229,255,0.2);margin:16px 0;"></div>
-      <div class="fee-item"><span>✓</span> Acceso al evento como asistente (pase Expo)</div>
-      <div class="fee-item"><span>✓</span> Acreditable al comprar cualquier paquete superior</div>
-      <div class="fee-item"><span>✓</span> Evaluación por el comité científico</div>
-      <div class="fee-item"><span>✓</span> Notificación de resultado en Octubre 2026</div>
-      <div class="fee-item"><span>✓</span> Copia digital de las Actas si se acepta</div>
-      <div style="margin-top:16px;padding:10px 14px;background:rgba(0,229,255,0.06);border-radius:8px;font-size:0.78rem;color:var(--cyan);text-align:center;font-weight:700;">
-        Precio estándar de convocatoria
-      </div>
+    <div class="card" style="border-color:rgba(255,183,77,0.3);background:rgba(255,183,77,0.04);">
+      <div style="font-size:0.7rem;font-weight:800;color:var(--orange);letter-spacing:2px;margin-bottom:14px;">⚠️ IMPORTANTE QUE SEPAS</div>
+      <ul class="req-list">
+        <li>Enviar un artículo <strong style="color:#fff">no garantiza</strong> ser seleccionado como conferencista</li>
+        <li>Los cupos de presentación son limitados — se seleccionan los mejores trabajos</li>
+        <li>La decisión del comité es final e inapelable</li>
+        <li>Los conferencistas seleccionados <strong style="color:#fff">deben adquirir su boleto</strong> de acceso al evento</li>
+        <li>No se otorgan boletos de cortesía — aplica para todos sin excepción</li>
+      </ul>
     </div>
-
   </div>
 
-  <!-- ACREDITACIÓN -->
-  <div class="sec-title">↕️ Acreditación de la Cuota</div>
-  <div class="card" style="margin-bottom:20px;">
-    <div style="font-size:0.85rem;color:var(--muted);line-height:1.8;margin-bottom:16px;">La cuota de inscripción a la convocatoria <strong style="color:#fff">se descuenta íntegramente</strong> del precio de cualquier paquete de asistencia al evento. Aplica tanto para autores aceptados como rechazados — tu inscripción siempre te da acceso al evento.</div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
-        <thead>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
-            <th style="text-align:left;padding:10px 12px;color:var(--muted);font-weight:600;">Paquete de Asistencia</th>
-            <th style="text-align:right;padding:10px 12px;color:var(--muted);font-weight:600;">Precio Lista</th>
-            <th style="text-align:right;padding:10px 12px;color:var(--green);font-weight:600;">− Inscripción Temprana</th>
-            <th style="text-align:right;padding:10px 12px;color:var(--cyan);font-weight:600;">− Inscripción Regular</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-            <td style="padding:11px 12px;">🏛️ Expo (entrada básica)</td>
-            <td style="text-align:right;padding:11px 12px;color:#fff;">$4,450</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--green);">$950 adicional</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--green);">INCLUIDO ✓</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-            <td style="padding:11px 12px;">🎟️ Conferencias 2 días</td>
-            <td style="text-align:right;padding:11px 12px;color:#fff;">$8,900</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--green);">$5,400 adicional</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$4,400 adicional</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-            <td style="padding:11px 12px;">🥂 Networking Estructurado</td>
-            <td style="text-align:right;padding:11px 12px;color:#fff;">$12,450</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--green);">$8,950 adicional</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$7,950 adicional</td>
-          </tr>
-          <tr style="background:rgba(255,213,79,0.04);">
-            <td style="padding:11px 12px;color:var(--gold);">💎 Membresía VIP</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--gold);">$190,000</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--green);">$186,500 adicional</td>
-            <td style="text-align:right;padding:11px 12px;color:var(--cyan);">$185,500 adicional</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- BENEFICIOS EXCLUSIVOS PARA CONFERENCISTAS -->
+  <div class="sec-title">🎤 Beneficios Exclusivos para Conferencistas Seleccionados</div>
+  <div class="grid3" style="margin-bottom:24px;">
+    <div class="card" style="border-color:rgba(0,230,118,0.3);background:rgba(0,230,118,0.04);text-align:center;padding:28px 20px;">
+      <div style="font-size:2rem;margin-bottom:12px;">🥂</div>
+      <div style="font-weight:800;color:var(--green);margin-bottom:8px;">Cóctel de Bienvenida</div>
+      <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;">Acceso gratuito al cóctel exclusivo de apertura del evento — el espacio de networking más valorado de IA Expo, reservado para conferencistas y patrocinadores.</p>
     </div>
-    <div style="margin-top:12px;font-size:0.75rem;color:var(--muted);">Precios en lanzamiento (50% dto). El diferencial puede variar según la fase de venta activa al momento de la aceptación.</div>
+    <div class="card" style="border-color:rgba(0,229,255,0.3);background:rgba(0,229,255,0.04);text-align:center;padding:28px 20px;">
+      <div style="font-size:2rem;margin-bottom:12px;">🏷️</div>
+      <div style="font-weight:800;color:var(--cyan);margin-bottom:8px;">Precio Preferencial</div>
+      <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;">Descuento especial en el paquete de Networking Estructurado — la experiencia premium del evento, a un precio reservado exclusivamente para conferencistas seleccionados.</p>
+    </div>
+    <div class="card" style="border-color:rgba(255,213,79,0.3);background:rgba(255,213,79,0.04);text-align:center;padding:28px 20px;">
+      <div style="font-size:2rem;margin-bottom:12px;">🎙️</div>
+      <div style="font-weight:800;color:var(--gold);margin-bottom:8px;">El Escenario es Tuyo</div>
+      <p style="font-size:0.8rem;color:var(--muted);line-height:1.6;">30 minutos frente a más de 220 líderes, empresarios y profesionales de IA. Tu historia, tu credencial oficial de conferencista y tu nombre en el programa impreso del evento.</p>
+    </div>
   </div>
 
-  <div class="note-green">
-    <strong>Política de rechazo:</strong> Si tu artículo no es aceptado, la cuota de inscripción no se reembolsa, pero se convierte automáticamente en un pase <strong>Expo</strong> al evento (acceso a los 3 días de exposición y área de demos). Recibirás tu pase de asistente sin costo adicional.
+  <div class="note">
+    <strong>¿Por qué no hay boletos de cortesía?</strong> Para mantener la integridad del evento y garantizar que cada asistente está genuinamente comprometido con la comunidad de IA, todos los participantes — incluyendo los conferencistas — adquieren su acceso. Esto asegura una audiencia de calidad y un evento sostenible para todos.
   </div>
 </div>
 
 <!-- ══════════ PROCESO ══════════ -->
 <div class="section" id="proceso">
-  <div class="sec-title">🔄 Proceso de Somisión y Revisión</div>
+  <div class="sec-title">🔄 Del Artículo al Escenario — Así Funciona</div>
 
   <div class="card" style="margin-bottom:24px;">
-    <div class="sub-title" style="margin-top:0;">Pasos para Participar</div>
+    <div class="sub-title" style="margin-top:0;">7 Pasos para Convertirte en Conferencista</div>
     <div class="steps">
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-info">
-          <h4>Descarga la plantilla oficial</h4>
-          <p>Visita iaExpo.ai/convocatoria y descarga la plantilla de artículo en Word y LaTeX. Lee las instrucciones de formato antes de comenzar a redactar.</p>
+          <h4>Descarga la plantilla y úsala como guía</h4>
+          <p>En iaExpo.ai/convocatoria encontrarás una plantilla sencilla en Word. No necesitas LaTeX ni formato académico complejo — solo narrar tu experiencia con claridad e impacto.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-info">
-          <h4>Registra tu perfil de autor</h4>
-          <p>Crea una cuenta en el portal de somisiones iaExpo.ai/submit. Si tienes co-autores, el autor principal debe registrar al equipo completo (máx. 4 personas).</p>
+          <h4>Crea tu perfil en el portal de envíos</h4>
+          <p>Regístrate en iaExpo.ai/submit en menos de 5 minutos. Si participas con colegas o socios, el autor principal puede incluir hasta 3 co-autores.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-info">
-          <h4>Cubre la cuota de inscripción</h4>
-          <p>Realiza el pago en línea (tarjeta, transferencia o PayPal). Recibirás un número de confirmación que deberás ingresar al someter tu trabajo. Sin pago confirmado, la somisión no será procesada.</p>
+          <h4>Envía tu artículo</h4>
+          <p>Sube el PDF de tu artículo, una breve carta contando quién eres y qué herramientas de IA usaste, y selecciona el track que mejor describe tu experiencia.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-info">
-          <h4>Sube tu artículo</h4>
-          <p>Carga el PDF de tu artículo (sin datos de autores — revisión ciega), la carta de presentación en PDF, y selecciona el eje temático principal y secundario.</p>
+          <h4>La comunidad evalúa tu trabajo</h4>
+          <p>Un comité de expertos y practicantes de IA revisa cada artículo con criterios de relevancia, autenticidad e impacto para la comunidad. El proceso es anónimo y tarda 4–5 semanas.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-info">
-          <h4>Revisión por pares (doble ciego)</h4>
-          <p>El Comité Científico asigna cada artículo a mínimo 2 revisores expertos en el eje temático. El proceso es anónimo para autores y revisores. Duración: 4–5 semanas.</p>
+          <h4>Recibes tu resultado con retroalimentación</h4>
+          <p>Te notificamos en Octubre 2026 con el resultado detallado. Si tu artículo es aceptado, te asignamos un slot en el track de tu eje. Si necesita ajustes, tienes 15 días para mejorar y reenviar.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-info">
-          <h4>Notificación de resultado</h4>
-          <p>Recibirás el dictamen (aceptado, revisión menor, revisión mayor, rechazado) con retroalimentación detallada de los revisores. Las aceptaciones incluyen asignación de slot de presentación.</p>
+          <h4>Ajusta y confirma tu participación como ponente</h4>
+          <p>Los autores aceptados envían la versión final con los ajustes sugeridos, firman el formulario de publicación y confirman su participación en el escenario de IA Expo 2027.</p>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-info">
-          <h4>Versión final y confirmación de ponente</h4>
-          <p>Los autores aceptados envían la versión camera-ready corregida y firman el formulario de cesión de derechos. Confirman su participación como conferencistas y completan el diferencial de su paquete de asistencia.</p>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-num"></div>
-        <div class="step-info">
-          <h4>Presentación en IA Expo 2027</h4>
-          <p>Presentas tu trabajo en el track correspondiente (30 minutos: 22 de presentación + 8 de preguntas). Tu artículo aparece impreso y digital en las Actas del evento entregadas a los 220 asistentes.</p>
+          <h4>¡Sube al escenario y comparte tu historia!</h4>
+          <p>Presentas 30 minutos en el track de tu eje temático — 22 minutos de presentación y 8 de preguntas de la audiencia. Tu artículo queda publicado en las Actas, en manos de los 220 asistentes y disponible para toda la comunidad IA.</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- CRITERIOS DE EVALUACIÓN -->
-  <div class="sec-title">⭐ Criterios de Evaluación</div>
+  <div class="sec-title">⭐ ¿Cómo Evaluamos los Artículos?</div>
   <div class="grid2" style="margin-bottom:20px;">
     <div class="card">
-      <div style="font-weight:800;color:#fff;margin-bottom:14px;">Criterios Académicos / Técnicos</div>
+      <div style="font-weight:800;color:#fff;margin-bottom:14px;">Lo que más nos importa</div>
       <ul class="req-list">
-        <li>Originalidad y contribución al campo de la IA</li>
-        <li>Rigor metodológico y validez de los resultados</li>
-        <li>Relevancia y actualidad del tema abordado</li>
-        <li>Calidad de la revisión bibliográfica</li>
-        <li>Claridad y estructura del documento</li>
+        <li>Autenticidad — que sea una experiencia real tuya, no teórica</li>
+        <li>Aprendizaje compartido — ¿qué puede llevarse el lector?</li>
+        <li>Impacto — resultados concretos, aunque sean personales</li>
+        <li>Relevancia para la comunidad latinoamericana de IA</li>
+        <li>Claridad — que cualquier persona pueda entenderlo</li>
       </ul>
     </div>
     <div class="card">
-      <div style="font-weight:800;color:#fff;margin-bottom:14px;">Criterios de Impacto y Presentación</div>
+      <div style="font-weight:800;color:#fff;margin-bottom:14px;">También valoramos</div>
       <ul class="req-list">
-        <li>Aplicabilidad práctica para el público del evento</li>
-        <li>Potencial de impacto en LATAM</li>
-        <li>Idoneidad para presentación en formato conferencia</li>
-        <li>Alineación con alguno de los 7 tracks temáticos</li>
-        <li>Atractivo para la audiencia de líderes empresariales</li>
+        <li>Potencial inspirador para otros profesionales o emprendedores</li>
+        <li>Uso creativo o innovador de herramientas de IA disponibles</li>
+        <li>Reflexión crítica honesta — incluyendo lo que no funcionó</li>
+        <li>Conexión con los retos reales de LATAM</li>
+        <li>Viabilidad para una presentación dinámica en el escenario</li>
       </ul>
     </div>
   </div>
 
   <div class="note">
-    <strong>Política de idiomas:</strong> Los artículos pueden someterse en español, inglés o portugués. Las presentaciones en el evento pueden realizarse en español o inglés (con traducción simultánea disponible). Se recomienda que el abstract siempre esté en inglés y español.
+    <strong>Política de idiomas:</strong> Los artículos pueden someterse en español, inglés o portugués. Artículos sometidos en inglés o portugués serán traducidos al español y se publicarán en español y el idioma original. Las presentaciones en el evento pueden realizarse en español o inglés. Se recomienda que el abstract siempre esté en inglés y español.
   </div>
 </div>
 
@@ -614,8 +622,8 @@
         <div class="tl-item">
           <div class="tl-dot" style="border-color:var(--green);"></div>
           <div class="tl-date" style="color:var(--green);">30 Junio 2026</div>
-          <div class="tl-title">Cierre de inscripción temprana</div>
-          <div class="tl-desc">Último día para pagar la cuota de $3,500 MXN. A partir del 1 julio la cuota sube a $4,500.</div>
+          <div class="tl-title">Primer corte de revisión</div>
+          <div class="tl-desc">Los artículos recibidos antes de esta fecha reciben evaluación prioritaria y notificación anticipada de resultado.</div>
         </div>
         <div class="tl-item" style="margin-bottom:0;">
           <div class="tl-dot" style="border-color:var(--gold);background:var(--gold);"></div>
@@ -665,35 +673,35 @@
   </div>
 
   <div class="note-cyan">
-    <strong>Tip estratégico:</strong> Recomendamos someter antes del 30 de junio para aprovechar la tarifa de $3,500 y la evaluación prioritaria. Los primeros 30 artículos sometidos reciben confirmación de recibo el mismo día hábil.
+    <strong>Tip:</strong> Recomendamos enviar antes del 30 de junio para recibir evaluación prioritaria y notificación anticipada. Los primeros 30 artículos recibidos obtienen confirmación de recibo el mismo día hábil.
   </div>
 </div>
 
 <!-- ══════════ BENEFICIOS ══════════ -->
 <div class="section" id="beneficios">
-  <div class="sec-title">🏆 Beneficios para Autores Aceptados</div>
+  <div class="sec-title">🏆 Lo que Ganas al Ser Aceptado</div>
 
   <div class="grid2" style="margin-bottom:24px;">
     <div class="card" style="border-color:rgba(0,229,255,0.3);background:rgba(0,229,255,0.04);">
-      <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:14px;">📚 PUBLICACIÓN Y VISIBILIDAD</div>
+      <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:14px;">📚 TU HISTORIA, PUBLICADA PARA EL MUNDO</div>
       <ul class="req-list">
-        <li>Artículo publicado en las Actas Oficiales IA Expo 2027 con ISSN</li>
-        <li>Copia impresa y digital del volumen completo de Actas</li>
-        <li>Perfil de autor en la web del evento con enlace a tu artículo</li>
-        <li>Difusión en redes sociales del evento (reach: +50K seguidores)</li>
-        <li>Mención en el newsletter del evento (base de +8,000 suscriptores)</li>
-        <li>Acceso al repositorio digital permanente de IA Expo</li>
+        <li>Tu artículo en las Actas Oficiales IA Expo 2027 — con distribución en todo LATAM</li>
+        <li>Copia digital de las Actas para ti y tu equipo</li>
+        <li>Tu perfil de autor en la web del evento, con enlace permanente a tu trabajo</li>
+        <li>Difusión de tu historia en redes sociales del evento</li>
+        <li>Mención en comunicaciones de IA Expo 2027</li>
+        <li>Acceso permanente al repositorio digital de IA Expo para compartir tu artículo</li>
       </ul>
     </div>
     <div class="card" style="border-color:rgba(255,213,79,0.3);background:rgba(255,213,79,0.03);">
-      <div style="font-size:0.7rem;font-weight:800;color:var(--gold);letter-spacing:2px;margin-bottom:14px;">🎤 COMO CONFERENCISTA</div>
+      <div style="font-size:0.7rem;font-weight:800;color:var(--gold);letter-spacing:2px;margin-bottom:14px;">🎤 TU MOMENTO EN EL ESCENARIO</div>
       <ul class="req-list">
-        <li>Slot de 30 minutos en el track de tu eje temático (Días 2 o 3)</li>
-        <li>Credencial oficial "Conferencista — IA Expo Internacional® 2027"</li>
-        <li>Presencia en el programa impreso y digital del evento</li>
-        <li>Acceso a la sala de ponentes y sesión de ensayo técnico</li>
-        <li>Fotografía y video de tu presentación (para uso personal)</li>
-        <li>Invitación al cóctel de bienvenida exclusivo de ponentes</li>
+        <li>30 minutos en el escenario de la conferencia más importante de IA en LATAM</li>
+        <li>Credencial oficial <em>"Conferencista — IA Expo Internacional® 2027"</em></li>
+        <li>Tu nombre y foto en el programa impreso que se entrega a los 220 asistentes</li>
+        <li>Acceso a la sala de ponentes y sesión de preparación técnica previa</li>
+        <li>Fotografía profesional y video de tu presentación para compartir</li>
+        <li>Invitación al cóctel exclusivo de conferencistas y patrocinadores</li>
       </ul>
     </div>
   </div>
@@ -702,114 +710,145 @@
     <div class="card" style="border-color:rgba(0,230,118,0.3);background:rgba(0,230,118,0.03);">
       <div style="font-size:0.7rem;font-weight:800;color:var(--green);letter-spacing:2px;margin-bottom:14px;">🤝 NETWORKING Y COMUNIDAD</div>
       <ul class="req-list">
-        <li>Acceso a la app de networking del evento con los 220 asistentes</li>
-        <li>Inclusión en el directorio de investigadores y expertos IA Expo</li>
+        <li>Precio preferencial en el paquete Networking Estructurado del evento</li>
+        <li>Acceso al cóctel de bienvenida exclusivo de conferencistas y patrocinadores</li>
+        <li>Inclusión en el directorio de expertos IA Expo con tu perfil de autor</li>
         <li>Acceso al grupo privado de ponentes y alumni del evento</li>
-        <li>Certificado digital de ponente con sello IA Expo Internacional®</li>
         <li>Prioridad de consideración para IA Expo ediciones futuras</li>
       </ul>
     </div>
     <div class="card" style="border-color:rgba(206,147,216,0.3);background:rgba(206,147,216,0.03);">
-      <div style="font-size:0.7rem;font-weight:800;color:var(--purple);letter-spacing:2px;margin-bottom:14px;">💡 PARA AUTORES NO ACEPTADOS</div>
+      <div style="font-size:0.7rem;font-weight:800;color:var(--purple);letter-spacing:2px;margin-bottom:14px;">📜 CREDENCIAL Y RECONOCIMIENTO</div>
       <ul class="req-list">
-        <li>Retroalimentación detallada del comité de revisión</li>
-        <li>Pase Expo gratuito para los 3 días del evento (sin costo adicional)</li>
-        <li>Invitación a someter a la siguiente edición con descuento preferencial</li>
-        <li>Acceso a la versión digital de las Actas a precio especial</li>
-        <li>Recomendaciones personalizadas para mejorar el artículo</li>
+        <li>Certificado digital de conferencista con sello IA Expo Internacional®</li>
+        <li>Tu nombre y fotografía en el programa oficial impreso y digital</li>
+        <li>Fotografía profesional y video de tu presentación para uso personal</li>
+        <li>Mención especial en la sesión de clausura del evento</li>
+        <li>Badge verificado de conferencista en el directorio digital de IA Expo</li>
       </ul>
     </div>
   </div>
 
   <div class="cta-box">
-    <h3>¿Listo para publicar y presentar?</h3>
-    <p>Descarga la plantilla, prepara tu artículo y reserva tu lugar en la convocatoria más importante de IA en Latinoamérica. Los cupos de presentación son limitados.</p>
-    <a href="#" class="btn-primary">Someter Artículo →</a>
-    <a href="#" class="btn-outline">Descargar Plantilla</a>
+    <h3>Tu ExperiencIA merece un escenario. 🎤</h3>
+    <p>Miles de personas en LATAM están transformando su vida con IA — y la mayoría aún no lo sabe. Tú puedes ser quien los inspire. Descarga la plantilla, escribe tu experiencia y únete a la comunidad que está construyendo el futuro de la inteligencia artificial en nuestra región.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary">Enviar mi Artículo →</a>
+      <a href="#" class="btn-outline">Descargar Plantilla</a>
+    </div>
   </div>
 </div>
 
-<!-- ══════════ ESTRATEGIA (INTERNO) ══════════ -->
-<div class="section" id="estrategia">
-  <div class="sec-title">📊 Estrategia Interna — Convocatoria CFP</div>
 
-  <div class="card" style="margin-bottom:20px;background:linear-gradient(135deg,rgba(0,229,255,0.07),rgba(13,110,253,0.1));border-color:rgba(0,229,255,0.3);">
-    <h3 style="margin-bottom:10px;color:#fff;">Objetivo Estratégico</h3>
-    <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">La convocatoria de artículos cumple <strong style="color:#fff;">tres funciones simultáneas:</strong> (1) enriquecer el programa académico del evento con contenido de calidad validado por pares, (2) atraer a un perfil de asistente-ponente altamente calificado que aporta credibilidad intelectual al evento, y (3) <strong style="color:var(--cyan);">generar un flujo de ingresos tempranos con costo de adquisición mínimo</strong>, ya que cada autor que paga su inscripción está comprometido con asistir.</p>
+<!-- ══════════ TÉRMINOS Y CONDICIONES ══════════ -->
+<div class="section" id="tyc">
+  <div class="sec-title">⚖️ Términos y Condiciones — Convocatoria de Artículos</div>
+
+  <div class="card" style="margin-bottom:16px;background:linear-gradient(135deg,rgba(0,229,255,0.05),rgba(13,110,253,0.08));border-color:rgba(0,229,255,0.25);">
+    <p style="font-size:0.82rem;color:var(--muted);line-height:1.8;"><strong style="color:#fff">Última actualización: Abril 2026.</strong> Al enviar un artículo para su consideración en la <strong style="color:#fff">IA Expo Internacional® 2027</strong> (en adelante, el "Evento"), organizado por <strong style="color:#fff">Digital Gap, Inc.</strong>, empresa constituida conforme a las leyes del Estado de Texas, EE. UU., usted (el "Autor" o los "Autores") declara haber leído, comprendido y aceptado en su totalidad los siguientes términos y condiciones.</p>
   </div>
 
-  <!-- PROYECCIÓN DE INGRESOS -->
-  <div class="sec-title">💰 Proyección de Ingresos por Convocatoria</div>
-  <div class="grid3" style="margin-bottom:24px;">
-    <div class="stat"><div class="lbl">Somisiones esperadas</div><div class="val" style="color:var(--cyan);">40–60</div><div class="sub">Artículos recibidos en total</div></div>
-    <div class="stat"><div class="lbl">Tasa de aceptación objetivo</div><div class="val" style="color:var(--gold);">35–45%</div><div class="sub">~15–25 artículos publicados</div></div>
-    <div class="stat" style="border-color:rgba(0,230,118,0.35);"><div class="lbl">Ponentes adicionales</div><div class="val" style="color:var(--green);">15–25</div><div class="sub">Conferencistas sin costo de honorarios</div></div>
+  <!-- CLÁUSULA 1 -->
+  <div class="card" style="margin-bottom:12px;">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 1 · PROPÓSITO DEL EVENTO</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;">La IA Expo Internacional® 2027 tiene como propósito reunir y difundir experiencias personales, empresariales y artísticas relacionadas con el uso práctico de herramientas de inteligencia artificial, con el objetivo de inspirar a la comunidad, acelerar su adopción responsable y fomentar el intercambio de conocimiento aplicado en Latinoamérica y más allá.</p>
   </div>
 
+  <!-- CLÁUSULA 2 -->
+  <div class="card" style="margin-bottom:12px;">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 2 · CONVOCATORIA ABIERTA Y GRATUITA</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">El envío de artículos a la convocatoria es completamente gratuito y está abierto a toda persona que haya utilizado herramientas de inteligencia artificial en cualquier ámbito — personal, profesional o artístico — y desee compartir su experiencia con la comunidad.</p>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;">La gratuidad del proceso de envío no genera ningún derecho, obligación ni expectativa legítima de participación como conferencista por parte del Autor. El envío de un artículo constituye únicamente una solicitud de consideración, no una inscripción al evento ni una confirmación de participación en el programa.</p>
+  </div>
+
+  <!-- CLÁUSULA 3 -->
+  <div class="card" style="margin-bottom:12px;border-color:rgba(255,183,77,0.3);">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--orange);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 3 · PROCESO DE SELECCIÓN DE CONFERENCISTAS</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;"><strong style="color:#fff">El envío de un artículo no garantiza, en ningún caso, la participación del Autor como conferencista en el Evento.</strong> La selección de conferencistas es un proceso independiente, sujeto a la disponibilidad de cupos en el programa y a la evaluación del Comité de Selección.</p>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">El Comité de Selección evaluará cada artículo con base en los siguientes criterios: (a) autenticidad e impacto de la experiencia descrita; (b) relevancia para la comunidad latinoamericana de inteligencia artificial; (c) claridad y capacidad de comunicación del contenido; (d) viabilidad para ser presentado en formato de conferencia ante una audiencia amplia; y (e) aportación de valor práctico, inspirador o transformador para los asistentes.</p>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;"><strong style="color:#fff">La decisión del Comité de Selección es final e inapelable.</strong> Digital Gap, Inc. no está obligada a justificar individualmente los criterios aplicados en cada caso. Todos los Autores recibirán notificación de resultado con retroalimentación general antes del 1 de octubre de 2026.</p>
+  </div>
+
+  <!-- CLÁUSULA 4 -->
+  <div class="card" style="margin-bottom:12px;border-color:rgba(255,213,79,0.3);">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 4 · BENEFICIOS DE LOS CONFERENCISTAS SELECCIONADOS</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">Los Autores cuyo artículo sea seleccionado para presentación como conferencistas en el Evento tendrán derecho a los siguientes beneficios exclusivos:</p>
+    <ul class="req-list">
+      <li><strong style="color:#fff">Slot de presentación:</strong> 30 minutos en el escenario principal dentro del track temático correspondiente (22 min de presentación + 8 min de preguntas).</li>
+      <li><strong style="color:#fff">Cóctel de bienvenida:</strong> Acceso sin costo al cóctel oficial de apertura del Evento, reservado exclusivamente para conferencistas y patrocinadores.</li>
+      <li><strong style="color:#fff">Precio preferencial en Networking Estructurado:</strong> Descuento especial sobre el precio de lista del paquete Networking Estructurado, aplicable únicamente al conferencista principal del artículo aceptado.</li>
+      <li><strong style="color:#fff">Credencial oficial:</strong> Acreditación como "Conferencista — IA Expo Internacional® 2027" con presencia en el programa impreso y digital del Evento.</li>
+      <li><strong style="color:#fff">Publicación en Actas:</strong> El artículo aceptado será publicado en las Actas Oficiales IA Expo 2027 con distribución física y digital a todos los asistentes.</li>
+    </ul>
+    <div class="note" style="margin-top:14px;">
+      <strong>Sin boletos de cortesía:</strong> Los beneficios anteriores no incluyen, bajo ninguna circunstancia, boletos gratuitos de acceso al Evento. Los conferencistas seleccionados deberán adquirir su pase de acceso conforme a los precios vigentes al momento de la notificación de aceptación. Esta política aplica para todos los conferencistas sin excepción, incluyendo co-autores y acompañantes.
+    </div>
+  </div>
+
+  <!-- CLÁUSULA 5 -->
+  <div class="card" style="margin-bottom:12px;">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 5 · AUTORES CUYOS ARTÍCULOS NO SEAN SELECCIONADOS PARA PRESENTACIÓN</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">El hecho de que un artículo no sea seleccionado para presentación en el programa del Evento no implica necesariamente su rechazo para publicación en las Actas. El Comité de Selección evaluará por separado (a) la idoneidad para presentación en el escenario y (b) la calidad para publicación en las Actas.</p>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">Los Autores de artículos no seleccionados para presentación recibirán:</p>
+    <ul class="req-list">
+      <li>Notificación de resultado antes del 1 de octubre de 2026, con retroalimentación del comité</li>
+      <li>Indicación de si su artículo fue aceptado para publicación en las Actas, aunque no para presentación en escenario</li>
+      <li>Recomendaciones específicas para fortalecer su artículo y presentarlo en ediciones futuras</li>
+      <li>Consideración prioritaria, sin costo adicional, para la siguiente edición del Evento si así lo solicitan expresamente</li>
+    </ul>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-top:10px;">Los Autores no seleccionados no adquieren ningún derecho de acceso al Evento ni a los beneficios reservados para conferencistas. La adquisición de boletos de acceso al Evento es voluntaria y sujeta a disponibilidad y precios vigentes.</p>
+  </div>
+
+  <!-- CLÁUSULA 6 -->
+  <div class="card" style="margin-bottom:12px;">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 6 · PUBLICACIÓN EN ACTAS</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">Los artículos aceptados para publicación serán incluidos en las Actas Oficiales IA Expo Internacional® 2027, disponibles en formato digital para todos los asistentes al Evento y en formato impreso para los paquetes que así lo incluyan. Digital Gap, Inc. se reserva el derecho de:</p>
+    <ul class="req-list">
+      <li>Publicar los artículos en español y/o en inglés, con traducción realizada por o en nombre de Digital Gap, Inc.</li>
+      <li>Realizar correcciones menores de estilo, formato o gramática sin alterar el contenido sustancial del artículo.</li>
+      <li>Determinar el orden de aparición, diseño editorial y distribución de los artículos dentro de las Actas.</li>
+    </ul>
+  </div>
+
+  <!-- CLÁUSULA 7 -->
+  <div class="card" style="margin-bottom:12px;">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 7 · DERECHOS DE AUTOR Y LICENCIA DE USO</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">Los Autores conservarán en todo momento la titularidad de los derechos de autor sobre sus artículos. Sin embargo, al enviar su artículo, otorgan a Digital Gap, Inc. una <strong style="color:#fff">licencia no exclusiva, mundial, irrevocable y libre de regalías</strong> para:</p>
+    <ul class="req-list">
+      <li>Publicar, reproducir y distribuir el artículo en las Actas digitales e impresas del Evento.</li>
+      <li>Traducir el artículo al inglés o español para su difusión dentro del marco del Evento y sus canales de comunicación.</li>
+      <li>Mencionar el nombre del Autor y el título del artículo en materiales promocionales del Evento.</li>
+    </ul>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-top:10px;">Esta licencia no impide a los Autores publicar su artículo en otros medios, siempre que se reconozca la publicación original en las Actas de IA Expo Internacional® 2027, en caso de haber ocurrido.</p>
+  </div>
+
+  <!-- CLÁUSULA 8 -->
+  <div class="card" style="margin-bottom:12px;">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 8 · RESPONSABILIDAD DEL AUTOR</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;margin-bottom:10px;">Al enviar su artículo, el Autor declara y garantiza que:</p>
+    <ul class="req-list">
+      <li>El artículo es original y de su autoría, y no infringe derechos de propiedad intelectual de terceros.</li>
+      <li>En caso de coautoría, todos los autores han otorgado su consentimiento expreso para el envío y están debidamente reconocidos.</li>
+      <li>El contenido no ha sido plagiado, ni contiene material difamatorio, falso, ilegal o que viole la privacidad de terceros.</li>
+      <li>Las experiencias, resultados y datos descritos son verídicos y corresponden a hechos reales del Autor o su organización.</li>
+      <li>El Autor es responsable exclusivo de cualquier reclamación de terceros derivada del contenido de su artículo.</li>
+    </ul>
+  </div>
+
+  <!-- CLÁUSULA 9 -->
+  <div class="card" style="margin-bottom:12px;">
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 9 · MODIFICACIONES Y CANCELACIÓN DEL EVENTO</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;">Digital Gap, Inc. se reserva el derecho de modificar estos términos y condiciones, el programa del Evento, las fechas, el formato (presencial o virtual) y los beneficios asociados en cualquier momento, notificando los cambios con razonable anticipación a través del sitio web oficial del Evento. En caso de cancelación o modificación sustancial del Evento por causas de fuerza mayor, Digital Gap, Inc. no tendrá obligación de compensar económicamente a los Autores por los artículos enviados.</p>
+  </div>
+
+  <!-- CLÁUSULA 10 -->
   <div class="card" style="margin-bottom:20px;">
-    <div class="sub-title" style="margin-top:0;">Proyección de Ingresos Directos — Cuotas de Inscripción CFP</div>
-    <div class="proj-row">
-      <div><div class="proj-name">🔥 Somisiones en fase temprana (est. 60%)</div><div class="proj-detail">~25–35 artículos × $3,500 MXN</div></div>
-      <div class="proj-amount" style="color:var(--green);">$87,500 – $122,500</div>
-    </div>
-    <div class="proj-row">
-      <div><div class="proj-name">⏰ Somisiones en fase regular (est. 40%)</div><div class="proj-detail">~15–25 artículos × $4,500 MXN</div></div>
-      <div class="proj-amount" style="color:var(--cyan);">$67,500 – $112,500</div>
-    </div>
-    <div class="proj-row" style="border-top:1px solid rgba(255,255,255,0.15);padding-top:16px;">
-      <div><div class="proj-name" style="font-weight:800;color:#fff;">TOTAL DIRECTO POR CUOTAS CFP</div><div class="proj-detail">Escenario conservador → optimista</div></div>
-      <div class="proj-amount" style="color:var(--gold);font-size:1.2rem;">$155,000 – $235,000 MXN</div>
-    </div>
+    <div style="font-size:0.7rem;font-weight:800;color:var(--cyan);letter-spacing:2px;margin-bottom:10px;">CLÁUSULA 10 · JURISDICCIÓN Y LEY APLICABLE</div>
+    <p style="font-size:0.84rem;color:var(--muted);line-height:1.8;">Estos términos y condiciones se regirán e interpretarán conforme a las leyes del Estado de Texas, Estados Unidos de América. Cualquier controversia o reclamación derivada de o relacionada con estos términos estará sujeta a la jurisdicción exclusiva de los tribunales estatales y federales ubicados en el Estado de Texas, a la que las partes se someten expresamente, renunciando a cualquier otro fuero que pudiera corresponderles.</p>
   </div>
 
-  <!-- IMPACTO INDIRECTO -->
-  <div class="card" style="margin-bottom:20px;">
-    <div class="sub-title" style="margin-top:0;">Impacto Indirecto y Ahorro en Honorarios</div>
-    <div class="proj-row">
-      <div><div class="proj-name">💡 Ponentes CFP vs. ponentes invitados</div><div class="proj-detail">Ponente invitado promedio cuesta $15,000–$25,000 MXN en honorarios</div></div>
-      <div class="proj-amount" style="color:var(--green);">+$300,000 – $500,000<br><span style="font-size:0.72rem;color:var(--muted);">en honorarios ahorrados (20 ponentes)</span></div>
-    </div>
-    <div class="proj-row">
-      <div><div class="proj-name">📈 Autores que mejoran su paquete</div><div class="proj-detail">Est. 50% de aceptados compran paquete Conferencias o Networking</div></div>
-      <div class="proj-amount" style="color:var(--cyan);">+$80,000 – $200,000<br><span style="font-size:0.72rem;color:var(--muted);">en upgrades de ticket</span></div>
-    </div>
-    <div class="proj-row">
-      <div><div class="proj-name">🏆 Credibilidad académica del evento</div><div class="proj-detail">Mayor captación de patrocinadores corporativos interesados en audiencia calificada</div></div>
-      <div class="proj-amount" style="color:var(--purple);">Valor estratégico<br><span style="font-size:0.72rem;color:var(--muted);">difícil de cuantificar</span></div>
-    </div>
-  </div>
-
-  <!-- REGLAS OPERATIVAS -->
-  <div class="sec-title">⚙️ Reglas Operativas Internas</div>
-  <div class="grid2" style="margin-bottom:20px;">
-    <div class="card">
-      <div style="font-weight:800;color:#fff;margin-bottom:14px;">Cupos de Presentación</div>
-      <ul class="req-list">
-        <li>Máximo 3–4 ponentes CFP por track (21–28 ponentes en total)</li>
-        <li>Los slots de 30 min se asignan tras confirmar pago de diferencial</li>
-        <li>Trabajos con revisión mayor tienen 15 días para reenviar</li>
-        <li>Un autor puede someter máximo 2 artículos (cuota por cada uno)</li>
-        <li>La presentación puede ser presencial o por videoconferencia en vivo</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div style="font-weight:800;color:#fff;margin-bottom:14px;">Comité Científico</div>
-      <ul class="req-list">
-        <li>Mínimo 14 revisores (2 por track) con experiencia comprobada</li>
-        <li>Reclutamiento: universidades, centros de investigación y empresas tech</li>
-        <li>Los revisores reciben acceso gratuito al evento como cortesía</li>
-        <li>El comité editorial define formato final de las Actas (Dic 2026)</li>
-        <li>Editor responsable de las Actas designado desde Abril 2026</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="note">
-    <strong>Nota interna:</strong> El presupuesto de <strong>$50,000 MXN</strong> asignado a las Actas en el plan de ejecución cubre diseño editorial, corrección de estilo, impresión de 250 ejemplares y gestión del ISSN. Con ~20 artículos aceptados, el costo por artículo publicado es de ~$2,500 MXN, que queda ampliamente cubierto por las cuotas de inscripción cobradas.
-  </div>
-
-  <div class="note-green" style="margin-top:12px;">
-    <strong>Recomendación estratégica:</strong> Lanzar la convocatoria simultáneamente con la apertura de venta de Membresía VIP (Abril 2026) para maximizar el alcance y posicionar al evento como el más serio de la región desde el inicio de la campaña de marketing.
+  <div class="note-cyan">
+    <strong>Aceptación:</strong> Al hacer clic en "Enviar mi Artículo" o al enviar su artículo a través del portal de la convocatoria, el Autor confirma que ha leído, comprendido y aceptado estos Términos y Condiciones en su totalidad, incluyendo la política de no otorgamiento de boletos de cortesía y la ausencia de garantía de selección como conferencista.
   </div>
 </div>
 

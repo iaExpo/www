@@ -168,6 +168,19 @@
   footer { text-align:center; padding:36px 0; border-top:1px solid var(--border); color:var(--muted); font-size:0.75rem; margin-top:20px; }
   footer strong { color:var(--cyan); }
 
+  /* ── CONVOCATORIA (estrategia interna) ── */
+  .req-list { list-style:none; }
+  .req-list li { display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:0.85rem; color:var(--muted); line-height:1.6; }
+  .req-list li:last-child { border:none; }
+  .req-list li::before { content:'→'; color:var(--cyan); font-weight:700; flex-shrink:0; }
+  .note-green { background:rgba(0,230,118,0.06); border:1px solid rgba(0,230,118,0.2); border-radius:10px; padding:14px 18px; font-size:0.82rem; color:var(--muted); line-height:1.7; margin-top:16px; }
+  .note-green strong { color:#00E676; }
+  .proj-row { display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); gap:8px; flex-wrap:wrap; }
+  .proj-row:last-child { border:none; }
+  .proj-name { font-size:0.88rem; color:#fff; }
+  .proj-detail { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+  .proj-amount { font-size:1rem; font-weight:800; }
+
   /* ── INICIO: hero ── */
   .ini-hero {
     background: linear-gradient(135deg, rgba(0,229,255,0.07) 0%, rgba(13,110,253,0.14) 100%);
@@ -229,6 +242,7 @@
     <button class="ntab" onclick="show('agenda',this)">📅 Agenda</button>
     <button class="ntab" onclick="show('presupuesto',this)">💰 Presupuesto</button>
     <button class="ntab" onclick="show('ingresos',this)">📈 Ingresos</button>
+    <button class="ntab" onclick="show('convocatoria',this)">📋 Convocatoria</button>
     <button class="ntab" onclick="show('timeline',this)">🗓️ Timeline</button>
     <button class="ntab" onclick="show('replicacion',this)">🌎 Replicación</button>
   </div>
@@ -240,6 +254,7 @@
   <button class="ntab" onclick="show('agenda',this);closeNav()">📅 Agenda</button>
   <button class="ntab" onclick="show('presupuesto',this);closeNav()">💰 Presupuesto</button>
   <button class="ntab" onclick="show('ingresos',this);closeNav()">📈 Ingresos</button>
+  <button class="ntab" onclick="show('convocatoria',this);closeNav()">📋 Convocatoria</button>
   <button class="ntab" onclick="show('timeline',this);closeNav()">🗓️ Timeline</button>
   <button class="ntab" onclick="show('replicacion',this);closeNav()">🌎 Replicación</button>
 </div>
@@ -881,6 +896,77 @@
   </div>
 
   <div class="note"><strong>Clave del éxito replicable:</strong> La <strong>Membresía VIP</strong> no es solo un paquete VIP — es el núcleo de la red regional. Cada miembro ejecutivo en CDMX es un embajador potencial para la siguiente ciudad. El retiro en Cancún es el espacio donde se construyen las alianzas que hacen posible la expansión.</div>
+</div>
+
+<!-- ══════════ CONVOCATORIA (ESTRATEGIA INTERNA) ══════════ -->
+<div class="section" id="convocatoria">
+  <div class="sec-title">📊 Estrategia Interna — Convocatoria CFP</div>
+
+  <div class="card" style="margin-bottom:20px;background:linear-gradient(135deg,rgba(0,229,255,0.07),rgba(13,110,253,0.1));border-color:rgba(0,229,255,0.3);">
+    <h3 style="margin-bottom:10px;color:#fff;">Objetivo Estratégico</h3>
+    <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">La convocatoria de artículos cumple <strong style="color:#fff;">tres funciones simultáneas:</strong> (1) enriquecer el programa del evento con experiencias reales y diversas — personales, empresariales y artísticas — usando herramientas como ChatGPT, Claude, DeepSeek, Gemini y Copilot; (2) atraer a un perfil de conferencista auténtico y comprometido con la comunidad de IA en LATAM; y (3) <strong style="color:var(--cyan);">generar un flujo de ingresos tempranos con costo de adquisición mínimo</strong>, ya que cada autor que cubre su inscripción está comprometido con asistir.</p>
+  </div>
+
+  <!-- PROYECCIÓN DE VALOR -->
+  <div class="sec-title">💰 Valor Estratégico de la Convocatoria Abierta</div>
+  <div class="grid3" style="margin-bottom:24px;">
+    <div class="stat"><div class="lbl">Somisiones esperadas</div><div class="val" style="color:var(--cyan);">40–60</div><div class="sub">Artículos recibidos en total</div></div>
+    <div class="stat"><div class="lbl">Tasa de aceptación objetivo</div><div class="val" style="color:var(--gold);">35–45%</div><div class="sub">~15–25 artículos publicados</div></div>
+    <div class="stat" style="border-color:rgba(0,230,118,0.35);"><div class="lbl">Ahorro en honorarios</div><div class="val" style="color:var(--green);">$300K–$500K</div><div class="sub">vs. contratar ponentes externos</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="sub-title" style="margin-top:0;">Impacto Estratégico del Modelo Abierto y Gratuito</div>
+    <div class="proj-row">
+      <div><div class="proj-name">💡 Ahorro en honorarios de ponentes</div><div class="proj-detail">Ponente invitado promedio: $15,000–$25,000 MXN · 20 ponentes CFP seleccionados</div></div>
+      <div class="proj-amount" style="color:var(--green);">$300,000 – $500,000 MXN</div>
+    </div>
+    <div class="proj-row">
+      <div><div class="proj-name">🎟️ Conferencistas que compran boleto</div><div class="proj-detail">100% de los seleccionados adquieren su acceso — est. paquete Conferencias o Networking</div></div>
+      <div class="proj-amount" style="color:var(--cyan);">$130,000 – $250,000 MXN</div>
+    </div>
+    <div class="proj-row">
+      <div><div class="proj-name">📣 Efecto de difusión orgánica</div><div class="proj-detail">Cada autor comparte su participación — alcance estimado en redes sociales: +50K impresiones</div></div>
+      <div class="proj-amount" style="color:var(--purple);">Valor de marketing<br><span style="font-size:0.72rem;color:var(--muted);">equivalente a campaña pagada</span></div>
+    </div>
+    <div class="proj-row">
+      <div><div class="proj-name">🏆 Credibilidad y diferenciación del evento</div><div class="proj-detail">Convocatoria abierta posiciona a IA Expo como la conferencia más accesible e incluyente de LATAM</div></div>
+      <div class="proj-amount" style="color:var(--gold);">Valor estratégico<br><span style="font-size:0.72rem;color:var(--muted);">diferenciador clave vs. competencia</span></div>
+    </div>
+  </div>
+
+  <!-- REGLAS OPERATIVAS -->
+  <div class="sec-title">⚙️ Reglas Operativas Internas</div>
+  <div class="grid2" style="margin-bottom:20px;">
+    <div class="card">
+      <div style="font-weight:800;color:#fff;margin-bottom:14px;">Cupos y Selección</div>
+      <ul class="req-list">
+        <li>Máximo 3–4 conferencistas CFP por track (21–28 en total)</li>
+        <li>Los slots de 30 min se confirman tras la aceptación formal del ponente</li>
+        <li>Trabajos con revisión menor tienen 15 días para reenviar versión ajustada</li>
+        <li>Un autor puede someter máximo 2 artículos independientes</li>
+        <li>La presentación puede ser presencial o por videoconferencia en vivo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="font-weight:800;color:#fff;margin-bottom:14px;">Comité de Selección</div>
+      <ul class="req-list">
+        <li>Mínimo 14 revisores (2 por track) con experiencia comprobada en IA aplicada</li>
+        <li>Perfiles: emprendedores, directivos, creadores y profesionales — no solo académicos</li>
+        <li>Los revisores reciben acceso gratuito al evento como reconocimiento</li>
+        <li>El comité editorial define formato final de las Actas (Dic 2026)</li>
+        <li>Editor responsable de las Actas designado desde Abril 2026</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Nota interna:</strong> El presupuesto de <strong>$50,000 MXN</strong> asignado a las Actas cubre diseño editorial, corrección de estilo, impresión de 250 ejemplares y gestión del ISSN. Al no cobrar cuota de envío, el costo de las Actas se absorbe como inversión en posicionamiento y diferenciación — justificado por el ahorro en honorarios de ponentes y el valor de marketing generado.
+  </div>
+
+  <div class="note-green" style="margin-top:12px;">
+    <strong>Recomendación estratégica:</strong> Lanzar la convocatoria simultáneamente con la apertura de venta de Membresía VIP (Abril 2026). Comunicar activamente que el envío es gratuito y que los conferencistas son seleccionados por mérito — esto maximiza el volumen de envíos y posiciona a IA Expo como el evento más accesible e incluyente de IA en LATAM.
+  </div>
 </div>
 
 </div><!-- /wrap -->
