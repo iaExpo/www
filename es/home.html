@@ -1,1657 +1,594 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IA Expo Internacional™ 2026 — Ciudad de México</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA Expo Internacional™ 2027 — IA Para la Vida Real 2.0</title>
+  <meta name="description" content="El evento de inteligencia artificial más inspirador de LATAM. 3 días, 8 tracks, 220 líderes. Ciudad de México, 28–30 Enero 2027.">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+  /* ── VARIABLES ── */
   :root {
-    --navy:     #040d1a;
-    --deep:     #071428;
-    --blue:     #0a5fff;
-    --electric: #1e8fff;
-    --cyan:     #00cfff;
-    --gold:     var(--cyan);
-    --silver:   #b0bec5;
-    --white:    #f0f4ff;
-    --card-bg:  rgba(10,25,60,0.72);
-    --border:   rgba(30,143,255,0.22);
+    --bg:      #030B1A;
+    --surface: rgba(13,110,253,0.07);
+    --surface2: rgba(255,255,255,0.03);
+    --border:  rgba(0,229,255,0.15);
+    --border2: rgba(255,255,255,0.07);
+    --cyan:    #00E5FF;
+    --blue:    #0D6EFD;
+    --gold:    #FFD54F;
+    --green:   #00E676;
+    --red:     #FF5252;
+    --purple:  #CE93D8;
+    --orange:  #FFB74D;
+    --text:    #E8F0FE;
+    --muted:   #8EABD0;
+    --hero-img: url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg');
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    background-color: var(--navy);
-    color: var(--white);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
-
-  /* ─── UTILITY ──────────────────────────────────────────── */
-  .section-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    display: inline-block;
-    margin-bottom: 0.9rem;
-  }
-  .gold { color: var(--gold); }
-  .blue { color: var(--electric); }
-
-  /* ─── GRAIN OVERLAY ─────────────────────────────────────── */
   body::before {
     content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 9999;
+    position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+    background:
+      radial-gradient(ellipse at 15% 25%, rgba(0,229,255,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 75%, rgba(13,110,253,0.05) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
   }
 
-  /* ─── NAV ───────────────────────────────────────────────── */
+  /* ── NAV ── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.1rem 2.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, rgba(4,13,26,0.95), transparent);
-    backdrop-filter: blur(6px);
+    position: sticky; top: 0; z-index: 300;
+    background: rgba(3,11,26,0.97); backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px; height: 56px; gap: 12px;
   }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 0.08em;
-    color: var(--white);
+  .nav-brand {
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--cyan);
+    text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  }
+  .nav-tabs { display: flex; gap: 4px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .ntab {
+    background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+    padding: 6px 11px; border-radius: 8px; cursor: pointer;
+    font-size: 0.72rem; font-weight: 600; font-family: inherit;
+    transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 5px;
     text-decoration: none;
   }
-  .nav-logo span { color: var(--cyan); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--silver);
-    text-decoration: none;
-    transition: color 0.25s;
+  .ntab .ico { font-size: 0.85rem; }
+  .ntab:hover  { border-color: var(--cyan); color: var(--cyan); }
+  .ntab.active { background: linear-gradient(135deg, var(--blue), #0A84FF); border-color: var(--blue); color: #fff; }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; width: 38px; height: 38px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+    cursor: pointer; align-items: center; justify-content: center; flex-shrink: 0;
   }
-  .nav-links a:hover { color: var(--cyan); }
+  .hamburger span { display: block; width: 18px; height: 2px; background: var(--cyan); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    display: none; flex-direction: column; gap: 6px;
+    padding: 12px 20px 16px;
+    background: rgba(3,11,26,0.99); border-bottom: 1px solid var(--border);
+    position: sticky; top: 56px; z-index: 299;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu .ntab { width: 100%; text-align: left; padding: 12px 14px; font-size: 0.88rem; }
+  @media (max-width: 768px) { .nav-tabs { display: none; } .hamburger { display: flex; } }
 
-  /* ─── NAV DROPDOWN ──────────────────────────────────────── */
-  .nav-dropdown {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  .nav-dropdown > a {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .nav-dropdown > a::after {
-    content: '▾';
-    font-size: 0.65rem;
-    opacity: 0.7;
-    transition: transform 0.2s;
-  }
-  .nav-dropdown:hover > a::after {
-    transform: rotate(180deg);
-  }
-  .nav-submenu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(4,13,26,0.97);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    min-width: 180px;
-    padding: 0.5rem 0;
-    list-style: none;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(0);
-    transition: opacity 0.2s;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-  }
-  .nav-dropdown:hover .nav-submenu {
-    opacity: 1;
-    pointer-events: all;
-    transform: translateY(0);
-  }
-  .nav-submenu li a {
-    display: block;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.73rem;
-    letter-spacing: 0.1em;
-    color: var(--silver);
-    white-space: nowrap;
-    transition: color 0.2s, background 0.2s;
-  }
-  .nav-submenu li a:hover {
-    color: var(--cyan);
-    background: rgba(0,207,255,0.06);
-  }
-  .nav-submenu li + li {
-    border-top: 1px solid var(--border);
-  }
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; overflow-x: hidden; }
+  img, table, iframe { max-width: 100%; }
 
-  #hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  /* ── HERO ── */
+  .hero-wrap {
+    position: relative; min-height: 63vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
     overflow: hidden;
   }
   .hero-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg');
-    background-size: cover;
-    background-position: center 30%;
-    transform: scale(1.04);
-    animation: slowzoom 18s ease-out forwards;
+    position: absolute; inset: 0;
+    background-image: var(--hero-img);
+    background-size: cover; background-position: center 30%;
+    animation: slowzoom 20s ease-out forwards;
   }
-  @keyframes slowzoom {
-    from { transform: scale(1.04); }
-    to   { transform: scale(1.0); }
-  }
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
+  @keyframes slowzoom { from { transform: scale(1.04); } to { transform: scale(1.0); } }
+  .hero-overlay {
+    position: absolute; inset: 0;
     background:
-      linear-gradient(to top,  rgba(4,13,26,1)   0%,  rgba(4,13,26,0.65) 38%, transparent 65%),
-      linear-gradient(to right, rgba(4,13,26,0.55) 0%, transparent 60%);
+      linear-gradient(to top, rgba(3,11,26,1) 0%, rgba(3,11,26,0.7) 40%, rgba(3,11,26,0.2) 75%, transparent 100%),
+      linear-gradient(to right, rgba(3,11,26,0.6) 0%, transparent 60%);
   }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 6vw 6vw;
-    max-width: 900px;
-    animation: fadeUp 1.1s ease both;
-    animation-delay: 0.3s;
+  .hero-row {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding: 0 6vw 5vw; position: relative; z-index: 2;
+    animation: fadeUp 1s ease both 0.3s; gap: 2rem;
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content { padding: 0; max-width: 700px; }
   .hero-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.7rem;
   }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 2.5rem;
-    height: 1px;
-    background: var(--cyan);
-  }
-  h1 {
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--cyan); }
+  .hero-h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3.4rem, 8vw, 7.5rem);
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    margin-bottom: 1.6rem;
+    font-size: clamp(3.2rem, 9vw, 7.5rem);
+    line-height: 0.92; letter-spacing: 0.02em; margin-bottom: 0.6rem;
   }
-  h1 em {
-    font-style: normal;
-    color: var(--cyan);
+  .hero-h1 em { font-style: normal; color: var(--cyan); }
+  .hero-lema {
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 300; color: rgba(232,240,254,0.82);
+    letter-spacing: 0.06em; margin-bottom: 1.8rem;
   }
-  .hero-sub {
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    font-weight: 300;
-    color: rgba(240,244,255,0.78);
-    line-height: 1.65;
-    max-width: 560px;
-    margin-bottom: 2.2rem;
-  }
-  .hero-ctas {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-    margin-bottom: 3.5rem;
-  }
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    background: linear-gradient(135deg, var(--blue), var(--electric));
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 3px;
-    transition: box-shadow 0.25s, transform 0.2s;
-    box-shadow: 0 4px 30px rgba(10,95,255,0.4);
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 40px rgba(10,95,255,0.6);
-  }
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    border: 1px solid rgba(255,255,255,0.28);
-    color: var(--white);
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 3px;
-    backdrop-filter: blur(8px);
-    transition: border-color 0.25s, background 0.25s;
-  }
-  .btn-outline:hover {
-    border-color: var(--cyan);
-    background: rgba(0,207,255,0.08);
-  }
-  /* Stats strip inside hero bottom */
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2.4rem; }
   .hero-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-    border-top: 1px solid var(--border);
-    padding-top: 2rem;
+    display: flex; flex-wrap: wrap; gap: 2.5rem;
+    border-top: 1px solid rgba(0,229,255,0.2); padding-top: 1.8rem;
   }
-  .stat-item { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; text-align: center; }
-  .stat-number {
+  .hstat { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
+  .hstat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; line-height: 1; color: var(--cyan); }
+  .hstat-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  /* countdown */
+  .hero-countdown {
+    flex-shrink: 0; align-self: flex-start;
+    background: rgba(3,11,26,0.85); backdrop-filter: blur(10px);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 20px; text-align: center;
+  }
+  .cd-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .cd-boxes { display: flex; gap: 10px; }
+  .cd-box { display: flex; flex-direction: column; align-items: center; min-width: 44px; }
+  .cd-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; line-height: 1; color: var(--cyan); }
+  .cd-unit { font-size: 0.58rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+  @media (max-width: 600px) {
+    .hero-row { flex-direction: column; align-items: flex-start; padding: 0 20px 36px; gap: 1.2rem; }
+    .hero-content { width: 100%; }
+    .hero-countdown { align-self: flex-start; padding: 10px 14px; }
+    .cd-num { font-size: 1.4rem; }
+    .hero-stats { gap: 1.5rem; }
+    .hstat-num { font-size: 2rem; }
+  }
+  @media (min-width: 601px) and (max-width: 900px) {
+    .hero-row { flex-direction: column; align-items: flex-start; padding: 0 32px 5vw; gap: 1.5rem; }
+    .hero-content { width: 100%; }
+    .hero-countdown { align-self: flex-start; }
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 2rem; border-radius: 4px;
+    background: linear-gradient(135deg, var(--blue), #0A84FF);
+    color: #fff; font-weight: 700; font-size: 0.82rem;
+    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer; font-family: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 28px rgba(13,110,253,0.45);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(13,110,253,0.6); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.82rem 1.8rem; border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.3); color: var(--text);
+    font-weight: 500; font-size: 0.82rem; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    cursor: pointer; font-family: inherit; background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--cyan); background: rgba(0,229,255,0.08); color: var(--cyan); }
+
+  /* ── STAT CARDS (info strip) ── */
+  .sec-pad { padding: 40px 0 56px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  @media (max-width: 900px) { .grid4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid4 { grid-template-columns: 1fr; } }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+  .stat .lbl { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 7px; }
+  .stat .val { font-size: 1.55rem; font-weight: 900; }
+  .stat .sub { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+
+  /* ── CTA BOX ── */
+  .cta-box {
+    background: linear-gradient(135deg, rgba(0,229,255,0.07), rgba(13,110,253,0.14));
+    border: 1px solid rgba(0,229,255,0.28); border-radius: 16px;
+    padding: 30px 32px; text-align: center; margin-top: 28px;
+  }
+  .cta-box h3 { font-size: 1.25rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .cta-box p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 480px; margin: 0 auto 22px; }
+  .cta-btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+
+  /* ── REGISTRO ── */
+  #registro { padding: 56px 0; }
+  .registro-grid {
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 52px; align-items: start;
+  }
+  @media (max-width: 820px) { .registro-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  .reg-info h2 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
-    line-height: 1;
-    color: var(--cyan);
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem); line-height: 0.95; margin-bottom: 18px;
   }
-  .stat-label {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--silver);
-  }
+  .reg-info h2 em { font-style: normal; color: var(--cyan); }
+  .reg-info p { font-size: 0.92rem; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+  .reg-info p strong { color: var(--text); }
 
-  /* ─── SECTION BASE ──────────────────────────────────────── */
-  section {
-    padding: 7rem 6vw;
+  .reg-benefits { list-style: none; margin: 22px 0 28px; }
+  .reg-benefits li {
+    font-size: 0.85rem; color: var(--muted); padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;
   }
-  .section-header {
-    margin-bottom: 4rem;
-    max-width: 680px;
-  }
-  .section-header h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    line-height: 1;
-    letter-spacing: 0.02em;
-    margin-bottom: 1rem;
-  }
-  .section-header p {
-    font-size: 1rem;
-    font-weight: 300;
-    color: rgba(240,244,255,0.65);
-    line-height: 1.7;
-  }
+  .reg-benefits li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+  .reg-benefits li strong { color: var(--text); }
 
-  /* ─── TESTIMONIALES ─────────────────────────────────────── */
-  #testimoniales {
-    background: linear-gradient(160deg, var(--deep) 0%, var(--navy) 100%);
-    position: relative;
-    overflow: hidden;
+  .reg-contact { display: flex; flex-direction: column; gap: 8px; }
+  .reg-contact p { font-size: 0.8rem; color: var(--muted); margin-bottom: 2px; }
+  .reg-contact a {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.82rem; text-decoration: none; padding: 10px 16px;
+    border-radius: 9px; transition: all 0.2s; width: fit-content;
   }
-  #testimoniales::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(10,95,255,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  .btn-email { background: rgba(255,213,79,0.08); border: 1px solid rgba(255,213,79,0.25); color: var(--gold); }
+  .btn-wa    { background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.28); color: #25d366; }
+  .btn-email:hover, .btn-wa:hover { transform: translateY(-2px); opacity: 0.9; }
 
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+  /* Form card */
+  .form-card {
+    background: rgba(10,20,46,0.75); border: 1px solid var(--border);
+    border-radius: 18px; padding: 34px;
+    backdrop-filter: blur(10px);
   }
-  .testimonial-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-    backdrop-filter: blur(12px);
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
+  .form-card h3 { font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 5px; }
+  .form-card .form-sub { font-size: 0.81rem; color: var(--muted); margin-bottom: 26px; line-height: 1.6; }
+  .form-group { margin-bottom: 16px; }
+  .form-label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; padding: 11px 14px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 9px; color: var(--text); font-family: inherit; font-size: 0.88rem;
+    transition: border-color 0.2s, background 0.2s; outline: none;
+    -webkit-appearance: none; appearance: none;
   }
-  .testimonial-card::before {
-    content: '\201C';
-    position: absolute;
-    top: 0.8rem; right: 1.5rem;
-    font-family: 'DM Serif Display', serif;
-    font-size: 6rem;
-    line-height: 1;
-    color: rgba(10,95,255,0.15);
-    pointer-events: none;
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--cyan); background: rgba(0,229,255,0.04);
   }
-  .testimonial-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(30,143,255,0.5);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(142,171,208,0.4); }
+  .form-select option { background: #0a1628; color: var(--text); }
+  .form-textarea { resize: vertical; min-height: 82px; line-height: 1.6; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+  .form-btn {
+    width: 100%; padding: 13px; border-radius: 9px; margin-top: 4px;
+    background: linear-gradient(135deg, var(--blue), #0A84FF);
+    color: #fff; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: none; cursor: pointer; font-family: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 5px 28px rgba(13,110,253,0.4);
   }
-  .testimonial-text {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: rgba(240,244,255,0.9);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .author-avatar {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue), var(--cyan));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    color: #fff;
-    flex-shrink: 0;
-  }
-  .author-name {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--white);
-  }
-  .author-title {
-    font-size: 0.72rem;
-    font-weight: 400;
-    color: var(--silver);
-    margin-top: 0.1rem;
-  }
-  .testimonial-tag {
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background: rgba(10,95,255,0.2);
-    border: 1px solid rgba(10,95,255,0.35);
-    border-radius: 2px;
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 1rem;
-  }
+  .form-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(13,110,253,0.55); }
+  .form-note { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 11px; line-height: 1.6; }
 
-  /* ─── VIDEO TESTIMONIALS ────────────────────────────────── */
-  .video-section-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .video-section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .videos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  .video-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .video-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  }
-  .video-placeholder {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    background: linear-gradient(135deg, #071428, #0a1c3a);
-    overflow: hidden;
-    cursor: pointer;
-  }
-  /* When a real iframe is inserted, use this wrapper */
-  .video-placeholder iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  .video-placeholder .play-btn {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px; height: 60px;
-    border-radius: 50%;
-    background: rgba(10,95,255,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.25s, transform 0.25s;
-    pointer-events: none;
-  }
-  .video-card:hover .play-btn {
-    background: var(--electric);
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-  .play-btn svg { margin-left: 4px; }
-  .video-placeholder .video-thumbnail-label {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 1.8rem 1rem 0.8rem;
-    background: linear-gradient(to top, rgba(4,13,26,0.9), transparent);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--silver);
-  }
-  .video-placeholder-icon {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -65%);
-    font-size: 2rem;
-    opacity: 0.18;
-  }
-  .video-meta {
-    padding: 1.1rem 1.3rem 1.3rem;
-  }
-  .video-meta .vm-name {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 0.2rem;
-  }
-  .video-meta .vm-desc {
-    font-size: 0.76rem;
-    color: var(--silver);
-    line-height: 1.5;
-  }
-  /* Instruction note */
-  .video-instruction {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.7rem 1.2rem;
-    background: rgba(0,207,255,0.07);
-    border: 1px solid rgba(0,207,255,0.2);
-    border-radius: 4px;
-    font-size: 0.73rem;
-    color: var(--cyan);
-    margin-top: 1.8rem;
-    line-height: 1.5;
-  }
+  .form-success { display: none; text-align: center; padding: 36px 16px; }
+  .form-success .s-icon { font-size: 2.8rem; margin-bottom: 14px; }
+  .form-success h4 { font-size: 1.15rem; font-weight: 800; color: var(--green); margin-bottom: 8px; }
+  .form-success p { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
 
-  /* ─── SPONSORS ──────────────────────────────────────────── */
-  #sponsors {
-    background: var(--navy);
-    position: relative;
-  }
-  #sponsors::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--border), transparent);
-  }
-  .sponsors-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
-    margin-top: 1rem;
-  }
-  .sponsor-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    padding: 2rem 1rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    backdrop-filter: blur(8px);
-  }
-  .sponsor-card:hover {
-    border-color: rgba(30,143,255,0.5);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    transform: translateY(-4px);
-  }
-  .sponsor-icon {
-    font-size: 2.2rem;
-    line-height: 1;
-  }
-  .sponsor-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.15rem;
-    letter-spacing: 0.08em;
-    color: var(--white);
-  }
-  .sponsor-role {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--silver);
-    line-height: 1.4;
-    text-align: center;
-  }
-  .sponsor-logo-wrap {
-    width: 130px;
-    height: 60px;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-  }
-  .sponsor-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    opacity: 0.9;
-    transition: opacity 0.3s;
-  }
-  .sponsor-card:hover .sponsor-logo {
-    opacity: 1;
-  }
-  .sponsor-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--cyan);
-    box-shadow: 0 0 8px var(--cyan);
-  }
-
-  /* Sponsor tier legend */
-  .sponsor-note {
-    margin-top: 2.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  .tier-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--silver);
-  }
-  .tier-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-  }
-  .tier-dot.gold { background: var(--gold); box-shadow: 0 0 6px var(--gold); }
-  .tier-dot.blue { background: var(--electric); box-shadow: 0 0 6px var(--electric); }
-  .tier-dot.silver { background: var(--silver); }
-
-  /* NVIDIA / Meta special styling */
-  .sponsor-card.tech-giant {
-    border-color: rgba(240,192,64,0.2);
-  }
-  .sponsor-card.tech-giant:hover {
-    border-color: rgba(240,192,64,0.55);
-    box-shadow: 0 12px 40px rgba(240,192,64,0.1);
-  }
-  .sponsor-card.tech-giant .sponsor-dot {
-    background: var(--cyan);
-    box-shadow: 0 0 8px var(--cyan);
-  }
-
-  /* ─── FOOTER CTA ────────────────────────────────────────── */
-  #cta-2027 {
-    background: linear-gradient(135deg, #061030 0%, #04122a 50%, #071428 100%);
-    border-top: 1px solid var(--border);
-    text-align: center;
-    padding: 7rem 6vw;
-    position: relative;
-    overflow: hidden;
-  }
-  #cta-2027::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 800px; height: 500px;
-    background: radial-gradient(ellipse, rgba(10,95,255,0.13) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .cta-inner { position: relative; z-index: 2; }
-  #cta-2027 h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.6rem, 5vw, 4.5rem);
-    letter-spacing: 0.03em;
-    margin-bottom: 1rem;
-  }
-  #cta-2027 p {
-    font-size: 1rem;
-    font-weight: 300;
-    color: rgba(240,244,255,0.65);
-    max-width: 500px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-  }
-  .cta-btn {
-    display: inline-block;
-    padding: 1rem 2.8rem;
-    background: linear-gradient(135deg, var(--blue), var(--electric));
-    border-radius: 3px;
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    transition: box-shadow 0.25s, transform 0.2s;
-    box-shadow: 0 4px 24px rgba(10,95,255,0.4);
-    margin-top: 0.5rem;
-  }
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 36px rgba(10,95,255,0.6);
-  }
-
-
-  /* ─── HAMBURGER MENU ────────────────────────────────────── */
-  .nav-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 200;
-  }
-  .nav-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav-toggle.open span:nth-child(2) { opacity: 0; }
-  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  @media (max-width: 860px) {
-    .nav-toggle { display: flex; }
-    .nav-links {
-      display: flex !important;
-      flex-direction: column;
-      position: fixed;
-      top: 0; right: 0;
-      width: 260px;
-      height: 100vh;
-      background: rgba(4,13,26,0.98);
-      backdrop-filter: blur(16px);
-      border-left: 1px solid var(--border);
-      padding: 5rem 2rem 2rem;
-      gap: 0;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-      z-index: 150;
-      overflow-y: auto;
-    }
-    .nav-links.open {
-      transform: translateX(0);
-    }
-    .nav-links li {
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-links li a {
-      display: block;
-      padding: 0.9rem 0;
-      font-size: 0.85rem;
-    }
-    .nav-dropdown { flex-direction: column; align-items: flex-start; }
-    .nav-dropdown > a { width: 100%; }
-    .nav-submenu {
-      position: static;
-      opacity: 1 !important;
-      pointer-events: all !important;
-      transform: none !important;
-      border: none;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-      padding: 0 0 0 1rem;
-      display: none;
-    }
-    .nav-submenu.open { display: block; }
-    .nav-submenu li { border-bottom: none; }
-    .nav-submenu li a {
-      padding: 0.5rem 0;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.45);
-    }
-    .nav-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 140;
-    }
-    .nav-overlay.open { display: block; }
-  }
-
-  #contacto {
-    background: #030b18;
-    border-top: 1px solid var(--border);
-    padding: 5rem 6vw;
-  }
-  .contacto-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .contacto-nav h4,
-  .contacto-info h4 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.14em;
-    color: var(--cyan);
-    margin-bottom: 1.4rem;
-  }
-  .contacto-nav ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .contacto-nav ul a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .contacto-nav ul a:hover { color: var(--cyan); }
-  .contacto-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .contacto-item {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    color: rgba(255,255,255,0.65);
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .contacto-item:hover { color: var(--cyan); }
-  .contacto-icon {
-    width: 38px; height: 38px;
-    border-radius: 8px;
-    background: rgba(0,207,255,0.08);
-    border: 1px solid rgba(0,207,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    font-size: 1rem;
-  }
-  @media (max-width: 640px) {
-    .contacto-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  }
-
-  /* ─── FOOTER ────────────────────────────────────────────── */
+  /* ── FOOTER ── */
   footer {
-    background: #020a15;
-    padding: 2.5rem 6vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center; padding: 36px 20px;
+    border-top: 1px solid var(--border2);
+    color: var(--muted); font-size: 0.73rem; line-height: 1.9;
+    position: relative; z-index: 1;
   }
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 0.1em;
-    color: var(--white);
-  }
-  .footer-logo span { color: var(--cyan); }
-  .footer-copy {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.3);
-    text-align: right;
-  }
-
-  /* ─── SCROLL ANIMATIONS ─────────────────────────────────── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) { .sponsors-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .sponsors-grid { grid-template-columns: 1fr; } }
-  #carrusel {
-    padding: 5rem 6vw 4rem;
-    background: var(--deep);
-    position: relative;
-  }
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    border: 1px solid var(--border);
-  }
-  .carousel-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-  }
-  .carousel-track {
-    display: flex;
-    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 100%;
-  }
-  .carousel-slide {
-    min-width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  .carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .carousel-caption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to top, rgba(4,13,26,0.85) 0%, transparent 100%);
-    padding: 2rem 1.5rem 1.2rem;
-  }
-  .carousel-caption p {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cyan);
-  }
-  .carousel-btn {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: rgba(4,13,26,0.75);
-    border: 1px solid var(--border);
-    color: var(--white);
-    width: 46px; height: 46px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 10;
-    transition: background 0.25s, border-color 0.25s;
-    backdrop-filter: blur(8px);
-  }
-  .carousel-btn:hover {
-    background: var(--blue);
-    border-color: var(--blue);
-  }
-  .carousel-btn.prev { left: 1rem; }
-  .carousel-btn.next { right: 1rem; }
-  .carousel-indicators {
-    position: absolute;
-    bottom: 1.2rem; left: 50%;
-    transform: translateX(-50%);
-    display: flex; gap: 0.4rem;
-    z-index: 10;
-  }
-  .carousel-indicator {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.35);
-    border: 1px solid rgba(255,255,255,0.6);
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .carousel-indicator.active {
-    background: var(--cyan);
-    width: 26px;
-    border-radius: 4px;
-    border-color: var(--cyan);
-  }
-  .carousel-play-controls {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    z-index: 10;
-  }
-  .play-pause-btn {
-    background: rgba(4,13,26,0.75);
-    border: 1px solid var(--border);
-    color: var(--white);
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.25s;
-    backdrop-filter: blur(8px);
-  }
-  .play-pause-btn:hover { background: var(--blue); border-color: var(--blue); }
-  .carousel-footer {
-    margin-top: 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 0.2rem;
-  }
-  .carousel-counter {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--silver);
-  }
-  .carousel-link {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cyan);
-    text-decoration: none;
-    display: flex; align-items: center; gap: 0.4rem;
-    transition: color 0.25s;
-  }
-  .carousel-link:hover { color: var(--white); }
-  @media (max-width: 640px) {
-    #carrusel { padding: 4rem 1.2rem 3rem; }
-    .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
-    .carousel-wrapper { aspect-ratio: 4/3; }
-  }
-
-
-
-  /* Prevent horizontal overflow globally */
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* ── Tablet (max 1024px) ── */
-  @media (max-width: 1024px) {
-    .sponsors-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .testimonials-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .videos-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  /* ── Mobile (max 640px) ── */
-  @media (max-width: 640px) {
-    nav { padding: 1rem 1.2rem; }
-
-    section { padding: 4rem 1.2rem; }
-
-    .hero-content { padding: 0 1.2rem 3rem; }
-    .hero-stats { gap: 1.2rem; flex-wrap: wrap; }
-    .stat-number { font-size: 1.8rem; }
-
-    .hero-ctas {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .btn-primary, .btn-outline {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .testimonials-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .videos-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .sponsors-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    footer { flex-direction: column; text-align: center; }
-    .footer-copy { text-align: center; }
-
-    .video-instruction { font-size: 0.68rem; }
-  }
-
-  /* ── Small mobile (max 400px) ── */
-  @media (max-width: 400px) {
-    .sponsors-grid {
-      grid-template-columns: 1fr;
-    }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-</style>
+  .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--cyan); letter-spacing: 0.05em; margin-bottom: 6px; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--cyan); }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; margin: 10px 0 14px; }
+  </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═════════════════════════════════════════════════ -->
+<!-- ══ NAV ══ -->
 <nav>
-  <a href="#" class="nav-logo">IA<span>EXPO</span></a>
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+  <a href="https://iaExpo.ai" class="nav-brand">IA Expo™ 2027</a>
+  <div class="nav-tabs">
+    <a href="https://iaExpo.ai"                    class="ntab"><span class="ico">🌟</span> IA Expo</a>
+    <a href="https://iaExpo.ai/programa"           class="ntab"><span class="ico">📅</span> Programa</a>
+    <a href="https://iaExpo.ai/tickets"            class="ntab"><span class="ico">🎟️</span> Tickets</a>
+    <a href="https://iaExpo.ai/convocatoria"       class="ntab"><span class="ico">📑</span> Call for Papers</a>
+    <a href="https://iaExpo.ai/patrocinios.html"   class="ntab"><span class="ico">🏆</span> Patrocinios</a>
+    <a href="https://iaExpo.ai/informacion"        class="ntab"><span class="ico">📍</span> Información</a>
+  </div>
+  <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
-  <ul class="nav-links" id="navLinks">
-    <li class="nav-dropdown" id="navDropdown">
-      <a href="#" id="navDropdownToggle">IA Expo 2026</a>
-      <ul class="nav-submenu" id="navSubmenu">
-        <li><a href="https://iaExpo.ai/actas" target="_blank">Actas</a></li>
-        <li><a href="https://iaExpo.ai/presentaciones" target="_blank">Presentaciones</a></li>
-        <li><a href="https://iaExpo.ai/galeria" target="_blank">Galería</a></li>
-      </ul>
-    </li>
-    <li><a href="#testimoniales">Testimoniales</a></li>
-    <li><a href="#sponsors">Alianzas</a></li>
-    <li><a href="#cta-2027">IA Expo 2027</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <div class="nav-overlay" id="navOverlay"></div>
 </nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="https://iaExpo.ai"                class="ntab" onclick="closeNav()"><span class="ico">🌟</span> IA Expo</a>
+  <a href="https://iaExpo.ai/programa"       class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
+  <a href="https://iaExpo.ai/tickets"        class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
+  <a href="https://iaExpo.ai/convocatoria"   class="ntab" onclick="closeNav()"><span class="ico">📑</span> Call for Papers</a>
+  <a href="https://iaExpo.ai/patrocinios"    class="ntab" onclick="closeNav()"><span class="ico">🏆</span> Patrocinios</a>
+  <a href="https://iaExpo.ai/informacion"    class="ntab" onclick="closeNav()"><span class="ico">📍</span> Información</a>
+</div>
 
-<!-- ═══ HERO ═════════════════════════════════════════════════ -->
-<section id="hero">
+<!-- ══ HERO (de 2027.html sección Inicio) ══ -->
+<div class="hero-wrap">
   <div class="hero-bg"></div>
-  <div class="hero-gradient"></div>
+  <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <div class="hero-eyebrow">31 de enero de 2026 &nbsp;·&nbsp; Ciudad de México</div>
-
-    <h1>Gracias por<br>hacer <em>historia</em><br>con nosotros</h1>
-
-    <p class="hero-sub">
-      La IA Expo Internacional™ 2026 reunió a los líderes más visionarios de la inteligencia artificial en un solo escenario — para transformar la conversación de teoría a realidad.
-    </p>
-
-    <div class="hero-ctas">
-      <a href="https://iaExpo.ai/actas" class="btn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Ver Actas
-      </a>
-      <a href="https://iaExpo.ai/presentaciones" class="btn-outline">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        Ver Presentaciones
-      </a>
-      <a href="https://iaExpo.ai/galeria" class="btn-outline">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Ver Galería de Fotos
-      </a>
+  <div class="hero-row">
+    <div class="hero-content">
+      <div class="hero-eyebrow">28 · 29 · 30 Enero 2027 &nbsp;·&nbsp; Ciudad de México</div>
+      <div class="hero-h1">IA EXPO<br><em>INTERNACIONAL</em><br>2027</div>
+      <div class="hero-lema">"IA Para la Vida Real 2.0"</div>
+      <div class="hero-ctas">
+        <a href="#registro" class="btn-primary">✍️ Regístrate Ahora</a>
+        <a href="iaexpo.html" class="btn-outline">🌟 Conoce el Evento</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-num">220</div><div class="hstat-lbl">Líderes en IA</div></div>
+        <div class="hstat"><div class="hstat-num">8</div><div class="hstat-lbl">Tracks Temáticos</div></div>
+        <div class="hstat"><div class="hstat-num">3</div><div class="hstat-lbl">Días de Impacto</div></div>
+        <div class="hstat"><div class="hstat-num">1</div><div class="hstat-lbl">Evento Único</div></div>
+      </div>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-number">16<span class="gold">+</span></span>
-        <span class="stat-label">Speakers</span>
+    <!-- Cuenta Regresiva -->
+    <div class="hero-countdown">
+      <div class="cd-label">Cuenta Regresiva</div>
+      <div class="cd-boxes">
+        <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-unit">Días</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-unit">Hrs</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-unit">Min</div></div>
       </div>
-      <div class="stat-item">
-        <span class="stat-number">10<span class="gold">+</span></span>
-        <span class="stat-label">Países</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INFO STRIP ══ -->
+<div class="wrap">
+  <div class="sec-pad" style="padding-top:36px;">
+    <div class="grid4" style="margin-bottom:32px;">
+      <div class="stat">
+        <div class="lbl">📅 Fechas</div>
+        <div class="val" style="font-size:1.1rem;color:var(--cyan)">28–30 Enero 2027</div>
+        <div class="sub">Jueves a Sábado</div>
       </div>
-      <div class="stat-item">
-        <span class="stat-number">9</span>
-        <span class="stat-label">Alianzas Estratégicas</span>
+      <div class="stat">
+        <div class="lbl">📍 Sede</div>
+        <div class="val" style="font-size:1.1rem;color:var(--cyan)">Por Determinar</div>
+        <div class="sub">Ciudad de México</div>
       </div>
-      <div class="stat-item">
-        <span class="stat-number">1</span>
-        <span class="stat-label">Día que cambió todo</span>
+      <div class="stat">
+        <div class="lbl">🔥 Precio Lanzamiento</div>
+        <div class="val" style="color:var(--green)">50% OFF</div>
+        <div class="sub">Disponibilidad pronto</div>
       </div>
+      <div class="stat">
+        <div class="lbl">✍️ Call for Papers</div>
+        <div class="val" style="font-size:1.1rem;color:var(--gold)">31 Agosto 2026</div>
+        <div class="sub">Cierre de envíos</div>
+      </div>
+    </div>
+
+    <!-- CTA Box -->
+    <div class="cta-box">
+      <h3>Tu lugar en la IA Expo 2027 te espera.</h3>
+      <p>Forma parte del movimiento que está usando la inteligencia artificial para cambiar la vida real de personas reales en LATAM. Precios de lanzamiento con 50% de descuento disponibles ahora.</p>
+      <div class="cta-btns">
+        <a href="iaexpo.html" class="btn-primary">🌟 IA Expo Info</a>
+        <a href="tickets.html" class="btn-outline">🎟️ Ver Tickets</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ REGISTRO ══ -->
+<section id="registro">
+  <div class="wrap">
+    <div class="registro-grid">
+
+      <!-- Columna izquierda: info -->
+      <div class="reg-info">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;">Reserva tu lugar</div>
+        <h2>Sé parte de la<br><em>IA Expo 2027.</em></h2>
+        <p>Solo hay <strong>220 lugares</strong> disponibles para el evento boutique de inteligencia artificial más relevante de LATAM. Regístrate ahora y asegura tu precio de lanzamiento.</p>
+        <ul class="reg-benefits">
+          <li><strong>3 días de inmersión</strong> en inteligencia artificial aplicada</li>
+          <li><strong>8 tracks temáticos</strong> con líderes que ya transformaron su industria</li>
+          <li><strong>Networking estructurado</strong> con 220 C-Levels de toda LATAM</li>
+          <li><strong>Talleres prácticos</strong> con grupos de máximo 20 personas</li>
+          <li><strong>Precio de lanzamiento 50% OFF</strong> — disponibilidad limitada</li>
+        </ul>
+        <div class="reg-contact">
+          <p>¿Prefieres contactarnos directamente?</p>
+          <a href="mailto:info@iaExpo.ai?subject=Información%20IA%20Expo%202027" class="btn-email">✉️ info@iaExpo.ai</a>
+          <a href="https://wa.me/5215555555555?text=Hola%2C%20me%20interesa%20la%20IA%20Expo%202027" class="btn-wa" target="_blank">📲 WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Columna derecha: formulario -->
+      <div class="form-card">
+        <h3>Solicita Información</h3>
+        <div class="form-sub">Completa el formulario y te contactamos en menos de 24 horas con toda la información de tu boleto.</div>
+        <div id="form-wrap">
+          <form id="reg-form" onsubmit="submitForm(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="nombre">Nombre *</label>
+                <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="apellido">Apellido *</label>
+                <input class="form-input" type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Correo Electrónico *</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="tucorreo@empresa.com" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="telefono">Teléfono / WhatsApp</label>
+                <input class="form-input" type="tel" id="telefono" name="telefono" placeholder="+52 55 1234 5678">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="pais">País *</label>
+                <select class="form-select" id="pais" name="pais" required>
+                  <option value="">Selecciona</option>
+                  <option value="MX">México</option>
+                  <option value="CO">Colombia</option>
+                  <option value="AR">Argentina</option>
+                  <option value="CL">Chile</option>
+                  <option value="PE">Perú</option>
+                  <option value="BR">Brasil</option>
+                  <option value="US">Estados Unidos</option>
+                  <option value="ES">España</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="empresa">Empresa / Organización</label>
+              <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="boleto">Boleto de Interés *</label>
+              <select class="form-select" id="boleto" name="boleto" required>
+                <option value="">Selecciona un boleto</option>
+                <option value="vip">💎 Membresía VIP — $190,000 MXN</option>
+                <option value="networking">🥂 Networking Estructurado — $12,450 MXN</option>
+                <option value="conferencias">🎟️ Conferencias — $14,900 MXN</option>
+                <option value="taller">🛠️ Taller — $4,900 MXN</option>
+                <option value="expo">🏛️ Expo — $1,450 MXN</option>
+                <option value="info">Quiero más información</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="mensaje">¿Cómo usas la IA hoy? (opcional)</label>
+              <textarea class="form-textarea" id="mensaje" name="mensaje" placeholder="Cuéntanos brevemente..."></textarea>
+            </div>
+            <button type="submit" class="form-btn">🚀 Quiero mi Lugar en la IA Expo 2027</button>
+            <div class="form-note">Tu información es confidencial y nunca será compartida con terceros.</div>
+          </form>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="s-icon">🎉</div>
+          <h4>¡Solicitud Recibida!</h4>
+          <p>Gracias por tu interés en la <strong style="color:#fff;">IA Expo Internacional™ 2027</strong>.<br>Te contactaremos en menos de 24 horas con la información de tu boleto.</p>
+          <div style="margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <a href="iaexpo.html" class="btn-primary">🌟 Conoce el Evento</a>
+            <a href="tickets.html" class="btn-outline">🎟️ Ver Tickets</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══ CARRUSEL DE FOTOS ════════════════════════════════════ -->
-<section id="carrusel">
-  <div class="section-header reveal" style="margin-bottom:2.5rem;">
-    <span class="section-label">Momentos del Evento</span>
-    <h2>IA Expo Internacional™, 2026</h2>
-    <p>Revive los mejores momentos de un día histórico para la inteligencia artificial en América Latina.</p>
-  </div>
-
-  <div class="carousel-container reveal">
-    <div class="carousel-wrapper">
-      <div class="carousel-track" id="carouselTrack"></div>
-      <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
-      <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
-      <div class="carousel-play-controls">
-        <button class="play-pause-btn" id="playPauseBtn" onclick="toggleAutoplay()">⏸</button>
-      </div>
-      <div class="carousel-indicators" id="carouselIndicators"></div>
-    </div>
-  </div>
-
-  <div class="carousel-footer">
-    <span class="carousel-counter" id="carouselCounter">Foto 1 de 20</span>
-    <a href="https://iaExpo.ai/galeria" class="carousel-link">
-      Ver galería completa
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- ═══ TESTIMONIALES ════════════════════════════════════════ -->
-<section id="testimoniales">
-  <div class="section-header reveal">
-    <span class="section-label">Lo que dicen</span>
-    <h2>Voces del <span class="blue">Evento</span></h2>
-    <p>Asistentes, speakers y aliados comparten su experiencia en la IA Expo Internacional™ 2026.</p>
-  </div>
-
-  <div class="testimonials-grid">
-
-    <!-- Testimonial 1 – Dr. William McKee -->
-    <div class="testimonial-card reveal">
-      <span class="testimonial-tag">Asistente</span>
-      <p class="testimonial-text">
-        "Tanto mi esposa como yo estuvimos asombrados con la dinámica, el contenido, la diversidad de ponentes y los temas abordados. Maravilloso y para alguien como yo, apasionado con aprender diario cosas nuevas, me voy sumamente emocionado y satisfecho."
-      </p>
-      <div class="testimonial-author">
-        <div class="author-avatar">W</div>
-        <div>
-          <div class="author-name">Dr. William McKee</div>
-          <div class="author-title">Director Ejecutivo · Multi Radiance Medical</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonial 2 – Noelia González -->
-    <div class="testimonial-card reveal">
-      <span class="testimonial-tag">Speaker</span>
-      <p class="testimonial-text">
-        "Estoy con la cabeza llena de ideas y el corazón explotado de alegría por la experiencia de haber compartido esas horas súper nutritivas, con tantos conferencistas, con tanta información, con tantas miradas. Necesito un par de días para que decante tanta información — quiero sacarle provecho al máximo."
-      </p>
-      <div class="testimonial-author">
-        <div class="author-avatar">N</div>
-        <div>
-          <div class="author-name">Noelia González</div>
-          <div class="author-title">Consultora Comunicación Estratégica · Universidad Católica de Córdoba</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonial 3 – Alejandra Díaz -->
-    <div class="testimonial-card reveal">
-      <span class="testimonial-tag">Alianza</span>
-      <p class="testimonial-text">
-        "La organización fue impecable — cada detalle reflejó la seriedad del tema y el nivel de quienes lo hacen posible. Desde el primer momento se percibió que esto no era un evento más: era un ecosistema vivo de ideas, de conexiones reales y de conversaciones que no se dan en ningún otro escenario. Fue la decisión correcta estar aquí."
-      </p>
-      <div class="testimonial-author">
-        <div class="author-avatar">A</div>
-        <div>
-          <div class="author-name">Alejandra Díaz</div>
-          <div class="author-title">CEO · CREAVIZER</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonial 4 – Martín Sierra -->
-    <div class="testimonial-card reveal">
-      <span class="testimonial-tag">Speaker</span>
-      <p class="testimonial-text">
-        "La IA Expo Internacional 2026 representa mucho más que una exhibición de tecnologías: es un espacio donde se redefinen los modelos de liderazgo, se entrelazan mentes audaces, y se construye el nuevo lenguaje de valor para los negocios del futuro."
-      </p>
-      <div class="testimonial-author">
-        <div class="author-avatar">M</div>
-        <div>
-          <div class="author-name">Martín Sierra</div>
-          <div class="author-title">PMO &amp; VMO Leader · Aeroméxico</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonial 5 – José Ángel Govela -->
-    <div class="testimonial-card reveal">
-      <span class="testimonial-tag">Speaker</span>
-      <p class="testimonial-text">
-        "Gran experiencia en IA Expo Internacional. Escuchar a los expertos compartir no solo las herramientas que están desarrollando, sino los desafíos reales de implementar IA en los negocios, fue sumamente enriquecedor. Me quedo con una lección fundamental: el éxito de la tecnología no depende solo del código, sino de la colaboración humana estratégica para llevarla a cabo. El panel de expertos del final fue especialmente enriquecedor."
-      </p>
-      <div class="testimonial-author">
-        <div class="author-avatar">M</div>
-        <div>
-          <div class="author-name">José Ángel Govela</div>
-          <div class="author-title">Project Manager · Nextia</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ─── VIDEO TESTIMONIALS ─────────────────────────── -->
-  <div class="video-section-label reveal">Video Testimoniales</div>
-
-  <div class="videos-grid">
-
-    <!-- Video 1 – Dr. Jaime García -->
-    <div class="video-card reveal">
-      <div class="video-placeholder">
-        <iframe src="https://www.youtube.com/embed/g4OrN7KXgB4" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="vm-name">Dr. Jaime García</div>
-        <div class="vm-desc">Radiología e Imagen · Médica Sur</div>
-      </div>
-    </div>
-
-    <!-- Video 2 – José Antonio González -->
-    <div class="video-card reveal">
-      <div class="video-placeholder">
-        <iframe src="https://www.youtube.com/embed/yKQCUhmKcBQ" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="vm-name">José Antonio González</div>
-        <div class="vm-desc">CEO · Zahoree</div>
-      </div>
-    </div>
-
-    <!-- Video 3 – Dr. Gabriel Barrera -->
-    <div class="video-card reveal">
-      <div class="video-placeholder">
-        <iframe src="https://www.youtube.com/embed/OU2M1WALPls" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="vm-name">Dr. Gabriel Barrera</div>
-        <div class="vm-desc">Coordinador · Grupo Cal y Mayor</div>
-      </div>
-    </div>
-
-    <!-- Video 4 – Mireya González Corona -->
-    <div class="video-card reveal">
-      <div class="video-placeholder">
-        <iframe src="https://www.youtube.com/embed/S433rtbAjgs" allowfullscreen></iframe>
-      </div>
-      <div class="video-meta">
-        <div class="vm-name">Mireya González Corona</div>
-        <div class="vm-desc">Business &amp; Cognitive Coaching · Integral Coaching</div>
-      </div>
-    </div>
-
-  </div>
-
-
-</section>
-
-<!-- ═══ SPONSORS / ALIADOS ═══════════════════════════════════ -->
-<section id="sponsors">
-  <div class="section-header reveal">
-    <span class="section-label">Alianzas Estratégicas</span>
-    <h2>Quiénes hicieron <span class="blue">posible</span> el evento</h2>
-    <p>Organizaciones visionarias que creyeron en la misión de llevar la IA a la vida real.</p>
-  </div>
-
-  <div class="sponsors-grid">
-
-    <!-- NVIDIA -->
-    <div class="sponsor-card tech-giant reveal">
-      <div class="sponsor-dot"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Nvidia.jpg" alt="NVIDIA" class="sponsor-logo"></div>
-      <div class="sponsor-name">NVIDIA</div>
-      <div class="sponsor-role">Tecnología de IA &amp; Aceleración</div>
-    </div>
-
-    <!-- Meta -->
-    <div class="sponsor-card tech-giant reveal">
-      <div class="sponsor-dot"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Meta.jpg" alt="Meta" class="sponsor-logo"></div>
-      <div class="sponsor-name">Meta</div>
-      <div class="sponsor-role">Plataformas &amp; IA Open Source</div>
-    </div>
-
-    <!-- Digital Gap, Inc. -->
-    <div class="sponsor-card tech-giant reveal">
-      <div class="sponsor-dot"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Digital%20Gap.jpg" alt="Digital Gap" class="sponsor-logo"></div>
-      <div class="sponsor-name">Digital Gap, Inc.</div>
-      <div class="sponsor-role">Organizador del Evento</div>
-    </div>
-
-    <!-- Celestial Dynamics -->
-    <div class="sponsor-card tech-giant reveal">
-      <div class="sponsor-dot"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Celestial%20Dynamics.jpg" alt="Celestial Dynamics" class="sponsor-logo"></div>
-      <div class="sponsor-name">Celestial Dynamics</div>
-      <div class="sponsor-role">Innovación &amp; Estrategia</div>
-    </div>
-
-    <!-- Tec de Monterrey -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--electric);box-shadow:0 0 8px var(--electric);"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Tec%20de%20Monterrey.jpg" alt="Tec de Monterrey" class="sponsor-logo"></div>
-      <div class="sponsor-name">Tec de Monterrey</div>
-      <div class="sponsor-role">Aliado Académico — Movilidad Autónoma</div>
-    </div>
-
-    <!-- Médica Sur -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--electric);box-shadow:0 0 8px var(--electric);"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/M%C3%A9dica%20Sur.jpg" alt="Médica Sur" class="sponsor-logo"></div>
-      <div class="sponsor-name">Médica Sur</div>
-      <div class="sponsor-role">Aliado en IA para la Salud</div>
-    </div>
-
-    <!-- Asteri Eventos -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--silver);"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Asteri%20Eventos.jpg" alt="Asteri Eventos" class="sponsor-logo"></div>
-      <div class="sponsor-name">Asteri Eventos</div>
-      <div class="sponsor-role">Producción &amp; Experiencia de Eventos</div>
-    </div>
-
-    <!-- Creavizer -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--silver);"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Creavizer.jpg" alt="Creavizer" class="sponsor-logo"></div>
-      <div class="sponsor-name">Creavizer</div>
-      <div class="sponsor-role">IA Marketing &amp; Publicidad</div>
-    </div>
-
-    <!-- Vele Comunicación -->
-    <div class="sponsor-card reveal">
-      <div class="sponsor-dot" style="background:var(--silver);"></div>
-      <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Vele%20Comunicaci%C3%B3n.jpg" alt="Vele Comunicación" class="sponsor-logo"></div>
-      <div class="sponsor-name">Vele Comunicación</div>
-      <div class="sponsor-role">Comunicación &amp; Relaciones Públicas</div>
-    </div>
-
-  </div>
-
-  <div class="sponsor-note reveal">
-    <span class="tier-badge"><span class="tier-dot gold"></span> Aliado Tecnológico Global</span>
-    <span class="tier-badge"><span class="tier-dot blue"></span> Aliado Institucional</span>
-    <span class="tier-badge"><span class="tier-dot silver"></span> Aliado de Evento</span>
-  </div>
-</section>
-
-<!-- ═══ CTA INFO ══════════════════════════════════════════════ -->
-<section id="cta-2027">
-  <div class="cta-inner">
-    <span class="section-label">Próximamente</span>
-    <h2>IA Expo Internacional™ <span class="blue">2027</span></h2>
-    <p>La conversación continúa. Sé el primero en enterarte cuando abramos registros para la próxima edición.</p>
-    <a href="https://iaExpo.ai/info" target="_blank" rel="noopener" class="cta-btn">Necesito Más Información</a>
-  </div>
-</section>
-
-<!-- ═══ CONTACTO ══════════════════════════════════════════════ -->
-<section id="contacto">
-  <div class="contacto-grid">
-
-    <!-- Navegación -->
-    <div class="contacto-nav reveal">
-      <h4>Navegación</h4>
-      <ul>
-        <li><a href="#">↑ Inicio</a></li>
-        <li><a href="#testimoniales">Testimoniales</a></li>
-        <li><a href="#sponsors">Alianzas Estratégicas</a></li>
-        <li><a href="https://iaExpo.ai/sugerencias" target="_blank">Sugerencias</a></li>
-        <li><a href="#cta-2027">IA Expo 2027</a></li>
-      </ul>
-    </div>
-
-    <!-- Contacto -->
-    <div class="contacto-info reveal">
-      <h4>Contáctanos</h4>
-      <a href="mailto:iaExpo@iaExpo.ai" class="contacto-item">
-        <div class="contacto-icon">
-          <svg width="20" height="20" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="6" fill="url(#emailGrad)"/>
-            <defs>
-              <linearGradient id="emailGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#4F8EF7"/>
-                <stop offset="100%" stop-color="#A855F7"/>
-              </linearGradient>
-            </defs>
-            <path d="M6 10h20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2Z" fill="none" stroke="white" stroke-width="1.5"/>
-            <polyline points="4,10 16,19 28,10" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <span>iaExpo@iaExpo.ai</span>
-      </a>
-      <a href="https://wa.me/525559632687" target="_blank" rel="noopener" class="contacto-item">
-        <div class="contacto-icon">
-          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#25D366" d="M16 0C7.163 0 0 7.163 0 16c0 2.822.737 5.472 2.027 7.774L0 32l8.467-2.001A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0Z"/>
-            <path fill="#fff" d="M23.32 19.79c-.32-.16-1.887-.93-2.18-1.036-.292-.107-.504-.16-.716.16-.213.32-.822 1.036-.008 1.25-.293.107 1.01.606 1.01.606s.213.053.426-.267c.214-.32.854-1.07.854-1.07.107-.213.107-.427-.214-.587Zm-7.11 3.47c-1.6 0-3.147-.47-4.453-1.334l-.32-.2-3.307.78.793-3.2-.213-.32A7.893 7.893 0 0 1 7.44 16c0-4.693 3.84-8.533 8.56-8.533 2.293 0 4.453.906 6.08 2.506 1.6 1.6 2.507 3.734 2.507 6.027-.027 4.72-3.867 8.56-8.587 8.56Zm4.907-6.48c-.267-.133-1.574-.773-1.814-.86-.24-.08-.427-.12-.613.133-.187.254-.72.86-.88 1.04-.16.187-.32.2-.587.067-.267-.133-1.12-.413-2.133-1.307-.787-.706-1.32-1.573-1.48-1.84-.16-.266-.014-.413.12-.546.12-.12.267-.32.4-.48.133-.16.173-.267.267-.453.08-.187.04-.36-.027-.493-.067-.133-.613-1.48-.84-2.027-.226-.52-.44-.44-.613-.453h-.52c-.187 0-.48.067-.72.333-.24.267-.934.907-.934 2.227 0 1.32.96 2.587 1.094 2.773.133.187 1.88 2.88 4.56 4.04.64.28 1.133.44 1.52.56.64.2 1.227.173 1.68.107.52-.08 1.574-.64 1.8-1.254.227-.626.227-1.16.16-1.266-.08-.12-.24-.187-.507-.307Z"/>
-          </svg>
-        </div>
-        <span>+52 55 5963-2687</span>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-logo">IA<span>EXPO</span> Internacional™</div>
-  <div class="footer-copy">
-    © 2025-2026 IA Expo Internacional™ · Ciudad de México<br>
-    <a href="https://iaExpo.ai" style="color:rgba(255,255,255,0.3);text-decoration:none;">iaExpo.ai</a>
+  <div class="footer-brand">IA EXPO INTERNACIONAL™ 2027</div>
+  <div>"IA Para la Vida Real 2.0"</div>
+  <div class="footer-links">
+    <a href="iaexpo.html">IA Expo</a>
+    <a href="programa.html">Programa</a>
+    <a href="tickets.html">Tickets</a>
+    <a href="convocatoria.html">Call for Papers</a>
+    <a href="patrocinios.html">Patrocinios</a>
+    <a href="informacion.html">Información</a>
   </div>
+  <div>📅 28 · 29 · 30 Enero 2027 &nbsp;·&nbsp; 📍 Ciudad de México</div>
+  <div style="margin-top:6px;">✉️ <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;·&nbsp; 🌐 <a href="https://iaExpo.ai" target="_blank">iaExpo.ai</a></div>
+  <div style="margin-top:14px;font-size:0.68rem;color:rgba(142,171,208,0.5);">© 2027 IA Expo Internacional™ · Todos los derechos reservados · Ciudad de México, México</div>
 </footer>
 
-<!-- ═══ SCROLL REVEAL JS ══════════════════════════════════════ -->
 <script>
-// ═══ CARRUSEL ═══════════════════════════════════════════════
-(function() {
-  const BASE_URL    = 'https://raw.githubusercontent.com/iaExpo/2026.Galeria/main/';
-  const TOTAL       = 100;
-  const SAMPLE_SIZE = 20;
-  const AUTOPLAY_MS = 3000;
-
-  function padNum(n) { return String(n).padStart(3, '0'); }
-  function photoURL(n) { return `${BASE_URL}iaExpo.2026.${padNum(n)}.jpg`; }
-
-  // Pick SAMPLE_SIZE random photos
-  const all = Array.from({length: TOTAL}, (_, i) => i + 1);
-  const photos = all.sort(() => Math.random() - 0.5).slice(0, SAMPLE_SIZE);
-
-  let current = 0;
-  let playing = true;
-  let timer;
-
-  function updateCarousel() {
-    document.getElementById('carouselTrack').style.transform = `translateX(-${current * 100}%)`;
-    document.querySelectorAll('.carousel-indicator').forEach((el, i) => {
-      el.classList.toggle('active', i === current);
-    });
-    document.getElementById('carouselCounter').textContent = `Foto ${current + 1} de ${photos.length}`;
-  }
-
-  window.moveCarousel = function(dir) {
-    current = (current + dir + photos.length) % photos.length;
-    updateCarousel();
-    resetAutoplay();
-  };
-
-  window.goToSlide = function(i) {
-    current = i;
-    updateCarousel();
-    resetAutoplay();
-  };
-
-  function startAutoplay() {
-    if (playing) timer = setInterval(() => moveCarousel(1), AUTOPLAY_MS);
-  }
-  function stopAutoplay()  { clearInterval(timer); }
-  function resetAutoplay() { stopAutoplay(); startAutoplay(); }
-
-  window.toggleAutoplay = function() {
-    playing = !playing;
-    document.getElementById('playPauseBtn').textContent = playing ? '⏸' : '▶';
-    playing ? startAutoplay() : stopAutoplay();
-  };
-
-  // Build carousel DOM
-  const track      = document.getElementById('carouselTrack');
-  const indicators = document.getElementById('carouselIndicators');
-
-  photos.forEach((num, i) => {
-    const slide = document.createElement('div');
-    slide.className = 'carousel-slide';
-    slide.innerHTML = `
-      <img src="${photoURL(num)}" alt="IA Expo 2026 Foto ${padNum(num)}" loading="${i === 0 ? 'eager' : 'lazy'}">
-      <div class="carousel-caption"><p>Foto ${padNum(num)}</p></div>
-    `;
-    track.appendChild(slide);
-
-    const dot = document.createElement('div');
-    dot.className = `carousel-indicator${i === 0 ? ' active' : ''}`;
-    dot.onclick = () => goToSlide(i);
-    indicators.appendChild(dot);
-  });
-
-  updateCarousel();
-  startAutoplay();
-
-  // Pause on hover
-  const wrapper = document.querySelector('.carousel-wrapper');
-  if (wrapper) {
-    wrapper.addEventListener('mouseenter', () => { if (playing) stopAutoplay(); });
-    wrapper.addEventListener('mouseleave', () => { if (playing) startAutoplay(); });
-  }
-})();
-
-// ═══ HAMBURGER MENU ═════════════════════════════════════════
-(function() {
-  var toggle   = document.getElementById('navToggle');
-  var links    = document.getElementById('navLinks');
-  var overlay  = document.getElementById('navOverlay');
-  var dropdown = document.getElementById('navDropdownToggle');
-  var submenu  = document.getElementById('navSubmenu');
-
-  function closeMenu() {
-    toggle.classList.remove('open');
-    links.classList.remove('open');
-    overlay.classList.remove('open');
-  }
-
-  toggle.addEventListener('click', function() {
-    var isOpen = links.classList.toggle('open');
-    toggle.classList.toggle('open', isOpen);
-    overlay.classList.toggle('open', isOpen);
-  });
-
-  overlay.addEventListener('click', closeMenu);
-
-  // Toggle submenu on mobile tap
-  dropdown.addEventListener('click', function(e) {
-    if (window.innerWidth <= 860) {
-      e.preventDefault();
-      submenu.classList.toggle('open');
+// ── COUNTDOWN ──
+(function () {
+  const target = new Date('2027-01-28T09:00:00-06:00');
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) {
+      document.getElementById('cd-d').textContent = '0';
+      document.getElementById('cd-h').textContent = '00';
+      document.getElementById('cd-m').textContent = '00';
+      return;
     }
-  });
-
-  // Close menu when a link is clicked
-  links.querySelectorAll('a:not(#navDropdownToggle)').forEach(function(a) {
-    a.addEventListener('click', closeMenu);
-  });
+    document.getElementById('cd-d').textContent = Math.floor(diff / 86400000);
+    document.getElementById('cd-h').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 30000);
 })();
 
-(function() {
-  var els = document.querySelectorAll('.reveal');
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry, i) {
-      if (entry.isIntersecting) {
-        // stagger siblings slightly
-        var delay = 0;
-        var siblings = entry.target.parentElement.querySelectorAll('.reveal');
-        siblings.forEach(function(sib, idx) { if (sib === entry.target) delay = idx * 90; });
-        setTimeout(function() {
-          entry.target.classList.add('visible');
-        }, delay);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  els.forEach(function(el) { observer.observe(el); });
-})();
+// ── NAV ──
+function toggleNav() {
+  document.getElementById('hbtn').classList.toggle('open');
+  document.getElementById('mmenu').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('hbtn').classList.remove('open');
+  document.getElementById('mmenu').classList.remove('open');
+}
+
+// ── FORM ──
+function submitForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-btn');
+  btn.textContent = '⏳ Enviando...';
+  btn.disabled = true;
+
+  const nombre   = document.getElementById('nombre').value;
+  const apellido = document.getElementById('apellido').value;
+  const email    = document.getElementById('email').value;
+  const telefono = document.getElementById('telefono').value;
+  const pais     = document.getElementById('pais').value;
+  const empresa  = document.getElementById('empresa').value;
+  const boleto   = document.getElementById('boleto').value;
+  const mensaje  = document.getElementById('mensaje').value;
+
+  const body = `Nombre: ${nombre} ${apellido}
+Correo: ${email}
+Teléfono: ${telefono || 'No proporcionado'}
+País: ${pais}
+Empresa: ${empresa || 'No proporcionada'}
+Boleto: ${boleto}
+
+${mensaje ? 'Mensaje:\n' + mensaje : ''}
+
+---
+Enviado desde home.html — iaExpo.ai`;
+
+  window.location.href =
+    `mailto:info@iaExpo.ai?subject=${encodeURIComponent('Solicitud de Registro — ' + nombre + ' ' + apellido)}&body=${encodeURIComponent(body)}`;
+
+  setTimeout(() => {
+    document.getElementById('form-wrap').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }, 1200);
+}
 </script>
 
 </body>
