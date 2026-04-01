@@ -1,1058 +1,273 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="IA Expo Internacional 2026 - El evento más importante de Inteligencia Artificial en América Latina. Conferencias, networking y exhibiciones tecnológicas en Ciudad de México.">
-    <meta name="keywords" content="inteligencia artificial, IA, machine learning, expo, tecnología, innovación, México, conferencias">
-    <title>IA Expo Internacional 2026 | Liderando el Futuro de la Inteligencia Artificial</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA Expo Internacional&#8482; 2027 &mdash; IA Para la Vida Real 2.0</title>
+<meta name="description" content="Conoce el evento de IA m&aacute;s inspirador de LATAM. 8 tracks tem&aacute;ticos, 220 l&iacute;deres, talleres pr&aacute;cticos y networking estructurado. Ciudad de M&eacute;xico, 28&ndash;30 Enero 2027.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030B1A;--surface:rgba(13,110,253,0.07);--surface2:rgba(255,255,255,0.03);--border:rgba(0,229,255,0.15);--border2:rgba(255,255,255,0.07);--cyan:#00E5FF;--blue:#0D6EFD;--gold:#FFD54F;--green:#00E676;--purple:#CE93D8;--orange:#FFB74D;--text:#E8F0FE;--muted:#8EABD0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 15% 25%,rgba(0,229,255,0.04) 0%,transparent 50%),radial-gradient(ellipse at 85% 75%,rgba(13,110,253,0.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+nav{position:sticky;top:0;z-index:300;background:rgba(3,11,26,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;gap:12px}
+.nav-brand{font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);text-decoration:none;white-space:nowrap;flex-shrink:0}
+.nav-tabs{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.nav-tabs::-webkit-scrollbar{display:none}
+.ntab{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:6px 11px;border-radius:8px;cursor:pointer;font-size:0.72rem;font-weight:600;font-family:inherit;transition:all 0.2s;white-space:nowrap;display:flex;align-items:center;gap:5px;text-decoration:none}
+.ntab .ico{font-size:0.85rem}
+.ntab:hover{border-color:var(--cyan);color:var(--cyan)}
+.ntab.active{background:linear-gradient(135deg,var(--blue),#0A84FF);border-color:var(--blue);color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;width:38px;height:38px;background:var(--surface);border:1px solid var(--border);border-radius:9px;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.hamburger span{display:block;width:18px;height:2px;background:var(--cyan);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;gap:6px;padding:12px 20px 16px;background:rgba(3,11,26,0.99);border-bottom:1px solid var(--border);position:sticky;top:56px;z-index:299}
+.mobile-menu.open{display:flex}
+.mobile-menu .ntab{width:100%;text-align:left;padding:12px 14px;font-size:0.88rem}
+@media(max-width:768px){.nav-tabs{display:none}.hamburger{display:flex}}
+.page-header{background:linear-gradient(to bottom,rgba(3,11,26,0.3) 0%,rgba(3,11,26,0.88) 100%),url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center 30%/cover no-repeat;padding:80px 20px 64px;text-align:center;position:relative;z-index:1;animation:fadeUp 0.9s ease both 0.1s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.page-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.page-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);line-height:0.95;letter-spacing:0.02em;margin-bottom:18px}
+.page-h1 em{font-style:normal;color:var(--cyan)}
+.page-sub{font-size:clamp(0.95rem,2vw,1.15rem);font-weight:300;color:rgba(232,240,254,0.78);max-width:560px;margin:0 auto 28px;line-height:1.7}
+.page-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.sec-pad{padding:48px 0 56px}
+.sec-title{font-size:1.35rem;font-weight:800;color:var(--cyan);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.sub-title{font-size:0.95rem;font-weight:700;color:#fff;margin:22px 0 14px}
+.lead{font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;border-radius:4px;background:linear-gradient(135deg,var(--blue),#0A84FF);color:#fff;font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 28px rgba(13,110,253,0.45)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(13,110,253,0.6)}
+.btn-outline{display:inline-flex;align-items:center;gap:0.5rem;padding:0.82rem 1.8rem;border-radius:4px;border:1px solid rgba(255,255,255,0.3);color:var(--text);font-weight:500;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;transition:border-color 0.2s,background 0.2s}
+.btn-outline:hover{border-color:var(--cyan);background:rgba(0,229,255,0.08);color:var(--cyan)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.grid4{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;transition:border-color 0.2s}
+.card:hover{border-color:rgba(0,229,255,0.3)}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+.stat .lbl{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:7px}
+.stat .val{font-size:1.55rem;font-weight:900}
+.stat .sub{font-size:0.72rem;color:var(--muted);margin-top:4px}
+.stats-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:36px}
+.stats-row .stat{min-width:160px;text-align:center;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{background:rgba(0,229,255,0.07);border:1px solid var(--border);border-radius:99px;padding:4px 13px;font-size:0.73rem;color:var(--muted)}
+.track-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all 0.2s;border-top-width:3px}
+.track-card:hover{transform:translateY(-3px);border-color:rgba(0,229,255,0.35)}
+.track-icon{font-size:1.6rem;margin-bottom:10px}
+.track-name{font-size:0.9rem;font-weight:800;color:#fff;margin-bottom:7px}
+.track-desc{font-size:0.78rem;color:var(--muted);line-height:1.65}
+.audience-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 14px;text-align:center;transition:all 0.2s}
+.audience-card:hover{border-color:rgba(0,229,255,0.3);transform:translateY(-2px)}
+.audience-card img{width:68px;height:68px;border-radius:12px;object-fit:cover;margin-bottom:12px;border:1px solid var(--border)}
+.audience-card .role{font-size:0.82rem;font-weight:700;color:var(--cyan);line-height:1.3}
+.conviction-banner{background:linear-gradient(135deg,rgba(0,229,255,0.06),rgba(13,110,253,0.1));border:1px solid var(--border);border-left:4px solid var(--cyan);border-radius:12px;padding:26px 30px;margin-bottom:32px;font-size:1rem;font-weight:300;color:rgba(232,240,254,0.85);line-height:1.8}
+.conviction-banner strong{color:#fff;font-weight:700}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:4px 0}
+.cta-box{background:linear-gradient(135deg,rgba(0,229,255,0.07),rgba(13,110,253,0.14));border:1px solid rgba(0,229,255,0.28);border-radius:16px;padding:36px 32px;text-align:center;margin-top:28px}
+.cta-box h3{font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:10px}
+.cta-box p{font-size:0.87rem;color:var(--muted);line-height:1.7;max-width:500px;margin:0 auto 24px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--border2);color:var(--muted);font-size:0.73rem;line-height:1.9;position:relative;z-index:1}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--cyan);letter-spacing:0.05em;margin-bottom:6px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--cyan)}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px;margin:10px 0 14px}
+</style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero-grid"></div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span>🚀</span> IA Expo Internacional® 2026
-            </div>
-            <h1>
-                La Conferencia Exclusiva de <br>
-                <span class="hero-gradient-text">Inteligencia Artificial</span><br>
-                Para la Vida Real
-            </h1>
-            <p class="hero-subtitle">
-                Únete a líderes de la industria, innovadores y visionarios en el evento más importante de IA en América Latina. Una experiencia transformadora que redefinirá tu perspectiva tecnológica.
-            </p>
-            <div class="hero-meta">
-                <div class="hero-meta-item">
-                    <span class="hero-meta-icon">📍</span>
-                    <div class="hero-meta-text">
-                        <span class="hero-meta-label">Ubicación</span>
-                        <span class="hero-meta-value">Ciudad de México</span>
-                    </div>
-                </div>
-                <div class="hero-meta-item">
-                    <span class="hero-meta-icon">🏢</span>
-                    <div class="hero-meta-text">
-                        <span class="hero-meta-label">Venue</span>
-                        <span class="hero-meta-value">The Westin Santa Fe</span>
-                    </div>
-                </div>
-                <div class="hero-meta-item">
-                    <span class="hero-meta-icon">📅</span>
-                    <div class="hero-meta-text">
-                        <span class="hero-meta-label">Fecha</span>
-                        <span class="hero-meta-value">31 de enero de 2026</span>
-                    </div>
-                </div>
-            </div>
-            <div class="cta-buttons">
-                <a href="#entradas" class="btn btn-primary">
-                    Comprar Entradas →
-                </a>
-                <a href="https://iaexpo.ai/speakers" target="_blank" class="btn btn-secondary">
-                    Convocatoria a Conferencistas
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Para Quién Section -->
-    <section id="para-quien">
-        <div class="section-header">
-            <div class="section-badge">Audiencia</div>
-            <h2 class="section-title">¿Para Quién es IA Expo?</h2>
-            <p class="section-subtitle">
-                Diseñado para profesionales, líderes y visionarios que están moldeando el futuro de la tecnología y los negocios.
-            </p>
-        </div>
-        
-        <div style="text-align: center; margin: 3rem auto 4rem; max-width: 900px;">
-            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68fd1b01d672b46703c96f68.jpeg" 
-                 alt="IA Expo Audiencia" 
-                 style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(15, 37, 87, 0.15);">
-        </div>
-        
-        <div class="audience-grid">
-            <div class="audience-card">
-                <span class="audience-icon">💼</span>
-                <h3>Inversionistas</h3>
-                <p>Fondos de capital y ángeles inversionistas en busca de las próximas startups unicornio en IA.</p>
-            </div>
-            
-            <div class="audience-card">
-                <span class="audience-icon">🚀</span>
-                <h3>C-Level & Ejecutivos</h3>
-                <p>Líderes empresariales implementando transformación digital y estrategias de IA.</p>
-            </div>
-            
-            <div class="audience-card">
-                <span class="audience-icon">🌟</span>
-                <h3>Innovadores</h3>
-                <p>Visionarios interesados en el impacto de la IA en la sociedad.</p>
-            </div>
-            
-            <div class="audience-card">
-                <span class="audience-icon">⚡</span>
-                <h3>Emprendedores</h3>
-                <p>Fundadores de startups creando productos disruptivos con inteligencia artificial.</p>
-            </div>
-            
-            <div class="audience-card">
-                <span class="audience-icon">💻</span>
-                <h3>Tech Leaders</h3>
-                <p>CTOs, desarrolladores senior y arquitectos de soluciones de IA avanzadas.</p>
-            </div>
-            
-            <div class="audience-card">
-                <span class="audience-icon">📊</span>
-                <h3>Consultores</h3>
-                <p>Estrategas digitales asesorando transformación tecnológica empresarial.</p>
-            </div>
-            
-            <div class="audience-card">
-                <span class="audience-icon">🎓</span>
-                <h3>Academia</h3>
-                <p>Investigadores y profesores liderando innovación en IA, ML y robótica.</p>
-            </div>
-            
-            <div class="audience-card">
-                <span class="audience-icon">🎯</span>
-                <h3>Interesados</h3>
-                <p>Profesionales y entusiastas buscando entender el potencial de la inteligencia artificial.</p>
-            </div>
-        </div>
-    </section>
+<nav>
+  <a href="https://iaExpo.ai" class="nav-brand">IA Expo&#8482; 2027</a>
+  <div class="nav-tabs">
+    <a href="https://iaExpo.ai" class="ntab active"><span class="ico">&#127775;</span> IA Expo</a>
+    <a href="programa.html" class="ntab"><span class="ico">&#128197;</span> Programa</a>
+    <a href="tickets.html" class="ntab"><span class="ico">&#127903;&#65039;</span> Tickets</a>
+    <a href="convocatoria.html" class="ntab"><span class="ico">&#128209;</span> Call for Papers</a>
+    <a href="patrocinios.html" class="ntab"><span class="ico">&#127942;</span> Patrocinios</a>
+    <a href="informacion.html" class="ntab"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
+  </div>
+  <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Men&uacute;">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="https://iaExpo.ai" class="ntab active" onclick="closeNav()"><span class="ico">&#127775;</span> IA Expo</a>
+  <a href="programa.html" class="ntab" onclick="closeNav()"><span class="ico">&#128197;</span> Programa</a>
+  <a href="tickets.html" class="ntab" onclick="closeNav()"><span class="ico">&#127903;&#65039;</span> Tickets</a>
+  <a href="convocatoria.html" class="ntab" onclick="closeNav()"><span class="ico">&#128209;</span> Call for Papers</a>
+  <a href="patrocinios.html" class="ntab" onclick="closeNav()"><span class="ico">&#127942;</span> Patrocinios</a>
+  <a href="informacion.html" class="ntab" onclick="closeNav()"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
+</div>
 
-    <!-- Benefits Section -->
-    <section class="benefits-section" id="beneficios">
-        <div class="section-header">
-            <div class="section-badge">Valor</div>
-            <h2 class="section-title">Por Qué Asistir</h2>
-            <p class="section-subtitle">
-                Una inversión estratégica en tu futuro profesional con retorno inmediato y duradero.
-            </p>
-        </div>
-        
-        <div style="text-align: center; margin: 3rem auto 4rem; max-width: 900px;">
-            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68fea36725d2b33af4da9fe5.jpeg"
-                 alt="IA Expo Audiencia" 
-                 style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(15, 37, 87, 0.15);">
-        </div>
-        
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">🎓</div>
-                <h3>Conocimiento de Elite</h3>
-                <p>Acceso a insights de líderes mundiales en IA, compartiendo estrategias probadas y casos de éxito reales.</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">🤝</div>
-                <h3>Networking Premium</h3>
-                <p>Conecta con decision-makers, inversionistas y socios estratégicos en un ambiente curado.</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">💡</div>
-                <h3>Visión Estratégica</h3>
-                <p>Comprende las tendencias que definirán los próximos 5 años de innovación tecnológica.</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">📈</div>
-                <h3>ROI Comprobado</h3>
-                <p>Casos de implementación con métricas reales de empresas líderes en diversos sectores.</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">🤖</div>
-                <h3>Demos Exclusivas</h3>
-                <p>Experiencia hands-on con las tecnologías de IA más avanzadas del mercado.</p>
-            </div>
-            
-            <div class="benefit-card">
-                <div class="benefit-icon">🌎</div>
-                <h3>Perspectiva Global</h3>
-                <p>Speakers y panelistas de Estados Unidos, Europa, Asia y América Latina.</p>
-            </div>
-        </div>
-    </section>
+<div class="page-header">
+  <div class="page-eyebrow">28 &middot; 29 &middot; 30 Enero 2027 &nbsp;&middot;&nbsp; Ciudad de M&eacute;xico</div>
+  <div class="page-h1">IA EXPO<br><em>INTERNACIONAL</em><br>2027</div>
+  <div class="page-sub">&ldquo;IA Para la Vida Real 2.0&rdquo; &mdash; El evento boutique de inteligencia artificial aplicada m&aacute;s relevante de Latinoam&eacute;rica.</div>
+  <div class="page-ctas">
+    <a href="home.html#registro" class="btn-primary">&#9997;&#65039; Reg&iacute;strate Ahora</a>
+    <a href="tickets.html" class="btn-outline">&#127903;&#65039; Ver Tickets</a>
+  </div>
+</div>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section" id="entradas">
-        <div class="section-header">
-            <div class="section-badge">Entradas</div>
-            <h2 class="section-title">Acceso al Evento</h2>
-            <p class="section-subtitle">
-                Inversión inteligente en tu desarrollo profesional. Precio de lanzamiento por tiempo limitado.
-            </p>
-        </div>
-        
-        <div class="pricing-container">
-            <div class="pricing-card featured">
-                <div class="pricing-badge">⭐ Acceso Completo</div>
-                <div class="price-original">$400 USD</div>
-                <div class="price">$100<span class="price-currency">USD</span></div>
-                <div class="price-discount">75% OFF - Lanzamiento</div>
-                <ul class="pricing-features">
-                    <li>Acceso completo a las conferencias</li>
-                    <li>Zona de exhibición interactiva</li>
-                    <li>Panel de expertos internacionales</li>
-                    <li>Networking estructurado</li>
-                    <li>Videos post-evento en HD</li>
-                    <li>Memorias digitales completas</li>
-                    <li>Lunch & Coffee breaks</li>
-                    <li>Certificado oficial de asistencia</li>
-                    <li>Membresía comunidad IA Expo</li>
-                </ul>
-                <a href="https://iaexpo.ai/iax-registro" target="_blank" class="btn btn-primary" style="width: 100%;">Comprar Ahora →</a>
-            </div>
-            
-            <div class="pricing-card">
-                <div class="pricing-badge">🎓 Estudiantes</div>
-                <div class="price-original">$300 USD</div>
-                <div class="price">$75<span class="price-currency">USD</span></div>
-                <div class="price-discount">75% OFF - Early Bird</div>
-                <ul class="pricing-features">
-                    <li>Acceso a las conferencias</li>
-                    <li>Zona de exhibición interactiva</li>
-                    <li>Panel de expertos internacionales</li>
-                    <li>Networking estructurado</li>
-                    <li>Coffee breaks</li>
-                </ul>
-                <a href="https://iaexpo.ai/iax-estudiante" target="_blank" class="btn btn-secondary" style="width: 100%; background: var(--primary); color: var(--white); border: none;">Comprar Ahora →</a>
-            </div>
-        </div>
-    </section>
+<div class="wrap">
+  <div class="sec-pad">
 
-    <!-- Speakers Section -->
-    <section id="speakers" style="background: var(--white);">
-        <div class="section-header">
-            <div class="section-badge">Conferencistas</div>
-            <h2 class="section-title">Líderes de la Industria</h2>
-            <p class="section-subtitle">
-                Aprende de los mejores expertos en inteligencia artificial, innovación y transformación digital.
-            </p>
-        </div>
-        
-        <div id="propuestas" style="text-align: center; margin-top: 4rem;">
-            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/687d174b9b0c6732bd9b1a23.jpeg" 
-                 alt="IA Expo Speakers" 
-                 style="max-width: 75%; height: auto; border-radius: 20px; box-shadow: 0 20px 60px rgba(15, 37, 87, 0.15); margin-bottom: 3rem;">
-            
-            <p style="font-size: 1.25rem; color: var(--gray); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Estamos confirmando speakers de talla mundial. Próximamente anunciaremos la lista completa de conferencistas que compartirán su conocimiento y experiencia.
-            </p>
-            
-            <div style="text-align:center;">
-                <a href="https://iaexpo.ai/speakers" target="_blank" class="btn btn-secondary" style="background: var(--primary); color: var(--white); border: none;">
-                    Convocatoria a Conferencistas →
-                </a>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 4rem;">
-                <div style="background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 4rem 3rem; border-radius: 24px; color: var(--white);">
-                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">🎤</div>
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800;">20+ Speakers</h3>
-                    <p style="opacity: 0.9; font-size: 1.1rem;">Expertos internacionales confirmados</p>
-                </div>
-                
-                <div style="background: linear-gradient(135deg, var(--secondary), var(--accent)); padding: 4rem 3rem; border-radius: 24px; color: var(--white);">
-                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">🌎</div>
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800;">10+ Países</h3>
-                    <p style="opacity: 0.9; font-size: 1.1rem;">Perspectiva global y diversa</p>
-                </div>
-                
-                <div style="background: linear-gradient(135deg, var(--accent), var(--accent-light)); padding: 4rem 3rem; border-radius: 24px; color: var(--white);">
-                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">💡</div>
-                    <h3 style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800;">20+ Sesiones</h3>
-                    <p style="opacity: 0.9; font-size: 1.1rem;">Conferencias, paneles y workshops</p>
-                </div>
-            </div>
-            
-            <!-- Featured Speakers -->
-            <div id="distinguidos" style="margin-top: 6rem;">
-                <h3 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; color: var(--dark);">Conferencistas Destacados</h3>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; text-align: left;">
-                    <!-- Speaker Dr. Eduardo Perez -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68fd526647cb3b6233d1c33c.jpeg"
-                                 alt="Dr. Eduardo Pérez"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Dr. Eduardo Pérez</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Digital Gap, Inc.</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Pionero en Machine Learning e IA con 40 años de experiencia. Ha liderado proyectos de IA en Fortune 500 y publicado más de 40 papers en conferencias internacionales.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">NeurociencIAs: El Comportamiento de la IA</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Dr. Javier Novoa -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6900d8e4e1e5532bbe50e496.jpeg"
-                                 alt="Dr. Javier Novoa"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Dr. Javier Novoa Ramos</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Cultura Ágil</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Conferencista y coach certificado, ayuda a las organizaciones a crear culturas ágiles, humanas y sostenibles para enfrentar los retos del futuro del trabajo en la era de Inteligencia Artificial.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Cómo Liderar el Cambio IA del Empleo en los Próximos Cinco Años</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Idir Ouhab Meskine -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/690a44b857ea1729453bf2dc.jpeg"
-                                 alt="Idir Ouhab Meskine"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Idir Ouhab Meskine</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">n8n Sr. Solutions Engineer</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Sr. Solutions Engineer en n8n, especializado en automatización, DevOps y tecnologías cloud, con experiencia internacional liderando proyectos en empresas tecnológicas. Formación en big data y reconocido por su enfoque estratégico.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Automatizar Sin Perder el Control: IA Práctica y Ética en los Flujos de Decisión</p>
-                        </div>
-                    </div>
+    <div class="conviction-banner">
+      La <strong>IA Expo Internacional&#8482;</strong> naci&oacute; con una convicci&oacute;n: la inteligencia artificial no es solo para cient&iacute;ficos de datos o empresas de tecnolog&iacute;a. Es para todos &mdash; para el m&eacute;dico, el abogado, el artista, el emprendedor, el maestro.<br><br>
+      Cada edici&oacute;n re&uacute;ne a personas que ya est&aacute;n usando IA en su vida cotidiana y profesional para compartir sus experiencias reales, sus aprendizajes y sus resultados con una comunidad que quiere hacer lo mismo.<br><br>
+      <strong>2027 ser&aacute; la edici&oacute;n m&aacute;s grande, m&aacute;s ambiciosa y m&aacute;s inspiradora.</strong> 3 d&iacute;as, 8 tracks, 220 l&iacute;deres, ponencias, talleres y networking estructurado.
+    </div>
 
-                    <!-- Speaker Pablo Lelo de Larrea H. -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f180d3500b269df853522f.jpeg"
-                                 alt="Pablo Lelo de Larrea H."
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Pablo Lelo de Larrea H.</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Grupo huntRED®</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Fundador Grupo huntRED® y sus unidades huntRED® executive, huntRED®, huntU®, amigro®, huntRED® experience, huntRED® inspiration y huntRED® Solutions. Ingeniero Industrial por la UIA y Admin de Empresas por el ITAM.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">HR Tech - Ecosistema IA de Desarrollo Organizacional y Gestion Integral del Talento</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Diego Bastidas -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c61014b7535eb211986e2.jpg"
-                                 alt="Diego Bastidas"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Diego Bastidas</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Launch Planner</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                           CEO de Launch Planner y cerador de la metodología LANZA FACIL para automatización digital de empresas y usuarios. Ingeniero de software, arquitecto de sistemas y estratega digital especializado en automatización y escalabilidad empresarial. 
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Crea Tu Asistente de IA y Tu Mente Maestra Digital: De WhatsApp a Tu Propio Chat Privado</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Dr. Jaime García Gómez -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69014c7fef266f7e03940660.jpeg"
-                                 alt="Dr. Jaime García Gómez"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Dr. Jaime García Gómez</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Radiología e Imagen Médica</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Médico especialista en Radiología e Imagen Médica incluyendo tomografía, ultrasonido, mastografía, resonancia magnética y tomografía por emisión de positrones (PET). Reconocido por su diagnóstico preciso de enfermedades mediante IA.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Inteligencia Artificial en el Diagnóstico Médico</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Dr. Carlo Angello Sánchez Montaño -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c843db55a596cfd3258b7.jpg"
-                                 alt="Dr. Carlo Angello Sánchez Montaño"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Dr. Carlo Angello Sánchez Montaño</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Jefe de Residentes de Angiología y Cirugía Vascular</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                           Médico cirujano vascular en formación que combina práctica clínica avanzada con innovación en IA, automatización y simulación endovascular, destacando internacionalmente por su trabajo en patología aórtica compleja y transformación tecnológica en salud.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Talento Médico Aumentado: La Nueva Palanca Estratégica del Sector Salud</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Coro Saldaña -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6917ab3a5d55fc399d39babb.png"
-                                 alt="Coro Saldaña"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Coro Saldaña</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Coro Saldaña Advisory</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Asesora en moda y retail especializada en transformación digital e IA. Más de 20 años integrando negocio, creatividad y tecnología. Su boutique advisory y colabora con marcas líderes, aportando visión estratégica en proyectos de innovación y crecimiento.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">IA Para Diseñar Más, Producir Menos Y Decidir Mejor</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Antonieta Esparza Serra -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691b21888753b69663b2beef.jpg"
-                                 alt="Antonieta Esparza Serra"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Antonieta Esparza Serra</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">COO AIA Consulting</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Ingeniera en Alimentos, Maestría en Sistemas de Gestión y 20 años como Chief Operating Officer en AIA Consulting. Evaluadora acreditada en México, España, Costa Rica y Uruguay, con amplia trayectoria en proyectos tecnológicos, científicos y sociales.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Sistema De Gestion De Inteligencia Artificial ISO 42001</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Alejandra Díaz -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e40aa86c057acd1cd97767.jpeg"
-                                 alt="Alejandra Díaz"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Alejandra Díaz</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Creavizer</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Especialista en marketing digital y producción audiovisual impulsada por la IA Generativa. Su misión es liberar empresas de limitaciones tradicionales combinando creatividad humana con IA y cristalizar ideas en realidad sin restricciones.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Cómo la IA Potencia Ideas que Transforman Empresas</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Martín Sierra -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e40df26a0a9172928d155f.jpeg"
-                                 alt="Martín Sierra"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Martín Sierra</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Líder Estratégico Proyectos de IA</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Líder estratégico con más de tres décadas de experiencia en gestión de proyectos, gobierno corporativo de TI y dirección de portafolios. Actualmente encabeza la Oficina de Portafolio de Proyectos y la Oficina de Gestión de Proveedores en Aeroméxico.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">IA Oculta: Cómo la IA Canibaliza tu Empresa</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Luis Edgar González Allegre -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f7cee457ab48d092417ed1.jpeg"
-                                 alt="Luis Edgar González Allegre"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Edgar González Allegre</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">UltraMed | Sportxioma | Ultra 3-D Design | Flashtennis | The Funnest Lab</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Emprendedor y diseñador de productos innovadores, especializado en gamificación y creatividad impulsada por IA. Se destaca por transformar ideas atrevidas en soluciones comerciales escalables en deportes, cultura juvenil y tendencias pop.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">IA – de Homo a TecnoSapiens: Evolución Tecnológica del Ser Humano</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Felipe Salas Saavedra -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69172ce51c143a4c4c055cbd.png"
-                                 alt="Felipe Salas Saavedra"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Felipe Salas Saavedra</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO IA LATAM</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Ingeniero Civil Industrial, MBA y emprendedor con más de 30 proyectos y participación en 6 M&A, activo en cerca de 15 empresas de tecnología, IA y diversos sectores. Fundador de IA Latam, cofundador de TOC Biometrics y Socio Director del Grupo Porta.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Convergencia - El Futuro Humanidad+Tecnología, Nueva Realidad, Nuevos Paradigmas</p>
-                        </div>
-                    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="lbl">&#127942; Evento Boutique</div><div class="val" style="color:var(--cyan)">220</div><div class="sub">Asistentes seleccionados</div></div>
+      <div class="stat"><div class="lbl">&#127919; Tracks Tem&aacute;ticos</div><div class="val" style="color:var(--gold)">8</div><div class="sub">Ponencias especializadas</div></div>
+      <div class="stat"><div class="lbl">&#128197; D&iacute;as de Impacto</div><div class="val" style="color:var(--green)">3</div><div class="sub">Jueves 28 al S&aacute;bado 30</div></div>
+      <div class="stat"><div class="lbl">&#128295; Talleres Pr&aacute;cticos</div><div class="val" style="color:var(--purple)">+21</div><div class="sub">Grupos de m&aacute;x. 20 personas</div></div>
+    </div>
 
-                    <!-- Speaker Enrique González Prado -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f182a64711d53e03e54ebd.jpeg"
-                                 alt="Enrique González Prado"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Enrique González Prado</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Director de Innovación y Desarrollo Tecnológico
-                                </p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                           Director Socio Grupo Cal y Mayor. Ing. en Computación, Máster en Energías Renovables. 30+ años en TI, innovación, desarrollo de sistemas de información, planeacion estratégica y normativas ISO en temas de ingeniería, tecnologías e IA.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">IA con Propósito: Cómo Convertir la Moda en Estrategia</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Gabriel Barrera Delgadillo -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f3c02fa144cd636ceba21f.png"
-                                 alt="Gabriel Barrera Delgadillo"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Gabriel Barrera Delgadillo</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Coordinador Grupo Cal y Mayor</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            La IA permite optimizar estructuras, modelar comportamientos de materiales y predecir el desempeño de sistemas completos con alta precisión para complementar con información procesada, fortaleciendo el criterio técnico y la toma de decisiones de los Ingenieros.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">La IA aplicada a Grandes Proyectos de Infraestructura</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Max Quiroz Martínez -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e411c86a0a9157dc8db981.jpeg"
-                                 alt="Max Quiroz Martínez"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Max Quiroz Martínez</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Max & Ruth Training</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Diseñador de cursos y talleres de Inteligencia Artificial para el aumento de productividad personal y profesional tanto al público en general y a diversas instituciones como COVAMI y ANUIES.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">IA y Educación: ¿El Futuro que Esperábamos?</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Randy Alexander Valverde -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69123464eb424868148b40e5.png"
-                                 alt="Randy Alexander Valverde"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Randy Alexander Valverde</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">MEP Sistemas de Inforamción Costa Rica</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Systems Engineer and Master in Education, Head of Information Systems at the Ministry of Public Education (MEP), and member of the Digital Transformation Commission for Costa Rican education, focusing his work on developing interactive learning tools in the age of AI.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Ethical AI and Knowledge Management: The New Paradigm of Organizational Value</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Freddy Díaz Rodríguez -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68f3d2538e5daa00d98506ce.png"
-                                 alt="Freddy Díaz Rodríguez"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Freddy Díaz Rodríguez</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Universidad Tecnológica de Panamá</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Candidato Doctoral Administración Industrial Universidad Tecnológica de Panamá. Investigador y consultoren la convergencia estratégica de la IA, Automatización de Procesos y Modelos de Excelencia Organizacional.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">De la Eficiencia a la Excelencia: Framework Empresarial de Servicios con IA y Automatización Inteligente</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Julio Ignacio Aguirre Quintanilla -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6907b35605f2755e6e499219.jpeg"
-                                 alt="Julio Ignacio Aguirre Quintanilla"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Julio Ignacio Aguirre Quintanilla</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Fundador IA Para Tu Día</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Fundador de IA para tu Día, Smarty y SENS - iniciativas para integrar la inteligencia artificial, automatización y la comunicación digital a personas, PyMEs y comunidades educativas.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Humanos con AIsteroides: Colaboración Humano-Máquina para Potenciar Creatividad y Toma de Decisiones</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Juan Victor Faccio Lucero -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/6912204d905e34d732eadb02.jpg"
-                                 alt="Juan Victor Faccio Lucero"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Juan Victor Faccio Lucero</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Investigador IA en Ciencias Sociales</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Investigador en la intersección de Ciencias Sociales e IA. Maestría en Desarrollo y Planeación de la Educación creador del protocolo de Análisis de Contenido Digital Asistido (ACDA) y del agente de IA especializado Ariadna ARI-04.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">De la Envidia al Insight: Cómo la Sinergia Humano+IA está Transformando la Investigación Social</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Diego Adolfo Forero Garzón -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/69137634042d13103eb96072.jpg" 
-                                 alt="Diego Adolfo Forero Garzón"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Diego Adolfo Forero Garzón</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Nextgen</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                            Ingeniero en sistemas y administrador de empresas con más de 12 años en tecnología para optimizar la experiencia del cliente. Fundador de Nextgen, donde aplica automatización e IA para ayudar a negocios a ahorrar tiempo, reducir errores y aumentar ingresos.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Cómo Un Chatbot Puede Convertir Tu Caos En Un Negocio Que Vende Solo</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Andrés del Cos Garza -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c6b5a16bfee598bc3e37a.jpg"
-                                 alt="Andrés del Cos Garza"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Andrés del Cos Garza</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Escala Mi Negocio</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                           Fundador de Escala mi Negocio ayudando PyMEs a modernizarse con IA para aumentar productividad, reducer costos y eliminar tareas repetitivas. Lidera crecimiento regional en DiDi Food. Adopción de IA simple y humana para ROI de empresas.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">El Motor Humano de la IA - Lo Necesario Para Implementar IA En Tu Negocio</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Noelia González Pereyra -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c7b9fbe6cf0ab672fa00c.jpg"
-                                 alt="Noelia González Pereyra"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Noelia González Pereyra</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">Directora Social Media Manager</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                           Consultora en comunicación y marketing digital con 19+ años de experiencia, docente en IA aplicada y directora de Voiceinteractivos, impulsando estrategias globales que potencian marcas, equipos e instituciones.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">¡Hola IA! ¿Nos conocemos? Cómo Enseñar IA a Adultos y Cambiar el Mundo Laboral Sin Dejar a Nadie Atrás</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Alejandro Horacio Gomez -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c8aa44b753522691e2884.jpg"
-                                 alt="Alejandro Horacio Gomez"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Alejandro Horacio Gomez</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Cetacean</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                           Polímata, mentor, artista, escritor e ingeniero de software trabaja en la intersección de tecnología, comunicación e investigación. Experiencia creando soluciones para empresas Fortune 500, guiando a estudiantes universitarios y autor del libro infantil brasileño ‘Prem, Priya e as Portas Mágicas’.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Del Prompt al Juego: Un Flujo de Trabajo con IA para Crear Videos Musicales para Niños</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Speaker Jose Antonio González Barreda -->
-                    <div style="background: var(--white); border: 2px solid rgba(15, 37, 87, 0.08); border-radius: 24px; padding: 3rem; transition: all 0.3s;">
-                        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-                            <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c758a6431c8aa115d91b0.jpg"
-                                 alt="Jose Antonio González Barreda"
-                                 style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary);">
-                            <div>
-                                <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem;">Jose Antonio González Barreda</h4>
-                                <p style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">CEO Escala Mi Negocio</p>
-                            </div>
-                        </div>
-                        <p style="color: var(--gray); line-height: 1.7; margin-bottom: 1.5rem;">
-                           CEO y fundador de Zahoree AI, con 35+ años creando empresas tecnológicas globales, impulsando soluciones de experiencia del cliente basadas en IA y llevando innovación mexicana a mercados en EE.UU., México, Europa, África y Asia.
-                        </p>
-                        <div style="padding: 1rem; background: var(--light); border-radius: 12px; border-left: 4px solid var(--primary);">
-                            <p style="font-weight: 600; color: var(--dark); margin-bottom: 0.5rem;">📊 Presentación:</p>
-                            <p style="color: var(--dark-700);">Procesamiento de la Voz del Cliente con IA usando el modelo de Experiencia del Cliente Transformativa</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="section-divider"></div>
 
-    <!-- Sponsorship Section -->
-    <section class="sponsorship-section" id="patrocinios">
-        <div class="section-header">
-            <div class="section-badge" style="background: rgba(255, 255, 255, 0.1); color: var(--white);">Patrocinios</div>
-            <h2 class="section-title">Paquetes de Patrocinio</h2>
-            <p class="section-subtitle">
-                Posiciona tu marca frente a los líderes de innovación tecnológica en América Latina.
-            </p>
+    <div class="sec-pad" style="padding-top:40px;padding-bottom:36px;">
+      <div class="sec-title">&iquest;Por qu&eacute; asistir?</div>
+      <div class="grid3">
+        <div class="card">
+          <div style="font-size:1.5rem;margin-bottom:10px;">&#128640;</div>
+          <div class="sub-title" style="margin-top:0;">IA Para la Vida Real 2.0</div>
+          <p class="lead" style="margin:0;">No teor&iacute;a &mdash; experiencias reales de personas que ya transformaron su negocio, carrera y vida con herramientas de IA.</p>
         </div>
-        
-        <div class="sponsorship-tiers">
-            <div class="tier-card">
-                <span class="tier-icon">💎</span>
-                <h3>Diamante</h3>
-                <p>Máxima visibilidad. Brand premium, keynote exclusivo, stand destacado y menciones especiales.</p>
-                <a href="https://iaexpo.ai/iax-diamante" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
-            
-            <div class="tier-card">
-                <span class="tier-icon">⚪</span>
-                <h3>Platino</h3>
-                <p>Alto impacto. Presencia destacada en materiales oficiales y networking VIP privilegiado.</p>
-                <a href="https://iaexpo.ai/iax-platino" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
-            
-            <div class="tier-card">
-                <span class="tier-icon">🥇</span>
-                <h3>Oro</h3>
-                <p>Excelente exposición. Stand estratégico y presencia en comunicaciones principales del evento.</p>
-                <a href="https://iaexpo.ai/iax-oro" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
-            
-            <div class="tier-card">
-                <span class="tier-icon">🥈</span>
-                <h3>Plata</h3>
-                <p>Presencia efectiva. Stand profesional y reconocimiento en materiales del evento.</p>
-                <a href="https://iaexpo.ai/iax-plata" target="_blank" class="btn btn-primary">Ver Paquete</a>
-            </div>
+        <div class="card">
+          <div style="font-size:1.5rem;margin-bottom:10px;">&#129309;</div>
+          <div class="sub-title" style="margin-top:0;">Networking de Alto Nivel</div>
+          <p class="lead" style="margin:0;">220 l&iacute;deres C-Level, directivos e innovadores de LATAM. Conexiones reales que generan oportunidades reales.</p>
         </div>
+        <div class="card">
+          <div style="font-size:1.5rem;margin-bottom:10px;">&#127758;</div>
+          <div class="sub-title" style="margin-top:0;">El Evento de IA de LATAM</div>
+          <p class="lead" style="margin:0;">El encuentro boutique de inteligencia artificial aplicada m&aacute;s relevante de Latinoam&eacute;rica. &Iacute;ntimo. Poderoso. Transformador.</p>
+        </div>
+      </div>
+    </div>
 
-        <!-- Sponsors -->
-        <div style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%); padding: 30px 20px; text-align: center;">
-            <h2 style="color: #ffffff; font-size: 32px; margin-bottom: 15px; font-weight: 700; letter-spacing: 1px;">
-                PATROCINADORES
-            </h2>
-            <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #00d4ff, #7b2cbf); margin: 0 auto 40px auto; border-radius: 2px;"></div>
-            
-            <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap;">
-                
-                <!-- Digital Gap, Inc. - NIVEL ORO -->
-                <div style="background: rgba(255, 215, 0, 0.08); padding: 35px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(255, 215, 0, 0.3); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); min-width: 300px; max-width: 300px; position: relative;">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FFD700, #FFA500); color: #1a1f3a; padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);">NIVEL ORO</div>
-                    <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691d121441c50173a292fadd.jpg" alt="Digital Gap, Inc. - Patrocinador Oro" style="width: 100%; height: auto; max-width: 270px; filter: brightness(1.15) drop-shadow(0 4px 8px rgba(255, 215, 0, 0.3));">
-                </div>
-                
-                <!-- Asteri Eventos - NIVEL PLATA -->
-                <div style="background: rgba(192, 192, 192, 0.06); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(192, 192, 192, 0.25); min-width: 280px; max-width: 280px; position: relative;">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #C0C0C0, #A8A8A8); color: #1a1f3a; padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);">NIVEL PLATA</div>
-                    <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691d12144b7535baf8340e92.jpg" alt="Asteri Eventos - Patrocinador Plata" style="width: 100%; height: auto; max-width: 250px; filter: brightness(1.1);">
-                </div>
-                
-                <!-- Creavizer - NIVEL PLATA -->
-                <div style="background: rgba(192, 192, 192, 0.06); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); border: 2px solid rgba(192, 192, 192, 0.25); min-width: 280px; max-width: 280px; position: relative;">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #C0C0C0, #A8A8A8); color: #1a1f3a; padding: 4px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);">NIVEL PLATA</div>
-                    <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691d1214c2cf86325af315bc.jpg" alt="Creavizer - Patrocinador Plata" style="width: 100%; height: auto; max-width: 250px; filter: brightness(1.1);">
-                </div> 
-            </div>
-        </div>
-    </section>
+    <div class="section-divider"></div>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonios">
-        <div class="section-header">
-            <div class="section-badge">Testimonios</div>
-            <h2 class="section-title">Voces de la Industria</h2>
-            <p class="section-subtitle">
-                Perspectivas de líderes que están definiendo el futuro de la inteligencia artificial.
-            </p>
+    <div class="sec-pad" style="padding-top:40px;padding-bottom:36px;">
+      <div class="sec-title">&#127919; Los 8 Tracks Tem&aacute;ticos</div>
+      <p class="lead">Cada track est&aacute; dise&ntilde;ado para que escuches a personas que ya est&aacute;n usando IA en tu misma industria. No teor&iacute;a &mdash; experiencias reales, resultados reales.</p>
+      <div class="grid3">
+        <div class="track-card" style="border-top-color:var(--blue)">
+          <div class="track-icon">&#128188;</div>
+          <div class="track-name">Track 1 &middot; Negocios e Innovaci&oacute;n</div>
+          <div class="track-desc">Automatizaci&oacute;n, productividad y transformaci&oacute;n de procesos empresariales con IA.</div>
+          <div class="chips"><span class="chip">ChatGPT</span><span class="chip">Copilot</span><span class="chip">Claude</span></div>
         </div>
-        
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-quote">"</div>
-                <p class="testimonial-text">Mi trayectoria en IA comenzó en 1985 como parte del equipo que desarrolló LabVIEW. Esta visión de accesibilidad tecnológica inspira los objetivos de IA hoy en día. Hoy desarrollamos algoritmos capaces de acelerar los cálculos de IA por un factor de 10.</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">EP</div>
-                    <div class="testimonial-info">
-                        <h4>Dr. Eduardo Pérez</h4>
-                        <p>Pionero en ML e IA</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="testimonial-quote">"</div>
-                <p class="testimonial-text">La inteligencia artificial no es solo una herramienta: es el punto de inflexión de esta era. La IA —cuando se aplica con enfoque, ética y propósito— se convierte en la mayor ventaja competitiva de una organización.</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">ET</div>
-                    <div class="testimonial-info">
-                        <h4>Max Quiroz</h4>
-                        <p>Líder en Transformación Digital</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="testimonial-quote">"</div>
-                <p class="testimonial-text">La IA será como tener acceso a un truco en un videojuego: una ventaja abrumadora para quien sepa aprovecharla. Las personas que dominen estas herramientas estarán en una posición privilegiada para crear más valor e innovar.</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">LT</div>
-                    <div class="testimonial-info">
-                        <h4>Enrique González Prado</h4>
-                        <p>Visionario de la Industria</p>
-                    </div>
-                </div>
-            </div>
+        <div class="track-card" style="border-top-color:var(--green)">
+          <div class="track-icon">&#128179;</div>
+          <div class="track-name">Track 2 &middot; FinTech e Inversi&oacute;n</div>
+          <div class="track-desc">IA en an&aacute;lisis de mercados, finanzas personales, detecci&oacute;n de fraude e innovaci&oacute;n financiera.</div>
+          <div class="chips"><span class="chip">Finanzas</span><span class="chip">Inversi&oacute;n</span><span class="chip">FinTech</span></div>
         </div>
-    </section>
-
-    <!-- Venue Section -->
-    <section class="venue-section" id="venue">
-        <div class="section-header">
-            <div class="section-badge">Venue</div>
-            <h2 class="section-title">The Westin Santa Fe</h2>
-            <p class="section-subtitle">
-                Un espacio de clase mundial en el corazón del distrito empresarial de Ciudad de México.
-            </p>
+        <div class="track-card" style="border-top-color:#EC407A">
+          <div class="track-icon">&#127973;</div>
+          <div class="track-name">Track 3 &middot; Medicina y Salud Digital</div>
+          <div class="track-desc">IA aplicada por profesionales de salud, pacientes y cuidadores en diagn&oacute;stico y bienestar.</div>
+          <div class="chips"><span class="chip">Salud</span><span class="chip">Bienestar</span><span class="chip">Diagn&oacute;stico</span></div>
         </div>
-        
-        <div class="venue-card">
-            <div class="venue-header">
-                <h3>Centro de Convenciones Premium</h3>
-                <p>Instalaciones de primer nivel para un evento de esta magnitud</p>
-            </div>
-            <div class="venue-details">
-                <div class="venue-detail">
-                    <span class="venue-detail-icon">📍</span>
-                    <h4>Ubicación</h4>
-                    <p>Javier Barros Sierra 540<br>Lomas de Santa Fe<br>CDMX 01219</p>
-                </div>
-                
-                <div class="venue-detail">
-                    <span class="venue-detail-icon">📞</span>
-                    <h4>Contacto</h4>
-                    <p>+52 55 5089 8000<br>
-                    <a href="https://www.marriott.com/en-us/hotels/mexws-the-westin-santa-fe-mexico-city/overview/" target="_blank">Westin Santa Fe</a></p>
-                </div>
-                
-                <div class="venue-detail">
-                    <span class="venue-detail-icon">🚗</span>
-                    <h4>Acceso</h4>
-                    <p>$140 MXN<br>Transporte público<br>Zona segura</p>
-                </div>
-                
-                <div class="venue-detail">
-                    <span class="venue-detail-icon">🏨</span>
-                    <h4>Hospedaje</h4>
-                    <p>Tarifas especiales<br>Para asistentes<br>del evento</p>
-                </div>
-            </div>
+        <div class="track-card" style="border-top-color:#FF7043">
+          <div class="track-icon">&#128663;</div>
+          <div class="track-name">Track 4 &middot; Movilidad y Autonom&iacute;a</div>
+          <div class="track-desc">IA aplicada a veh&iacute;culos aut&oacute;nomos, movilidad urbana inteligente, log&iacute;stica y transporte del futuro.</div>
+          <div class="chips"><span class="chip">Aut&oacute;nomo</span><span class="chip">Movilidad</span><span class="chip">Log&iacute;stica</span></div>
         </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section id="contacto" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: var(--white); padding: 8rem 3rem; position: relative; overflow: hidden;">
-        <!-- Background decoration -->
-        <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(8, 145, 178, 0.1) 0%, transparent 50%);"></div>
-        
-        <div style="max-width: 1000px; margin: 0 auto; position: relative; z-index: 1;">
-            <div class="section-header">
-                <div class="section-badge" style="background: rgba(255, 255, 255, 0.15); color: var(--white);">Contacto</div>
-                <h2 class="section-title" style="color: var(--white);">¿Tienes Preguntas?</h2>
-                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
-                    Completa el formulario y nos pondremos en contacto contigo para ayudarte con cualquier duda sobre el evento, patrocinios o participación como speaker.
-                </p>
-            </div>
+        <div class="track-card" style="border-top-color:var(--orange)">
+          <div class="track-icon">&#9878;&#65039;</div>
+          <div class="track-name">Track 5 &middot; Marco Legal y Regulatorio</div>
+          <div class="track-desc">LegalTech, propiedad intelectual, regulaci&oacute;n de IA en LATAM y derechos digitales.</div>
+          <div class="chips"><span class="chip">LegalTech</span><span class="chip">Regulaci&oacute;n</span></div>
         </div>
-
-        <div class="cta-buttons" style="justify-content: center; margin-top: 3rem; position: relative; z-index: 2;">
-            <a href="https://iaexpo.ai/info" target="_blank" class="btn btn-primary">
-                Más Información →
-            </a>
+        <div class="track-card" style="border-top-color:var(--purple)">
+          <div class="track-icon">&#129517;</div>
+          <div class="track-name">Track 6 &middot; &Eacute;tica e Impacto Social</div>
+          <div class="track-desc">El impacto humano de la IA: empleo, inclusi&oacute;n, equidad y uso responsable de la tecnolog&iacute;a.</div>
+          <div class="chips"><span class="chip">&Eacute;tica</span><span class="chip">Inclusi&oacute;n</span></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>IA EXPO INTERNACIONAL 2026</h3>
-                <p>El evento más importante de Inteligencia Artificial en América Latina. Liderando la conversación sobre el futuro de la IA.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Evento</h4>
-                <ul class="footer-links">
-                    <li><a href="#para-quien">Audiencia</a></li>
-                    <li><a href="#beneficios">Beneficios</a></li>
-                    <li><a href="https://iaexpo.ai/speakers" target="_blank">Speakers</a></li>
-                    <li><a href="#venue">Venue</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Participar</h4>
-                <ul class="footer-links">
-                    <li><a href="#entradas">Comprar Entradas</a></li>
-                    <li><a href="#patrocinios">Patrocinios</a></li>
-                    <li><a href="mailto:iaExpo@iaExpo.ai">Exponer</a></li>
-                    <li><a href="https://iaexpo.ai/speakers" target="_blank">Ser Speaker</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Más Información</h4>
-                <ul class="footer-links">
-                    <li><a href="mailto:iaExpo@iaExpo.ai">iaExpo@iaExpo.ai</a></li>
-                    <!--
-                    <li><a href="tel:+15124684425">+1 (512)468-4425</a></li>
-                    -->
-                    <li>Ciudad de México</li>
-                </ul>
-            </div>
+        <div class="track-card" style="border-top-color:var(--gold)">
+          <div class="track-icon">&#127912;</div>
+          <div class="track-name">Track 7 &middot; Artes y Creatividad</div>
+          <div class="track-desc">Dise&ntilde;adores, m&uacute;sicos, escritores y cineastas que colaboran con IA generativa en sus obras.</div>
+          <div class="chips"><span class="chip">Midjourney</span><span class="chip">Suno</span><span class="chip">RunwayML</span></div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>© 2025 IA Expo Internacional. Todos los derechos reservados.</p>
-            <p>Organizado por Digital Gap, Inc. & Asteri Eventos</p>
+        <div class="track-card" style="border-top-color:var(--cyan)">
+          <div class="track-icon">&#128218;</div>
+          <div class="track-name">Track 8 &middot; Educaci&oacute;n y Empleabilidad</div>
+          <div class="track-desc">Maestros, estudiantes y coaches que usan IA para aprender, ense&ntilde;ar y prepararse para el mercado laboral del futuro.</div>
+          <div class="chips"><span class="chip">Aprendizaje</span><span class="chip">Futuro laboral</span><span class="chip">Talento</span></div>
         </div>
-    </footer>
+      </div>
+    </div>
 
-    <script>
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <div class="section-divider"></div>
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    <div class="sec-pad" style="padding-top:40px;padding-bottom:36px;">
+      <div class="sec-title">&#128101; Audiencia</div>
+      <p class="lead">Nuestros asistentes representan los sectores m&aacute;s estrat&eacute;gicos de la econom&iacute;a latinoamericana. En la IA Expo 2027 te codear&aacute;s con los l&iacute;deres que est&aacute;n tomando las decisiones que definen el futuro.</p>
+      <div class="grid4" style="gap:12px">
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&q=80" alt="CEOs"><div class="role">CEOs y Fundadores</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=80&h=80&fit=crop&q=80" alt="CTOs"><div class="role">CTOs y CIOs</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=80&h=80&fit=crop&q=80" alt="Innovaci&oacute;n"><div class="role">Directores de Innovaci&oacute;n</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=80&h=80&fit=crop&q=80" alt="VPs Tech"><div class="role">VPs de Tecnolog&iacute;a</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=80&h=80&fit=crop&q=80" alt="Inversionistas"><div class="role">Inversionistas</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=80&h=80&fit=crop&q=80" alt="FinTech"><div class="role">L&iacute;deres FinTech</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=80&h=80&fit=crop&q=80" alt="Salud"><div class="role">Directivos de Salud</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=80&h=80&fit=crop&q=80" alt="Legal"><div class="role">Abogados Corporativos</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=80&h=80&fit=crop&q=80" alt="Educaci&oacute;n"><div class="role">L&iacute;deres Educativos</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=80&h=80&fit=crop&q=80" alt="Creativos"><div class="role">Directores Creativos</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=80&h=80&fit=crop&q=80" alt="Emprendedores"><div class="role">Emprendedores</div></div>
+        <div class="audience-card"><img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=80&h=80&fit=crop&q=80" alt="Investigadores"><div class="role">Investigadores Aplicados</div></div>
+      </div>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+    <div class="cta-box">
+      <h3>&iquest;Listo para ser parte del futuro de la IA en LATAM?</h3>
+      <p>&#218;nete a 220 l&iacute;deres que est&aacute;n usando la inteligencia artificial para transformar su mundo. La IA Expo 2027 es el lugar donde sucede. Precios de lanzamiento con 50% de descuento disponibles ahora.</p>
+      <div class="cta-btns">
+        <a href="tickets.html" class="btn-primary">&#127903;&#65039; Ver Tickets</a>
+        <a href="programa.html" class="btn-outline">&#128197; Programa</a>
+        <a href="home.html#registro" class="btn-outline">&#9997;&#65039; Reg&iacute;strate</a>
+      </div>
+    </div>
 
-        // Observe all cards and sections
-        document.querySelectorAll('.audience-card, .benefit-card, .tier-card, .pricing-card, .testimonial-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-            observer.observe(el);
-        });
-    </script>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">IA EXPO INTERNACIONAL&#8482; 2027</div>
+  <div>&ldquo;IA Para la Vida Real 2.0&rdquo;</div>
+  <div class="footer-links">
+    <a href="iaexpo.html">IA Expo</a>
+    <a href="programa.html">Programa</a>
+    <a href="tickets.html">Tickets</a>
+    <a href="convocatoria.html">Call for Papers</a>
+    <a href="patrocinios.html">Patrocinios</a>
+    <a href="informacion.html">Informaci&oacute;n</a>
+  </div>
+  <div>&#128197; 28 &middot; 29 &middot; 30 Enero 2027 &nbsp;&middot;&nbsp; &#128205; Ciudad de M&eacute;xico</div>
+  <div style="margin-top:6px">&#9993;&#65039; <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;&middot;&nbsp; &#127760; <a href="https://iaExpo.ai" target="_blank">iaExpo.ai</a></div>
+  <div style="margin-top:14px;font-size:0.68rem;color:rgba(142,171,208,0.5)">&copy; 2025-2026 IA Expo Internacional&#8482; &middot; Todos los derechos reservados &middot; Ciudad de M&eacute;xico, M&eacute;xico</div>
+</footer>
+
+<script>
+function toggleNav(){document.getElementById('hbtn').classList.toggle('open');document.getElementById('mmenu').classList.toggle('open')}
+function closeNav(){document.getElementById('hbtn').classList.remove('open');document.getElementById('mmenu').classList.remove('open')}
+</script>
 </body>
 </html>

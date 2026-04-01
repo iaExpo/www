@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tickets &mdash; IA Expo Internacional&#8482; 2027</title>
+<meta name="description" content="Elige tu boleto para la IA Expo 2027. Desde Expo hasta Membres&iacute;a VIP. Precios de lanzamiento con 50% de descuento. Ciudad de M&eacute;xico, 28&ndash;30 Enero 2027.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030B1A;--surface:rgba(13,110,253,0.07);--surface2:rgba(255,255,255,0.03);--border:rgba(0,229,255,0.15);--border2:rgba(255,255,255,0.07);--cyan:#00E5FF;--blue:#0D6EFD;--gold:#FFD54F;--green:#00E676;--purple:#CE93D8;--orange:#FFB74D;--text:#E8F0FE;--muted:#8EABD0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 15% 25%,rgba(0,229,255,0.04) 0%,transparent 50%),radial-gradient(ellipse at 85% 75%,rgba(13,110,253,0.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+/* NAV */
+nav{position:sticky;top:0;z-index:300;background:rgba(3,11,26,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;gap:12px}
+.nav-brand{font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);text-decoration:none;white-space:nowrap;flex-shrink:0}
+.nav-tabs{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.nav-tabs::-webkit-scrollbar{display:none}
+.ntab{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:6px 11px;border-radius:8px;cursor:pointer;font-size:0.72rem;font-weight:600;font-family:inherit;transition:all 0.2s;white-space:nowrap;display:flex;align-items:center;gap:5px;text-decoration:none}
+.ntab .ico{font-size:0.85rem}
+.ntab:hover{border-color:var(--cyan);color:var(--cyan)}
+.ntab.active{background:linear-gradient(135deg,var(--blue),#0A84FF);border-color:var(--blue);color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;width:38px;height:38px;background:var(--surface);border:1px solid var(--border);border-radius:9px;cursor:pointer;align-items:center;justify-content:center;flex-shrink:0}
+.hamburger span{display:block;width:18px;height:2px;background:var(--cyan);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;gap:6px;padding:12px 20px 16px;background:rgba(3,11,26,0.99);border-bottom:1px solid var(--border);position:sticky;top:56px;z-index:299}
+.mobile-menu.open{display:flex}
+.mobile-menu .ntab{width:100%;text-align:left;padding:12px 14px;font-size:0.88rem}
+@media(max-width:768px){.nav-tabs{display:none}.hamburger{display:flex}}
+/* PAGE HEADER */
+.page-header{background:linear-gradient(135deg,rgba(0,229,255,0.07),rgba(13,110,253,0.14));border-bottom:1px solid var(--border);padding:56px 20px 48px;text-align:center;position:relative;z-index:1;animation:fadeUp 0.8s ease both 0.1s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.page-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+.page-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,5rem);line-height:0.95;letter-spacing:0.02em;margin-bottom:14px}
+.page-h1 em{font-style:normal;color:var(--cyan)}
+.page-sub{font-size:0.95rem;font-weight:300;color:rgba(232,240,254,0.75);max-width:520px;margin:0 auto 16px;line-height:1.7}
+/* LAUNCH BADGE */
+.launch-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.3);border-radius:99px;padding:6px 18px;font-size:0.72rem;font-weight:700;color:var(--green);margin-bottom:24px}
+.launch-badge::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+/* PRICE STAGES */
+.price-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px;margin:0 auto 28px}
+.stage{background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:14px;text-align:center}
+.stage.active{border-color:var(--green);background:rgba(0,230,118,0.06)}
+.stage-pct{font-family:'Bebas Neue',sans-serif;font-size:1.8rem}
+.stage-name{font-size:0.72rem;font-weight:700;margin:4px 0 3px}
+.stage-desc{font-size:0.65rem;color:var(--muted);line-height:1.4}
+/* LAYOUT */
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+.sec-pad{padding:48px 0 56px}
+.sec-title{font-size:1.35rem;font-weight:800;color:var(--cyan);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.lead{font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:20px}
+/* TICKET GRID */
+.ticket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:36px}
+/* TICKET CARDS */
+.tcard{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;position:relative;overflow:hidden;transition:transform 0.2s,border-color 0.2s;display:flex;flex-direction:column}
+.tcard:hover{transform:translateY(-4px);border-color:rgba(0,229,255,0.3)}
+.tcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.tcard.t-expo::before{background:linear-gradient(90deg,#8EABD0,#607D8B)}
+.tcard.t-tall::before{background:linear-gradient(90deg,#7dd3fc,#3b82f6)}
+.tcard.t-conf::before{background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.tcard.t-net::before{background:linear-gradient(90deg,var(--green),#00897B)}
+.tcard.t-vip{border-color:rgba(255,213,79,0.4);background:linear-gradient(135deg,rgba(255,213,79,0.06),var(--surface))}
+.tcard.t-vip::before{background:linear-gradient(90deg,var(--gold),#FF8F00,var(--gold))}
+.tcard.t-vip:hover{border-color:rgba(255,213,79,0.6)}
+.t-badge{font-size:0.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px}
+.t-name{font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:5px}
+.t-desc{font-size:0.78rem;color:var(--muted);line-height:1.55;margin-bottom:16px;flex:1}
+.t-price{font-size:2rem;font-weight:900;line-height:1;margin-bottom:4px}
+.t-currency{font-size:0.7rem;color:var(--muted);margin-bottom:14px}
+.t-features{list-style:none;padding:0;margin-bottom:20px;display:flex;flex-direction:column;gap:7px}
+.t-features li{font-size:0.78rem;color:var(--muted);display:flex;align-items:flex-start;gap:7px;line-height:1.4}
+.t-features li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0;font-size:0.72rem;margin-top:1px}
+.t-features li strong{color:#fff}
+.t-btn{display:block;text-align:center;padding:11px 20px;border-radius:8px;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;font-family:inherit;cursor:pointer;border:none}
+.t-btn-primary{background:linear-gradient(135deg,var(--blue),#0A84FF);color:#fff;box-shadow:0 4px 20px rgba(13,110,253,0.35)}
+.t-btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(13,110,253,0.5)}
+.t-btn-gold{background:linear-gradient(135deg,#FFD54F,#FF8F00);color:#000;box-shadow:0 4px 20px rgba(255,213,79,0.3)}
+.t-btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(255,213,79,0.45)}
+.t-tag-vip{display:inline-block;background:rgba(255,213,79,0.12);border:1px solid rgba(255,213,79,0.3);color:var(--gold);font-size:0.62rem;font-weight:800;letter-spacing:2px;padding:3px 10px;border-radius:99px;margin-bottom:12px}
+/* COMPARISON TABLE */
+.compare-wrap{overflow-x:auto;margin-bottom:28px}
+.compare-table{width:100%;border-collapse:collapse;min-width:600px}
+.compare-table th,.compare-table td{padding:11px 14px;font-size:0.78rem;border-bottom:1px solid rgba(255,255,255,0.05);text-align:left}
+.compare-table th{font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,0.02)}
+.compare-table th.t-col{text-align:center;color:#fff}
+.compare-table td.feature-col{color:var(--muted)}
+.compare-table td.check{text-align:center;font-size:0.9rem}
+.compare-table tr:hover{background:rgba(255,255,255,0.02)}
+.compare-table .price-row td{font-weight:900;padding-top:14px}
+.compare-table .price-row td.price-val{text-align:center;font-size:1rem}
+/* NOTE */
+.note-box{background:rgba(255,183,77,0.06);border:1px solid rgba(255,183,77,0.22);border-radius:10px;padding:14px 18px;font-size:0.82rem;color:var(--muted);line-height:1.7}
+.note-box strong{color:var(--orange)}
+/* CTA */
+.cta-box{background:linear-gradient(135deg,rgba(0,229,255,0.07),rgba(13,110,253,0.14));border:1px solid rgba(0,229,255,0.28);border-radius:16px;padding:36px 32px;text-align:center;margin-top:32px}
+.cta-box h3{font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:10px}
+.cta-box p{font-size:0.87rem;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto 24px}
+.cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;border-radius:4px;background:linear-gradient(135deg,var(--blue),#0A84FF);color:#fff;font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 28px rgba(13,110,253,0.45)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(13,110,253,0.6)}
+.btn-outline{display:inline-flex;align-items:center;gap:0.5rem;padding:0.82rem 1.8rem;border-radius:4px;border:1px solid rgba(255,255,255,0.3);color:var(--text);font-weight:500;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;transition:border-color 0.2s,background 0.2s}
+.btn-outline:hover{border-color:var(--cyan);background:rgba(0,229,255,0.08);color:var(--cyan)}
+/* FOOTER */
+footer{text-align:center;padding:36px 20px;border-top:1px solid var(--border2);color:var(--muted);font-size:0.73rem;line-height:1.9;position:relative;z-index:1}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--cyan);letter-spacing:0.05em;margin-bottom:6px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--cyan)}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px;margin:10px 0 14px}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://iaExpo.ai" class="nav-brand">IA Expo&#8482; 2027</a>
+  <div class="nav-tabs">
+    <a href="https://iaExpo.ai" class="ntab"><span class="ico">&#127775;</span> IA Expo</a>
+    <a href="programa.html" class="ntab"><span class="ico">&#128197;</span> Programa</a>
+    <a href="tickets.html" class="ntab active"><span class="ico">&#127903;&#65039;</span> Tickets</a>
+    <a href="convocatoria.html" class="ntab"><span class="ico">&#128209;</span> Call for Papers</a>
+    <a href="patrocinios.html" class="ntab"><span class="ico">&#127942;</span> Patrocinios</a>
+    <a href="informacion.html" class="ntab"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
+  </div>
+  <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Men&uacute;">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="https://iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">&#127775;</span> IA Expo</a>
+  <a href="programa.html" class="ntab" onclick="closeNav()"><span class="ico">&#128197;</span> Programa</a>
+  <a href="tickets.html" class="ntab active" onclick="closeNav()"><span class="ico">&#127903;&#65039;</span> Tickets</a>
+  <a href="convocatoria.html" class="ntab" onclick="closeNav()"><span class="ico">&#128209;</span> Call for Papers</a>
+  <a href="patrocinios.html" class="ntab" onclick="closeNav()"><span class="ico">&#127942;</span> Patrocinios</a>
+  <a href="informacion.html" class="ntab" onclick="closeNav()"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
+</div>
+
+<div class="page-header">
+  <div class="page-eyebrow">28 &middot; 29 &middot; 30 Enero 2027 &nbsp;&middot;&nbsp; Ciudad de M&eacute;xico</div>
+  <div class="page-h1">&#127903;&#65039; <em>Tickets</em></div>
+  <div class="page-sub">Elige la experiencia que mejor se adapta a ti. Todos los precios en pesos mexicanos (MXN) por persona.</div>
+  <div class="launch-badge">&#128293; Precio de Lanzamiento Activo &mdash; 50% de Descuento</div>
+  <div class="price-stages">
+    <div class="stage active">
+      <div class="stage-pct" style="color:var(--green)">50%</div>
+      <div class="stage-name" style="color:var(--green)">&#128293; Lanzamiento</div>
+      <div class="stage-desc">Disponibilidad pronto &mdash; precio especial de apertura</div>
+    </div>
+    <div class="stage">
+      <div class="stage-pct" style="color:var(--cyan)">25%</div>
+      <div class="stage-name">&#8987; Anticipado</div>
+      <div class="stage-desc">2 meses antes del evento</div>
+    </div>
+    <div class="stage">
+      <div class="stage-pct" style="color:var(--muted)">0%</div>
+      <div class="stage-name">&#128197; Regular</div>
+      <div class="stage-desc">1 mes antes del evento</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="sec-pad">
+
+    <div class="sec-title">Elige tu Boleto</div>
+    <div class="ticket-grid">
+
+      <!-- EXPO -->
+      <div class="tcard t-expo">
+        <div class="t-badge" style="color:#8EABD0">&#127963;&#65039; Expo</div>
+        <div class="t-name">Expo</div>
+        <div class="t-desc">Acceso al &aacute;rea de exposici&oacute;n y stands de patrocinadores. Ideal para explorar soluciones de IA.</div>
+        <div class="t-price" style="color:#8EABD0">$1,450</div>
+        <div class="t-currency">MXN por persona &middot; precio lanzamiento</div>
+        <ul class="t-features">
+          <li>Acceso al &aacute;rea de <strong>Expo</strong> Vie 29 y S&aacute;b 30</li>
+          <li>Demos de productos y soluciones de IA</li>
+          <li>Acceso al networking en el &aacute;rea de expo</li>
+          <li>Kit de bienvenida</li>
+        </ul>
+        <a href="home.html#registro" class="t-btn t-btn-primary">Solicitar Info</a>
+      </div>
+
+      <!-- TALLERES -->
+      <div class="tcard t-tall">
+        <div class="t-badge" style="color:#7dd3fc">&#128295; Taller</div>
+        <div class="t-name">Taller</div>
+        <div class="t-desc">Sesi&oacute;n pr&aacute;ctica intensiva con un experto. M&aacute;ximo 20 participantes. Aprende haciendo.</div>
+        <div class="t-price" style="color:#7dd3fc">$4,900</div>
+        <div class="t-currency">MXN por persona &middot; precio lanzamiento</div>
+        <ul class="t-features">
+          <li>Acceso a <strong>1 taller</strong> del Jueves 28 (ma&ntilde;ana o tarde)</li>
+          <li>Grupo de m&aacute;x. <strong>20 personas</strong></li>
+          <li>Experto dedicado durante 4 horas</li>
+          <li>Material y herramientas del taller</li>
+          <li>Certificado de participaci&oacute;n</li>
+        </ul>
+        <a href="home.html#registro" class="t-btn t-btn-primary">Solicitar Info</a>
+      </div>
+
+      <!-- CONFERENCIAS -->
+      <div class="tcard t-conf">
+        <div class="t-badge" style="color:var(--cyan)">&#127903;&#65039; Conferencias</div>
+        <div class="t-name">Conferencias</div>
+        <div class="t-desc">Acceso completo a los 2 d&iacute;as de conferencias, keynotes, tracks y networking estructurado.</div>
+        <div class="t-price" style="color:var(--cyan)">$14,900</div>
+        <div class="t-currency">MXN por persona &middot; precio lanzamiento</div>
+        <ul class="t-features">
+          <li>Acceso a <strong>Vie 29 y S&aacute;b 30</strong> completo</li>
+          <li><strong>2 Keynotes</strong> + Panel de Alto Nivel</li>
+          <li><strong>8 tracks tem&aacute;ticos</strong> en paralelo</li>
+          <li>Networking estructurado guiado</li>
+          <li>Acceso al &aacute;rea de Expo</li>
+          <li>Almuerzo incluido ambos d&iacute;as</li>
+          <li>Acceso a grabaciones del evento</li>
+        </ul>
+        <a href="home.html#registro" class="t-btn t-btn-primary">Solicitar Info</a>
+      </div>
+
+      <!-- NETWORKING -->
+      <div class="tcard t-net">
+        <div class="t-badge" style="color:var(--green)">&#129346; Networking</div>
+        <div class="t-name">Networking Estructurado</div>
+        <div class="t-desc">Conferencias + taller + acceso a c&oacute;ctel VIP del Jueves. La experiencia completa del evento.</div>
+        <div class="t-price" style="color:var(--green)">$12,450</div>
+        <div class="t-currency">MXN por persona &middot; precio lanzamiento</div>
+        <ul class="t-features">
+          <li>Todo lo incluido en <strong>Conferencias</strong></li>
+          <li>Acceso a <strong>1 taller</strong> del Jueves 28</li>
+          <li>Acceso al <strong>c&oacute;ctel VIP</strong> de bienvenida</li>
+          <li>Asientos preferenciales en keynotes</li>
+          <li>Directorio digital de asistentes</li>
+          <li>Sesi&oacute;n de networking 1:1 garantizada</li>
+        </ul>
+        <a href="home.html#registro" class="t-btn t-btn-primary">Solicitar Info</a>
+      </div>
+
+      <!-- VIP -->
+      <div class="tcard t-vip">
+        <div class="t-tag-vip">&#128142; Solo 10 Cupos</div>
+        <div class="t-badge" style="color:var(--gold)">&#128142; Members&iacute;a VIP</div>
+        <div class="t-name" style="color:var(--gold)">Membres&iacute;a IA Expo VIP</div>
+        <div class="t-desc">La experiencia m&aacute;s completa. Incluye a 2 personas + stand en el evento + acceso Mesa Estrat&eacute;gica Global.</div>
+        <div class="t-price" style="color:var(--gold)">$190,000</div>
+        <div class="t-currency">MXN &middot; incluye 2 personas &middot; precio lanzamiento</div>
+        <ul class="t-features">
+          <li>Todo el evento para <strong>2 personas</strong> los 3 d&iacute;as</li>
+          <li><strong>Hospedaje 5 estrellas</strong> en CDMX (2 noches)</li>
+          <li><strong>Stand propio</strong> en el &aacute;rea de expo</li>
+          <li>Acceso Mesa Estrat&eacute;gica IA Expo Global</li>
+          <li>Cena de clausura exclusiva VIP</li>
+          <li>Retiro IA Expo en Canc&uacute;n incluido</li>
+          <li>Primer opci&oacute;n de renovaci&oacute;n 2028</li>
+          <li>Perfil VIP en directorio oficial</li>
+        </ul>
+        <a href="vip.html" class="t-btn t-btn-gold">Ver Membres&iacute;a VIP &#8594;</a>
+      </div>
+
+    </div>
+
+    <!-- TABLA COMPARATIVA -->
+    <div class="sec-title">&#128203; Comparativa de Boletos</div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="feature-col">Inclusi&oacute;n</th>
+            <th class="t-col" style="color:#8EABD0">Expo</th>
+            <th class="t-col" style="color:#7dd3fc">Taller</th>
+            <th class="t-col" style="color:var(--cyan)">Conferencias</th>
+            <th class="t-col" style="color:var(--green)">Networking</th>
+            <th class="t-col" style="color:var(--gold)">VIP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feature-col">&#127963;&#65039; &Aacute;rea de Expo</td><td class="check">&#10003;</td><td class="check">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#128295; Taller pr&aacute;ctico (4 hrs)</td><td class="check">&mdash;</td><td class="check">&#10003;</td><td class="check">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#127775; Keynotes + Conferencias</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#129309; Networking estructurado</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#129346; C&oacute;ctel VIP bienvenida</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#127919; Asientos preferenciales</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#127963;&#65039; Stand propio en Expo</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#127968; Hospedaje 5 estrellas CDMX</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#127981; Cena de clausura VIP</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td></tr>
+          <tr><td class="feature-col">&#127955; Retiro en Canc&uacute;n</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&mdash;</td><td class="check">&#10003;</td></tr>
+          <tr class="price-row">
+            <td class="feature-col" style="font-weight:700;color:#fff">Precio Lanzamiento</td>
+            <td class="price-val check" style="color:#8EABD0">$1,450</td>
+            <td class="price-val check" style="color:#7dd3fc">$4,900</td>
+            <td class="price-val check" style="color:var(--cyan)">$14,900</td>
+            <td class="price-val check" style="color:var(--green)">$12,450</td>
+            <td class="price-val check" style="color:var(--gold)">$190,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-box" style="margin-bottom:28px">
+      <strong>Importante:</strong> Todos los precios en pesos mexicanos (MXN). La Membres&iacute;a VIP incluye 2 personas. Los precios de lanzamiento tienen disponibilidad limitada y pueden cambiar sin previo aviso. Para grupos de 5 o m&aacute;s personas, contactar para tarifas especiales.
+    </div>
+
+    <div class="cta-box">
+      <h3>&#8203;&#128293; Los precios de lanzamiento no durar&aacute;n para siempre.</h3>
+      <p>Asegura tu lugar ahora con el mejor precio. Solo hay 220 cupos en total y los boletos VIP son exclusivamente 10. Contacta al equipo y te enviamos toda la informaci&oacute;n.</p>
+      <div class="cta-btns">
+        <a href="home.html#registro" class="btn-primary">&#9997;&#65039; Solicitar Informaci&oacute;n</a>
+        <a href="programa.html" class="btn-outline">&#128197; Ver Programa</a>
+        <a href="vip.html" class="btn-outline">&#128142; Membres&iacute;a VIP</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">IA EXPO INTERNACIONAL&#8482; 2027</div>
+  <div>&ldquo;IA Para la Vida Real 2.0&rdquo;</div>
+  <div class="footer-links">
+    <a href="iaexpo.html">IA Expo</a>
+    <a href="programa.html">Programa</a>
+    <a href="tickets.html">Tickets</a>
+    <a href="convocatoria.html">Call for Papers</a>
+    <a href="patrocinios.html">Patrocinios</a>
+    <a href="informacion.html">Informaci&oacute;n</a>
+  </div>
+  <div>&#128197; 28 &middot; 29 &middot; 30 Enero 2027 &nbsp;&middot;&nbsp; &#128205; Ciudad de M&eacute;xico</div>
+  <div style="margin-top:6px">&#9993;&#65039; <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;&middot;&nbsp; &#127760; <a href="https://iaExpo.ai" target="_blank">iaExpo.ai</a></div>
+  <div style="margin-top:14px;font-size:0.68rem;color:rgba(142,171,208,0.5)">&copy; 2025-2026 IA Expo Internacional&#8482; &middot; Todos los derechos reservados &middot; Ciudad de M&eacute;xico, M&eacute;xico</div>
+</footer>
+
+<script>
+function toggleNav(){document.getElementById('hbtn').classList.toggle('open');document.getElementById('mmenu').classList.toggle('open')}
+function closeNav(){document.getElementById('hbtn').classList.remove('open');document.getElementById('mmenu').classList.remove('open')}
+</script>
+</body>
+</html>
