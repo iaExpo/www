@@ -12,6 +12,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 15% 25%,rgba(0,229,255,0.04) 0%,transparent 50%),radial-gradient(ellipse at 85% 75%,rgba(13,110,253,0.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+/* NAV */
 nav{position:sticky;top:0;z-index:300;background:rgba(3,11,26,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;gap:12px}
 .nav-brand{font-size:0.75rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);text-decoration:none;white-space:nowrap;flex-shrink:0}
 .nav-tabs{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
@@ -29,6 +30,7 @@ nav{position:sticky;top:0;z-index:300;background:rgba(3,11,26,0.97);backdrop-fil
 .mobile-menu.open{display:flex}
 .mobile-menu .ntab{width:100%;text-align:left;padding:12px 14px;font-size:0.88rem}
 @media(max-width:768px){.nav-tabs{display:none}.hamburger{display:flex}}
+/* PAGE HEADER */
 .page-header{background:linear-gradient(135deg,rgba(0,229,255,0.07),rgba(13,110,253,0.14));border-bottom:1px solid var(--border);padding:56px 20px 48px;text-align:center;position:relative;z-index:1;animation:fadeUp 0.8s ease both 0.1s}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .page-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
@@ -36,12 +38,14 @@ nav{position:sticky;top:0;z-index:300;background:rgba(3,11,26,0.97);backdrop-fil
 .page-h1 em{font-style:normal;color:var(--cyan)}
 .page-sub{font-size:0.95rem;font-weight:300;color:rgba(232,240,254,0.75);max-width:500px;margin:0 auto 24px;line-height:1.7}
 .page-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+/* LAYOUT */
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
 .sec-pad{padding:48px 0 56px}
 .sec-title{font-size:1.35rem;font-weight:800;color:var(--cyan);margin-bottom:24px;display:flex;align-items:center;gap:12px}
 .sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
 .sub-title{font-size:0.95rem;font-weight:700;color:#fff;margin:0 0 4px}
 .lead{font-size:0.92rem;color:var(--muted);line-height:1.8;margin-bottom:20px}
+/* BUTTONS */
 .btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;border-radius:4px;background:linear-gradient(135deg,var(--blue),#0A84FF);color:#fff;font-weight:700;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 28px rgba(13,110,253,0.45)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(13,110,253,0.6)}
 .btn-outline{display:inline-flex;align-items:center;gap:0.5rem;padding:0.82rem 1.8rem;border-radius:4px;border:1px solid rgba(255,255,255,0.3);color:var(--text);font-weight:500;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;font-family:inherit;transition:border-color 0.2s,background 0.2s}
@@ -106,43 +110,45 @@ footer a:hover{color:var(--cyan)}
 </head>
 <body>
 
+<!-- NAV — igual que nav.html -->
 <nav>
   <a href="https://iaExpo.ai" class="nav-brand">IA Expo&#8482; 2027</a>
   <div class="nav-tabs">
-    <a href="https://iaExpo.ai" class="ntab"><span class="ico">&#127775;</span> IA Expo</a>
-    <a href="programa.html" class="ntab active"><span class="ico">&#128197;</span> Programa</a>
-    <a href="tickets.html" class="ntab"><span class="ico">&#127903;&#65039;</span> Tickets</a>
-    <a href="convocatoria.html" class="ntab"><span class="ico">&#128209;</span> Call for Papers</a>
-    <a href="patrocinios.html" class="ntab"><span class="ico">&#127942;</span> Patrocinios</a>
-    <a href="informacion.html" class="ntab"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
+    <a href="https://iaExpo.ai/iaexpo"       class="ntab"><span class="ico">&#127775;</span> IA Expo</a>
+    <a href="https://iaExpo.ai/programa"     class="ntab active"><span class="ico">&#128197;</span> Programa</a>
+    <a href="https://iaExpo.ai/tickets"      class="ntab"><span class="ico">&#127903;&#65039;</span> Tickets</a>
+    <a href="https://iaExpo.ai/convocatoria" class="ntab"><span class="ico">&#128209;</span> Call for Papers</a>
+    <a href="https://iaExpo.ai/patrocinios"  class="ntab"><span class="ico">&#127942;</span> Patrocinios</a>
+    <a href="https://iaExpo.ai/info"  class="ntab"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
   </div>
   <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Men&uacute;">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-menu" id="mmenu">
-  <a href="https://iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">&#127775;</span> IA Expo</a>
-  <a href="programa.html" class="ntab active" onclick="closeNav()"><span class="ico">&#128197;</span> Programa</a>
-  <a href="tickets.html" class="ntab" onclick="closeNav()"><span class="ico">&#127903;&#65039;</span> Tickets</a>
-  <a href="convocatoria.html" class="ntab" onclick="closeNav()"><span class="ico">&#128209;</span> Call for Papers</a>
-  <a href="patrocinios.html" class="ntab" onclick="closeNav()"><span class="ico">&#127942;</span> Patrocinios</a>
-  <a href="informacion.html" class="ntab" onclick="closeNav()"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
+  <a href="https://iaExpo.ai/iaexpo"       class="ntab" onclick="closeNav()"><span class="ico">&#127775;</span> IA Expo</a>
+  <a href="https://iaExpo.ai/programa"     class="ntab active" onclick="closeNav()"><span class="ico">&#128197;</span> Programa</a>
+  <a href="https://iaExpo.ai/tickets"      class="ntab" onclick="closeNav()"><span class="ico">&#127903;&#65039;</span> Tickets</a>
+  <a href="https://iaExpo.ai/convocatoria" class="ntab" onclick="closeNav()"><span class="ico">&#128209;</span> Call for Papers</a>
+  <a href="https://iaExpo.ai/patrocinios"  class="ntab" onclick="closeNav()"><span class="ico">&#127942;</span> Patrocinios</a>
+  <a href="https://iaExpo.ai/info"  class="ntab" onclick="closeNav()"><span class="ico">&#128205;</span> Informaci&oacute;n</a>
 </div>
 
+<!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-eyebrow">28 &middot; 29 &middot; 30 Enero 2027 &nbsp;&middot;&nbsp; Ciudad de M&eacute;xico</div>
   <div class="page-h1">&#128197; <em>Programa</em></div>
   <div class="page-sub">3 d&iacute;as dise&ntilde;ados para maximizar el aprendizaje, la conexi&oacute;n y la inspiraci&oacute;n. El programa definitivo se publica en <strong style="color:#fff">Noviembre 2026</strong>.</div>
   <div class="page-ctas">
-    <a href="tickets.html" class="btn-primary">&#127903;&#65039; Ver Tickets</a>
-    <a href="home.html#registro" class="btn-outline">&#9997;&#65039; Reg&iacute;strate</a>
+    <a href="https://iaExpo.ai/tickets" class="btn-primary">&#127903;&#65039; Ver Tickets</a>
+    <a href="https://iaExpo.ai/home#registro" class="btn-outline">&#9997;&#65039; Reg&iacute;strate</a>
   </div>
 </div>
 
 <div class="wrap">
   <div class="sec-pad">
 
-    <!-- OVERVIEW -->
+    <!-- VISTA GENERAL -->
     <div class="sec-title">Vista General</div>
     <div class="grid3" style="margin-bottom:36px">
       <div class="overview-card" style="border-top-color:#7dd3fc">
@@ -176,7 +182,7 @@ footer a:hover{color:var(--cyan)}
       <div class="legend-item"><div class="legend-dot" style="border-color:var(--gold);background:rgba(255,213,79,0.18)"></div>Solo VIP</div>
     </div>
 
-    <!-- DAY NAV -->
+    <!-- DAY TABS -->
     <div class="day-nav">
       <button class="dbtn active" onclick="showDay('d1',this)">&#128295; Jue 28 Ene &mdash; Talleres</button>
       <button class="dbtn" onclick="showDay('d2',this)">&#127775; Vie 29 Ene &mdash; Conferencias</button>
@@ -210,7 +216,7 @@ footer a:hover{color:var(--cyan)}
         <div class="agenda-item">
           <div class="agenda-time">6:30 PM</div>
           <div class="agenda-dot keynote"></div>
-          <div class="agenda-info"><h4>C&oacute;ctel de Bienvenida &mdash; Asistentes VIP</h4><p>Networking exclusivo para asistentes VIP y Members&iacute;a IA Expo VIP. Inicio oficial del evento.</p><span class="agenda-tag tag-vip">Solo VIP</span></div>
+          <div class="agenda-info"><h4>C&oacute;ctel de Bienvenida &mdash; Asistentes VIP</h4><p>Networking exclusivo para asistentes VIP y Membres&iacute;a IA Expo VIP. Inicio oficial del evento.</p><span class="agenda-tag tag-vip">Solo VIP</span></div>
         </div>
       </div>
     </div>
@@ -302,25 +308,26 @@ footer a:hover{color:var(--cyan)}
       <h3>Asegura tu lugar en los 3 d&iacute;as.</h3>
       <p>Talleres con cupo m&aacute;ximo de 20 personas. Conferencias con 220 l&iacute;deres. Networking que genera oportunidades reales. Precios de lanzamiento con 50% de descuento.</p>
       <div class="cta-btns">
-        <a href="tickets.html" class="btn-primary">&#127903;&#65039; Ver Tickets</a>
-        <a href="iaexpo.html" class="btn-outline">&#127775; Conoce el Evento</a>
-        <a href="home.html#registro" class="btn-outline">&#9997;&#65039; Reg&iacute;strate</a>
+        <a href="https://iaExpo.ai/tickets" class="btn-primary">&#127903;&#65039; Ver Tickets</a>
+        <a href="https://iaExpo.ai/iaexpo" class="btn-outline">&#127775; Conoce el Evento</a>
+        <a href="https://iaExpo.ai/home#registro" class="btn-outline">&#9997;&#65039; Reg&iacute;strate</a>
       </div>
     </div>
 
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-brand">IA EXPO INTERNACIONAL&#8482; 2027</div>
   <div>&ldquo;IA Para la Vida Real 2.0&rdquo;</div>
   <div class="footer-links">
-    <a href="iaexpo.html">IA Expo</a>
-    <a href="programa.html">Programa</a>
-    <a href="tickets.html">Tickets</a>
-    <a href="convocatoria.html">Call for Papers</a>
-    <a href="patrocinios.html">Patrocinios</a>
-    <a href="informacion.html">Informaci&oacute;n</a>
+    <a href="https://iaExpo.ai/iaexpo">IA Expo</a>
+    <a href="https://iaExpo.ai/programa">Programa</a>
+    <a href="https://iaExpo.ai/tickets">Tickets</a>
+    <a href="https://iaExpo.ai/convocatoria">Call for Papers</a>
+    <a href="https://iaExpo.ai/patrocinios">Patrocinios</a>
+    <a href="https://iaExpo.ai/info">Informaci&oacute;n</a>
   </div>
   <div>&#128197; 28 &middot; 29 &middot; 30 Enero 2027 &nbsp;&middot;&nbsp; &#128205; Ciudad de M&eacute;xico</div>
   <div style="margin-top:6px">&#9993;&#65039; <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;&middot;&nbsp; &#127760; <a href="https://iaExpo.ai" target="_blank">iaExpo.ai</a></div>

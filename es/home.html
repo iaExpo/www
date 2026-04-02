@@ -306,28 +306,32 @@
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<!-- NAV DESKTOP -->
 <nav>
   <a href="https://iaExpo.ai" class="nav-brand">IA Expo™ 2027</a>
+
   <div class="nav-tabs">
-    <a href="https://iaExpo.ai"                class="ntab"><span class="ico">🌟</span> IA Expo</a>
+    <a href="https://iaExpo.ai/iaexpo"         class="ntab"><span class="ico">🌟</span> IA Expo</a>
     <a href="https://iaExpo.ai/programa"       class="ntab"><span class="ico">📅</span> Programa</a>
     <a href="https://iaExpo.ai/tickets"        class="ntab"><span class="ico">🎟️</span> Tickets</a>
     <a href="https://iaExpo.ai/convocatoria"   class="ntab"><span class="ico">📑</span> Call for Papers</a>
     <a href="https://iaExpo.ai/patrocinios"    class="ntab"><span class="ico">🏆</span> Patrocinios</a>
-    <a href="https://iaExpo.ai/informacion"    class="ntab"><span class="ico">📍</span> Información</a>
+    <a href="https://iaExpo.ai/info"    class="ntab"><span class="ico">📍</span> Información</a>
   </div>
+
   <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- MENÚ MÓVIL (tablet y celular) -->
 <div class="mobile-menu" id="mmenu">
-  <a href="https://iaExpo.ai"                class="ntab" onclick="closeNav()"><span class="ico">🌟</span> IA Expo</a>
+  <a href="https://iaExpo.ai/iaexpo"         class="ntab" onclick="closeNav()"><span class="ico">🌟</span> IA Expo</a>
   <a href="https://iaExpo.ai/programa"       class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
   <a href="https://iaExpo.ai/tickets"        class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
   <a href="https://iaExpo.ai/convocatoria"   class="ntab" onclick="closeNav()"><span class="ico">📑</span> Call for Papers</a>
   <a href="https://iaExpo.ai/patrocinios"    class="ntab" onclick="closeNav()"><span class="ico">🏆</span> Patrocinios</a>
-  <a href="https://iaExpo.ai/informacion"    class="ntab" onclick="closeNav()"><span class="ico">📍</span> Información</a>
+  <a href="https://iaExpo.ai/info"    class="ntab" onclick="closeNav()"><span class="ico">📍</span> Información</a>
 </div>
 
 <!-- ══ HERO (de 2027.html sección Inicio) ══ -->
@@ -426,80 +430,26 @@
         </div>
       </div>
 
-      <!-- Columna derecha: formulario -->
-      <div class="form-card">
-        <h3>Solicita Información</h3>
-        <div class="form-sub">Completa el formulario y te contactamos en menos de 24 horas con toda la información de tu boleto.</div>
-        <div id="form-wrap">
-          <form id="reg-form" onsubmit="submitForm(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="nombre">Nombre *</label>
-                <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="apellido">Apellido *</label>
-                <input class="form-input" type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="email">Correo Electrónico *</label>
-              <input class="form-input" type="email" id="email" name="email" placeholder="tucorreo@empresa.com" required>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="telefono">Teléfono / WhatsApp</label>
-                <input class="form-input" type="tel" id="telefono" name="telefono" placeholder="+52 55 1234 5678">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="pais">País *</label>
-                <select class="form-select" id="pais" name="pais" required>
-                  <option value="">Selecciona</option>
-                  <option value="MX">México</option>
-                  <option value="CO">Colombia</option>
-                  <option value="AR">Argentina</option>
-                  <option value="CL">Chile</option>
-                  <option value="PE">Perú</option>
-                  <option value="BR">Brasil</option>
-                  <option value="US">Estados Unidos</option>
-                  <option value="ES">España</option>
-                  <option value="Otro">Otro</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="empresa">Empresa / Organización</label>
-              <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="boleto">Boleto de Interés *</label>
-              <select class="form-select" id="boleto" name="boleto" required>
-                <option value="">Selecciona un boleto</option>
-                <option value="vip">💎 Membresía VIP — $190,000 MXN</option>
-                <option value="networking">🥂 Networking Estructurado — $12,450 MXN</option>
-                <option value="conferencias">🎟️ Conferencias — $14,900 MXN</option>
-                <option value="taller">🛠️ Taller — $4,900 MXN</option>
-                <option value="expo">🏛️ Expo — $1,450 MXN</option>
-                <option value="info">Quiero más información</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="mensaje">¿Cómo usas la IA hoy? (opcional)</label>
-              <textarea class="form-textarea" id="mensaje" name="mensaje" placeholder="Cuéntanos brevemente..."></textarea>
-            </div>
-            <button type="submit" class="form-btn">🚀 Quiero mi Lugar en la IA Expo 2027</button>
-            <div class="form-note">Tu información es confidencial y nunca será compartida con terceros.</div>
-          </form>
-        </div>
-        <div class="form-success" id="form-success">
-          <div class="s-icon">🎉</div>
-          <h4>¡Solicitud Recibida!</h4>
-          <p>Gracias por tu interés en la <strong style="color:#fff;">IA Expo Internacional™ 2027</strong>.<br>Te contactaremos en menos de 24 horas con la información de tu boleto.</p>
-          <div style="margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-            <a href="iaexpo.html" class="btn-primary">🌟 Conoce el Evento</a>
-            <a href="tickets.html" class="btn-outline">🎟️ Ver Tickets</a>
-          </div>
-        </div>
+      <!-- Columna derecha: forma GHL -->
+      <div class="form-card" style="padding:0;overflow:hidden;background:transparent;border:none;">
+        <iframe
+          src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0"
+          style="width:100%;height:800px;border:none;border-radius:8px;display:block;"
+          id="inline-ZytHIX9hH3aKeNV1fVt0"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="IA Expo Registro"
+          data-height="800"
+          data-layout-iframe-id="inline-ZytHIX9hH3aKeNV1fVt0"
+          data-form-id="ZytHIX9hH3aKeNV1fVt0"
+          title="IA Expo Registro">
+        </iframe>
+        <script src="https://api.fanforce.online/js/form_embed.js"></script>
       </div>
 
     </div>
@@ -511,12 +461,12 @@
   <div class="footer-brand">IA EXPO INTERNACIONAL™ 2027</div>
   <div>"IA Para la Vida Real 2.0"</div>
   <div class="footer-links">
-    <a href="iaexpo.html">IA Expo</a>
-    <a href="programa.html">Programa</a>
-    <a href="tickets.html">Tickets</a>
-    <a href="convocatoria.html">Call for Papers</a>
-    <a href="patrocinios.html">Patrocinios</a>
-    <a href="informacion.html">Información</a>
+    <a href="https://iaExpo.ai/iaexpo">IA Expo</a>
+    <a href="https://iaExpo.ai/programa">Programa</a>
+    <a href="https://iaExpo.ai/tickets">Tickets</a>
+    <a href="https://iaExpo.ai/convocatoria">Call for Papers</a>
+    <a href="https://iaExpo.ai/patrocinios">Patrocinios</a>
+    <a href="https://iaExpo.ai/info">Información</a>
   </div>
   <div>📅 28 · 29 · 30 Enero 2027 &nbsp;·&nbsp; 📍 Ciudad de México</div>
   <div style="margin-top:6px;">✉️ <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;·&nbsp; 🌐 <a href="https://iaExpo.ai" target="_blank">iaExpo.ai</a></div>
