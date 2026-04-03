@@ -309,7 +309,6 @@
 <!-- NAV DESKTOP -->
 <nav>
   <a href="https://iaExpo.ai" class="nav-brand">IA Expo™ 2027</a>
-
   <div class="nav-tabs">
     <a href="https://iaExpo.ai/iaexpo"         class="ntab"><span class="ico">🌟</span> IA Expo</a>
     <a href="https://iaExpo.ai/programa"       class="ntab"><span class="ico">📅</span> Programa</a>
@@ -469,8 +468,8 @@
     <a href="https://iaExpo.ai/info">Información</a>
   </div>
   <div>📅 28 · 29 · 30 Enero 2027 &nbsp;·&nbsp; 📍 Ciudad de México</div>
-  <div style="margin-top:6px;">✉️ <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;·&nbsp; 🌐 <a href="https://iaExpo.ai" target="_blank">iaExpo.ai</a></div>
-  <div style="margin-top:14px;font-size:0.68rem;color:rgba(142,171,208,0.5);">© 2025-2026 IA Expo Internacional™ · Todos los derechos reservados · Ciudad de México, México</div>
+  <div style="margin-top:6px;">✉️ <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;·&nbsp; 🌐 <a href="https://iaExpo.ai">iaExpo.ai</a></div>
+  <div style="margin-top:14px;font-size:0.68rem;color:var(--muted);">© 2025-2026 IA Expo Internacional™ · Todos los derechos reservados · Ciudad de México, México</div>
 </footer>
 
 <script>
@@ -501,43 +500,6 @@ function toggleNav() {
 function closeNav() {
   document.getElementById('hbtn').classList.remove('open');
   document.getElementById('mmenu').classList.remove('open');
-}
-
-// ── FORM ──
-function submitForm(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.form-btn');
-  btn.textContent = '⏳ Enviando...';
-  btn.disabled = true;
-
-  const nombre   = document.getElementById('nombre').value;
-  const apellido = document.getElementById('apellido').value;
-  const email    = document.getElementById('email').value;
-  const telefono = document.getElementById('telefono').value;
-  const pais     = document.getElementById('pais').value;
-  const empresa  = document.getElementById('empresa').value;
-  const boleto   = document.getElementById('boleto').value;
-  const mensaje  = document.getElementById('mensaje').value;
-
-  const body = `Nombre: ${nombre} ${apellido}
-Correo: ${email}
-Teléfono: ${telefono || 'No proporcionado'}
-País: ${pais}
-Empresa: ${empresa || 'No proporcionada'}
-Boleto: ${boleto}
-
-${mensaje ? 'Mensaje:\n' + mensaje : ''}
-
----
-Enviado desde home.html — iaExpo.ai`;
-
-  window.location.href =
-    `mailto:info@iaExpo.ai?subject=${encodeURIComponent('Solicitud de Registro — ' + nombre + ' ' + apellido)}&body=${encodeURIComponent(body)}`;
-
-  setTimeout(() => {
-    document.getElementById('form-wrap').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-  }, 1200);
 }
 </script>
 

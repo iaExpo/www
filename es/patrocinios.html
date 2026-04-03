@@ -182,15 +182,11 @@
   .btn-outline:hover { border-color: var(--cyan); background: rgba(0,229,255,0.08); color: var(--cyan); }
 
   /* ── FOOTER ── */
-  footer {
-    text-align: center; padding: 36px 20px;
-    border-top: 1px solid var(--border2); color: var(--muted); font-size: 0.73rem; line-height: 1.8;
-    position: relative; z-index: 1;
-  }
-  footer strong { color: var(--cyan); }
-  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-bottom: 12px; }
-  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.73rem; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--cyan); }
+  footer { text-align: center; padding: 36px 20px; border-top: 1px solid var(--border2); color: var(--muted); font-size: 0.73rem; line-height: 1.9; position: relative; z-index: 1; }
+  .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--cyan); letter-spacing: 0.05em; margin-bottom: 6px; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--cyan); }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; margin: 10px 0 14px; }
 
   /* ── PREVENT OVERFLOW ── */
   img, table, iframe { max-width: 100%; }
@@ -206,8 +202,8 @@
     <a href="https://iaExpo.ai/programa"       class="ntab"><span class="ico">📅</span> Programa</a>
     <a href="https://iaExpo.ai/tickets"        class="ntab"><span class="ico">🎟️</span> Tickets</a>
     <a href="https://iaExpo.ai/convocatoria"   class="ntab"><span class="ico">📑</span> Call for Papers</a>
-    <a href="https://iaExpo.ai/patrocinios"    class="ntab"><span class="ico">🏆</span> Patrocinios</a>
-    <a href="https://iaExpo.ai/info"          class="ntab"><span class="ico">📍</span> Información</a>
+    <a href="https://iaExpo.ai/patrocinios"    class="ntab active"><span class="ico">🏆</span> Patrocinios</a>
+    <a href="https://iaExpo.ai/info"           class="ntab"><span class="ico">📍</span> Información</a>
   </div>
 
   <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
@@ -355,19 +351,23 @@
 
 </div><!-- /.wrap -->
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
+  <div class="footer-brand">IA EXPO INTERNACIONAL™ 2027</div>
+  <div>"IA Para la Vida Real 2.0"</div>
   <div class="footer-links">
     <a href="https://iaExpo.ai/iaexpo">IA Expo</a>
     <a href="https://iaExpo.ai/programa">Programa</a>
     <a href="https://iaExpo.ai/tickets">Tickets</a>
     <a href="https://iaExpo.ai/convocatoria">Call for Papers</a>
     <a href="https://iaExpo.ai/patrocinios">Patrocinios</a>
-    <a href="https://iaExpo.ai/info">Informaci&#243;n</a>
+    <a href="https://iaExpo.ai/info">Información</a>
   </div>
-  <strong>IA Expo Internacional&#8482; 2027</strong> &mdash; IA Para la Vida Real 2.0<br>
-  28&ndash;30 Enero 2027 &middot; Ciudad de México<br>
-  &copy; 2025&ndash;2026 IA Expo Internacional&#8482;. Todos los derechos reservados.
+
+  <div>📅 28 · 29 · 30 Enero 2027 &nbsp;·&nbsp; 📍 Ciudad de México</div>
+  <div style="margin-top:6px;">✉️ <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;·&nbsp; 🌐 <a href="https://iaExpo.ai">iaExpo.ai</a></div>
+
+  <div style="margin-top:14px;font-size:0.68rem;color:var(--muted);">© 2025-2026 IA Expo Internacional™ · Todos los derechos reservados · Ciudad de México, México</div>
 </footer>
 
 <script>
