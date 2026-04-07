@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IA Expo Internacional™ 2027 — IA Para la Vida Real 2.0</title>
+  <title>IA Expo Internacional 2027 — IA Para la Vida Real 2.0</title>
   <meta name="description" content="El evento de inteligencia artificial más inspirador de LATAM. 3 días, 8 tracks, 220 líderes. Ciudad de México, 28–30 Enero 2027.">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -291,6 +291,126 @@
   .form-success h4 { font-size: 1.15rem; font-weight: 800; color: var(--green); margin-bottom: 8px; }
   .form-success p { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
 
+
+  /* ── ALIANZAS ESTRATÉGICAS ── */
+  #sponsors { position: relative; }
+  #sponsors::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+  .section-header { text-align: center; margin-bottom: 2.5rem; }
+  .section-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+  .section-header h2 .blue { color: var(--cyan); }
+  .section-header p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .section-label {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+  .sponsor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 2rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    backdrop-filter: blur(8px);
+  }
+  .sponsor-card:hover {
+    border-color: rgba(0,229,255,0.35);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    transform: translateY(-4px);
+  }
+  .sponsor-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+  }
+  .sponsor-role {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+    text-align: center;
+  }
+  .sponsor-logo-wrap {
+    width: 130px; height: 60px;
+    border-radius: 8px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff;
+  }
+  .sponsor-logo {
+    width: 100%; height: 100%;
+    object-fit: contain; opacity: 0.9;
+    transition: opacity 0.3s;
+  }
+  .sponsor-card:hover .sponsor-logo { opacity: 1; }
+  .sponsor-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+  }
+  .sponsor-note {
+    margin-top: 2.5rem;
+    display: flex; flex-wrap: wrap;
+    gap: 1.5rem; align-items: center;
+  }
+  .tier-badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .tier-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .tier-dot.gold   { background: var(--gold); box-shadow: 0 0 6px var(--gold); }
+  .tier-dot.blue   { background: var(--blue); box-shadow: 0 0 6px var(--blue); }
+  .tier-dot.silver { background: var(--muted); }
+  .sponsor-card.tech-giant { border-color: rgba(255,213,79,0.2); }
+  .sponsor-card.tech-giant:hover {
+    border-color: rgba(255,213,79,0.55);
+    box-shadow: 0 12px 40px rgba(255,213,79,0.1);
+  }
+  @media (max-width: 600px) {
+    .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 380px) {
+    .sponsors-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── FOOTER ── */
   footer {
     text-align: center; padding: 36px 20px;
@@ -308,7 +428,7 @@
 
 <!-- NAV DESKTOP -->
 <nav>
-  <a href="https://iaExpo.ai" class="nav-brand">IA Expo™ 2027</a>
+  <a href="https://iaExpo.ai" class="nav-brand">IA Expo 2027</a>
   <div class="nav-tabs">
     <a href="https://iaExpo.ai/iaexpo"         class="ntab"><span class="ico">🌟</span> IA Expo</a>
     <a href="https://iaExpo.ai/programa"       class="ntab"><span class="ico">📅</span> Programa</a>
@@ -405,6 +525,103 @@
   </div>
 </div>
 
+<!-- ══ ALIANZAS ESTRATÉGICAS ══ -->
+<section id="sponsors">
+  <div class="wrap">
+    <div class="sec-pad">
+
+      <div class="section-header">
+        <span class="section-label">Alianzas Estratégicas</span>
+        <h2>Quiénes hicieron <span class="blue">posible</span> el evento</h2>
+        <p>Organizaciones visionarias que creyeron en la misión de llevar la IA a la vida real.</p>
+      </div>
+
+      <div class="sponsors-grid">
+
+        <!-- NVIDIA -->
+        <div class="sponsor-card tech-giant">
+          <div class="sponsor-dot"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Nvidia.jpg" alt="NVIDIA" class="sponsor-logo"></div>
+          <div class="sponsor-name">NVIDIA</div>
+          <div class="sponsor-role">Tecnología de IA &amp; Aceleración</div>
+        </div>
+
+        <!-- Meta -->
+        <div class="sponsor-card tech-giant">
+          <div class="sponsor-dot"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Meta.jpg" alt="Meta" class="sponsor-logo"></div>
+          <div class="sponsor-name">Meta</div>
+          <div class="sponsor-role">Plataformas &amp; IA Open Source</div>
+        </div>
+
+        <!-- Digital Gap, Inc. -->
+        <div class="sponsor-card tech-giant">
+          <div class="sponsor-dot"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Digital%20Gap.jpg" alt="Digital Gap" class="sponsor-logo"></div>
+          <div class="sponsor-name">Digital Gap, Inc.</div>
+          <div class="sponsor-role">Organizador del Evento</div>
+        </div>
+
+        <!-- Celestial Dynamics -->
+        <div class="sponsor-card tech-giant">
+          <div class="sponsor-dot"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Celestial%20Dynamics.jpg" alt="Celestial Dynamics" class="sponsor-logo"></div>
+          <div class="sponsor-name">Celestial Dynamics</div>
+          <div class="sponsor-role">Innovación &amp; Estrategia</div>
+        </div>
+
+        <!-- Tec de Monterrey -->
+        <div class="sponsor-card">
+          <div class="sponsor-dot" style="background:var(--blue);box-shadow:0 0 8px var(--blue);"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Tec%20de%20Monterrey.jpg" alt="Tec de Monterrey" class="sponsor-logo"></div>
+          <div class="sponsor-name">Tec de Monterrey</div>
+          <div class="sponsor-role">Aliado Académico — Movilidad Autónoma</div>
+        </div>
+
+        <!-- Médica Sur -->
+        <div class="sponsor-card">
+          <div class="sponsor-dot" style="background:var(--blue);box-shadow:0 0 8px var(--blue);"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/M%C3%A9dica%20Sur.jpg" alt="Médica Sur" class="sponsor-logo"></div>
+          <div class="sponsor-name">Médica Sur</div>
+          <div class="sponsor-role">Aliado en IA para la Salud</div>
+        </div>
+
+        <!-- Asteri Eventos -->
+        <div class="sponsor-card">
+          <div class="sponsor-dot" style="background:var(--muted);"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Asteri%20Eventos.jpg" alt="Asteri Eventos" class="sponsor-logo"></div>
+          <div class="sponsor-name">Asteri Eventos</div>
+          <div class="sponsor-role">Producción &amp; Experiencia de Eventos</div>
+        </div>
+
+        <!-- Creavizer -->
+        <div class="sponsor-card">
+          <div class="sponsor-dot" style="background:var(--muted);"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Creavizer.jpg" alt="Creavizer" class="sponsor-logo"></div>
+          <div class="sponsor-name">Creavizer</div>
+          <div class="sponsor-role">IA Marketing &amp; Publicidad</div>
+        </div>
+
+        <!-- Vele Comunicación -->
+        <div class="sponsor-card">
+          <div class="sponsor-dot" style="background:var(--muted);"></div>
+          <div class="sponsor-logo-wrap"><img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Vele%20Comunicaci%C3%B3n.jpg" alt="Vele Comunicación" class="sponsor-logo"></div>
+          <div class="sponsor-name">Vele Comunicación</div>
+          <div class="sponsor-role">Comunicación &amp; Relaciones Públicas</div>
+        </div>
+
+      </div><!-- /.sponsors-grid -->
+
+      <div class="sponsor-note">
+        <span class="tier-badge"><span class="tier-dot gold"></span> Aliado Tecnológico Global</span>
+        <span class="tier-badge"><span class="tier-dot blue"></span> Aliado Institucional</span>
+        <span class="tier-badge"><span class="tier-dot silver"></span> Aliado de Evento</span>
+      </div>
+
+    </div><!-- /.sec-pad -->
+  </div><!-- /.wrap -->
+</section>
+
 <!-- ══ REGISTRO ══ -->
 <section id="registro">
   <div class="wrap">
@@ -457,7 +674,7 @@
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-brand">IA EXPO INTERNACIONAL™ 2027</div>
+  <div class="footer-brand">IA EXPO INTERNACIONAL 2027</div>
   <div>"IA Para la Vida Real 2.0"</div>
   <div class="footer-links">
     <a href="https://iaExpo.ai/iaexpo">IA Expo</a>
@@ -469,7 +686,7 @@
   </div>
   <div>📅 28 · 29 · 30 Enero 2027 &nbsp;·&nbsp; 📍 Ciudad de México</div>
   <div style="margin-top:6px;">✉️ <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> &nbsp;·&nbsp; 🌐 <a href="https://iaExpo.ai">iaExpo.ai</a></div>
-  <div style="margin-top:14px;font-size:0.68rem;color:var(--muted);">© 2025-2026 IA Expo Internacional™ · Todos los derechos reservados · Ciudad de México, México</div>
+  <div style="margin-top:14px;font-size:0.68rem;color:var(--muted);">© 2025-2026 IA Expo Internacional · Todos los derechos reservados · Ciudad de México, México</div>
 </footer>
 
 <script>
