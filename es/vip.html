@@ -94,9 +94,9 @@
 
     /* ── HERO ── */
     #hero{
-      position:relative; min-height:100vh;
+      position:relative; min-height:80vh;
       display:flex; align-items:center; justify-content:center;
-      text-align:center; padding:120px 5% 90px;
+      text-align:center; padding:64px 5% 48px;
       z-index:1; background:var(--grad-hero);
     }
     .hero-inner{ position:relative; z-index:2; max-width:860px; }
@@ -219,7 +219,7 @@
     .hero-subtitle .grad-gold{ background:var(--grad-gold); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .hero-subtitle .ia{ background:var(--grad-1); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-    section{ padding:96px 0; position:relative; z-index:1; }
+    section{ padding:56px 0; position:relative; z-index:1; }
     .section-head{ margin-bottom:64px; }
 
     /* ── STATS CARDS ── */
@@ -516,14 +516,6 @@
       font-size:.78rem; color:#92763a; line-height:1.65; max-width:680px; margin-left:auto; margin-right:auto;
     }
 
-    /* ── STICKY MOBILE CTA ── */
-    .sticky-cta{
-      display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
-      padding:12px 16px; background:rgba(3,7,18,.97); border-top:1px solid rgba(245,158,11,.3);
-      backdrop-filter:blur(12px);
-    }
-    .sticky-cta a{ display:block; width:100%; text-align:center; }
-    @media(max-width:768px){ .sticky-cta{ display:block; } body{ padding-bottom:72px; } }
 
     /* ── DIVIDER ── */
     .divider{ height:1px; background:var(--glass-b); margin:0; }
@@ -560,7 +552,7 @@
     <a href="#journey"        class="ntab" data-section="journey"><span class="ico">🗺️</span> Tu Experiencia</a>
     <a href="#beneficios"     class="ntab" data-section="beneficios"><span class="ico">🎁</span> Beneficios</a>
     <a href="#pago"           class="ntab" data-section="pago"><span class="ico">💳</span> Pago</a>
-    <a href="#disponibilidad" class="ntab" data-section="disponibilidad"><span class="ico">⏳</span> Disponibilidad</a>
+    <!-- <a href="#disponibilidad" class="ntab" data-section="disponibilidad"><span class="ico">⏳</span> Disponibilidad</a> -->
     <a href="#cta"            class="ntab" data-section="cta"><span class="ico">🚀</span> Únete</a>
   </div>
   <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
@@ -574,7 +566,7 @@
   <a href="#journey"        class="ntab" data-section="journey"        onclick="closeNav()"><span class="ico">🗺️</span> Tu Experiencia</a>
   <a href="#beneficios"     class="ntab" data-section="beneficios"     onclick="closeNav()"><span class="ico">🎁</span> Beneficios</a>
   <a href="#pago"           class="ntab" data-section="pago"           onclick="closeNav()"><span class="ico">💳</span> Pago</a>
-  <a href="#disponibilidad" class="ntab" data-section="disponibilidad" onclick="closeNav()"><span class="ico">⏳</span> Disponibilidad</a>
+  <!-- <a href="#disponibilidad" class="ntab" data-section="disponibilidad" onclick="closeNav()"><span class="ico">⏳</span> Disponibilidad</a> -->
   <a href="#cta"            class="ntab" data-section="cta"            onclick="closeNav()"><span class="ico">🚀</span> Únete</a>
 </div>
 
@@ -639,32 +631,8 @@
 </section>
 
 <!-- ══ CIFRAS ══ -->
-<section style="padding:80px 0;">
+<section style="padding:0;">
   <div class="wrap">
-    <div class="section-head reveal">
-      <div class="sec-label">El evento</div>
-      <h2 class="sec-title">IA Expo Internacional <span class="grad">2027</span></h2>
-      <p class="sec-desc">El evento de inteligencia artificial más inspirador de LATAM. Donde líderes, empresarios y tecnólogos se reúnen para transformar sus industrias.</p>
-    </div>
-
-    <div class="stats-grid reveal">
-      <div class="stat-card c-cyan">
-        <div class="stat-num c-cyan">220</div>
-        <div class="stat-title">Líderes y empresarios</div>
-        <div class="stat-desc">Los mejores perfiles del ecosistema de IA en LATAM reunidos durante 3 días de alto impacto en CDMX.</div>
-      </div>
-      <div class="stat-card c-gold">
-        <div class="stat-num c-gold">8</div>
-        <div class="stat-title">Tracks temáticos + keynote</div>
-        <div class="stat-desc">Conferencias especializadas, talleres, expo de soluciones y keynote internacional de impacto global.</div>
-      </div>
-      <div class="stat-card c-green">
-        <div class="stat-num c-green">10</div>
-        <div class="stat-title">Cupos VIP exclusivos</div>
-        <div class="stat-desc">Número fijo e intransferible. No se amplía bajo ninguna circunstancia. Una vez vendidos, se cierra el acceso.</div>
-      </div>
-    </div>
-
     <!-- DÚO BANNER -->
     <div class="duo-banner reveal">
       <div class="duo-icon">👥</div>
@@ -673,17 +641,12 @@
         <div class="duo-title">Tú <span>+</span> un invitado o invitada de tu elección</div>
         <div class="duo-text">Hospedaje en Cancún, hospedaje en CDMX, comidas, acceso al evento y experiencias exclusivas — <strong>todo para dos personas</strong> al precio de una sola membresía.</div>
       </div>
-      <div class="duo-price">
-        <div class="dp-lbl">Costo por persona</div>
-        <div class="dp-num">$95,000</div>
-        <div class="dp-cur">MXN cada una</div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ══ TABLA COMPARATIVA ══ -->
-<section id="comparativa" style="padding:96px 0 80px; position:relative; z-index:1;">
+<section id="comparativa" style="padding:48px 0 48px; position:relative; z-index:1;">
   <div class="wrap">
 
     <div class="section-head reveal" style="margin-bottom:56px;">
@@ -703,18 +666,18 @@
             <th class="comp-th comp-feat-col"></th>
             <th class="comp-th comp-tier" style="--tc:rgba(100,116,139,0.3);">
               <div class="tier-badge" style="background:rgba(100,116,139,0.2); border:1px solid rgba(100,116,139,0.3); color:#94a3b8;">🎪 Expo</div>
-              <div class="tier-price">$9,900</div>
+              <div class="tier-price">$8,900</div>
               <div class="tier-launch">🚀 $4,450 lanz.</div>
             </th>
             <th class="comp-th comp-tier" style="--tc:rgba(14,165,233,0.25);">
               <div class="tier-badge" style="background:rgba(14,165,233,0.15); border:1px solid rgba(14,165,233,0.3); color:#38bdf8;">🔬 Talleres</div>
-              <div class="tier-price">$9,800</div>
-              <div class="tier-launch">🚀 $4,900 lanz.</div>
+              <div class="tier-price">$9,900</div>
+              <div class="tier-launch">🚀 $4,950 lanz.</div>
             </th>
             <th class="comp-th comp-tier" style="--tc:rgba(168,85,247,0.25);">
               <div class="tier-badge" style="background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.35); color:#c084fc;">🎤 Conferencias</div>
-              <div class="tier-price">$29,800</div>
-              <div class="tier-launch">🚀 $14,900 lanz.</div>
+              <div class="tier-price">$19,900</div>
+              <div class="tier-launch">🚀 $9,950 lanz.</div>
             </th>
             <th class="comp-th comp-tier" style="--tc:rgba(16,185,129,0.25);">
               <div class="tier-badge" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#34d399;">🤝 Networking</div>
@@ -911,44 +874,19 @@
 
           <!-- ROW: Cupos -->
           <tr class="comp-row vip-excl alt">
-            <td class="comp-feat">🔒 Cupos disponibles</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">Abierto</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">Máx 80</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">180</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">20</td>
+            <td class="comp-feat" style="color:var(--text);">🔒 Cupos disponibles</td>
+            <td class="comp-cell" style="font-size:.78rem; color:var(--text);">Abierto</td>
+            <td class="comp-cell" style="font-size:.78rem; color:var(--text);">Máx 80</td>
+            <td class="comp-cell" style="font-size:.78rem; color:var(--text);">180</td>
+            <td class="comp-cell" style="font-size:.78rem; color:var(--text);">20</td>
             <td class="comp-cell comp-vip-cell" style="font-size:.85rem; font-weight:700; color:var(--gold);">Solo 10</td>
           </tr>
 
-          <!-- ROW: Valor total -->
-          <tr style="border-top: 2px solid rgba(245,158,11,0.3);">
-            <td class="comp-feat" style="font-weight:700; color:var(--text);">💰 Valor total incluido</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">$9,900</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">$9,800</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">$29,800</td>
-            <td class="comp-cell" style="font-size:.78rem; color:var(--muted);">$24,900</td>
-            <td class="comp-cell comp-vip-cell" style="font-weight:800;">
-              <span style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; font-size:1rem;">$305,900</span>
-            </td>
-          </tr>
 
         </tbody>
       </table>
     </div><!-- /comp-table -->
 
-    <!-- CTA bajo tabla -->
-    <div class="reveal" style="text-align:center; margin-top:48px;">
-      <div style="display:inline-flex; align-items:center; gap:14px; padding:20px 32px; background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(251,191,36,0.06)); border:1px solid rgba(245,158,11,0.35); border-radius:16px; flex-wrap:wrap; justify-content:center;">
-        <div style="text-align:left;">
-          <div style="font-size:.72rem; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:1px;">Membresía VIP · 2 personas</div>
-          <div style="font-size:1.3rem; font-weight:800; margin-top:2px;">
-            <span style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$190,000 MXN</span>
-            <span style="font-size:.8rem; color:var(--muted); font-weight:400; margin-left:8px;">vs $305,900 de valor</span>
-          </div>
-          <div style="font-size:.75rem; color:var(--green); font-weight:600; margin-top:2px;">✓ Ahorras 38% — Solo 10 cupos</div>
-        </div>
-        <a href="#cta" class="btn-gold" style="flex-shrink:0;">Quiero mi lugar VIP →</a>
-      </div>
-    </div>
 
   </div>
 </section>
@@ -1027,7 +965,7 @@
 <div class="divider"></div>
 
 <!-- ══ TABLA DE VALOR ══ -->
-<section id="inversion" style="padding:96px 0 64px;">
+<section id="inversion" style="padding:56px 0 40px;">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="sec-label">Tu inversión</div>
@@ -1080,9 +1018,25 @@
       </div>
     </div>
 
+    <!-- CTA bajo tabla de valor -->
+    <div class="reveal" style="text-align:center; margin-top:40px;">
+      <div style="display:inline-flex; align-items:center; gap:14px; padding:20px 32px; background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(251,191,36,0.06)); border:1px solid rgba(245,158,11,0.35); border-radius:16px; flex-wrap:wrap; justify-content:center;">
+        <div style="text-align:left;">
+          <div style="font-size:.72rem; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:1px;">Membresía VIP · 2 personas</div>
+          <div style="font-size:1.3rem; font-weight:800; margin-top:2px;">
+            <span style="background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$190,000 MXN</span>
+            <span style="font-size:.8rem; color:var(--muted); font-weight:400; margin-left:8px;">vs $305,900 de valor</span>
+          </div>
+          <div style="font-size:.75rem; color:var(--green); font-weight:600; margin-top:2px;">✓ Ahorras 38% — Solo 10 cupos</div>
+        </div>
+        <a href="#cta" class="btn-gold" style="flex-shrink:0;">Quiero mi lugar VIP →</a>
+      </div>
+    </div>
+
     <div class="note-box reveal" style="margin-top:16px;">
       ⚠️ <strong>Importante:</strong> El valor de mercado mostrado corresponde a precios de lista para cada beneficio comprado por separado (hospedaje Cancún verificado en fiestamericanatravelty.com). Como miembro VIP accedes a todo el paquete integrado a un precio especial que no volverá a estar disponible en esta edición.
     </div>
+
   </div>
 </section>
 
@@ -1407,7 +1361,7 @@
 <div class="divider"></div>
 
 <!-- ══ MÉTODOS DE PAGO ══ -->
-<section id="pago" style="padding:96px 0;">
+<section id="pago" style="padding:56px 0;">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="sec-label">Opciones de pago</div>
@@ -1442,7 +1396,7 @@
 <div class="divider"></div>
 
 <!-- ══ GARANTÍA ══ -->
-<section style="padding:80px 0;">
+<section style="padding:48px 0;">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="sec-label">Tu inversión está protegida</div>
@@ -1476,8 +1430,9 @@
 
 <div class="divider"></div>
 
-<!-- ══ DISPONIBILIDAD ══ -->
-<section id="disponibilidad" style="padding:80px 0;">
+<!--
+  ══ DISPONIBILIDAD ══ (comentado temporalmente)
+<section id="disponibilidad" style="padding:48px 0;">
   <div class="wrap">
     <div class="section-head reveal" style="text-align:center;">
       <div class="sec-label">Disponibilidad</div>
@@ -1521,9 +1476,10 @@
 </section>
 
 <div class="divider"></div>
+-->
 
 <!-- ══ PROCESO ══ -->
-<section style="padding:80px 0;">
+<section style="padding:48px 0;">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="sec-label">Cómo unirte</div>
@@ -1553,8 +1509,8 @@
 <!-- ══ CTA FINAL ══ -->
 <section id="cta">
   <div class="cta-eyebrow">⏳ Quedan solo 8 cupos disponibles</div>
-  <h2 class="cta-title">¿Listo/a para ser parte<br>del grupo fundador?</h2>
-  <p class="cta-sub">El precio de <strong>$190,000 MXN</strong> es fijo — no hay fases ni descuentos adicionales. Cuando se vendan los <strong style="color:var(--red);">10 cupos</strong>, el acceso VIP se cierra definitivamente.</p>
+  <h2 class="cta-title">¿Listo o lista para ser parte<br>del grupo fundador?</h2>
+  <p class="cta-sub">El precio de <strong style="color:var(--gold);">$190,000 MXN</strong> es fijo — no hay fases ni descuentos adicionales. Cuando se vendan los <strong style="color:var(--gold);">10 cupos</strong>, el acceso VIP se cierra definitivamente.</p>
   <a href="mailto:info@iaExpo.ai?subject=Membresía%20VIP%20—%20IA%20Expo%20Internacional%202027&body=Hola%2C%20estoy%20interesado%2Fa%20en%20la%20Membresía%20VIP%20de%20IA%20Expo%20Internacional%C2%AE%202027.%20Por%20favor%20envíenme%20información%20adicional%20y%20el%20contrato." class="btn-gold" style="font-size:1.1rem;padding:20px 52px;">
     💎 Quiero mi Membresía VIP →
   </a>
@@ -1570,12 +1526,6 @@
   <span style="display:block;margin-top:6px;">Membresía VIP — Documento confidencial de invitación. Precio en pesos mexicanos (MXN). Todos los derechos reservados.</span>
 </footer>
 
-<!-- ══ STICKY MOBILE CTA ══ -->
-<div class="sticky-cta">
-  <a href="mailto:info@iaExpo.ai?subject=Membresía%20VIP%20—%20IA%20Expo%20Internacional%202027" class="btn-gold" style="width:100%;justify-content:center;border-radius:10px;padding:14px;">
-    💎 Quiero mi Membresía VIP — $190,000 MXN
-  </a>
-</div>
 
 
 <!-- ══ SCRIPTS ══ -->
@@ -1592,7 +1542,7 @@ function closeNav(){
 
 /* ── NAV ACTIVE ON SCROLL ── */
 (function(){
-  const sections = ['hero','comparativa','inversion','journey','beneficios','pago','disponibilidad','cta'];
+  const sections = ['hero','comparativa','inversion','journey','beneficios','pago',/*'disponibilidad',*/'cta'];
   const allTabs  = document.querySelectorAll('.ntab[data-section]');
 
   function setActive(id){
