@@ -1230,6 +1230,235 @@
         background: var(--dark-2);
       }
 
+      /* ── BOLETOS SECTION ── */
+      #boletos {
+        background: var(--dark-2);
+      }
+
+      .bol-launch-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 230, 118, 0.1);
+        border: 1px solid rgba(0, 230, 118, 0.3);
+        border-radius: 99px;
+        padding: 6px 18px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #00E676;
+        margin-bottom: 24px;
+      }
+
+      .bol-launch-badge::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        background: #00E676;
+        border-radius: 50%;
+        animation: pulse-dot 2s infinite;
+      }
+
+      .bol-stages {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 36px;
+      }
+
+      .bol-stage {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        padding: 16px;
+        text-align: center;
+      }
+
+      .bol-stage.active {
+        background: rgba(0, 230, 118, 0.06);
+        border-color: rgba(0, 230, 118, 0.4);
+      }
+
+      .bol-stage-pct {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .bol-stage-name {
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin: 5px 0 3px;
+      }
+
+      .bol-stage-desc {
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .tkt-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+        margin-bottom: 40px;
+      }
+
+      .tkt-card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        padding: 20px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: border-color 0.2s, transform 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tkt-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+
+      .tkt-card.gold::before {
+        background: linear-gradient(90deg, #FFD54F, #FF8F00);
+      }
+
+      .tkt-card.green::before {
+        background: linear-gradient(90deg, #00E676, #00897B);
+      }
+
+      .tkt-card.cyan::before {
+        background: linear-gradient(90deg, #00E5FF, #0D6EFD);
+      }
+
+      .tkt-card.blue::before {
+        background: linear-gradient(90deg, #0D6EFD, #7c3aed);
+      }
+
+      .tkt-card.orange::before {
+        background: linear-gradient(90deg, #FFB74D, #E65100);
+      }
+
+      .tkt-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(0, 212, 255, 0.3);
+      }
+
+      .tkt-icon {
+        font-size: 1.6rem;
+      }
+
+      .tkt-name {
+        font-size: 0.88rem;
+        font-weight: 800;
+        color: var(--text);
+      }
+
+      .tkt-desc {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+        flex: 1;
+      }
+
+      .tkt-price-wrap {
+        margin-top: auto;
+      }
+
+      .tkt-launch {
+        font-size: 1.25rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .tkt-orig {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        text-decoration: line-through;
+        margin-top: 2px;
+      }
+
+      .tkt-badge {
+        display: inline-block;
+        font-size: 0.6rem;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 99px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-top: 6px;
+      }
+
+      .tkt-badge.green {
+        background: rgba(0, 230, 118, 0.12);
+        color: #00E676;
+        border: 1px solid rgba(0, 230, 118, 0.3);
+      }
+
+      .tkt-badge.gold {
+        background: rgba(255, 213, 79, 0.12);
+        color: #FFD54F;
+        border: 1px solid rgba(255, 213, 79, 0.3);
+      }
+
+      .bol-reg-box {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .bol-reg-hdr {
+        padding: 24px 28px 20px;
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .bol-reg-hdr h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .bol-reg-hdr p {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+
+      .bol-reg-form {
+        padding: 0;
+      }
+
+      @media(max-width:900px) {
+        .tkt-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .bol-stages {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media(max-width:600px) {
+        .tkt-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media(max-width:420px) {
+        .tkt-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       .con-grid {
         display: grid;
         grid-template-columns: 1fr 1.3fr;
@@ -1553,7 +1782,7 @@
         <a href="#alianzas" class="ntab"><span class="ico">🤝</span> Alianzas</a>
         <a href="#patrocinios" class="ntab"><span class="ico">🏆</span> Patrocinios</a>
         <a href="#contacto" class="ntab"><span class="ico">📍</span> Contacto</a>
-        <a href="#contacto" class="ntab active">🎟️ Boletos</a>
+        <a href="#boletos" class="ntab">🎟️ Boletos</a>
       </div>
       <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
         <span></span><span></span><span></span>
@@ -1568,7 +1797,7 @@
       <a href="#alianzas" class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
       <a href="#patrocinios" class="ntab" onclick="closeNav()"><span class="ico">🏆</span> Patrocinios</a>
       <a href="#contacto" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
-      <a href="#contacto" class="ntab active" onclick="closeNav()">🎟️ Boletos</a>
+      <a href="#boletos" class="ntab" onclick="closeNav()">🎟️ Boletos</a>
     </div>
 
     <section id="hero">
@@ -1603,7 +1832,7 @@
           </div>
         </div>
         <div class="hero-btns">
-          <a href="#contacto" class="btn-primary">🎟️ Boletos con 50% OFF</a>
+          <a href="#boletos" class="btn-primary">🎟️ Boletos con 50% OFF</a>
           <a href="#iaexpo" class="btn-secondary">Conocer el Evento →</a>
         </div>
         <div class="hero-stats">
@@ -1934,16 +2163,108 @@
       </div>
     </section>
 
+    <section id="boletos">
+      <div class="si">
+        <div class="eyebrow">Boletos</div>
+        <h2 class="stitle reveal">Asegura tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
+        <div style="text-align:center;margin-top:24px;">
+          <div class="bol-launch-badge">🔥 Precio de Lanzamiento Activo — 50% de Descuento</div>
+        </div>
+
+        <div class="bol-stages reveal">
+          <div class="bol-stage active">
+            <div class="bol-stage-pct" style="color:#00E676">50% OFF</div>
+            <div class="bol-stage-name">🔥 Lanzamiento</div>
+            <div class="bol-stage-desc">Disponible ahora<br>Precio especial de apertura</div>
+          </div>
+          <div class="bol-stage">
+            <div class="bol-stage-pct" style="color:var(--cyan)">25% OFF</div>
+            <div class="bol-stage-name">⏰ Anticipado</div>
+            <div class="bol-stage-desc">2 meses antes<br>del evento</div>
+          </div>
+          <div class="bol-stage">
+            <div class="bol-stage-pct" style="color:var(--text-muted)">—</div>
+            <div class="bol-stage-name">📅 Regular</div>
+            <div class="bol-stage-desc">1 mes antes<br>del evento</div>
+          </div>
+        </div>
+
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:28px;text-align:center;">Todos los precios en pesos mexicanos (MXN) · Precio por persona · 1 boleto</p>
+
+        <div class="tkt-grid reveal">
+          <!-- VIP -->
+          <div class="tkt-card gold">
+            <div class="tkt-icon">💎</div>
+            <div class="tkt-name">VIP</div>
+            <div class="tkt-desc">Membresía completa 2026–2027. 2 personas. Incluye todos los tracks, networking, retiro en Cancún y más beneficios exclusivos.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#FFD54F">$190,000</div>
+              <div class="tkt-orig">$305,900 MXN</div>
+              <span class="tkt-badge gold">Solo 10 cupos</span>
+            </div>
+          </div>
+          <!-- NETWORKING -->
+          <div class="tkt-card green">
+            <div class="tkt-icon">🥂</div>
+            <div class="tkt-name">Networking</div>
+            <div class="tkt-desc">Sesión de matchmaking estructurado con los 20 líderes más relevantes del ecosistema IA de LATAM.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#00E676">$12,450</div>
+              <div class="tkt-orig">$24,900 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+          <!-- CONFERENCIAS -->
+          <div class="tkt-card cyan">
+            <div class="tkt-icon">🎟️</div>
+            <div class="tkt-name">Conferencias</div>
+            <div class="tkt-desc">Acceso completo a los 3 días de conferencias, paneles y talleres con los mejores speakers de IA.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:var(--cyan)">$14,900</div>
+              <div class="tkt-orig">$29,800 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+          <!-- TALLERES -->
+          <div class="tkt-card blue">
+            <div class="tkt-icon">🛠️</div>
+            <div class="tkt-name">Talleres</div>
+            <div class="tkt-desc">Acceso a los talleres prácticos de IA. Aprende haciendo con expertos en sesiones hands-on de alto impacto.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#a855f7">$4,900</div>
+              <div class="tkt-orig">$9,800 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+          <!-- EXPO -->
+          <div class="tkt-card orange">
+            <div class="tkt-icon">🏛️</div>
+            <div class="tkt-name">Expo</div>
+            <div class="tkt-desc">Acceso a la zona de exposición con demos en vivo de las herramientas de IA más innovadoras del mercado.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#FFB74D">$4,450</div>
+              <div class="tkt-orig">$9,900 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-bottom:36px;">
+          <a href="tickets.html" class="btn-secondary" style="margin-right:12px;">Ver Todos los Detalles →</a>
+        </div>
+      </div>
+    </section>
+
     <div class="gd"></div>
 
     <section id="contacto">
       <div class="si">
-        <div class="eyebrow">Contacto &amp; Boletos</div>
-        <h2 class="stitle reveal">Tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
-        <div class="con-grid">
+        <div class="eyebrow">Contacto</div>
+        <h2 class="stitle reveal">Estamos aquí para<br><span class="accent">Ayudarte</span></h2>
+        <div class="con-grid" style="margin-top:48px;">
           <div class="con-info reveal">
-            <h3>Reserva tu lugar ahora</h3>
-            <p>Solo hay <strong style="color:white">220 lugares</strong> disponibles para este evento boutique. Los precios de lanzamiento con <strong style="color:var(--cyan)">50% de descuento</strong> son por tiempo limitado.</p>
+            <h3>Escríbenos</h3>
+            <p>¿Tienes preguntas sobre el evento, ponencias, patrocinios o alianzas? Nuestro equipo responde en menos de 24 horas.</p>
             <div class="con-items">
               <a href="mailto:info@iaExpo.ai?subject=Información IA Expo 2027" class="ci">
                 <div class="ci-icon">📧</div>
@@ -1967,13 +2288,15 @@
               </a>
             </div>
           </div>
-          <div class="bol-card reveal d1">
-            <div class="bol-hdr">
+          <div class="bol-reg-box reveal d1">
+            <div class="bol-reg-hdr">
               <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
-              <p>Precio de lanzamiento con 50% OFF · Solo 220 lugares</p>
+              <p>Precio de lanzamiento con 50% OFF · Solo 220 lugares disponibles</p>
             </div>
-            <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" id="inline-ZytHIX9hH3aKeNV1fVt0" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" data-layout-iframe-id="inline-ZytHIX9hH3aKeNV1fVt0" data-form-id="ZytHIX9hH3aKeNV1fVt0" title="IA Expo Registro"></iframe>
-            <script src="https://api.fanforce.online/js/form_embed.js"></script>
+            <div class="bol-reg-form">
+              <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" id="inline-ZytHIX9hH3aKeNV1fVt0" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" data-layout-iframe-id="inline-ZytHIX9hH3aKeNV1fVt0" data-form-id="ZytHIX9hH3aKeNV1fVt0" title="IA Expo Registro"></iframe>
+              <script src="https://api.fanforce.online/js/form_embed.js"></script>
+            </div>
           </div>
         </div>
       </div>
@@ -2001,7 +2324,7 @@
         <div class="fc">
           <h4>Participa</h4>
           <ul>
-            <li><a href="#contacto">Comprar Boletos</a></li>
+            <li><a href="#boletos">Comprar Boletos</a></li>
             <li><a href="#patrocinios">Ser Patrocinador</a></li>
             <li><a href="#convocatoria">Enviar Paper</a></li>
             <li><a href="mailto:info@iaExpo.ai">Ser Speaker</a></li>
