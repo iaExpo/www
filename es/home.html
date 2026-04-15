@@ -620,6 +620,21 @@
         background: linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
       }
 
+      .expo-side-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 64px;
+        align-items: start;
+        margin-top: 20px;
+      }
+
+      @media(max-width: 900px) {
+        .expo-side-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
       .expo-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1109,7 +1124,7 @@
 
       .pat-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 24px;
         margin-top: 64px;
         margin-bottom: 32px;
@@ -1132,6 +1147,41 @@
         left: 0;
         right: 0;
         height: 3px;
+      }
+
+      .p-ti::before {
+        background: linear-gradient(90deg, #FFD54F, #FF8F00, #FFD54F);
+      }
+
+      .p-ti .pat-tier {
+        color: var(--gold);
+      }
+
+      .p-ti {
+        background: linear-gradient(135deg, rgba(255, 213, 79, 0.06), rgba(255, 183, 77, 0.03));
+        border-color: rgba(255, 213, 79, 0.35);
+      }
+
+      .p-ti h3 {
+        color: var(--gold);
+      }
+
+      .p-micro::before {
+        background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
+      }
+
+      .p-micro .pat-tier {
+        color: var(--cyan);
+      }
+
+      @media(max-width:768px) {
+        .p-micro {
+          grid-column: span 1 !important;
+        }
+
+        .p-micro ul {
+          grid-template-columns: 1fr !important;
+        }
       }
 
       .p-pl::before {
@@ -1299,7 +1349,7 @@
 
       .tkt-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 14px;
         margin-bottom: 40px;
       }
@@ -1439,7 +1489,7 @@
 
       @media(max-width:900px) {
         .tkt-grid {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
         }
 
         .bol-stages {
@@ -1776,13 +1826,13 @@
     <nav>
       <a href="https://iaExpo.ai" class="nav-brand">IA Expo Internacional 2027</a>
       <div class="nav-tabs">
-        <a href="#iaexpo" class="ntab"><span class="ico">🌟</span> La Expo</a>
-        <a href="#programa" class="ntab"><span class="ico">📅</span> Programa</a>
+        <a href="#iaexpo" class="ntab"><span class="ico">🌟</span> Sobre IA Expo</a>
+        <a href="#boletos" class="ntab"><span class="ico">🎟️</span> Tickets</a>
         <a href="#convocatoria" class="ntab"><span class="ico">📑</span> Call for Papers</a>
-        <a href="#alianzas" class="ntab"><span class="ico">🤝</span> Alianzas</a>
+        <a href="#programa" class="ntab"><span class="ico">📅</span> Programa</a>
         <a href="#patrocinios" class="ntab"><span class="ico">🏆</span> Patrocinios</a>
+        <a href="#alianzas" class="ntab"><span class="ico">🤝</span> Alianzas</a>
         <a href="#contacto" class="ntab"><span class="ico">📍</span> Contacto</a>
-        <a href="#boletos" class="ntab">🎟️ Boletos</a>
       </div>
       <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
         <span></span><span></span><span></span>
@@ -1791,13 +1841,13 @@
 
     <!-- MENÚ MÓVIL -->
     <div class="mobile-menu" id="mmenu">
-      <a href="#iaexpo" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> La Expo</a>
-      <a href="#programa" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
+      <a href="#iaexpo" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> Sobre IA Expo</a>
+      <a href="#boletos" class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
       <a href="#convocatoria" class="ntab" onclick="closeNav()"><span class="ico">📑</span> Call for Papers</a>
-      <a href="#alianzas" class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
+      <a href="#programa" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
       <a href="#patrocinios" class="ntab" onclick="closeNav()"><span class="ico">🏆</span> Patrocinios</a>
+      <a href="#alianzas" class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
       <a href="#contacto" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
-      <a href="#boletos" class="ntab" onclick="closeNav()">🎟️ Boletos</a>
     </div>
 
     <section id="hero">
@@ -1867,21 +1917,15 @@
 
     <div class="gd"></div>
 
-    <section id="iaexpo">
-      <div class="si">
-        <div class="expo-grid">
-          <div class="expo-vis reveal">
-            <div class="expo-img">
-              <img src="https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg" alt="IA Expo Internacional" onerror="this.style.background='linear-gradient(135deg,#0066ff,#7c3aed)';this.style.minHeight='300px';">
-            </div>
-            <div class="expo-badge">
-              <div class="expo-badge-n">2027</div>
-              <div class="expo-badge-l">CDMX</div>
-            </div>
-          </div>
-          <div class="expo-content">
-            <div class="eyebrow">La Expo</div>
-            <h2 class="stitle">La IA que <span class="accent">Transforma</span><br>Vidas Reales</h2>
+<section id="iaexpo" style="position:relative;overflow:hidden;">
+      <!-- Imagen de fondo sutil -->
+      <div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center/cover no-repeat;opacity:0.05;pointer-events:none;z-index:0;"></div>
+      <div class="si" style="position:relative;z-index:1;">
+        <div class="expo-side-grid">
+          <!-- Contenido izquierdo -->
+          <div class="expo-content reveal">
+            <div class="eyebrow">Sobre la IA Expo</div>
+            <h2 class="stitle">La <span class="accent">EXPO</span> que Transforma<br>Vidas Reales</h2>
             <p>Después del éxito rotundo de <strong>IA Expo Internacional 2026 en Ciudad de México</strong>, regresamos con una edición aún más ambiciosa. Más tracks, más speakers internacionales, más impacto.</p>
             <p>IA Expo Internacional 2027 es el encuentro de quienes ya están usando la inteligencia artificial para transformar empresas, industrias y vidas en <strong>LATAM y el mundo</strong>.</p>
             <p>Solo <strong>220 lugares</strong> disponibles. Precio de lanzamiento con 50% de descuento por tiempo limitado.</p>
@@ -1900,13 +1944,175 @@
               </div>
             </div>
           </div>
+          <!-- Formulario de registro derecho -->
+          <div class="bol-reg-box reveal d1">
+            <div class="bol-reg-hdr">
+              <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
+              <p>Precio de lanzamiento con 50% OFF · Solo 220 lugares disponibles</p>
+            </div>
+            <div class="bol-reg-form">
+              <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" title="IA Expo Registro"></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="programa">
+<section id="boletos">
+      <div class="si">
+        <div class="eyebrow">Boletos</div>
+        <h2 class="stitle reveal">Asegura tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
+        <div style="text-align:center;margin-top:24px;">
+          <div class="bol-launch-badge">🔥 Precio de Lanzamiento Activo — 50% de Descuento</div>
+        </div>
+
+        <div class="bol-stages reveal">
+          <div class="bol-stage active">
+            <div class="bol-stage-pct" style="color:#00E676">50% OFF</div>
+            <div class="bol-stage-name">🔥 Lanzamiento</div>
+            <div class="bol-stage-desc">Disponible ahora<br>Precio especial de apertura</div>
+          </div>
+          <div class="bol-stage">
+            <div class="bol-stage-pct" style="color:var(--cyan)">25% OFF</div>
+            <div class="bol-stage-name">⏰ Anticipado</div>
+            <div class="bol-stage-desc">2 meses antes<br>del evento</div>
+          </div>
+          <div class="bol-stage">
+            <div class="bol-stage-pct" style="color:var(--text-muted)">Regular</div>
+            <div class="bol-stage-name">📅 Regular</div>
+            <div class="bol-stage-desc">1 mes antes<br>del evento</div>
+          </div>
+        </div>
+
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:28px;text-align:center;">Todos los precios en pesos mexicanos (MXN) · Precio por persona · 1 boleto</p>
+
+        <div class="tkt-grid reveal">
+          <!-- EXPO -->
+          <div class="tkt-card orange">
+            <div class="tkt-icon">🏛️</div>
+            <div class="tkt-name">Expo</div>
+            <div class="tkt-desc">Acceso a la zona de exposición con demos en vivo de las herramientas de IA más innovadoras del mercado.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#FFB74D">$4,450</div>
+              <div class="tkt-orig">$8,900 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+          <!-- TALLERES -->
+          <div class="tkt-card blue">
+            <div class="tkt-icon">🛠️</div>
+            <div class="tkt-name">Talleres</div>
+            <div class="tkt-desc">Acceso a los talleres prácticos de IA. Aprende haciendo con expertos en sesiones hands-on de alto impacto.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#a855f7">$4,900</div>
+              <div class="tkt-orig">$9,800 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+          <!-- CONFERENCIAS -->
+          <div class="tkt-card cyan">
+            <div class="tkt-icon">🎟️</div>
+            <div class="tkt-name">Conferencias</div>
+            <div class="tkt-desc">Acceso completo a los 3 días de conferencias, paneles y talleres con los mejores speakers de IA.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:var(--cyan)">$9,950</div>
+              <div class="tkt-orig">$19,900 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+          <!-- NETWORKING -->
+          <div class="tkt-card green">
+            <div class="tkt-icon">🥂</div>
+            <div class="tkt-name">Networking Estructurado</div>
+            <div class="tkt-desc">Sesión de matchmaking estructurado con los 20 líderes más relevantes del ecosistema IA de LATAM.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#00E676">$12,450</div>
+              <div class="tkt-orig">$24,900 MXN</div>
+              <span class="tkt-badge green">50% OFF</span>
+            </div>
+          </div>
+          <!--
+          <div class="tkt-card gold">
+            <div class="tkt-icon">💎</div>
+            <div class="tkt-name">VIP</div>
+            <div class="tkt-desc">Membresía completa 2026–2027. 2 personas. Incluye todos los tracks, networking, retiro en Cancún y más beneficios exclusivos.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" style="color:#FFD54F">$190,000</div>
+              <div class="tkt-orig">$305,900 MXN</div>
+              <span class="tkt-badge gold">Solo 10 cupos</span>
+            </div>
+          </div>
+          -->
+        </div>
+
+        <div style="text-align:center;margin-bottom:36px;">
+          <a href="https://iaExpo.ai/tickets" class="btn-secondary" style="margin-right:12px;">Tickets →</a>
+        </div>
+      </div>
+    </section>
+    <div class="gd"></div>
+
+<section id="convocatoria">
+      <div class="si">
+        <div class="eyebrow">Convocatoria</div>
+        <h2 class="stitle reveal">Call for Papers —<br><span class="accent">Tu Investigación en el Escenario</span></h2>
+        <p class="sdesc reveal d1">¿Tu investigación está cambiando el mundo con IA? Envía tu paper y preséntalo ante 220 líderes, académicos e innovadores de LATAM.</p>
+        <div class="cfp-g">
+          <div class="reveal">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📚 Temáticas de Interés</h3>
+            <div class="topics">
+              <div class="topic"><strong>🤖 IA Aplicada a la Vida Real</strong><span>Casos de uso, implementaciones y resultados medibles de IA en industrias reales</span></div>
+              <div class="topic"><strong>🚗 Movilidad Autónoma e Inteligente</strong><span>Vehículos autónomos, control de tráfico, infraestructura V2X y smart cities</span></div>
+              <div class="topic"><strong>🏥 IA en Salud y Bienestar</strong><span>Diagnóstico, medicina preventiva, robótica médica y sistemas de soporte clínico</span></div>
+              <div class="topic"><strong>⚖️ Ética, Sesgo y Gobernanza de IA</strong><span>Uso responsable, regulación, transparencia y políticas públicas</span></div>
+            </div>
+          </div>
+          <div class="reveal d1">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📅 Fechas Clave</h3>
+            <div class="tl">
+              <div class="tli">
+                <div class="tld"></div>
+                <div class="tl-date">Ahora Abierto</div>
+                <div class="tl-title">Apertura de Convocatoria</div>
+                <div class="tl-desc">Envío de abstracts y papers completos</div>
+              </div>
+              <div class="tli">
+                <div class="tld" style="background:var(--blue);box-shadow:0 0 10px rgba(0,102,255,0.5);"></div>
+                <div class="tl-date" style="color:#60a5fa;">31 de Agosto de 2026</div>
+                <div class="tl-title">Cierre de Envíos</div>
+                <div class="tl-desc">Fecha límite para papers completos</div>
+              </div>
+              <div class="tli">
+                <div class="tld" style="background:var(--purple);box-shadow:0 0 10px rgba(124,58,237,0.5);"></div>
+                <div class="tl-date" style="color:var(--purple-light);">Octubre 2026</div>
+                <div class="tl-title">Notificación de Aceptación</div>
+                <div class="tl-desc">Resultados de revisión doble ciego</div>
+              </div>
+              <div class="tli">
+                <div class="tld" style="background:linear-gradient(135deg,var(--cyan),var(--purple));box-shadow:0 0 14px rgba(0,212,255,0.6);"></div>
+                <div class="tl-date">28–30 Enero de 2027</div>
+                <div class="tl-title">Presentación en IA Expo 2027</div>
+                <div class="tl-desc">Ciudad de México</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cfp-cta reveal">
+          <div style="font-size:36px;margin-bottom:16px;">🎓</div>
+          <h3>¿Listo para presentar tu investigación?</h3>
+          <p>Formato: 6–8 páginas · Español o Inglés · Revisión doble ciego por comité académico</p>
+          <div class="cfp-tags"><span class="cfp-tag">6–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por Pares</span><span class="cfp-tag">Cierre: 31 Ago 2026</span></div>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <a href="https://iaExpo.ai/convocatoria" class="btn-primary">📄 Enviar mi Paper</a>
+            <a href="https://iaExpo.ai/convocatoria" class="btn-secondary">Más Información →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="gd"></div>
+
+<section id="programa">
       <div class="si">
         <div class="eyebrow">Programa</div>
         <h2 class="stitle reveal">8 Tracks. 3 Días.<br><span class="accent">Infinitas Posibilidades.</span></h2>
@@ -1971,74 +2177,106 @@
           </div>
         </div>
         <div style="text-align:center;margin-top:40px;" class="reveal">
-          <a href="programa.html" class="btn-secondary">Ver Programa Completo →</a>
+          <a href="https://iaExpo.ai/programa" class="btn-secondary">Ver Programa Completo →</a>
         </div>
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="convocatoria">
+<section id="patrocinios">
       <div class="si">
-        <div class="eyebrow">Convocatoria</div>
-        <h2 class="stitle reveal">Call for Papers —<br><span class="accent">Tu Investigación en el Escenario</span></h2>
-        <p class="sdesc reveal d1">¿Tu investigación está cambiando el mundo con IA? Envía tu paper y preséntalo ante 220 líderes, académicos e innovadores de LATAM.</p>
-        <div class="cfp-g">
-          <div class="reveal">
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📚 Temáticas de Interés</h3>
-            <div class="topics">
-              <div class="topic"><strong>🤖 IA Aplicada a la Vida Real</strong><span>Casos de uso, implementaciones y resultados medibles de IA en industrias reales</span></div>
-              <div class="topic"><strong>🚗 Movilidad Autónoma e Inteligente</strong><span>Vehículos autónomos, control de tráfico, infraestructura V2X y smart cities</span></div>
-              <div class="topic"><strong>🏥 IA en Salud y Bienestar</strong><span>Diagnóstico, medicina preventiva, robótica médica y sistemas de soporte clínico</span></div>
-              <div class="topic"><strong>⚖️ Ética, Sesgo y Gobernanza de IA</strong><span>Uso responsable, regulación, transparencia y políticas públicas</span></div>
-            </div>
+        <div class="eyebrow">Patrocinios</div>
+        <h2 class="stitle reveal">Asocia tu Marca con<br><span class="accent">el Futuro de la IA</span></h2>
+        <p class="sdesc reveal d1">Conecta con 220 tomadores de decisión, líderes de IA y ejecutivos de toda LATAM durante 3 días de alto impacto.</p>
+        <div class="pat-grid">
+          <div class="pat p-ti reveal">
+            <div class="pat-tier">💎 Diamante</div>
+            <h3>Patrocinio Diamante</h3>
+            <ul>
+              <li>Naming rights — "IA Expo 2027 presentado por [Tu Marca]"</li>
+              <li>Keynote propia de 30 min en escenario principal</li>
+              <li>Stand premium doble en ubicación privilegiada</li>
+              <li>Naming de un track vertical completo</li>
+              <li>Logo principal en todo material gráfico y digital</li>
+              <li>12+ publicaciones en redes sociales + entrevista</li>
+              <li>Acceso a cena privada VIP con patrocinadores</li>
+            </ul>
+            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
           </div>
-          <div class="reveal d1">
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📅 Fechas Clave</h3>
-            <div class="tl">
-              <div class="tli">
-                <div class="tld"></div>
-                <div class="tl-date">Ahora Abierto</div>
-                <div class="tl-title">Apertura de Convocatoria</div>
-                <div class="tl-desc">Envío de abstracts y papers completos</div>
-              </div>
-              <div class="tli">
-                <div class="tld" style="background:var(--blue);box-shadow:0 0 10px rgba(0,102,255,0.5);"></div>
-                <div class="tl-date" style="color:#60a5fa;">31 de Agosto de 2026</div>
-                <div class="tl-title">Cierre de Envíos</div>
-                <div class="tl-desc">Fecha límite para papers completos</div>
-              </div>
-              <div class="tli">
-                <div class="tld" style="background:var(--purple);box-shadow:0 0 10px rgba(124,58,237,0.5);"></div>
-                <div class="tl-date" style="color:var(--purple-light);">Octubre 2026</div>
-                <div class="tl-title">Notificación de Aceptación</div>
-                <div class="tl-desc">Resultados de revisión doble ciego</div>
-              </div>
-              <div class="tli">
-                <div class="tld" style="background:linear-gradient(135deg,var(--cyan),var(--purple));box-shadow:0 0 14px rgba(0,212,255,0.6);"></div>
-                <div class="tl-date">28–30 Enero de 2027</div>
-                <div class="tl-title">Presentación en IA Expo 2027</div>
-                <div class="tl-desc">Ciudad de México</div>
-              </div>
-            </div>
+          <div class="pat p-pl reveal">
+            <div class="pat-tier">Platino</div>
+            <h3>Patrocinio Platino</h3>
+            <ul>
+              <li>Naming rights del evento o track principal</li>
+              <li>Keynote de apertura o clausura</li>
+              <li>Stand premium de doble espacio</li>
+              <li>10 pases VIP completos</li>
+              <li>Logo en todas las comunicaciones</li>
+              <li>Mención en todos los keynotes</li>
+              <li>Activación de marca personalizada</li>
+            </ul>
+            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
+          </div>
+          <div class="pat p-or reveal d1">
+            <div class="pat-tier">Oro</div>
+            <h3>Patrocinio Oro</h3>
+            <ul>
+              <li>Stand en área principal del evento</li>
+              <li>5 pases completos al evento</li>
+              <li>Logo en comunicaciones digitales</li>
+              <li>Mención en keynotes</li>
+              <li>Participación en panel de industria</li>
+              <li>Presencia en pantallas del evento</li>
+            </ul>
+            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
+          </div>
+          <div class="pat p-si reveal d2">
+            <div class="pat-tier">Plata</div>
+            <h3>Patrocinio Plata</h3>
+            <ul>
+              <li>Stand en área de networking</li>
+              <li>3 pases completos al evento</li>
+              <li>Logo en programa del evento</li>
+              <li>Mención en redes sociales</li>
+              <li>Presencia en pantallas digitales</li>
+            </ul>
+            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
+          </div>
+          <div class="pat p-micro reveal d2" style="grid-column: span 2;">
+            <div class="pat-tier">✨ Micro-Patrocinios</div>
+            <h3>Otras Oportunidades de Patrocinio</h3>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;">Visibilidad creativa e impactante sin importar el presupuesto. Cada opción te conecta directamente con los 250 asistentes.</p>
+            <ul style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;margin-bottom:28px;">
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🎒</span><div><strong style="color:var(--text);display:block;">Bolsa de Registro</strong>Desde $40,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🎁</span><div><strong style="color:var(--text);display:block;">Goodies</strong>Desde $25,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🌐</span><div><strong style="color:var(--text);display:block;">Banner Digital iaExpo.ai</strong>Desde $15,000 MXN/mes</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>☕</span><div><strong style="color:var(--text);display:block;">Coffee Break</strong>Desde $50,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>📱</span><div><strong style="color:var(--text);display:block;">App / WiFi</strong>Desde $35,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🎤</span><div><strong style="color:var(--text);display:block;">Sesión / Taller</strong>Desde $60,000 MXN</div>
+              </li>
+            </ul>
+            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
           </div>
         </div>
-        <div class="cfp-cta reveal">
-          <div style="font-size:36px;margin-bottom:16px;">🎓</div>
-          <h3>¿Listo para presentar tu investigación?</h3>
-          <p>Formato: 6–8 páginas · Español o Inglés · Revisión doble ciego por comité académico</p>
-          <div class="cfp-tags"><span class="cfp-tag">6–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por Pares</span><span class="cfp-tag">Cierre: 31 Ago 2026</span></div>
-          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-            <a href="mailto:info@iaExpo.ai?subject=Call for Papers - IA Expo 2027" class="btn-primary">📄 Enviar mi Paper</a>
-            <a href="convocatoria.html" class="btn-secondary">Más Información →</a>
-          </div>
+        <div style="text-align:center;" class="reveal">
+          <a href="https://iaExpo.ai/patrocinios" class="btn-secondary">Ver Todos los Paquetes →</a>
         </div>
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="alianzas">
+<section id="alianzas">
       <div class="si">
         <div class="eyebrow">Alianzas</div>
         <h2 class="stitle reveal">Unidos por la <span class="accent">Innovación</span></h2>
@@ -2103,161 +2341,14 @@
           <div style="display:inline-block;padding:32px 48px;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(124,58,237,0.06));border:1px solid rgba(0,212,255,0.15);border-radius:20px;">
             <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:10px;">¿Tu organización quiere ser parte de la historia?</h3>
             <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Únete como aliado de IA Expo Internacional 2027 y conecta tu marca con los líderes de IA en LATAM.</p>
-            <a href="#patrocinios" class="btn-primary" style="padding:12px 28px;font-size:14px;">Ver Paquetes de Patrocinio →</a>
+            <a href="https://iaExpo.ai/patrocinios" class="btn-primary" style="padding:12px 28px;font-size:14px;">Alianzas Estratégicas →</a>
           </div>
         </div>
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="patrocinios">
-      <div class="si">
-        <div class="eyebrow">Patrocinios</div>
-        <h2 class="stitle reveal">Asocia tu Marca con<br><span class="accent">el Futuro de la IA</span></h2>
-        <p class="sdesc reveal d1">Conecta con 220 tomadores de decisión, líderes de IA y ejecutivos de toda LATAM durante 3 días de alto impacto.</p>
-        <div class="pat-grid">
-          <div class="pat p-pl reveal">
-            <div class="pat-tier">Platino</div>
-            <h3>Patrocinador Platino</h3>
-            <ul>
-              <li>Naming rights del evento o track principal</li>
-              <li>Keynote de apertura o clausura</li>
-              <li>Stand premium de doble espacio</li>
-              <li>10 pases VIP completos</li>
-              <li>Logo en todas las comunicaciones</li>
-              <li>Mención en todos los keynotes</li>
-              <li>Activación de marca personalizada</li>
-            </ul>
-            <a href="mailto:info@iaExpo.ai?subject=Patrocinio Platino - IA Expo 2027" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-or reveal d1">
-            <div class="pat-tier">Oro</div>
-            <h3>Patrocinador Oro</h3>
-            <ul>
-              <li>Stand en área principal del evento</li>
-              <li>5 pases completos al evento</li>
-              <li>Logo en comunicaciones digitales</li>
-              <li>Mención en keynotes</li>
-              <li>Participación en panel de industria</li>
-              <li>Presencia en pantallas del evento</li>
-            </ul>
-            <a href="mailto:info@iaExpo.ai?subject=Patrocinio Oro - IA Expo 2027" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-si reveal d2">
-            <div class="pat-tier">Plata</div>
-            <h3>Patrocinador Plata</h3>
-            <ul>
-              <li>Stand en área de networking</li>
-              <li>3 pases completos al evento</li>
-              <li>Logo en programa del evento</li>
-              <li>Mención en redes sociales</li>
-              <li>Presencia en pantallas digitales</li>
-            </ul>
-            <a href="mailto:info@iaExpo.ai?subject=Patrocinio Plata - IA Expo 2027" class="pat-btn">Solicitar Información →</a>
-          </div>
-        </div>
-        <div style="text-align:center;" class="reveal">
-          <a href="patrocinios.html" class="btn-secondary">Ver Todos los Paquetes →</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="boletos">
-      <div class="si">
-        <div class="eyebrow">Boletos</div>
-        <h2 class="stitle reveal">Asegura tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
-        <div style="text-align:center;margin-top:24px;">
-          <div class="bol-launch-badge">🔥 Precio de Lanzamiento Activo — 50% de Descuento</div>
-        </div>
-
-        <div class="bol-stages reveal">
-          <div class="bol-stage active">
-            <div class="bol-stage-pct" style="color:#00E676">50% OFF</div>
-            <div class="bol-stage-name">🔥 Lanzamiento</div>
-            <div class="bol-stage-desc">Disponible ahora<br>Precio especial de apertura</div>
-          </div>
-          <div class="bol-stage">
-            <div class="bol-stage-pct" style="color:var(--cyan)">25% OFF</div>
-            <div class="bol-stage-name">⏰ Anticipado</div>
-            <div class="bol-stage-desc">2 meses antes<br>del evento</div>
-          </div>
-          <div class="bol-stage">
-            <div class="bol-stage-pct" style="color:var(--text-muted)">—</div>
-            <div class="bol-stage-name">📅 Regular</div>
-            <div class="bol-stage-desc">1 mes antes<br>del evento</div>
-          </div>
-        </div>
-
-        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:28px;text-align:center;">Todos los precios en pesos mexicanos (MXN) · Precio por persona · 1 boleto</p>
-
-        <div class="tkt-grid reveal">
-          <!-- VIP -->
-          <div class="tkt-card gold">
-            <div class="tkt-icon">💎</div>
-            <div class="tkt-name">VIP</div>
-            <div class="tkt-desc">Membresía completa 2026–2027. 2 personas. Incluye todos los tracks, networking, retiro en Cancún y más beneficios exclusivos.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#FFD54F">$190,000</div>
-              <div class="tkt-orig">$305,900 MXN</div>
-              <span class="tkt-badge gold">Solo 10 cupos</span>
-            </div>
-          </div>
-          <!-- NETWORKING -->
-          <div class="tkt-card green">
-            <div class="tkt-icon">🥂</div>
-            <div class="tkt-name">Networking</div>
-            <div class="tkt-desc">Sesión de matchmaking estructurado con los 20 líderes más relevantes del ecosistema IA de LATAM.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#00E676">$12,450</div>
-              <div class="tkt-orig">$24,900 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-          <!-- CONFERENCIAS -->
-          <div class="tkt-card cyan">
-            <div class="tkt-icon">🎟️</div>
-            <div class="tkt-name">Conferencias</div>
-            <div class="tkt-desc">Acceso completo a los 3 días de conferencias, paneles y talleres con los mejores speakers de IA.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:var(--cyan)">$14,900</div>
-              <div class="tkt-orig">$29,800 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-          <!-- TALLERES -->
-          <div class="tkt-card blue">
-            <div class="tkt-icon">🛠️</div>
-            <div class="tkt-name">Talleres</div>
-            <div class="tkt-desc">Acceso a los talleres prácticos de IA. Aprende haciendo con expertos en sesiones hands-on de alto impacto.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#a855f7">$4,900</div>
-              <div class="tkt-orig">$9,800 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-          <!-- EXPO -->
-          <div class="tkt-card orange">
-            <div class="tkt-icon">🏛️</div>
-            <div class="tkt-name">Expo</div>
-            <div class="tkt-desc">Acceso a la zona de exposición con demos en vivo de las herramientas de IA más innovadoras del mercado.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#FFB74D">$4,450</div>
-              <div class="tkt-orig">$9,900 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align:center;margin-bottom:36px;">
-          <a href="tickets.html" class="btn-secondary" style="margin-right:12px;">Ver Todos los Detalles →</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="gd"></div>
-
-    <section id="contacto">
+<section id="contacto">
       <div class="si">
         <div class="eyebrow">Contacto</div>
         <h2 class="stitle reveal">Estamos aquí para<br><span class="accent">Ayudarte</span></h2>
@@ -2327,8 +2418,8 @@
             <li><a href="#boletos">Comprar Boletos</a></li>
             <li><a href="#patrocinios">Ser Patrocinador</a></li>
             <li><a href="#convocatoria">Enviar Paper</a></li>
-            <li><a href="mailto:info@iaExpo.ai">Ser Speaker</a></li>
-            <li><a href="monterrey.html">IA Expo Monterrey 2026</a></li>
+            <li><a href="#convocatoria">Ser Speaker</a></li>
+            <li><a href="https://iaExpo.ai/monterrey">IA Expo Monterrey 2026</a></li>
           </ul>
         </div>
         <div class="fc">
@@ -2344,6 +2435,9 @@
       <div class="fbot">
         <p>© 2025-2026 IA Expo Internacional · Todos los derechos reservados · Ciudad de México, México</p>
         <span class="powered">Digital Gap, Inc. · Asteri Eventos · Creavizer</span>
+      </div>
+      <div style="max-width:1200px;margin:0 auto;padding:12px 5% 20px;border-top:1px solid rgba(255,255,255,0.04);">
+        <p style="font-size:11px;color:var(--text-dim);text-align:center;line-height:1.7;opacity:0.7;">La información contenida en este sitio, incluyendo precios, fechas, programas, ponentes y condiciones de participación, es de carácter informativo y está sujeta a cambios sin previo aviso. Para información actualizada y confirmada, comuníquese directamente con el equipo organizador.</p>
       </div>
     </footer>
 
