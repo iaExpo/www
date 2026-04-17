@@ -113,12 +113,12 @@
     .hstat-l{font-size:.72rem;color:var(--muted);font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
 
     /* ── SECTIONS ── */
-    section{position:relative;z-index:1;padding:80px 5%;}
+    section{position:relative;z-index:1;padding:64px 5%;scroll-margin-top:64px;}
     .section-inner{max-width:1100px;margin:0 auto;}
     .s-label{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
     .s-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;margin-bottom:12px;}
-    .s-sub{font-size:clamp(14px,1.6vw,17px);color:var(--muted);max-width:680px;margin-bottom:48px;}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,.2),transparent);margin:0 auto 64px;}
+    .s-sub{font-size:clamp(14px,1.6vw,17px);color:var(--muted);max-width:680px;margin-bottom:28px;}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,.2),transparent);margin:0 auto 32px;}
 
     /* ── REVEAL ── */
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
@@ -353,26 +353,30 @@
 
 <!-- NAV -->
 <nav>
-  <a href="home.html" class="nav-brand">IA Expo Internacional</a>
+  <a href="https://iaExpo.ai/operaciones" class="nav-brand">IA Expo Operaciones</a>
   <div class="nav-tabs">
-    <a href="home.html"      class="ntab"><span>🌐</span> Home</a>
-    <a href="2027.html"      class="ntab"><span>🚀</span> 2027</a>
-    <a href="monterrey.html" class="ntab"><span>🏔️</span> Monterrey</a>
-    <a href="operaciones.html" class="ntab active"><span>⚙️</span> Operaciones</a>
-    <a href="patrocinios.html" class="ntab"><span>🏆</span> Patrocinios</a>
-    <a href="contacto.html"  class="ntab"><span>📍</span> Contacto</a>
+    <a href="#corporativo"  class="ntab"><span class="ico">🏢</span> Corporativo</a>
+    <a href="#organigrama"  class="ntab"><span class="ico">👥</span> Organigrama</a>
+    <a href="#funciones"    class="ntab"><span class="ico">⚙️</span> Funciones</a>
+    <a href="#eventos"      class="ntab"><span class="ico">📅</span> Eventos</a>
+    <a href="#ingresos"     class="ntab"><span class="ico">💰</span> Ingresos</a>
+    <a href="#kpis"         class="ntab"><span class="ico">📊</span> KPIs</a>
+    <a href="#conocimiento" class="ntab"><span class="ico">🧠</span> Conocimiento</a>
+    <a href="#pasos"        class="ntab"><span class="ico">🚀</span> Próx. Pasos</a>
   </div>
   <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-menu" id="mmenu">
-  <a href="home.html"        class="ntab" onclick="closeNav()"><span>🌐</span> Home</a>
-  <a href="2027.html"        class="ntab" onclick="closeNav()"><span>🚀</span> 2027</a>
-  <a href="monterrey.html"   class="ntab" onclick="closeNav()"><span>🏔️</span> Monterrey</a>
-  <a href="operaciones.html" class="ntab active" onclick="closeNav()"><span>⚙️</span> Operaciones</a>
-  <a href="patrocinios.html" class="ntab" onclick="closeNav()"><span>🏆</span> Patrocinios</a>
-  <a href="contacto.html"    class="ntab" onclick="closeNav()"><span>📍</span> Contacto</a>
+  <a href="#corporativo"  class="ntab" onclick="closeNav()"><span class="ico">🏢</span> Corporativo</a>
+  <a href="#organigrama"  class="ntab" onclick="closeNav()"><span class="ico">👥</span> Organigrama</a>
+  <a href="#funciones"    class="ntab" onclick="closeNav()"><span class="ico">⚙️</span> Funciones</a>
+  <a href="#eventos"      class="ntab" onclick="closeNav()"><span class="ico">📅</span> Eventos</a>
+  <a href="#ingresos"     class="ntab" onclick="closeNav()"><span class="ico">💰</span> Ingresos</a>
+  <a href="#kpis"         class="ntab" onclick="closeNav()"><span class="ico">📊</span> KPIs</a>
+  <a href="#conocimiento" class="ntab" onclick="closeNav()"><span class="ico">🧠</span> Conocimiento</a>
+  <a href="#pasos"        class="ntab" onclick="closeNav()"><span class="ico">🚀</span> Próx. Pasos</a>
 </div>
 
 <!-- ════════════════════════════════════════════════ HERO -->
@@ -392,10 +396,6 @@
       <span class="chip chip-green">📊 KPIs Definidos</span>
     </div>
     <div class="hero-stat-row anim-5">
-      <div class="hstat">
-        <div class="hstat-n">1997</div>
-        <div class="hstat-l">Fundación</div>
-      </div>
       <div class="hstat">
         <div class="hstat-n">2</div>
         <div class="hstat-l">Eventos 2026</div>
