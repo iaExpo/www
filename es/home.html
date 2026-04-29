@@ -27,6 +27,39 @@
         --gradient-hero: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
       }
 
+      /* ══════════════════════════════════════════════════════════
+         CSS TABLE OF CONTENTS
+         01  CSS VARIABLES & RESET
+         02  NEURAL CANVAS BACKGROUND
+         03  NAVIGATION (desktop + hamburger + mobile)
+         04  LEGACY HERO (OLD — overridden below, kept for reference)
+         05  SHARED SECTION STYLES (.si, .eyebrow, .stitle, .gd)
+         06  EVENTOS section (old .expo-* styles)
+         07  PROGRAMA
+         08  CALL FOR PAPERS (CFP)
+         09  ALIANZAS
+         10  PATROCINIOS
+         11  CONTACTO
+         12  BOLETOS / REGISTRO
+         13  FOOTER
+         14  ANIMATIONS & SCROLL REVEAL
+         15  RESPONSIVE BREAKPOINTS (shared)
+         ─── COMMUNITY SECTIONS ─────────────────────────────────
+         16  MISIÓN
+         17  BENEFICIOS
+         18  IA TOOLS (old .tool-chip layout, unused)
+         19  TESTIMONIOS
+         20  EQUIPO
+         21  FAQ
+         22  CTA FINAL (removed from HTML, CSS kept)
+         ─── REDESIGNED SECTIONS ─────────────────────────────────
+         23  HERO — Redesigned Emotional Layout
+         24  EVENTOS — Event Cards (ev-card, ev-past, ev-soon, ev-main)
+         25  VIDEO TESTIMONIALES
+         26  IA TOOL ICON CARDS (active layout)
+      ══════════════════════════════════════════════════════════ */
+
+      /* ══ 01  RESET & BASE ══ */
       * {
         margin: 0;
         padding: 0;
@@ -58,6 +91,7 @@
         border-radius: 2px;
       }
 
+      /* ══ 02  NEURAL CANVAS ══ */
       #neural-canvas {
         position: fixed;
         top: 0;
@@ -68,6 +102,7 @@
         pointer-events: none;
       }
 
+      /* ══ 03  NAVIGATION ══ */
       nav {
         position: sticky;
         top: 0;
@@ -209,6 +244,7 @@
         }
       }
 
+      /* ══ 04  LEGACY HERO — original styles; overridden by section 23 below ══ */
       #hero {
         position: relative;
         min-height: 100vh;
@@ -556,6 +592,7 @@
         }
       }
 
+      /* ══ 05  SHARED SECTION STYLES ══ */
       section {
         position: relative;
         z-index: 1;
@@ -615,7 +652,7 @@
         opacity: 0.3;
       }
 
-      /* LA EXPO */
+      /* ══ 06  EVENTOS (old .expo-* side-grid layout) ══ */
       #eventos {
         background: linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
       }
@@ -760,7 +797,7 @@
         color: var(--text-dim);
       }
 
-      /* PROGRAMA */
+      /* ══ 07  PROGRAMA ══ */
       #programa {
         background: var(--dark-2);
       }
@@ -860,7 +897,7 @@
         line-height: 1.6;
       }
 
-      /* CFP */
+      /* ══ 08  CALL FOR PAPERS (CFP) ══ */
       #convocatoria {
         background: var(--dark-3);
       }
@@ -1016,7 +1053,7 @@
         font-weight: 600;
       }
 
-      /* ALIANZAS */
+      /* ══ 09  ALIANZAS ══ */
       #alianzas {
         background: var(--dark-2);
       }
@@ -1117,7 +1154,7 @@
         color: var(--text-muted);
       }
 
-      /* PATROCINIOS */
+      /* ══ 10  PATROCINIOS ══ */
       #patrocinios {
         background: var(--dark);
       }
@@ -1275,12 +1312,12 @@
         box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
       }
 
-      /* CONTACTO */
+      /* ══ 11  CONTACTO ══ */
       #contacto {
         background: var(--dark-2);
       }
 
-      /* ── BOLETOS SECTION ── */
+      /* ══ 12  BOLETOS / REGISTRO ══ */
       #boletos {
         background: var(--dark-2);
       }
@@ -1603,7 +1640,7 @@
         color: var(--text-muted);
       }
 
-      /* FOOTER */
+      /* ══ 13  FOOTER ══ */
       footer {
         background: var(--dark);
         border-top: 1px solid var(--glass-border);
@@ -1615,8 +1652,8 @@
       .fg {
         max-width: 1200px;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        display: flex;
+        justify-content: center;
         gap: 48px;
         margin-bottom: 48px;
       }
@@ -1682,7 +1719,7 @@
         color: var(--cyan);
       }
 
-      /* ANIMATIONS */
+      /* ══ 14  ANIMATIONS & SCROLL REVEAL ══ */
       @keyframes fadeInDown {
         from {
           opacity: 0;
@@ -1744,7 +1781,7 @@
         transition-delay: 0.4s;
       }
 
-      /* RESPONSIVE */
+      /* ══ 15  RESPONSIVE BREAKPOINTS ══ */
       @media(max-width:900px) {
         .expo-grid {
           grid-template-columns: 1fr;
@@ -1819,10 +1856,10 @@
       }
 
       /* ══════════════════════════════════════════
-         NUEVAS SECCIONES — COMUNIDAD IA EXPO
+         SECTIONS 16–22  COMMUNITY IA EXPO
       ══════════════════════════════════════════ */
 
-      /* — MISIÓN — */
+      /* ══ 16  MISIÓN ══ */
       #mision {
         position: relative;
         overflow: hidden;
@@ -1877,7 +1914,7 @@
       }
       @media(max-width:768px) { .mision-pillars { grid-template-columns: 1fr; } }
 
-      /* — BENEFICIOS — */
+      /* ══ 17  BENEFICIOS ══ */
       #beneficios { background: var(--dark-2); }
       .ben-grid {
         display: grid;
@@ -1911,7 +1948,7 @@
       @media(max-width:900px) { .ben-grid { grid-template-columns: repeat(2, 1fr); } }
       @media(max-width:600px) { .ben-grid { grid-template-columns: 1fr; } }
 
-      /* — IA TOOLS — */
+      /* ══ 18  IA TOOLS — old .tool-chip layout (unused, replaced by section 26) ══ */
       #iatools { background: var(--dark); }
       .tools-intro { text-align: center; max-width: 640px; margin: 0 auto 48px; }
       .tools-categories { display: flex; flex-direction: column; gap: 36px; }
@@ -1961,7 +1998,7 @@
       }
       .tools-cta-note strong { color: var(--text); }
 
-      /* — TESTIMONIOS — */
+      /* ══ 19  TESTIMONIOS ══ */
       #testimonios { background: var(--dark-2); }
       .testi-grid {
         display: grid;
@@ -2006,12 +2043,12 @@
       .testi-role { font-size: 12px; color: var(--text-dim); }
       @media(max-width:900px) { .testi-grid { grid-template-columns: 1fr; } }
 
-      /* — QUIÉNES SOMOS — */
+      /* ══ 20  EQUIPO ══ */
       #equipo { background: var(--dark); }
       .equipo-intro { text-align: center; max-width: 640px; margin: 0 auto 48px; }
       .equipo-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
       }
       .eq-card {
@@ -2041,7 +2078,7 @@
       @media(max-width:900px) { .equipo-grid { grid-template-columns: repeat(2, 1fr); } }
       @media(max-width:600px) { .equipo-grid { grid-template-columns: 1fr; } }
 
-      /* — FAQ — */
+      /* ══ 21  FAQ ══ */
       #faq { background: var(--dark-2); }
       .faq-list { max-width: 780px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 12px; }
       .faq-item {
@@ -2077,7 +2114,7 @@
       }
       .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
 
-      /* — CTA FINAL — */
+      /* ══ 22  CTA FINAL — section removed from HTML; CSS kept as reference ══ */
       #cta-final {
         background: linear-gradient(135deg, rgba(0,212,255,0.07) 0%, rgba(124,58,237,0.1) 100%);
         border-top: 1px solid rgba(0,212,255,0.1);
@@ -2123,8 +2160,10 @@
       .cta-guarantee span { display: flex; align-items: center; gap: 6px; }
 
       /* ══════════════════════════════════════════
-         HERO — REDISEÑO EMOCIONAL
+         SECTIONS 23–26  REDESIGNED SECTIONS
       ══════════════════════════════════════════ */
+
+      /* ══ 23  HERO — Redesigned Emotional Layout ══ */
       #hero {
         min-height: 100vh;
         display: flex;
@@ -2279,7 +2318,7 @@
         .hero-stats-new { gap: 24px; }
       }
 
-      /* ══ EVENTOS SECTION ══ */
+      /* ══ 24  EVENTOS — Event Cards ══ */
       .ev-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -2453,7 +2492,7 @@
       @media(max-width: 1024px) { .ev-grid { grid-template-columns: 1fr 1fr; } }
       @media(max-width: 640px)  { .ev-grid { grid-template-columns: 1fr; } .ev-cta-strip { flex-direction: column; text-align: center; } }
 
-      /* ══ VIDEO TESTIMONIALES ══ */
+      /* ══ 25  VIDEO TESTIMONIALES ══ */
       .video-section-label {
         font-size: 11px;
         font-weight: 700;
@@ -2535,12 +2574,61 @@
         line-height: 1.5;
       }
       @media(max-width: 480px)  { .videos-grid { grid-template-columns: 1fr; } }
+
+      /* ══ 26  IA TOOL ICON CARDS ══ */
+      .tools-icon-section { display: flex; flex-direction: column; gap: 36px; margin-top: 48px; }
+      .tool-category { }
+      .tool-cat-hdr {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .tools-icon-row { display: flex; flex-wrap: wrap; gap: 10px; }
+      .tool-icon-card {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 9px 14px;
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        transition: all 0.25s ease;
+        cursor: default;
+      }
+      .tool-icon-card:hover {
+        border-color: rgba(0,212,255,0.3);
+        background: rgba(0,212,255,0.06);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      }
+      .tool-icon-card img {
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        flex-shrink: 0;
+        object-fit: contain;
+      }
+      .tool-icon-card span {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
+    <!-- ══ NEURAL CANVAS BACKGROUND ══ -->
     <canvas id="neural-canvas"></canvas>
 
-    <!-- NAV DESKTOP -->
+    <!-- ══ NAVIGATION — DESKTOP ══ -->
     <nav>
       <a href="https://iaExpo.ai" class="nav-brand">IA Expo</a>
       <div class="nav-tabs">
@@ -2559,7 +2647,7 @@
       </button>
     </nav>
 
-    <!-- MENÚ MÓVIL -->
+    <!-- ══ NAVIGATION — MOBILE ══ -->
     <div class="mobile-menu" id="mmenu">
       <a href="#beneficios" class="ntab" onclick="closeNav()"><span class="ico">✨</span> Beneficios</a>
       <a href="#eventos" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> Eventos</a>
@@ -2572,6 +2660,7 @@
       <a href="#contacto" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
     </div>
 
+    <!-- ══ HERO ══ -->
     <section id="hero">
       <div class="hero-bg-img"></div>
       <div class="hero-overlay"></div>
@@ -2591,12 +2680,12 @@
 
         <!-- Dos eventos -->
         <div class="hero-events-strip">
-          <a href="#eventos" class="hev-pill">
+          <a href="https://iaExpo.ai/monterrey" target="_blank" class="hev-pill">
             <span class="hev-label">🔥 Próximamente 2026</span>
             <span class="hev-name">IA Expo Monterrey</span>
             <span class="hev-loc">📍 Monterrey, Nuevo León</span>
           </a>
-          <a href="#eventos" class="hev-pill">
+          <a href="https://iaExpo.ai/2027" target="_blank" class="hev-pill">
             <span class="hev-label">⭐ Lanzamiento · 50% OFF</span>
             <span class="hev-name">IA Expo Internacional 2027</span>
             <span class="hev-loc">📍 Ciudad de México · 28–30 Enero</span>
@@ -2654,7 +2743,8 @@
     </section>
     <div class="gd"></div>
 
-<section id="eventos" style="position:relative;overflow:hidden;">
+    <!-- ══ EVENTOS ══ -->
+    <section id="eventos" style="position:relative;overflow:hidden;">
       <div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center/cover no-repeat;opacity:0.04;pointer-events:none;z-index:0;"></div>
       <div class="si" style="position:relative;z-index:1;">
         <div class="eyebrow">Eventos IA Expo</div>
@@ -2663,25 +2753,8 @@
 
         <div class="ev-grid">
 
-          <!-- ── IA EXPO 2026 CDMX · YA PASÓ ── -->
-          <div class="ev-card ev-past reveal">
-            <div class="ev-badge ev-badge-past">✅ Éxito Rotundo · Edición Histórica</div>
-            <div class="ev-year">2026</div>
-            <h3 class="ev-title">IA Expo Internacional 2026<span>Ciudad de México · 31 Enero 2026</span></h3>
-            <div class="ev-date">📍 Ciudad de México · EVENTO CONCLUIDO</div>
-            <p class="ev-desc">Un día que cambió la conversación de la inteligencia artificial en LATAM para siempre. Reunimos a los líderes más visionarios en un solo escenario — y la realidad superó todas las expectativas.</p>
-            <div class="ev-stats">
-              <div class="ev-stat"><span class="ev-stat-n">16+</span><span class="ev-stat-l">Speakers</span></div>
-              <div class="ev-stat"><span class="ev-stat-n">10+</span><span class="ev-stat-l">Países</span></div>
-              <div class="ev-stat"><span class="ev-stat-n">9</span><span class="ev-stat-l">Alianzas</span></div>
-              <div class="ev-stat"><span class="ev-stat-n">1</span><span class="ev-stat-l">Día Histórico</span></div>
-            </div>
-            <blockquote class="ev-quote">"Tanto mi esposa como yo estuvimos asombrados con la dinámica, el contenido y la diversidad de ponentes — me voy sumamente emocionado y satisfecho."<cite>— Dr. William McKee · Multi Radiance Medical</cite></blockquote>
-            <a href="https://iaExpo.ai/2026" class="ev-btn ev-btn-past">Ver el Evento →</a>
-          </div>
-
           <!-- ── IA EXPO MONTERREY 2026 · PRÓXIMAMENTE ── -->
-          <div class="ev-card ev-soon reveal d1">
+          <div class="ev-card ev-soon reveal">
             <div class="ev-badge ev-badge-soon">🔥 Próximamente · 2026</div>
             <div class="ev-year">MTY</div>
             <h3 class="ev-title">IA Expo Monterrey 2026<span>Monterrey, Nuevo León · 2026</span></h3>
@@ -2697,7 +2770,7 @@
           </div>
 
           <!-- ── IA EXPO INTERNACIONAL 2027 · PRINCIPAL ── -->
-          <div class="ev-card ev-main reveal d2">
+          <div class="ev-card ev-main reveal d1">
             <div class="ev-badge ev-badge-main">⭐ Precio Lanzamiento · 50% OFF</div>
             <div class="ev-year">2027</div>
             <h3 class="ev-title">IA Expo Internacional 2027<span>Ciudad de México · 28–30 Enero 2027</span></h3>
@@ -2715,6 +2788,23 @@
               <div class="ev-feature">🤝 Networking estructurado con 220 C-Levels</div>
             </div>
             <a href="https://iaExpo.ai/2027" class="ev-btn ev-btn-main">🎟️ Asegurar mi Lugar →</a>
+          </div>
+
+          <!-- ── IA EXPO 2026 CDMX · YA PASÓ ── -->
+          <div class="ev-card ev-past reveal d2">
+            <div class="ev-badge ev-badge-past">✅ Éxito Rotundo · Edición Histórica</div>
+            <div class="ev-year">2026</div>
+            <h3 class="ev-title">IA Expo Internacional 2026<span>Ciudad de México · 31 Enero 2026</span></h3>
+            <div class="ev-date">📍 Ciudad de México · EVENTO CONCLUIDO</div>
+            <p class="ev-desc">Un día que cambió la conversación de la inteligencia artificial en LATAM para siempre. Reunimos a los líderes más visionarios en un solo escenario — y la realidad superó todas las expectativas.</p>
+            <div class="ev-stats">
+              <div class="ev-stat"><span class="ev-stat-n">16+</span><span class="ev-stat-l">Speakers</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">10+</span><span class="ev-stat-l">Países</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">9</span><span class="ev-stat-l">Alianzas</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">1</span><span class="ev-stat-l">Día Histórico</span></div>
+            </div>
+            <blockquote class="ev-quote">"Tanto mi esposa como yo estuvimos asombrados con la dinámica, el contenido y la diversidad de ponentes — me voy sumamente emocionado y satisfecho."<cite>— Dr. William McKee · Multi Radiance Medical</cite></blockquote>
+            <a href="https://iaExpo.ai/2026" class="ev-btn ev-btn-past">Ver el Evento →</a>
           </div>
 
         </div>
@@ -2735,68 +2825,156 @@
         <div class="eyebrow">IA Tools</div>
         <h2 class="stitle reveal">Herramientas IA que<br><span class="accent">IA Expo Internacional</span> Usa</h2>
         <div class="tools-intro reveal d1">
-          <p style="color:var(--text-muted);font-size:15px;line-height:1.8;">En la comunidad IA Expo compartimos experiencias reales con las herramientas más poderosas del mercado. Aquí las organizamos por categoría para que encuentres las que más te impactan.</p>
+          <p style="color:var(--text-muted);font-size:15px;line-height:1.8;">En IA Expo Internacional usamos, evaluamos y compartimos experiencias reales con las herramientas de IA más relevantes del mercado. Estas son las que forman parte de nuestro día a día.</p>
         </div>
-        <div class="tools-categories reveal">
-          <div>
-            <div class="tool-cat-title">🤖 Asistentes e IA Conversacional</div>
-            <div class="tools-row">
-              <div class="tool-chip"><span class="tc-ico">🟢</span> ChatGPT</div>
-              <div class="tool-chip"><span class="tc-ico">🟣</span> Claude</div>
-              <div class="tool-chip"><span class="tc-ico">🔵</span> Gemini</div>
-              <div class="tool-chip"><span class="tc-ico">⚫</span> Grok</div>
-              <div class="tool-chip"><span class="tc-ico">🟠</span> Copilot</div>
-              <div class="tool-chip"><span class="tc-ico">🔴</span> Llama</div>
-              <div class="tool-chip"><span class="tc-ico">🟡</span> Perplexity</div>
+
+        <div class="tools-icon-section reveal">
+
+          <!-- MODELOS DE LENGUAJE -->
+          <div class="tool-category">
+            <div class="tool-cat-hdr">🤖 Modelos de Lenguaje e Inteligencia Artificial</div>
+            <div class="tools-icon-row">
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI">
+                <span>OpenAI</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64" alt="ChatGPT">
+                <span>ChatGPT</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude">
+                <span>Claude</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="Gemini">
+                <span>Gemini</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="Grok">
+                <span>Grok</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=64" alt="Copilot">
+                <span>Copilot</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=deepseek.com&sz=64" alt="DeepSeek">
+                <span>DeepSeek</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64" alt="Perplexity">
+                <span>Perplexity</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="Mistral">
+                <span>Mistral</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=manus.im&sz=64" alt="Manus">
+                <span>Manus</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=meta.ai&sz=64" alt="Meta AI">
+                <span>Meta AI</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=qwen.ai&sz=64" alt="Qwen">
+                <span>Qwen</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=kimi.ai&sz=64" alt="Kimi">
+                <span>Kimi</span>
+              </div>
             </div>
           </div>
-          <div>
-            <div class="tool-cat-title">🎨 Creatividad e Imagen</div>
-            <div class="tools-row">
-              <div class="tool-chip"><span class="tc-ico">🎨</span> Midjourney</div>
-              <div class="tool-chip"><span class="tc-ico">🖼️</span> DALL·E</div>
-              <div class="tool-chip"><span class="tc-ico">🌟</span> Canva IA</div>
-              <div class="tool-chip"><span class="tc-ico">🔥</span> Adobe Firefly</div>
-              <div class="tool-chip"><span class="tc-ico">✨</span> Ideogram</div>
-              <div class="tool-chip"><span class="tc-ico">🎭</span> Stable Diffusion</div>
+
+          <!-- CREATIVIDAD E IMAGEN -->
+          <div class="tool-category">
+            <div class="tool-cat-hdr">🎨 Creatividad e Imagen</div>
+            <div class="tools-icon-row">
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=midjourney.com&sz=64" alt="Midjourney">
+                <span>Midjourney</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="DALL-E">
+                <span>DALL-E</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=canva.com&sz=64" alt="Canva AI">
+                <span>Canva AI</span>
+              </div>
             </div>
           </div>
-          <div>
-            <div class="tool-cat-title">🎬 Video y Audio</div>
-            <div class="tools-row">
-              <div class="tool-chip"><span class="tc-ico">🎥</span> Sora</div>
-              <div class="tool-chip"><span class="tc-ico">🎬</span> Runway</div>
-              <div class="tool-chip"><span class="tc-ico">🎵</span> Suno</div>
-              <div class="tool-chip"><span class="tc-ico">🎤</span> ElevenLabs</div>
-              <div class="tool-chip"><span class="tc-ico">📹</span> HeyGen</div>
-              <div class="tool-chip"><span class="tc-ico">🎙️</span> Udio</div>
-              <div class="tool-chip"><span class="tc-ico">🖥️</span> Synthesia</div>
+
+          <!-- VIDEO Y AUDIO -->
+          <div class="tool-category">
+            <div class="tool-cat-hdr">🎬 Video y Audio</div>
+            <div class="tools-icon-row">
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=sora.com&sz=64" alt="Sora">
+                <span>Sora</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=suno.com&sz=64" alt="Suno">
+                <span>Suno</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="ElevenLabs">
+                <span>ElevenLabs</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=heygen.com&sz=64" alt="HeyGen">
+                <span>HeyGen</span>
+              </div>
             </div>
           </div>
-          <div>
-            <div class="tool-cat-title">📊 Productividad y Negocios</div>
-            <div class="tools-row">
-              <div class="tool-chip"><span class="tc-ico">📝</span> Notion IA</div>
-              <div class="tool-chip"><span class="tc-ico">📄</span> ChatPDF</div>
-              <div class="tool-chip"><span class="tc-ico">📧</span> Superhuman</div>
-              <div class="tool-chip"><span class="tc-ico">📊</span> Julius AI</div>
-              <div class="tool-chip"><span class="tc-ico">🔎</span> Consensus</div>
-              <div class="tool-chip"><span class="tc-ico">🤖</span> Make.com</div>
-              <div class="tool-chip"><span class="tc-ico">⚡</span> Zapier IA</div>
+
+          <!-- PRODUCTIVIDAD -->
+          <div class="tool-category">
+            <div class="tool-cat-hdr">📊 Investigación y Productividad</div>
+            <div class="tools-icon-row">
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=notebooklm.google.com&sz=64" alt="NotebookLM">
+                <span>NotebookLM</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion AI">
+                <span>Notion AI</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=make.com&sz=64" alt="Make">
+                <span>Make</span>
+              </div>
             </div>
           </div>
-          <div>
-            <div class="tool-cat-title">💻 Desarrollo y Código</div>
-            <div class="tools-row">
-              <div class="tool-chip"><span class="tc-ico">💻</span> GitHub Copilot</div>
-              <div class="tool-chip"><span class="tc-ico">🖥️</span> Cursor</div>
-              <div class="tool-chip"><span class="tc-ico">🛠️</span> Claude Code</div>
-              <div class="tool-chip"><span class="tc-ico">🔧</span> Replit</div>
-              <div class="tool-chip"><span class="tc-ico">⚙️</span> Bolt.new</div>
-              <div class="tool-chip"><span class="tc-ico">🌐</span> v0.dev</div>
+
+          <!-- CÓDIGO Y DESARROLLO -->
+          <div class="tool-category">
+            <div class="tool-cat-hdr">💻 Código y Desarrollo</div>
+            <div class="tools-icon-row">
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude Cowork">
+                <span>Claude Cowork</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude Code">
+                <span>Claude Code</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="Codex">
+                <span>Codex</span>
+              </div>
+              <div class="tool-icon-card">
+                <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="GitHub Copilot">
+                <span>GitHub Copilot</span>
+              </div>
             </div>
           </div>
+
         </div>
+
         <div class="tools-cta-note reveal">
           <strong>¿Usas alguna herramienta que no está aquí?</strong><br>
           En nuestros eventos y comunidad compartimos experiencias reales: qué funciona, qué no, y cómo sacarle el máximo provecho en tu industria específica.
@@ -2942,7 +3120,8 @@
     <div class="gd"></div>
 
 
-<section id="alianzas">
+    <!-- ══ ALIANZAS ══ -->
+    <section id="alianzas">
       <div class="si">
         <div class="eyebrow">Alianzas</div>
         <h2 class="stitle reveal">Unidos por la <span class="accent">Innovación</span></h2>
@@ -3007,14 +3186,14 @@
           <div style="display:inline-block;padding:32px 48px;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(124,58,237,0.06));border:1px solid rgba(0,212,255,0.15);border-radius:20px;">
             <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:10px;">¿Tu organización quiere ser parte de la historia?</h3>
             <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Únete como aliado de IA Expo Internacional 2027 y conecta tu marca con los líderes de IA en LATAM.</p>
-            <a href="https://iaExpo.ai/patrocinios" class="btn-primary" style="padding:12px 28px;font-size:14px;">Alianzas Estratégicas →</a>
+            <a href="#contacto" class="btn-primary" style="padding:12px 28px;font-size:14px;">Alianzas Estratégicas →</a>
           </div>
         </div>
       </div>
     </section>
     <div class="gd"></div>
 
-    <!-- ══ QUIÉNES SOMOS ══ -->
+    <!-- ══ EQUIPO ══ -->
     <section id="equipo">
       <div class="si">
         <div class="eyebrow">Quiénes Somos</div>
@@ -3028,22 +3207,28 @@
             <div class="eq-bio">CEO de Digital Gap Inc. Fundador de IA Expo Internacional. Lleva más de 20 años conectando tecnología, negocios y personas en LATAM y Estados Unidos.</div>
           </div>
           <div class="eq-card reveal d1">
-            <div class="eq-avatar">AE</div>
-            <div class="eq-name">Asteri Eventos</div>
+            <div class="eq-avatar">TO</div>
+            <div class="eq-name">Lic. Tere Olvera</div>
             <div class="eq-role">Producción &amp; ExperiencIA</div>
-            <div class="eq-bio">Especialistas en producción de eventos de alto impacto. Responsables de convertir cada IA Expo en una experiencia memorable e inmersiva.</div>
+            <div class="eq-bio">Especialista en producción de eventos de alto impacto. Responsable de convertir cada IA Expo en una experiencia memorable e inmersiva, cuidando cada detalle logístico y operativo.</div>
           </div>
           <div class="eq-card reveal d2">
-            <div class="eq-avatar">CR</div>
-            <div class="eq-name">Creavizer</div>
-            <div class="eq-role">IA Marketing &amp; Publicidad</div>
-            <div class="eq-bio">Agencia de marketing especializada en IA que lleva la estrategia de comunicación y publicidad de IA Expo con herramientas de inteligencia artificial de vanguardia.</div>
+            <div class="eq-avatar">AO</div>
+            <div class="eq-name">Andrea Olivero</div>
+            <div class="eq-role">IA Expo Redes Sociales</div>
+            <div class="eq-bio">Gestiona la presencia digital de IA Expo Internacional en redes sociales, creando contenido estratégico, conectando con la comunidad y amplificando el mensaje de IA Para la Vida Real en toda LATAM.</div>
           </div>
           <div class="eq-card reveal d3">
-            <div class="eq-avatar">VC</div>
-            <div class="eq-name">Vele Comunicación</div>
+            <div class="eq-avatar">AD</div>
+            <div class="eq-name">Alejandra Díaz<br>Paola Pérez</div>
+            <div class="eq-role">IA Marketing &amp; Publicidad</div>
+            <div class="eq-bio">Especialistas en marketing con inteligencia artificial que lideran la estrategia de comunicación y publicidad de IA Expo, usando herramientas de IA de vanguardia para maximizar el alcance e impacto.</div>
+          </div>
+          <div class="eq-card reveal d1">
+            <div class="eq-avatar">VL</div>
+            <div class="eq-name">Víctor López</div>
             <div class="eq-role">Comunicación &amp; PR</div>
-            <div class="eq-bio">Expertos en relaciones públicas y estrategia de comunicación que amplían el alcance de IA Expo a medios, influencers y audiencias de toda LATAM.</div>
+            <div class="eq-bio">Experto en relaciones públicas y estrategia de comunicación que amplía el alcance de IA Expo a medios, influencers y audiencias de toda LATAM.</div>
           </div>
         </div>
         <div style="text-align:center;margin-top:44px;" class="reveal">
@@ -3146,31 +3331,8 @@
     </section>
     <div class="gd"></div>
 
-    <!-- ══ CTA FINAL ══ -->
-    <section id="cta-final">
-      <div class="si">
-        <div class="cta-final-wrap">
-          <div class="cta-badge reveal">
-            <span>⏰</span> Precio de Lanzamiento · Solo 220 Lugares
-          </div>
-          <h2 class="cta-final-title reveal">El Futuro llega.<br><span class="cf-accent">¿Estás Listo?</span></h2>
-          <p class="cta-final-desc reveal d1">La IA no es una moda — es el cambio más importante de nuestra generación. En IA Expo 2027 no hablamos de lo que podría pasar. Hablamos de lo que ya está pasando, con personas que ya lo están haciendo. <strong style="color:var(--text);">Tu lugar está aquí.</strong></p>
-          <div class="cta-final-btns reveal d2">
-            <a href="#boletos" class="btn-primary" style="font-size:17px;padding:18px 44px;">🎟️ Asegurar mi Lugar</a>
-            <a href="#contacto" class="btn-secondary" style="font-size:17px;padding:18px 44px;">Quiero más información</a>
-          </div>
-          <div class="cta-guarantee reveal d3">
-            <span>✅ Precio de lanzamiento</span>
-            <span>🌎 Comunidad LATAM</span>
-            <span>🔒 Registro seguro</span>
-            <span>📅 28–30 Enero 2027</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="gd"></div>
-
-<section id="contacto">
+    <!-- ══ CONTACTO ══ -->
+    <section id="contacto">
       <div class="si">
         <div class="eyebrow">Contacto</div>
         <h2 class="stitle reveal">Estamos aquí para<br><span class="accent">Ayudarte</span></h2>
@@ -3183,18 +3345,10 @@
                 <div class="ci-icon">📧</div>
                 <div class="ci-text"><strong>Email</strong><span>info@iaExpo.ai</span></div>
               </a>
-              <a href="https://wa.me/5215555555555?text=Hola%2C%20me%20interesa%20la%20IA%20Expo%202027" target="_blank" class="ci">
+              <a href="https://wa.me/525559632687?text=Hola%2C%20me%20interesa%20la%20IA%20Expo%202027" target="_blank" class="ci">
                 <div class="ci-icon">📲</div>
-                <div class="ci-text"><strong>WhatsApp</strong><span>Escríbenos directamente</span></div>
+                <div class="ci-text"><strong>WhatsApp</strong><span>+52 55 5963-2687</span></div>
               </a>
-              <div class="ci">
-                <div class="ci-icon">📅</div>
-                <div class="ci-text"><strong>Fechas</strong><span>28, 29 y 30 de Enero de 2027</span></div>
-              </div>
-              <div class="ci">
-                <div class="ci-icon">📍</div>
-                <div class="ci-text"><strong>Sede</strong><span>Ciudad de México · Por confirmar</span></div>
-              </div>
               <a href="https://iaExpo.ai" class="ci">
                 <div class="ci-icon">🌐</div>
                 <div class="ci-text"><strong>Web</strong><span>iaExpo.ai</span></div>
@@ -3203,8 +3357,7 @@
           </div>
           <div class="bol-reg-box reveal d1">
             <div class="bol-reg-hdr">
-              <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
-              <p>Precio de lanzamiento con 50% OFF · Solo 220 lugares disponibles</p>
+              <h3>Registro — IA Expo Internacional</h3>
             </div>
             <div class="bol-reg-form">
               <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" id="inline-ZytHIX9hH3aKeNV1fVt0" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" data-layout-iframe-id="inline-ZytHIX9hH3aKeNV1fVt0" data-form-id="ZytHIX9hH3aKeNV1fVt0" title="IA Expo Registro"></iframe>
@@ -3215,6 +3368,7 @@
       </div>
     </section>
 
+    <!-- ══ FOOTER ══ -->
     <footer>
       <div class="fg">
         <div class="fb">
@@ -3222,26 +3376,14 @@
             <div style="width:44px;height:44px;background:var(--gradient-1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:white;box-shadow:0 0 20px rgba(0,212,255,0.4);">IA</div>
             <div style="display:flex;flex-direction:column;line-height:1.1;"><span style="font-size:15px;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">IA EXPO</span><span style="font-size:11px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;">INTERNACIONAL</span></div>
           </div>
-          <p>"IA Para la Vida Real 2.0" — El evento de inteligencia artificial más inspirador de LATAM. Ciudad de México, 28–30 Enero 2027.</p>
+          <p>"IA Para la Vida Real 2.0" — El evento de inteligencia artificial más inspirador de LATAM.</p>
         </div>
-        <div class="fc">
-          <h4>Evento</h4>
-          <ul>
-            <li><a href="#eventos">La Expo</a></li>
-            <li><a href="#programa">Programa</a></li>
-            <li><a href="#convocatoria">Call for Papers</a></li>
-            <li><a href="#alianzas">Alianzas</a></li>
-            <li><a href="#patrocinios">Patrocinios</a></li>
-          </ul>
-        </div>
-        <div class="fc">
+<div class="fc">
           <h4>Participa</h4>
           <ul>
-            <li><a href="#boletos">Comprar Boletos</a></li>
-            <li><a href="#patrocinios">Ser Patrocinador</a></li>
-            <li><a href="#convocatoria">Enviar Paper</a></li>
-            <li><a href="#convocatoria">Ser Speaker</a></li>
             <li><a href="https://iaExpo.ai/monterrey">IA Expo Monterrey 2026</a></li>
+            <li><a href="https://iaExpo.ai/2027">IA Expo Internacional 2027</a></li>
+            <li><a href="https://iaExpo.ai/2026">IA Expo Internacional 2026</a></li>
           </ul>
         </div>
         <div class="fc">
@@ -3249,8 +3391,7 @@
           <ul>
             <li><a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a></li>
             <li><a href="https://iaExpo.ai">iaExpo.ai</a></li>
-            <li><a href="#">Ciudad de México</a></li>
-            <li><a href="#">28–30 Enero 2027</a></li>
+            <li><a href="https://wa.me/525559632687?text=Hola%2C%20me%20interesa%20IA%20Expo" target="_blank">WhatsApp +52 55 5963-2687</a></li>
           </ul>
         </div>
       </div>
