@@ -616,7 +616,7 @@
       }
 
       /* LA EXPO */
-      #iaexpo {
+      #eventos {
         background: linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
       }
 
@@ -2121,6 +2121,420 @@
         font-weight: 500;
       }
       .cta-guarantee span { display: flex; align-items: center; gap: 6px; }
+
+      /* ══════════════════════════════════════════
+         HERO — REDISEÑO EMOCIONAL
+      ══════════════════════════════════════════ */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 0;
+        text-align: left;
+        background: var(--dark);
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+      }
+      .hero-bg-img {
+        background: url('https://raw.githubusercontent.com/iaExpo/www/main/images/Creavizer%20Segunda%20Foto%20Web.jpg') center 20%/cover no-repeat;
+        opacity: 1;
+        animation: slowzoom 20s ease-out forwards;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(to top,  rgba(3,7,18,1) 0%, rgba(3,7,18,0.88) 28%, rgba(3,7,18,0.4) 58%, transparent 100%),
+          linear-gradient(to right, rgba(3,7,18,0.72) 0%, transparent 62%);
+        z-index: 1;
+        pointer-events: none;
+      }
+      .hero-content-wrap {
+        position: relative;
+        z-index: 2;
+        padding: 0 6vw 5.5vw;
+        max-width: 960px;
+        animation: fadeInUp 1.1s ease 0.3s both;
+      }
+      .hero-tag-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 22px;
+      }
+      .hero-tag-line::before {
+        content: '';
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: var(--cyan);
+        flex-shrink: 0;
+      }
+      .hero-title-new {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(46px, 8.5vw, 112px);
+        font-weight: 700;
+        line-height: 0.94;
+        letter-spacing: -0.03em;
+        margin-bottom: 24px;
+        color: var(--text);
+      }
+      .hero-title-new .ht-accent {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-desc-new {
+        font-size: clamp(14px, 1.6vw, 18px);
+        color: rgba(249,250,251,0.68);
+        max-width: 560px;
+        line-height: 1.75;
+        font-weight: 300;
+        margin-bottom: 36px;
+      }
+      .hero-events-strip {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 36px;
+      }
+      .hev-pill {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding: 14px 22px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px;
+        backdrop-filter: blur(14px);
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .hev-pill:hover {
+        border-color: var(--cyan);
+        background: rgba(0,212,255,0.07);
+        transform: translateY(-2px);
+      }
+      .hev-label {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+      .hev-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .hev-loc {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+      .hero-btns-new {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 52px;
+      }
+      .hero-stats-new {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        border-top: 1px solid rgba(255,255,255,0.09);
+        padding-top: 28px;
+      }
+      .hsn {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .hsn-num {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--cyan);
+        line-height: 1;
+      }
+      .hsn-label {
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+      @media(max-width: 768px) {
+        .hero-content-wrap { padding: 0 5% 64px; }
+        .hero-title-new { font-size: clamp(40px, 11vw, 70px); }
+        .hero-stats-new { gap: 24px; }
+      }
+
+      /* ══ EVENTOS SECTION ══ */
+      .ev-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 56px;
+        align-items: start;
+      }
+      .ev-card {
+        border-radius: 20px;
+        padding: 32px 28px;
+        border: 1px solid var(--glass-border);
+        background: var(--glass);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .ev-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+      }
+      .ev-card:hover { transform: translateY(-6px); }
+
+      /* PASADO */
+      .ev-past { border-color: rgba(245,158,11,0.18); background: rgba(245,158,11,0.04); }
+      .ev-past::before { background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b); }
+      .ev-past:hover { box-shadow: 0 24px 60px rgba(245,158,11,0.15); }
+
+      /* PRÓXIMO */
+      .ev-soon { border-color: rgba(249,115,22,0.2); background: rgba(249,115,22,0.03); }
+      .ev-soon::before { background: linear-gradient(90deg, #f97316, #fb923c, #f97316); }
+      .ev-soon:hover { box-shadow: 0 24px 60px rgba(249,115,22,0.15); }
+
+      /* PRINCIPAL */
+      .ev-main { border-color: rgba(0,212,255,0.25); background: rgba(0,212,255,0.04); }
+      .ev-main::before { background: var(--gradient-1); }
+      .ev-main:hover { box-shadow: 0 24px 60px rgba(0,212,255,0.18); }
+
+      .ev-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border-radius: 100px;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+      .ev-badge-past { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); color: #fbbf24; }
+      .ev-badge-soon { background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.35); color: #fb923c; }
+      .ev-badge-main { background: rgba(0,212,255,0.10); border: 1px solid rgba(0,212,255,0.3); color: var(--cyan); }
+
+      .ev-year {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 52px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        opacity: 0.13;
+        position: absolute;
+        top: 24px; right: 24px;
+        pointer-events: none;
+      }
+      .ev-past .ev-year  { color: #f59e0b; }
+      .ev-soon .ev-year  { color: #f97316; }
+      .ev-main .ev-year  { color: var(--cyan); opacity: 0.17; }
+
+      .ev-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--text);
+      }
+      .ev-title span { display: block; font-size: 15px; font-weight: 500; color: var(--text-muted); margin-top: 3px; }
+
+      .ev-date {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .ev-past .ev-date  { color: #fbbf24; }
+      .ev-soon .ev-date  { color: #fb923c; }
+      .ev-main .ev-date  { color: var(--cyan); }
+
+      .ev-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; }
+
+      .ev-stats {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        padding: 14px 0;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .ev-stat { display: flex; flex-direction: column; align-items: center; min-width: 44px; }
+      .ev-stat-n {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1;
+      }
+      .ev-past .ev-stat-n  { color: #fbbf24; }
+      .ev-soon .ev-stat-n  { color: #fb923c; }
+      .ev-main .ev-stat-n  { color: var(--cyan); }
+      .ev-stat-l { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-top: 3px; }
+
+      .ev-features { display: flex; flex-direction: column; gap: 8px; }
+      .ev-feature {
+        font-size: 13px;
+        color: var(--text-muted);
+        padding: 8px 12px;
+        background: rgba(255,255,255,0.03);
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .ev-quote {
+        font-size: 12.5px;
+        font-style: italic;
+        color: var(--text-muted);
+        line-height: 1.7;
+        border-left: 2px solid rgba(245,158,11,0.4);
+        padding-left: 12px;
+        margin: 0;
+      }
+      .ev-quote cite { display: block; margin-top: 8px; font-style: normal; font-size: 11px; font-weight: 600; color: #fbbf24; }
+
+      .ev-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 22px;
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        margin-top: auto;
+        text-align: center;
+      }
+      .ev-btn-past { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); color: #fbbf24; }
+      .ev-btn-past:hover { background: rgba(245,158,11,0.2); transform: translateY(-2px); }
+      .ev-btn-soon { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.35); color: #fb923c; }
+      .ev-btn-soon:hover { background: rgba(249,115,22,0.2); transform: translateY(-2px); }
+      .ev-btn-main { background: var(--gradient-1); border: none; color: #fff; box-shadow: 0 0 28px rgba(0,212,255,0.25); }
+      .ev-btn-main:hover { box-shadow: 0 0 44px rgba(0,212,255,0.45); transform: translateY(-2px); }
+
+      .ev-cta-strip {
+        margin-top: 52px;
+        padding: 28px 36px;
+        background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.05));
+        border: 1px solid rgba(0,212,255,0.12);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .ev-cta-strip p { font-size: 15px; color: var(--text-muted); }
+      .ev-cta-strip p strong { color: var(--text); }
+
+      @media(max-width: 1024px) { .ev-grid { grid-template-columns: 1fr 1fr; } }
+      @media(max-width: 640px)  { .ev-grid { grid-template-columns: 1fr; } .ev-cta-strip { flex-direction: column; text-align: center; } }
+
+      /* ══ VIDEO TESTIMONIALES ══ */
+      .video-section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 48px 0 24px;
+      }
+      .video-section-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--glass-border);
+      }
+      .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .video-card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .video-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        border-color: rgba(0,212,255,0.2);
+      }
+      .video-wrap {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        background: linear-gradient(135deg, var(--dark-2), #0a1c3a);
+        overflow: hidden;
+        display: block;
+        text-decoration: none;
+      }
+      .video-wrap img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.85;
+        transition: opacity 0.3s ease, transform 0.4s ease;
+      }
+      .video-wrap:hover img { opacity: 1; transform: scale(1.04); }
+      .video-play-btn {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 56px; height: 56px;
+        border-radius: 50%;
+        background: rgba(255,0,0,0.88);
+        display: flex; align-items: center; justify-content: center;
+        transition: transform 0.25s ease, background 0.25s ease;
+        z-index: 2;
+      }
+      .video-wrap:hover .video-play-btn { transform: translate(-50%, -50%) scale(1.12); background: #ff0000; }
+      .video-play-btn svg { margin-left: 4px; }
+      .video-meta {
+        padding: 14px 16px 16px;
+      }
+      .video-meta .vm-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 3px;
+      }
+      .video-meta .vm-desc {
+        font-size: 11.5px;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+      @media(max-width: 480px)  { .videos-grid { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
@@ -2128,15 +2542,15 @@
 
     <!-- NAV DESKTOP -->
     <nav>
-      <a href="https://iaExpo.ai" class="nav-brand">IA Expo Internacional 2027</a>
+      <a href="https://iaExpo.ai" class="nav-brand">IA Expo</a>
       <div class="nav-tabs">
-        <a href="#mision" class="ntab"><span class="ico">🎯</span> Misión</a>
         <a href="#beneficios" class="ntab"><span class="ico">✨</span> Beneficios</a>
-        <a href="#iaexpo" class="ntab"><span class="ico">🌟</span> Eventos</a>
+        <a href="#eventos" class="ntab"><span class="ico">🌟</span> Eventos</a>
         <a href="#iatools" class="ntab"><span class="ico">🛠️</span> IA Tools</a>
-        <a href="#testimonios" class="ntab"><span class="ico">💬</span> Testimonios</a>
-        <a href="#equipo" class="ntab"><span class="ico">👥</span> Equipo</a>
+        <a href="#testimonios" class="ntab"><span class="ico">💬</span> Testimoniales</a>
         <a href="#alianzas" class="ntab"><span class="ico">🤝</span> Alianzas</a>
+        <a href="#equipo" class="ntab"><span class="ico">👥</span> Equipo</a>
+        <a href="#mision" class="ntab"><span class="ico">🎯</span> Misión</a>
         <a href="#faq" class="ntab"><span class="ico">❓</span> FAQ</a>
         <a href="#contacto" class="ntab"><span class="ico">📍</span> Contacto</a>
       </div>
@@ -2147,113 +2561,53 @@
 
     <!-- MENÚ MÓVIL -->
     <div class="mobile-menu" id="mmenu">
-      <a href="#mision" class="ntab" onclick="closeNav()"><span class="ico">🎯</span> Misión</a>
       <a href="#beneficios" class="ntab" onclick="closeNav()"><span class="ico">✨</span> Beneficios</a>
-      <a href="#iaexpo" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> Eventos</a>
+      <a href="#eventos" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> Eventos</a>
       <a href="#iatools" class="ntab" onclick="closeNav()"><span class="ico">🛠️</span> IA Tools</a>
-      <a href="#testimonios" class="ntab" onclick="closeNav()"><span class="ico">💬</span> Testimonios</a>
-      <a href="#equipo" class="ntab" onclick="closeNav()"><span class="ico">👥</span> Equipo</a>
+      <a href="#testimonios" class="ntab" onclick="closeNav()"><span class="ico">💬</span> Testimoniales</a>
       <a href="#alianzas" class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
+      <a href="#equipo" class="ntab" onclick="closeNav()"><span class="ico">👥</span> Equipo</a>
+      <a href="#mision" class="ntab" onclick="closeNav()"><span class="ico">🎯</span> Misión</a>
       <a href="#faq" class="ntab" onclick="closeNav()"><span class="ico">❓</span> FAQ</a>
       <a href="#contacto" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
     </div>
 
     <section id="hero">
       <div class="hero-bg-img"></div>
-      <div style="position:relative;z-index:2;width:100%;">
-        <div class="hero-eyebrow">
-          <div class="dot"></div>28 · 29 · 30 de Enero de 2027 · Ciudad de México
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content-wrap">
+        <div class="hero-tag-line">IA Para la Vida Real · LATAM</div>
+
+        <h1 class="hero-title-new">
+          IA Expo Internacional<br>
+          <span class="ht-accent">IA Para la Vida Real</span>
+        </h1>
+
+        <p class="hero-desc-new">
+          No hablamos de inteligencia artificial en teoría. La vivimos, la aplicamos y la compartimos.
+          Somos la comunidad donde los que ya están transformando empresas, industrias y vidas reales con IA se encuentran, se apoyan y crecen juntos.
+        </p>
+
+        <!-- Dos eventos -->
+        <div class="hero-events-strip">
+          <a href="#eventos" class="hev-pill">
+            <span class="hev-label">🔥 Próximamente 2026</span>
+            <span class="hev-name">IA Expo Monterrey</span>
+            <span class="hev-loc">📍 Monterrey, Nuevo León</span>
+          </a>
+          <a href="#eventos" class="hev-pill">
+            <span class="hev-label">⭐ Lanzamiento · 50% OFF</span>
+            <span class="hev-name">IA Expo Internacional 2027</span>
+            <span class="hev-loc">📍 Ciudad de México · 28–30 Enero</span>
+          </a>
         </div>
-        <h1 class="hero-title"><span class="ia">IA </span>Expo</h1>
-        <div class="hero-sub">Internacional 2027</div>
-        <div class="hero-lema">"IA Para la Vida Real 2.0"</div>
-        <div class="hero-loc">📍 Ciudad de México · Sede por confirmar</div>
-        <p class="hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>3 días, 8 tracks temáticos, 220 líderes</strong> que ya están usando la IA para transformar industrias reales.</p>
-        <div class="cd-wrap">
-          <div class="cd-label">Cuenta regresiva al evento</div>
-          <div class="countdown">
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-days">---</div><span>Días</span>
-            </div>
-            <div class="cd-sep">:</div>
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-hours">--</div><span>Horas</span>
-            </div>
-            <div class="cd-sep">:</div>
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-mins">--</div><span>Minutos</span>
-            </div>
-            <div class="cd-sep">:</div>
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-secs">--</div><span>Segundos</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-btns">
-          <a href="#boletos" class="btn-primary">🎟️ Boletos con 50% OFF</a>
-          <a href="#iaexpo" class="btn-secondary">Conocer el Evento →</a>
-        </div>
-        <div class="hero-stats">
-          <div class="hstat">
-            <div class="hstat-n">220</div>
-            <div class="hstat-l">Líderes en IA</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n">8</div>
-            <div class="hstat-l">Tracks Temáticos</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n">3</div>
-            <div class="hstat-l">Días de Impacto</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n">50%</div>
-            <div class="hstat-l">Precio Lanzamiento</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n">LATAM</div>
-            <div class="hstat-l">Alcance</div>
-          </div>
-        </div>
+
       </div>
-      <a href="#iaexpo" class="scroll-ind">
-        <div class="scroll-mouse">
-          <div class="scroll-dot"></div>
-        </div>
-      </a>
     </section>
 
     <div class="gd"></div>
 
-    <!-- ══ MISIÓN ══ -->
-    <section id="mision">
-      <div class="si">
-        <div class="mision-wrap reveal">
-          <div class="eyebrow">Nuestra Misión</div>
-          <h2 class="mision-quote">La <span class="q-accent">Inteligencia Artificial</span><br>es para todas las personas</h2>
-          <p class="mision-sub">No solo para ingenieros ni corporativos. La IA está transformando cómo vivimos, trabajamos, emprendemos y crecemos. Creamos una comunidad donde los que ya la usan comparten lo que funciona — y lo que no — en la vida real.</p>
-          <div class="mision-pillars">
-            <div class="mision-pillar reveal">
-              <div class="mp-icon">🧠</div>
-              <h3>Aprender</h3>
-              <p>Casos reales, herramientas probadas y experiencias directas de quienes ya usan IA en sus negocios y vidas cotidianas.</p>
-            </div>
-            <div class="mision-pillar reveal d1">
-              <div class="mp-icon">🤝</div>
-              <h3>Conectar</h3>
-              <p>Una red exclusiva de líderes, emprendedores, profesionistas y visionarios comprometidos con el crecimiento a través de la IA.</p>
-            </div>
-            <div class="mision-pillar reveal d2">
-              <div class="mp-icon">🚀</div>
-              <h3>Transformar</h3>
-              <p>Convertir el conocimiento en acción. Aplicar IA para crecer más rápido, simplificar operaciones y generar más impacto.</p>
-            </div>
-          </div>
-          <div class="mision-lema reveal d3">✦ IA Para la Vida Real ✦</div>
-        </div>
-      </div>
-    </section>
-    <div class="gd"></div>
 
     <!-- ══ BENEFICIOS ══ -->
     <section id="beneficios">
@@ -2263,29 +2617,29 @@
         <p class="sdesc reveal d1">No es solo un evento. Es una comunidad de apoyo mutuo en uno de los momentos más acelerados de la historia.</p>
         <div class="ben-grid">
           <div class="ben-card reveal">
-            <div class="ben-icon">🎓</div>
-            <h3>Aprende de los Mejores</h3>
-            <p>Accede a keynotes, talleres y casos de estudio de líderes que ya están usando IA para transformar empresas e industrias reales en LATAM.</p>
-          </div>
-          <div class="ben-card reveal d1">
             <div class="ben-icon">🌐</div>
             <h3>Red de Alto Valor</h3>
             <p>Conecta con 220+ ejecutivos, emprendedores, directivos y expertos en IA. Las conversaciones más valiosas ocurren fuera del escenario.</p>
           </div>
-          <div class="ben-card reveal d2">
-            <div class="ben-icon">🛠️</div>
-            <h3>Herramientas que Funcionan</h3>
-            <p>Descubre qué herramientas de IA usan los mejores profesionales, cómo las implementaron y qué resultados reales obtuvieron.</p>
-          </div>
-          <div class="ben-card reveal">
-            <div class="ben-icon">📡</div>
-            <h3>Primero en las Tendencias</h3>
+          <div class="ben-card reveal d1">
+            <div class="ben-icon">🔭</div>
+            <h3>Visión y Futuro de IA</h3>
             <p>En la comunidad IA Expo te enteras antes que nadie de los cambios, lanzamientos y oportunidades que están redefiniendo los negocios.</p>
           </div>
-          <div class="ben-card reveal d1">
+          <div class="ben-card reveal d2">
+            <div class="ben-icon">🎓</div>
+            <h3>Aprende de los Mejores</h3>
+            <p>Accede a keynotes, talleres y casos de estudio de líderes que ya están usando IA para transformar empresas e industrias reales en LATAM.</p>
+          </div>
+          <div class="ben-card reveal">
             <div class="ben-icon">🏖️</div>
             <h3>Retiros y Eventos Exclusivos</h3>
             <p>Miembros VIP acceden a retiros de alto rendimiento, eventos privados y experiencias únicas diseñadas para crecer junto a los mejores.</p>
+          </div>
+          <div class="ben-card reveal d1">
+            <div class="ben-icon">🛠️</div>
+            <h3>Herramientas que Funcionan</h3>
+            <p>Descubre qué herramientas de IA usan los mejores profesionales, cómo las implementaron y qué resultados reales obtuvieron.</p>
           </div>
           <div class="ben-card reveal d2">
             <div class="ben-icon">💡</div>
@@ -2294,274 +2648,83 @@
           </div>
         </div>
         <div style="text-align:center;margin-top:44px;" class="reveal">
-          <a href="#boletos" class="btn-primary">🚀 Únete a la Comunidad</a>
+          <a href="#contacto" class="btn-primary">🚀 Únete a la Comunidad</a>
         </div>
       </div>
     </section>
     <div class="gd"></div>
 
-<section id="iaexpo" style="position:relative;overflow:hidden;">
-      <!-- Imagen de fondo sutil -->
-      <div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center/cover no-repeat;opacity:0.05;pointer-events:none;z-index:0;"></div>
+<section id="eventos" style="position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center/cover no-repeat;opacity:0.04;pointer-events:none;z-index:0;"></div>
       <div class="si" style="position:relative;z-index:1;">
-        <div class="expo-side-grid">
-          <!-- Contenido izquierdo -->
-          <div class="expo-content reveal">
-            <div class="eyebrow">Sobre la IA Expo</div>
-            <h2 class="stitle">La <span class="accent">EXPO</span> que Transforma<br>Vidas Reales</h2>
-            <p>Después del éxito rotundo de <strong>IA Expo Internacional 2026 en Ciudad de México</strong>, regresamos con una edición aún más ambiciosa. Más tracks, más speakers internacionales, más impacto.</p>
-            <p>IA Expo Internacional 2027 es el encuentro de quienes ya están usando la inteligencia artificial para transformar empresas, industrias y vidas en <strong>LATAM y el mundo</strong>.</p>
-            <p>Solo <strong>220 lugares</strong> disponibles. Precio de lanzamiento con 50% de descuento por tiempo limitado.</p>
-            <div class="features reveal d1">
-              <div class="feat">
-                <div class="ficon">🎤</div>
-                <div class="ftext"><strong>Keynotes de Alto Impacto</strong><span>Líderes internacionales que ya transformaron su industria con IA</span></div>
-              </div>
-              <div class="feat">
-                <div class="ficon">🧪</div>
-                <div class="ftext"><strong>Talleres Prácticos</strong><span>Grupos de máximo 20 personas — aprendizaje profundo y aplicado</span></div>
-              </div>
-              <div class="feat">
-                <div class="ficon">🤝</div>
-                <div class="ftext"><strong>Networking Estructurado</strong><span>220 C-Levels y tomadores de decisión de toda LATAM</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- Formulario de registro derecho -->
-          <div class="bol-reg-box reveal d1">
-            <div class="bol-reg-hdr">
-              <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
-              <p>Precio de lanzamiento con 50% OFF · Solo 220 lugares disponibles</p>
-            </div>
-            <div class="bol-reg-form">
-              <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" title="IA Expo Registro"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="gd"></div>
+        <div class="eyebrow">Eventos IA Expo</div>
+        <h2 class="stitle reveal">Donde la <span class="accent">Inteligencia Artificial</span><br>se aplica a la Vida Real</h2>
+        <p class="sdesc reveal d1">Líderes, innovadores y expertos de LATAM y el mundo se reúnen para compartir experiencias reales de cómo la Inteligencia Artificial está transformando empresas, industrias y vidas. No es teoría — son experiencias que inspiran, herramientas que funcionan y conexiones que abren nuevas perspectivas y oportunidades.</p>
 
-<section id="boletos">
-      <div class="si">
-        <div class="eyebrow">Boletos</div>
-        <h2 class="stitle reveal">Asegura tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
-        <div style="text-align:center;margin-top:24px;">
-          <div class="bol-launch-badge">🔥 Precio de Lanzamiento Activo — 50% de Descuento</div>
-        </div>
+        <div class="ev-grid">
 
-        <div class="bol-stages reveal">
-          <div class="bol-stage active">
-            <div class="bol-stage-pct" style="color:#00E676">50% OFF</div>
-            <div class="bol-stage-name">🔥 Lanzamiento</div>
-            <div class="bol-stage-desc">Disponible ahora<br>Precio especial de apertura</div>
+          <!-- ── IA EXPO 2026 CDMX · YA PASÓ ── -->
+          <div class="ev-card ev-past reveal">
+            <div class="ev-badge ev-badge-past">✅ Éxito Rotundo · Edición Histórica</div>
+            <div class="ev-year">2026</div>
+            <h3 class="ev-title">IA Expo Internacional 2026<span>Ciudad de México · 31 Enero 2026</span></h3>
+            <div class="ev-date">📍 Ciudad de México · EVENTO CONCLUIDO</div>
+            <p class="ev-desc">Un día que cambió la conversación de la inteligencia artificial en LATAM para siempre. Reunimos a los líderes más visionarios en un solo escenario — y la realidad superó todas las expectativas.</p>
+            <div class="ev-stats">
+              <div class="ev-stat"><span class="ev-stat-n">16+</span><span class="ev-stat-l">Speakers</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">10+</span><span class="ev-stat-l">Países</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">9</span><span class="ev-stat-l">Alianzas</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">1</span><span class="ev-stat-l">Día Histórico</span></div>
+            </div>
+            <blockquote class="ev-quote">"Tanto mi esposa como yo estuvimos asombrados con la dinámica, el contenido y la diversidad de ponentes — me voy sumamente emocionado y satisfecho."<cite>— Dr. William McKee · Multi Radiance Medical</cite></blockquote>
+            <a href="https://iaExpo.ai/2026" class="ev-btn ev-btn-past">Ver el Evento →</a>
           </div>
-          <div class="bol-stage">
-            <div class="bol-stage-pct" style="color:var(--cyan)">25% OFF</div>
-            <div class="bol-stage-name">⏰ Anticipado</div>
-            <div class="bol-stage-desc">2 meses antes<br>del evento</div>
+
+          <!-- ── IA EXPO MONTERREY 2026 · PRÓXIMAMENTE ── -->
+          <div class="ev-card ev-soon reveal d1">
+            <div class="ev-badge ev-badge-soon">🔥 Próximamente · 2026</div>
+            <div class="ev-year">MTY</div>
+            <h3 class="ev-title">IA Expo Monterrey 2026<span>Monterrey, Nuevo León · 2026</span></h3>
+            <div class="ev-date">📍 Monterrey, Nuevo León</div>
+            <p class="ev-desc">Llevamos la experiencia IA Expo a la capital industrial de México. Un evento diseñado para los líderes del noreste que ya están usando la IA para transformar sus empresas, industrias y vidas.</p>
+            <div class="ev-features">
+              <div class="ev-feature">🎤 Keynotes locales e internacionales</div>
+              <div class="ev-feature">🧪 Talleres prácticos y aplicados</div>
+              <div class="ev-feature">🤝 Networking de alto valor con C-Levels del noreste</div>
+              <div class="ev-feature">🌐 Comunidad IA Expo — LATAM y más allá</div>
+            </div>
+            <a href="https://iaExpo.ai/monterrey" class="ev-btn ev-btn-soon">Más Información →</a>
           </div>
-          <div class="bol-stage">
-            <div class="bol-stage-pct" style="color:var(--text-muted)">Regular</div>
-            <div class="bol-stage-name">📅 Regular</div>
-            <div class="bol-stage-desc">1 mes antes<br>del evento</div>
+
+          <!-- ── IA EXPO INTERNACIONAL 2027 · PRINCIPAL ── -->
+          <div class="ev-card ev-main reveal d2">
+            <div class="ev-badge ev-badge-main">⭐ Precio Lanzamiento · 50% OFF</div>
+            <div class="ev-year">2027</div>
+            <h3 class="ev-title">IA Expo Internacional 2027<span>Ciudad de México · 28–30 Enero 2027</span></h3>
+            <div class="ev-date">📅 28 · 29 · 30 de Enero de 2027 · CDMX</div>
+            <p class="ev-desc">La edición más ambiciosa de la historia. Después del éxito rotundo de 2026, regresamos más grandes, más globales y más impactantes. Solo 220 lugares disponibles con precio de lanzamiento.</p>
+            <div class="ev-stats">
+              <div class="ev-stat"><span class="ev-stat-n">220</span><span class="ev-stat-l">Líderes</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">8</span><span class="ev-stat-l">Tracks</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">3</span><span class="ev-stat-l">Días</span></div>
+              <div class="ev-stat"><span class="ev-stat-n">50%</span><span class="ev-stat-l">OFF</span></div>
+            </div>
+            <div class="ev-features">
+              <div class="ev-feature">🎤 Keynotes internacionales de alto impacto</div>
+              <div class="ev-feature">🧪 Talleres de máximo 20 personas</div>
+              <div class="ev-feature">🤝 Networking estructurado con 220 C-Levels</div>
+            </div>
+            <a href="https://iaExpo.ai/2027" class="ev-btn ev-btn-main">🎟️ Asegurar mi Lugar →</a>
           </div>
+
         </div>
 
-        <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:28px;text-align:center;">Todos los precios en pesos mexicanos (MXN) · Precio por persona · 1 boleto</p>
-
-        <div class="tkt-grid reveal">
-          <!-- EXPO -->
-          <div class="tkt-card orange">
-            <div class="tkt-icon">🏛️</div>
-            <div class="tkt-name">Expo</div>
-            <div class="tkt-desc">Acceso a la zona de exposición con demos en vivo de las herramientas de IA más innovadoras del mercado.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#FFB74D">$4,450</div>
-              <div class="tkt-orig">$8,900 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-          <!-- TALLERES -->
-          <div class="tkt-card blue">
-            <div class="tkt-icon">🛠️</div>
-            <div class="tkt-name">Talleres</div>
-            <div class="tkt-desc">Acceso a los talleres prácticos de IA. Aprende haciendo con expertos en sesiones hands-on de alto impacto.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#a855f7">$4,900</div>
-              <div class="tkt-orig">$9,800 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-          <!-- CONFERENCIAS -->
-          <div class="tkt-card cyan">
-            <div class="tkt-icon">🎟️</div>
-            <div class="tkt-name">Conferencias</div>
-            <div class="tkt-desc">Acceso completo a los 3 días de conferencias, paneles y talleres con los mejores speakers de IA.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:var(--cyan)">$9,950</div>
-              <div class="tkt-orig">$19,900 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-          <!-- NETWORKING -->
-          <div class="tkt-card green">
-            <div class="tkt-icon">🥂</div>
-            <div class="tkt-name">Networking Estructurado</div>
-            <div class="tkt-desc">Sesión de matchmaking estructurado con los 20 líderes más relevantes del ecosistema IA de LATAM.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#00E676">$12,450</div>
-              <div class="tkt-orig">$24,900 MXN</div>
-              <span class="tkt-badge green">50% OFF</span>
-            </div>
-          </div>
-          <!--
-          <div class="tkt-card gold">
-            <div class="tkt-icon">💎</div>
-            <div class="tkt-name">VIP</div>
-            <div class="tkt-desc">Membresía completa 2026–2027. 2 personas. Incluye todos los tracks, networking, retiro en Cancún y más beneficios exclusivos.</div>
-            <div class="tkt-price-wrap">
-              <div class="tkt-launch" style="color:#FFD54F">$190,000</div>
-              <div class="tkt-orig">$305,900 MXN</div>
-              <span class="tkt-badge gold">Solo 10 cupos</span>
-            </div>
-          </div>
-          -->
+        <!-- CTA Strip -->
+        <div class="ev-cta-strip reveal">
+          <p>¿Quieres ser parte de la historia que estamos escribiendo? <strong>Patrocinadores, expositores y speakers</strong> — hay un lugar especial para ti en IA Expo.</p>
+          <a href="#contacto" class="btn-secondary">Únete como Aliado →</a>
         </div>
 
-        <div style="text-align:center;margin-bottom:36px;">
-          <a href="https://iaExpo.ai/tickets" class="btn-secondary" style="margin-right:12px;">Tickets →</a>
-        </div>
-      </div>
-    </section>
-    <div class="gd"></div>
-
-<section id="convocatoria">
-      <div class="si">
-        <div class="eyebrow">Convocatoria</div>
-        <h2 class="stitle reveal">Call for Papers —<br><span class="accent">Tu Investigación en el Escenario</span></h2>
-        <p class="sdesc reveal d1">¿Tu investigación está cambiando el mundo con IA? Envía tu paper y preséntalo ante 220 líderes, académicos e innovadores de LATAM.</p>
-        <div class="cfp-g">
-          <div class="reveal">
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📚 Temáticas de Interés</h3>
-            <div class="topics">
-              <div class="topic"><strong>🤖 IA Aplicada a la Vida Real</strong><span>Casos de uso, implementaciones y resultados medibles de IA en industrias reales</span></div>
-              <div class="topic"><strong>🚗 Movilidad Autónoma e Inteligente</strong><span>Vehículos autónomos, control de tráfico, infraestructura V2X y smart cities</span></div>
-              <div class="topic"><strong>🏥 IA en Salud y Bienestar</strong><span>Diagnóstico, medicina preventiva, robótica médica y sistemas de soporte clínico</span></div>
-              <div class="topic"><strong>⚖️ Ética, Sesgo y Gobernanza de IA</strong><span>Uso responsable, regulación, transparencia y políticas públicas</span></div>
-            </div>
-          </div>
-          <div class="reveal d1">
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📅 Fechas Clave</h3>
-            <div class="tl">
-              <div class="tli">
-                <div class="tld"></div>
-                <div class="tl-date">Ahora Abierto</div>
-                <div class="tl-title">Apertura de Convocatoria</div>
-                <div class="tl-desc">Envío de abstracts y papers completos</div>
-              </div>
-              <div class="tli">
-                <div class="tld" style="background:var(--blue);box-shadow:0 0 10px rgba(0,102,255,0.5);"></div>
-                <div class="tl-date" style="color:#60a5fa;">31 de Agosto de 2026</div>
-                <div class="tl-title">Cierre de Envíos</div>
-                <div class="tl-desc">Fecha límite para papers completos</div>
-              </div>
-              <div class="tli">
-                <div class="tld" style="background:var(--purple);box-shadow:0 0 10px rgba(124,58,237,0.5);"></div>
-                <div class="tl-date" style="color:var(--purple-light);">Octubre 2026</div>
-                <div class="tl-title">Notificación de Aceptación</div>
-                <div class="tl-desc">Resultados de revisión doble ciego</div>
-              </div>
-              <div class="tli">
-                <div class="tld" style="background:linear-gradient(135deg,var(--cyan),var(--purple));box-shadow:0 0 14px rgba(0,212,255,0.6);"></div>
-                <div class="tl-date">28–30 Enero de 2027</div>
-                <div class="tl-title">Presentación en IA Expo 2027</div>
-                <div class="tl-desc">Ciudad de México</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cfp-cta reveal">
-          <div style="font-size:36px;margin-bottom:16px;">🎓</div>
-          <h3>¿Listo para presentar tu investigación?</h3>
-          <p>Formato: 6–8 páginas · Español o Inglés · Revisión doble ciego por comité académico</p>
-          <div class="cfp-tags"><span class="cfp-tag">6–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por Pares</span><span class="cfp-tag">Cierre: 31 Ago 2026</span></div>
-          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-            <a href="https://iaExpo.ai/convocatoria" class="btn-primary">📄 Enviar mi Paper</a>
-            <a href="https://iaExpo.ai/convocatoria" class="btn-secondary">Más Información →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="gd"></div>
-
-<section id="programa">
-      <div class="si">
-        <div class="eyebrow">Programa</div>
-        <h2 class="stitle reveal">8 Tracks. 3 Días.<br><span class="accent">Infinitas Posibilidades.</span></h2>
-        <p class="sdesc reveal d1">Un programa diseñado para todos los perfiles: desde ejecutivos que quieren adoptar IA hasta investigadores de vanguardia.</p>
-        <div class="tracks">
-          <div class="tc reveal">
-            <div class="tc-e">🤖</div>
-            <h4>IA Para la Vida Real</h4>
-            <p>Casos prácticos de IA aplicada en negocios y vida cotidiana</p>
-          </div>
-          <div class="tc reveal d1">
-            <div class="tc-e">🏢</div>
-            <h4>IA en los Negocios</h4>
-            <p>Estrategia, adopción y ROI de la IA en organizaciones</p>
-          </div>
-          <div class="tc reveal d2">
-            <div class="tc-e">🏥</div>
-            <h4>IA en Salud</h4>
-            <p>Diagnóstico, medicina preventiva e IA aplicada al bienestar</p>
-          </div>
-          <div class="tc reveal d3">
-            <div class="tc-e">🎨</div>
-            <h4>IA Generativa</h4>
-            <p>Creatividad, contenido, diseño y producción con IA</p>
-          </div>
-          <div class="tc reveal">
-            <div class="tc-e">📚</div>
-            <h4>IA en Educación</h4>
-            <p>Transformación del aprendizaje y la formación profesional</p>
-          </div>
-          <div class="tc reveal d1">
-            <div class="tc-e">🚗</div>
-            <h4>Movilidad Autónoma</h4>
-            <p>Vehículos autónomos, smart cities e infraestructura inteligente</p>
-          </div>
-          <div class="tc reveal d2">
-            <div class="tc-e">⚖️</div>
-            <h4>Ética y Regulación</h4>
-            <p>Uso responsable, políticas públicas y gobernanza de la IA</p>
-          </div>
-          <div class="tc reveal d3">
-            <div class="tc-e">💻</div>
-            <h4>IA para Devs</h4>
-            <p>Herramientas, APIs, agentes y desarrollo con inteligencia artificial</p>
-          </div>
-        </div>
-        <div class="dias reveal">
-          <div class="dia">
-            <div class="dia-n">01</div>
-            <div class="dia-f">Jueves 28 de Enero</div>
-            <div class="dia-d">Apertura, keynotes estelares, talleres de inmersión y networking de bienvenida.</div>
-          </div>
-          <div class="dia">
-            <div class="dia-n">02</div>
-            <div class="dia-f">Viernes 29 de Enero</div>
-            <div class="dia-d">Los 8 tracks en paralelo, paneles de industria, demos en vivo y networking estructurado.</div>
-          </div>
-          <div class="dia">
-            <div class="dia-n">03</div>
-            <div class="dia-f">Sábado 30 de Enero</div>
-            <div class="dia-d">Talleres especializados, sesiones de cierre, reconocimientos y visión IA 2028.</div>
-          </div>
-        </div>
-        <div style="text-align:center;margin-top:40px;" class="reveal">
-          <a href="https://iaExpo.ai/programa" class="btn-secondary">Ver Programa Completo →</a>
-        </div>
       </div>
     </section>
     <div class="gd"></div>
@@ -2570,7 +2733,7 @@
     <section id="iatools">
       <div class="si">
         <div class="eyebrow">IA Tools</div>
-        <h2 class="stitle reveal">Las Herramientas que<br><span class="accent">Están Cambiando Todo</span></h2>
+        <h2 class="stitle reveal">Herramientas IA que<br><span class="accent">IA Expo Internacional</span> Usa</h2>
         <div class="tools-intro reveal d1">
           <p style="color:var(--text-muted);font-size:15px;line-height:1.8;">En la comunidad IA Expo compartimos experiencias reales con las herramientas más poderosas del mercado. Aquí las organizamos por categoría para que encuentres las que más te impactan.</p>
         </div>
@@ -2651,34 +2814,61 @@
         <div class="testi-grid">
           <div class="testi-card reveal">
             <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">IA Expo 2026 fue el punto de inflexión para mi empresa. En tres días aprendí más sobre implementación real de IA que en un año leyendo artículos. Regreso al trabajo con un plan concreto y con contactos que ya están marcando la diferencia.</p>
+            <span style="display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);margin-bottom:12px;">Asistente</span>
+            <p class="testi-quote">"Tanto mi esposa como yo estuvimos asombrados con la dinámica, el contenido, la diversidad de ponentes y los temas abordados. Maravilloso y para alguien como yo, apasionado con aprender diario cosas nuevas, me voy sumamente emocionado y satisfecho."</p>
             <div class="testi-person">
-              <div class="testi-avatar">MR</div>
+              <div class="testi-avatar">W</div>
               <div class="testi-info">
-                <span class="testi-name">María R.</span>
-                <span class="testi-role">CEO · Fintech · Ciudad de México</span>
+                <span class="testi-name">Dr. William McKee</span>
+                <span class="testi-role">Director Ejecutivo · Multi Radiance Medical</span>
               </div>
             </div>
           </div>
           <div class="testi-card reveal d1">
             <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">Lo que más me sorprendió fue la calidad de las personas. No vine solo a escuchar ponencias — vine a conectar con gente que ya está usando IA en serio. Cerré dos alianzas estratégicas en el networking del segundo día.</p>
+            <span style="display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#a855f7;margin-bottom:12px;">Speaker</span>
+            <p class="testi-quote">"Estoy con la cabeza llena de ideas y el corazón explotado de alegría por la experiencia de haber compartido esas horas súper nutritivas, con tantos conferencistas, con tanta información, con tantas miradas. Quiero sacarle provecho al máximo."</p>
             <div class="testi-person">
-              <div class="testi-avatar">JL</div>
+              <div class="testi-avatar">N</div>
               <div class="testi-info">
-                <span class="testi-name">Jorge L.</span>
-                <span class="testi-role">Director de Innovación · Manufactura · MTY</span>
+                <span class="testi-name">Noelia González</span>
+                <span class="testi-role">Consultora Comunicación Estratégica · Universidad Católica de Córdoba</span>
               </div>
             </div>
           </div>
           <div class="testi-card reveal d2">
             <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">Soy médica y llegué con muchas dudas sobre cómo la IA puede aplicarse en salud de forma ética y real. Me fui con claridad, con contactos de investigadores increíbles y con proyectos concretos que ya estamos implementando en el hospital.</p>
+            <span style="display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:#fbbf24;margin-bottom:12px;">Alianza</span>
+            <p class="testi-quote">"La organización fue impecable — cada detalle reflejó la seriedad del tema y el nivel de quienes lo hacen posible. Esto no era un evento más: era un ecosistema vivo de ideas, de conexiones reales y de conversaciones que no se dan en ningún otro escenario."</p>
             <div class="testi-person">
-              <div class="testi-avatar">AC</div>
+              <div class="testi-avatar">A</div>
               <div class="testi-info">
-                <span class="testi-name">Dra. Ana C.</span>
-                <span class="testi-role">Médica Investigadora · Guadalajara</span>
+                <span class="testi-name">Alejandra Díaz</span>
+                <span class="testi-role">CEO · Creavizer</span>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <div class="testi-stars">★★★★★</div>
+            <span style="display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#a855f7;margin-bottom:12px;">Speaker</span>
+            <p class="testi-quote">"IA Expo Internacional 2026 representa mucho más que una exhibición de tecnologías: es un espacio donde se redefinen los modelos de liderazgo, se entrelazan mentes audaces y se construye el nuevo lenguaje de valor para los negocios del futuro."</p>
+            <div class="testi-person">
+              <div class="testi-avatar">M</div>
+              <div class="testi-info">
+                <span class="testi-name">Martín Sierra</span>
+                <span class="testi-role">PMO &amp; VMO Leader · Aeroméxico</span>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal d1">
+            <div class="testi-stars">★★★★★</div>
+            <span style="display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);color:#a855f7;margin-bottom:12px;">Speaker</span>
+            <p class="testi-quote">"Escuchar a los expertos compartir no solo las herramientas que están desarrollando, sino los desafíos reales de implementar IA en los negocios, fue sumamente enriquecedor. El éxito de la tecnología no depende solo del código, sino de la colaboración humana estratégica."</p>
+            <div class="testi-person">
+              <div class="testi-avatar">J</div>
+              <div class="testi-info">
+                <span class="testi-name">José Ángel Govela</span>
+                <span class="testi-role">Project Manager · Nextia</span>
               </div>
             </div>
           </div>
@@ -2686,144 +2876,71 @@
         <div style="text-align:center;margin-top:40px;" class="reveal">
           <div style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.15);border-radius:12px;font-size:13px;color:var(--text-muted);">
             <span style="font-size:18px;">⭐</span>
-            <span><strong style="color:var(--text);">+600 asistentes</strong> en IA Expo 2026 · Satisfacción promedio <strong style="color:var(--cyan);">4.9/5</strong></span>
+            <span><strong style="color:var(--text);">16+ speakers · 10+ países · 9 alianzas</strong> en IA Expo Internacional 2026 · Ciudad de México</span>
           </div>
+        </div>
+
+        <!-- ── VIDEO TESTIMONIALES ── -->
+        <div class="video-section-label reveal">Video Testimoniales</div>
+        <div class="videos-grid">
+
+          <div class="video-card reveal">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=g4OrN7KXgB4" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/g4OrN7KXgB4/hqdefault.jpg" alt="Dr. Jaime García · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            </a>
+            <div class="video-meta">
+              <div class="vm-name">Dr. Jaime García</div>
+              <div class="vm-desc">Radiología e Imagen · Médica Sur</div>
+            </div>
+          </div>
+
+          <div class="video-card reveal d1">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=yKQCUhmKcBQ" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/yKQCUhmKcBQ/hqdefault.jpg" alt="José Antonio González · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            </a>
+            <div class="video-meta">
+              <div class="vm-name">José Antonio González</div>
+              <div class="vm-desc">CEO · Zahoree</div>
+            </div>
+          </div>
+
+          <div class="video-card reveal d2">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=OU2M1WALPls" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/OU2M1WALPls/hqdefault.jpg" alt="Dr. Gabriel Barrera · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            </a>
+            <div class="video-meta">
+              <div class="vm-name">Dr. Gabriel Barrera</div>
+              <div class="vm-desc">Coordinador · Grupo Cal y Mayor</div>
+            </div>
+          </div>
+
+          <div class="video-card reveal d3">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=S433rtbAjgs" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/S433rtbAjgs/hqdefault.jpg" alt="Mireya González Corona · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+              </div>
+            </a>
+            <div class="video-meta">
+              <div class="vm-name">Mireya González Corona</div>
+              <div class="vm-desc">Business &amp; Cognitive Coaching · Integral Coaching</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
     <div class="gd"></div>
 
-    <!-- ══ QUIÉNES SOMOS ══ -->
-    <section id="equipo">
-      <div class="si">
-        <div class="eyebrow">Quiénes Somos</div>
-        <h2 class="stitle reveal">El Equipo detrás de<br><span class="accent">IA Expo Internacional</span></h2>
-        <p class="sdesc reveal d1">Somos un equipo apasionado por democratizar el conocimiento de IA en LATAM. Combinamos experiencia en eventos, tecnología, marketing y negocios para crear experiencias que transforman.</p>
-        <div class="equipo-grid">
-          <div class="eq-card reveal">
-            <div class="eq-avatar">EP</div>
-            <div class="eq-name">Dr. Eduardo Pérez</div>
-            <div class="eq-role">Chair · IA Expo Internacional</div>
-            <div class="eq-bio">CEO de Digital Gap Inc. Fundador de IA Expo Internacional. Lleva más de 20 años conectando tecnología, negocios y personas en LATAM y Estados Unidos.</div>
-          </div>
-          <div class="eq-card reveal d1">
-            <div class="eq-avatar">AE</div>
-            <div class="eq-name">Asteri Eventos</div>
-            <div class="eq-role">Producción &amp; ExperiencIA</div>
-            <div class="eq-bio">Especialistas en producción de eventos de alto impacto. Responsables de convertir cada IA Expo en una experiencia memorable e inmersiva.</div>
-          </div>
-          <div class="eq-card reveal d2">
-            <div class="eq-avatar">CR</div>
-            <div class="eq-name">Creavizer</div>
-            <div class="eq-role">IA Marketing &amp; Publicidad</div>
-            <div class="eq-bio">Agencia de marketing especializada en IA que lleva la estrategia de comunicación y publicidad de IA Expo con herramientas de inteligencia artificial de vanguardia.</div>
-          </div>
-          <div class="eq-card reveal d3">
-            <div class="eq-avatar">VC</div>
-            <div class="eq-name">Vele Comunicación</div>
-            <div class="eq-role">Comunicación &amp; PR</div>
-            <div class="eq-bio">Expertos en relaciones públicas y estrategia de comunicación que amplían el alcance de IA Expo a medios, influencers y audiencias de toda LATAM.</div>
-          </div>
-        </div>
-        <div style="text-align:center;margin-top:44px;" class="reveal">
-          <a href="#contacto" class="btn-secondary">Colabora con Nosotros →</a>
-        </div>
-      </div>
-    </section>
-    <div class="gd"></div>
-
-<section id="patrocinios">
-      <div class="si">
-        <div class="eyebrow">Patrocinios</div>
-        <h2 class="stitle reveal">Asocia tu Marca con<br><span class="accent">el Futuro de la IA</span></h2>
-        <p class="sdesc reveal d1">Conecta con 220 tomadores de decisión, líderes de IA y ejecutivos de toda LATAM durante 3 días de alto impacto.</p>
-        <div class="pat-grid">
-          <div class="pat p-ti reveal">
-            <div class="pat-tier">💎 Diamante</div>
-            <h3>Patrocinio Diamante</h3>
-            <ul>
-              <li>Naming rights — "IA Expo 2027 presentado por [Tu Marca]"</li>
-              <li>Keynote propia de 30 min en escenario principal</li>
-              <li>Stand premium doble en ubicación privilegiada</li>
-              <li>Naming de un track vertical completo</li>
-              <li>Logo principal en todo material gráfico y digital</li>
-              <li>12+ publicaciones en redes sociales + entrevista</li>
-              <li>Acceso a cena privada VIP con patrocinadores</li>
-            </ul>
-            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-pl reveal">
-            <div class="pat-tier">Platino</div>
-            <h3>Patrocinio Platino</h3>
-            <ul>
-              <li>Naming rights del evento o track principal</li>
-              <li>Keynote de apertura o clausura</li>
-              <li>Stand premium de doble espacio</li>
-              <li>10 pases VIP completos</li>
-              <li>Logo en todas las comunicaciones</li>
-              <li>Mención en todos los keynotes</li>
-              <li>Activación de marca personalizada</li>
-            </ul>
-            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-or reveal d1">
-            <div class="pat-tier">Oro</div>
-            <h3>Patrocinio Oro</h3>
-            <ul>
-              <li>Stand en área principal del evento</li>
-              <li>5 pases completos al evento</li>
-              <li>Logo en comunicaciones digitales</li>
-              <li>Mención en keynotes</li>
-              <li>Participación en panel de industria</li>
-              <li>Presencia en pantallas del evento</li>
-            </ul>
-            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-si reveal d2">
-            <div class="pat-tier">Plata</div>
-            <h3>Patrocinio Plata</h3>
-            <ul>
-              <li>Stand en área de networking</li>
-              <li>3 pases completos al evento</li>
-              <li>Logo en programa del evento</li>
-              <li>Mención en redes sociales</li>
-              <li>Presencia en pantallas digitales</li>
-            </ul>
-            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-micro reveal d2" style="grid-column: span 2;">
-            <div class="pat-tier">✨ Micro-Patrocinios</div>
-            <h3>Otras Oportunidades de Patrocinio</h3>
-            <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;">Visibilidad creativa e impactante sin importar el presupuesto. Cada opción te conecta directamente con los 250 asistentes.</p>
-            <ul style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;margin-bottom:28px;">
-              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                <span>🎒</span><div><strong style="color:var(--text);display:block;">Bolsa de Registro</strong>Desde $40,000 MXN</div>
-              </li>
-              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                <span>🎁</span><div><strong style="color:var(--text);display:block;">Goodies</strong>Desde $25,000 MXN</div>
-              </li>
-              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                <span>🌐</span><div><strong style="color:var(--text);display:block;">Banner Digital iaExpo.ai</strong>Desde $15,000 MXN/mes</div>
-              </li>
-              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                <span>☕</span><div><strong style="color:var(--text);display:block;">Coffee Break</strong>Desde $50,000 MXN</div>
-              </li>
-              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                <span>📱</span><div><strong style="color:var(--text);display:block;">App / WiFi</strong>Desde $35,000 MXN</div>
-              </li>
-              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                <span>🎤</span><div><strong style="color:var(--text);display:block;">Sesión / Taller</strong>Desde $60,000 MXN</div>
-              </li>
-            </ul>
-            <a href="https://iaExpo.ai/patrocinios" class="pat-btn">Solicitar Información →</a>
-          </div>
-        </div>
-        <div style="text-align:center;" class="reveal">
-          <a href="https://iaExpo.ai/patrocinios" class="btn-secondary">Ver Todos los Paquetes →</a>
-        </div>
-      </div>
-    </section>
-    <div class="gd"></div>
 
 <section id="alianzas">
       <div class="si">
@@ -2892,6 +3009,74 @@
             <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Únete como aliado de IA Expo Internacional 2027 y conecta tu marca con los líderes de IA en LATAM.</p>
             <a href="https://iaExpo.ai/patrocinios" class="btn-primary" style="padding:12px 28px;font-size:14px;">Alianzas Estratégicas →</a>
           </div>
+        </div>
+      </div>
+    </section>
+    <div class="gd"></div>
+
+    <!-- ══ QUIÉNES SOMOS ══ -->
+    <section id="equipo">
+      <div class="si">
+        <div class="eyebrow">Quiénes Somos</div>
+        <h2 class="stitle reveal">El Equipo detrás de<br><span class="accent">IA Expo Internacional</span></h2>
+        <p class="sdesc reveal d1">Somos un equipo apasionado por democratizar el conocimiento de IA en LATAM. Combinamos experiencia en eventos, tecnología, marketing y negocios para crear experiencias que transforman.</p>
+        <div class="equipo-grid">
+          <div class="eq-card reveal">
+            <div class="eq-avatar">EP</div>
+            <div class="eq-name">Dr. Eduardo Pérez</div>
+            <div class="eq-role">Chair · IA Expo Internacional</div>
+            <div class="eq-bio">CEO de Digital Gap Inc. Fundador de IA Expo Internacional. Lleva más de 20 años conectando tecnología, negocios y personas en LATAM y Estados Unidos.</div>
+          </div>
+          <div class="eq-card reveal d1">
+            <div class="eq-avatar">AE</div>
+            <div class="eq-name">Asteri Eventos</div>
+            <div class="eq-role">Producción &amp; ExperiencIA</div>
+            <div class="eq-bio">Especialistas en producción de eventos de alto impacto. Responsables de convertir cada IA Expo en una experiencia memorable e inmersiva.</div>
+          </div>
+          <div class="eq-card reveal d2">
+            <div class="eq-avatar">CR</div>
+            <div class="eq-name">Creavizer</div>
+            <div class="eq-role">IA Marketing &amp; Publicidad</div>
+            <div class="eq-bio">Agencia de marketing especializada en IA que lleva la estrategia de comunicación y publicidad de IA Expo con herramientas de inteligencia artificial de vanguardia.</div>
+          </div>
+          <div class="eq-card reveal d3">
+            <div class="eq-avatar">VC</div>
+            <div class="eq-name">Vele Comunicación</div>
+            <div class="eq-role">Comunicación &amp; PR</div>
+            <div class="eq-bio">Expertos en relaciones públicas y estrategia de comunicación que amplían el alcance de IA Expo a medios, influencers y audiencias de toda LATAM.</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:44px;" class="reveal">
+          <a href="#contacto" class="btn-secondary">Colabora con Nosotros →</a>
+        </div>
+      </div>
+    </section>
+    <div class="gd"></div>
+    <!-- ══ MISIÓN ══ -->
+    <section id="mision">
+      <div class="si">
+        <div class="mision-wrap reveal">
+          <div class="eyebrow">Nuestra Misión</div>
+          <h2 class="mision-quote">La <span class="q-accent">Inteligencia Artificial</span> abre<br>el acceso universal a la<br>creatividad del ser humano</h2>
+          <p class="mision-sub">IA Expo Internacional crea un espacio internacional donde líderes, empresas, profesionales, emprendedores, académicos y ciudadanos pueden descubrir, vivir y compartir experiencias reales sobre cómo la inteligencia artificial está transformando los negocios, la innovación, la productividad, la comunicación, la ciencia, la educación, el arte, la creatividad y el desarrollo del talento humano.<br><br>Nuestro propósito es inspirar, educar y conectar a quienes desean participar activamente en esta transformación digital, aprovechando la IA para imaginar más, crear mejor, tomar mejores decisiones y liderar con visión, responsabilidad y creatividad el futuro que estamos construyendo.<br><br>En IA Expo Internacional creemos que la inteligencia artificial no solo transforma la tecnología: potencia la creatividad humana y abre nuevas formas de aprender, crear, colaborar y construir valor para la vida real.</p>
+          <div class="mision-pillars">
+            <div class="mision-pillar reveal">
+              <div class="mp-icon">🌟</div>
+              <h3>Inspirar</h3>
+              <p>Casos reales, herramientas probadas y experiencias directas de quienes ya usan IA en sus negocios y vidas cotidianas.</p>
+            </div>
+            <div class="mision-pillar reveal d1">
+              <div class="mp-icon">🎨</div>
+              <h3>Crear</h3>
+              <p>Una red exclusiva de líderes, emprendedores, profesionistas y visionarios comprometidos con el crecimiento a través de la IA.</p>
+            </div>
+            <div class="mision-pillar reveal d2">
+              <div class="mp-icon">🚀</div>
+              <h3>Transformar</h3>
+              <p>Convertir el conocimiento en acción. Aplicar IA para crecer más rápido, simplificar operaciones y generar más impacto.</p>
+            </div>
+          </div>
+          <div class="mision-lema reveal d3">✦ IA Para la Vida Real ✦</div>
         </div>
       </div>
     </section>
@@ -3042,7 +3227,7 @@
         <div class="fc">
           <h4>Evento</h4>
           <ul>
-            <li><a href="#iaexpo">La Expo</a></li>
+            <li><a href="#eventos">La Expo</a></li>
             <li><a href="#programa">Programa</a></li>
             <li><a href="#convocatoria">Call for Papers</a></li>
             <li><a href="#alianzas">Alianzas</a></li>
@@ -3163,13 +3348,15 @@
       }
 
       function tick() {
+        const days = document.getElementById('cd-days');
+        if (!days) return;
         const t = new Date('2027-01-28T09:00:00-06:00'),
           d = t - new Date();
         if (d <= 0) {
-          ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+          ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = '00'; });
           return;
         }
-        document.getElementById('cd-days').textContent = String(Math.floor(d / 86400000)).padStart(3, '0');
+        days.textContent = String(Math.floor(d / 86400000)).padStart(3, '0');
         document.getElementById('cd-hours').textContent = String(Math.floor((d % 86400000) / 3600000)).padStart(2, '0');
         document.getElementById('cd-mins').textContent = String(Math.floor((d % 3600000) / 60000)).padStart(2, '0');
         document.getElementById('cd-secs').textContent = String(Math.floor((d % 60000) / 1000)).padStart(2, '0');
