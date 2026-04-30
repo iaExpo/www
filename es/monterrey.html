@@ -221,12 +221,14 @@
         position: relative;
         min-height: 100vh;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
         padding: 120px 5% 80px;
         z-index: 1;
-        background: var(--gradient-hero);
+        background:
+          linear-gradient(135deg, rgba(3,7,18,0.25) 0%, rgba(3,7,18,0.10) 50%, rgba(3,7,18,0.25) 100%),
+          url('https://raw.githubusercontent.com/iaExpo/www/main/images/JorgeLIAx.jpg') center center / cover no-repeat;
       }
 
       .hero-eyebrow {
@@ -313,7 +315,7 @@
         font-size: clamp(16px, 2vw, 20px);
         color: var(--text-muted);
         max-width: 680px;
-        margin: 0 auto 48px;
+        margin: 0 0 240px;
         line-height: 1.7;
         animation: fadeInUp 0.8s ease 0.4s both;
       }
@@ -323,87 +325,88 @@
         font-weight: 600;
       }
 
-      /* COUNTDOWN */
+      /* COUNTDOWN COMPACTO — esquina superior derecha */
       .countdown-wrapper {
-        animation: fadeInUp 0.8s ease 0.5s both;
-        margin-bottom: 48px;
+        position: absolute;
+        top: 72px;
+        right: 5%;
+        z-index: 10;
+        background: rgba(3, 7, 18, 0.55);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        padding: 12px 18px;
+        backdrop-filter: blur(12px);
+        animation: fadeInDown 0.8s ease 0.3s both;
+        text-align: center;
       }
 
       .countdown-label {
-        font-size: 11px;
+        font-size: 9px;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: var(--text-dim);
-        margin-bottom: 16px;
+        color: var(--cyan);
+        margin-bottom: 8px;
+        font-weight: 700;
       }
 
       .countdown {
         display: flex;
         justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
       }
 
       .countdown-unit {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 80px;
+        min-width: 36px;
       }
 
       .countdown-number {
         font-family: 'Space Grotesk', sans-serif;
-        font-size: clamp(32px, 5vw, 56px);
+        font-size: 22px;
         font-weight: 700;
         background: var(--gradient-1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         line-height: 1;
-        padding: 16px 20px;
-        background-color: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--glass-border);
-        border-radius: 12px;
-        min-width: 90px;
         text-align: center;
-        position: relative;
-        overflow: hidden;
       }
 
       .countdown-number::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: var(--gradient-1);
-        opacity: 0.5;
+        display: none;
       }
 
       .countdown-unit span:last-child {
-        font-size: 11px;
-        letter-spacing: 0.1em;
+        font-size: 9px;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--text-dim);
-        margin-top: 8px;
+        margin-top: 3px;
       }
 
       .countdown-sep {
-        font-size: 40px;
+        font-size: 18px;
         color: var(--text-dim);
-        align-self: center;
-        padding-bottom: 20px;
+        align-self: flex-start;
+        padding-top: 2px;
         font-weight: 300;
       }
 
       /* HERO BUTTONS */
       .hero-buttons {
-        display: flex;
+        display: inline-flex;
         gap: 16px;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
         animation: fadeInUp 0.8s ease 0.6s both;
-        margin-bottom: 64px;
+        margin-top: 16px;
+        background: rgba(3, 7, 18, 0.55);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        padding: 20px 28px;
+        backdrop-filter: blur(12px);
       }
 
       .btn-primary {
@@ -472,12 +475,17 @@
       /* HERO STATS */
       .hero-stats {
         display: flex;
-        justify-content: center;
-        gap: 48px;
+        justify-content: flex-start;
+        gap: 40px;
         flex-wrap: wrap;
         animation: fadeInUp 0.8s ease 0.7s both;
-        padding-top: 32px;
-        border-top: 1px solid var(--glass-border);
+        margin-bottom: 16px;
+        background: rgba(3, 7, 18, 0.55);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        padding: 20px 28px;
+        backdrop-filter: blur(12px);
+        display: inline-flex;
       }
 
       .stat {
@@ -2016,7 +2024,34 @@
 
     <!-- HERO -->
     <section id="hero">
-      <div style="position:relative; z-index:2; width:100%;">
+
+      <!-- COUNTDOWN COMPACTO — superior derecha -->
+      <div class="countdown-wrapper">
+        <div class="countdown-label">Faltan para el evento</div>
+        <div class="countdown">
+          <div class="countdown-unit">
+            <div class="countdown-number" id="cd-days">---</div>
+            <span>Días</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-number" id="cd-hours">--</div>
+            <span>Hrs</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-number" id="cd-mins">--</div>
+            <span>Min</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-number" id="cd-secs">--</div>
+            <span>Seg</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative; z-index:2; width:100%; max-width:700px;">
         <div class="hero-eyebrow">
           <div class="dot"></div>
           24 y 25 de Septiembre de 2026 · Monterrey, México
@@ -2033,36 +2068,6 @@
           Vive experiencias únicas, conoce el futuro de la <strong>movilidad autónoma</strong>,
           y conecta con los líderes que están transformando México.
         </p>
-
-        <div class="countdown-wrapper">
-          <div class="countdown-label">Faltan para el evento</div>
-          <div class="countdown">
-            <div class="countdown-unit">
-              <div class="countdown-number" id="cd-days">---</div>
-              <span>Días</span>
-            </div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-unit">
-              <div class="countdown-number" id="cd-hours">--</div>
-              <span>Horas</span>
-            </div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-unit">
-              <div class="countdown-number" id="cd-mins">--</div>
-              <span>Minutos</span>
-            </div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-unit">
-              <div class="countdown-number" id="cd-secs">--</div>
-              <span>Segundos</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-buttons">
-          <a href="#tickets" class="btn-primary">🎟️ Registrarme Ahora</a>
-          <a href="#programa" class="btn-secondary">Ver Programa →</a>
-        </div>
 
         <div class="hero-stats">
           <div class="stat">
@@ -2082,6 +2087,12 @@
             <div class="stat-label">Simposio Oficial</div>
           </div>
         </div>
+
+        <div class="hero-buttons">
+          <a href="#tickets" class="btn-primary">🎟️ Registrarme Ahora</a>
+          <a href="#programa" class="btn-primary">📅 Ver Programa</a>
+        </div>
+
       </div>
 
       <a href="#iax-mty" class="scroll-indicator">
