@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IA Expo Monterrey 2026 — Donde la Inteligencia Artificial Cobra Vida</title>
-    <meta name="description" content="IA Expo Monterrey 2026 | 10 y 11 de Septiembre | Tec de Monterrey — El evento más emocionante de Inteligencia Artificial en México">
+    <meta name="description" content="IA Expo Monterrey 2026 | 24 y 25 de Septiembre | Tec de Monterrey — El evento más emocionante de Inteligencia Artificial en México">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -1031,18 +1031,9 @@
 
       .tickets-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         margin-top: 64px;
-      }
-
-      .tickets-grid .precio-card:nth-child(-n+3) {
-        grid-column: span 2;
-      }
-
-      .tickets-grid .precio-card:nth-child(4),
-      .tickets-grid .precio-card:nth-child(5) {
-        grid-column: span 3;
       }
 
       .precio-card {
@@ -1797,12 +1788,6 @@
           grid-template-columns: 1fr 1fr;
         }
 
-        .tickets-grid .precio-card:nth-child(-n+3),
-        .tickets-grid .precio-card:nth-child(4),
-        .tickets-grid .precio-card:nth-child(5) {
-          grid-column: span 1;
-        }
-
 
         .tools-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -1826,12 +1811,6 @@
       @media (max-width: 600px) {
         .tickets-grid {
           grid-template-columns: 1fr;
-        }
-
-        .tickets-grid .precio-card:nth-child(-n+3),
-        .tickets-grid .precio-card:nth-child(4),
-        .tickets-grid .precio-card:nth-child(5) {
-          grid-column: span 1;
         }
 
         .precio-card.featured {
@@ -2040,7 +2019,7 @@
       <div style="position:relative; z-index:2; width:100%;">
         <div class="hero-eyebrow">
           <div class="dot"></div>
-          10 y 11 de Septiembre de 2026 · Monterrey, México
+          24 y 25 de Septiembre de 2026 · Monterrey, México
         </div>
 
         <h1 class="hero-title">
@@ -2086,10 +2065,6 @@
         </div>
 
         <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-number">200+</div>
-            <div class="stat-label">Asistentes</div>
-          </div>
           <div class="stat">
             <div class="stat-number">2</div>
             <div class="stat-label">Tracks</div>
@@ -2240,7 +2215,7 @@
             <div class="schedule-day-header">
               <div class="day-badge">1</div>
               <div class="day-info">
-                <strong>Jueves 10 de Septiembre</strong>
+                <strong>Jueves 24 de Septiembre</strong>
                 <span>Día de Apertura</span>
               </div>
             </div>
@@ -2288,7 +2263,7 @@
             <div class="schedule-day-header">
               <div class="day-badge">2</div>
               <div class="day-info">
-                <strong>Viernes 11 de Septiembre</strong>
+                <strong>Viernes 25 de Septiembre</strong>
                 <span>Día de Clausura</span>
               </div>
             </div>
@@ -2347,28 +2322,12 @@
         <div class="tickets-grid">
 
           <!-- EXPO -->
-          <div class="precio-card reveal" data-label="🏛️ Expo">
-            <div class="precio-icon">🏛️</div>
-            <div class="precio-tipo">Expo</div>
-            <div class="precio-amount"><span class="currency">$</span>399</div>
-            <div class="precio-early">🔥 Lanzamiento MXN</div>
-            <div class="precio-regular">Regular: $798 MXN</div>
-            <div class="precio-divider"></div>
-            <ul class="precio-features">
-              <li>Acceso al área de Expo</li>
-              <li>Demos de productos y soluciones de IA</li>
-              <li>Networking en área de exposición</li>
-              <li>Kit de bienvenida</li>
-            </ul>
-            <a href="#contacto" class="precio-btn">Registrarme</a>
-          </div>
-
           <!-- CONFERENCIAS -->
           <div class="precio-card reveal reveal-delay-1" data-label="🎙️ Conferencias">
             <div class="precio-icon">🎙️</div>
             <div class="precio-tipo">Conferencias</div>
             <div class="precio-amount"><span class="currency">$</span>995</div>
-            <div class="precio-early">🔥 Lanzamiento MXN</div>
+            <div class="precio-early">🔥 Precio de Lanzamiento MXN</div>
             <div class="precio-regular">Regular: $1,990 MXN</div>
             <div class="precio-divider"></div>
             <ul class="precio-features">
@@ -2377,54 +2336,55 @@
               <li>Área de Expo incluida</li>
               <li>Almuerzo incluido ambos días</li>
               <li>Acceso a grabaciones del evento</li>
+              <li>Kit de bienvenida</li>
             </ul>
-            <a href="#contacto" class="precio-btn">Registrarme</a>
+            <a href="https://iaExpo.ai/adm-conf-mty" class="precio-btn">Experiencia Conferencias</a>
           </div>
 
           <!-- TOUR LABORATORIOS -->
           <div class="precio-card reveal reveal-delay-2" data-label="🔬 Tour Laboratorios">
             <div class="precio-icon">🔬</div>
             <div class="precio-tipo">Tour Laboratorios</div>
-            <div class="precio-amount"><span class="currency">$</span>1,495</div>
-            <div class="precio-early">🔥 Lanzamiento MXN</div>
-            <div class="precio-regular">Regular: $2,990 MXN</div>
+            <div class="precio-amount"><span class="currency">$</span>1,245</div>
+            <div class="precio-early">🔥 Precio de Lanzamiento MXN</div>
+            <div class="precio-regular">Regular: $2,490 MXN</div>
             <div class="precio-divider"></div>
             <ul class="precio-features">
               <li>Todo lo incluido en Conferencias</li>
               <li>Tour guiado al Mobility Intelligent Lab</li>
               <li>Demo en vivo de vehículo autónomo</li>
               <li>Sesión con investigadores del MIL</li>
-              <li>Cupo limitado · máx. 30 personas</li>
+              <li>Cupo limitado · máx. 20 personas</li>
             </ul>
-            <a href="#contacto" class="precio-btn">Registrarme</a>
+            <a href="https://iaExpo.ai/adm-labs-mty" class="precio-btn">Experiencia Laboratorios</a>
           </div>
 
           <!-- NETWORKING ESTRUCTURADO -->
           <div class="precio-card reveal reveal-delay-3" data-label="🤝 Networking Estructurado">
             <div class="precio-icon">🤝</div>
             <div class="precio-tipo">Networking Estructurado</div>
-            <div class="precio-amount"><span class="currency">$</span>1,995</div>
-            <div class="precio-early">🔥 Lanzamiento MXN</div>
-            <div class="precio-regular">Regular: $3,990 MXN</div>
+            <div class="precio-amount"><span class="currency">$</span>1,495</div>
+            <div class="precio-early">🔥 Precio de Lanzamiento MXN</div>
+            <div class="precio-regular">Regular: $2,990 MXN</div>
             <div class="precio-divider"></div>
             <ul class="precio-features">
               <li>Todo lo incluido en Conferencias</li>
-              <li>Cóctel de bienvenida VIP</li>
+              <li>Cóctel de bienvenida</li>
               <li>Asientos preferenciales en keynotes</li>
               <li>Sesión de networking 1:1 garantizada</li>
               <li>Directorio digital de asistentes</li>
               <li>Cupo limitado · máx. 25 personas</li>
             </ul>
-            <a href="#contacto" class="precio-btn">Registrarme</a>
+            <a href="https://iaExpo.ai/adm-network-mty" class="precio-btn">Experiencia Networking</a>
           </div>
 
           <!-- VIP ALL-ACCESS -->
           <div class="precio-card reveal" data-label="⭐ VIP All-Access">
             <div class="precio-icon">⭐</div>
             <div class="precio-tipo">VIP All-Access</div>
-            <div class="precio-amount"><span class="currency">$</span>2,495</div>
-            <div class="precio-early">🔥 Lanzamiento MXN</div>
-            <div class="precio-regular">Regular: $4,990 MXN</div>
+            <div class="precio-amount"><span class="currency">$</span>1,995</div>
+            <div class="precio-early">🔥 Precio de Lanzamiento MXN</div>
+            <div class="precio-regular">Regular: $3,990 MXN</div>
             <div class="precio-divider"></div>
             <ul class="precio-features">
               <li>Acceso completo al evento</li>
@@ -2434,7 +2394,7 @@
               <li>Perfil VIP en directorio oficial</li>
               <li>Cupo exclusivo · máx. 20 personas</li>
             </ul>
-            <a href="#contacto" class="precio-btn">Registrarme</a>
+            <a href="https://iaExpo.ai/adm-vip-mty" class="precio-btn">Experiencia VIP All-Access</a>
           </div>
 
         </div>
@@ -2513,7 +2473,7 @@
 
               <div style="position:relative;">
                 <div style="position:absolute; left:-24px; top:4px; width:14px; height:14px; border-radius:50%; background:linear-gradient(135deg,var(--cyan),var(--purple)); box-shadow:0 0 14px rgba(0,212,255,0.6);"></div>
-                <div style="font-size:12px; color:var(--cyan); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px;">10-11 Sep 2026</div>
+                <div style="font-size:12px; color:var(--cyan); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px;">24-25 Sep 2026</div>
                 <div style="font-size:16px; font-weight:700;">Presentación en el Simposio IEEE</div>
                 <div style="font-size:13px; color:var(--text-muted); margin-top:2px;">Tec de Monterrey · Edificio Expedition</div>
               </div>
@@ -2817,7 +2777,7 @@
                 <div class="contacto-item-icon">📅</div>
                 <div class="contacto-item-text">
                   <strong>Fecha</strong>
-                  <span>Jueves 10 y Viernes 11 de Septiembre de 2026</span>
+                  <span>Jueves 24 y Viernes 25 de Septiembre de 2026</span>
                 </div>
               </div>
               <div class="contacto-item">
@@ -2939,7 +2899,7 @@
             <li><a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a></li>
             <li><a href="#">iaExpo.ai</a></li>
             <li><a href="#">Monterrey, México</a></li>
-            <li><a href="#">10-11 Sep, 2026</a></li>
+            <li><a href="#">24-25 Sep, 2026</a></li>
           </ul>
         </div>
       </div>
@@ -3034,7 +2994,7 @@
       }
       // ── COUNTDOWN ──
       function updateCountdown() {
-        const target = new Date('2026-09-10T09:00:00-06:00');
+        const target = new Date('2026-09-24T09:00:00-06:00');
         const now = new Date();
         const diff = target - now;
         if (diff <= 0) {
