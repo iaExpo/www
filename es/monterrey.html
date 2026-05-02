@@ -1216,6 +1216,24 @@
       }
 
       /* ── COMPARISON TABLE ── */
+      /* Patrocinio price cards — tighten amount for 6-digit numbers */
+      .pat-cards-grid .precio-amount {
+        font-size: clamp(22px, 4vw, 32px);
+      }
+      .pat-cards-grid .precio-card.featured {
+        border-color: rgba(212, 175, 55, 0.5);
+        background: rgba(212, 175, 55, 0.05);
+      }
+      .pat-cards-grid .precio-card.featured:hover {
+        border-color: #ffd700;
+        background: rgba(212, 175, 55, 0.1);
+      }
+      .pat-cards-grid .precio-card.featured .precio-btn {
+        background: linear-gradient(135deg, #b8860b, #ffd700, #b8860b);
+        border-color: transparent;
+        color: #030712;
+      }
+
       .compare-table-wrap {
         overflow-x: auto;
         margin: 56px 0 72px;
@@ -1229,6 +1247,10 @@
         border-collapse: collapse;
         min-width: 620px;
       }
+      .compare-table thead th .th-vert {
+        display: inline;
+      }
+
       .compare-table thead th {
         padding: 22px 18px 18px;
         text-align: center;
@@ -1266,6 +1288,26 @@
         border-right: 1px solid rgba(124,58,237,0.4);
       }
       .compare-table thead th.col-vip .th-price { color: #a78bfa; }
+
+      .compare-table thead th.col-diamond {
+        background: linear-gradient(180deg, rgba(212,175,55,0.3) 0%, rgba(3,7,18,0.85) 100%);
+        color: #ffd700;
+        border-left: 1px solid rgba(212,175,55,0.4);
+        border-right: 1px solid rgba(212,175,55,0.4);
+      }
+      .compare-table thead th.col-diamond .th-price { color: #f5c842; }
+      .compare-table tbody td.col-diamond {
+        background: rgba(212,175,55,0.07);
+        border-left: 1px solid rgba(212,175,55,0.18);
+        border-right: 1px solid rgba(212,175,55,0.18);
+      }
+      .compare-table tbody tr:hover td.col-diamond { background: rgba(212,175,55,0.13); }
+      .compare-table .group-row td.col-diamond { background: rgba(212,175,55,0.12); }
+      .compare-table .cupo-row td.col-diamond {
+        background: rgba(212,175,55,0.07);
+        border-left: 1px solid rgba(212,175,55,0.18);
+        border-right: 1px solid rgba(212,175,55,0.18);
+      }
 
       .compare-table tbody td {
         padding: 11px 18px;
@@ -1348,6 +1390,7 @@
 
       .patrocinios-text {
         max-width: 640px;
+        margin-top: 80px;
         margin-bottom: 64px;
       }
 
@@ -1956,6 +1999,75 @@
       }
 
       @media (max-width: 600px) {
+
+        /* ── Tabla comparativa en móvil ── */
+        .compare-table-wrap {
+          overflow-x: visible;
+          border-radius: 12px;
+        }
+        .compare-table {
+          min-width: unset;
+          width: 100%;
+          table-layout: fixed;
+        }
+        /* Encabezados de ticket: texto vertical de abajo hacia arriba */
+        .compare-table thead th:not(:first-child) {
+          height: 130px;
+          width: 36px;
+          max-width: 36px;
+          padding: 0 2px 8px;
+          vertical-align: bottom;
+          text-align: center;
+          position: relative;
+        }
+        .compare-table thead th:not(:first-child) .th-vert {
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%) rotate(-90deg);
+          transform-origin: center center;
+          white-space: nowrap;
+          font-size: 11px;
+          width: max-content;
+        }
+        .compare-table thead th .th-price {
+          display: none;
+        }
+        /* Primera columna */
+        .compare-table thead th:first-child {
+          font-size: 9px;
+          padding: 10px 8px;
+          width: auto;
+        }
+        .compare-table tbody td {
+          padding: 9px 4px;
+          font-size: 12px;
+        }
+        .compare-table tbody td:first-child {
+          font-size: 11px;
+          padding-left: 10px;
+          padding-right: 4px;
+        }
+        .compare-table .group-row td {
+          font-size: 9px;
+          padding: 6px 10px;
+          letter-spacing: 1px;
+        }
+        .compare-table .cupo-row td {
+          font-size: 10px;
+          padding: 10px 4px;
+        }
+        .compare-table .cupo-row td:first-child {
+          padding-left: 10px;
+        }
+        .compare-table .ct-check { font-size: 13px; }
+        .compare-table .ct-no    { font-size: 12px; }
+        .compare-table tbody td.col-diamond {
+          background: rgba(212,175,55,0.07);
+          border-left: 1px solid rgba(212,175,55,0.18);
+          border-right: 1px solid rgba(212,175,55,0.18);
+        }
+
         .tickets-grid {
           grid-template-columns: 1fr;
         }
@@ -2126,6 +2238,41 @@
       }
 
       .micro-list li::before { display: none !important; }
+
+      /* Micro-patrocinios horizontal grid */
+      .micro-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .micro-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        padding: 12px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: background 0.3s, border-color 0.3s;
+      }
+      .micro-card:hover {
+        background: rgba(0,212,255,0.06);
+        border-color: rgba(0,212,255,0.25);
+      }
+      .micro-card .micro-ico { font-size: 22px; flex-shrink: 0; }
+      .micro-card .micro-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.3;
+      }
+      .micro-card .micro-price {
+        font-size: 12px;
+        color: var(--cyan);
+        font-weight: 500;
+        margin-top: 2px;
+      }
     </style>
   </head>
   <body>
@@ -2234,8 +2381,8 @@
         </div>
 
         <div class="hero-buttons">
-          <a href="#tickets" class="btn-primary">🎟️ Registrarme Ahora</a>
-          <a href="#programa" class="btn-primary">📅 Ver Programa</a>
+          <a href="#tickets" class="btn-primary">🎟️ Tickets</a>
+          <a href="#programa" class="btn-primary">📅 Programa</a>
         </div>
 
       </div>
@@ -2316,7 +2463,7 @@
             <div class="track-meta">
               <div class="track-tag">👔 Profesionales</div>
               <div class="track-tag">🏢 Empresarios</div>
-              <div class="track-tag">100 asistentes</div>
+              <div class="track-tag">150 asistentes</div>
             </div>
           </div>
           <div class="track-card track-2 reveal reveal-delay-1">
@@ -2326,7 +2473,7 @@
             <div class="track-meta">
               <div class="track-tag">🎓 Investigadores</div>
               <div class="track-tag">📄 IEEE Papers</div>
-              <div class="track-tag">100 asistentes</div>
+              <div class="track-tag">150 asistentes</div>
             </div>
           </div>
         </div>
@@ -2499,10 +2646,10 @@
             <thead>
               <tr>
                 <th>Beneficio</th>
-                <th>🎙️ Conferencias<span class="th-price">$995 lanzamiento</span></th>
-                <th>🔬 Tour Laboratorios<span class="th-price">$1,245 lanzamiento</span></th>
-                <th>🤝 Networking<span class="th-price">$1,495 lanzamiento</span></th>
-                <th class="col-vip">⭐ VIP All-Access<span class="th-price">$1,995 lanzamiento</span></th>
+                <th><div class="th-vert">🎙️ Conferencias</div><span class="th-price">$995 lanzamiento</span></th>
+                <th><div class="th-vert">🔬 Tour Laboratorios</div><span class="th-price">$1,245 lanzamiento</span></th>
+                <th><div class="th-vert">🤝 Networking</div><span class="th-price">$1,495 lanzamiento</span></th>
+                <th class="col-vip"><div class="th-vert">⭐ VIP All-Access</div><span class="th-price">$1,995 lanzamiento</span></th>
               </tr>
             </thead>
             <tbody>
@@ -2786,8 +2933,9 @@
             <h3 style="font-family:'Space Grotesk',sans-serif; font-size:26px; font-weight:700; margin-bottom:12px;">¿Listo para presentar tu investigación?</h3>
             <p style="color:var(--text-muted); font-size:15px; max-width:480px; margin:0 auto 28px; line-height:1.6;">Forma parte del primer simposio científico de movilidad autónoma de México bajo IEEE. Tu investigación merece un escenario internacional.</p>
             <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+              <a href="https://docs.google.com/document/d/1GbsjCDtSN161-gDIHmlCg835Og83QCDj/export?format=docx" class="btn-primary" download>📥 Descargar Plantilla</a>
               <a href="mailto:info@iaExpo.ai?subject=Call for Papers - Simposio IEEE Movilidad 2026" class="btn-primary">📄 Enviar mi Paper</a>
-              <a href="#contacto" class="btn-secondary">Más Información →</a>
+              <a href="#contacto" class="btn-primary">Más Información →</a>
             </div>
           </div>
         </div>
@@ -2803,86 +2951,223 @@
         <h3 class="section-title reveal" style="font-size:clamp(1.4rem,3vw,2rem); margin-top:64px; margin-bottom:8px;">Niveles de <span class="accent">Patrocinio</span></h3>
         <p class="section-desc reveal reveal-delay-1" style="margin-bottom:0;">Asocia tu marca con el evento de IA más importante de Monterrey. 150 profesionales, líderes de industria e investigadores durante 2 días de alto impacto.</p>
 
-        <div class="pat-grid">
+        <!-- TABLA COMPARATIVA PATROCINIOS -->
+        <div class="compare-table-wrap reveal reveal-delay-2">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Beneficio</th>
+                <th><div class="th-vert">🪙 Plata</div><span class="th-price"></span></th>
+                <th><div class="th-vert">🌟 Oro</div><span class="th-price"></span></th>
+                <th><div class="th-vert">💿 Platino</div><span class="th-price"></span></th>
+                <th class="col-diamond"><div class="th-vert">💎 Diamante</div><span class="th-price">Nivel Premium</span></th>
+              </tr>
+            </thead>
+            <tbody>
 
-          <!-- DIAMANTE -->
-          <div class="pat p-ti reveal">
-            <div class="pat-tier">💎 Diamante</div>
-            <h3>Patrocinio Diamante</h3>
-            <ul>
-              <li>Naming rights — "IA Expo Monterrey presentado por [Tu Marca]"</li>
-              <li>Keynote propia de 20 min en escenario principal</li>
-              <li>Stand premium en ubicación privilegiada</li>
-              <li>Naming de un track temático completo</li>
-              <li>Logo principal en todo material gráfico y digital</li>
-              <li>10+ publicaciones en redes sociales + entrevista</li>
-              <li>Acceso a cena privada VIP con ponentes y organizadores</li>
-              <li>5 pases VIP All-Access incluidos</li>
-            </ul>
-            <a href="#contacto" class="pat-btn">Solicitar Información →</a>
-          </div>
+              <tr class="group-row"><td colspan="5">Visibilidad de Marca</td></tr>
+              <tr>
+                <td>Naming rights del evento</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Naming de un track temático</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Logo en material gráfico y digital</td>
+                <td><span class="ct-check">✅</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Presencia en pantallas del evento</td>
+                <td><span class="ct-check">✅</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Activación de marca personalizada</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
 
-          <!-- PLATINO -->
-          <div class="pat p-pl reveal">
-            <div class="pat-tier">🥈 Platino</div>
-            <h3>Patrocinio Platino</h3>
-            <ul>
-              <li>Stand en área principal del evento</li>
-              <li>Presentación de 10 min en sesión plenaria</li>
-              <li>Logo destacado en comunicaciones y pantallas</li>
-              <li>Mención en keynotes de apertura y clausura</li>
-              <li>3 pases Networking Estructurado incluidos</li>
-              <li>Activación de marca personalizada</li>
-              <li>6 publicaciones en redes sociales</li>
-            </ul>
-            <a href="#contacto" class="pat-btn">Solicitar Información →</a>
+              <tr class="group-row"><td colspan="5">Escenario y Contenido</td></tr>
+              <tr>
+                <td>Keynote propia 20 min (escenario principal)</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Presentación en sesión plenaria (10 min)</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Participación en panel de industria</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Mención en keynotes de apertura y clausura</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+
+              <tr class="group-row"><td colspan="5">Stand</td></tr>
+              <tr>
+                <td>Stand premium (ubicación privilegiada)</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Stand en área principal</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+              <tr>
+                <td>Stand en área de exposición</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td><span class="ct-check">✅</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+
+              <tr class="group-row"><td colspan="5">Comunicación Digital</td></tr>
+              <tr>
+                <td>Publicaciones en redes sociales</td>
+                <td style="font-size:13px; font-weight:600; color:rgba(255,255,255,0.8);">2</td>
+                <td style="font-size:13px; font-weight:600; color:rgba(255,255,255,0.8);">4</td>
+                <td style="font-size:13px; font-weight:600; color:rgba(255,255,255,0.8);">6</td>
+                <td class="col-diamond" style="font-size:13px; font-weight:700; color:#ffd700;">10+</td>
+              </tr>
+              <tr>
+                <td>Entrevista exclusiva</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+
+              <tr class="group-row"><td colspan="5">Networking y Acceso</td></tr>
+              <tr>
+                <td>Cena privada VIP con ponentes</td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td><span class="ct-no">—</span></td>
+                <td class="col-diamond"><span class="ct-check">✅</span></td>
+              </tr>
+
+              <tr class="cupo-row">
+                <td>Pases incluidos</td>
+                <td style="font-size:11px;">2 Conferencias</td>
+                <td style="font-size:11px;">2 Conferencias</td>
+                <td style="font-size:11px;">3 Networking</td>
+                <td class="col-diamond" style="font-size:11px; color:#ffd700; font-weight:600; font-style:normal;">5 VIP All-Access</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tickets-grid pat-cards-grid">
+
+          <!-- PLATA -->
+          <div class="precio-card reveal reveal-delay-1" data-label="🪙 Plata">
+            <div class="precio-icon">🪙</div>
+            <div class="precio-tipo">Patrocinio Plata</div>
+            <div class="precio-amount"><span class="currency">$</span>100,000</div>
+            <div class="precio-early">Inversión MXN</div>
+            <div class="precio-divider"></div>
+            <a href="#contacto" class="precio-btn">Solicitar Información →</a>
           </div>
 
           <!-- ORO -->
-          <div class="pat p-or reveal reveal-delay-1">
-            <div class="pat-tier">🥇 Oro</div>
-            <h3>Patrocinio Oro</h3>
-            <ul>
-              <li>Stand en área de exposición</li>
-              <li>Logo en programa oficial y pantallas del evento</li>
-              <li>Mención en keynotes</li>
-              <li>2 pases Conferencias incluidos</li>
-              <li>Participación en panel de industria</li>
-              <li>4 publicaciones en redes sociales</li>
-            </ul>
-            <a href="#contacto" class="pat-btn">Solicitar Información →</a>
+          <div class="precio-card reveal reveal-delay-2" data-label="🌟 Oro">
+            <div class="precio-icon">🌟</div>
+            <div class="precio-tipo">Patrocinio Oro</div>
+            <div class="precio-amount"><span class="currency">$</span>200,000</div>
+            <div class="precio-early">Inversión MXN</div>
+            <div class="precio-divider"></div>
+            <a href="#contacto" class="precio-btn">Solicitar Información →</a>
           </div>
 
-          <!-- PLATA -->
-          <div class="pat p-si reveal reveal-delay-1">
-            <div class="pat-tier">🥉 Plata</div>
-            <h3>Patrocinio Plata</h3>
-            <ul>
-              <li>Logo en programa oficial del evento</li>
-              <li>Mención en redes sociales</li>
-              <li>Presencia en pantallas digitales</li>
-              <li>2 pases Expo incluidos</li>
-              <li>2 publicaciones en redes sociales</li>
-            </ul>
-            <a href="#contacto" class="pat-btn">Solicitar Información →</a>
+          <!-- PLATINO -->
+          <div class="precio-card reveal reveal-delay-3" data-label="💿 Platino">
+            <div class="precio-icon">💿</div>
+            <div class="precio-tipo">Patrocinio Platino</div>
+            <div class="precio-amount"><span class="currency">$</span>300,000</div>
+            <div class="precio-early">Inversión MXN</div>
+            <div class="precio-divider"></div>
+            <a href="#contacto" class="precio-btn">Solicitar Información →</a>
           </div>
 
-          <!-- MICRO-PATROCINIOS -->
-          <div class="pat p-micro reveal reveal-delay-2" style="grid-column: span 2;">
-            <div class="pat-tier">✨ Micro-Patrocinios</div>
-            <h3>Otras Oportunidades de Patrocinio</h3>
-            <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.6;">Visibilidad creativa e impactante sin importar el presupuesto. Cada opción te conecta directamente con los 150 asistentes.</p>
-            <ul class="micro-list">
-              <li><span>🎒</span><div><strong style="color:var(--text); display:block;">Bolsa de Registro</strong>Desde $15,000 MXN</div></li>
-              <li><span>🎁</span><div><strong style="color:var(--text); display:block;">Goodies / Kit</strong>Desde $10,000 MXN</div></li>
-              <li><span>☕</span><div><strong style="color:var(--text); display:block;">Coffee Break</strong>Desde $20,000 MXN</div></li>
-              <li><span>📱</span><div><strong style="color:var(--text); display:block;">App / WiFi</strong>Desde $12,000 MXN</div></li>
-              <li><span>🌐</span><div><strong style="color:var(--text); display:block;">Banner Digital</strong>Desde $8,000 MXN/mes</div></li>
-              <li><span>🎤</span><div><strong style="color:var(--text); display:block;">Sesión Patrocinada</strong>Desde $25,000 MXN</div></li>
-            </ul>
-            <a href="#contacto" class="pat-btn">Solicitar Información →</a>
+          <!-- DIAMANTE -->
+          <div class="precio-card featured reveal" data-label="💎 Diamante">
+            <div class="precio-icon">💎</div>
+            <div class="precio-tipo">Patrocinio Diamante</div>
+            <div class="precio-amount"><span class="currency">$</span>400,000</div>
+            <div class="precio-early" style="color:#ffd700;">⭐ Nivel Premium MXN</div>
+            <div class="precio-divider"></div>
+            <a href="#contacto" class="precio-btn">Solicitar Información →</a>
           </div>
 
+        </div>
+
+        <!-- MICRO-PATROCINIOS -->
+        <div class="pat p-micro reveal" style="margin-top:24px;">
+          <div class="pat-tier">✨ Micro-Patrocinios</div>
+          <h3>Otras Oportunidades de Patrocinio</h3>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height:1.6;">Visibilidad creativa e impactante sin importar el presupuesto. Cada opción te conecta directamente con los 150 asistentes.</p>
+          <div class="micro-grid">
+            <div class="micro-card">
+              <span class="micro-ico">🎒</span>
+              <div><div class="micro-name">Bolsa de Registro</div><div class="micro-price">Desde $15,000 MXN</div></div>
+            </div>
+            <div class="micro-card">
+              <span class="micro-ico">🎁</span>
+              <div><div class="micro-name">Goodies / Kit</div><div class="micro-price">Desde $10,000 MXN</div></div>
+            </div>
+            <div class="micro-card">
+              <span class="micro-ico">☕</span>
+              <div><div class="micro-name">Coffee Break</div><div class="micro-price">Desde $20,000 MXN</div></div>
+            </div>
+            <div class="micro-card">
+              <span class="micro-ico">📱</span>
+              <div><div class="micro-name">App / WiFi</div><div class="micro-price">Desde $12,000 MXN</div></div>
+            </div>
+            <div class="micro-card">
+              <span class="micro-ico">🌐</span>
+              <div><div class="micro-name">Banner Digital</div><div class="micro-price">Desde $8,000 MXN/mes</div></div>
+            </div>
+            <div class="micro-card">
+              <span class="micro-ico">🎤</span>
+              <div><div class="micro-name">Sesión Patrocinada</div><div class="micro-price">Desde $25,000 MXN</div></div>
+            </div>
+          </div>
+          <a href="#contacto" class="pat-btn">Solicitar Información →</a>
         </div>
 
         <div class="patrocinios-text">
@@ -2892,7 +3177,9 @@
 
         <div class="patrocinios-featured">
           <div class="alianza-card-main reveal">
-            <div class="alianza-logo-placeholder">TEC</div>
+            <div class="alianza-logo-container">
+              <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/Tec%20de%20Monterrey.jpg" alt="Tec de Monterrey" onerror="this.parentElement.innerHTML='<div style=&apos;font-size:13px;font-weight:800;color:white;&apos;>TEC</div>'">
+            </div>
             <h3>Tecnológico de Monterrey</h3>
             <p>La institución educativa más reconocida de México y referente internacional en innovación tecnológica. El Tec es el anfitrión oficial de IA Expo Monterrey 2026, aportando el Edificio Expedition, su infraestructura de clase mundial y el respaldo académico del <strong>Mobility Intelligent Lab</strong>.</p>
             <div class="alianza-badge">🏆 Patrocinador Ancla · Sede Oficial</div>
