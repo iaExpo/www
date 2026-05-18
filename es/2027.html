@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IA Expo Internacional 2027 — IA Para la Vida Real 2.0</title>
-    <meta name="description" content="El evento de inteligencia artificial más inspirador de LATAM. 3 días, 8 tracks, 220 líderes. Ciudad de México, 28–30 Enero 2027.">
+    <meta id="ev-meta-desc" name="description" content="El evento de inteligencia artificial más inspirador de LATAM. 3 días, 8 tracks, 200 líderes. Ciudad de México, 28–30 Enero 2027.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -620,6 +620,21 @@
         background: linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
       }
 
+      .expo-side-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 64px;
+        align-items: start;
+        margin-top: 20px;
+      }
+
+      @media(max-width: 900px) {
+        .expo-side-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
       .expo-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -851,16 +866,15 @@
       }
 
       .cfp-g {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 40px;
         margin-top: 64px;
-        align-items: start;
       }
 
       .topics {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 12px;
       }
 
@@ -889,17 +903,14 @@
         line-height: 1.5;
       }
 
-      .topic:nth-child(2) {
-        border-left-color: var(--blue);
-      }
-
-      .topic:nth-child(3) {
-        border-left-color: var(--purple-light);
-      }
-
-      .topic:nth-child(4) {
-        border-left-color: var(--gold);
-      }
+      .topic:nth-child(2)  { border-left-color: var(--blue); }
+      .topic:nth-child(3)  { border-left-color: #22c55e; }
+      .topic:nth-child(4)  { border-left-color: var(--purple-light); }
+      .topic:nth-child(5)  { border-left-color: #00E676; }
+      .topic:nth-child(6)  { border-left-color: var(--gold); }
+      .topic:nth-child(7)  { border-left-color: #a855f7; }
+      .topic:nth-child(8)  { border-left-color: #FFB74D; }
+      .topic:nth-child(9)  { border-left-color: var(--cyan); }
 
       .tl {
         display: flex;
@@ -1109,7 +1120,7 @@
 
       .pat-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 24px;
         margin-top: 64px;
         margin-bottom: 32px;
@@ -1132,6 +1143,41 @@
         left: 0;
         right: 0;
         height: 3px;
+      }
+
+      .p-ti::before {
+        background: linear-gradient(90deg, #FFD54F, #FF8F00, #FFD54F);
+      }
+
+      .p-ti .pat-tier {
+        color: var(--gold);
+      }
+
+      .p-ti {
+        background: linear-gradient(135deg, rgba(255, 213, 79, 0.06), rgba(255, 183, 77, 0.03));
+        border-color: rgba(255, 213, 79, 0.35);
+      }
+
+      .p-ti h3 {
+        color: var(--gold);
+      }
+
+      .p-micro::before {
+        background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
+      }
+
+      .p-micro .pat-tier {
+        color: var(--cyan);
+      }
+
+      @media(max-width:768px) {
+        .p-micro {
+          grid-column: span 1 !important;
+        }
+
+        .p-micro ul {
+          grid-template-columns: 1fr !important;
+        }
       }
 
       .p-pl::before {
@@ -1201,6 +1247,61 @@
         flex-shrink: 0;
       }
 
+      /* ── TABLA COMPARATIVA ── */
+      .compare-wrap {
+        overflow-x: auto;
+        margin: 32px 0 40px;
+      }
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+      }
+      .compare-table th, .compare-table td {
+        padding: 11px 14px;
+        font-size: 0.78rem;
+        border-bottom: 1px solid var(--glass-border);
+        text-align: left;
+      }
+      .compare-table th {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        background: rgba(255,255,255,0.02);
+      }
+      .compare-table th.t-col { text-align: center; color: #fff; }
+      .compare-table td.feature-col { color: var(--text-muted); }
+      .compare-table td.check { text-align: center; font-size: 0.9rem; }
+      .compare-table tr:hover { background: rgba(255,255,255,0.02); }
+      .compare-table .price-row td { font-weight: 900; padding-top: 14px; }
+      .compare-table .price-row td.price-val { text-align: center; font-size: 1rem; }
+
+      .tkt-btn {
+        display: block;
+        width: 100%;
+        margin-top: 16px;
+        padding: 11px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.06);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        text-decoration: none;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+      }
+      .tkt-btn:hover {
+        background: rgba(255,255,255,0.14);
+        border-color: rgba(255,255,255,0.4);
+        transform: translateY(-1px);
+      }
+
       .pat-btn {
         width: 100%;
         padding: 12px;
@@ -1228,6 +1329,248 @@
       /* CONTACTO */
       #contacto {
         background: var(--dark-2);
+      }
+
+      /* ── BOLETOS SECTION ── */
+      #boletos {
+        background: var(--dark-2);
+      }
+
+      .bol-launch-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 230, 118, 0.1);
+        border: 1px solid rgba(0, 230, 118, 0.3);
+        border-radius: 99px;
+        padding: 6px 18px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #00E676;
+        margin-bottom: 24px;
+      }
+
+      .bol-launch-badge::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        background: #00E676;
+        border-radius: 50%;
+        animation: pulse-dot 2s infinite;
+      }
+
+      .bol-stages {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 36px;
+      }
+      .bol-stages .bol-stage {
+        min-width: 180px;
+        max-width: 260px;
+      }
+
+      .bol-stage {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        padding: 16px;
+        text-align: center;
+      }
+
+      .bol-stage.active {
+        background: rgba(0, 230, 118, 0.06);
+        border-color: rgba(0, 230, 118, 0.4);
+      }
+
+      .bol-stage-pct {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .bol-stage-name {
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin: 5px 0 3px;
+      }
+
+      .bol-stage-desc {
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .tkt-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 14px;
+        margin-bottom: 40px;
+      }
+      /* Fila 1: 3 tarjetas × 2 cols c/u = 6 */
+      .tkt-card-r1 { grid-column: span 2; }
+      /* Fila 2: 2 tarjetas × 3 cols c/u = 6, centradas automáticamente */
+      .tkt-card-r2 { grid-column: span 3; }
+
+      .tkt-card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        padding: 20px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: border-color 0.2s, transform 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tkt-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+
+      .tkt-card.gold::before {
+        background: linear-gradient(90deg, #FFD54F, #FF8F00);
+      }
+
+      .tkt-card.green::before {
+        background: linear-gradient(90deg, #00E676, #00897B);
+      }
+
+      .tkt-card.cyan::before {
+        background: linear-gradient(90deg, #00E5FF, #0D6EFD);
+      }
+
+      .tkt-card.blue::before {
+        background: linear-gradient(90deg, #0D6EFD, #7c3aed);
+      }
+
+      .tkt-card.orange::before {
+        background: linear-gradient(90deg, #FFB74D, #E65100);
+      }
+
+      .tkt-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(0, 212, 255, 0.3);
+      }
+
+      .tkt-icon {
+        font-size: 1.6rem;
+      }
+
+      .tkt-name {
+        font-size: 0.88rem;
+        font-weight: 800;
+        color: var(--text);
+      }
+
+      .tkt-desc {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+        flex: 1;
+      }
+
+      .tkt-price-wrap {
+        margin-top: auto;
+      }
+
+      .tkt-launch {
+        font-size: 1.25rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .tkt-orig {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+        text-decoration-color: rgba(255,255,255,0.45);
+        margin-top: 4px;
+        letter-spacing: 0.01em;
+      }
+
+      .tkt-badge {
+        display: inline-block;
+        font-size: 0.6rem;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 99px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-top: 6px;
+      }
+
+      .tkt-badge.green {
+        background: rgba(0, 230, 118, 0.12);
+        color: #00E676;
+        border: 1px solid rgba(0, 230, 118, 0.3);
+      }
+
+      .tkt-badge.gold {
+        background: rgba(255, 213, 79, 0.12);
+        color: #FFD54F;
+        border: 1px solid rgba(255, 213, 79, 0.3);
+      }
+
+      .bol-reg-box {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .bol-reg-hdr {
+        padding: 24px 28px 20px;
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .bol-reg-hdr h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .bol-reg-hdr p {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+
+      .bol-reg-form {
+        padding: 0;
+      }
+
+      @media(max-width:900px) {
+        .tkt-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .tkt-card-r1, .tkt-card-r2 { grid-column: span 1; }
+
+        .bol-stages {
+          flex-direction: column;
+          align-items: center;
+        }
+        .bol-stages .bol-stage {
+          width: 100%;
+          max-width: 360px;
+        }
+      }
+
+      @media(max-width:600px) {
+        .tkt-grid {
+          grid-template-columns: 1fr;
+        }
+        .tkt-card-r1, .tkt-card-r2 { grid-column: span 1; }
       }
 
       .con-grid {
@@ -1484,7 +1827,7 @@
           grid-template-columns: 1fr;
         }
 
-        .cfp-g {
+        .topics {
           grid-template-columns: 1fr;
         }
 
@@ -1538,6 +1881,151 @@
           grid-template-columns: 1fr;
         }
       }
+
+      /* ── TABLA COMPARATIVA PATROCINIOS ──────────────────────── */
+      .pat-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 40px 0;
+        border-radius: 20px;
+        border: 1px solid rgba(0,212,255,0.2);
+        box-shadow: 0 0 40px rgba(0,212,255,0.06), 0 20px 60px rgba(0,0,0,0.4);
+        background: rgba(10,15,30,0.7);
+      }
+      .pat-cmp-table {
+        width: 100%;
+        min-width: 660px;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+      }
+      /* ── thead ── */
+      .pat-cmp-table thead tr {
+        background: linear-gradient(135deg, rgba(0,102,255,0.18), rgba(0,212,255,0.10));
+        border-bottom: 2px solid rgba(0,212,255,0.25);
+      }
+      .pat-cmp-table thead th {
+        padding: 20px 14px;
+        text-align: center;
+        font-weight: 800;
+        font-size: 0.82rem;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+      .pat-cmp-table thead th:first-child {
+        text-align: left;
+        padding-left: 24px;
+        font-size: 1rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: none;
+        background: linear-gradient(90deg, #00d4ff, #0066ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .pat-cmp-table thead th:nth-child(2) {
+        color: #C0C0C0;
+        text-shadow: 0 0 12px rgba(192,192,192,0.4);
+      }
+      .pat-cmp-table thead th:nth-child(3) {
+        color: #D4AF37;
+        text-shadow: 0 0 12px rgba(212,175,55,0.5);
+      }
+      .pat-cmp-table thead th:nth-child(4) {
+        color: #e8eef8;
+        text-shadow: 0 0 12px rgba(232,238,248,0.5);
+      }
+      .pat-cmp-table thead th:nth-child(5) {
+        color: var(--cyan);
+        text-shadow: 0 0 16px rgba(0,212,255,0.6);
+        background: rgba(0,212,255,0.05);
+        border-left: 1px solid rgba(0,212,255,0.2);
+        border-right: 1px solid rgba(0,212,255,0.2);
+      }
+      /* ── tbody ── */
+      .pat-cmp-table tbody td {
+        padding: 13px 14px;
+        text-align: center;
+        color: #6b7280;
+        border-bottom: 1px solid rgba(255,255,255,0.035);
+        transition: background 0.15s;
+      }
+      .pat-cmp-table tbody td:first-child {
+        text-align: left;
+        padding-left: 24px;
+        color: #d1d5db;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+      .pat-cmp-table tbody td:nth-child(5) {
+        background: rgba(0,212,255,0.03);
+        border-left: 1px solid rgba(0,212,255,0.1);
+        border-right: 1px solid rgba(0,212,255,0.1);
+      }
+      .pat-cmp-table tbody tr:hover td { background: rgba(0,212,255,0.04); }
+      .pat-cmp-table tbody tr:hover td:nth-child(5) { background: rgba(0,212,255,0.09); }
+      /* ── category rows ── */
+      .pat-cmp-table .pat-cat-row td {
+        background: linear-gradient(90deg, rgba(0,212,255,0.12), rgba(0,102,255,0.08), transparent);
+        font-weight: 800;
+        font-size: 0.82rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--cyan);
+        padding: 14px 24px;
+        border-top: 1px solid rgba(0,212,255,0.15);
+        border-bottom: 1px solid rgba(0,212,255,0.15);
+        text-shadow: 0 0 10px rgba(0,212,255,0.4);
+      }
+      /* ── marks ── */
+      .pat-cmp-table .t-check {
+        color: #00E676;
+        font-weight: 900;
+        font-size: 1.1rem;
+        text-shadow: 0 0 8px rgba(0,230,118,0.5);
+      }
+      .pat-cmp-table .t-x    { color: #2d3748; font-size: 1rem; }
+      .pat-cmp-table .t-val  { color: #fff; font-weight: 700; font-size: 0.9rem; }
+
+      /* ── PROGRAMA (tabbed agenda) ───────────────────────────── */
+      :root {
+        --orange: #FFB74D;
+        --red:    #FF5252;
+        --green:  #00E676;
+      }
+      .card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 28px;
+      }
+      .day-nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+      .dbtn {
+        background:var(--glass); border:1px solid var(--glass-border); color:var(--text-muted);
+        padding:9px 20px; border-radius:9px; cursor:pointer; font-family:inherit;
+        font-weight:700; font-size:0.83rem; transition:all 0.2s;
+      }
+      .dbtn.active { background:linear-gradient(135deg,rgba(0,212,255,0.18),rgba(0,102,255,0.25)); border-color:var(--cyan); color:var(--cyan); }
+      .day-panel { display:none; }
+      .day-panel.active { display:block; }
+      .slot {
+        display:flex; gap:16px; padding:14px 0;
+        border-bottom:1px solid rgba(255,255,255,0.05);
+        align-items:flex-start;
+      }
+      .slot:last-child { border:none; }
+      .slot-time { min-width:90px; font-size:0.78rem; font-weight:700; color:var(--cyan); padding-top:3px; }
+      .slot-icon { width:34px; height:34px; border-radius:8px; background:rgba(0,102,255,0.15); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+      .slot-info h4 { font-size:0.88rem; font-weight:700; color:#fff; margin-bottom:3px; }
+      .slot-info p { font-size:0.78rem; color:var(--text-muted); line-height:1.5; }
+      .slot-tag { display:inline-block; font-size:0.65rem; font-weight:800; padding:2px 8px; border-radius:99px; margin-top:5px; letter-spacing:0.8px; }
+      .tag-workshop { background:rgba(168,85,247,0.2); color:var(--purple-light); border:1px solid rgba(168,85,247,0.3); }
+      .tag-keynote { background:rgba(0,212,255,0.12); color:var(--cyan); border:1px solid rgba(0,212,255,0.25); }
+      .tag-panel { background:rgba(255,183,77,0.12); color:var(--orange); border:1px solid rgba(255,183,77,0.25); }
+      .tag-networking { background:rgba(0,230,118,0.12); color:var(--green); border:1px solid rgba(0,230,118,0.25); }
+      .tag-expo { background:rgba(245,158,11,0.12); color:var(--gold); border:1px solid rgba(245,158,11,0.25); }
+      .tag-vip { background:rgba(255,82,82,0.12); color:var(--red); border:1px solid rgba(255,82,82,0.25); }
     </style>
   </head>
   <body>
@@ -1545,15 +2033,15 @@
 
     <!-- NAV DESKTOP -->
     <nav>
-      <a href="https://iaExpo.ai" class="nav-brand">IA Expo Internacional 2027</a>
+      <a href="https://int.iaExpo.ai" class="nav-brand">IA Expo Internacional 2027</a>
       <div class="nav-tabs">
-        <a href="#iaexpo" class="ntab"><span class="ico">🌟</span> La Expo</a>
-        <a href="#programa" class="ntab"><span class="ico">📅</span> Programa</a>
+        <a href="#iaexpo" class="ntab"><span class="ico">🌟</span> Sobre IA Expo</a>
+        <a href="#boletos" class="ntab"><span class="ico">🎟️</span> Tickets</a>
         <a href="#convocatoria" class="ntab"><span class="ico">📑</span> Call for Papers</a>
-        <a href="#alianzas" class="ntab"><span class="ico">🤝</span> Alianzas</a>
+        <a href="#programa" class="ntab"><span class="ico">📅</span> Programa</a>
         <a href="#patrocinios" class="ntab"><span class="ico">🏆</span> Patrocinios</a>
+        <a href="#alianzas" class="ntab"><span class="ico">🤝</span> Alianzas</a>
         <a href="#contacto" class="ntab"><span class="ico">📍</span> Contacto</a>
-        <a href="#contacto" class="ntab active">🎟️ Boletos</a>
       </div>
       <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
         <span></span><span></span><span></span>
@@ -1562,13 +2050,13 @@
 
     <!-- MENÚ MÓVIL -->
     <div class="mobile-menu" id="mmenu">
-      <a href="#iaexpo" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> La Expo</a>
-      <a href="#programa" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
+      <a href="#iaexpo" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> Sobre IA Expo</a>
+      <a href="#boletos" class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
       <a href="#convocatoria" class="ntab" onclick="closeNav()"><span class="ico">📑</span> Call for Papers</a>
-      <a href="#alianzas" class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
+      <a href="#programa" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
       <a href="#patrocinios" class="ntab" onclick="closeNav()"><span class="ico">🏆</span> Patrocinios</a>
+      <a href="#alianzas" class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
       <a href="#contacto" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
-      <a href="#contacto" class="ntab active" onclick="closeNav()">🎟️ Boletos</a>
     </div>
 
     <section id="hero">
@@ -1580,8 +2068,8 @@
         <h1 class="hero-title"><span class="ia">IA </span>Expo</h1>
         <div class="hero-sub">Internacional 2027</div>
         <div class="hero-lema">"IA Para la Vida Real 2.0"</div>
-        <div class="hero-loc">📍 Ciudad de México · Sede por confirmar</div>
-        <p class="hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>3 días, 8 tracks temáticos, 220 líderes</strong> que ya están usando la IA para transformar industrias reales.</p>
+        <div class="hero-loc" id="ev-hero-loc">📍 Ciudad de México · Westin Santa fe</div>
+        <p class="hero-desc" id="ev-hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>3 días, 8 tracks temáticos, 200 líderes</strong> que ya están usando la IA para transformar industrias reales.</p>
         <div class="cd-wrap">
           <div class="cd-label">Cuenta regresiva al evento</div>
           <div class="countdown">
@@ -1603,12 +2091,12 @@
           </div>
         </div>
         <div class="hero-btns">
-          <a href="#contacto" class="btn-primary">🎟️ Boletos con 50% OFF</a>
+          <a href="#boletos" class="btn-primary">🎟️ Boletos con 50% OFF</a>
           <a href="#iaexpo" class="btn-secondary">Conocer el Evento →</a>
         </div>
         <div class="hero-stats">
           <div class="hstat">
-            <div class="hstat-n">220</div>
+            <div class="hstat-n" id="ev-stat-asistentes">200</div>
             <div class="hstat-l">Líderes en IA</div>
           </div>
           <div class="hstat">
@@ -1638,24 +2126,18 @@
 
     <div class="gd"></div>
 
-    <section id="iaexpo">
-      <div class="si">
-        <div class="expo-grid">
-          <div class="expo-vis reveal">
-            <div class="expo-img">
-              <img src="https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg" alt="IA Expo Internacional" onerror="this.style.background='linear-gradient(135deg,#0066ff,#7c3aed)';this.style.minHeight='300px';">
-            </div>
-            <div class="expo-badge">
-              <div class="expo-badge-n">2027</div>
-              <div class="expo-badge-l">CDMX</div>
-            </div>
-          </div>
-          <div class="expo-content">
-            <div class="eyebrow">La Expo</div>
-            <h2 class="stitle">La IA que <span class="accent">Transforma</span><br>Vidas Reales</h2>
+<section id="iaexpo" style="position:relative;overflow:hidden;">
+      <!-- Imagen de fondo sutil -->
+      <div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center/cover no-repeat;opacity:0.05;pointer-events:none;z-index:0;"></div>
+      <div class="si" style="position:relative;z-index:1;">
+        <div class="expo-side-grid">
+          <!-- Contenido izquierdo -->
+          <div class="expo-content reveal">
+            <div class="eyebrow">Sobre la IA Expo</div>
+            <h2 class="stitle">La <span class="accent">EXPO</span> que Transforma<br>Vidas Reales</h2>
             <p>Después del éxito rotundo de <strong>IA Expo Internacional 2026 en Ciudad de México</strong>, regresamos con una edición aún más ambiciosa. Más tracks, más speakers internacionales, más impacto.</p>
             <p>IA Expo Internacional 2027 es el encuentro de quienes ya están usando la inteligencia artificial para transformar empresas, industrias y vidas en <strong>LATAM y el mundo</strong>.</p>
-            <p>Solo <strong>220 lugares</strong> disponibles. Precio de lanzamiento con 50% de descuento por tiempo limitado.</p>
+            <p id="ev-expo-cap">Solo <strong>200 lugares</strong> disponibles. Precio de lanzamiento con 50% de descuento por tiempo limitado.</p>
             <div class="features reveal d1">
               <div class="feat">
                 <div class="ficon">🎤</div>
@@ -1663,105 +2145,178 @@
               </div>
               <div class="feat">
                 <div class="ficon">🧪</div>
-                <div class="ftext"><strong>Talleres Prácticos</strong><span>Grupos de máximo 20 personas — aprendizaje profundo y aplicado</span></div>
+                <div class="ftext"><strong>Talleres Prácticos</strong><span id="ev-talleres-cupo">Grupos de máximo 20 personas — aprendizaje profundo y aplicado</span></div>
               </div>
               <div class="feat">
                 <div class="ficon">🤝</div>
-                <div class="ftext"><strong>Networking Estructurado</strong><span>220 C-Levels y tomadores de decisión de toda LATAM</span></div>
+                <div class="ftext"><strong>Networking Estructurado</strong><span id="ev-network-cap">200 C-Levels y tomadores de decisión de toda LATAM</span></div>
               </div>
+            </div>
+          </div>
+          <!-- Formulario de registro derecho -->
+          <div class="bol-reg-box reveal d1">
+            <div class="bol-reg-hdr">
+              <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
+              <p id="ev-reg-desc">Precio de lanzamiento con 50% OFF · Solo 200 lugares disponibles</p>
+            </div>
+            <div class="bol-reg-form">
+              <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" title="IA Expo Registro"></iframe>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="programa">
+<section id="boletos">
       <div class="si">
-        <div class="eyebrow">Programa</div>
-        <h2 class="stitle reveal">8 Tracks. 3 Días.<br><span class="accent">Infinitas Posibilidades.</span></h2>
-        <p class="sdesc reveal d1">Un programa diseñado para todos los perfiles: desde ejecutivos que quieren adoptar IA hasta investigadores de vanguardia.</p>
-        <div class="tracks">
-          <div class="tc reveal">
-            <div class="tc-e">🤖</div>
-            <h4>IA Para la Vida Real</h4>
-            <p>Casos prácticos de IA aplicada en negocios y vida cotidiana</p>
+        <div class="eyebrow">Boletos</div>
+        <h2 class="stitle reveal">Asegura tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
+        <div style="text-align:center;margin-top:24px;">
+          <div class="bol-launch-badge">🔥 Precio de Lanzamiento Activo — 50% de Descuento</div>
+        </div>
+
+        <div class="bol-stages reveal">
+          <div class="bol-stage active">
+            <div class="bol-stage-pct" style="color:#00E676">50% OFF</div>
+            <div class="bol-stage-name">🔥 Lanzamiento</div>
+            <div class="bol-stage-desc">Disponible ahora<br>Precio especial de apertura</div>
           </div>
-          <div class="tc reveal d1">
-            <div class="tc-e">🏢</div>
-            <h4>IA en los Negocios</h4>
-            <p>Estrategia, adopción y ROI de la IA en organizaciones</p>
+          <!--
+          <div class="bol-stage">
+            <div class="bol-stage-pct" style="color:var(--cyan)">25% OFF</div>
+            <div class="bol-stage-name">⏰ Anticipado</div>
+            <div class="bol-stage-desc">2 meses antes<br>del evento</div>
           </div>
-          <div class="tc reveal d2">
-            <div class="tc-e">🏥</div>
-            <h4>IA en Salud</h4>
-            <p>Diagnóstico, medicina preventiva e IA aplicada al bienestar</p>
+          <div class="bol-stage">
+            <div class="bol-stage-pct" style="color:var(--text-muted)">Regular</div>
+            <div class="bol-stage-name">📅 Regular</div>
+            <div class="bol-stage-desc">1 mes antes<br>del evento</div>
           </div>
-          <div class="tc reveal d3">
-            <div class="tc-e">🎨</div>
-            <h4>IA Generativa</h4>
-            <p>Creatividad, contenido, diseño y producción con IA</p>
+          -->
+        </div>
+
+        <!-- TABLA COMPARATIVA -->
+        <div class="compare-wrap reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th class="feature-col">Inclusión</th>
+                <th class="t-col" style="color:#FFB74D">Expo</th>
+                <th class="t-col" style="color:#a855f7">Talleres</th>
+                <th class="t-col" style="color:var(--cyan)">Conferencias</th>
+                <th class="t-col" style="color:#00E676">Networking</th>
+                <th class="t-col" style="color:var(--gold)">VIP All Access</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="feature-col">🏛️ Área de Expo</td><td class="check">✓</td><td class="check">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+              <tr><td class="feature-col">🛠️ Talleres prácticos (28 ene)</td><td class="check">—</td><td class="check">✓</td><td class="check">—</td><td class="check">—</td><td class="check">—</td></tr>
+              <tr><td class="feature-col">✨ Keynotes + Conferencias</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+              <tr><td class="feature-col">🤝 Networking estructurado</td><td class="check">—</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+              <tr><td class="feature-col">🥂 Cóctel de bienvenida</td><td class="check">—</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+              <tr><td class="feature-col">🎯 Asientos preferenciales</td><td class="check">—</td><td class="check">—</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td></tr>
+              <tr><td class="feature-col">💎 Lounge VIP</td><td class="check">—</td><td class="check">—</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td></tr>
+              <tr class="price-row">
+                <td class="feature-col" style="color:#fff">Precio Lanzamiento</td>
+                <td class="price-val check" id="ev-cmp-expo-price" style="color:#FFB74D">$4,950</td>
+                <td class="price-val check" id="ev-cmp-taller-price" style="color:#a855f7">$4,950</td>
+                <td class="price-val check" id="ev-cmp-conf-price" style="color:var(--cyan)">$14,950</td>
+                <td class="price-val check" id="ev-cmp-net-price" style="color:#00E676">$19,950</td>
+                <td class="price-val check" id="ev-cmp-vip-price" style="color:var(--gold)">$24,950</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tkt-grid reveal">
+          <!-- EXPO -->
+          <div class="tkt-card orange tkt-card-r1">
+            <div class="tkt-icon">🏛️</div>
+            <div class="tkt-name">Expo</div>
+            <div class="tkt-desc">Acceso a la zona de exposición con demos en vivo de las herramientas de IA más innovadoras del mercado.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" id="ev-tkt-expo-launch" style="color:#FFB74D">$4,950</div>
+              <div class="tkt-orig" id="ev-tkt-expo-orig">$9,900 MXN</div>
+              <span class="tkt-badge green">50% OFF · Solo 100 cupos</span>
+            </div>
+            <a href="https://int.iaExpo.ai/expo" class="tkt-btn" target="_blank" rel="noopener">Comprar Boleto →</a>
           </div>
-          <div class="tc reveal">
-            <div class="tc-e">📚</div>
-            <h4>IA en Educación</h4>
-            <p>Transformación del aprendizaje y la formación profesional</p>
+          <!-- TALLERES -->
+          <div class="tkt-card blue tkt-card-r1">
+            <div class="tkt-icon">🛠️</div>
+            <div class="tkt-name">Talleres</div>
+            <div class="tkt-desc">Acceso a los talleres prácticos del 28 de enero. Aprende haciendo con expertos en sesiones hands-on de alto impacto.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" id="ev-tkt-taller-launch" style="color:#a855f7">$4,950</div>
+              <div class="tkt-orig" id="ev-tkt-taller-orig">$9,900 MXN</div>
+              <span class="tkt-badge green" id="ev-tkt-taller-badge">50% OFF · Solo 80 cupos</span>
+            </div>
+            <a href="https://int.iaExpo.ai/talleres" class="tkt-btn" target="_blank" rel="noopener">Comprar Boleto →</a>
           </div>
-          <div class="tc reveal d1">
-            <div class="tc-e">🚗</div>
-            <h4>Movilidad Autónoma</h4>
-            <p>Vehículos autónomos, smart cities e infraestructura inteligente</p>
+          <!-- CONFERENCIAS -->
+          <div class="tkt-card cyan tkt-card-r1">
+            <div class="tkt-icon">🎟️</div>
+            <div class="tkt-name">Conferencias</div>
+            <div class="tkt-desc">Acceso a los 2 días de conferencias (29–30 enero) con keynotes, paneles y los mejores speakers de IA en LATAM.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" id="ev-tkt-conf-launch" style="color:var(--cyan)">$14,950</div>
+              <div class="tkt-orig" id="ev-tkt-conf-orig">$29,900 MXN</div>
+              <span class="tkt-badge green" id="ev-tkt-conf-badge">50% OFF · Solo 200 cupos</span>
+            </div>
+            <a href="https://int.iaExpo.ai/conferencias" class="tkt-btn" target="_blank" rel="noopener">Comprar Boleto →</a>
           </div>
-          <div class="tc reveal d2">
-            <div class="tc-e">⚖️</div>
-            <h4>Ética y Regulación</h4>
-            <p>Uso responsable, políticas públicas y gobernanza de la IA</p>
+          <!-- NETWORKING -->
+          <div class="tkt-card green tkt-card-r2">
+            <div class="tkt-icon">🥂</div>
+            <div class="tkt-name">Networking Estructurado</div>
+            <div class="tkt-desc" id="ev-tkt-net-desc">Sesión de matchmaking estructurado con los 25 líderes más relevantes del ecosistema IA de LATAM.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" id="ev-tkt-net-launch" style="color:#00E676">$19,950</div>
+              <div class="tkt-orig" id="ev-tkt-net-orig">$39,900 MXN</div>
+              <span class="tkt-badge green" id="ev-tkt-net-badge">50% OFF · Solo 25 cupos</span>
+            </div>
+            <a href="https://int.iaExpo.ai/expo/network" class="tkt-btn" target="_blank" rel="noopener">Comprar Boleto →</a>
           </div>
-          <div class="tc reveal d3">
-            <div class="tc-e">💻</div>
-            <h4>IA para Devs</h4>
-            <p>Herramientas, APIs, agentes y desarrollo con inteligencia artificial</p>
+          <!-- VIP ALL ACCESS -->
+          <div class="tkt-card gold tkt-card-r2">
+            <div class="tkt-icon">💎</div>
+            <div class="tkt-name">VIP All Access</div>
+            <div class="tkt-desc">Acceso completo al evento (28–30 enero) — Expo + Conferencias + Networking Estructurado + Cena de bienvenida. Lounge VIP y beneficios exclusivos.</div>
+            <div class="tkt-price-wrap">
+              <div class="tkt-launch" id="ev-tkt-vip-launch" style="color:#FFD54F">$24,950</div>
+              <div class="tkt-orig" id="ev-tkt-vip-orig">$49,900 MXN</div>
+              <span class="tkt-badge gold">50% OFF · Solo 20 cupos</span>
+            </div>
+            <a href="https://int.iaExpo.ai/vip" class="tkt-btn" target="_blank" rel="noopener">Comprar Boleto →</a>
           </div>
         </div>
-        <div class="dias reveal">
-          <div class="dia">
-            <div class="dia-n">01</div>
-            <div class="dia-f">Jueves 28 de Enero</div>
-            <div class="dia-d">Apertura, keynotes estelares, talleres de inmersión y networking de bienvenida.</div>
-          </div>
-          <div class="dia">
-            <div class="dia-n">02</div>
-            <div class="dia-f">Viernes 29 de Enero</div>
-            <div class="dia-d">Los 8 tracks en paralelo, paneles de industria, demos en vivo y networking estructurado.</div>
-          </div>
-          <div class="dia">
-            <div class="dia-n">03</div>
-            <div class="dia-f">Sábado 30 de Enero</div>
-            <div class="dia-d">Talleres especializados, sesiones de cierre, reconocimientos y visión IA 2028.</div>
-          </div>
-        </div>
-        <div style="text-align:center;margin-top:40px;" class="reveal">
-          <a href="programa.html" class="btn-secondary">Ver Programa Completo →</a>
-        </div>
+
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:32px;margin-bottom:6px;text-align:center;">Todos los precios en pesos mexicanos (MXN) · Precio por persona · 1 boleto</p>
+        <p style="font-size:0.72rem;color:var(--text-dim);margin-bottom:0;text-align:center;opacity:0.7;">Todos los precios en pesos mexicanos (MXN)<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
+
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="convocatoria">
+<section id="convocatoria">
       <div class="si">
         <div class="eyebrow">Convocatoria</div>
         <h2 class="stitle reveal">Call for Papers —<br><span class="accent">Tu Investigación en el Escenario</span></h2>
-        <p class="sdesc reveal d1">¿Tu investigación está cambiando el mundo con IA? Envía tu paper y preséntalo ante 220 líderes, académicos e innovadores de LATAM.</p>
+        <p class="sdesc reveal d1" id="ev-cfp-desc">¿Tu investigación está cambiando el mundo con IA? Envía tu paper y preséntalo ante 200 líderes, académicos e innovadores de LATAM.</p>
         <div class="cfp-g">
           <div class="reveal">
             <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📚 Temáticas de Interés</h3>
             <div class="topics">
-              <div class="topic"><strong>🤖 IA Aplicada a la Vida Real</strong><span>Casos de uso, implementaciones y resultados medibles de IA en industrias reales</span></div>
-              <div class="topic"><strong>🚗 Movilidad Autónoma e Inteligente</strong><span>Vehículos autónomos, control de tráfico, infraestructura V2X y smart cities</span></div>
+              <div class="topic"><strong>🔭 IA Visión y Futuro</strong><span>Tendencias emergentes, roadmaps tecnológicos e impacto de la IA en los próximos años</span></div>
+              <div class="topic"><strong>🏢 IA en Empresas y Negocios</strong><span>Automatización, optimización de procesos, estrategia y transformación organizacional con IA</span></div>
+              <div class="topic"><strong>💰 IA en FinTech</strong><span>Finanzas algorítmicas, crédito, detección de fraude y servicios financieros potenciados por IA</span></div>
               <div class="topic"><strong>🏥 IA en Salud y Bienestar</strong><span>Diagnóstico, medicina preventiva, robótica médica y sistemas de soporte clínico</span></div>
-              <div class="topic"><strong>⚖️ Ética, Sesgo y Gobernanza de IA</strong><span>Uso responsable, regulación, transparencia y políticas públicas</span></div>
+              <div class="topic"><strong>🚗 Movilidad Autónoma y Robótica</strong><span>Vehículos autónomos, robótica aplicada, infraestructura V2X y smart cities</span></div>
+              <div class="topic"><strong>⚖️ Ética y Regulación de la IA</strong><span>Uso responsable, regulación, transparencia y políticas públicas</span></div>
+              <div class="topic"><strong>🎓 IA en Educación y Empleabilidad</strong><span>Personalización del aprendizaje, habilidades del futuro e impacto de la IA en el mercado laboral</span></div>
+              <div class="topic"><strong>🎨 IA en Artes y Entretenimiento</strong><span>Generación creativa, música, cine, gaming y expresión artística aumentada por IA</span></div>
+              <div class="topic"><strong>🌎 IA Para la Vida Real</strong><span>Casos prácticos de IA aplicada a la vida cotidiana</span></div>
             </div>
           </div>
           <div class="reveal d1">
@@ -1786,8 +2341,14 @@
                 <div class="tl-desc">Resultados de revisión doble ciego</div>
               </div>
               <div class="tli">
+                <div class="tld" style="background:#FFB74D;box-shadow:0 0 10px rgba(255,183,77,0.5);"></div>
+                <div class="tl-date" style="color:#FFB74D;">9 de Enero de 2027</div>
+                <div class="tl-title">Entrega de Presentaciones</div>
+                <div class="tl-desc">Envío de presentación final en formato PPTX</div>
+              </div>
+              <div class="tli">
                 <div class="tld" style="background:linear-gradient(135deg,var(--cyan),var(--purple));box-shadow:0 0 14px rgba(0,212,255,0.6);"></div>
-                <div class="tl-date">28–30 Enero de 2027</div>
+                <div class="tl-date">29–30 Enero de 2027</div>
                 <div class="tl-title">Presentación en IA Expo 2027</div>
                 <div class="tl-desc">Ciudad de México</div>
               </div>
@@ -1795,21 +2356,225 @@
           </div>
         </div>
         <div class="cfp-cta reveal">
-          <div style="font-size:36px;margin-bottom:16px;">🎓</div>
+          <div style="font-size:36px;margin-bottom:16px;">✍️</div>
           <h3>¿Listo para presentar tu investigación?</h3>
-          <p>Formato: 6–8 páginas · Español o Inglés · Revisión doble ciego por comité académico</p>
-          <div class="cfp-tags"><span class="cfp-tag">6–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por Pares</span><span class="cfp-tag">Cierre: 31 Ago 2026</span></div>
+          <p>Formato: 4–8 páginas · Español o Inglés · Revisión por el Comité Organizador de la IA Expo Internacional</p>
+          <div class="cfp-tags"><span class="cfp-tag">4–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por IA Expo</span><span class="cfp-tag">Cierre: 31 Ago 2026</span></div>
           <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-            <a href="mailto:info@iaExpo.ai?subject=Call for Papers - IA Expo 2027" class="btn-primary">📄 Enviar mi Paper</a>
-            <a href="convocatoria.html" class="btn-secondary">Más Información →</a>
+            <a href="https://docs.google.com/document/d/1QYhhiPmdNxru0HegD7MiRtgZe3XUMBCe/export?format=docx" class="btn-primary" download>⬇️ Descargar Plantilla</a>
+            <a href="#contacto" class="btn-secondary">📄 Enviar mi Paper</a>
+            <a href="#contacto" class="btn-secondary">Más Información →</a>
           </div>
         </div>
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="alianzas">
+<section id="programa">
+      <div class="si">
+        <div class="eyebrow">Programa</div>
+        <h2 class="stitle reveal">Compartiendo Experiencias Reales.<br><span class="accent">Aprende de Quienes Ya lo Han Logrado.</span></h2>
+        <p class="sdesc reveal d1">Un programa diseñado para todos los perfiles: desde ejecutivos que quieren adoptar IA hasta investigadores de vanguardia.</p>
+
+        <div style="margin-top:40px;"></div>
+
+        <div class="day-nav reveal">
+          <button class="dbtn active" onclick="showDay('d1',this)">📍 Día 1 — Jue 28 Enero</button>
+          <button class="dbtn" onclick="showDay('d2',this)">🎤 Día 2 — Vie 29 Enero</button>
+          <button class="dbtn" onclick="showDay('d3',this)">🏁 Día 3 — Sáb 30 Enero</button>
+          <button class="dbtn" onclick="showDay('d4',this)">☕ Día 4 — Dom 31 Enero</button>
+        </div>
+
+        <div class="card reveal">
+          <div class="day-panel active" id="d1">
+            <div style="font-size:0.8rem;color:var(--purple-light);font-weight:700;margin-bottom:14px;letter-spacing:1px;">TALLERES ESPECIALIZADOS + APERTURA</div>
+            <div class="slot"><div class="slot-time">08:00 – 12:00</div><div class="slot-icon">🏗️</div><div class="slot-info"><h4>Montaje y producción</h4><p>Instalación de escenografía LED, stands de expo, equipo audiovisual y señalética</p></div></div>
+            <div class="slot"><div class="slot-time">12:00 – 14:00</div><div class="slot-icon">📋</div><div class="slot-info"><h4>Registro de asistentes</h4><p>Acreditación, entrega de kits, acceso a área de expo</p></div></div>
+            <div class="slot"><div class="slot-time">14:00 – 15:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Comida libre + visita a stands</h4><p>Los asistentes visitan la expo y hacen networking informal antes de talleres</p></div></div>
+            <div class="slot"><div class="slot-time">15:00 – 16:45</div><div class="slot-icon">🛠️</div><div class="slot-info"><h4>Talleres — Sesión 1 (simultáneos)</h4><p><strong style="color:var(--purple-light);">Salón A:</strong> Taller 1 (máx. 20 personas) · <strong style="color:var(--purple-light);">Salón B:</strong> Taller 2 (máx. 20 personas)</p><span class="slot-tag tag-workshop">TALLER · 1h 45min</span></div></div>
+            <div class="slot"><div class="slot-time">16:45 – 17:15</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee break</h4><p>Pausa entre sesiones de talleres</p></div></div>
+            <div class="slot"><div class="slot-time">17:15 – 19:00</div><div class="slot-icon">🛠️</div><div class="slot-info"><h4>Talleres — Sesión 2 (simultáneos)</h4><p><strong style="color:var(--purple-light);">Salón A:</strong> Taller 3 (máx. 20 personas) · <strong style="color:var(--purple-light);">Salón B:</strong> Taller 4 (máx. 20 personas)</p><span class="slot-tag tag-workshop">TALLER · 1h 45min</span></div></div>
+            <div class="slot"><div class="slot-time">19:30 – 21:30</div><div class="slot-icon">🥂</div><div class="slot-info"><h4>Cóctel de bienvenida premium</h4><p>Networking estructurado — todos los asistentes, patrocinadores y ponentes</p><span class="slot-tag tag-networking">NETWORKING</span></div></div>
+            <div class="slot"><div class="slot-time">21:30 – 23:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Cena privada Membresía VIP</h4><p>Experiencia exclusiva para los 10 miembros VIP + ponentes principales</p><span class="slot-tag tag-vip">VIP EXCLUSIVO</span></div></div>
+          </div>
+
+          <div class="day-panel" id="d2">
+            <div style="font-size:0.8rem;color:var(--cyan);font-weight:700;margin-bottom:14px;letter-spacing:1px;">CONFERENCIAS PRINCIPALES + EXPO</div>
+            <div class="slot"><div class="slot-time">08:00 – 09:00</div><div class="slot-icon">📋</div><div class="slot-info"><h4>Registro y acreditación</h4><p>Llegada de asistentes, coffee de bienvenida, apertura de expo</p><span class="slot-tag tag-expo">EXPO ABIERTA</span></div></div>
+            <div class="slot"><div class="slot-time">09:00 – 10:00</div><div class="slot-icon">🌍</div><div class="slot-info"><h4>Keynote Internacional</h4><p>Apertura oficial — ponente de impacto global en IA aplicada</p><span class="slot-tag tag-keynote">KEYNOTE</span></div></div>
+            <div class="slot"><div class="slot-time">10:00 – 11:30</div><div class="slot-icon">🎯</div><div class="slot-info"><h4>Track 1 + Track 2: Negocios y FinTech</h4><p>Ponencias estratégicas sobre IA en productividad empresarial y finanzas inteligentes</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">11:30 – 12:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee break + Expo</h4><p>Visita a stands de patrocinadores y demostraciones tecnológicas</p><span class="slot-tag tag-expo">EXPO</span></div></div>
+            <div class="slot"><div class="slot-time">12:00 – 13:30</div><div class="slot-icon">🎯</div><div class="slot-info"><h4>Track 3 + Track 4: Medicina y Legal</h4><p>IA en salud, diagnóstico, regulación y gobernanza</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">13:30 – 15:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Comida + Expo abierta</h4><p>Almuerzo incluido para paquetes Networking y Membresía VIP</p><span class="slot-tag tag-expo">EXPO</span></div></div>
+            <div class="slot"><div class="slot-time">15:00 – 16:30</div><div class="slot-icon">🎯</div><div class="slot-info"><h4>Track 5 + Track 6: Ética y Artes</h4><p>Futuro humano, creatividad e impacto social de la IA</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">16:30 – 17:30</div><div class="slot-icon">💬</div><div class="slot-info"><h4>Panel de alto nivel</h4><p>Líderes de industria — regulación, inversión y futuro de la IA en LATAM</p><span class="slot-tag tag-panel">PANEL</span></div></div>
+            <div class="slot"><div class="slot-time">17:30 – 18:30</div><div class="slot-icon">🔗</div><div class="slot-info"><h4>Networking estructurado</h4><p>Sesiones 1:1 programadas por industria y vertical de interés</p><span class="slot-tag tag-networking">NETWORKING</span></div></div>
+          </div>
+
+          <div class="day-panel" id="d3">
+            <div style="font-size:0.8rem;color:var(--orange);font-weight:700;margin-bottom:14px;letter-spacing:1px;">CASOS REALES + CIERRE</div>
+            <div class="slot"><div class="slot-time">08:30 – 09:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee de bienvenida + Expo</h4><p>Apertura del día, última jornada de visita a stands</p><span class="slot-tag tag-expo">EXPO</span></div></div>
+            <div class="slot"><div class="slot-time">09:00 – 10:30</div><div class="slot-icon">🏭</div><div class="slot-info"><h4>Track 7 + Casos reales por industria</h4><p>Educación y empleabilidad + implementaciones concretas con resultados medibles</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">10:30 – 11:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee break + Expo — cierre de stands</h4><p>Última oportunidad de visitar demostraciones</p><span class="slot-tag tag-expo">EXPO</span></div></div>
+            <div class="slot"><div class="slot-time">11:00 – 12:30</div><div class="slot-icon">⚖️</div><div class="slot-info"><h4>Panel: Regulación, política pública y futuro</h4><p>Perspectiva gubernamental, legal y de inversión en IA para LATAM</p><span class="slot-tag tag-panel">PANEL</span></div></div>
+            <div class="slot"><div class="slot-time">12:30 – 14:00</div><div class="slot-icon">🤝</div><div class="slot-info"><h4>Networking sectorizado + Actas del evento</h4><p>Reuniones por industria. Presentación oficial de las Actas IA Expo 2027</p><span class="slot-tag tag-networking">NETWORKING</span></div></div>
+            <div class="slot"><div class="slot-time">14:00 – 16:00</div><div class="slot-icon">🎊</div><div class="slot-info"><h4>Cena de clausura + reconocimientos</h4><p>Cierre oficial del evento, premiación de mejores stands, anuncio IA Expo 2028</p><span class="slot-tag tag-networking">CLAUSURA</span></div></div>
+          </div>
+
+          <div class="day-panel" id="d4">
+            <div style="font-size:0.8rem;color:var(--gold);font-weight:700;margin-bottom:14px;letter-spacing:1px;">MEMBRESÍA VIP — DÍA EXCLUSIVO</div>
+            <div class="slot"><div class="slot-time">09:00 – 10:30</div><div class="slot-icon">🍳</div><div class="slot-info"><h4>Desayuno de despedida — Membresía VIP</h4><p>Desayuno privado en el hotel para los 10 miembros VIP + equipo organizador</p><span class="slot-tag tag-vip">VIP EXCLUSIVO</span></div></div>
+            <div class="slot"><div class="slot-time">10:30 – 13:00</div><div class="slot-icon">🚀</div><div class="slot-info"><h4>Mesa de trabajo: IA Expo en otras ciudades</h4><p>Sesión estratégica: modelo de replicación, ciudades candidatas, alianzas regionales</p><span class="slot-tag tag-vip">VIP EXCLUSIVO</span></div></div>
+          </div>
+        </div>
+
+        <p style="text-align:center;margin-top:28px;font-size:0.78rem;color:var(--text-dim);">* Esta información es preliminar y está sujeta a cambios sin previo aviso.</p>
+
+      </div>
+    </section>
+    <div class="gd"></div>
+
+<section id="patrocinios">
+      <div class="si">
+        <div class="eyebrow">Patrocinios</div>
+        <h2 class="stitle reveal">No es Publicidad.<br><span class="accent">Es Posicionamiento Estratégico.</span></h2>
+        <p class="sdesc reveal d1" id="ev-pat-desc">IA Expo Internacional no es un evento masivo. Es una experiencia curada donde cada asistente toma decisiones de inversión, adopción e implementación de IA. Tu marca no compite por atención — la tiene garantizada.</p>
+
+        <div class="pat-table-wrap reveal">
+          <table class="pat-cmp-table">
+            <thead>
+              <tr>
+                <th>Beneficio</th>
+                <th><div style="font-size:1.4rem;margin-bottom:4px;">🥈</div>Plata</th>
+                <th><div style="font-size:1.4rem;margin-bottom:4px;">🥇</div>Oro</th>
+                <th><div style="font-size:1.4rem;margin-bottom:4px;">🏆</div>Platino</th>
+                <th><div style="font-size:1.4rem;margin-bottom:4px;">💎</div>Diamante</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pat-cat-row"><td colspan="5">Visibilidad y Marca</td></tr>
+              <tr><td>Naming rights del evento</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td></tr>
+              <tr><td>Logo en comunicación</td><td class="t-val">Pequeño</td><td class="t-val">Mediano</td><td class="t-val">Grande</td><td class="t-val">Principal</td></tr>
+              <tr><td>Mención en keynote</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Video en pantallas LED</td><td class="t-val">30 seg</td><td class="t-val">60 seg</td><td class="t-val">90 seg</td><td class="t-val">3 min</td></tr>
+              <tr><td>Naming de track vertical</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Branding en escenografía</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Posts en redes sociales</td><td class="t-val">2</td><td class="t-val">4</td><td class="t-val">8</td><td class="t-val">12+</td></tr>
+              <tr><td>Entrevista en video</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+
+              <tr class="pat-cat-row"><td colspan="5">Presencia en Evento</td></tr>
+              <tr><td>Stand / Exhibición</td><td class="t-val">Compartido</td><td class="t-val">Estándar</td><td class="t-val">Premium</td><td class="t-val">Premium doble</td></tr>
+              <tr><td>Ponencia / Keynote propia</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-val">20 min</td><td class="t-val">30 min</td></tr>
+              <tr><td>Participación en panel</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Demo de producto</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Material en kit asistente</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+
+              <tr class="pat-cat-row"><td colspan="5">Networking y Acceso</td></tr>
+              <tr><td>Boletos VIP incluidos</td><td class="t-val">2</td><td class="t-val">4</td><td class="t-val">6</td><td class="t-val">10</td></tr>
+              <tr><td>Boletos generales incluidos</td><td class="t-val">1</td><td class="t-val">2</td><td class="t-val">3</td><td class="t-val">5</td></tr>
+              <tr><td>Cena privada VIP</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Cóctel de bienvenida</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Networking con ponentes</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Directorio de asistentes</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+
+              <tr class="pat-cat-row"><td colspan="5">Digital y Post-Evento</td></tr>
+              <tr><td>Logo en iaExpo.ai</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Banner en página principal</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Campañas de email</td><td class="t-val">1</td><td class="t-val">2</td><td class="t-val">3</td><td class="t-val">Todas</td></tr>
+              <tr><td>Grabaciones del evento</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Reporte post-evento</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Derecho preferencia 2028</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pat-grid">
+          <div class="pat p-ti reveal">
+            <div class="pat-tier">💎 Diamante</div>
+            <h3>Patrocinio Diamante</h3>
+            <ul>
+              <li>Naming rights — "IA Expo 2027 presentado por [Tu Marca]"</li>
+              <li>Keynote propia de 30 min en escenario principal</li>
+              <li>Stand premium doble en ubicación privilegiada</li>
+              <li>Naming de un track vertical completo</li>
+              <li>Logo principal en todo material gráfico y digital</li>
+              <li>12+ publicaciones en redes sociales + entrevista</li>
+              <li>Acceso a cena privada VIP con patrocinadores</li>
+            </ul>
+            <a href="https://int.iaExpo.ai/diamante" class="pat-btn" target="_blank" rel="noopener">Diamante →</a>
+          </div>
+          <div class="pat p-pl reveal">
+            <div class="pat-tier">Platino</div>
+            <h3>Patrocinio Platino</h3>
+            <ul>
+              <li>Naming rights del evento o track principal</li>
+              <li>Keynote de apertura o clausura</li>
+              <li>Stand premium de doble espacio</li>
+              <li>10 pases VIP completos</li>
+              <li>Logo en todas las comunicaciones</li>
+              <li>Mención en todos los keynotes</li>
+              <li>Activación de marca personalizada</li>
+            </ul>
+            <a href="https://int.iaExpo.ai/platino" class="pat-btn" target="_blank" rel="noopener">Platino →</a>
+          </div>
+          <div class="pat p-or reveal d1">
+            <div class="pat-tier">Oro</div>
+            <h3>Patrocinio Oro</h3>
+            <ul>
+              <li>Stand en área principal del evento</li>
+              <li>5 pases completos al evento</li>
+              <li>Logo en comunicaciones digitales</li>
+              <li>Mención en keynotes</li>
+              <li>Participación en panel de industria</li>
+              <li>Presencia en pantallas del evento</li>
+            </ul>
+            <a href="https://int.iaExpo.ai/oro" class="pat-btn" target="_blank" rel="noopener">Oro →</a>
+          </div>
+          <div class="pat p-si reveal d2">
+            <div class="pat-tier">Plata</div>
+            <h3>Patrocinio Plata</h3>
+            <ul>
+              <li>Stand en área de networking</li>
+              <li>3 pases completos al evento</li>
+              <li>Logo en programa del evento</li>
+              <li>Mención en redes sociales</li>
+              <li>Presencia en pantallas digitales</li>
+            </ul>
+            <a href="https://int.iaExpo.ai/plata" class="pat-btn" target="_blank" rel="noopener">Plata →</a>
+          </div>
+          <div class="pat p-micro reveal d2" style="grid-column: span 2;">
+            <div class="pat-tier">✨ Micro-Patrocinios</div>
+            <h3>Otras Oportunidades de Patrocinio</h3>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;">Visibilidad creativa e impactante sin importar el presupuesto. Cada opción te conecta directamente con los 250 asistentes.</p>
+            <ul style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none;margin-bottom:28px;">
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🎒</span><div><strong style="color:var(--text);display:block;">Bolsa de Registro</strong>Desde $40,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🎁</span><div><strong style="color:var(--text);display:block;">Goodies</strong>Desde $25,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🌐</span><div><strong style="color:var(--text);display:block;">Banner Digital iaExpo.ai</strong>Desde $15,000 MXN/mes</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>☕</span><div><strong style="color:var(--text);display:block;">Coffee Break</strong>Desde $50,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>📱</span><div><strong style="color:var(--text);display:block;">App / WiFi</strong>Desde $35,000 MXN</div>
+              </li>
+              <li style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
+                <span>🎤</span><div><strong style="color:var(--text);display:block;">Sesión / Taller</strong>Desde $60,000 MXN</div>
+              </li>
+            </ul>
+            <a href="#contacto" class="pat-btn">Solicitar Información →</a>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:28px;font-size:0.72rem;color:var(--text-dim);opacity:0.7;">Todos los precios en pesos mexicanos (MXN)<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
+      </div>
+    </section>
+    <div class="gd"></div>
+
+<section id="alianzas">
       <div class="si">
         <div class="eyebrow">Alianzas</div>
         <h2 class="stitle reveal">Unidos por la <span class="accent">Innovación</span></h2>
@@ -1874,76 +2639,21 @@
           <div style="display:inline-block;padding:32px 48px;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(124,58,237,0.06));border:1px solid rgba(0,212,255,0.15);border-radius:20px;">
             <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:10px;">¿Tu organización quiere ser parte de la historia?</h3>
             <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Únete como aliado de IA Expo Internacional 2027 y conecta tu marca con los líderes de IA en LATAM.</p>
-            <a href="#patrocinios" class="btn-primary" style="padding:12px 28px;font-size:14px;">Ver Paquetes de Patrocinio →</a>
+            <a href="https://iaExpo.ai/patrocinios" class="btn-primary" style="padding:12px 28px;font-size:14px;">Alianzas Estratégicas →</a>
           </div>
         </div>
       </div>
     </section>
-
     <div class="gd"></div>
 
-    <section id="patrocinios">
+<section id="contacto">
       <div class="si">
-        <div class="eyebrow">Patrocinios</div>
-        <h2 class="stitle reveal">Asocia tu Marca con<br><span class="accent">el Futuro de la IA</span></h2>
-        <p class="sdesc reveal d1">Conecta con 220 tomadores de decisión, líderes de IA y ejecutivos de toda LATAM durante 3 días de alto impacto.</p>
-        <div class="pat-grid">
-          <div class="pat p-pl reveal">
-            <div class="pat-tier">Platino</div>
-            <h3>Patrocinador Platino</h3>
-            <ul>
-              <li>Naming rights del evento o track principal</li>
-              <li>Keynote de apertura o clausura</li>
-              <li>Stand premium de doble espacio</li>
-              <li>10 pases VIP completos</li>
-              <li>Logo en todas las comunicaciones</li>
-              <li>Mención en todos los keynotes</li>
-              <li>Activación de marca personalizada</li>
-            </ul>
-            <a href="mailto:info@iaExpo.ai?subject=Patrocinio Platino - IA Expo 2027" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-or reveal d1">
-            <div class="pat-tier">Oro</div>
-            <h3>Patrocinador Oro</h3>
-            <ul>
-              <li>Stand en área principal del evento</li>
-              <li>5 pases completos al evento</li>
-              <li>Logo en comunicaciones digitales</li>
-              <li>Mención en keynotes</li>
-              <li>Participación en panel de industria</li>
-              <li>Presencia en pantallas del evento</li>
-            </ul>
-            <a href="mailto:info@iaExpo.ai?subject=Patrocinio Oro - IA Expo 2027" class="pat-btn">Solicitar Información →</a>
-          </div>
-          <div class="pat p-si reveal d2">
-            <div class="pat-tier">Plata</div>
-            <h3>Patrocinador Plata</h3>
-            <ul>
-              <li>Stand en área de networking</li>
-              <li>3 pases completos al evento</li>
-              <li>Logo en programa del evento</li>
-              <li>Mención en redes sociales</li>
-              <li>Presencia en pantallas digitales</li>
-            </ul>
-            <a href="mailto:info@iaExpo.ai?subject=Patrocinio Plata - IA Expo 2027" class="pat-btn">Solicitar Información →</a>
-          </div>
-        </div>
-        <div style="text-align:center;" class="reveal">
-          <a href="patrocinios.html" class="btn-secondary">Ver Todos los Paquetes →</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="gd"></div>
-
-    <section id="contacto">
-      <div class="si">
-        <div class="eyebrow">Contacto &amp; Boletos</div>
-        <h2 class="stitle reveal">Tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
-        <div class="con-grid">
+        <div class="eyebrow">Contacto</div>
+        <h2 class="stitle reveal">Estamos aquí para<br><span class="accent">Ayudarte</span></h2>
+        <div class="con-grid" style="margin-top:48px;">
           <div class="con-info reveal">
-            <h3>Reserva tu lugar ahora</h3>
-            <p>Solo hay <strong style="color:white">220 lugares</strong> disponibles para este evento boutique. Los precios de lanzamiento con <strong style="color:var(--cyan)">50% de descuento</strong> son por tiempo limitado.</p>
+            <h3>Escríbenos</h3>
+            <p>¿Tienes preguntas sobre el evento, ponencias, patrocinios o alianzas? Nuestro equipo responde en menos de 24 horas.</p>
             <div class="con-items">
               <a href="mailto:info@iaExpo.ai?subject=Información IA Expo 2027" class="ci">
                 <div class="ci-icon">📧</div>
@@ -1951,7 +2661,7 @@
               </a>
               <a href="https://wa.me/5215555555555?text=Hola%2C%20me%20interesa%20la%20IA%20Expo%202027" target="_blank" class="ci">
                 <div class="ci-icon">📲</div>
-                <div class="ci-text"><strong>WhatsApp</strong><span>Escríbenos directamente</span></div>
+                <div class="ci-text"><strong>WhatsApp</strong><span>+52 55 5963-2687</span></div>
               </a>
               <div class="ci">
                 <div class="ci-icon">📅</div>
@@ -1959,21 +2669,22 @@
               </div>
               <div class="ci">
                 <div class="ci-icon">📍</div>
-                <div class="ci-text"><strong>Sede</strong><span>Ciudad de México · Por confirmar</span></div>
+                <div class="ci-text"><strong>Sede</strong><span id="ev-info-sede">Westin Santa Fe • Ciudad de México</span></div>
               </div>
               <a href="https://iaExpo.ai" class="ci">
                 <div class="ci-icon">🌐</div>
-                <div class="ci-text"><strong>Web</strong><span>iaExpo.ai</span></div>
+                <div class="ci-text"><strong>Web</strong><span>int.iaExpo.ai</span></div>
               </a>
             </div>
           </div>
-          <div class="bol-card reveal d1">
-            <div class="bol-hdr">
-              <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
-              <p>Precio de lanzamiento con 50% OFF · Solo 220 lugares</p>
+          <div class="bol-reg-box reveal d1">
+            <div class="bol-reg-hdr">
+              <h3>IA Expo Internacional 2027</h3>
             </div>
-            <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" id="inline-ZytHIX9hH3aKeNV1fVt0" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" data-layout-iframe-id="inline-ZytHIX9hH3aKeNV1fVt0" data-form-id="ZytHIX9hH3aKeNV1fVt0" title="IA Expo Registro"></iframe>
-            <script src="https://api.fanforce.online/js/form_embed.js"></script>
+            <div class="bol-reg-form">
+              <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" id="inline-ZytHIX9hH3aKeNV1fVt0" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" data-layout-iframe-id="inline-ZytHIX9hH3aKeNV1fVt0" data-form-id="ZytHIX9hH3aKeNV1fVt0" title="IA Expo Registro"></iframe>
+              <script src="https://api.fanforce.online/js/form_embed.js"></script>
+            </div>
           </div>
         </div>
       </div>
@@ -2001,11 +2712,11 @@
         <div class="fc">
           <h4>Participa</h4>
           <ul>
-            <li><a href="#contacto">Comprar Boletos</a></li>
+            <li><a href="#boletos">Comprar Boletos</a></li>
             <li><a href="#patrocinios">Ser Patrocinador</a></li>
             <li><a href="#convocatoria">Enviar Paper</a></li>
-            <li><a href="mailto:info@iaExpo.ai">Ser Speaker</a></li>
-            <li><a href="monterrey.html">IA Expo Monterrey 2026</a></li>
+            <li><a href="#convocatoria">Ser Speaker</a></li>
+            <li><a href="https://iaExpo.ai/monterrey">IA Expo Monterrey 2026</a></li>
           </ul>
         </div>
         <div class="fc">
@@ -2021,6 +2732,9 @@
       <div class="fbot">
         <p>© 2025-2026 IA Expo Internacional · Todos los derechos reservados · Ciudad de México, México</p>
         <span class="powered">Digital Gap, Inc. · Asteri Eventos · Creavizer</span>
+      </div>
+      <div style="max-width:1200px;margin:0 auto;padding:12px 5% 20px;border-top:1px solid rgba(255,255,255,0.04);">
+        <p style="font-size:11px;color:var(--text-dim);text-align:center;line-height:1.7;opacity:0.7;">La información contenida en este sitio, incluyendo precios, fechas, programas, ponentes y condiciones de participación, es de carácter informativo y está sujeta a cambios sin previo aviso. Para información actualizada y confirmada, comuníquese directamente con el equipo organizador.</p>
       </div>
     </footer>
 
@@ -2090,6 +2804,13 @@
           init();
         });
       })();
+
+      function showDay(id, btn) {
+        document.querySelectorAll('.day-panel').forEach(d => d.classList.remove('active'));
+        document.querySelectorAll('.dbtn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        if (btn) btn.classList.add('active');
+      }
 
       function toggleNav() {
         document.getElementById('hbtn').classList.toggle('open');
