@@ -120,6 +120,9 @@
       }
 
       .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         font-size: 0.75rem;
         font-weight: 800;
         letter-spacing: 1.5px;
@@ -128,6 +131,12 @@
         text-decoration: none;
         white-space: nowrap;
         flex-shrink: 0;
+      }
+      .nav-brand img {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        object-fit: cover;
       }
 
       .nav-tabs {
@@ -2334,7 +2343,7 @@
       /* ══ 24  EVENTOS — Event Cards ══ */
       .ev-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 24px;
         margin-top: 56px;
         align-items: start;
@@ -2502,7 +2511,6 @@
       .ev-cta-strip p { font-size: 15px; color: var(--text-muted); }
       .ev-cta-strip p strong { color: var(--text); }
 
-      @media(max-width: 1024px) { .ev-grid { grid-template-columns: 1fr 1fr; } }
       @media(max-width: 640px)  { .ev-grid { grid-template-columns: 1fr; } .ev-cta-strip { flex-direction: column; text-align: center; } }
 
       /* ══ 25  VIDEO TESTIMONIALES ══ */
@@ -2652,7 +2660,10 @@
 
     <!-- ══ NAVIGATION — DESKTOP ══ -->
     <nav>
-      <a href="https://iaExpo.ai" class="nav-brand">IA Expo</a>
+      <a href="https://iaExpo.ai" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo" onerror="this.style.display='none'">
+        IA Expo
+      </a>
       <div class="nav-tabs">
         <a href="#beneficios" class="ntab"><span class="ico">✨</span> Beneficios</a>
         <a href="#eventos" class="ntab"><span class="ico">🌟</span> Eventos</a>
@@ -2711,7 +2722,7 @@
             <span class="hev-loc">📅 24–25 Sep 2026</span>
           </a>
           -->
-          <a href="https://iaExpo.ai/2027" target="_blank" class="hev-pill">
+          <a href="https://int.iaExpo.ai" target="_blank" class="hev-pill">
             <span class="hev-label">⭐ Lanzamiento · 50% OFF</span>
             <span class="hev-name">IA Expo Internacional 2027</span>
             <span class="hev-loc">📍 Ciudad de México</span>
@@ -2763,7 +2774,7 @@
           </div>
         </div>
         <div style="text-align:center;margin-top:44px;" class="reveal">
-          <a href="#contacto" class="btn-primary">🚀 Únete a la Comunidad</a>
+          <a href="#contacto" class="btn-primary">🚀 Más Información</a>
         </div>
       </div>
     </section>
@@ -2817,12 +2828,6 @@
             <a href="https://iaExpo.ai/2026" class="ev-btn ev-btn-past">Ver el Evento →</a>
           </div>
 
-        </div>
-
-        <!-- CTA Strip -->
-        <div class="ev-cta-strip reveal">
-          <p>¿Quieres ser parte de la historia que estamos escribiendo? <strong>Patrocinadores, expositores y speakers</strong> — hay un lugar especial para ti en IA Expo.</p>
-          <a href="#contacto" class="btn-secondary">Únete como Aliado →</a>
         </div>
 
       </div>
@@ -2894,7 +2899,7 @@
         <div style="margin-top:48px;text-align:center;" class="reveal">
           <div style="display:inline-block;padding:32px 48px;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(124,58,237,0.06));border:1px solid rgba(0,212,255,0.15);border-radius:20px;">
             <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;margin-bottom:10px;">¿Tu organización quiere ser parte de la historia?</h3>
-            <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Únete como aliado de IA Expo Internacional 2027 y conecta tu marca con los líderes de IA en LATAM.</p>
+            <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Únete como aliado de IA Expo Internacional y conecta tu marca con los líderes de IA en el Mundo.</p>
             <a href="#contacto" class="btn-primary" style="padding:12px 28px;font-size:14px;">Alianzas Estratégicas →</a>
           </div>
         </div>
@@ -3078,7 +3083,6 @@
           </div>
         </div>
         <div style="text-align:center;margin-top:44px;" class="reveal">
-          <a href="#contacto" class="btn-secondary">Colabora con Nosotros →</a>
         </div>
       </div>
     </section>
@@ -3335,7 +3339,7 @@
         </div>
         <div style="text-align:center;margin-top:40px;" class="reveal">
           <p style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">¿Tienes otra pregunta?</p>
-          <a href="mailto:info@iaExpo.ai?subject=Pregunta sobre IA Expo 2027" class="btn-secondary">Escríbenos →</a>
+          <a href="#contacto" class="btn-primary">🚀 Más Información</a>
         </div>
       </div>
     </section>
@@ -3383,7 +3387,7 @@
       <div class="fg">
         <div class="fb">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-            <div style="width:44px;height:44px;background:var(--gradient-1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:white;box-shadow:0 0 20px rgba(0,212,255,0.4);">IA</div>
+            <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo" style="width:44px;height:44px;border-radius:10px;object-fit:cover;box-shadow:0 0 20px rgba(0,212,255,0.4);" onerror="this.outerHTML='<div style=\'width:44px;height:44px;background:var(--gradient-1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:white;\'>IA</div>'">
             <div style="display:flex;flex-direction:column;line-height:1.1;"><span style="font-size:15px;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">IA EXPO</span><span style="font-size:11px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;">INTERNACIONAL</span></div>
           </div>
           <p>"IA Para la Vida Real 2.0" — El evento de inteligencia artificial más inspirador de LATAM.</p>
