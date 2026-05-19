@@ -154,18 +154,11 @@ def actualizar(html: str, v: dict) -> str:
          f"Envía tu paper y preséntalo ante {cap} líderes, "
          f"académicos e innovadores de LATAM."),
 
-        ("ev-pat-desc",
-         f"Conecta con {cap} tomadores de decisión, líderes de IA y ejecutivos "
-         f"de toda LATAM durante 3 días de alto impacto."),
-
         ("ev-reg-desc",
          f"Precio de lanzamiento con 50% OFF · Solo {cap} lugares disponibles"),
 
         ("ev-info-sede",
-         f"Ciudad de México · {venue}"),
-
-        ("ev-bol-desc",
-         f"Precio de lanzamiento con 50% OFF · Solo {cap} lugares disponibles"),
+         f"{venue} • Ciudad de México"),
 
         # ── Precios de boletos ──
         ("ev-tkt-expo-launch",  fmt_launch(expo)),
@@ -230,7 +223,7 @@ def main():
     html = actualizar(html, v)
     HTML_FILE.write_text(html, encoding="utf-8")
 
-    total = 1 + 31   # 1 atributo + 31 innerHTML
+    total = 1 + 29   # 1 atributo + 29 innerHTML
     print(f"\n🎉 Listo — {total} elementos actualizados en {HTML_FILE.name}")
 
 if __name__ == "__main__":
