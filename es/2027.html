@@ -85,14 +85,26 @@
       }
 
       .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-brand img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px;
+        display: block;
+      }
+      .nav-brand span {
         font-size: 0.75rem;
         font-weight: 800;
         letter-spacing: 1.5px;
         text-transform: uppercase;
         color: var(--cyan);
-        text-decoration: none;
-        white-space: nowrap;
-        flex-shrink: 0;
       }
 
       .nav-tabs {
@@ -213,10 +225,10 @@
         position: relative;
         min-height: 100vh;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 120px 5% 80px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 96px 6% 80px;
         z-index: 1;
         background: var(--gradient-hero);
       }
@@ -225,7 +237,7 @@
         position: absolute;
         inset: 0;
         background: url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center 30%/cover no-repeat;
-        opacity: 0.08;
+        opacity: 0.85;
         animation: slowzoom 20s ease-out forwards;
       }
 
@@ -327,7 +339,7 @@
         font-size: clamp(15px, 1.8vw, 19px);
         color: var(--text-muted);
         max-width: 640px;
-        margin: 0 auto 48px;
+        margin: 0 0 48px;
         line-height: 1.7;
         animation: fadeInUp 0.8s ease 0.4s both;
       }
@@ -338,12 +350,22 @@
       }
 
       .cd-wrap {
-        animation: fadeInUp 0.8s ease 0.5s both;
-        margin-bottom: 48px;
+        position: absolute;
+        top: 80px;
+        right: 6%;
+        z-index: 3;
+        animation: fadeInDown 0.8s ease 0.5s both;
+        text-align: center;
+        background: rgba(3,7,18,0.60);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 20px 20px;
       }
 
       .cd-label {
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--text-dim);
@@ -353,8 +375,8 @@
       .countdown {
         display: flex;
         justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
+        gap: 8px;
+        flex-wrap: nowrap;
       }
 
       .cd-unit {
@@ -365,17 +387,17 @@
 
       .cd-num {
         font-family: 'Space Grotesk', sans-serif;
-        font-size: clamp(28px, 4vw, 52px);
+        font-size: 36px;
         font-weight: 700;
         background: var(--gradient-1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         line-height: 1;
-        padding: 14px 20px;
-        background-color: rgba(255, 255, 255, 0.03);
+        padding: 14px 16px;
+        background-color: rgba(255, 255, 255, 0.04);
         border: 1px solid var(--glass-border);
         border-radius: 12px;
-        min-width: 84px;
+        min-width: 68px;
         text-align: center;
         position: relative;
       }
@@ -392,7 +414,7 @@
       }
 
       .cd-unit span:last-child {
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-dim);
@@ -400,7 +422,7 @@
       }
 
       .cd-sep {
-        font-size: 36px;
+        font-size: 24px;
         color: var(--text-dim);
         align-self: center;
         padding-bottom: 20px;
@@ -410,10 +432,81 @@
       .hero-btns {
         display: flex;
         gap: 16px;
-        justify-content: center;
+        justify-content: flex-start;
         flex-wrap: wrap;
         animation: fadeInUp 0.8s ease 0.6s both;
         margin-bottom: 64px;
+      }
+
+      /* ── Hero CTA Cards (estilo ev-card de home.html) ── */
+      .hero-cta-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 20px 24px;
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+        background: var(--glass);
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        min-width: 200px;
+      }
+      .hero-cta-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+      }
+      .hero-cta-card:hover { transform: translateY(-5px); }
+
+      .hero-cta-primary {
+        border-color: rgba(0,212,255,0.4);
+        background: rgba(0,10,25,0.82);
+      }
+      .hero-cta-primary::before { background: var(--gradient-1); }
+      .hero-cta-primary:hover { box-shadow: 0 20px 50px rgba(0,212,255,0.25); background: rgba(0,15,35,0.90); }
+
+      .hero-cta-secondary {
+        border-color: rgba(124,58,237,0.4);
+        background: rgba(10,5,25,0.82);
+      }
+      .hero-cta-secondary::before { background: linear-gradient(90deg, #7c3aed, #a78bfa, #7c3aed); }
+      .hero-cta-secondary:hover { box-shadow: 0 20px 50px rgba(124,58,237,0.25); background: rgba(15,5,35,0.90); }
+
+      .hero-cta-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 10px;
+        border-radius: 100px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+      .hero-cta-primary .hero-cta-badge {
+        background: rgba(0,212,255,0.10);
+        border: 1px solid rgba(0,212,255,0.3);
+        color: var(--cyan);
+      }
+      .hero-cta-secondary .hero-cta-badge {
+        background: rgba(124,58,237,0.10);
+        border: 1px solid rgba(124,58,237,0.3);
+        color: #a78bfa;
+      }
+      .hero-cta-label {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--text);
+        line-height: 1.2;
+      }
+      .hero-cta-sub {
+        font-size: 12px;
+        color: var(--text-muted);
       }
 
       .btn-primary {
@@ -480,7 +573,7 @@
 
       .hero-stats {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 48px;
         flex-wrap: wrap;
         animation: fadeInUp 0.8s ease 0.7s both;
@@ -490,6 +583,9 @@
 
       .hstat {
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .hstat-n {
@@ -1667,6 +1763,59 @@
         color: var(--text-muted);
       }
 
+      /* ── CARRUSEL IAEXPO 2026 ── */
+      .iax-carousel-wrap {
+        margin-top: 64px;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 60px rgba(0,212,255,0.12), 0 20px 60px rgba(0,0,0,0.5);
+        border: 1px solid rgba(0,212,255,0.15);
+        aspect-ratio: 16/9;
+      }
+      .iax-carousel-track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+      }
+      .iax-carousel-slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .iax-carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .iax-carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(3,7,18,0.7);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(0,212,255,0.3);
+        color: var(--cyan);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.25s ease;
+      }
+      .iax-carousel-btn:hover {
+        background: rgba(0,212,255,0.15);
+        border-color: var(--cyan);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .iax-carousel-btn.prev { left: 14px; }
+      .iax-carousel-btn.next { right: 14px; }
+
       /* FOOTER */
       footer {
         background: var(--dark);
@@ -1859,18 +2008,8 @@
           grid-template-columns: 1fr;
         }
 
-        .countdown {
-          gap: 8px;
-        }
-
-        .cd-sep {
-          font-size: 28px;
-        }
-
-        .cd-num {
-          min-width: 64px;
-          font-size: 26px;
-          padding: 12px 14px;
+        .cd-wrap {
+          display: none !important;
         }
 
         .hero-stats {
@@ -2033,7 +2172,10 @@
 
     <!-- NAV DESKTOP -->
     <nav>
-      <a href="https://int.iaExpo.ai" class="nav-brand">IA Expo Internacional 2027</a>
+      <a href="https://int.iaExpo.ai" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+        <span>IA Expo Internacional 2027</span>
+      </a>
       <div class="nav-tabs">
         <a href="#iaexpo" class="ntab"><span class="ico">🌟</span> Sobre IA Expo</a>
         <a href="#boletos" class="ntab"><span class="ico">🎟️</span> Tickets</a>
@@ -2061,59 +2203,69 @@
 
     <section id="hero">
       <div class="hero-bg-img"></div>
-      <div style="position:relative;z-index:2;width:100%;">
+      <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(to right, rgba(3,7,18,0.60) 0%, rgba(3,7,18,0.35) 45%, rgba(3,7,18,0.05) 100%);pointer-events:none;"></div>
+      <div class="cd-wrap">
+        <div class="cd-label">Cuenta regresiva al evento</div>
+        <div class="countdown">
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-days">---</div><span>Días</span>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-hours">--</div><span>Horas</span>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-mins">--</div><span>Minutos</span>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-secs">--</div><span>Segundos</span>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;z-index:2;width:100%;max-width:820px;">
         <div class="hero-eyebrow">
           <div class="dot"></div>28 · 29 · 30 de Enero de 2027 · Ciudad de México
         </div>
         <h1 class="hero-title"><span class="ia">IA </span>Expo</h1>
         <div class="hero-sub">Internacional 2027</div>
         <div class="hero-lema">"IA Para la Vida Real 2.0"</div>
-        <div class="hero-loc" id="ev-hero-loc">📍 Ciudad de México · Westin Santa fe</div>
-        <p class="hero-desc" id="ev-hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>3 días, 8 tracks temáticos, 200 líderes</strong> que ya están usando la IA para transformar industrias reales.</p>
-        <div class="cd-wrap">
-          <div class="cd-label">Cuenta regresiva al evento</div>
-          <div class="countdown">
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-days">---</div><span>Días</span>
-            </div>
-            <div class="cd-sep">:</div>
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-hours">--</div><span>Horas</span>
-            </div>
-            <div class="cd-sep">:</div>
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-mins">--</div><span>Minutos</span>
-            </div>
-            <div class="cd-sep">:</div>
-            <div class="cd-unit">
-              <div class="cd-num" id="cd-secs">--</div><span>Segundos</span>
-            </div>
-          </div>
-        </div>
+        <div class="hero-loc" id="ev-hero-loc">📍 Westin Santa Fe · Ciudad de México</div>
+        <p class="hero-desc" id="ev-hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>3 días, 8 tracks temáticos, 4 talleres prácticos y líderes de alto impacto</strong> que ya están usando la IA para transformar industrias reales.</p>
         <div class="hero-btns">
-          <a href="#boletos" class="btn-primary">🎟️ Boletos con 50% OFF</a>
-          <a href="#iaexpo" class="btn-secondary">Conocer el Evento →</a>
+          <a href="#boletos" class="hero-cta-card hero-cta-primary">
+            <div class="hero-cta-badge">⭐ Precio Lanzamiento · 50% OFF</div>
+            <div class="hero-cta-label">🎟️ Asegurar mi Lugar</div>
+            <div class="hero-cta-sub">El cupo es limitado</div>
+          </a>
+          <a href="#programa" class="hero-cta-card hero-cta-secondary">
+            <div class="hero-cta-badge">✦ IA Para la Vida Real</div>
+            <div class="hero-cta-label">Conocer el Evento</div>
+            <div class="hero-cta-sub">3 días · 8 tracks · 4 talleres prácticos</div>
+          </a>
         </div>
         <div class="hero-stats">
           <div class="hstat">
-            <div class="hstat-n" id="ev-stat-asistentes">200</div>
-            <div class="hstat-l">Líderes en IA</div>
+            <div class="hstat-n">3</div>
+            <div class="hstat-l">Días de Impacto</div>
           </div>
           <div class="hstat">
             <div class="hstat-n">8</div>
             <div class="hstat-l">Tracks Temáticos</div>
           </div>
           <div class="hstat">
-            <div class="hstat-n">3</div>
-            <div class="hstat-l">Días de Impacto</div>
+            <div class="hstat-n">4</div>
+            <div class="hstat-l">Talleres Prácticos</div>
           </div>
+          <div style="width:100%;height:0;flex-basis:100%;"></div>
           <div class="hstat">
-            <div class="hstat-n">50%</div>
+            <div class="hstat-n">50% OFF</div>
             <div class="hstat-l">Precio Lanzamiento</div>
           </div>
           <div class="hstat">
-            <div class="hstat-n">LATAM</div>
-            <div class="hstat-l">Alcance</div>
+            <div class="hstat-n" style="font-size:28px;background:none;-webkit-text-fill-color:initial;">🌍</div>
+            <div class="hstat-l">Impacto Global</div>
           </div>
         </div>
       </div>
@@ -2130,10 +2282,20 @@
       <!-- Imagen de fondo sutil -->
       <div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center/cover no-repeat;opacity:0.05;pointer-events:none;z-index:0;"></div>
       <div class="si" style="position:relative;z-index:1;">
-        <div class="expo-side-grid">
-          <!-- Contenido izquierdo -->
+
+        <!-- 1. Eyebrow -->
+        <div class="eyebrow">Sobre la IA Expo</div>
+
+        <!-- 2. Carrusel de fotos IA Expo 2026 -->
+        <div class="iax-carousel-wrap reveal" id="iaxCarouselWrap">
+          <div class="iax-carousel-track" id="iaxTrack"></div>
+          <button class="iax-carousel-btn prev" onclick="iaxMove(-1)">❮</button>
+          <button class="iax-carousel-btn next" onclick="iaxMove(1)">❯</button>
+        </div>
+
+        <!-- 3. Contenido + Registro en dos columnas -->
+        <div class="expo-side-grid" style="margin-top:56px;">
           <div class="expo-content reveal">
-            <div class="eyebrow">Sobre la IA Expo</div>
             <h2 class="stitle">La <span class="accent">EXPO</span> que Transforma<br>Vidas Reales</h2>
             <p>Después del éxito rotundo de <strong>IA Expo Internacional 2026 en Ciudad de México</strong>, regresamos con una edición aún más ambiciosa. Más tracks, más speakers internacionales, más impacto.</p>
             <p>IA Expo Internacional 2027 es el encuentro de quienes ya están usando la inteligencia artificial para transformar empresas, industrias y vidas en <strong>LATAM y el mundo</strong>.</p>
@@ -2164,6 +2326,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
     <div class="gd"></div>
@@ -2694,7 +2857,7 @@
       <div class="fg">
         <div class="fb">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-            <div style="width:44px;height:44px;background:var(--gradient-1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:white;box-shadow:0 0 20px rgba(0,212,255,0.4);">IA</div>
+            <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" style="height:52px;width:auto;border-radius:8px;object-fit:contain;box-shadow:0 0 20px rgba(0,212,255,0.3);" onerror="this.outerHTML='<div style=\'width:52px;height:52px;background:var(--gradient-1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:white;\'>IA</div>'">
             <div style="display:flex;flex-direction:column;line-height:1.1;"><span style="font-size:15px;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">IA EXPO</span><span style="font-size:11px;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;">INTERNACIONAL</span></div>
           </div>
           <p>"IA Para la Vida Real 2.0" — El evento de inteligencia artificial más inspirador de LATAM. Ciudad de México, 28–30 Enero 2027.</p>
@@ -2858,6 +3021,67 @@
           a.classList.toggle('active', a.getAttribute('href') === `#${cur}`);
         });
       });
+
+      // ── Carrusel IA Expo 2026 ─────────────────────────────────────
+      (function() {
+        const BASE    = 'https://raw.githubusercontent.com/iaExpo/2026/main/';
+        const TOTAL   = 284;
+        const MISSING = 10;
+        const DELAY   = 4000; // 4 segundos
+
+        // Todas las fotos en orden aleatorio
+        const all = [];
+        for (let i = 1; i <= TOTAL; i++) if (i !== MISSING) all.push(i);
+        const photos = all.sort(() => Math.random() - 0.5);
+
+        function pad(n) { return String(n).padStart(3, '0'); }
+
+        let cur = 0, timer;
+
+        function render() {
+          const track = document.getElementById('iaxTrack');
+          if (!track) return;
+
+          photos.forEach((n, i) => {
+            const slide = document.createElement('div');
+            slide.className = 'iax-carousel-slide';
+            slide.innerHTML = `<img src="${BASE}iaExpo.2026.${pad(n)}.jpg"
+              alt="IA Expo 2026" loading="${i === 0 ? 'eager' : 'lazy'}">`;
+            track.appendChild(slide);
+          });
+
+          startTimer();
+        }
+
+        function update() {
+          const track = document.getElementById('iaxTrack');
+          if (track) track.style.transform = `translateX(-${cur * 100}%)`;
+        }
+
+        window.iaxMove = function(dir) {
+          cur = (cur + dir + photos.length) % photos.length;
+          update();
+          resetTimer();
+        };
+
+        function startTimer() {
+          timer = setInterval(() => iaxMove(1), DELAY);
+        }
+        function resetTimer() {
+          clearInterval(timer); startTimer();
+        }
+
+        // Pausar al salir del viewport para ahorrar recursos
+        const observer = new IntersectionObserver(entries => {
+          entries[0].isIntersecting ? startTimer() : clearInterval(timer);
+        }, { threshold: 0.2 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+          render();
+          const wrap = document.getElementById('iaxCarouselWrap');
+          if (wrap) observer.observe(wrap);
+        });
+      })();
     </script>
   </body>
 </html>

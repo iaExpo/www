@@ -128,12 +128,12 @@ def actualizar(html: str, v: dict) -> str:
     inners = [
         # id                   nuevo innerHTML
         ("ev-hero-loc",
-         f"📍 Ciudad de México · {venue}"),
+         f"📍 {venue} · Ciudad de México"),
 
         ("ev-hero-desc",
          f"El evento de inteligencia artificial más inspirador de LATAM regresa "
          f"más grande y más poderoso. "
-         f"<strong>3 días, 8 tracks temáticos, {cap} líderes</strong> "
+         f"<strong>3 días, 8 tracks temáticos, 4 talleres prácticos y líderes de alto impacto</strong> "
          f"que ya están usando la IA para transformar industrias reales."),
 
         ("ev-stat-asistentes",
