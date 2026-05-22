@@ -18,6 +18,7 @@ Named ranges usados:
   Precio_Networking   → precio normal boleto Networking
   Precio_VIP          → precio normal boleto VIP
   USD                 → tipo de cambio USD/MXN (referencia)
+  Capacidad_VIPs      → cupo de boletos VIP All Access
 """
 
 import re
@@ -54,6 +55,7 @@ def leer_valores():
     return {
         "Capacidad_Evento":    int(leer_named_range(wb, "Capacidad_Evento",    200)),
         "Venue":               str(leer_named_range(wb, "Venue",               "Por confirmar")),
+        "Capacidad_VIPs":      int(leer_named_range(wb, "Capacidad_VIPs",       20)),
         "Capacidad_Taller":    int(leer_named_range(wb, "Capacidad_Taller",    20)),
         "Capacidad_Talleres":  int(leer_named_range(wb, "Capacidad_Talleres",  80)),
         "Capacidad_Networking":int(leer_named_range(wb, "Capacidad_Networking",25)),
@@ -136,9 +138,6 @@ def actualizar(html: str, v: dict) -> str:
          f"<strong>3 días, 8 tracks temáticos, 4 talleres prácticos y líderes de alto impacto</strong> "
          f"que ya están usando la IA para transformar industrias reales."),
 
-        ("ev-stat-asistentes",
-         str(cap)),
-
         ("ev-expo-cap",
          f"Solo <strong>{cap} lugares</strong> disponibles. "
          f"Precio de lanzamiento con 50% de descuento por tiempo limitado."),
@@ -208,6 +207,7 @@ def main():
     v = leer_valores()
     print(f"   Capacidad_Evento    : {v['Capacidad_Evento']}")
     print(f"   Venue               : {v['Venue']}")
+    print(f"   Capacidad_VIPs      : {v['Capacidad_VIPs']}")
     print(f"   Capacidad_Taller    : {v['Capacidad_Taller']}")
     print(f"   Capacidad_Talleres  : {v['Capacidad_Talleres']}")
     print(f"   Capacidad_Networking: {v['Capacidad_Networking']}")
@@ -223,7 +223,7 @@ def main():
     html = actualizar(html, v)
     HTML_FILE.write_text(html, encoding="utf-8")
 
-    total = 1 + 29   # 1 atributo + 29 innerHTML
+    total = 1 + 28   # 1 atributo + 28 innerHTML
     print(f"\n🎉 Listo — {total} elementos actualizados en {HTML_FILE.name}")
 
 if __name__ == "__main__":
