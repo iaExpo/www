@@ -3,23 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IA Expo Internacional™ 2026 — Ciudad de México</title>
+  <title>IA Expo Internacional 2026 — Ciudad de México</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <!-- GHL full-width fix: fuerza ancho completo en contenedores ancestros -->
+  <script>
+  (function(){
+    function ghlFullWidth(){
+      var root = document.querySelector('nav') || document.body.firstElementChild;
+      if(!root) return;
+      var p = root.parentElement;
+      var i = 0;
+      while(p && p !== document.documentElement && i++ < 12){
+        p.style.setProperty('max-width','100%','important');
+        p.style.setProperty('width','100%','important');
+        p.style.setProperty('padding-left','0','important');
+        p.style.setProperty('padding-right','0','important');
+        p.style.setProperty('margin-left','0','important');
+        p.style.setProperty('margin-right','0','important');
+        p.style.setProperty('box-sizing','border-box','important');
+        p = p.parentElement;
+      }
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', ghlFullWidth);
+    else ghlFullWidth();
+  })();
+  </script>
   <style>
     :root {
-      --navy:     #040d1a;
-      --deep:     #071428;
-      --blue:     #0a5fff;
-      --electric: #1e8fff;
-      --cyan:     #00cfff;
-      --gold:     var(--cyan);
-      --silver:   #b0bec5;
-      --white:    #f0f4ff;
-      --card-bg:  rgba(10,25,60,0.72);
-      --border:   rgba(30,143,255,0.22);
+      --navy:         #040d1a;
+      --deep:         #071428;
+      --blue:         #0a5fff;
+      --electric:     #1e8fff;
+      --cyan:         #00cfff;
+      --gold:         var(--cyan);
+      --silver:       #b0bec5;
+      --white:        #f0f4ff;
+      --card-bg:      rgba(10,25,60,0.72);
+      --border:       rgba(30,143,255,0.22);
+      --glass:        rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.12);
+      --text:         #f0f4ff;
+      --text-muted:   #9ca3af;
+      --text-dim:     #6b7280;
     }
+
+    /* ─── GHL FULL-WIDTH OVERRIDE ───────────────────────────── */
+    html, body {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: clip; /* clip no rompe position:sticky, hidden sí */
+    }
+    /* Clases comunes del page builder de GHL */
+    .container, .row, .col, .col-md-12, .col-sm-12,
+    .inner-section, .section__body, .section-body,
+    .section-content, .container-shadow,
+    .cf-element, .cf-element-wrapper,
+    [class*="elementor-section-boxed"] {
+      max-width: 100% !important;
+      width: 100% !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    /* ─────────────────────────────────────────────────────── */
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,7 +80,7 @@
       color: var(--white);
       font-family: 'Outfit', sans-serif;
       font-weight: 400;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     /* ─── UTILITY ──────────────────────────────────────────── */
@@ -60,93 +110,124 @@
 
     /* ─── NAV ───────────────────────────────────────────────── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.1rem 2.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 300;
+      background: rgba(3,7,18,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(to bottom, rgba(4,13,26,0.95), transparent);
-      backdrop-filter: blur(6px);
+      padding: 0 20px;
+      height: 56px;
+      gap: 12px;
     }
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.08em;
-      color: var(--white);
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--cyan); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--silver);
-      text-decoration: none;
-      transition: color 0.25s;
-    }
-    .nav-links a:hover { color: var(--cyan); }
-
-    /* ─── NAV DROPDOWN ──────────────────────────────────────── */
-    .nav-dropdown {
-      position: relative;
+    .nav-brand {
       display: flex;
       align-items: center;
-    }
-    .nav-dropdown > a {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .nav-dropdown > a::after {
-      content: '▾';
-      font-size: 0.65rem;
-      opacity: 0.7;
-      transition: transform 0.2s;
-    }
-    .nav-dropdown:hover > a::after {
-      transform: rotate(180deg);
-    }
-    .nav-submenu {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: rgba(4,13,26,0.97);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      min-width: 180px;
-      padding: 0.5rem 0;
-      list-style: none;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(0);
-      transition: opacity 0.2s;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-    }
-    .nav-dropdown:hover .nav-submenu {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateY(0);
-    }
-    .nav-submenu li a {
-      display: block;
-      padding: 0.6rem 1.2rem;
-      font-size: 0.73rem;
-      letter-spacing: 0.1em;
-      color: var(--silver);
+      gap: 10px;
+      text-decoration: none;
       white-space: nowrap;
-      transition: color 0.2s, background 0.2s;
+      flex-shrink: 0;
     }
-    .nav-submenu li a:hover {
+    .nav-brand img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+    }
+    .nav-brand span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       color: var(--cyan);
-      background: rgba(0,207,255,0.06);
     }
-    .nav-submenu li + li {
-      border-top: 1px solid var(--border);
+    .nav-tabs {
+      display: flex;
+      gap: 4px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .ntab {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--silver);
+      padding: 6px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      transition: all 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+    }
+    .ntab .ico { font-size: 0.85rem; }
+    .ntab:hover { border-color: var(--cyan); color: var(--cyan); }
+    .ntab.active {
+      background: linear-gradient(135deg, var(--blue), var(--electric));
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    /* ─── HAMBURGER MENU ────────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 9px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--cyan);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 12px 20px 16px;
+      background: rgba(3,7,18,0.99);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 56px;
+      z-index: 299;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu .ntab {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-tabs  { display: none; }
+      .hamburger { display: flex; }
     }
 
     #hero {
@@ -301,6 +382,32 @@
     /* ─── SECTION BASE ──────────────────────────────────────── */
     section {
       padding: 7rem 6vw;
+    }
+
+    /* ─── CONTENT WIDTH 1100px ──────────────────────────────── */
+    /* Padding lateral para mobile; el max-width está en los wrappers internos */
+    #carrusel,
+    #testimoniales,
+    #sponsors,
+    #cta-2027 {
+      padding-left:  1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    /* Wrappers internos limitados a 1100px */
+    #sponsors .section-header,
+    #sponsors .sponsors-grid,
+    #sponsors .sponsor-note,
+    #testimoniales .section-header,
+    #testimoniales .testimonials-grid,
+    #testimoniales .video-section-label,
+    #testimoniales .videos-grid,
+    #contacto > span.section-label,
+    #contacto > h2,
+    #contacto .expo-side-grid {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .section-header {
       margin-bottom: 4rem;
@@ -656,151 +763,92 @@
       box-shadow: 0 0 8px var(--cyan);
     }
 
-    /* ─── FOOTER CTA ────────────────────────────────────────── */
+    /* ─── REGISTRO 2027 / CONTACTO ──────────────────────────── */
     #cta-2027 {
       background: linear-gradient(135deg, #061030 0%, #04122a 50%, #071428 100%);
       border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 7rem 6vw;
+      padding: 7rem 1.5rem;
       position: relative;
+    }
+
+    /* Variables de home.html mapeadas al contexto de 2026.html */
+    #cta-2027 .expo-side-grid,
+    #contacto .expo-side-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    @media(max-width:900px) {
+      #cta-2027 .expo-side-grid,
+      #contacto .expo-side-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    #cta-2027 .expo-content p,
+    #contacto .expo-content p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    #cta-2027 .expo-content p strong,
+    #contacto .expo-content p strong { color: var(--text); }
+
+    #cta-2027 .features,
+    #contacto .features {
+      display: flex; flex-direction: column; gap: 12px; margin-top: 32px;
+    }
+    #cta-2027 .feat,
+    #contacto .feat {
+      display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 12px; transition: all 0.3s ease;
+    }
+    #cta-2027 .feat:hover,
+    #contacto .feat:hover { border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.05); }
+    #cta-2027 .ficon,
+    #contacto .ficon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0; background: rgba(0,212,255,0.1);
+    }
+    #cta-2027 .ftext strong,
+    #contacto .ftext strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    #cta-2027 .ftext span,
+    #contacto .ftext span { font-size: 13px; color: var(--text-dim); }
+
+    #cta-2027 .bol-reg-box,
+    #contacto .bol-reg-box {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
       overflow: hidden;
     }
-    #cta-2027::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 800px; height: 500px;
-      background: radial-gradient(ellipse, rgba(10,95,255,0.13) 0%, transparent 70%);
-      pointer-events: none;
+    #cta-2027 .bol-reg-hdr,
+    #contacto .bol-reg-hdr {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--glass-border);
     }
-    .cta-inner { position: relative; z-index: 2; }
-    #cta-2027 h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.6rem, 5vw, 4.5rem);
-      letter-spacing: 0.03em;
-      margin-bottom: 1rem;
+    #cta-2027 .bol-reg-hdr h3,
+    #contacto .bol-reg-hdr h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;
     }
-    #cta-2027 p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(240,244,255,0.65);
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-    }
-    .cta-btn {
-      display: inline-block;
-      padding: 1rem 2.8rem;
-      background: linear-gradient(135deg, var(--blue), var(--electric));
-      border-radius: 3px;
-      color: #fff;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: box-shadow 0.25s, transform 0.2s;
-      box-shadow: 0 4px 24px rgba(10,95,255,0.4);
-      margin-top: 0.5rem;
-    }
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 36px rgba(10,95,255,0.6);
-    }
+    #cta-2027 .bol-reg-hdr p,
+    #contacto .bol-reg-hdr p { font-size: 0.82rem; color: var(--text-muted); }
+    #cta-2027 .bol-reg-form,
+    #contacto .bol-reg-form { padding: 0; }
 
 
-    /* ─── HAMBURGER MENU ────────────────────────────────────── */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 200;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 860px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: flex !important;
-        flex-direction: column;
-        position: fixed;
-        top: 0; right: 0;
-        width: 260px;
-        height: 100vh;
-        background: rgba(4,13,26,0.98);
-        backdrop-filter: blur(16px);
-        border-left: 1px solid var(--border);
-        padding: 5rem 2rem 2rem;
-        gap: 0;
-        transform: translateX(100%);
-        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-        z-index: 150;
-        overflow-y: auto;
-      }
-      .nav-links.open {
-        transform: translateX(0);
-      }
-      .nav-links li {
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-links li a {
-        display: block;
-        padding: 0.9rem 0;
-        font-size: 0.85rem;
-      }
-      .nav-dropdown { flex-direction: column; align-items: flex-start; }
-      .nav-dropdown > a { width: 100%; }
-      .nav-submenu {
-        position: static;
-        opacity: 1 !important;
-        pointer-events: all !important;
-        transform: none !important;
-        border: none;
-        border-radius: 0;
-        background: transparent;
-        box-shadow: none;
-        padding: 0 0 0 1rem;
-        display: none;
-      }
-      .nav-submenu.open { display: block; }
-      .nav-submenu li { border-bottom: none; }
-      .nav-submenu li a {
-        padding: 0.5rem 0;
-        font-size: 0.78rem;
-        color: rgba(255,255,255,0.45);
-      }
-      .nav-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 140;
-      }
-      .nav-overlay.open { display: block; }
-    }
 
     #contacto {
-      background: #030b18;
+      background: linear-gradient(135deg, #061030 0%, #04122a 50%, #071428 100%);
       border-top: 1px solid var(--border);
-      padding: 5rem 6vw;
+      padding: 7rem 1.5rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .contacto-grid {
       max-width: 1100px;
@@ -865,25 +913,77 @@
     /* ─── FOOTER ────────────────────────────────────────────── */
     footer {
       background: #020a15;
-      padding: 2.5rem 6vw;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
+      padding: 3rem 1.5rem 2rem;
       border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
     .footer-logo {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.2rem;
       letter-spacing: 0.1em;
       color: var(--white);
+      margin-bottom: 0.5rem;
     }
     .footer-logo span { color: var(--cyan); }
     .footer-copy {
       font-size: 0.72rem;
       color: rgba(255,255,255,0.3);
-      text-align: right;
+      line-height: 1.6;
+    }
+    .footer-nav h4,
+    .footer-contact h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-nav ul a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav ul a:hover { color: var(--cyan); }
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .footer-bottom {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    @media (max-width: 640px) {
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
 
     /* ─── SCROLL ANIMATIONS ─────────────────────────────────── */
@@ -900,7 +1000,7 @@
     @media (max-width: 768px) { .sponsors-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 480px) { .sponsors-grid { grid-template-columns: 1fr; } }
     #carrusel {
-      padding: 5rem 6vw 4rem;
+      padding: 5rem max(1.5rem, calc(50vw - 550px)) 4rem;
       background: var(--deep);
       position: relative;
     }
@@ -1047,7 +1147,7 @@
     /* Prevent horizontal overflow globally */
     html, body {
       max-width: 100%;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     /* ── Tablet (max 1024px) ── */
@@ -1110,32 +1210,347 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECCIÓN: ACTAS
+    ═══════════════════════════════════════════════════════════ */
+    #actas {
+      background: #f8faff;
+      padding: 0;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #actas .actas-header {
+      background: rgb(3,14,62);
+      padding: 5rem 6vw 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    #actas .actas-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://raw.githubusercontent.com/iaExpo/2026.Fotos/main/FLYER%20IA%20EXPO%20INTERNACIONAL.jpg') center/cover no-repeat;
+      filter: brightness(0.1) saturate(1.2);
+    }
+    #actas .actas-header-inner {
+      position: relative; z-index: 2; max-width: 800px; margin: 0 auto;
+    }
+    #actas .actas-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);
+      border-radius: 100px; padding: 6px 18px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fbbf24; margin-bottom: 24px;
+    }
+    #actas .actas-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800;
+      line-height: 1.05; color: #93c5fd; margin-bottom: 12px;
+    }
+    #actas .actas-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.6);
+      max-width: 520px; margin: 16px auto 32px; line-height: 1.7;
+    }
+    #actas .actas-hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    #actas .actas-btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #f59e0b 0%, #e07d10 100%);
+      color: #000; font-weight: 700; font-size: 14px;
+      padding: 13px 28px; border-radius: 100px; text-decoration: none;
+      box-shadow: 0 0 28px rgba(245,158,11,0.4); transition: transform .2s;
+    }
+    #actas .actas-btn-gold:hover { transform: translateY(-2px); }
+    #actas .actas-btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.08); color: #f1f1f5;
+      font-weight: 600; font-size: 14px; padding: 13px 28px;
+      border-radius: 100px; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.22); transition: background .2s;
+    }
+    #actas .actas-btn-ghost:hover { background: rgba(255,255,255,0.15); }
+    #actas .actas-hero-stats {
+      display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 44px;
+    }
+    #actas .actas-hero-stats .s-num {
+      font-size: 2rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; color: #f1f1f5;
+    }
+    #actas .actas-hero-stats .s-lbl {
+      font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px;
+    }
+
+    /* Filter bar */
+    #actas .actas-filter-wrap {
+      background: rgba(255,255,255,0.96); border-bottom: 1px solid rgba(0,0,0,0.09);
+      padding: 0 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    #actas .actas-filter-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      overflow-x: auto; padding: 14px 0; scrollbar-width: none;
+    }
+    #actas .actas-filter-inner::-webkit-scrollbar { display: none; }
+    #actas .actas-filter-label {
+      font-size: 12px; font-weight: 600; color: #6b7280;
+      text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap;
+      padding-right: 8px; border-right: 1px solid rgba(0,0,0,0.09); margin-right: 4px;
+    }
+    #actas .actas-fbtn {
+      background: transparent; border: 1px solid rgba(0,0,0,0.09); color: #6b7280;
+      padding: 7px 18px; border-radius: 100px; font-size: 13px; font-weight: 500;
+      cursor: pointer; white-space: nowrap; transition: all .2s;
+    }
+    #actas .actas-fbtn:hover { border-color: rgba(0,0,0,0.2); color: #111827; }
+    #actas .actas-fbtn.active { font-weight: 600; box-shadow: 0 0 16px rgba(37,99,235,0.2); background: rgba(0,0,0,0.07); border-color: rgba(0,0,0,0.2); color: #111827; }
+    #actas .actas-fbtn[data-cat="Visión"].active     { background:rgba(14,165,233,0.12); border-color:#0ea5e9; color:#0369a1; }
+    #actas .actas-fbtn[data-cat="Negocios"].active   { background:rgba(59,130,246,0.12); border-color:#3b82f6; color:#1d4ed8; }
+    #actas .actas-fbtn[data-cat="Medicina"].active   { background:rgba(16,185,129,0.12); border-color:#10b981; color:#065f46; }
+    #actas .actas-fbtn[data-cat="Educación"].active  { background:rgba(245,158,11,0.15); border-color:#f59e0b; color:#92400e; }
+    #actas .actas-fbtn[data-cat="Ética"].active      { background:rgba(239,68,68,0.12);  border-color:#ef4444; color:#991b1b; }
+    #actas .actas-fbtn[data-cat="Gobernanza"].active { background:rgba(6,182,212,0.12);  border-color:#06b6d4; color:#0e7490; }
+
+    /* Main content */
+    #actas .actas-main { max-width: 1100px; margin: 0 auto; padding: 48px 24px 72px; }
+    #actas .actas-banner {
+      background: linear-gradient(135deg,rgba(37,99,235,.10),rgba(59,130,246,.07));
+      border: 1px solid rgba(37,99,235,.20); border-radius: 20px;
+      padding: 32px 36px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+      margin-bottom: 48px; position: relative; overflow: hidden;
+    }
+    #actas .actas-banner::before {
+      content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px;
+      background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%); border-radius:50%;
+    }
+    #actas .actas-banner-icon {
+      width:56px; height:56px; border-radius:14px; flex-shrink:0;
+      background:linear-gradient(135deg,#2563eb,#3b82f6);
+      display:flex; align-items:center; justify-content:center;
+    }
+    #actas .actas-banner-icon svg { width:26px; height:26px; color:#fff; }
+    #actas .actas-banner-text { flex:1; min-width:200px; }
+    #actas .actas-banner-text h3 { font-size:1.15rem; font-weight:700; color:#111827; margin-bottom:4px; }
+    #actas .actas-banner-text p  { font-size:13px; color:#6b7280; }
+    #actas .actas-section-hdr { display:flex; align-items:baseline; gap:12px; margin-bottom:24px; }
+    #actas .actas-section-title { font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:700; color:#111827; }
+    #actas .actas-count { font-size:12px; color:#6b7280; background:rgba(0,0,0,.04); border:1px solid rgba(0,0,0,.09); padding:3px 10px; border-radius:100px; }
+
+    /* Cards grid */
+    #actas .actas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:18px; }
+    #actas .actas-card {
+      background:#fff; border:1px solid rgba(0,0,0,.09); border-radius:16px;
+      overflow:hidden; display:flex; flex-direction:column;
+      transition:transform .25s,border-color .25s,box-shadow .25s;
+      box-shadow:0 2px 12px rgba(0,0,0,.06);
+    }
+    #actas .actas-card:hover { transform:translateY(-5px); border-color:rgba(37,99,235,.4); box-shadow:0 16px 48px rgba(0,0,0,.1); background:#f7f5ff; }
+    #actas .actas-card-hdr { padding:24px 22px 18px; display:flex; align-items:flex-start; gap:14px; }
+    #actas .actas-photo-wrap { flex-shrink:0; position:relative; width:60px; height:60px; }
+    #actas .actas-photo-wrap::before { content:''; position:absolute; inset:-2px; border-radius:50%; background:linear-gradient(135deg,var(--actas-cat-c,#2563eb),#3b82f6); z-index:0; }
+    #actas .actas-photo { width:60px; height:60px; border-radius:50%; object-fit:cover; position:relative; z-index:1; border:2px solid #fff; background:#e8e6f0; }
+    #actas .actas-initials { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg,var(--actas-cat-c,#2563eb),rgba(59,130,246,.6)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:17px; color:#fff; position:relative; z-index:1; border:2px solid #fff; }
+    #actas .actas-author-name { font-size:13px; font-weight:600; color:#111827; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #actas .actas-cat-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:100px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-top:5px; }
+    #actas .actas-cat-badge::before { content:'●'; font-size:6px; }
+    #actas .cb-Vision     { background:rgba(14,165,233,.10);  color:#0369a1; border:1px solid rgba(14,165,233,.25); }
+    #actas .cb-Negocios   { background:rgba(59,130,246,.10);  color:#1e40af; border:1px solid rgba(59,130,246,.25); }
+    #actas .cb-Medicina   { background:rgba(16,185,129,.10);  color:#065f46; border:1px solid rgba(16,185,129,.25); }
+    #actas .cb-Educacion  { background:rgba(245,158,11,.12);  color:#78350f; border:1px solid rgba(245,158,11,.30); }
+    #actas .cb-Etica      { background:rgba(239,68,68,.10);   color:#991b1b; border:1px solid rgba(239,68,68,.25); }
+    #actas .cb-Gobernanza { background:rgba(6,182,212,.10);   color:#0e7490; border:1px solid rgba(6,182,212,.25); }
+    #actas .actas-card-body { padding:0 22px 22px; flex:1; display:flex; flex-direction:column; }
+    #actas .actas-card-title { font-size:14px; font-weight:600; line-height:1.45; color:#111827; flex:1; margin-bottom:18px; }
+    #actas .actas-btn-dl {
+      display:flex; align-items:center; justify-content:center; gap:7px;
+      width:100%; padding:10px 14px; border-radius:10px;
+      border:1px solid rgba(0,0,0,.09); background:rgba(0,0,0,.03);
+      color:#111827; font-size:12px; font-weight:600; text-decoration:none; transition:all .2s;
+    }
+    #actas .actas-btn-dl:hover { background:rgba(37,99,235,.08); border-color:rgba(37,99,235,.35); color:#1e40af; }
+    #actas .actas-divider { grid-column:1/-1; display:flex; justify-content:center; margin:44px 0 2px; }
+    #actas .actas-divider-lbl {
+      font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:800;
+      text-transform:uppercase; letter-spacing:.12em; padding:8px 32px; border-radius:100px; border:2px solid;
+    }
+    #actas .adiv-Vision     { color:#0369a1; border-color:rgba(14,165,233,.35); background:rgba(14,165,233,.07); }
+    #actas .adiv-Negocios   { color:#1e40af; border-color:rgba(59,130,246,.35); background:rgba(59,130,246,.07); }
+    #actas .adiv-Medicina   { color:#065f46; border-color:rgba(16,185,129,.35); background:rgba(16,185,129,.07); }
+    #actas .adiv-Educacion  { color:#78350f; border-color:rgba(245,158,11,.40); background:rgba(245,158,11,.07); }
+    #actas .adiv-Etica      { color:#991b1b; border-color:rgba(239,68,68,.35);  background:rgba(239,68,68,.07);  }
+    #actas .adiv-Gobernanza { color:#0e7490; border-color:rgba(6,182,212,.35);  background:rgba(6,182,212,.07);  }
+    #actas .actas-card.a-hidden { display:none; }
+    #actas .actas-divider.a-hidden { display:none; }
+    @media(max-width:640px){ #actas .actas-grid { grid-template-columns:1fr; } }
+
+    /* ═══════════════════════════════════════════════════════════
+       SECCIÓN: PRESENTACIONES
+    ═══════════════════════════════════════════════════════════ */
+    #presentaciones-seccion {
+      background: #002855;
+      padding: 0;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #presentaciones-seccion .ps-hero {
+      background: #002855; padding: 5rem 2rem 6rem; text-align: center; position: relative; overflow: hidden;
+    }
+    #presentaciones-seccion .ps-ring {
+      position:absolute; border-radius:50%; border:1px solid rgba(0,194,255,.12);
+      top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;
+    }
+    #presentaciones-seccion .ps-ring-1 { width:500px; height:500px; }
+    #presentaciones-seccion .ps-ring-2 { width:750px; height:750px; border-color:rgba(0,194,255,.07); }
+    #presentaciones-seccion .ps-ring-3 { width:1050px; height:1050px; border-color:rgba(0,194,255,.04); }
+    #presentaciones-seccion .ps-glow  { position:absolute; width:350px; height:350px; border-radius:50%; background:radial-gradient(circle,rgba(0,87,184,.5) 0%,transparent 70%); top:-100px; right:-80px; }
+    #presentaciones-seccion .ps-glow2 { position:absolute; width:250px; height:250px; border-radius:50%; background:radial-gradient(circle,rgba(0,194,255,.2) 0%,transparent 70%); bottom:0; left:50px; }
+    #presentaciones-seccion .ps-hero-inner { position:relative; z-index:2; max-width:800px; margin:0 auto; }
+    #presentaciones-seccion .ps-eyebrow { display:inline-flex; align-items:center; gap:.5rem; color:#00C2FF; font-size:.78rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; margin-bottom:1.75rem; }
+    #presentaciones-seccion .ps-eyebrow::before, #presentaciones-seccion .ps-eyebrow::after { content:''; display:inline-block; width:30px; height:1px; background:#00C2FF; opacity:.6; }
+    #presentaciones-seccion .ps-hero h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,5vw,4rem); font-weight:700; color:#fff; line-height:1.1; margin-bottom:.5rem; }
+    #presentaciones-seccion .ps-hero h2 em { font-style:normal; color:#00C2FF; }
+    #presentaciones-seccion .ps-hero-sub { font-size:1rem; color:rgba(255,255,255,.55); font-weight:300; margin-top:1.25rem; }
+
+    #presentaciones-seccion .ps-stats {
+      background:#fff; display:flex; justify-content:center; border-bottom:1px solid #EEF2F7; box-shadow:0 4px 20px rgba(0,0,0,.04);
+    }
+    #presentaciones-seccion .ps-stat { padding:1.3rem 2.5rem; text-align:center; border-right:1px solid #EEF2F7; }
+    #presentaciones-seccion .ps-stat:last-child { border-right:none; }
+    #presentaciones-seccion .ps-stat-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:#0057B8; line-height:1; }
+    #presentaciones-seccion .ps-stat-lbl { font-size:.7rem; font-weight:500; color:#64748B; text-transform:uppercase; letter-spacing:1px; margin-top:.3rem; }
+
+    #presentaciones-seccion .ps-controls { max-width:1100px; margin:2.5rem auto 0; padding:0 2rem; }
+    #presentaciones-seccion .ps-controls-inner {
+      background:#fff; border:1px solid #EEF2F7; border-radius:16px;
+      padding:1.2rem 1.5rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
+      box-shadow:0 2px 12px rgba(0,0,0,.04);
+    }
+    #presentaciones-seccion .ps-search-wrap { position:relative; flex:1; min-width:220px; }
+    #presentaciones-seccion .ps-search-icon { position:absolute; left:1rem; top:50%; transform:translateY(-50%); color:#64748B; pointer-events:none; }
+    #presentaciones-seccion .ps-search-wrap input {
+      width:100%; padding:.8rem 1rem .8rem 2.8rem; border:1.5px solid #EEF2F7; border-radius:10px;
+      font-family:'Outfit',sans-serif; font-size:.9rem; color:#0F172A; background:#F7F9FC; transition:all .2s;
+    }
+    #presentaciones-seccion .ps-search-wrap input:focus { outline:none; border-color:#0057B8; background:#fff; box-shadow:0 0 0 3px rgba(0,87,184,.08); }
+    #presentaciones-seccion .ps-divider { width:1px; height:32px; background:#EEF2F7; flex-shrink:0; }
+    #presentaciones-seccion .ps-fbtns { display:flex; gap:.4rem; flex-wrap:wrap; }
+    #presentaciones-seccion .ps-fbtn {
+      padding:.5rem .9rem; border:1.5px solid #EEF2F7; border-radius:8px;
+      background:transparent; font-family:'Outfit',sans-serif; font-size:.8rem; font-weight:500; color:#64748B;
+      cursor:pointer; transition:all .2s; white-space:nowrap;
+    }
+    #presentaciones-seccion .ps-fbtn:hover { border-color:#0057B8; color:#0057B8; background:#EBF4FF; }
+    #presentaciones-seccion .ps-fbtn.active { background:#0057B8; border-color:#0057B8; color:#fff; }
+    #presentaciones-seccion .ps-fbtn.active.ps-fbtn-mag { background:linear-gradient(135deg,#C9A84C,#B8860B); border-color:#C9A84C; }
+    #presentaciones-seccion .ps-fbtn.ps-fbtn-vis:hover { border-color:#7c3aed; color:#7c3aed; background:#f3e8ff; }
+    #presentaciones-seccion .ps-fbtn.active.ps-fbtn-vis { background:#7c3aed; border-color:#7c3aed; color:#fff; }
+
+    #presentaciones-seccion .ps-content { max-width:1100px; margin:0 auto; padding:2.5rem 2rem 5rem; }
+    #presentaciones-seccion .ps-sec-hdr { display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem; margin-top:2.5rem; }
+    #presentaciones-seccion .ps-sec-hdr:first-child { margin-top:0; }
+    #presentaciones-seccion .ps-sec-dot { width:10px; height:10px; border-radius:50%; background:#0057B8; flex-shrink:0; }
+    #presentaciones-seccion .ps-sec-dot.gold { background:#C9A84C; }
+    #presentaciones-seccion .ps-sec-ttl { font-size:.7rem; font-weight:700; color:#64748B; text-transform:uppercase; letter-spacing:2px; }
+    #presentaciones-seccion .ps-sec-line { flex:1; height:1px; background:#EEF2F7; }
+    #presentaciones-seccion .ps-sec-cnt { font-size:.7rem; color:#64748B; font-weight:500; }
+
+    #presentaciones-seccion .ps-mag-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(460px,1fr)); gap:1.25rem; margin-bottom:1rem; }
+    #presentaciones-seccion .ps-card-mag {
+      background:linear-gradient(135deg,#002855 0%,#003F8A 100%); border-radius:18px; overflow:hidden;
+      position:relative; border:1px solid rgba(201,168,76,.25); transition:transform .3s,box-shadow .3s;
+    }
+    #presentaciones-seccion .ps-card-mag:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(0,40,85,.35); }
+    #presentaciones-seccion .ps-card-mag::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,transparent,#C9A84C,transparent); }
+    #presentaciones-seccion .ps-card-mag-inner { padding:2rem; position:relative; z-index:1; display:flex; gap:1.5rem; align-items:flex-start; }
+    #presentaciones-seccion .ps-mag-photo { width:88px; height:88px; border-radius:50%; object-fit:cover; border:2px solid rgba(201,168,76,.5); background:rgba(255,255,255,.06); flex-shrink:0; }
+    #presentaciones-seccion .ps-mag-initials { width:88px; height:88px; border-radius:50%; background:rgba(255,255,255,.08); border:2px solid rgba(201,168,76,.3); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:700; color:#C9A84C; flex-shrink:0; }
+    #presentaciones-seccion .ps-mag-badge { display:inline-flex; align-items:center; gap:.4rem; background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.4); color:#C9A84C; font-size:.67rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:.3rem .75rem; border-radius:50px; margin-bottom:1.25rem; }
+    #presentaciones-seccion .ps-mag-badge::before { content:'★'; font-size:.7rem; }
+    #presentaciones-seccion .ps-mag-num { font-size:.68rem; font-weight:600; color:rgba(255,255,255,.35); letter-spacing:1.5px; margin-bottom:.5rem; }
+    #presentaciones-seccion .ps-mag-speaker { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:700; color:#fff; margin-bottom:.5rem; line-height:1.2; }
+    #presentaciones-seccion .ps-mag-title { font-size:.88rem; color:rgba(255,255,255,.6); font-weight:300; line-height:1.5; margin-bottom:1.75rem; }
+    #presentaciones-seccion .ps-btn-mag {
+      display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.5rem;
+      background:#C9A84C; color:#1a1000; text-decoration:none; border-radius:10px; font-size:.84rem; font-weight:700; transition:all .2s;
+    }
+    #presentaciones-seccion .ps-btn-mag:hover { background:#e0be66; transform:scale(1.03); }
+
+    #presentaciones-seccion .ps-cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+    #presentaciones-seccion .ps-card {
+      background:#fff; border:1px solid #EEF2F7; border-radius:14px; overflow:hidden;
+      display:flex; flex-direction:column; transition:all .25s; position:relative;
+    }
+    #presentaciones-seccion .ps-card:hover { border-color:rgba(0,87,184,.2); transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,40,85,.08); }
+    #presentaciones-seccion .ps-top-bar { height:3px; }
+    #presentaciones-seccion .ps-bar-business  { background:linear-gradient(90deg,#0057B8,#1A7FE8); }
+    #presentaciones-seccion .ps-bar-health    { background:linear-gradient(90deg,#16a34a,#4ade80); }
+    #presentaciones-seccion .ps-bar-education { background:linear-gradient(90deg,#7c3aed,#a78bfa); }
+    #presentaciones-seccion .ps-bar-ethics    { background:linear-gradient(90deg,#dc2626,#f87171); }
+    #presentaciones-seccion .ps-bar-vision    { background:linear-gradient(90deg,#6d28d9,#c084fc); }
+    #presentaciones-seccion .ps-card-photo-row { display:flex; justify-content:center; padding:1.2rem 1.4rem 0; }
+    #presentaciones-seccion .ps-card-photo { width:70px; height:70px; border-radius:50%; object-fit:cover; border:2px solid #EEF2F7; background:#F7F9FC; }
+    #presentaciones-seccion .ps-card-initials { width:70px; height:70px; border-radius:50%; background:#EBF4FF; border:2px solid #EEF2F7; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:#0057B8; }
+    #presentaciones-seccion .ps-card-body { padding:1rem 1.4rem 1.4rem; flex:1; display:flex; flex-direction:column; }
+    #presentaciones-seccion .ps-card-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:.6rem; }
+    #presentaciones-seccion .ps-card-num { font-size:.67rem; font-weight:700; color:#0057B8; letter-spacing:1.5px; opacity:.6; }
+    #presentaciones-seccion .ps-card-tag { font-size:.64rem; font-weight:600; padding:.2rem .6rem; border-radius:50px; text-transform:uppercase; }
+    #presentaciones-seccion .ps-tag-business  { background:#EBF4FF; color:#0057B8; }
+    #presentaciones-seccion .ps-tag-health    { background:#dcfce7; color:#166534; }
+    #presentaciones-seccion .ps-tag-education { background:#f3e8ff; color:#6b21a8; }
+    #presentaciones-seccion .ps-tag-ethics    { background:#fee2e2; color:#991b1b; }
+    #presentaciones-seccion .ps-tag-vision    { background:#ede9fe; color:#6d28d9; }
+    #presentaciones-seccion .ps-card-speaker { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:700; color:#0F172A; line-height:1.25; margin-bottom:.4rem; text-align:center; }
+    #presentaciones-seccion .ps-card-title { font-size:.8rem; color:#64748B; line-height:1.55; font-weight:300; flex:1; margin-bottom:1.2rem; text-align:center; }
+    #presentaciones-seccion .ps-btn-dl {
+      display:flex; align-items:center; justify-content:center; gap:.5rem;
+      width:100%; padding:.72rem 1rem; background:#EBF4FF; color:#0057B8;
+      text-decoration:none; border-radius:9px; font-size:.83rem; font-weight:600; transition:all .2s;
+      border:1.5px solid transparent;
+    }
+    #presentaciones-seccion .ps-btn-dl:hover { background:#0057B8; color:#fff; border-color:#0057B8; }
+    #presentaciones-seccion .ps-pdf-badge { position:absolute; top:1rem; right:1rem; background:#EF4444; color:#fff; font-size:.58rem; font-weight:800; padding:.18rem .45rem; border-radius:4px; }
+    #presentaciones-seccion .ps-no-results { display:none; text-align:center; padding:5rem 2rem; color:#64748B; }
+    @media(max-width:768px){
+      #presentaciones-seccion .ps-mag-grid { grid-template-columns:1fr; }
+      #presentaciones-seccion .ps-cards-grid { grid-template-columns:1fr; }
+      #presentaciones-seccion .ps-controls-inner { flex-direction:column; align-items:stretch; }
+      #presentaciones-seccion .ps-divider { display:none; }
+      #presentaciones-seccion .ps-card-mag-inner { flex-direction:column; align-items:center; text-align:center; }
+      #presentaciones-seccion .ps-stat { padding:1rem 1.2rem; flex:1 1 40%; }
+    }
+
+    .stitle { font-family:'Space Grotesk',sans-serif; font-size:clamp(30px,4vw,52px); font-weight:700; letter-spacing:-0.02em; line-height:1.1; margin-bottom:20px; }
+    .stitle .accent { background:linear-gradient(135deg,#00d4ff 0%,#0066ff 50%,#7c3aed 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
   </style>
 </head>
 <body>
 
 <!-- ═══ NAV ═════════════════════════════════════════════════ -->
 <nav>
-  <a href="#" class="nav-logo">IA<span>EXPO</span></a>
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+  <a href="#" class="nav-brand">
+    <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo">
+    <span>IA Expo 2026</span>
+  </a>
+  <div class="nav-tabs">
+    <a href="#testimoniales"                                                   class="ntab"><span class="ico">💬</span> Testimoniales</a>
+    <a href="https://iaExpo.ai/2026/galeria" target="_blank" rel="noopener"   class="ntab"><span class="ico">📸</span> Galería</a>
+    <a href="#actas"                                                            class="ntab"><span class="ico">📄</span> Actas</a>
+    <a href="#presentaciones-seccion"                                           class="ntab"><span class="ico">🎤</span> Presentaciones</a>
+    <a href="#sponsors"                                                         class="ntab"><span class="ico">🤝</span> Alianzas</a>
+    <a href="#contacto"                                                         class="ntab"><span class="ico">📍</span> Contacto</a>
+  </div>
+  <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
-  <ul class="nav-links" id="navLinks">
-    <li class="nav-dropdown" id="navDropdown">
-      <a href="#" id="navDropdownToggle">IA Expo 2026</a>
-      <ul class="nav-submenu" id="navSubmenu">
-        <li><a href="https://iaExpo.ai/actas" target="_blank">Actas</a></li>
-        <li><a href="https://iaExpo.ai/presentaciones" target="_blank">Presentaciones</a></li>
-        <li><a href="https://iaExpo.ai/galeria" target="_blank">Galería</a></li>
-      </ul>
-    </li>
-    <li><a href="#testimoniales">Testimoniales</a></li>
-    <li><a href="#sponsors">Alianzas</a></li>
-    <li><a href="#cta-2027">IA Expo 2027</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-  <div class="nav-overlay" id="navOverlay"></div>
 </nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="#testimoniales"                                                  class="ntab" onclick="closeNav()"><span class="ico">💬</span> Testimoniales</a>
+  <a href="https://iaExpo.ai/2026/galeria" target="_blank" rel="noopener"  class="ntab" onclick="closeNav()"><span class="ico">📸</span> Galería</a>
+  <a href="#actas"                                                           class="ntab" onclick="closeNav()"><span class="ico">📄</span> Actas</a>
+  <a href="#presentaciones-seccion"                                          class="ntab" onclick="closeNav()"><span class="ico">🎤</span> Presentaciones</a>
+  <a href="#sponsors"                                                        class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
+  <a href="#contacto"                                                        class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
+</div>
 
 <!-- ═══ HERO ═════════════════════════════════════════════════ -->
 <section id="hero">
@@ -1148,19 +1563,19 @@
     <h1>Gracias por<br>hacer <em>historia</em><br>con nosotros</h1>
 
     <p class="hero-sub">
-      La IA Expo Internacional™ 2026 reunió a los líderes más visionarios de la inteligencia artificial en un solo escenario — para transformar la conversación de teoría a realidad.
+      La IA Expo Internacional 2026 reunió a los líderes más visionarios de la inteligencia artificial en un solo escenario — para transformar la conversación de teoría a realidad.
     </p>
 
     <div class="hero-ctas">
-      <a href="https://iaExpo.ai/actas" class="btn-primary">
+      <a href="#actas" class="btn-primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Ver Actas
       </a>
-      <a href="https://iaExpo.ai/presentaciones" class="btn-outline">
+      <a href="#presentaciones-seccion" class="btn-outline">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         Ver Presentaciones
       </a>
-      <a href="https://iaExpo.ai/galeria" class="btn-outline">
+      <a href="https://iaExpo.ai/2026/galeria" target="_blank" rel="noopener" class="btn-outline">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         Ver Galería de Fotos
       </a>
@@ -1191,7 +1606,7 @@
 <section id="carrusel">
   <div class="section-header reveal" style="margin-bottom:2.5rem;">
     <span class="section-label">Momentos del Evento</span>
-    <h2>IA Expo Internacional™, 2026</h2>
+    <h2>IA Expo Internacional 2026</h2>
     <p>Revive los mejores momentos de un día histórico para la inteligencia artificial en América Latina.</p>
   </div>
 
@@ -1209,7 +1624,7 @@
 
   <div class="carousel-footer">
     <span class="carousel-counter" id="carouselCounter">Foto 1 de 20</span>
-    <a href="https://iaExpo.ai/galeria" class="carousel-link">
+    <a href="https://iaExpo.ai/2026/galeria" target="_blank" rel="noopener" class="carousel-link">
       Ver galería completa
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
@@ -1221,7 +1636,7 @@
   <div class="section-header reveal">
     <span class="section-label">Lo que dicen</span>
     <h2>Voces del <span class="blue">Evento</span></h2>
-    <p>Asistentes, speakers y aliados comparten su experiencia en la IA Expo Internacional™ 2026.</p>
+    <p>Asistentes, speakers y aliados comparten su experiencia en la IA Expo Internacional 2026.</p>
   </div>
 
   <div class="testimonials-grid">
@@ -1288,7 +1703,7 @@
 
     <!-- Testimonial 5 – José Ángel Govela -->
     <div class="testimonial-card reveal">
-      <span class="testimonial-tag">Speaker</span>
+      <span class="testimonial-tag">Asistente</span>
       <p class="testimonial-text">
         "Gran experiencia en IA Expo Internacional. Escuchar a los expertos compartir no solo las herramientas que están desarrollando, sino los desafíos reales de implementar IA en los negocios, fue sumamente enriquecedor. Me quedo con una lección fundamental: el éxito de la tecnología no depende solo del código, sino de la colaboración humana estratégica para llevarla a cabo. El panel de expertos del final fue especialmente enriquecedor."
       </p>
@@ -1448,41 +1863,229 @@
   </div>
 </section>
 
-<!-- ═══ CTA INFO ══════════════════════════════════════════════ -->
-<section id="cta-2027">
-  <div class="cta-inner">
-    <span class="section-label">Próximamente</span>
-    <h2>IA Expo Internacional™ <span class="blue">2027</span></h2>
-    <p>La conversación continúa. Sé el primero en enterarte cuando abramos registros para la próxima edición.</p>
-    <a href="https://iaExpo.ai/info" target="_blank" rel="noopener" class="cta-btn">Necesito Más Información</a>
+<!-- ═══ ACTAS ══════════════════════════════════════════════════ -->
+<section id="actas">
+  <!-- Hero -->
+  <div class="actas-header">
+    <div class="actas-header-inner">
+      <div class="actas-eyebrow">El evento de IA más importante de Latinoamérica</div>
+      <h2 class="actas-title">Actas IA Expo Internacional 2026</h2>
+      <p class="actas-sub">Descarga los artículos de los expertos en inteligencia artificial. 26 artículos en 6 categorías.</p>
+      <div class="actas-hero-actions">
+        <a class="actas-btn-gold" href="https://github.com/iaExpo/2026.Articulos/raw/main/Actas%20IA%20Expo%20Internacional%202026.pdf" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar Actas Completas
+        </a>
+        <a class="actas-btn-ghost" href="#presentaciones-seccion">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Ver Presentaciones
+        </a>
+      </div>
+      <div class="actas-hero-stats">
+        <div><div class="s-num">26</div><div class="s-lbl">Artículos</div></div>
+        <div><div class="s-num">6</div><div class="s-lbl">Categorías</div></div>
+        <div><div class="s-num">26</div><div class="s-lbl">Expertos</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="actas-filter-wrap">
+    <div class="actas-filter-inner">
+      <span class="actas-filter-label">Categoría</span>
+      <button class="actas-fbtn active" data-cat="Todos"      onclick="actasFilter('Todos')">Todos</button>
+      <button class="actas-fbtn"        data-cat="Visión"     onclick="actasFilter('Visión')">Visión</button>
+      <button class="actas-fbtn"        data-cat="Negocios"   onclick="actasFilter('Negocios')">Negocios</button>
+      <button class="actas-fbtn"        data-cat="Medicina"   onclick="actasFilter('Medicina')">Medicina</button>
+      <button class="actas-fbtn"        data-cat="Educación"  onclick="actasFilter('Educación')">Educación</button>
+      <button class="actas-fbtn"        data-cat="Ética"      onclick="actasFilter('Ética')">Ética</button>
+      <button class="actas-fbtn"        data-cat="Gobernanza" onclick="actasFilter('Gobernanza')">Gobernanza</button>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="actas-main">
+    <!-- Download banner -->
+    <div class="actas-banner">
+      <div class="actas-banner-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="actas-banner-text">
+        <h3>Actas IA Expo Internacional 2026</h3>
+        <p>Todos los artículos compilados en un solo documento · 26 autores · 123 páginas</p>
+      </div>
+      <a class="actas-btn-gold" href="https://github.com/iaExpo/2026.Articulos/raw/main/Actas%20IA%20Expo%20Internacional%202026.pdf" download>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar Actas
+      </a>
+    </div>
+    <!-- Count header -->
+    <div class="actas-section-hdr">
+      <h3 class="actas-section-title" id="actas-section-title">Todas las Presentaciones</h3>
+      <span class="actas-count" id="actas-count">26 artículos</span>
+    </div>
+    <!-- Grid -->
+    <div class="actas-grid" id="actas-grid"></div>
   </div>
 </section>
 
-<!-- ═══ CONTACTO ══════════════════════════════════════════════ -->
-<section id="contacto">
-  <div class="contacto-grid">
+<!-- ═══ PRESENTACIONES ═════════════════════════════════════════ -->
+<div style="height:3rem;"></div>
+<section id="presentaciones-seccion">
+  <!-- Hero -->
+  <div class="ps-hero">
+    <div class="ps-ring ps-ring-1"></div>
+    <div class="ps-ring ps-ring-2"></div>
+    <div class="ps-ring ps-ring-3"></div>
+    <div class="ps-glow"></div>
+    <div class="ps-glow2"></div>
+    <div class="ps-hero-inner">
+      <div class="ps-eyebrow">IA Para la Vida Real</div>
+      <h2>IA Expo Internacional <em>2026</em></h2>
+      <p class="ps-hero-sub">Presentaciones Oficiales de los Conferencistas</p>
+      <p class="ps-hero-sub" style="margin-top:.4rem;font-size:.88rem;opacity:.7;">31 de enero de 2026 &nbsp;·&nbsp; Ciudad de México</p>
+    </div>
+  </div>
+  <!-- Stats -->
+  <div class="ps-stats">
+    <div class="ps-stat"><div class="ps-stat-num">18</div><div class="ps-stat-lbl">Presentaciones</div></div>
+    <div class="ps-stat"><div class="ps-stat-num">2</div><div class="ps-stat-lbl">Magistrales</div></div>
+    <div class="ps-stat"><div class="ps-stat-num">16+</div><div class="ps-stat-lbl">Conferencistas</div></div>
+    <div class="ps-stat"><div class="ps-stat-num">10+</div><div class="ps-stat-lbl">Países</div></div>
+  </div>
+  <!-- Controls -->
+  <div class="ps-controls">
+    <div class="ps-controls-inner">
+      <div class="ps-search-wrap">
+        <svg class="ps-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="pres-search" placeholder="Buscar por conferencista o tema...">
+      </div>
+      <div class="ps-divider"></div>
+      <div class="ps-fbtns">
+        <button class="ps-fbtn active"           onclick="presFilter('all',this)">Todas</button>
+        <button class="ps-fbtn ps-fbtn-mag"      onclick="presFilter('magistral',this)">★ Magistrales</button>
+        <button class="ps-fbtn ps-fbtn-vis"      onclick="presFilter('vision',this)">Visión</button>
+        <button class="ps-fbtn"                  onclick="presFilter('education',this)">Educación</button>
+        <button class="ps-fbtn"                  onclick="presFilter('ethics',this)">Ética</button>
+        <button class="ps-fbtn"                  onclick="presFilter('health',this)">Medicina</button>
+        <button class="ps-fbtn"                  onclick="presFilter('business',this)">Negocios</button>
+      </div>
+    </div>
+  </div>
+  <!-- Content -->
+  <div class="ps-content">
+    <div id="pres-mag-section">
+      <div class="ps-sec-hdr">
+        <div class="ps-sec-dot gold"></div>
+        <span class="ps-sec-ttl">Sesiones Magistrales</span>
+        <div class="ps-sec-line"></div>
+        <span class="ps-sec-cnt">2 presentaciones</span>
+      </div>
+      <div class="ps-mag-grid" id="pres-mag-grid"></div>
+    </div>
+    <div id="pres-reg-section">
+      <div class="ps-sec-hdr">
+        <div class="ps-sec-dot"></div>
+        <span class="ps-sec-ttl" id="pres-reg-label">Presentaciones</span>
+        <div class="ps-sec-line"></div>
+        <span class="ps-sec-cnt" id="pres-reg-count"></span>
+      </div>
+      <div class="ps-cards-grid" id="pres-cards-grid"></div>
+    </div>
+    <div class="ps-no-results" id="pres-no-results">
+      <div style="font-size:3rem;opacity:.25;margin-bottom:1rem">🔍</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#334155;margin-bottom:.5rem">No se encontraron presentaciones</h3>
+      <p>Intenta con otro término de búsqueda o categoría</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Navegación -->
-    <div class="contacto-nav reveal">
+<!-- ═══ REGISTRO 2027 ═════════════════════════════════════════ -->
+<section id="contacto">
+  <span class="section-label">Próximamente</span>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,5vw,4rem);letter-spacing:0.03em;margin-bottom:2rem;color:var(--white);">IA Expo Internacional <span style="color:var(--cyan);">2027</span></h2>
+
+        <!-- 4. Contenido + Registro en dos columnas -->
+        <div class="expo-side-grid" style="margin-top:56px;">
+          <div class="expo-content reveal">
+            <h2 class="stitle">La <span class="accent">EXPO</span> que Transforma<br>Vidas Reales</h2>
+            <p>Después del éxito rotundo de <strong>IA Expo Internacional 2026 en Ciudad de México</strong>, regresamos con una edición aún más ambiciosa. Más tracks, más speakers internacionales, más impacto.</p>
+            <p>IA Expo Internacional 2027 es el encuentro de quienes ya están usando la inteligencia artificial para transformar empresas, industrias y vidas en <strong>LATAM y el mundo</strong>.</p>
+            <p id="ev-expo-cap">Solo <strong>200 lugares</strong> disponibles. Precio de lanzamiento con 50% de descuento por tiempo limitado.</p>
+            <div class="features reveal d1">
+              <div class="feat">
+                <div class="ficon">🎤</div>
+                <div class="ftext"><strong>Keynotes de Alto Impacto</strong><span>Líderes internacionales que ya transformaron su industria con IA</span></div>
+              </div>
+              <div class="feat">
+                <div class="ficon">🧪</div>
+                <div class="ftext"><strong>Talleres Prácticos</strong><span id="ev-talleres-cupo">Grupos de máximo 20 personas — aprendizaje profundo y aplicado</span></div>
+              </div>
+              <div class="feat">
+                <div class="ficon">🤝</div>
+                <div class="ftext"><strong>Networking Estructurado</strong><span id="ev-network-cap">200 C-Levels y tomadores de decisión de toda LATAM</span></div>
+              </div>
+            </div>
+          </div>
+          <!-- Formulario de registro derecho -->
+          <div class="bol-reg-box reveal d1">
+            <div class="bol-reg-hdr">
+              <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
+              <p id="ev-reg-desc">Precio de lanzamiento con 50% OFF · Solo 200 lugares disponibles</p>
+            </div>
+            <div class="bol-reg-form">
+              <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" title="IA Expo Registro"></iframe>
+            </div>
+          </div>
+        </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-grid">
+
+    <!-- Columna 1: Logo + Copyright -->
+    <div>
+      <div class="footer-logo">IA<span>EXPO</span> Internacional</div>
+      <div class="footer-copy">
+        © 2025-2026 IA Expo Internacional · Ciudad de México<br>
+        <a href="https://iaExpo.ai" style="color:rgba(255,255,255,0.3);text-decoration:none;">iaExpo.ai</a>
+      </div>
+    </div>
+
+    <!-- Columna 2: Navegación -->
+    <div class="footer-nav">
       <h4>Navegación</h4>
       <ul>
         <li><a href="#">↑ Inicio</a></li>
         <li><a href="#testimoniales">Testimoniales</a></li>
-        <li><a href="#sponsors">Alianzas Estratégicas</a></li>
-        <li><a href="https://iaExpo.ai/sugerencias" target="_blank">Sugerencias</a></li>
-        <li><a href="#cta-2027">IA Expo 2027</a></li>
+        <li><a href="https://iaExpo.ai/2026/galeria" target="_blank" rel="noopener">Galería</a></li>
+        <li><a href="#actas">Actas</a></li>
+        <li><a href="#presentaciones-seccion">Presentaciones</a></li>
+        <li><a href="#sponsors">Alianzas</a></li>
       </ul>
     </div>
 
-    <!-- Contacto -->
-    <div class="contacto-info reveal">
+    <!-- Columna 3: Contáctanos -->
+    <div class="footer-contact">
       <h4>Contáctanos</h4>
-      <a href="mailto:iaExpo@iaExpo.ai" class="contacto-item">
+      <!-- Web -->
+      <a href="https://iaExpo.ai" target="_blank" rel="noopener" class="contacto-item">
+        <div class="contacto-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg" style="color:#00cfff">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <span>iaExpo.ai</span>
+      </a>
+      <!-- Email -->
+      <a href="mailto:info@iaExpo.ai" class="contacto-item">
         <div class="contacto-icon">
           <svg width="20" height="20" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="6" fill="url(#emailGrad)"/>
+            <rect width="32" height="32" rx="6" fill="url(#emailGrad2)"/>
             <defs>
-              <linearGradient id="emailGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <linearGradient id="emailGrad2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#4F8EF7"/>
                 <stop offset="100%" stop-color="#A855F7"/>
               </linearGradient>
@@ -1491,8 +2094,9 @@
             <polyline points="4,10 16,19 28,10" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span>iaExpo@iaExpo.ai</span>
+        <span>info@iaExpo.ai</span>
       </a>
+      <!-- WhatsApp -->
       <a href="https://wa.me/525559632687" target="_blank" rel="noopener" class="contacto-item">
         <div class="contacto-icon">
           <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1505,14 +2109,10 @@
     </div>
 
   </div>
-</section>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
-<footer>
-  <div class="footer-logo">IA<span>EXPO</span> Internacional™</div>
-  <div class="footer-copy">
-    © 2025-2026 IA Expo Internacional™ · Ciudad de México<br>
-    <a href="https://iaExpo.ai" style="color:rgba(255,255,255,0.3);text-decoration:none;">iaExpo.ai</a>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025-2026 IA Expo Internacional · Ciudad de México</div>
+    <div class="footer-copy">IA Para la Vida Real</div>
   </div>
 </footer>
 
@@ -1598,41 +2198,220 @@
   }
 })();
 
-// ═══ HAMBURGER MENU ═════════════════════════════════════════
-(function() {
-  var toggle   = document.getElementById('navToggle');
-  var links    = document.getElementById('navLinks');
-  var overlay  = document.getElementById('navOverlay');
-  var dropdown = document.getElementById('navDropdownToggle');
-  var submenu  = document.getElementById('navSubmenu');
+// ═══ ACTAS JS ═══════════════════════════════════════════════
+(function(){
+  const PHOTOS_BASE = 'https://raw.githubusercontent.com/iaExpo/2026.Fotos/main/';
+  const PDFS_BASE   = 'https://github.com/iaExpo/2026.Articulos/raw/main/';
+  const CAT_ORDER   = ['Visión','Negocios','Medicina','Educación','Ética','Gobernanza'];
+  const CAT_COLORS  = { 'Visión':'#0ea5e9','Negocios':'#3b82f6','Medicina':'#10b981','Educación':'#f59e0b','Ética':'#ef4444','Gobernanza':'#06b6d4' };
+  const CAT_CLS     = { 'Visión':'cb-Vision','Negocios':'cb-Negocios','Medicina':'cb-Medicina','Educación':'cb-Educacion','Ética':'cb-Etica','Gobernanza':'cb-Gobernanza' };
+  const DIV_CLS     = { 'Visión':'adiv-Vision','Negocios':'adiv-Negocios','Medicina':'adiv-Medicina','Educación':'adiv-Educacion','Ética':'adiv-Etica','Gobernanza':'adiv-Gobernanza' };
 
-  function closeMenu() {
-    toggle.classList.remove('open');
-    links.classList.remove('open');
-    overlay.classList.remove('open');
+  const ARTICLES = [
+    { author:'Edgar González',       photo:'EdgarGonzález.jpg',           title:'De Homo Sapiens A Tecno Sapiens',                                                   pdf:'DeHomoSapiensATecnoSapiens.pdf',                                           cat:'Visión'     },
+    { author:'Felipe Salas',          photo:'FelipeSalas.jpg',             title:'ConvergencIA Y Superinteligencia',                                                  pdf:'ConvergencIAYSuperinteligencia.pdf',                                        cat:'Visión'     },
+    { author:'Dr. Javier Novoa',      photo:'DrJavierNovoa.jpg',           title:'El Futuro Del Empleo: Cómo Liderar Los Cambios',                                    pdf:'ElFuturoDelEmpleoComoLiderarLosCambios.pdf',                               cat:'Visión'     },
+    { author:'Julio Aguirre',         photo:'JulioAguirre.jpg',            title:'Humanos Con AIsteroides',                                                          pdf:'HumanosConAIsteroides.pdf',                                                cat:'Visión'     },
+    { author:'Victoria Luz Alonso',   photo:'VictoriaLuzAlonso.jpg',       title:'Latinoamérica En La Encrucijada De La IA',                                         pdf:'LatinoaméricaEnLaEncrucijadaDeLaIA.pdf',                              cat:'Visión'     },
+    { author:'Alejandra Díaz',        photo:'AlejandraDiaz.jpg',           title:'Cómo La IA Potencia Ideas Que Transforman Empresas',                               pdf:'CómoLaIAPotenciaIdeasQueTransformanEmpresas.pdf',                     cat:'Negocios'   },
+    { author:'Andres del Cos Garza',  photo:'AndrésDelCosGarza.jpg',       title:'Lo Necesario Para Implementar IA En Tu Empresa',                                   pdf:'LoNecesarioParaImplementarIAEnTuEmpresa.pdf',                              cat:'Negocios'   },
+    { author:'Diego Forero',          photo:'DiegoForero.jpg',             title:'Cómo Un Chatbot Puede Convertir Tu Caos En Un Negocio Que Vende Solo',             pdf:'CómoUnChatbotPuedeConvertirTuCaosEnUnNegocioQueVendeSolo.pdf',        cat:'Negocios'   },
+    { author:'Diego Ganoza',          photo:'DiegoGanoza.jpg',             title:'Vibe Marketing',                                                                   pdf:'VibeMarketing.pdf',                                                        cat:'Negocios'   },
+    { author:'Enrique González',      photo:'EnriqueGonzález.jpg',         title:'IA Con Propósito: Cómo Convertir La Moda En Estrategia',                           pdf:'IAConPropósitoCómoConvertirLaModaEnEstrategia.pdf',                   cat:'Negocios'   },
+    { author:'Dr. Gabriel Barrera',   photo:'DrGabrielBarrera.jpg',        title:'IA Como Motor De Productividad Y Decisión Estratégica En Organizaciones Modernas', pdf:'IAComoMotorDeProductividadYDecisiónEstratégicaEnOrganizacionesModernas.pdf', cat:'Negocios' },
+    { author:'José Antonio González', photo:'JoséAntonioGonzález.jpg',     title:'IA En Aplicaciones VoC',                                                           pdf:'IAEnAplicacionesVoC.pdf',                                                  cat:'Negocios'   },
+    { author:'Martin Sierra',         photo:'MartínSierra.jpg',            title:'IA Oculta',                                                                        pdf:'IAOculta.pdf',                                                             cat:'Negocios'   },
+    { author:'Osvaldo Ramírez',       photo:'OsvaldoRamírez.jpg',          title:'De La Visión Al Retorno De Inversión',                                             pdf:'DeLaVisiónAlRetornoDeInversión.pdf',                                     cat:'Negocios'   },
+    { author:'Victor Arenas',         photo:'VictorArenas.jpg',            title:'Del Caos De Herramientas A Sistemas Con Método',                                   pdf:'DelCaosDeHerramientasASistemasConMétodo.pdf',                            cat:'Negocios'   },
+    { author:'Carlo Angello Sánchez', photo:'DrCarloAngelloSánchez.jpg',   title:'Talento Médico Aumentado',                                                         pdf:'TalentoMédicoAumentado.pdf',                                              cat:'Medicina'   },
+    { author:'Dr. Jaime García',      photo:'DrJaimeGarcía.jpg',           title:'Inteligencia Artificial En Radiología',                                            pdf:'InteligenciaArtificialEnRadiologia.pdf',                                   cat:'Medicina'   },
+    { author:'Plinio Arbizu',         photo:'PlinioArbizu.jpg',            title:'IA Y Recetas Médicas',                                                             pdf:'IAYRecetasMédicas.pdf',                                                   cat:'Medicina'   },
+    { author:'Alejandro Gómez',       photo:'AlejandroGómez.jpg',          title:'From Prompt To Playground',                                                        pdf:'FromPromptToPlayground.pdf',                                               cat:'Educación'  },
+    { author:'Max Quiroz',            photo:'MaxQuiroz.jpg',               title:'IA Y Educación: El Futuro Que Esperábamos',                                        pdf:'IAYEducaciónElFuturoQueEsperábamos.pdf',                                 cat:'Educación'  },
+    { author:'Noelia González',       photo:'NoeliaGonzález.jpg',          title:'Hola IA, Nos Conocemos',                                                          pdf:'HolaIANosConocemos.pdf',                                                   cat:'Educación'  },
+    { author:'Idir Ouhab',            photo:'IdirOuhab.jpg',               title:'Automation Without Losing Control',                                                pdf:'AutomationWithoutLosingControl.pdf',                                       cat:'Ética'      },
+    { author:'Randy Valverde',        photo:'RandyValverde.jpg',           title:'IA Ética Y Gestión Del Conocimiento',                                              pdf:'IAÉticaYGestiónDelConocimiento.pdf',                                     cat:'Ética'      },
+    { author:'Alberto Duarte',        photo:'AlbertoDuarte.jpg',           title:'Gobernanza Operacional De Modelos De Lenguaje',                                    pdf:'GobernanzaOperacionalDeModelosDeLenguaje.pdf',                             cat:'Gobernanza' },
+    { author:'Antonieta Esparza',     photo:'AntonietaEsparza.jpg',        title:'ISO 42001 Sistema De Gestión De IA',                                               pdf:'ISO42001SistemaDeGestionDeIA.pdf',                                         cat:'Gobernanza' },
+    { author:'Ignacio Domínguez',     photo:'IgnacioDomínguez.jpg',        title:'Implementación Asertiva Y Rentable',                                               pdf:'ImplementaciónAsertivaYRentable.pdf',                                     cat:'Gobernanza' },
+  ];
+
+  function initials(name) {
+    return name.replace(/^Dr\.\s*|^Dra\.\s*/i,'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join('');
   }
 
-  toggle.addEventListener('click', function() {
-    var isOpen = links.classList.toggle('open');
-    toggle.classList.toggle('open', isOpen);
-    overlay.classList.toggle('open', isOpen);
+  function buildActasCard(a) {
+    const photoUrl = PHOTOS_BASE + encodeURIComponent(a.photo);
+    const pdfUrl   = PDFS_BASE   + encodeURIComponent(a.pdf);
+    const catColor = CAT_COLORS[a.cat] || '#2563eb';
+    const catCls   = CAT_CLS[a.cat] || '';
+    const init     = initials(a.author);
+    const card = document.createElement('div');
+    card.className = 'actas-card';
+    card.dataset.cat = a.cat;
+    card.style.setProperty('--actas-cat-c', catColor);
+    card.innerHTML = `
+      <div class="actas-card-hdr">
+        <div class="actas-photo-wrap">
+          <img class="actas-photo" src="${photoUrl}" alt="${a.author}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" loading="lazy"/>
+          <div class="actas-initials" style="display:none">${init}</div>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div class="actas-author-name">${a.author}</div>
+          <span class="actas-cat-badge ${catCls}">${a.cat}</span>
+        </div>
+      </div>
+      <div class="actas-card-body">
+        <div class="actas-card-title">${a.title}</div>
+        <a class="actas-btn-dl" href="${pdfUrl}" download target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar Artículo
+        </a>
+      </div>`;
+    return card;
+  }
+
+  const grid = document.getElementById('actas-grid');
+  CAT_ORDER.forEach(cat => {
+    const group = ARTICLES.filter(a => a.cat === cat);
+    if (!group.length) return;
+    const div = document.createElement('div');
+    div.className = 'actas-divider';
+    div.dataset.cat = cat;
+    div.innerHTML = `<span class="actas-divider-lbl ${DIV_CLS[cat]}">${cat}</span>`;
+    grid.appendChild(div);
+    group.forEach(a => grid.appendChild(buildActasCard(a)));
   });
 
-  overlay.addEventListener('click', closeMenu);
-
-  // Toggle submenu on mobile tap
-  dropdown.addEventListener('click', function(e) {
-    if (window.innerWidth <= 860) {
-      e.preventDefault();
-      submenu.classList.toggle('open');
-    }
-  });
-
-  // Close menu when a link is clicked
-  links.querySelectorAll('a:not(#navDropdownToggle)').forEach(function(a) {
-    a.addEventListener('click', closeMenu);
-  });
+  window.actasFilter = function(cat) {
+    document.querySelectorAll('#actas .actas-fbtn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    document.querySelectorAll('#actas-grid .actas-card').forEach(c => c.classList.toggle('a-hidden', cat !== 'Todos' && c.dataset.cat !== cat));
+    document.querySelectorAll('#actas-grid .actas-divider').forEach(d => d.classList.toggle('a-hidden', cat !== 'Todos' && d.dataset.cat !== cat));
+    const visible = cat === 'Todos' ? ARTICLES.length : ARTICLES.filter(a=>a.cat===cat).length;
+    document.getElementById('actas-section-title').textContent = cat === 'Todos' ? 'Todas las Presentaciones' : cat;
+    document.getElementById('actas-count').textContent = `${visible} artículo${visible!==1?'s':''}`;
+  };
 })();
+
+// ═══ PRESENTACIONES JS ══════════════════════════════════════
+(function(){
+  const PHOTOS_RAW = 'https://raw.githubusercontent.com/iaExpo/2026.Conferencistas/main/';
+  const FILES_RAW  = 'https://raw.githubusercontent.com/iaExpo/2026.Presentaciones/main/';
+
+  const presentations = [
+    { num:'01', category:'magistral',  speaker:'Edgar González',           photo:'EdgarGonzález.jpg',           file:'DeHomoSapiensATecnoSapiens.pdf',                title:'De Homo Sapiens a TecnoSapiens' },
+    { num:'18', category:'magistral',  speaker:'Dr. Jorge Lozoya',          photo:'Dr.JorgeLozoya.jpg',          file:'MovilidadAutónomaEnMéxico.pdf',                 title:'Movilidad Autónoma en México' },
+    { num:'02', category:'vision',     speaker:'Felipe Salas',              photo:'FelipeSalas.jpg',              file:'ConvergencIAySuperinteligencia.pdf',            title:'ConvergencIA y Superinteligencia' },
+    { num:'09', category:'vision',     speaker:'Dr. Javier Novoa',          photo:'Dr.JavierNovoa.jpg',           file:'FuturoDelEmpleoACincoAños.pdf',                 title:'Futuro del Empleo a Cinco Años' },
+    { num:'03', category:'business',   speaker:'Martín Sierra',             photo:'MartínSierra.jpg',             file:'IAOculta.pdf',                                  title:'IA Oculta' },
+    { num:'04', category:'business',   speaker:'Diego Ganoza',              photo:'DiegoGanoza.jpg',              file:'VibeMarketing.pdf',                             title:'Vibe Marketing' },
+    { num:'05', category:'business',   speaker:'Osvaldo Ramírez',           photo:'OsvaldoRamírez.jpg',           file:'DeLaVisiónAlRetornoDeInversión.pdf',            title:'De la Visión al Retorno de Inversión' },
+    { num:'06', category:'business',   speaker:'Andrés Del Cos Garza',      photo:'AndrésDelCosGarza.jpg',        file:'MotorHumanoDeLaIA.pdf',                         title:'El Motor Humano de la IA' },
+    { num:'07', category:'business',   speaker:'Dr. Gabriel Barrera',       photo:'Dr.GabrielBarrera.jpg',        file:'IAProductividadEnOrganizacionesModernas.pdf',   title:'IA y Productividad en Organizaciones Modernas' },
+    { num:'08', category:'business',   speaker:'José Antonio González',     photo:'JoséAntonioGonzález.jpg',      file:'VozDelClienteConIA.pdf',                        title:'Voz del Cliente con IA' },
+    { num:'10', category:'health',     speaker:'Dr. Jaime Garcia',          photo:'Dr.JaimeGarcía.jpg',           file:'IARadiologíaOncológica.pdf',                    title:'IA en Radiología Oncológica' },
+    { num:'11', category:'health',     speaker:'Dra. Lilian Navarro',       photo:'Dra.LilianNavarro.jpg',        file:'IADiagnósticoCáncerDeMama.pdf',                 title:'IA en el Diagnóstico de Cáncer de Mama' },
+    { num:'12', category:'health',     speaker:'Dr. Ricardo Becerra',       photo:'Dr.RicardoBecerra.jpg',        file:'IAFuturoDeRadiología.pdf',                      title:'IA: El Futuro de la Radiología' },
+    { num:'13', category:'health',     speaker:'Dr. Carlo Angello Sánchez', photo:'Dr.CarloAngelloSánchez.jpg',   file:'IAPalancaEstratégicaParaSectorSalud.pdf',       title:'IA como Palanca Estratégica para el Sector Salud' },
+    { num:'14', category:'ethics',     speaker:'Antonieta Esparza',         photo:'AntonietaEparza.jpg',         file:'ISO42001-SistemadeGestiónIA.pdf',               title:'ISO 42001: Sistema de Gestión de IA' },
+    { num:'15', category:'ethics',     speaker:'Randy Valverde',            photo:'RandyValverde.jpg',            file:'IAÉticayGestiónDelConocimiento.pdf',            title:'IA: Ética y Gestión del Conocimiento' },
+    { num:'16', category:'education',  speaker:'Max Quiroz',                photo:'MaxQuiroz.jpg',                file:'IAyEducación.pdf',                              title:'IA y Educación' },
+    { num:'17', category:'education',  speaker:'Noelia González',           photo:'NoeliaGonzález.jpg',           file:'¡HolaIA!¿NosConocemos?.pdf',                    title:'Hola IA, Nos Conocemos' },
+  ];
+
+  const catConfig = {
+    business:  { label:'Negocios',  barCls:'ps-bar-business',  tagCls:'ps-tag-business'  },
+    health:    { label:'Medicina',  barCls:'ps-bar-health',    tagCls:'ps-tag-health'    },
+    education: { label:'Educación', barCls:'ps-bar-education', tagCls:'ps-tag-education' },
+    ethics:    { label:'Ética',     barCls:'ps-bar-ethics',    tagCls:'ps-tag-ethics'    },
+    vision:    { label:'Visión',    barCls:'ps-bar-vision',    tagCls:'ps-tag-vision'    },
+  };
+  const catLabels = { business:'Negocios',health:'Medicina',education:'Educación',ethics:'Ética',vision:'Visión' };
+
+  function presInitials(name){
+    return name.replace(/^(Dr\.|Dra\.)\s*/i,'').split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+  }
+  function presPhotoHTML(photo, name, cls, phCls){
+    const src = PHOTOS_RAW + encodeURIComponent(photo);
+    return `<img class="${cls}" src="${src}" alt="${name}" onerror="this.outerHTML='<div class=\\'${phCls}\\'>${presInitials(name)}</div>'">`;
+  }
+  function buildMagCard(p){
+    const url = FILES_RAW + encodeURIComponent(p.file);
+    return `<div class="ps-card-mag" data-category="${p.category}" data-search="${p.speaker.toLowerCase()} ${p.title.toLowerCase()}">
+      <div class="ps-card-mag-inner">
+        <div>${presPhotoHTML(p.photo,p.speaker,'ps-mag-photo','ps-mag-initials')}</div>
+        <div class="ps-mag-content">
+          <div class="ps-mag-badge">Sesión Magistral</div>
+          <div class="ps-mag-num">PRESENTACIÓN #${p.num}</div>
+          <div class="ps-mag-speaker">${p.speaker}</div>
+          <div class="ps-mag-title">${p.title}</div>
+          <a href="${url}" download="${p.file}" class="ps-btn-mag">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Descargar Presentación
+          </a>
+        </div>
+      </div></div>`;
+  }
+  function buildPresCard(p){
+    const url = FILES_RAW + encodeURIComponent(p.file);
+    const cfg = catConfig[p.category] || {};
+    return `<div class="ps-card" data-category="${p.category}" data-search="${p.speaker.toLowerCase()} ${p.title.toLowerCase()}">
+      <div class="ps-top-bar ${cfg.barCls||''}"></div>
+      <span class="ps-pdf-badge">PDF</span>
+      <div class="ps-card-photo-row">${presPhotoHTML(p.photo,p.speaker,'ps-card-photo','ps-card-initials')}</div>
+      <div class="ps-card-body">
+        <div class="ps-card-meta"><span class="ps-card-num">#${p.num}</span><span class="ps-card-tag ${cfg.tagCls||''}">${cfg.label||''}</span></div>
+        <div class="ps-card-speaker">${p.speaker}</div>
+        <div class="ps-card-title">${p.title}</div>
+        <div><a href="${url}" download="${p.file}" class="ps-btn-dl">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar PDF
+        </a></div>
+      </div></div>`;
+  }
+
+  let presCurFilter = 'all';
+  function presApplyFilters(){
+    const q = document.getElementById('pres-search').value.toLowerCase().trim();
+    const mags = presentations.filter(p => p.category==='magistral' && (presCurFilter==='all'||presCurFilter==='magistral') && (!q||p.speaker.toLowerCase().includes(q)||p.title.toLowerCase().includes(q)));
+    const regs = presentations.filter(p => p.category!=='magistral' && (presCurFilter==='all'||p.category===presCurFilter) && (!q||p.speaker.toLowerCase().includes(q)||p.title.toLowerCase().includes(q)));
+    const total = mags.length + regs.length;
+    const ms = document.getElementById('pres-mag-section');
+    const rs = document.getElementById('pres-reg-section');
+    const nr = document.getElementById('pres-no-results');
+    if(!total){ ms.style.display='none'; rs.style.display='none'; nr.style.display='block'; return; }
+    nr.style.display='none';
+    if(mags.length){ ms.style.display='block'; document.getElementById('pres-mag-grid').innerHTML=mags.map(buildMagCard).join(''); }
+    else ms.style.display='none';
+    if(regs.length){
+      rs.style.display='block';
+      const lbl=(presCurFilter!=='all'&&presCurFilter!=='magistral')?catLabels[presCurFilter]||'Presentaciones':'Presentaciones';
+      document.getElementById('pres-reg-label').textContent=lbl;
+      document.getElementById('pres-reg-count').textContent=`${regs.length} ${regs.length===1?'presentación':'presentaciones'}`;
+      document.getElementById('pres-cards-grid').innerHTML=regs.map(buildPresCard).join('');
+    } else rs.style.display='none';
+  }
+  window.presFilter = function(cat, btn){
+    presCurFilter=cat;
+    document.querySelectorAll('#presentaciones-seccion .ps-fbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    presApplyFilters();
+  };
+  document.getElementById('pres-search').addEventListener('input', presApplyFilters);
+  presApplyFilters();
+})();
+
+// ═══ HAMBURGER MENU ═════════════════════════════════════════
+function toggleNav() {
+  var btn  = document.getElementById('hbtn');
+  var menu = document.getElementById('mmenu');
+  btn.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('hbtn').classList.remove('open');
+  document.getElementById('mmenu').classList.remove('open');
+}
 
 (function() {
   var els = document.querySelectorAll('.reveal');
