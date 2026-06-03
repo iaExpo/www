@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>¡Gracias! — Taller A IA Expo Internacional 2027</title>
+  <title>¡Gracias! — Patrocinio Taller A IA Expo Internacional 2027</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #0B1A2E;
-      --navy2:  #0F2440;
-      --teal:   #00C2A8;
-      --teal2:  #00E5C8;
-      --gold:   #F5C542;
-      --gold2:  #FFD966;
-      --white:  #FFFFFF;
-      --muted:  #94A3B8;
+      --navy:    #0B1A2E;
+      --navy2:   #0F2440;
+      --teal:    #00C2A8;
+      --teal2:   #00E5C8;
+      --gold:    #F5C542;
+      --silver:  #C8D6E5;
+      --silver2: #E2EAF4;
+      --silverd: #8FA3BA;
+      --white:   #FFFFFF;
+      --muted:   #94A3B8;
     }
 
     html { scroll-behavior: smooth; }
@@ -38,8 +40,8 @@
     }
     .bg-grid {
       background-image:
-        linear-gradient(rgba(0,194,168,.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,194,168,.07) 1px, transparent 1px);
+        linear-gradient(rgba(200,214,229,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,214,229,.06) 1px, transparent 1px);
       background-size: 48px 48px;
       width: 100%; height: 100%;
     }
@@ -48,13 +50,13 @@
       top: -200px; left: 50%;
       transform: translateX(-50%);
       width: 900px; height: 600px;
-      background: radial-gradient(ellipse, rgba(0,194,168,.18) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(200,214,229,.16) 0%, transparent 70%);
     }
     .glow-bottom {
       position: absolute;
       bottom: -200px; right: -100px;
       width: 700px; height: 500px;
-      background: radial-gradient(ellipse, rgba(245,197,66,.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(0,194,168,.10) 0%, transparent 70%);
     }
 
     /* ── Token cloud canvas ── */
@@ -98,11 +100,11 @@
     .check-ring {
       width: 100%; height: 100%;
       border-radius: 50%;
-      border: 2px solid var(--teal);
+      border: 2px solid var(--silver);
       display: flex; align-items: center; justify-content: center;
-      background: rgba(0,194,168,.08);
-      box-shadow: 0 0 20px rgba(0,194,168,.3), 0 0 48px rgba(0,194,168,.12);
-      animation: pulse 2.5s ease-in-out 1.2s infinite;
+      background: rgba(200,214,229,.08);
+      box-shadow: 0 0 20px rgba(200,214,229,.3), 0 0 48px rgba(200,214,229,.12);
+      animation: pulseSilver 2.5s ease-in-out 1.2s infinite;
     }
     .check-icon { width: 30px; height: 30px; }
     .check-icon path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawCheck .6s ease .9s forwards; }
@@ -112,21 +114,40 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: rgba(245,197,66,.15);
-      border: 2px solid rgba(245,197,66,.6);
+      background: rgba(200,214,229,.12);
+      border: 2px solid rgba(200,214,229,.55);
       border-radius: 999px;
       padding: 18px 48px;
       font-size: 1.75rem;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--silver2);
       margin-bottom: 36px;
       opacity: 0;
       animation: fadeUp .6s ease .4s forwards;
-      box-shadow: 0 0 40px rgba(245,197,66,.22);
+      box-shadow: 0 0 40px rgba(200,214,229,.18);
     }
-    .tag-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); animation: blink 1.4s ease infinite; }
+    .tag-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--silver); animation: blink 1.4s ease infinite; }
+
+    /* ── Sponsor badge ── */
+    .sponsor-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(200,214,229,.18), rgba(226,234,244,.08));
+      border: 1px solid rgba(200,214,229,.45);
+      border-radius: 12px;
+      padding: 8px 20px;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--silver2);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp .6s ease .75s forwards;
+    }
 
     /* ── Headline ── */
     h1 {
@@ -135,12 +156,12 @@
       font-weight: 800;
       line-height: 1.1;
       text-align: center;
-      max-width: 700px;
+      max-width: 720px;
       opacity: 0;
       animation: fadeUp .7s ease .85s forwards;
     }
     h1 .highlight {
-      background: linear-gradient(90deg, var(--teal2), var(--gold));
+      background: linear-gradient(90deg, var(--silver2), var(--teal2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -151,7 +172,7 @@
       font-size: clamp(1rem, 2.2vw, 1.2rem);
       color: var(--muted);
       text-align: center;
-      max-width: 560px;
+      max-width: 580px;
       line-height: 1.7;
       margin-top: 20px;
       opacity: 0;
@@ -162,11 +183,11 @@
     .product-card {
       margin-top: 52px;
       width: 100%; max-width: 640px;
-      background: linear-gradient(135deg, rgba(15,36,64,.9) 0%, rgba(11,26,46,.95) 100%);
-      border: 1px solid rgba(0,194,168,.25);
+      background: linear-gradient(135deg, rgba(12,24,44,.94) 0%, rgba(15,36,64,.95) 100%);
+      border: 1px solid rgba(200,214,229,.3);
       border-radius: 24px;
       padding: 36px 40px;
-      box-shadow: 0 32px 80px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
+      box-shadow: 0 32px 80px rgba(0,0,0,.4), 0 0 0 1px rgba(200,214,229,.06), 0 0 60px rgba(200,214,229,.05);
       backdrop-filter: blur(20px);
       opacity: 0;
       animation: fadeUp .7s ease 1.15s forwards;
@@ -176,7 +197,7 @@
       font-weight: 600;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: var(--teal);
+      color: var(--silver);
       margin-bottom: 10px;
     }
     .product-title {
@@ -190,7 +211,7 @@
       color: var(--muted);
       margin-bottom: 28px;
     }
-    .divider { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 28px; }
+    .divider { height: 1px; background: rgba(200,214,229,.1); margin-bottom: 28px; }
 
     .info-row {
       display: flex;
@@ -206,9 +227,10 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 18px;
     }
-    .icon-email  { background: rgba(0,194,168,.12); }
-    .icon-date   { background: rgba(245,197,66,.12); }
-    .icon-place  { background: rgba(100,140,255,.12); }
+    .icon-email   { background: rgba(0,194,168,.12); }
+    .icon-date    { background: rgba(245,197,66,.12); }
+    .icon-place   { background: rgba(100,140,255,.12); }
+    .icon-silver  { background: rgba(200,214,229,.12); }
     .info-text-title {
       font-size: .9rem;
       font-weight: 600;
@@ -224,11 +246,11 @@
     .pillars {
       margin-top: 52px;
       width: 100%; max-width: 640px;
-      background: linear-gradient(135deg, rgba(15,36,64,.9) 0%, rgba(11,26,46,.95) 100%);
-      border: 1px solid rgba(0,194,168,.25);
+      background: linear-gradient(135deg, rgba(12,24,44,.94) 0%, rgba(15,36,64,.95) 100%);
+      border: 1px solid rgba(200,214,229,.3);
       border-radius: 24px;
       padding: 36px 40px;
-      box-shadow: 0 32px 80px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.04);
+      box-shadow: 0 32px 80px rgba(0,0,0,.4), 0 0 0 1px rgba(200,214,229,.06);
       backdrop-filter: blur(20px);
       opacity: 0;
       animation: fadeUp .7s ease 1.3s forwards;
@@ -241,7 +263,7 @@
       margin-bottom: 24px;
       color: var(--white);
     }
-    .pillars-title span { color: var(--gold); }
+    .pillars-title span { color: var(--silver2); }
     .pillars-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -249,13 +271,13 @@
     }
     @media (max-width: 480px) { .pillars-grid { grid-template-columns: 1fr; } }
     .pillar {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.07);
+      background: rgba(200,214,229,.04);
+      border: 1px solid rgba(200,214,229,.1);
       border-radius: 16px;
       padding: 20px;
       transition: transform .25s, border-color .25s;
     }
-    .pillar:hover { transform: translateY(-3px); border-color: rgba(0,194,168,.3); }
+    .pillar:hover { transform: translateY(-3px); border-color: rgba(200,214,229,.28); }
     .pillar-icon { font-size: 26px; margin-bottom: 10px; }
     .pillar-name {
       font-size: .9rem;
@@ -335,12 +357,12 @@
     .footer a { color: rgba(0,194,168,.6); text-decoration: none; }
 
     /* ── Keyframes ── */
-    @keyframes fadeDown  { from { opacity:0; transform: translateY(-18px); } to { opacity:1; transform: none; } }
-    @keyframes fadeUp    { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: none; } }
-    @keyframes popIn     { from { opacity:0; transform: scale(.5); } to { opacity:1; transform: scale(1); } }
-    @keyframes pulse     { 0%,100% { box-shadow: 0 0 40px rgba(0,194,168,.35), 0 0 80px rgba(0,194,168,.15); } 50% { box-shadow: 0 0 60px rgba(0,194,168,.55), 0 0 120px rgba(0,194,168,.25); } }
-    @keyframes blink     { 0%,100% { opacity:1; } 50% { opacity:.3; } }
-    @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+    @keyframes fadeDown    { from { opacity:0; transform: translateY(-18px); } to { opacity:1; transform: none; } }
+    @keyframes fadeUp      { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: none; } }
+    @keyframes popIn       { from { opacity:0; transform: scale(.5); } to { opacity:1; transform: scale(1); } }
+    @keyframes pulseSilver { 0%,100% { box-shadow: 0 0 20px rgba(200,214,229,.3), 0 0 48px rgba(200,214,229,.12); } 50% { box-shadow: 0 0 36px rgba(200,214,229,.55), 0 0 80px rgba(200,214,229,.22); } }
+    @keyframes blink       { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+    @keyframes drawCheck   { to { stroke-dashoffset: 0; } }
   </style>
 </head>
 <body>
@@ -368,27 +390,28 @@
     Compra confirmada
   </div>
 
-  <!-- Check icon -->
+  <!-- Check icon (silver) -->
   <div class="check-wrap">
     <div class="check-ring">
       <svg class="check-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="" d="M14 27L22 35L38 17" stroke="#00C2A8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 27L22 35L38 17" stroke="#C8D6E5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
   </div>
 
+  <!-- Sponsor badge -->
+  <div class="sponsor-badge">🛠️ Patrocinio Taller A</div>
+
   <!-- Headline -->
-  <h1>¡Tu lugar en el taller<br/><span class="highlight">ya está asegurado!</span></h1>
+  <h1>¡Tu marca brilla junto al<br/><span class="highlight">futuro de la IA!</span></h1>
 
   <!-- Subtitle -->
-  <p class="subtitle">
-    Tomaste la mejor decisión: aprender haciendo. En el Taller A practicarás con herramientas de IA reales, guiado por expertos que ya las usan todos los días. Gracias por asegurar tu lugar en IA Expo Internacional 2027.
-  </p>
+  <p class="subtitle">Gracias por unirte a IA Expo Internacional 2027 con <strong>Patrocinio Taller A</strong>. Apostaste por tu marca presente en la experiencia de aprendizaje práctico más intensiva del evento. Tu inversión pone a tu empresa frente a los líderes, innovadores y tomadores de decisiones del ecosistema de IA en Latinoamérica.</p>
 
   <!-- Product card -->
   <div class="product-card">
-    <div class="product-label">🛠️ Tu Admisión</div>
-    <div class="product-title">Taller A</div>
+    <div class="product-label">🛠️ Tu Patrocinio</div>
+    <div class="product-title">Patrocinio Taller A</div>
     <div class="product-subtitle">IA Expo Internacional 2027</div>
     <div class="divider"></div>
 
@@ -396,7 +419,7 @@
       <div class="info-icon icon-email">📧</div>
       <div>
         <div class="info-text-title">Revisa tu correo electrónico</div>
-        <div class="info-text-body">En breve recibirás un correo con la copia de tu recibo y todos los detalles de tu compra.</div>
+        <div class="info-text-body">En breve recibirás un correo con la copia de tu recibo y los próximos pasos para activar tu patrocinio.</div>
       </div>
     </div>
 
@@ -409,45 +432,45 @@
     </div>
 
     <div class="info-row">
-      <div class="info-icon icon-date">📅</div>
+      <div class="info-icon icon-silver">🥈</div>
       <div>
-        <div class="info-text-title">Fecha del evento</div>
-        <div class="info-text-body">Miércoles 28, Jueves 29 y Viernes 30 de Enero de 2027<br/>Ponlo ya en tu calendario — ¡no querrás perderte ni un minuto del taller!</div>
+        <div class="info-text-title">Próximo paso</div>
+        <div class="info-text-body">Un miembro de nuestro equipo te contactará pronto para coordinar los detalles de tu presencia y materiales de marca.</div>
       </div>
     </div>
 
     <div class="info-row">
-      <div class="info-icon icon-place">📍</div>
+      <div class="info-icon icon-date">📅</div>
       <div>
-        <div class="info-text-title">Sede</div>
-        <div class="info-text-body">Hotel Westin Santa Fe<br/>Ciudad de México, México</div>
+        <div class="info-text-title">Fecha del evento</div>
+        <div class="info-text-body">Miércoles 28, Jueves 29 y Viernes 30 de Enero de 2027<br/>Hotel Westin Santa Fe · Ciudad de México, México</div>
       </div>
     </div>
   </div>
 
   <!-- Value pillars -->
   <div class="pillars">
-    <div class="pillars-title">Lo que te espera es <span>extraordinario</span> ✨</div>
+    <div class="pillars-title">Tu inversión genera <span>visibilidad real</span> 🛠️</div>
     <div class="pillars-grid">
       <div class="pillar">
-        <div class="pillar-icon">🛠️</div>
-        <div class="pillar-name">Práctica Real</div>
-        <div class="pillar-desc">Trabajarás directamente con herramientas de IA — no solo teoría, sino ejercicios que puedes aplicar de inmediato.</div>
+        <div class="pillar-icon">👁️</div>
+        <div class="pillar-name">Visibilidad de Marca</div>
+        <div class="pillar-desc">Tu logo y presencia en materiales del evento, pantallas, sitio web y comunicaciones oficiales de IA Expo Internacional 2027.</div>
       </div>
       <div class="pillar">
-        <div class="pillar-icon">🧑‍🏫</div>
-        <div class="pillar-name">Instructores Expertos</div>
-        <div class="pillar-desc">Aprende de profesionales que usan IA en su trabajo cotidiano y conocen los atajos que realmente funcionan.</div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">⚡</div>
-        <div class="pillar-name">Resultados Inmediatos</div>
-        <div class="pillar-desc">Saldrás del taller con habilidades concretas listas para implementar en tu empresa o proyecto personal.</div>
+        <div class="pillar-icon">🎯</div>
+        <div class="pillar-name">Audiencia Calificada</div>
+        <div class="pillar-desc">Accede a cientos de profesionales, directivos y emprendedores que ya están invirtiendo en Inteligencia Artificial.</div>
       </div>
       <div class="pillar">
         <div class="pillar-icon">🤝</div>
-        <div class="pillar-name">Comunidad de Práctica</div>
-        <div class="pillar-desc">Conecta con otras personas que están aprendiendo y aplicando IA, y construye relaciones que duran más allá del evento.</div>
+        <div class="pillar-name">Conexiones Estratégicas</div>
+        <div class="pillar-desc">Posiciona tu empresa entre los líderes del ecosistema de IA en Latinoamérica y genera relaciones de alto valor.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🚀</div>
+        <div class="pillar-name">Posicionamiento en IA</div>
+        <div class="pillar-desc">Asocia tu marca al evento de referencia en IA de la región y refuerza tu liderazgo en el sector tecnológico.</div>
       </div>
     </div>
   </div>
@@ -464,10 +487,10 @@
   <!-- CTA / social note -->
   <div class="cta-wrap">
     <p class="cta-note">
-      ¿Tienes alguna pregunta? Escríbenos a <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> — con gusto te atendemos.
+      ¿Tienes alguna pregunta sobre tu patrocinio? Escríbenos a <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a> — con gusto te atendemos.
     </p>
     <p class="cta-note">
-      Síguenos y comparte tu participación: <strong style="color:var(--teal);">#IAExpoInternacional2027</strong>
+      Comparte la noticia: <strong style="color:var(--silver);">#IAExpoInternacional2027</strong>
     </p>
   </div>
 
@@ -508,9 +531,9 @@
   ];
 
   const PALETTES = [
+    { text: 'rgba(200,214,229,A)', border: 'rgba(200,214,229,B)', bg: 'rgba(200,214,229,C)' },
+    { text: 'rgba(226,234,244,A)', border: 'rgba(226,234,244,B)', bg: 'rgba(226,234,244,C)' },
     { text: 'rgba(0,194,168,A)',   border: 'rgba(0,194,168,B)',   bg: 'rgba(0,194,168,C)'   },
-    { text: 'rgba(245,197,66,A)',  border: 'rgba(245,197,66,B)',  bg: 'rgba(245,197,66,C)'  },
-    { text: 'rgba(180,200,255,A)', border: 'rgba(180,200,255,B)', bg: 'rgba(180,200,255,C)' },
   ];
 
   function makeColor(template, a, b, c) {
