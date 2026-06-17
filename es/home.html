@@ -991,12 +991,13 @@
       .topic strong {
         display: block;
         font-size: 14px;
+        color: #fff;
         margin-bottom: 4px;
       }
 
       .topic span {
         font-size: 12px;
-        color: var(--text-dim);
+        color: var(--text-muted);
         line-height: 1.5;
       }
 
@@ -1342,6 +1343,73 @@
         color: var(--cyan);
         font-weight: 700;
         flex-shrink: 0;
+      }
+
+      /* ── ACTIVACIONES DE MARCA: lista horizontal ── */
+      .act-list {
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 28px;
+      }
+      .act-row {
+        display: grid;
+        grid-template-columns: 1fr 140px 200px;
+        gap: 20px;
+        align-items: center;
+        padding: 20px 28px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        transition: background 0.2s;
+      }
+      .act-row:last-child { border-bottom: none; }
+      .act-row:hover { background: rgba(0,212,255,0.04); }
+      .act-left { display: flex; align-items: center; gap: 16px; }
+      .act-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+      .act-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+      .act-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+      .act-price { font-size: 20px; font-weight: 800; color: var(--cyan); text-align: center; white-space: nowrap; }
+      .act-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+      .act-sub-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.12em; }
+      .act-sub-btns { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+      .act-pill {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(0,212,255,0.35);
+        color: var(--cyan);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .act-pill:hover { background: rgba(0,212,255,0.12); border-color: var(--cyan); }
+      @media(max-width: 780px) {
+        .act-row { grid-template-columns: 1fr; gap: 12px; padding: 20px 20px; }
+        .act-price { text-align: left; }
+        .act-cta { align-items: flex-start; }
+        .act-sub-btns { justify-content: flex-start; }
+      }
+
+      /* ── TARJETAS PRINCIPALES DE PATROCINIO: texto centrado y grande ── */
+      .p-ti, .p-pl, .p-or, .p-si {
+        text-align: center;
+      }
+      .p-ti h3, .p-pl h3, .p-or h3, .p-si h3 {
+        font-size: 30px;
+      }
+      .p-ti .pat-tier, .p-pl .pat-tier, .p-or .pat-tier, .p-si .pat-tier {
+        font-size: 13px;
+      }
+      .p-ti ul, .p-pl ul, .p-or ul, .p-si ul {
+        text-align: left;
+        align-items: flex-start;
+      }
+      .p-ti ul li, .p-pl ul li, .p-or ul li, .p-si ul li {
+        font-size: 15px;
+      }
+      .p-ti .tkt-launch, .p-pl .tkt-launch, .p-or .tkt-launch, .p-si .tkt-launch {
+        margin: 20px 0 24px !important;
+        font-size: 2rem !important;
       }
 
       /* ── TABLA COMPARATIVA ── */
@@ -2735,7 +2803,7 @@
         <p class="hero-desc" id="ev-hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>3 días, 8 tracks temáticos, 4 talleres prácticos y líderes de alto impacto</strong> que ya están usando la IA para transformar industrias reales.</p>
         <div class="hero-btns">
           <a href="#boletos" class="hero-cta-card hero-cta-primary">
-            <div class="hero-cta-badge">⭐ Precio Lanzamiento · 50% OFF</div>
+            <div class="hero-cta-badge">⭐ Precio Lanzamiento · {{custom_values.descuento}} OFF</div>
             <div class="hero-cta-label">🎟️ Asegurar mi Lugar</div>
             <div class="hero-cta-sub">El cupo es limitado</div>
           </a>
@@ -2760,7 +2828,7 @@
           </div>
           <div style="width:100%;height:0;flex-basis:100%;"></div>
           <div class="hstat">
-            <div class="hstat-n">50% OFF</div>
+            <div class="hstat-n">{{custom_values.descuento}} OFF</div>
             <div class="hstat-l">Precio Lanzamiento</div>
           </div>
           <div class="hstat">
@@ -2925,7 +2993,7 @@
             <h2 class="stitle">La <span class="accent">EXPO</span> que Transforma<br>Vidas Reales</h2>
             <p>Después del éxito rotundo de <strong>IA Expo Internacional 2026 en Ciudad de México</strong>, regresamos con una edición aún más ambiciosa. Más tracks, más speakers internacionales, más impacto.</p>
             <p>IA Expo Internacional 2027 es el encuentro de quienes ya están usando la inteligencia artificial para transformar empresas, industrias y vidas en <strong>LATAM y el mundo</strong>.</p>
-            <p id="ev-expo-cap">Solo <strong>200 lugares</strong> disponibles. Precio de lanzamiento con 50% de descuento por tiempo limitado.</p>
+            <p id="ev-expo-cap">Solo <strong>200 lugares</strong> disponibles. Precio de lanzamiento con {{custom_values.descuento}} de descuento por tiempo limitado.</p>
             <div class="features reveal d1">
               <div class="feat">
                 <div class="ficon">🎤</div>
@@ -2945,7 +3013,7 @@
           <div class="bol-reg-box reveal d1">
             <div class="bol-reg-hdr">
               <h3>🎟️ Registro — IA Expo Internacional 2027</h3>
-              <p id="ev-reg-desc">Precio de lanzamiento con 50% OFF · Solo 200 lugares disponibles</p>
+              <p id="ev-reg-desc">Precio de lanzamiento con {{custom_values.descuento}} OFF · Solo 200 lugares disponibles</p>
             </div>
             <div class="bol-reg-form">
               <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" title="IA Expo Registro"></iframe>
@@ -2963,12 +3031,12 @@
         <div class="eyebrow">Boletos</div>
         <h2 class="stitle reveal">Asegura tu Lugar en la<br><span class="accent">IA Expo 2027</span></h2>
         <div style="text-align:center;margin-top:24px;">
-          <div class="bol-launch-badge">🔥 Precio de Lanzamiento Activo — 50% de Descuento</div>
+          <div class="bol-launch-badge">🔥 Precio de Lanzamiento Activo — {{custom_values.descuento}} de Descuento</div>
         </div>
 
         <div class="bol-stages reveal">
           <div class="bol-stage active">
-            <div class="bol-stage-pct" style="color:#00E676">50% OFF</div>
+            <div class="bol-stage-pct" style="color:#00E676">{{custom_values.descuento}} OFF</div>
             <div class="bol-stage-name">🔥 Lanzamiento</div>
             <div class="bol-stage-desc">Disponible ahora<br>Precio especial de apertura</div>
           </div>
@@ -3004,16 +3072,16 @@
               <tr><td class="feature-col">🏛️ Área de Expo</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
               <tr><td class="feature-col">✨ Keynotes + Conferencias</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
               <tr><td class="feature-col">☕ Coffee Break</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-              <tr><td class="feature-col">🍔 Complementos</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+              <tr><td class="feature-col">🍔 Complementos Alimenticios</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
               <tr><td class="feature-col">🤝 Networking estructurado</td><td class="check">—</td><td class="check">✓</td><td class="check">✓</td></tr>
               <tr><td class="feature-col">🥂 Cóctel de bienvenida</td><td class="check">—</td><td class="check">✓</td><td class="check">✓</td></tr>
               <tr><td class="feature-col">🎯 Asientos preferenciales</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td></tr>
-              <tr><td class="feature-col">💎 Lounge VIP</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td></tr>
+              <tr><td class="feature-col">💎 Cena VIP</td><td class="check">—</td><td class="check">—</td><td class="check">✓</td></tr>
               <tr class="price-row">
                 <td class="feature-col" style="color:#fff">Precio Lanzamiento</td>
-                <td class="price-val check" id="ev-cmp-conf-price" style="color:var(--cyan)">$14,950</td>
-                <td class="price-val check" id="ev-cmp-net-price" style="color:#00E676">$19,950</td>
-                <td class="price-val check" id="ev-cmp-vip-price" style="color:var(--gold)">$24,950</td>
+                <td class="price-val check" style="color:var(--cyan)">{{custom_values.admision_conferencias}}</td>
+                <td class="price-val check" style="color:#00E676">{{custom_values.admision_network}}</td>
+                <td class="price-val check" style="color:var(--gold)">{{custom_values.admision_vip}}</td>
               </tr>
             </tbody>
           </table>
@@ -3025,11 +3093,11 @@
           <div class="tkt-card orange">
             <div class="tkt-icon">🏛️</div>
             <div class="tkt-name">Expo</div>
-            <div class="tkt-desc">Acceso a la zona de exposición con demos en vivo de las herramientas de IA más innovadoras del mercado. Solo el piso de Expo — los 3 días.</div>
+            <div class="tkt-desc">Acceso a la zona de exposición con demos en vivo de las herramientas de IA más innovadoras del mercado. Solo el piso de Expo — los 2 días.</div>
             <div class="tkt-price-wrap">
-              <div class="tkt-launch" id="ev-tkt-expo-launch" style="color:#FFB74D">$4,950</div>
-              <div class="tkt-orig" id="ev-tkt-expo-orig">$9,900 MXN</div>
-              <span class="tkt-badge green">50% OFF · Solo 100 cupos</span>
+              <div class="tkt-launch" style="color:#FFB74D">{{custom_values.admision_expo}}</div>
+              <div class="tkt-orig" id="ev-tkt-expo-orig">$750 USD</div>
+              <span class="tkt-badge green">{{custom_values.descuento}} OFF · Solo 100 cupos</span>
             </div>
             <a href="https://iaExpo.ai/admisiones/expo" class="tkt-btn" target="_blank" rel="noopener">Asegura tu Expo →</a>
           </div>
@@ -3039,11 +3107,11 @@
             <div class="tkt-name">Conferencias</div>
             <div class="tkt-desc">Acceso a los 2 días de conferencias (29–30 enero) con keynotes, paneles y los mejores speakers de IA en LATAM. Incluye Expo + Coffee Break.</div>
             <div class="tkt-price-wrap">
-              <div class="tkt-launch" id="ev-tkt-conf-launch" style="color:var(--cyan)">$14,950</div>
-              <div class="tkt-orig" id="ev-tkt-conf-orig">$29,900 MXN</div>
-              <span class="tkt-badge green" id="ev-tkt-conf-badge">50% OFF · Solo 200 cupos</span>
+              <div class="tkt-launch" style="color:var(--cyan)">{{custom_values.admision_conferencias}}</div>
+              <div class="tkt-orig" id="ev-tkt-conf-orig">$1,990 USD</div>
+              <span class="tkt-badge green" id="ev-tkt-conf-badge">{{custom_values.descuento}} OFF · Solo 200 cupos</span>
             </div>
-            <a href="https://iaExpo.ai/admisiones/conferencias" class="tkt-btn" target="_blank" rel="noopener">Asegura tu Conferencias →</a>
+            <a href="https://iaExpo.ai/admisiones/conferencias" class="tkt-btn" target="_blank" rel="noopener">Asegura tus Conferencias →</a>
           </div>
           <!-- NETWORKING -->
           <div class="tkt-card green">
@@ -3051,9 +3119,9 @@
             <div class="tkt-name">Networking Estructurado</div>
             <div class="tkt-desc" id="ev-tkt-net-desc">Todo lo de Conferencias + sesión de matchmaking estructurado con los líderes más relevantes del ecosistema IA de LATAM.</div>
             <div class="tkt-price-wrap">
-              <div class="tkt-launch" id="ev-tkt-net-launch" style="color:#00E676">$19,950</div>
-              <div class="tkt-orig" id="ev-tkt-net-orig">$39,900 MXN</div>
-              <span class="tkt-badge green" id="ev-tkt-net-badge">50% OFF · Solo 25 cupos</span>
+              <div class="tkt-launch" style="color:#00E676">{{custom_values.admision_network}}</div>
+              <div class="tkt-orig" id="ev-tkt-net-orig">$2,490 USD</div>
+              <span class="tkt-badge green" id="ev-tkt-net-badge">{{custom_values.descuento}} OFF · Solo 25 cupos</span>
             </div>
             <a href="https://iaExpo.ai/admisiones/network" class="tkt-btn" target="_blank" rel="noopener">Asegura tu Networking →</a>
           </div>
@@ -3063,9 +3131,9 @@
             <div class="tkt-name">VIP All Access</div>
             <div class="tkt-desc">Acceso completo al evento (28–30 enero) — Expo + Conferencias + Networking + Cena de bienvenida. Lounge VIP y beneficios exclusivos.</div>
             <div class="tkt-price-wrap">
-              <div class="tkt-launch" id="ev-tkt-vip-launch" style="color:#FFD54F">$24,950</div>
-              <div class="tkt-orig" id="ev-tkt-vip-orig">$49,900 MXN</div>
-              <span class="tkt-badge gold">50% OFF · Solo 20 cupos</span>
+              <div class="tkt-launch" style="color:#FFD54F">{{custom_values.admision_vip}}</div>
+              <div class="tkt-orig" id="ev-tkt-vip-orig">$2,990 USD</div>
+              <span class="tkt-badge gold">{{custom_values.descuento}} OFF · Solo 20 cupos</span>
             </div>
             <a href="https://iaExpo.ai/admisiones/vip-all-access" class="tkt-btn" target="_blank" rel="noopener">Asegura tu VIP All Access →</a>
           </div>
@@ -3082,8 +3150,8 @@
             <span class="taller-coming">Próximamente</span>
             <div class="taller-desc">Taller práctico hands-on con experto en IA. Tema por anunciar — atención personalizada garantizada.</div>
             <div class="tkt-price-wrap" style="margin:10px 0 0;">
-              <div class="tkt-launch" style="color:var(--cyan)">$4,950 MXN</div>
-              <div class="tkt-orig">$9,900 MXN</div>
+              <div class="tkt-launch" style="color:var(--cyan)">{{custom_values.admision_taller_a}}</div>
+              <div class="tkt-orig">$750 USD</div>
               <span class="tkt-badge green">⚠️ Solo 20 cupos</span>
             </div>
             <a href="https://iaExpo.ai/admisiones/taller-a" class="tkt-btn" target="_blank" rel="noopener" style="margin-top:8px;">Reserva tu Taller A →</a>
@@ -3095,8 +3163,8 @@
             <span class="taller-coming">Próximamente</span>
             <div class="taller-desc">Taller práctico hands-on con experto en IA. Tema por anunciar — atención personalizada garantizada.</div>
             <div class="tkt-price-wrap" style="margin:10px 0 0;">
-              <div class="tkt-launch" style="color:var(--cyan)">$4,950 MXN</div>
-              <div class="tkt-orig">$9,900 MXN</div>
+              <div class="tkt-launch" style="color:var(--cyan)">{{custom_values.admision_taller_b}}</div>
+              <div class="tkt-orig">$750 USD</div>
               <span class="tkt-badge green">⚠️ Solo 20 cupos</span>
             </div>
             <a href="https://iaExpo.ai/admisiones/taller-b" class="tkt-btn" target="_blank" rel="noopener" style="margin-top:8px;">Reserva tu Taller B →</a>
@@ -3108,8 +3176,8 @@
             <span class="taller-coming">Próximamente</span>
             <div class="taller-desc">Taller práctico hands-on con experto en IA. Tema por anunciar — atención personalizada garantizada.</div>
             <div class="tkt-price-wrap" style="margin:10px 0 0;">
-              <div class="tkt-launch" style="color:var(--cyan)">$4,950 MXN</div>
-              <div class="tkt-orig">$9,900 MXN</div>
+              <div class="tkt-launch" style="color:var(--cyan)">{{custom_values.admision_taller_c}}</div>
+              <div class="tkt-orig">$750 USD</div>
               <span class="tkt-badge green">⚠️ Solo 20 cupos</span>
             </div>
             <a href="https://iaExpo.ai/admisiones/taller-c" class="tkt-btn" target="_blank" rel="noopener" style="margin-top:8px;">Reserva tu Taller C →</a>
@@ -3121,16 +3189,16 @@
             <span class="taller-coming">Próximamente</span>
             <div class="taller-desc">Taller práctico hands-on con experto en IA. Tema por anunciar — atención personalizada garantizada.</div>
             <div class="tkt-price-wrap" style="margin:10px 0 0;">
-              <div class="tkt-launch" style="color:var(--cyan)">$4,950 MXN</div>
-              <div class="tkt-orig">$9,900 MXN</div>
+              <div class="tkt-launch" style="color:var(--cyan)">{{custom_values.admision_taller_d}}</div>
+              <div class="tkt-orig">$750 USD</div>
               <span class="tkt-badge green">⚠️ Solo 20 cupos</span>
             </div>
             <a href="https://iaExpo.ai/admisiones/taller-d" class="tkt-btn" target="_blank" rel="noopener" style="margin-top:8px;">Reserva tu Taller D →</a>
           </div>
         </div>
 
-        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:32px;margin-bottom:6px;text-align:center;">Todos los precios en pesos mexicanos (MXN) · Precio por persona · 1 boleto</p>
-        <p style="font-size:0.72rem;color:var(--text-dim);margin-bottom:0;text-align:center;opacity:0.7;">Todos los precios en pesos mexicanos (MXN)<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:32px;margin-bottom:6px;text-align:center;">Todos los precios en dólares americanos (USD) · Precio por persona · 1 boleto</p>
+        <p style="font-size:0.72rem;color:var(--text-dim);margin-bottom:0;text-align:center;opacity:0.7;">Todos los precios en dólares americanos (USD)<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
 
       </div>
     </section>
@@ -3139,25 +3207,21 @@
     <section id="convocatoria">
       <div class="si">
         <div class="eyebrow">Convocatoria</div>
-        <h2 class="stitle reveal">Call for Papers —<br><span class="accent">Tu Investigación en el Escenario</span></h2>
-        <p class="sdesc reveal d1" id="ev-cfp-desc">¿Tu investigación está cambiando el mundo con IA? Envía tu paper y preséntalo ante 200 líderes, académicos e innovadores de LATAM.</p>
+        <h2 class="stitle reveal">Call for Papers<br><span class="accent">IA: Impacto en las Empresas</span></h2>
+        <p class="sdesc reveal d1" id="ev-cfp-desc">¿Tu empresa está cambiando el mundo con IA? Envía tu paper y preséntalo ante 200 líderes, académicos e innovadores de LATAM.</p>
         <div class="cfp-g">
           <div class="reveal">
             <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📚 Temáticas de Interés</h3>
             <div class="topics">
               <div class="topic"><strong>🔭 IA Visión y Futuro</strong><span>Tendencias emergentes, roadmaps tecnológicos e impacto de la IA en los próximos años</span></div>
-              <div class="topic"><strong>🏢 IA en Empresas y Negocios</strong><span>Automatización, optimización de procesos, estrategia y transformación organizacional con IA</span></div>
-              <div class="topic"><strong>💰 IA en FinTech</strong><span>Finanzas algorítmicas, crédito, detección de fraude y servicios financieros potenciados por IA</span></div>
-              <div class="topic"><strong>🏥 IA en Salud y Bienestar</strong><span>Diagnóstico, medicina preventiva, robótica médica y sistemas de soporte clínico</span></div>
-              <div class="topic"><strong>🚗 Movilidad Autónoma y Robótica</strong><span>Vehículos autónomos, robótica aplicada, infraestructura V2X y smart cities</span></div>
-              <div class="topic"><strong>⚖️ Ética y Regulación de la IA</strong><span>Uso responsable, regulación, transparencia y políticas públicas</span></div>
-              <div class="topic"><strong>🎓 IA en Educación y Empleabilidad</strong><span>Personalización del aprendizaje, habilidades del futuro e impacto de la IA en el mercado laboral</span></div>
-              <div class="topic"><strong>🎨 IA en Artes y Entretenimiento</strong><span>Generación creativa, música, cine, gaming y expresión artística aumentada por IA</span></div>
-              <div class="topic"><strong>🌎 IA Para la Vida Real</strong><span>Casos prácticos de IA aplicada a la vida cotidiana</span></div>
+              <div class="topic"><strong>📣 Mercadotecnia y Publicidad</strong><span>IA aplicada a campañas, personalización, generación de contenido y estrategia de marca</span></div>
+              <div class="topic"><strong>💰 ROI: Operaciones y Automatización</strong><span>Casos reales de eficiencia, reducción de costos y automatización de procesos con IA</span></div>
+              <div class="topic"><strong>✨ ExperiencIA: Casos Reales</strong><span>Historias de éxito, lecciones aprendidas y transformación empresarial impulsada por IA</span></div>
             </div>
           </div>
-          <div class="reveal d1">
+          <div class="reveal d1" style="text-align:center;">
             <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📅 Fechas Clave</h3>
+            <div style="display:flex;justify-content:center;">
             <div class="tl">
               <div class="tli">
                 <div class="tld"></div>
@@ -3190,11 +3254,12 @@
                 <div class="tl-desc">Ciudad de México</div>
               </div>
             </div>
+            </div>
           </div>
         </div>
         <div class="cfp-cta reveal">
           <div style="font-size:36px;margin-bottom:16px;">✍️</div>
-          <h3>¿Listo para presentar tu investigación?</h3>
+          <h3>¿Listo para compartir tu ExperiencIA?</h3>
           <p>Formato: 4–8 páginas · Español o Inglés · Revisión por el Comité Organizador de la IA Expo Internacional</p>
           <div class="cfp-tags"><span class="cfp-tag">4–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por IA Expo</span><span class="cfp-tag">Cierre: 31 Ago 2026</span></div>
           <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
@@ -3329,7 +3394,7 @@
         <div class="pat-grid">
           <div class="pat p-ti reveal">
             <div class="pat-tier">💎 Diamante</div>
-            <h3>Patrocinio Diamante</h3>
+            <h3>Patrocinio Nivel Diamante</h3>
             <ul>
               <li>Naming rights — "IA Expo 2027 presentado por [Tu Marca]"</li>
               <li>Keynote propia de 30 min en escenario principal</li>
@@ -3339,11 +3404,12 @@
               <li>12+ publicaciones en redes sociales + entrevista</li>
               <li>Acceso a cena privada VIP con patrocinadores</li>
             </ul>
+            <div class="tkt-launch" style="color:var(--gold);font-size:1.4rem;font-weight:800;margin:12px 0 4px;">{{custom_values.patrocinio_diamante}}</div>
             <a href="https://iaExpo.ai/patrocinios/nivel-diamante" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Diamante →</a>
           </div>
           <div class="pat p-pl reveal">
             <div class="pat-tier">Platino</div>
-            <h3>Patrocinio Platino</h3>
+            <h3>Patrocinio Nivel Platino</h3>
             <ul>
               <li>Naming rights del evento o track principal</li>
               <li>Keynote de apertura o clausura</li>
@@ -3353,11 +3419,12 @@
               <li>Mención en todos los keynotes</li>
               <li>Activación de marca personalizada</li>
             </ul>
+            <div class="tkt-launch" style="color:var(--cyan);font-size:1.3rem;font-weight:800;margin:12px 0 4px;">{{custom_values.patrocinio_platino}}</div>
             <a href="https://iaExpo.ai/patrocinios/nivel-platino" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Platino →</a>
           </div>
           <div class="pat p-or reveal d1">
             <div class="pat-tier">Oro</div>
-            <h3>Patrocinio Oro</h3>
+            <h3>Patrocinio Nivel Oro</h3>
             <ul>
               <li>Stand en área principal del evento</li>
               <li>5 pases completos al evento</li>
@@ -3366,11 +3433,12 @@
               <li>Participación en panel de industria</li>
               <li>Presencia en pantallas del evento</li>
             </ul>
+            <div class="tkt-launch" style="color:#FFB74D;font-size:1.2rem;font-weight:800;margin:12px 0 4px;">{{custom_values.patrocinio_oro}}</div>
             <a href="https://iaExpo.ai/patrocinios/nivel-oro" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Oro →</a>
           </div>
           <div class="pat p-si reveal d2">
             <div class="pat-tier">Plata</div>
-            <h3>Patrocinio Plata</h3>
+            <h3>Patrocinio Nivel Plata</h3>
             <ul>
               <li>Stand en área de networking</li>
               <li>3 pases completos al evento</li>
@@ -3378,107 +3446,177 @@
               <li>Mención en redes sociales</li>
               <li>Presencia en pantallas digitales</li>
             </ul>
+            <div class="tkt-launch" style="color:#B0BEC5;font-size:1.2rem;font-weight:800;margin:12px 0 4px;">{{custom_values.patrocinio_plata}}</div>
             <a href="https://iaExpo.ai/patrocinios/nivel-plata" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Plata →</a>
           </div>
           <div class="pat p-micro reveal d2" style="grid-column: span 2;">
-            <div class="pat-tier">✨ Micro-Patrocinios</div>
-            <h3>Otras Oportunidades de Patrocinio</h3>
-            <p style="font-size:13px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;">Visibilidad creativa e impactante sin importar el presupuesto. Cada opción te conecta directamente con los 250 asistentes.</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;">
+            <div class="pat-tier">✨ Activaciones de Marca</div>
+            <h3>Conecta tu Marca con 200+ Líderes de IA</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.7;">Cada activación te conecta directamente con 200+ líderes de IA. Elige la que mejor se alinea con tus objetivos de marca.</p>
+
+            <!-- ── LISTA DE ACTIVACIONES ── -->
+            <div class="act-list">
 
               <!-- Cena VIP -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>🍽️</span><div><strong style="color:var(--text);display:block;">Cena VIP</strong>$50,000</div>
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🍽️</span>
+                  <div>
+                    <div class="act-name">Cena VIP</div>
+                    <div class="act-desc">Branding exclusivo en la cena privada con speakers y patrocinadores top</div>
+                  </div>
                 </div>
-                <a href="https://iaExpo.ai/patrocinios/cena-vip" class="pat-btn" style="font-size:11px;padding:7px 12px;margin-top:8px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Cena VIP →</a>
+                <div class="act-price">{{custom_values.patrocinio_cena_vip}}</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/cena-vip" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
               </div>
 
               <!-- Cóctel de Bienvenida -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>🥂</span><div><strong style="color:var(--text);display:block;">Cóctel de Bienvenida</strong>$25,000</div>
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🥂</span>
+                  <div>
+                    <div class="act-name">Cóctel de Bienvenida</div>
+                    <div class="act-desc">Primera impresión memorable con todos los asistentes al inicio del evento</div>
+                  </div>
                 </div>
-                <a href="https://iaExpo.ai/patrocinios/coctel-de-bienvenida" class="pat-btn" style="font-size:11px;padding:7px 12px;margin-top:8px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Cóctel de Bienvenida →</a>
+                <div class="act-price">{{custom_values.patrocinio_coctel_bienvenida}}</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/coctel-de-bienvenida" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
               </div>
 
               <!-- Cóctel de Networking -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>🤝</span><div><strong style="color:var(--text);display:block;">Cóctel de Networking</strong>$25,000</div>
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🤝</span>
+                  <div>
+                    <div class="act-name">Cóctel de Networking</div>
+                    <div class="act-desc">Tu marca presente en el momento de mayor conexión entre líderes de IA</div>
+                  </div>
                 </div>
-                <a href="https://iaExpo.ai/patrocinios/coctel-de-networking" class="pat-btn" style="font-size:11px;padding:7px 12px;margin-top:8px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Cóctel de Networking →</a>
+                <div class="act-price">{{custom_values.patrocinio_coctel_networking}}</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/coctel-de-networking" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
               </div>
 
-              <!-- Conferencias — dos días -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>🎙️</span><div><strong style="color:var(--text);display:block;">Conferencias</strong>$40,000 · Día 1 · Día 2</div>
+              <!-- Conferencias -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎙️</span>
+                  <div>
+                    <div class="act-name">Conferencias</div>
+                    <div class="act-desc">Sala principal nombrada con tu marca durante un día completo de keynotes</div>
+                  </div>
                 </div>
-                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-                  <a href="https://iaExpo.ai/patrocinios/conferencias-dia-1" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Conferencias Día 1 →</a>
-                  <a href="https://iaExpo.ai/patrocinios/conferencias-dia-2" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Conferencias Día 2 →</a>
+                <div class="act-price">{{custom_values.patrocinio_conferencias_dia_1}}</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el día</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/conferencias-dia-1" class="act-pill" target="_blank" rel="noopener">Día 1 →</a>
+                    <a href="https://iaExpo.ai/patrocinios/conferencias-dia-2" class="act-pill" target="_blank" rel="noopener">Día 2 →</a>
+                  </div>
                 </div>
               </div>
 
               <!-- Patrocinio de Taller -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>🎤</span><div><strong style="color:var(--text);display:block;">Patrocinio de Taller</strong>$25,000 · 4 opciones</div>
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎤</span>
+                  <div>
+                    <div class="act-name">Patrocinio de Taller</div>
+                    <div class="act-desc">Exposición exclusiva ante 20 participantes en sesión hands-on de IA</div>
+                  </div>
                 </div>
-                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-                  <a href="https://iaExpo.ai/patrocinios/taller-a" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Taller A →</a>
-                  <a href="https://iaExpo.ai/patrocinios/taller-b" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Taller B →</a>
-                  <a href="https://iaExpo.ai/patrocinios/taller-c" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Taller C →</a>
-                  <a href="https://iaExpo.ai/patrocinios/taller-d" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Taller D →</a>
+                <div class="act-price">{{custom_values.patrocinio_taller_a}}</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el taller</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/taller-a" class="act-pill" target="_blank" rel="noopener">Taller A →</a>
+                    <a href="https://iaExpo.ai/patrocinios/taller-b" class="act-pill" target="_blank" rel="noopener">Taller B →</a>
+                    <a href="https://iaExpo.ai/patrocinios/taller-c" class="act-pill" target="_blank" rel="noopener">Taller C →</a>
+                    <a href="https://iaExpo.ai/patrocinios/taller-d" class="act-pill" target="_blank" rel="noopener">Taller D →</a>
+                  </div>
                 </div>
               </div>
 
               <!-- WiFi Taller -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>📶</span><div><strong style="color:var(--text);display:block;">WiFi Taller</strong>$20,000 · 4 opciones</div>
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">📶</span>
+                  <div>
+                    <div class="act-name">WiFi Taller</div>
+                    <div class="act-desc">Tu nombre en cada dispositivo conectado durante la sesión — visibilidad constante</div>
+                  </div>
                 </div>
-                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-                  <a href="https://iaExpo.ai/patrocinios/wifi-taller-a" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>WiFi Taller A →</a>
-                  <a href="https://iaExpo.ai/patrocinios/wifi-taller-b" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>WiFi Taller B →</a>
-                  <a href="https://iaExpo.ai/patrocinios/wifi-taller-c" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>WiFi Taller C →</a>
-                  <a href="https://iaExpo.ai/patrocinios/wifi-taller-d" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>WiFi Taller D →</a>
+                <div class="act-price">{{custom_values.patrocinio_wifi_taller_a}}</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el taller</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-a" class="act-pill" target="_blank" rel="noopener">Taller A →</a>
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-b" class="act-pill" target="_blank" rel="noopener">Taller B →</a>
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-c" class="act-pill" target="_blank" rel="noopener">Taller C →</a>
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-d" class="act-pill" target="_blank" rel="noopener">Taller D →</a>
+                  </div>
                 </div>
               </div>
 
-              <!-- Coffee Break — tres días -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>☕</span><div><strong style="color:var(--text);display:block;">Coffee Break</strong>$10,000 – $20,000 · 3 días</div>
+              <!-- Coffee Break -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">☕</span>
+                  <div>
+                    <div class="act-name">Coffee Break</div>
+                    <div class="act-desc">Networking espontáneo con tu logo en cada mesa y estación de café</div>
+                  </div>
                 </div>
-                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-                  <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-1" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Coffee Break Día 1 →</a>
-                  <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-2" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Coffee Break Día 2 →</a>
-                  <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-3" class="pat-btn" style="font-size:11px;padding:7px 10px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Coffee Break Día 3 →</a>
+                <div class="act-price">{{custom_values.patrocinio_coffee_break_dia_2}}</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el día</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-1" class="act-pill" target="_blank" rel="noopener">Día 1 →</a>
+                    <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-2" class="act-pill" target="_blank" rel="noopener">Día 2 →</a>
+                    <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-3" class="act-pill" target="_blank" rel="noopener">Día 3 →</a>
+                  </div>
                 </div>
               </div>
 
               <!-- Bolsa de Registro -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>🎒</span><div><strong style="color:var(--text);display:block;">Bolsa de Registro</strong>$40,000</div>
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎒</span>
+                  <div>
+                    <div class="act-name">Bolsa de Registro</div>
+                    <div class="act-desc">Tu marca en manos de cada asistente desde el primer momento del evento</div>
+                  </div>
                 </div>
-                <a href="https://iaExpo.ai/patrocinios/bolsa-de-registro" class="pat-btn" style="font-size:11px;padding:7px 12px;margin-top:8px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Bolsa de Registro →</a>
+                <div class="act-price">{{custom_values.patrocinio_bolsa_registro}}</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/bolsa-de-registro" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
               </div>
 
               <!-- Goodies -->
-              <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
-                <div style="font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;">
-                  <span>🎁</span><div><strong style="color:var(--text);display:block;">Goodies</strong>$5,000</div>
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎁</span>
+                  <div>
+                    <div class="act-name">Goodies</div>
+                    <div class="act-desc">Recuerdo físico de tu marca que cada asistente se lleva a casa</div>
+                  </div>
                 </div>
-                <a href="https://iaExpo.ai/patrocinios/goodies" class="pat-btn" style="font-size:11px;padding:7px 12px;margin-top:8px;line-height:1.3;" target="_blank" rel="noopener">Me interesa<br>Goodies →</a>
+                <div class="act-price">{{custom_values.patrocinio_goodies}}</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/goodies" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
               </div>
 
             </div>
           </div>
         </div>
-        <p style="text-align:center;margin-top:28px;font-size:0.72rem;color:var(--text-dim);opacity:0.7;">Todos los precios en pesos mexicanos (MXN)<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
+        <p style="text-align:center;margin-top:28px;font-size:0.72rem;color:var(--text-dim);opacity:0.7;">Todos los precios en dólares americanos (USD)<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
       </div>
     </section>
     <div class="gd"></div>
@@ -3837,7 +3975,7 @@
               ¿Cuánto cuesta asistir y qué incluye cada tipo de boleto?
               <span class="faq-arrow">+</span>
             </div>
-            <div class="faq-a">Actualmente tenemos precio de lanzamiento con 50% de descuento. Hay cuatro tipos de boleto: Expo (acceso a zona de exhibición), Talleres (workshops hands-on el 28 de enero), Conferencias (acceso completo a 2 días de ponencias) y Networking Estructurado (sesión de matchmaking VIP). Consulta la sección de Tickets para ver precios específicos.</div>
+            <div class="faq-a">Actualmente tenemos precio de lanzamiento con {{custom_values.descuento}} de descuento. Hay cuatro tipos de boleto: Expo (acceso a zona de exhibición), Talleres (workshops hands-on el 28 de enero), Conferencias (acceso completo a 2 días de ponencias) y Networking Estructurado (sesión de matchmaking VIP). Consulta la sección de Tickets para ver precios específicos.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">
