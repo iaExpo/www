@@ -1,15 +1,10 @@
 """
 IA Expo 2027 — Actualizador de Variables en GoHighLevel
 Uso: python3 ghl_sync.py
-Lee iaExpo_data.csv y actualiza las variables en GHL.
+Lee iaExpo_data.csv y actualiza las variables en GHL usando la columna Valor.
 
-Sección 1 (Tipo=Producto):
-  - Admisiones: usa el precio de la columna indicada en Etapa_Activa
-    (Lanzamiento → Precio_Lanzamiento, Anticipado → Precio_Anticipado, Regular → Precio_Regular)
-  - Patrocinios: usa Precio_Regular (precio fijo)
-
-Sección 2 (Tipo=Variable):
-  - Actualiza variables financieras y de capacidad directamente con Valor
+Sección 1 (Tipo=Producto): usa la columna Valor (precio formateado, ej. "$995 USD")
+Sección 2 (Tipo=Variable): usa la columna Valor (variables financieras y de capacidad)
 """
 
 import csv
@@ -36,12 +31,6 @@ HEADERS = {
     "Authorization": f"Bearer {API_KEY}",
     "Content-Type": "application/json",
     "User-Agent": "Mozilla/5.0",
-}
-
-ETAPA_A_COLUMNA = {
-    "Lanzamiento": "Precio_Lanzamiento",
-    "Anticipado":  "Precio_Anticipado",
-    "Regular":     "Precio_Regular",
 }
 
 
@@ -93,46 +82,19 @@ def actualizar_variable(field_key, nuevo_valor, custom_values_map):
 def leer_csv():
     """
     Lee iaExpo_data.csv y devuelve un dict {variable_ghl: valor_a_sincronizar}.
-    - Sección Producto: usa Etapa_Activa para escoger columna de precio (Admisiones)
-      o Precio_Regular directo (Patrocinios sin Etapa_Activa).
-    - Sección Variable: usa la columna Valor directamente.
+    Tanto Productos como Variables usan directamente la columna Valor.
     """
     variables = {}
     try:
         with open(CSV_FILE, newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                tipo = row.get("Tipo", "").strip()
                 var_ghl = row.get("Variable_GHL", "").strip()
-
-                if not var_ghl:
-                    continue  # fila vacía o separador
-
-                if tipo == "Producto":
-                    etapa = row.get("Etapa_Activa", "").strip()
-                    if etapa:
-                        # Admisión — precio según etapa activa
-                        col = ETAPA_A_COLUMNA.get(etapa)
-                        if col:
-                            precio = row.get(col, "").strip()
-                            if precio:
-                                variables[var_ghl] = precio
-                        else:
-                            print(f"  ⚠️  Etapa desconocida '{etapa}' para {var_ghl}")
-                    else:
-                        # Patrocinio — precio fijo
-                        precio = row.get("Precio_Regular", "").strip()
-                        if precio:
-                            variables[var_ghl] = precio
-
-                elif tipo == "Variable":
-                    valor = row.get("Valor", "").strip()
-                    if valor:
-                        variables[var_ghl] = valor
-
+                valor = row.get("Valor", "").strip()
+                if var_ghl and valor:
+                    variables[var_ghl] = valor
     except FileNotFoundError:
         raise FileNotFoundError(f"No encontré el archivo {CSV_FILE}")
-
     return variables
 
 
@@ -147,7 +109,7 @@ def main():
         print(f"\n⛔ {e}\n")
         return
 
-    print(f"\n📄 Variables a actualizar desde iaExpo_data.csv: {len(variables)}")
+    print(f"\n📄 Variables a actualizar desde iaExpo_data.csv: {len(variables)}\n")
     for k, v in variables.items():
         print(f"  • {k} = {v}")
 
