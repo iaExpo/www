@@ -1,5 +1,0 @@
-1. Clic en el funnel para editarlo y espera a que cargue la página
-2. Clic en Settings
-3. Clic el toggle Payment Mode para activarlo
-4. Clic Save
-5. Clic '<- Back'

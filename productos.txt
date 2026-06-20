@@ -1,0 +1,30 @@
+Admisión Conferencias
+Admisión Expo
+Admisión Network
+Admisión Taller A
+Admisión Taller B
+Admisión Taller C
+Admisión Taller D
+Admisión VIP All Access
+Patrocinio Bolsa de Registro
+Patrocinio Cena VIP
+Patrocinio Coffee Break Día 1
+Patrocinio Coffee Break Día 2
+Patrocinio Coffee Break Día 3
+Patrocinio Conferencias Día 1
+Patrocinio Conferencias Día 2
+Patrocinio Cóctel de Bienvenida
+Patrocinio Cóctel de Networking
+Patrocinio Goodies
+Patrocinio Nivel Diamante
+Patrocinio Nivel Oro
+Patrocinio Nivel Plata
+Patrocinio Nivel Platino
+Patrocinio Taller A
+Patrocinio Taller B
+Patrocinio Taller C
+Patrocinio Taller D
+Patrocinio WiFi Taller A
+Patrocinio WiFi Taller B
+Patrocinio WiFi Taller C
+Patrocinio WiFi Taller D

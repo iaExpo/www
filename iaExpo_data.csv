@@ -1,0 +1,58 @@
+Tipo,Producto,Variable_GHL,URL,Precio_Lanzamiento,Precio_Anticipado,Precio_Regular,Etapa_Activa,Unidades,Valor
+Producto,Admisión Conferencias,admision_conferencias,https://iaExpo.ai/admisiones/conferencias,995,1495,1990,Lanzamiento,200,
+Producto,Admisión Expo,admision_expo,https://iaExpo.ai/admisiones/expo,375,575,750,Lanzamiento,200,
+Producto,Admisión Network,admision_network,https://iaExpo.ai/admisiones/network,1245,1875,2490,Lanzamiento,25,
+Producto,Admisión Taller A,admision_taller_a,https://iaExpo.ai/admisiones/taller-a,375,575,750,Lanzamiento,20,
+Producto,Admisión Taller B,admision_taller_b,https://iaExpo.ai/admisiones/taller-b,375,575,750,Lanzamiento,20,
+Producto,Admisión Taller C,admision_taller_c,https://iaExpo.ai/admisiones/taller-c,375,575,750,Lanzamiento,20,
+Producto,Admisión Taller D,admision_taller_d,https://iaExpo.ai/admisiones/taller-d,375,575,750,Lanzamiento,20,
+Producto,Admisión VIP All Access,admision_vip,https://iaExpo.ai/admisiones/vip-all-access,1495,2245,2990,Lanzamiento,20,
+Producto,Patrocinio Bolsa de Registro,patrocinio_bolsa_registro,https://iaExpo.ai/patrocinios/bolsa-de-registro,,,1500,,10,
+Producto,Patrocinio Cena VIP,patrocinio_cena_vip,https://iaExpo.ai/patrocinios/cena-vip,,,3000,,1,
+Producto,Patrocinio Coffee Break Día 1,patrocinio_coffee_break_dia_1,https://iaExpo.ai/patrocinios/coffee-break-dia-1,,,750,,2,
+Producto,Patrocinio Coffee Break Día 2,patrocinio_coffee_break_dia_2,https://iaExpo.ai/patrocinios/coffee-break-dia-2,,,1500,,3,
+Producto,Patrocinio Coffee Break Día 3,patrocinio_coffee_break_dia_3,https://iaExpo.ai/patrocinios/coffee-break-dia-3,,,1500,,3,
+Producto,Patrocinio Conferencias Día 1,patrocinio_conferencias_dia_1,https://iaExpo.ai/patrocinios/conferencias-dia-1,,,1500,,3,
+Producto,Patrocinio Conferencias Día 2,patrocinio_conferencias_dia_2,https://iaExpo.ai/patrocinios/conferencias-dia-2,,,1500,,3,
+Producto,Patrocinio Cóctel de Bienvenida,patrocinio_coctel_bienvenida,https://iaExpo.ai/patrocinios/coctel-de-bienvenida,,,2000,,2,
+Producto,Patrocinio Cóctel de Networking,patrocinio_coctel_networking,https://iaExpo.ai/patrocinios/coctel-de-networking,,,2000,,2,
+Producto,Patrocinio Goodies,patrocinio_goodies,https://iaExpo.ai/patrocinios/goodies,,,500,,10,
+Producto,Patrocinio Nivel Diamante,patrocinio_diamante,https://iaExpo.ai/patrocinios/nivel-diamante,,,60000,,1,
+Producto,Patrocinio Nivel Oro,patrocinio_oro,https://iaExpo.ai/patrocinios/nivel-oro,,,20000,,3,
+Producto,Patrocinio Nivel Plata,patrocinio_plata,https://iaExpo.ai/patrocinios/nivel-plata,,,10000,,4,
+Producto,Patrocinio Nivel Platino,patrocinio_platino,https://iaExpo.ai/patrocinios/nivel-platino,,,40000,,2,
+Producto,Patrocinio Taller A,patrocinio_taller_a,https://iaExpo.ai/patrocinios/taller-a,,,750,,3,
+Producto,Patrocinio Taller B,patrocinio_taller_b,https://iaExpo.ai/patrocinios/taller-b,,,750,,3,
+Producto,Patrocinio Taller C,patrocinio_taller_c,https://iaExpo.ai/patrocinios/taller-c,,,750,,3,
+Producto,Patrocinio Taller D,patrocinio_taller_d,https://iaExpo.ai/patrocinios/taller-d,,,750,,3,
+Producto,Patrocinio WiFi Taller A,patrocinio_wifi_taller_a,https://iaExpo.ai/patrocinios/wifi-taller-a,,,750,,3,
+Producto,Patrocinio WiFi Taller B,patrocinio_wifi_taller_b,https://iaExpo.ai/patrocinios/wifi-taller-b,,,750,,3,
+Producto,Patrocinio WiFi Taller C,patrocinio_wifi_taller_c,https://iaExpo.ai/patrocinios/wifi-taller-c,,,750,,3,
+Producto,Patrocinio WiFi Taller D,patrocinio_wifi_taller_d,https://iaExpo.ai/patrocinios/wifi-taller-d,,,750,,3,
+Variable,,,,,,,,,
+Variable,,capacidad_evento,,,,,,,250+
+Variable,,capacidad_expo,,,,,,,200
+Variable,,capacidad_networking,,,,,,,25
+Variable,,capacidad_taller,,,,,,,20
+Variable,,capacidad_talleres,,,,,,,80
+Variable,,capacidad_vips,,,,,,,20
+Variable,,presupuesto,,,,,,,"$2,968,656.00"
+Variable,,presupuesto_subtotal,,,,,,,"$2,264,556.00"
+Variable,,meta_conservadora,,,,,,,"$3,301,318.00"
+Variable,,meta_base,,,,,,,"$6,145,935.00"
+Variable,,meta_optimista,,,,,,,"$8,563,968.00"
+Variable,,gastos,,,,,,,"$479,122.00"
+Variable,,balance,,,,,,,"-$479,122.00"
+Variable,,ingresos,,,,,,,$0.00
+Variable,,superavit,,,,,,,"$332,662.00"
+Variable,,porcentaje_meta,,,,,,,0%
+Variable,,porcentaje_presupuesto,,,,,,,0%
+Variable,,renta_salones,,,,,,,"$645,270.00"
+Variable,,alimentos_y_bebidas,,,,,,,$0.00
+Variable,,escenografia,,,,,,,"$450,000.00"
+Variable,,marketing,,,,,,,"$252,360.00"
+Variable,,materiales_e_impresos,,,,,,,"$628,350.00"
+Variable,,honorarios_ponentes,,,,,,,"$410,640.00"
+Variable,,operaciones,,,,,,,"$533,600.00"
+Variable,,software,,,,,,,"$31,822.00"
+Variable,,contingencias,,,,,,,"$269,878.00"

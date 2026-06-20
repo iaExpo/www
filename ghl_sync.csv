@@ -1,10 +1,4 @@
 Variable,Valor
-capacidad_evento,200
-capacidad_expo,100
-capacidad_networking,25
-capacidad_taller,20
-capacidad_talleres,80
-capacidad_vips,20
 admision_conferencias,"$995 USD"
 admision_expo,"$375 USD"
 admision_network,"$1,245 USD"
@@ -35,6 +29,12 @@ patrocinio_wifi_taller_a,"$750 USD"
 patrocinio_wifi_taller_b,"$750 USD"
 patrocinio_wifi_taller_c,"$750 USD"
 patrocinio_wifi_taller_d,"$750 USD"
+capacidad_evento,200
+capacidad_expo,100
+capacidad_networking,25
+capacidad_taller,20
+capacidad_talleres,80
+capacidad_vips,20
 presupuesto,"$2,968,656"
 presupuesto_subtotal,"$2,264,556"
 meta_conservadora,"$3,301,318"
