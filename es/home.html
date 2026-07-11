@@ -223,12 +223,11 @@
 
       #hero {
         position: relative;
-        min-height: 100vh;
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
         text-align: left;
-        padding: 96px 6% 80px;
+        padding: 96px 6% 48px;
         z-index: 1;
         background: var(--gradient-hero);
         overflow: hidden;
@@ -2802,7 +2801,7 @@
         <div class="hero-sub">Internacional 2027</div>
         <div class="hero-lema">"IA Para la Vida Real 2.0"</div>
         <div class="hero-loc" id="ev-hero-loc">📍 Westin Santa fe · Ciudad de México</div>
-        <p class="hero-desc" id="ev-hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>3 días, 8 tracks temáticos, 4 talleres prácticos y líderes de alto impacto</strong> que ya están usando la IA para transformar industrias reales.</p>
+        <p class="hero-desc" id="ev-hero-desc">El evento de inteligencia artificial más inspirador de LATAM regresa más grande y más poderoso. <strong>IA: Impacto en las Empresas - 3 días, talleres prácticos, conferencias y líderes de alto impacto</strong> que ya están usando la IA para transformar industrias reales.</p>
         <div class="hero-btns">
           <a href="#boletos" class="hero-cta-card hero-cta-primary">
             <div class="hero-cta-badge">⭐ Precio Lanzamiento · {{custom_values.descuento}} OFF</div>
@@ -2812,38 +2811,24 @@
           <a href="#programa" class="hero-cta-card hero-cta-secondary">
             <div class="hero-cta-badge">✦ IA Para la Vida Real</div>
             <div class="hero-cta-label">Conocer el Evento</div>
-            <div class="hero-cta-sub">3 días · 8 tracks · 4 talleres prácticos</div>
+            <div class="hero-cta-sub">3 días · 4 talleres prácticos · 250+ líderes de IA</div>
           </a>
         </div>
         <div class="hero-stats">
+          <div class="hstat">
+            <div class="hstat-n">4</div>
+            <div class="hstat-l">Talleres Prácticos</div>
+          </div>
           <div class="hstat">
             <div class="hstat-n">3</div>
             <div class="hstat-l">Días de Impacto</div>
           </div>
           <div class="hstat">
-            <div class="hstat-n">8</div>
-            <div class="hstat-l">Tracks Temáticos</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n">4</div>
-            <div class="hstat-l">Talleres Prácticos</div>
-          </div>
-          <div style="width:100%;height:0;flex-basis:100%;"></div>
-          <div class="hstat">
-            <div class="hstat-n">{{custom_values.descuento}} OFF</div>
-            <div class="hstat-l">Precio Lanzamiento</div>
-          </div>
-          <div class="hstat">
-            <div class="hstat-n" style="font-size:28px;background:none;-webkit-text-fill-color:initial;">🌍</div>
-            <div class="hstat-l">Impacto Global</div>
+            <div class="hstat-n">250+</div>
+            <div class="hstat-l">Líderes en IA</div>
           </div>
         </div>
       </div>
-      <a href="#iaexpo" class="scroll-ind">
-        <div class="scroll-mouse">
-          <div class="scroll-dot"></div>
-        </div>
-      </a>
     </section>
 
     <div class="gd"></div>
@@ -2852,7 +2837,7 @@
     <section id="iaexpo" style="position:relative;overflow:hidden;">
       <!-- Imagen de fondo sutil -->
       <div style="position:absolute;inset:0;background:url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center/cover no-repeat;opacity:0.05;pointer-events:none;z-index:0;"></div>
-      <div class="si" style="position:relative;z-index:1;">
+      <div class="si" style="position:relative;z-index:1;padding-top:56px;">
 
         <!-- 1. Eyebrow -->
         <div class="eyebrow">Sobre la IA Expo</div>
@@ -3288,49 +3273,37 @@
           <button class="dbtn active" onclick="showDay('d1',this)">📍 Día 1 — Jue 28 Enero</button>
           <button class="dbtn" onclick="showDay('d2',this)">🎤 Día 2 — Vie 29 Enero</button>
           <button class="dbtn" onclick="showDay('d3',this)">🏁 Día 3 — Sáb 30 Enero</button>
-          <button class="dbtn" onclick="showDay('d4',this)">☕ Día 4 — Dom 31 Enero</button>
         </div>
 
         <div class="card reveal">
           <div class="day-panel active" id="d1">
             <div style="font-size:0.8rem;color:var(--purple-light);font-weight:700;margin-bottom:14px;letter-spacing:1px;">TALLERES ESPECIALIZADOS + APERTURA</div>
-            <div class="slot"><div class="slot-time">08:00 – 12:00</div><div class="slot-icon">🏗️</div><div class="slot-info"><h4>Montaje y producción</h4><p>Instalación de escenografía LED, stands de expo, equipo audiovisual y señalética</p></div></div>
-            <div class="slot"><div class="slot-time">12:00 – 14:00</div><div class="slot-icon">📋</div><div class="slot-info"><h4>Registro de asistentes</h4><p>Acreditación, entrega de kits, acceso a área de expo</p></div></div>
-            <div class="slot"><div class="slot-time">14:00 – 15:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Comida libre + visita a stands</h4><p>Los asistentes visitan la expo y hacen networking informal antes de talleres</p></div></div>
+            <div class="slot"><div class="slot-time">14:30 – 15:00</div><div class="slot-icon">📋</div><div class="slot-info"><h4>Registro de Asistentes</h4><p>Acreditación, entrega de kits y acceso al área de talleres</p></div></div>
+            <div class="slot"><div class="slot-time">14:30 – 19:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee Break continuo</h4><p>Disponible durante toda la jornada de talleres — snacks, café y bebidas en el área de descanso</p><span class="slot-tag tag-expo">CONTINUO</span></div></div>
             <div class="slot"><div class="slot-time">15:00 – 16:45</div><div class="slot-icon">🛠️</div><div class="slot-info"><h4>Talleres — Sesión 1 (simultáneos)</h4><p><strong style="color:var(--purple-light);">Salón A:</strong> Taller 1 (máx. 20 personas) · <strong style="color:var(--purple-light);">Salón B:</strong> Taller 2 (máx. 20 personas)</p><span class="slot-tag tag-workshop">TALLER · 1h 45min</span></div></div>
-            <div class="slot"><div class="slot-time">16:45 – 17:15</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee break</h4><p>Pausa entre sesiones de talleres</p></div></div>
             <div class="slot"><div class="slot-time">17:15 – 19:00</div><div class="slot-icon">🛠️</div><div class="slot-info"><h4>Talleres — Sesión 2 (simultáneos)</h4><p><strong style="color:var(--purple-light);">Salón A:</strong> Taller 3 (máx. 20 personas) · <strong style="color:var(--purple-light);">Salón B:</strong> Taller 4 (máx. 20 personas)</p><span class="slot-tag tag-workshop">TALLER · 1h 45min</span></div></div>
-            <div class="slot"><div class="slot-time">19:30 – 21:30</div><div class="slot-icon">🥂</div><div class="slot-info"><h4>Cóctel de bienvenida premium</h4><p>Networking estructurado — todos los asistentes, patrocinadores y ponentes</p><span class="slot-tag tag-networking">NETWORKING</span></div></div>
-            <div class="slot"><div class="slot-time">21:30 – 23:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Cena privada Membresía VIP</h4><p>Experiencia exclusiva para los 10 miembros VIP + ponentes principales</p><span class="slot-tag tag-vip">VIP EXCLUSIVO</span></div></div>
+            <div class="slot"><div class="slot-time">19:30 – 21:30</div><div class="slot-icon">🥂</div><div class="slot-info"><h4>Cena Privada y Cóctel de Bienvenida VIP</h4><p>Experiencia exclusiva para asistentes VIP, patrocinadores y ponentes principales</p><span class="slot-tag tag-vip">VIP EXCLUSIVO</span></div></div>
           </div>
 
           <div class="day-panel" id="d2">
             <div style="font-size:0.8rem;color:var(--cyan);font-weight:700;margin-bottom:14px;letter-spacing:1px;">CONFERENCIAS PRINCIPALES + EXPO</div>
             <div class="slot"><div class="slot-time">08:00 – 09:00</div><div class="slot-icon">📋</div><div class="slot-info"><h4>Registro y acreditación</h4><p>Llegada de asistentes, coffee de bienvenida, apertura de expo</p><span class="slot-tag tag-expo">EXPO ABIERTA</span></div></div>
-            <div class="slot"><div class="slot-time">09:00 – 10:00</div><div class="slot-icon">🌍</div><div class="slot-info"><h4>Keynote Internacional</h4><p>Apertura oficial — ponente de impacto global en IA aplicada</p><span class="slot-tag tag-keynote">KEYNOTE</span></div></div>
-            <div class="slot"><div class="slot-time">10:00 – 11:30</div><div class="slot-icon">🎯</div><div class="slot-info"><h4>Track 1 + Track 2: Negocios y FinTech</h4><p>Ponencias estratégicas sobre IA en productividad empresarial y finanzas inteligentes</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
-            <div class="slot"><div class="slot-time">11:30 – 12:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee break + Expo</h4><p>Visita a stands de patrocinadores y demostraciones tecnológicas</p><span class="slot-tag tag-expo">EXPO</span></div></div>
-            <div class="slot"><div class="slot-time">12:00 – 13:30</div><div class="slot-icon">🎯</div><div class="slot-info"><h4>Track 3 + Track 4: Medicina y Legal</h4><p>IA en salud, diagnóstico, regulación y gobernanza</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
-            <div class="slot"><div class="slot-time">13:30 – 15:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Comida + Expo abierta</h4><p>Almuerzo incluido para paquetes Networking y Membresía VIP</p><span class="slot-tag tag-expo">EXPO</span></div></div>
-            <div class="slot"><div class="slot-time">15:00 – 16:30</div><div class="slot-icon">🎯</div><div class="slot-info"><h4>Track 5 + Track 6: Ética y Artes</h4><p>Futuro humano, creatividad e impacto social de la IA</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
-            <div class="slot"><div class="slot-time">16:30 – 17:30</div><div class="slot-icon">💬</div><div class="slot-info"><h4>Panel de alto nivel</h4><p>Líderes de industria — regulación, inversión y futuro de la IA en LATAM</p><span class="slot-tag tag-panel">PANEL</span></div></div>
-            <div class="slot"><div class="slot-time">17:30 – 18:30</div><div class="slot-icon">🔗</div><div class="slot-info"><h4>Networking estructurado</h4><p>Sesiones 1:1 programadas por industria y vertical de interés</p><span class="slot-tag tag-networking">NETWORKING</span></div></div>
+            <div class="slot"><div class="slot-time">09:00 – 17:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee Break continuo</h4><p>Disponible durante toda la jornada — café, snacks y bebidas en el área de descanso</p><span class="slot-tag tag-expo">CONTINUO</span></div></div>
+            <div class="slot"><div class="slot-time">09:00 – 10:00</div><div class="slot-icon">🎙️</div><div class="slot-info"><h4>Bienvenida y Keynote Internacional</h4><p>Apertura Oficial — Impacto global de IA en las Empresas</p><span class="slot-tag tag-keynote">KEYNOTE</span></div></div>
+            <div class="slot"><div class="slot-time">10:00 – 13:00</div><div class="slot-icon">🔭</div><div class="slot-info"><h4>Track 1: Visión y Futuro de IA en las Empresas</h4><p>Tendencias emergentes, roadmaps tecnológicos e impacto de la IA en los próximos años</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">13:00 – 14:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Comida</h4><p>Pausa para almuerzo</p></div></div>
+            <div class="slot"><div class="slot-time">14:00 – 17:00</div><div class="slot-icon">📣</div><div class="slot-info"><h4>Track 2: Marketing y Publicidad con IA</h4><p>IA aplicada a campañas, personalización, generación de contenido y estrategia de marca</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">17:30 – 19:00</div><div class="slot-icon">🔗</div><div class="slot-info"><h4>Networking Estructurado</h4><p>Sesiones 1:1 programadas por industria y vertical de interés</p><span class="slot-tag tag-networking">NETWORKING</span></div></div>
           </div>
 
           <div class="day-panel" id="d3">
             <div style="font-size:0.8rem;color:var(--orange);font-weight:700;margin-bottom:14px;letter-spacing:1px;">CASOS REALES + CIERRE</div>
-            <div class="slot"><div class="slot-time">08:30 – 09:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee de bienvenida + Expo</h4><p>Apertura del día, última jornada de visita a stands</p><span class="slot-tag tag-expo">EXPO</span></div></div>
-            <div class="slot"><div class="slot-time">09:00 – 10:30</div><div class="slot-icon">🏭</div><div class="slot-info"><h4>Track 7 + Casos reales por industria</h4><p>Educación y empleabilidad + implementaciones concretas con resultados medibles</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
-            <div class="slot"><div class="slot-time">10:30 – 11:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee break + Expo — cierre de stands</h4><p>Última oportunidad de visitar demostraciones</p><span class="slot-tag tag-expo">EXPO</span></div></div>
-            <div class="slot"><div class="slot-time">11:00 – 12:30</div><div class="slot-icon">⚖️</div><div class="slot-info"><h4>Panel: Regulación, política pública y futuro</h4><p>Perspectiva gubernamental, legal y de inversión en IA para LATAM</p><span class="slot-tag tag-panel">PANEL</span></div></div>
-            <div class="slot"><div class="slot-time">12:30 – 14:00</div><div class="slot-icon">🤝</div><div class="slot-info"><h4>Networking sectorizado + Actas del evento</h4><p>Reuniones por industria. Presentación oficial de las Actas IA Expo 2027</p><span class="slot-tag tag-networking">NETWORKING</span></div></div>
-            <div class="slot"><div class="slot-time">14:00 – 16:00</div><div class="slot-icon">🎊</div><div class="slot-info"><h4>Cena de clausura + reconocimientos</h4><p>Cierre oficial del evento, premiación de mejores stands, anuncio IA Expo 2028</p><span class="slot-tag tag-networking">CLAUSURA</span></div></div>
-          </div>
-
-          <div class="day-panel" id="d4">
-            <div style="font-size:0.8rem;color:var(--gold);font-weight:700;margin-bottom:14px;letter-spacing:1px;">MEMBRESÍA VIP — DÍA EXCLUSIVO</div>
-            <div class="slot"><div class="slot-time">09:00 – 10:30</div><div class="slot-icon">🍳</div><div class="slot-info"><h4>Desayuno de despedida — Membresía VIP</h4><p>Desayuno privado en el hotel para los 10 miembros VIP + equipo organizador</p><span class="slot-tag tag-vip">VIP EXCLUSIVO</span></div></div>
-            <div class="slot"><div class="slot-time">10:30 – 13:00</div><div class="slot-icon">🚀</div><div class="slot-info"><h4>Mesa de trabajo: IA Expo en otras ciudades</h4><p>Sesión estratégica: modelo de replicación, ciudades candidatas, alianzas regionales</p><span class="slot-tag tag-vip">VIP EXCLUSIVO</span></div></div>
+            <div class="slot"><div class="slot-time">09:00 – 17:00</div><div class="slot-icon">☕</div><div class="slot-info"><h4>Coffee Break continuo</h4><p>Disponible durante toda la jornada — café, snacks y bebidas en el área de descanso</p><span class="slot-tag tag-expo">CONTINUO</span></div></div>
+            <div class="slot"><div class="slot-time">09:00 – 09:45</div><div class="slot-icon">💬</div><div class="slot-info"><h4>Panel: Impacto Global de IA en Empresas</h4><p>Líderes de industria comparten perspectivas sobre el impacto real de la IA a nivel global</p><span class="slot-tag tag-panel">PANEL</span></div></div>
+            <div class="slot"><div class="slot-time">10:00 – 13:00</div><div class="slot-icon">💰</div><div class="slot-info"><h4>Track 3: ROI: Operaciones y Automatización</h4><p>Casos reales de eficiencia, reducción de costos y automatización de procesos con IA</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">13:00 – 14:00</div><div class="slot-icon">🍽️</div><div class="slot-info"><h4>Comida</h4><p>Pausa para almuerzo</p></div></div>
+            <div class="slot"><div class="slot-time">14:00 – 17:00</div><div class="slot-icon">✨</div><div class="slot-info"><h4>Track 4: ExperiencIA: Casos Reales</h4><p>Historias de éxito, lecciones aprendidas y transformación empresarial impulsada por IA</p><span class="slot-tag tag-keynote">CONFERENCIAS</span></div></div>
+            <div class="slot"><div class="slot-time">17:00</div><div class="slot-icon">🎊</div><div class="slot-info"><h4>Clausura</h4><p>Cierre oficial de IA Expo 2027 — reconocimientos y anuncio IA Expo 2028</p><span class="slot-tag tag-networking">CLAUSURA</span></div></div>
           </div>
         </div>
 
