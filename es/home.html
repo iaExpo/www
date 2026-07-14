@@ -146,6 +146,43 @@
         color: var(--cyan);
       }
 
+      /* ── Nav Dropdown ── */
+      .nav-dropdown { position: relative; }
+      .nav-sub {
+        display: none;
+        position: fixed;
+        background: rgba(3,7,18,0.98);
+        border: 1px solid var(--glass-border);
+        border-radius: 10px;
+        padding: 6px;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 170px;
+        z-index: 9999;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      }
+      .nav-sub.open { display: flex; }
+      .nav-sub a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        border-radius: 7px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.15s;
+      }
+      .nav-sub a:hover { background: rgba(0,212,255,0.08); color: var(--cyan); }
+
+      /* ── Talleres responsive ── */
+      .taller-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      @media(max-width: 640px) { .taller-2col { grid-template-columns: 1fr; } }
+
       .ntab.active {
         background: linear-gradient(135deg, var(--blue), #0A84FF);
         border-color: var(--blue);
@@ -2738,7 +2775,14 @@
       </a>
       <div class="nav-tabs">
         <a href="#iaexpo" class="ntab"><span class="ico">🌟</span> Sobre IA Expo</a>
-        <a href="#boletos" class="ntab"><span class="ico">🎟️</span> Tickets</a>
+        <div class="nav-dropdown">
+          <a href="#boletos" class="ntab"><span class="ico">🎟️</span> Tickets ▾</a>
+          <div class="nav-sub">
+            <a href="#boletos">🏛️ Expo</a>
+            <a href="#talleres">🛠️ Talleres</a>
+            <a href="#boletos">🎤 Conferencias</a>
+          </div>
+        </div>
         <a href="#convocatoria" class="ntab"><span class="ico">📑</span> Call for Papers</a>
         <a href="#programa" class="ntab"><span class="ico">📅</span> Programa</a>
         <a href="#patrocinios" class="ntab"><span class="ico">🏆</span> Patrocinios</a>
@@ -2758,6 +2802,9 @@
     <div class="mobile-menu" id="mmenu">
       <a href="#iaexpo" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> Sobre IA Expo</a>
       <a href="#boletos" class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
+      <a href="#boletos" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🏛️ Expo</a>
+      <a href="#talleres" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🛠️ Talleres</a>
+      <a href="#boletos" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🎤 Conferencias</a>
       <a href="#convocatoria" class="ntab" onclick="closeNav()"><span class="ico">📑</span> Call for Papers</a>
       <a href="#programa" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
       <a href="#patrocinios" class="ntab" onclick="closeNav()"><span class="ico">🏆</span> Patrocinios</a>
@@ -3127,6 +3174,7 @@
         </div>
 
         <!-- ── TALLERES ── -->
+        <div id="talleres" style="scroll-margin-top:70px;"></div>
         <h3 class="stitle-sub reveal">Reserva tu lugar en los <span class="accent">Talleres</span></h3>
         <p class="sub-date reveal">📅 Jueves 28 de enero de 2027 · The Westin Santa Fe, CDMX · 3:00 – 7:00 PM</p>
 
@@ -3139,7 +3187,7 @@
           <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,0.3),transparent);"></div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:8px;" class="reveal">
+        <div class="taller-2col reveal" style="margin-bottom:8px;">
           <!-- TALLER A — Sesión 1, Salón Cedro -->
           <div class="taller-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
             <div style="background:linear-gradient(135deg,rgba(0,200,100,0.12),rgba(0,150,80,0.06));border-bottom:1px solid rgba(0,200,100,0.2);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;">
@@ -3150,7 +3198,7 @@
               <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">¡Hola IA! ¿Nos Conocemos?</div>
               <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;">De Cero a Resultados Reales con IA</div>
               <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
-                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c7b9fbe6cf0ab672fa00c.jpg" alt="Noelia González" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,200,100,0.4);flex-shrink:0;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef2f73f2ee191ba812.jpg" alt="Noelia González" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,200,100,0.4);flex-shrink:0;">
                 <div>
                   <div style="font-size:13px;font-weight:700;color:#fff;">Noelia González Pereyra</div>
                   <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Directora · Voiceinteractivos<br>19+ años · 200+ personas capacitadas</div>
@@ -3183,7 +3231,7 @@
               <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">Tu Equipo de IA: 5 Asistentes para Multiplicar tu Productividad</div>
               <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;visibility:hidden;height:0;">‎</div>
               <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
-                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e411c86a0a9157dc8db981.jpeg" alt="Max Quiroz" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,102,255,0.4);flex-shrink:0;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Max Quiroz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,102,255,0.4);flex-shrink:0;">
                 <div>
                   <div style="font-size:13px;font-weight:700;color:#fff;">Max Quiroz Martínez</div>
                   <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Director · Max & Ruth Training<br>30+ años · Miles de personas impactadas</div>
@@ -3216,7 +3264,7 @@
           <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(124,58,237,0.3),transparent);"></div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="reveal">
+        <div class="taller-2col reveal">
           <!-- TALLER C — Sesión 2, Salón Cedro -->
           <div class="taller-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
             <div style="background:linear-gradient(135deg,rgba(0,200,100,0.12),rgba(0,150,80,0.06));border-bottom:1px solid rgba(0,200,100,0.2);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;">
@@ -3227,7 +3275,7 @@
               <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">¡Hola IA! ¿Nos Conocemos?</div>
               <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;">De Cero a Resultados Reales con IA</div>
               <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
-                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/691c7b9fbe6cf0ab672fa00c.jpg" alt="Noelia González" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,200,100,0.4);flex-shrink:0;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef2f73f2ee191ba812.jpg" alt="Noelia González" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,200,100,0.4);flex-shrink:0;">
                 <div>
                   <div style="font-size:13px;font-weight:700;color:#fff;">Noelia González Pereyra</div>
                   <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Directora · Voiceinteractivos<br>19+ años · 200+ personas capacitadas</div>
@@ -3260,7 +3308,7 @@
               <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">Tu Equipo de IA: 5 Asistentes para Multiplicar tu Productividad</div>
               <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;visibility:hidden;height:0;">‎</div>
               <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
-                <img src="https://storage.googleapis.com/msgsndr/5RXj1eDQIjNx7eCHKaZA/media/68e411c86a0a9157dc8db981.jpeg" alt="Max Quiroz" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,102,255,0.4);flex-shrink:0;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Max Quiroz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,102,255,0.4);flex-shrink:0;">
                 <div>
                   <div style="font-size:13px;font-weight:700;color:#fff;">Max Quiroz Martínez</div>
                   <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Director · Max & Ruth Training<br>30+ años · Miles de personas impactadas</div>
@@ -4315,6 +4363,34 @@
           resize();
           init();
         });
+      })();
+
+      // ── Nav Tickets Dropdown ──
+      (function() {
+        const trigger = document.querySelector('.nav-dropdown');
+        const sub = document.querySelector('.nav-sub');
+        if (!trigger || !sub) return;
+        let hideTimer;
+
+        function showSub() {
+          clearTimeout(hideTimer);
+          const rect = trigger.getBoundingClientRect();
+          sub.style.top  = (rect.bottom + 4) + 'px';
+          sub.style.left = rect.left + 'px';
+          sub.classList.add('open');
+        }
+
+        function hideSub() {
+          hideTimer = setTimeout(() => sub.classList.remove('open'), 120);
+        }
+
+        trigger.addEventListener('mouseenter', showSub);
+        trigger.addEventListener('mouseleave', hideSub);
+        sub.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+        sub.addEventListener('mouseleave', hideSub);
+
+        // Cerrar al hacer click en cualquier enlace del sub
+        sub.querySelectorAll('a').forEach(a => a.addEventListener('click', () => sub.classList.remove('open')));
       })();
 
       function showDay(id, btn) {
