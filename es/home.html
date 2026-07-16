@@ -2768,6 +2768,227 @@
         line-height: 1.8;
       }
       .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+
+      /* ── LIBRO TECNOSAPIENS ───────────────────────────────────────── */
+      .book-strip-wrap {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        margin-bottom: 48px;
+        position: relative;
+        z-index: 5;
+      }
+      .book-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        padding: 18px 24px;
+      }
+      .book-strip-left {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex: 1;
+        min-width: 280px;
+      }
+      .book-hover {
+        position: relative;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .book-thumb {
+        width: 52px;
+        height: 78px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: block;
+      }
+      .book-hover:hover .book-thumb,
+      .book-hover:focus .book-thumb {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 0 30px rgba(0,212,255,0.35);
+      }
+      .book-popup {
+        position: absolute;
+        left: 0;
+        top: calc(100% + 14px);
+        display: flex;
+        gap: 16px;
+        padding: 20px;
+        background: var(--dark-3);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        transition: all 0.22s ease;
+        z-index: 20;
+        pointer-events: none;
+      }
+      .book-hover:hover .book-popup,
+      .book-hover:focus .book-popup,
+      .book-hover:focus-within .book-popup {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .book-popup img {
+        width: 220px;
+        max-width: 32vw;
+        height: auto;
+        border-radius: 10px;
+        border: 1px solid var(--glass-border);
+        display: block;
+      }
+      .book-popup-cap {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 8px;
+      }
+      .book-strip-text { min-width: 0; }
+      .book-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        background: rgba(245,158,11,0.1);
+        border: 1px solid rgba(245,158,11,0.3);
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin-bottom: 6px;
+      }
+      .book-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 4px;
+        line-height: 1.3;
+      }
+      .book-title .accent {
+        font-weight: 500;
+        color: var(--text-muted);
+      }
+      .book-author {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+      .author-hover {
+        position: relative;
+        display: inline-block;
+      }
+      .author-hover a {
+        color: var(--cyan);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .author-hover a:hover { text-decoration: underline; }
+      .author-popup {
+        position: absolute;
+        left: 50%;
+        top: calc(100% + 12px);
+        transform: translate(-50%, -6px);
+        width: 320px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px;
+        background: var(--dark-3);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.22s ease;
+        z-index: 20;
+        text-align: left;
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        pointer-events: none;
+      }
+      .author-hover:hover .author-popup,
+      .author-hover:focus-within .author-popup {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+        pointer-events: auto;
+      }
+      .author-popup img {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--cyan);
+        flex-shrink: 0;
+      }
+      .book-pdf-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-decoration: none;
+        border-bottom: 1px dashed var(--glass-border);
+        padding-bottom: 2px;
+        transition: color 0.2s ease, border-color 0.2s ease;
+      }
+      .book-pdf-link:hover {
+        color: var(--cyan);
+        border-color: var(--cyan);
+      }
+      .book-strip-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+      }
+      .book-sale-msg {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        color: var(--gold);
+        text-shadow: 0 0 24px rgba(245,158,11,0.55);
+        animation: bookSalePulse 2s ease-in-out infinite;
+      }
+      @keyframes bookSalePulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.82; transform: scale(1.03); }
+      }
+      @media (max-width: 480px) {
+        .book-sale-msg { font-size: 17px; }
+      }
+      .book-buy-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 768px) {
+        .book-strip { flex-direction: column; align-items: flex-start; }
+        .book-strip-right { width: 100%; align-items: flex-start; }
+        .book-buy-row { width: 100%; }
+        .book-buy-row a { flex: 1; justify-content: center; }
+        .book-popup { left: 50%; transform: translate(-50%, -6px); flex-wrap: wrap; justify-content: center; }
+        .book-hover:hover .book-popup, .book-hover:focus-within .book-popup { transform: translate(-50%, 0); }
+        .book-popup img { width: 42vw; max-width: 200px; }
+      }
     </style>
   </head>
   <body>
@@ -2894,6 +3115,55 @@
 
         <!-- 1. Eyebrow -->
         <div class="eyebrow">Sobre la IA Expo</div>
+
+        <!-- LIBRO TECNOSAPIENS -->
+        <div class="book-strip-wrap reveal">
+          <div class="book-strip">
+            <div class="book-strip-left">
+              <div class="book-hover" tabindex="0">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a57d78a524a3ec4c6e0a85e.jpg" alt="Portada del libro TecnoSapiens de Edgar González" class="book-thumb" loading="lazy">
+                <div class="book-popup">
+                  <div>
+                    <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a57d78a524a3ec4c6e0a85e.jpg" alt="Portada TecnoSapiens" loading="lazy">
+                    <span class="book-popup-cap">Portada</span>
+                  </div>
+                  <div>
+                    <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a57d78a1097b81195242317.jpg" alt="Contraportada TecnoSapiens" loading="lazy">
+                    <span class="book-popup-cap">Contraportada</span>
+                  </div>
+                  <div>
+                    <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a57d78a1a0f04805065e59d.jpg" alt="Índice de capítulos de TecnoSapiens" loading="lazy">
+                    <span class="book-popup-cap">Contenido</span>
+                  </div>
+                </div>
+              </div>
+              <div class="book-strip-text">
+                <span class="book-badge">📖 Nuevo Lanzamiento</span>
+                <p class="book-title">TecnoSapiens <span class="accent">— La Evolución Tecnológica del Ser Humano</span></p>
+                <p class="book-author">
+                  Por
+                  <span class="author-hover" tabindex="0">
+                    <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a58e3463e4b7bb6fea6d691.jpg" alt="Edgar González" style="width:22px;height:22px;border-radius:50%;object-fit:cover;vertical-align:middle;border:1px solid var(--cyan);margin:0 4px 2px 6px;" loading="lazy">
+                    <a href="https://iaexpo.ai/edgar-gonzalez" target="_blank" rel="noopener">Edgar González</a>
+                    <span class="author-popup">
+                      <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a58e3463e4b7bb6fea6d691.jpg" alt="Edgar González" loading="lazy">
+                      <span>Cofundador · Director · Autor — UltraMed | Sportxioma | SoccerMat®. Sesión Magistral, IA Expo Internacional 2026.</span>
+                    </span>
+                  </span>
+                  · Sesión Magistral IA Expo 2026
+                </p>
+                <a href="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a58f085498fdf281adc8b5a.pdf" target="_blank" rel="noopener" class="book-pdf-link">📄 Ver Presentación</a>
+              </div>
+            </div>
+            <div class="book-strip-right">
+              <span class="book-sale-msg">🎉 ¡Compra tu ejemplar!</span>
+              <div class="book-buy-row">
+                <a href="https://www.amazon.com.mx/TecnoSapiens-Evolution-Intelligence-Beyond-Human/dp/B0H1MQB7XN/ref=sr_1_3?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2L09X7PGH941U&dib=eyJ2IjoiMSJ9.NMFgH8nsqAnZjGvoXrwsVkY-t0DhE_l8AZ9FwooDar_DLWg-KPfDm9e6Ka2j01JK7EUBLy2OhxRJPcwGZe71RbN7olk95VSUBkM_oaV0VVY.3lVhPkC4Cs8FedOVseIAhb_XtxzGYX6pyvADNRYVsfI&dib_tag=se&keywords=tecnosapiens+evolution+intelligence+beyond+human&qid=1784069206&sprefix=tecnosapiens+evolution+intelligence+beyond+human%2Caps%2C133&sr=8-3&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener" class="btn-primary" style="padding:11px 22px;font-size:13px;">Portada Blanda →</a>
+                <a href="https://www.amazon.com.mx/TecnoSapiens-Evolution-Intelligence-Beyond-Human/dp/B0H25J7J34/ref=sr_1_2?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2L09X7PGH941U&dib=eyJ2IjoiMSJ9.NMFgH8nsqAnZjGvoXrwsVkY-t0DhE_l8AZ9FwooDar_DLWg-KPfDm9e6Ka2j01JK7EUBLy2OhxRJPcwGZe71RbN7olk95VSUBkM_oaV0VVY.3lVhPkC4Cs8FedOVseIAhb_XtxzGYX6pyvADNRYVsfI&dib_tag=se&keywords=tecnosapiens+evolution+intelligence+beyond+human&qid=1784069129&sprefix=tecnosapiens+evolution+intelligence+beyond+human%2Caps%2C133&sr=8-2&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener" class="btn-secondary" style="padding:9px 18px;font-size:12px;">Portada Dura →</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- 2. Carrusel de fotos IA Expo 2026 -->
         <div class="iax-carousel-wrap reveal" id="iaxCarouselWrap">
