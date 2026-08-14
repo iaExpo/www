@@ -3005,9 +3005,9 @@
         <div class="nav-dropdown">
           <a href="#boletos" class="ntab"><span class="ico">🎟️</span> Tickets ▾</a>
           <div class="nav-sub">
-            <a href="#boletos">🏛️ Expo</a>
-            <a href="#talleres">🛠️ Talleres</a>
             <a href="#boletos">🎤 Conferencias</a>
+            <a href="#talleres">🛠️ Talleres</a>
+            <a href="#boletos">🏛️ Expo</a>
           </div>
         </div>
         <a href="#convocatoria" class="ntab"><span class="ico">📑</span> Call for Papers</a>
@@ -3029,9 +3029,9 @@
     <div class="mobile-menu" id="mmenu">
       <a href="#iaexpo" class="ntab" onclick="closeNav()"><span class="ico">🌟</span> Sobre IA Expo</a>
       <a href="#boletos" class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
-      <a href="#boletos" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🏛️ Expo</a>
-      <a href="#talleres" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🛠️ Talleres</a>
       <a href="#boletos" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🎤 Conferencias</a>
+      <a href="#talleres" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🛠️ Talleres</a>
+      <a href="#boletos" class="ntab" onclick="closeNav()" style="padding-left:24px;font-size:0.68rem;opacity:0.8;">🏛️ Expo</a>
       <a href="#convocatoria" class="ntab" onclick="closeNav()"><span class="ico">📑</span> Call for Papers</a>
       <a href="#programa" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
       <a href="#patrocinios" class="ntab" onclick="closeNav()"><span class="ico">🏆</span> Patrocinios</a>
@@ -3182,10 +3182,10 @@
             <!-- Columna izquierda -->
             <div style="flex:1;min-width:220px;">
               <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 11px;border-radius:100px;background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.2);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;">
-                ✦ &nbsp;IA Expo Internacional 2026
+                ✦ &nbsp;Gracias por hacer historia con nosotros
               </span>
               <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(18px,2.8vw,26px);font-weight:800;line-height:1.2;margin:0 0 8px;">
-                Gracias por hacer <span class="accent">historia</span> con nosotros
+                IA Expo <span class="accent">Internacional 2026</span>
               </h2>
               <p style="color:var(--text-muted);font-size:12.5px;line-height:1.6;margin:0;">
                 Reunimos a los líderes de IA en LATAM para conferencias, talleres y conexiones reales que transformaron empresas, carreras y mentalidades.
@@ -3210,6 +3210,145 @@
 
           </div>
         </a>
+
+        <style>
+      .spk-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
+      .spk-card {
+        background:var(--glass); border:1px solid var(--glass-border); border-radius:20px;
+        padding:28px 18px 22px; text-align:center; position:relative; overflow:hidden;
+        transition:all 0.3s;
+      }
+      .spk-card:hover { border-color:rgba(0,212,255,0.35); transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.25); }
+      .spk-card::before {
+        content:""; position:absolute; top:0; left:0; right:0; height:2px;
+        background:var(--gradient-1); opacity:0.7;
+      }
+      .spk-tag {
+        display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+        color:var(--cyan); background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2);
+        border-radius:100px; padding:3px 10px; margin-bottom:14px;
+      }
+      .spk-avatar-wrap { width:84px; height:84px; margin:0 auto 14px; position:relative; }
+      .spk-avatar-photo {
+        width:84px; height:84px; border-radius:50%; object-fit:cover;
+        border:2px solid rgba(0,212,255,0.35);
+      }
+      .spk-avatar-initials {
+        width:84px; height:84px; border-radius:50%; background:var(--gradient-1);
+        display:flex; align-items:center; justify-content:center;
+        font-size:26px; font-weight:800; color:#fff; font-family:'Space Grotesk',sans-serif;
+      }
+      .spk-name { font-size:14.5px; font-weight:700; color:var(--text); margin-bottom:4px; line-height:1.25; }
+      .spk-role { font-size:11px; color:var(--cyan); font-weight:600; margin-bottom:8px; line-height:1.4; min-height:28px; }
+      .spk-bio { font-size:11.5px; color:var(--text-muted); line-height:1.55; }
+      @media(max-width:1100px) { .spk-grid { grid-template-columns:repeat(3,1fr); } }
+      @media(max-width:700px)  { .spk-grid { grid-template-columns:repeat(2,1fr); } }
+      @media(max-width:420px)  { .spk-grid { grid-template-columns:1fr; } }
+    </style>
+        <!-- ══ SPEAKERS ══ -->
+        <div class="reveal" style="margin-top:72px;padding-top:56px;border-top:1px solid rgba(255,255,255,0.08);">
+
+
+
+        <div class="eyebrow">Speakers</div>
+        <h2 class="stitle reveal" style="margin-top:0;">Las Voces de la<br><span class="accent">IA Expo Internacional 2027</span></h2>
+        <p class="sdesc reveal d1">Líderes, expertos y creadores que están usando la IA para transformar negocios, carreras y vidas — compartiendo lo que realmente funciona.</p>
+
+        <div class="spk-grid">
+
+          <!-- Dr. Eduardo Pérez -->
+          <div class="spk-card reveal">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a99074f5ef685bda0.jpg" alt="Dr. Eduardo Pérez"></div>
+            <div class="spk-name">Dr. Eduardo Pérez</div>
+            <div class="spk-role">Chair · IA Expo Internacional</div>
+            <div class="spk-bio">CEO de Digital Gap Inc. Más de 20 años conectando tecnología, negocios y personas en LATAM y EE. UU.</div>
+          </div>
+
+          <!-- Dr. Javier Novoa -->
+          <div class="spk-card reveal d1">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a99074f5ef685bd9b.jpg" alt="Dr. Javier Novoa"></div>
+            <div class="spk-name">Dr. Javier Novoa</div>
+            <div class="spk-role">Director General · Cultura Ágil</div>
+            <div class="spk-bio">Experto en cultura organizacional con 25+ años transformando empresas. Autor de "Cultura Organizacional Ágil" y coach de más de 3,000 ejecutivos.</div>
+          </div>
+
+          <!-- Martín Sierra -->
+          <div class="spk-card reveal d2">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a5fc842636e8cecde.jpg" alt="Martín Sierra"></div>
+            <div class="spk-name">Martín Sierra</div>
+            <div class="spk-role">PMO &amp; VMO Leader · Aeroméxico</div>
+            <div class="spk-bio">30+ años en gestión de proyectos y gobierno de TI. PMP®, con estudios en IA y diseño de productos en el MIT.</div>
+          </div>
+
+          <!-- Max Quiroz -->
+          <div class="spk-card reveal d3">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Max Quiroz"></div>
+            <div class="spk-name">Max Quiroz</div>
+            <div class="spk-role">Director · Max &amp; Ruth Training</div>
+            <div class="spk-bio">30+ años en educación a distancia, desde la Universidad Virtual del Tecnológico de Monterrey. Creador de Cursos Que Dejan Huella®.</div>
+          </div>
+
+          <!-- Noelia González -->
+          <div class="spk-card reveal">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a733fdbac7d7ffc64ffc480.jpg" alt="Noelia González"></div>
+            <div class="spk-name">Noelia González</div>
+            <div class="spk-role">Directora · Voiceinteractivos</div>
+            <div class="spk-bio">Guía a personas y empresas de cero a resultados reales con IA, con un enfoque humano y sin miedo.</div>
+          </div>
+
+          <!-- Pau Martí Felip -->
+          <div class="spk-card reveal d1">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7b6982c94680bcf1fbcf02.jpg" alt="Pau Martí Felip"></div>
+            <div class="spk-name">Pau Martí Felip</div>
+            <div class="spk-role">Profesor &amp; Divulgador · IA Aplicada</div>
+            <div class="spk-bio">Enseña a profesionales y empresas a crear proyectos y automatizar procesos con IA, en vivo y en directo.</div>
+          </div>
+
+          <!-- Tere Olvera -->
+          <div class="spk-card reveal d2">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a255b571c8ef048b1.jpg" alt="Tere Olvera"></div>
+            <div class="spk-name">Lic. Tere Olvera</div>
+            <div class="spk-role">Producción &amp; ExperiencIA</div>
+            <div class="spk-bio">Especialista en producción de eventos de alto impacto, cuidando cada detalle logístico y operativo.</div>
+          </div>
+
+          <!-- Alejandra Díaz -->
+          <div class="spk-card reveal d3">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0afe4291bd106a19fd.jpg" alt="Alejandra Díaz"></div>
+            <div class="spk-name">Alejandra Díaz</div>
+            <div class="spk-role">CEO &amp; Cofundadora · CREAVIZER</div>
+            <div class="spk-bio">Especialista en marketing digital y producción audiovisual con IA generativa. Combina creatividad humana e IA para llevar ideas a la realidad sin límites.</div>
+          </div>
+
+          <!-- Paola Pérez -->
+          <div class="spk-card reveal">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><div class="spk-avatar-initials">PP</div></div>
+            <div class="spk-name">Paola Pérez</div>
+            <div class="spk-role">IA Marketing &amp; Publicidad</div>
+            <div class="spk-bio">Información próximamente.</div>
+          </div>
+
+          <!-- Andrea Olivero -->
+          <div class="spk-card reveal d1">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0aa6a03cda06605cbd.jpg" alt="Andrea Olivero"></div>
+            <div class="spk-name">Andrea Olivero</div>
+            <div class="spk-role">IA Expo Redes Sociales</div>
+            <div class="spk-bio">Gestiona la presencia digital de IA Expo Internacional, conectando con la comunidad en toda LATAM.</div>
+          </div>
+
+        </div>
+      
+        </div>
 
         <!-- 3. Testimoniales IA Expo 2026 -->
         <h2 class="stitle reveal" style="margin-top:64px;">Lo que dicen quienes ya<br><span class="accent">Vivieron la Experiencia</span></h2>
