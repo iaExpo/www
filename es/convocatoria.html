@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call for Papers — Convocatoria | IA Expo Internacional 2027</title>
+    <meta name="description" content="Convocatoria abierta para conferencistas e investigadores de IA. Envía tu paper y preséntalo ante 200 líderes, académicos e innovadores de LATAM en IA Expo Internacional 2027.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cyan: #00d4ff;
+        --cyan-dim: rgba(0, 212, 255, 0.15);
+        --blue: #0066ff;
+        --purple: #7c3aed;
+        --purple-light: #a855f7;
+        --gold: #f59e0b;
+        --dark: #030712;
+        --dark-2: #0a0f1e;
+        --dark-3: #111827;
+        --glass: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --text: #f9fafb;
+        --text-muted: #9ca3af;
+        --text-dim: #6b7280;
+        --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c3aed 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--dark);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--cyan);
+        border-radius: 2px;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 300;
+        background: rgba(3, 7, 18, 0.97);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 56px;
+        gap: 12px;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-brand img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px;
+        display: block;
+      }
+      .nav-brand span {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 4px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .ntab {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 6px 11px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.72rem;
+        font-weight: 600;
+        font-family: inherit;
+        transition: all 0.2s;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+      }
+
+      .ntab .ico {
+        font-size: 0.85rem;
+      }
+
+      .ntab:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        border-radius: 9px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 20px 16px;
+        background: rgba(3, 7, 18, 0.99);
+        border-bottom: 1px solid var(--glass-border);
+        position: sticky;
+        top: 56px;
+        z-index: 299;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .mobile-menu .ntab {
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
+        font-size: 0.88rem;
+      }
+
+      @media(max-width:768px) {
+        .nav-tabs {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+
+      /* ── SECTION BASE ── */
+      section {
+        position: relative;
+        z-index: 1;
+      }
+
+      .si {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 5%;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 20px;
+      }
+
+      .eyebrow::before {
+        content: '';
+        width: 24px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 1px;
+      }
+
+      .stitle {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(30px, 4vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+
+      .stitle .accent {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .sdesc {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 580px;
+        line-height: 1.7;
+      }
+
+      .gd {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent);
+        opacity: 0.3;
+      }
+
+      /* ── CONVOCATORIA / CALL FOR PAPERS ── */
+      #convocatoria {
+        background: var(--dark-3);
+      }
+
+      .cfp-g {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 64px;
+      }
+
+      .topics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .topic {
+        padding: 18px 22px;
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        border-left: 3px solid var(--cyan);
+        transition: all 0.3s;
+      }
+
+      .topic:hover {
+        background: rgba(0, 212, 255, 0.04);
+      }
+
+      .topic strong {
+        display: block;
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .topic span {
+        font-size: 12px;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .topic:nth-child(2)  { border-left-color: var(--blue); }
+      .topic:nth-child(3)  { border-left-color: #22c55e; }
+      .topic:nth-child(4)  { border-left-color: var(--purple-light); }
+
+      .tl {
+        display: flex;
+        flex-direction: column;
+        padding-left: 28px;
+        position: relative;
+      }
+
+      .tl::before {
+        content: '';
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--cyan), var(--purple));
+        border-radius: 1px;
+      }
+
+      .tli {
+        position: relative;
+        padding-bottom: 28px;
+      }
+
+      .tli:last-child {
+        padding-bottom: 0;
+      }
+
+      .tld {
+        position: absolute;
+        left: -24px;
+        top: 4px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      }
+
+      .tl-date {
+        font-size: 11px;
+        color: var(--cyan);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .tl-title {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+
+      .tl-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .cfp-cta {
+        margin-top: 48px;
+        padding: 36px;
+        background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(124, 58, 237, 0.06));
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        border-radius: 20px;
+        text-align: center;
+      }
+
+      .cfp-cta h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .cfp-cta p {
+        color: var(--text-muted);
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto 24px;
+      }
+
+      .cfp-tags {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+
+      .cfp-tag {
+        padding: 6px 14px;
+        background: rgba(0, 212, 255, 0.1);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        border-radius: 100px;
+        font-size: 12px;
+        color: var(--cyan);
+        font-weight: 600;
+      }
+
+      /* ── BOTONES ── */
+      .btn-primary {
+        padding: 16px 36px;
+        background: var(--gradient-1);
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), 0 4px 24px rgba(0, 102, 255, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 60px rgba(0, 212, 255, 0.5), 0 8px 32px rgba(0, 102, 255, 0.4);
+      }
+
+      .btn-secondary {
+        padding: 16px 36px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+        background: rgba(0, 212, 255, 0.05);
+        transform: translateY(-2px);
+      }
+
+      /* ── FOOTER MINI: navegador secundario ── */
+      .fmini {
+        background: var(--dark-2);
+        border-top: 1px solid var(--glass-border);
+        padding: 20px 5% 16px;
+      }
+
+      .fmini-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .fmini-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        justify-self: start;
+      }
+      .fmini-brand img {
+        height: 26px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 5px;
+        display: block;
+      }
+      .fmini-brand span {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .fmini-links {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-self: center;
+      }
+
+      .fmini-link {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 5px 10px;
+        border-radius: 7px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .fmini-link:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .fmini-contact {
+        display: flex;
+        gap: 14px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        justify-self: end;
+      }
+      .fmini-contact a {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-contact a:hover {
+        color: var(--cyan);
+      }
+
+      .fmini-legal {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .fmini-legal a {
+        color: var(--text-muted);
+        font-size: 0.68rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-legal a:hover {
+        color: var(--cyan);
+      }
+      .fmini-legal .sep {
+        color: var(--text-dim);
+        font-size: 0.68rem;
+      }
+
+      .fmini-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .fmini-bottom p {
+        font-size: 0.66rem;
+        color: var(--text-muted);
+      }
+      .fmini-disclaimer {
+        max-width: 900px;
+        margin: 8px auto 0;
+        text-align: center;
+      }
+      .fmini-disclaimer p {
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      @media(max-width:640px) {
+        .fmini-wrap {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+        }
+        .fmini-brand,
+        .fmini-links,
+        .fmini-contact {
+          justify-self: center;
+        }
+      }
+
+      /* ── REVEAL ANIM ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .d1 { transition-delay: 0.1s; }
+      .d2 { transition-delay: 0.2s; }
+      .d3 { transition-delay: 0.3s; }
+      .d4 { transition-delay: 0.4s; }
+
+      /* RESPONSIVE */
+      @media(max-width:900px) {
+        .topics {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV DESKTOP -->
+    <nav>
+      <a href="https://iaExpo.ai" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+        <span>IA Expo Internacional 2027</span>
+      </a>
+      <div class="nav-tabs">
+        <a href="#" class="ntab"><span class="ico">📚</span> Temáticas</a>
+        <a href="#" class="ntab"><span class="ico">📋</span> Plantilla</a>
+        <a href="#" class="ntab"><span class="ico">📤</span> Envío</a>
+        <a href="#" class="ntab"><span class="ico">📅</span> Fechas Clave</a>
+        <a href="https://speakers.iaExpo.ai" class="ntab"><span class="ico">🎙️</span> Speakers</a>
+        <a href="https://contacto.iaExpo.ai" class="ntab"><span class="ico">📍</span> Más Información</a>
+      </div>
+      <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mmenu">
+      <a href="#" class="ntab" onclick="closeNav()"><span class="ico">📚</span> Temáticas</a>
+      <a href="#" class="ntab" onclick="closeNav()"><span class="ico">📋</span> Plantilla</a>
+      <a href="#" class="ntab" onclick="closeNav()"><span class="ico">📤</span> Envío</a>
+      <a href="#" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Fechas Clave</a>
+      <a href="https://speakers.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">🎙️</span> Speakers</a>
+      <a href="https://contacto.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Más Información</a>
+    </div>
+
+    <!-- CALL FOR PAPERS -->
+    <section id="convocatoria">
+      <div class="si">
+        <div class="eyebrow">Convocatoria</div>
+        <h2 class="stitle reveal">Call for Papers<br><span class="accent">IA: Impacto en las Empresas</span></h2>
+        <p class="sdesc reveal d1">¿Tu empresa está cambiando el mundo con IA? Envía tu paper y preséntalo ante 200 líderes, académicos e innovadores de LATAM.</p>
+        <div class="cfp-g">
+          <div class="reveal" style="grid-column:1/-1;">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📚 Temáticas de Interés</h3>
+            <div class="topics">
+              <div class="topic"><strong>🔭 IA Visión y Futuro</strong><span>Tendencias emergentes, roadmaps tecnológicos e impacto de la IA en los próximos años</span></div>
+              <div class="topic"><strong>📣 Mercadotecnia y Publicidad</strong><span>IA aplicada a campañas, personalización, generación de contenido y estrategia de marca</span></div>
+              <div class="topic"><strong>💰 ROI: Operaciones y Automatización</strong><span>Casos reales de eficiencia, reducción de costos y automatización de procesos con IA</span></div>
+              <div class="topic"><strong>✨ ExperiencIA: Casos Reales</strong><span>Historias de éxito, lecciones aprendidas y transformación empresarial impulsada por IA</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="cfp-cta reveal">
+          <div style="font-size:36px;margin-bottom:16px;">✍️</div>
+          <h3>¿Listo para compartir tu ExperiencIA?</h3>
+          <p>Formato: 4–8 páginas · Español o Inglés · Revisión por el Comité Organizador de la IA Expo Internacional</p>
+          <div class="cfp-tags"><span class="cfp-tag">4–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por IA Expo</span><span class="cfp-tag">Cierre: 24 Oct 2026</span></div>
+          <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+            <a href="https://drive.google.com/uc?export=download&id=1jrGEMopP9w32cyi_-1cK2PpauiVybdH_" class="btn-primary" download>⬇️ Descargar Plantilla</a>
+            <a href="https://iaexpo.ai/articulos" class="btn-secondary">📄 Enviar mi Paper</a>
+            <a href="https://contacto.iaExpo.ai" class="btn-secondary">Más Información →</a>
+          </div>
+        </div>
+        <div class="reveal d1" style="text-align:center;margin-top:48px;">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📅 Fechas Clave</h3>
+            <div style="display:flex;justify-content:center;">
+            <div class="tl">
+              <div class="tli">
+                <div class="tld"></div>
+                <div class="tl-date">Ahora Abierto</div>
+                <div class="tl-title">Apertura de Convocatoria</div>
+                <div class="tl-desc">Envío de abstracts y papers completos</div>
+              </div>
+              <div class="tli">
+                <div class="tld" style="background:var(--blue);box-shadow:0 0 10px rgba(0,102,255,0.5);"></div>
+                <div class="tl-date" style="color:#60a5fa;">24 de Octubre de 2026</div>
+                <div class="tl-title">Cierre de Envíos</div>
+                <div class="tl-desc">Fecha límite para papers completos</div>
+              </div>
+              <div class="tli">
+                <div class="tld" style="background:var(--purple);box-shadow:0 0 10px rgba(124,58,237,0.5);"></div>
+                <div class="tl-date" style="color:var(--purple-light);">20 de Noviembre de 2026</div>
+                <div class="tl-title">Notificación de Aceptación</div>
+                <div class="tl-desc">Resultados de revisión doble ciego</div>
+              </div>
+              <div class="tli">
+                <div class="tld" style="background:#FFB74D;box-shadow:0 0 10px rgba(255,183,77,0.5);"></div>
+                <div class="tl-date" style="color:#FFB74D;">9 de Enero de 2027</div>
+                <div class="tl-title">Entrega de Presentaciones</div>
+                <div class="tl-desc">Envío de presentación final en formato PPTX</div>
+              </div>
+              <div class="tli">
+                <div class="tld" style="background:linear-gradient(135deg,var(--cyan),var(--purple));box-shadow:0 0 14px rgba(0,212,255,0.6);"></div>
+                <div class="tl-date">29–30 Enero de 2027</div>
+                <div class="tl-title">Presentación en IA Expo 2027</div>
+                <div class="tl-desc">Ciudad de México</div>
+              </div>
+            </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <footer class="fmini">
+      <div class="fmini-wrap">
+        <a href="https://iaExpo.ai" class="fmini-brand">
+          <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+          <span>IA Expo 2027</span>
+        </a>
+        <nav class="fmini-links">
+          <a href="https://iaExpo.ai#boletos" class="fmini-link">Participa</a>
+          <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
+          <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
+          <a href="https://patrocinios.iaExpo.ai" class="fmini-link">Patrocinios</a>
+          <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
+          <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
+          <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
+        </nav>
+        <div class="fmini-contact">
+          <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a>
+          <a href="https://wa.me/525559632687" target="_blank" rel="noopener">+52 55 5963-2687</a>
+        </div>
+      </div>
+      <div class="fmini-legal">
+        <a href="https://iaExpo.ai/terminos" target="_blank" rel="noopener">Términos y Condiciones</a>
+        <span class="sep">|</span>
+        <a href="https://iaExpo.ai/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>
+      </div>
+      <div class="fmini-bottom">
+        <p>© 2025-2026 IA Expo Internacional · Todos los Derechos Reservados · Ciudad de México, México</p>
+      </div>
+      <div class="fmini-disclaimer">
+        <p>La información contenida en este sitio, incluyendo precios, fechas, programas, ponentes y condiciones de participación, es de carácter informativo y está sujeta a cambios sin previo aviso. Para información actualizada y confirmada, comuníquese directamente con el equipo organizador.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        document.getElementById('hbtn').classList.toggle('open');
+        document.getElementById('mmenu').classList.toggle('open');
+      }
+
+      function closeNav() {
+        document.getElementById('hbtn').classList.remove('open');
+        document.getElementById('mmenu').classList.remove('open');
+      }
+
+      const obs = new IntersectionObserver(es => {
+        es.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+  </body>
+</html>

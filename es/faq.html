@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — IA Expo Internacional 2027</title>
+    <meta name="description" content="Preguntas frecuentes sobre IA Expo Internacional 2027: boletos, fechas, sede, speakers, patrocinios y más.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cyan: #00d4ff;
+        --cyan-dim: rgba(0, 212, 255, 0.15);
+        --blue: #0066ff;
+        --purple: #7c3aed;
+        --purple-light: #a855f7;
+        --gold: #f59e0b;
+        --dark: #030712;
+        --dark-2: #0a0f1e;
+        --dark-3: #111827;
+        --glass: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --text: #f9fafb;
+        --text-muted: #9ca3af;
+        --text-dim: #6b7280;
+        --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c3aed 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--dark);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--cyan);
+        border-radius: 2px;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 300;
+        background: rgba(3, 7, 18, 0.97);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 56px;
+        gap: 12px;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-brand img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px;
+        display: block;
+      }
+      .nav-brand span {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 4px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .ntab {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 6px 11px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.72rem;
+        font-weight: 600;
+        font-family: inherit;
+        transition: all 0.2s;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+      }
+
+      .ntab .ico {
+        font-size: 0.85rem;
+      }
+
+      .ntab:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        border-radius: 9px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 20px 16px;
+        background: rgba(3, 7, 18, 0.99);
+        border-bottom: 1px solid var(--glass-border);
+        position: sticky;
+        top: 56px;
+        z-index: 299;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .mobile-menu .ntab {
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
+        font-size: 0.88rem;
+      }
+
+      @media(max-width:768px) {
+        .nav-tabs {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+
+      /* ── SECTION BASE ── */
+      section {
+        position: relative;
+        z-index: 1;
+      }
+
+      .si {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 5%;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 20px;
+      }
+
+      .eyebrow::before {
+        content: '';
+        width: 24px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 1px;
+      }
+
+      .stitle {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(30px, 4vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+
+      .stitle .accent {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .sdesc {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 580px;
+        line-height: 1.7;
+      }
+
+      .gd {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent);
+        opacity: 0.3;
+      }
+
+      /* ── FAQ ── */
+      #faq {
+        background: var(--dark-2);
+      }
+
+      .faq-list { max-width: 780px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 12px; }
+      .faq-item {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: border-color 0.2s;
+      }
+      .faq-item.open { border-color: rgba(0,212,255,0.3); }
+      .faq-q {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        gap: 16px;
+        user-select: none;
+      }
+      .faq-q:hover { color: var(--cyan); }
+      .faq-arrow { font-size: 18px; transition: transform 0.3s; flex-shrink: 0; color: var(--cyan); }
+      .faq-item.open .faq-arrow { transform: rotate(45deg); }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.3s;
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+      .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+
+      /* ── BOTÓN PRIMARIO ── */
+      .btn-primary {
+        padding: 16px 36px;
+        background: var(--gradient-1);
+        border: none;
+        border-radius: 12px;
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), 0 4px 24px rgba(0, 102, 255, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 60px rgba(0, 212, 255, 0.5), 0 8px 32px rgba(0, 102, 255, 0.4);
+      }
+
+      /* ── FOOTER MINI: navegador secundario ── */
+      .fmini {
+        background: var(--dark-2);
+        border-top: 1px solid var(--glass-border);
+        padding: 20px 5% 16px;
+      }
+
+      .fmini-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .fmini-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        justify-self: start;
+      }
+      .fmini-brand img {
+        height: 26px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 5px;
+        display: block;
+      }
+      .fmini-brand span {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .fmini-links {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-self: center;
+      }
+
+      .fmini-link {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 5px 10px;
+        border-radius: 7px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .fmini-link:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .fmini-contact {
+        display: flex;
+        gap: 14px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        justify-self: end;
+      }
+      .fmini-contact a {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-contact a:hover {
+        color: var(--cyan);
+      }
+
+      .fmini-legal {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .fmini-legal a {
+        color: var(--text-muted);
+        font-size: 0.68rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-legal a:hover {
+        color: var(--cyan);
+      }
+      .fmini-legal .sep {
+        color: var(--text-dim);
+        font-size: 0.68rem;
+      }
+
+      .fmini-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .fmini-bottom p {
+        font-size: 0.66rem;
+        color: var(--text-muted);
+      }
+      .fmini-disclaimer {
+        max-width: 900px;
+        margin: 8px auto 0;
+        text-align: center;
+      }
+      .fmini-disclaimer p {
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      @media(max-width:640px) {
+        .fmini-wrap {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+        }
+        .fmini-brand,
+        .fmini-links,
+        .fmini-contact {
+          justify-self: center;
+        }
+      }
+
+      /* ── REVEAL ANIM ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .d1 { transition-delay: 0.1s; }
+      .d2 { transition-delay: 0.2s; }
+      .d3 { transition-delay: 0.3s; }
+      .d4 { transition-delay: 0.4s; }
+    </style>
+  </head>
+  <body>
+    <!-- NAV DESKTOP -->
+    <nav>
+      <a href="https://iaExpo.ai" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+        <span>IA Expo Internacional 2027</span>
+      </a>
+      <div class="nav-tabs">
+        <a href="https://iaExpo.ai#boletos" class="ntab"><span class="ico">👑</span> VIP All Access</a>
+        <a href="https://iaExpo.ai#boletos" class="ntab"><span class="ico">🥂</span> Networking</a>
+        <a href="https://iaExpo.ai#experiencia" class="ntab"><span class="ico">🎤</span> Conferencias</a>
+        <a href="https://iaExpo.ai#experiencia" class="ntab"><span class="ico">🏛️</span> Expo</a>
+        <a href="https://iaExpo.ai#talleres" class="ntab"><span class="ico">🛠️</span> Talleres</a>
+        <a href="https://sede.iaExpo.ai" class="ntab"><span class="ico">🏨</span> Hospedaje</a>
+        <a href="https://faq.iaExpo.ai" class="ntab"><span class="ico">❓</span> FAQ</a>
+        <a href="https://contacto.iaExpo.ai" class="ntab"><span class="ico">📍</span> Contacto</a>
+      </div>
+      <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mmenu">
+      <a href="https://iaExpo.ai#boletos" class="ntab" onclick="closeNav()"><span class="ico">👑</span> VIP All Access</a>
+      <a href="https://iaExpo.ai#boletos" class="ntab" onclick="closeNav()"><span class="ico">🥂</span> Networking</a>
+      <a href="https://iaExpo.ai#experiencia" class="ntab" onclick="closeNav()"><span class="ico">🎤</span> Conferencias</a>
+      <a href="https://iaExpo.ai#experiencia" class="ntab" onclick="closeNav()"><span class="ico">🏛️</span> Expo</a>
+      <a href="https://iaExpo.ai#talleres" class="ntab" onclick="closeNav()"><span class="ico">🛠️</span> Talleres</a>
+      <a href="https://sede.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">🏨</span> Hospedaje</a>
+      <a href="https://faq.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">❓</span> FAQ</a>
+      <a href="https://contacto.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
+    </div>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="si">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="stitle reveal">Preguntas<br><span class="accent">Frecuentes</span></h2>
+        <div class="faq-list reveal">
+          <div class="faq-item open">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              ¿Qué es la Comunidad IA Expo?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">La Comunidad IA Expo es una red exclusiva de personas que usan, aprenden y se apoyan mutuamente en el uso de Inteligencia Artificial para la vida real. No es solo un evento anual — es una comunidad activa de emprendedores, ejecutivos, profesionistas y visionarios que comparten lo que funciona con IA en sus industrias.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              ¿Tengo que saber programar para beneficiarme de IA Expo?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">Para nada. IA Expo está diseñado para personas de todas las industrias y niveles técnicos. Nuestro lema es "IA Para la Vida Real" — enfocamos el contenido en aplicaciones prácticas que cualquier persona puede implementar: marketing, ventas, finanzas, salud, educación, creatividad y más. Los desarrolladores también tienen su track especializado.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              ¿Cuándo y dónde es IA Expo Internacional 2027?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">IA Expo Internacional 2027 se realizará los días 28, 29 y 30 de Enero de 2027 en el Westin Santa Fe, Ciudad de México.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              ¿Cuánto cuesta asistir y qué incluye cada tipo de boleto?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">Tenemos cuatro tipos de boleto: Expo ($200 USD, acceso a zona de exhibición), Talleres ($200 USD, workshops hands-on el 28 de enero), Conferencias ($500 USD, acceso completo a 2 días de ponencias) y Networking Estructurado ($800 USD, sesión de matchmaking VIP). El VIP All Access ($1,000 USD) incluye todo. Consulta la sección de Tickets para más detalles.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              ¿Cómo puedo ser speaker o presentar un paper?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">Tenemos una convocatoria abierta para conferencistas e investigadores. Si tienes un caso de uso real de IA, investigación relevante o experiencia transformadora que compartir, puedes enviar tu propuesta escribiéndonos a info@iaExpo.ai. El equipo la revisará y te contactará en menos de 5 días hábiles.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              ¿Hay opciones de patrocinio o alianzas estratégicas?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">Sí. Tenemos diferentes niveles de patrocinio: Diamante, Platino, Oro y Plata, así como alianzas académicas, de contenido y de tecnología. Cada paquete incluye visibilidad de marca, acceso a la audiencia y presencia en el evento. Escríbenos a info@iaExpo.ai para recibir el dossier de patrocinios completo.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              ¿Puedo obtener factura fiscal por mi boleto?
+              <span class="faq-arrow">+</span>
+            </div>
+            <div class="faq-a">Sí, emitimos facturas fiscales válidas en México. Al completar tu registro podrás solicitar tu factura o enviarnos tus datos fiscales a info@iaExpo.ai. Para empresas con múltiples asistentes también tenemos paquetes corporativos con facturación simplificada.</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;" class="reveal">
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">¿Tienes otra pregunta?</p>
+          <a href="https://contacto.iaExpo.ai" class="btn-primary">🚀 Más Información</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="fmini">
+      <div class="fmini-wrap">
+        <a href="https://iaExpo.ai" class="fmini-brand">
+          <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+          <span>IA Expo 2027</span>
+        </a>
+        <nav class="fmini-links">
+          <a href="https://iaExpo.ai#boletos" class="fmini-link">Participa</a>
+          <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
+          <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
+          <a href="https://patrocinios.iaExpo.ai" class="fmini-link">Patrocinios</a>
+          <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
+          <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
+          <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
+        </nav>
+        <div class="fmini-contact">
+          <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a>
+          <a href="https://wa.me/525559632687" target="_blank" rel="noopener">+52 55 5963-2687</a>
+        </div>
+      </div>
+      <div class="fmini-legal">
+        <a href="https://iaExpo.ai/terminos" target="_blank" rel="noopener">Términos y Condiciones</a>
+        <span class="sep">|</span>
+        <a href="https://iaExpo.ai/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>
+      </div>
+      <div class="fmini-bottom">
+        <p>© 2025-2026 IA Expo Internacional · Todos los Derechos Reservados · Ciudad de México, México</p>
+      </div>
+      <div class="fmini-disclaimer">
+        <p>La información contenida en este sitio, incluyendo precios, fechas, programas, ponentes y condiciones de participación, es de carácter informativo y está sujeta a cambios sin previo aviso. Para información actualizada y confirmada, comuníquese directamente con el equipo organizador.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        document.getElementById('hbtn').classList.toggle('open');
+        document.getElementById('mmenu').classList.toggle('open');
+      }
+
+      function closeNav() {
+        document.getElementById('hbtn').classList.remove('open');
+        document.getElementById('mmenu').classList.remove('open');
+      }
+
+      const obs = new IntersectionObserver(es => {
+        es.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      function toggleFaq(el) {
+        const item = el.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      }
+    </script>
+  </body>
+</html>

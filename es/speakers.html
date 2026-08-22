@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speakers — IA Expo Internacional 2027</title>
+    <meta name="description" content="Conoce a los speakers de IA Expo Internacional 2027: líderes, expertos y creadores que están usando la IA para transformar negocios, carreras y vidas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cyan: #00d4ff;
+        --cyan-dim: rgba(0, 212, 255, 0.15);
+        --blue: #0066ff;
+        --purple: #7c3aed;
+        --purple-light: #a855f7;
+        --gold: #f59e0b;
+        --dark: #030712;
+        --dark-2: #0a0f1e;
+        --dark-3: #111827;
+        --glass: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --text: #f9fafb;
+        --text-muted: #9ca3af;
+        --text-dim: #6b7280;
+        --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c3aed 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--dark);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--cyan);
+        border-radius: 2px;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 300;
+        background: rgba(3, 7, 18, 0.97);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 56px;
+        gap: 12px;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-brand img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px;
+        display: block;
+      }
+      .nav-brand span {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 4px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .ntab {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 6px 11px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.72rem;
+        font-weight: 600;
+        font-family: inherit;
+        transition: all 0.2s;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+      }
+
+      .ntab .ico {
+        font-size: 0.85rem;
+      }
+
+      .ntab:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        border-radius: 9px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 20px 16px;
+        background: rgba(3, 7, 18, 0.99);
+        border-bottom: 1px solid var(--glass-border);
+        position: sticky;
+        top: 56px;
+        z-index: 299;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .mobile-menu .ntab {
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
+        font-size: 0.88rem;
+      }
+
+      @media(max-width:768px) {
+        .nav-tabs {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+
+      /* ── SECTION BASE ── */
+      section {
+        position: relative;
+        z-index: 1;
+      }
+
+      .si {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 5%;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 20px;
+      }
+
+      .eyebrow::before {
+        content: '';
+        width: 24px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 1px;
+      }
+
+      .stitle {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(30px, 4vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+
+      .stitle .accent {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .sdesc {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 580px;
+        line-height: 1.7;
+      }
+
+      .gd {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent);
+        opacity: 0.3;
+      }
+
+      /* ── SPEAKERS ── */
+      #speakers {
+        background: var(--dark-3);
+      }
+      .spk-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
+      .spk-card {
+        background:var(--glass); border:1px solid var(--glass-border); border-radius:20px;
+        padding:28px 18px 22px; text-align:center; position:relative; overflow:hidden;
+        transition:all 0.3s;
+      }
+      .spk-card:hover { border-color:rgba(0,212,255,0.35); transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.25); }
+      .spk-card::before {
+        content:""; position:absolute; top:0; left:0; right:0; height:2px;
+        background:var(--gradient-1); opacity:0.7;
+      }
+      .spk-tag {
+        display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+        color:var(--cyan); background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2);
+        border-radius:100px; padding:3px 10px; margin-bottom:14px;
+      }
+      .spk-avatar-wrap { width:84px; height:84px; margin:0 auto 14px; position:relative; }
+      .spk-avatar-photo {
+        width:84px; height:84px; border-radius:50%; object-fit:cover;
+        border:2px solid rgba(0,212,255,0.35);
+      }
+      .spk-avatar-initials {
+        width:84px; height:84px; border-radius:50%; background:var(--gradient-1);
+        display:flex; align-items:center; justify-content:center;
+        font-size:26px; font-weight:800; color:#fff; font-family:'Space Grotesk',sans-serif;
+      }
+      .spk-name { font-size:14.5px; font-weight:700; color:var(--text); margin-bottom:4px; line-height:1.25; }
+      .spk-role { font-size:11px; color:var(--cyan); font-weight:600; margin-bottom:8px; line-height:1.4; min-height:28px; }
+      .spk-bio { font-size:11.5px; color:var(--text-muted); line-height:1.55; }
+      @media(max-width:1100px) { .spk-grid { grid-template-columns:repeat(3,1fr); } }
+      @media(max-width:700px)  { .spk-grid { grid-template-columns:repeat(2,1fr); } }
+      @media(max-width:420px)  { .spk-grid { grid-template-columns:1fr; } }
+
+      /* ── FOOTER MINI: navegador secundario ── */
+      .fmini {
+        background: var(--dark-2);
+        border-top: 1px solid var(--glass-border);
+        padding: 20px 5% 16px;
+      }
+
+      .fmini-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .fmini-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        justify-self: start;
+      }
+      .fmini-brand img {
+        height: 26px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 5px;
+        display: block;
+      }
+      .fmini-brand span {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .fmini-links {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-self: center;
+      }
+
+      .fmini-link {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 5px 10px;
+        border-radius: 7px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .fmini-link:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .fmini-contact {
+        display: flex;
+        gap: 14px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        justify-self: end;
+      }
+      .fmini-contact a {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-contact a:hover {
+        color: var(--cyan);
+      }
+
+      .fmini-legal {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .fmini-legal a {
+        color: var(--text-muted);
+        font-size: 0.68rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-legal a:hover {
+        color: var(--cyan);
+      }
+      .fmini-legal .sep {
+        color: var(--text-dim);
+        font-size: 0.68rem;
+      }
+
+      .fmini-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .fmini-bottom p {
+        font-size: 0.66rem;
+        color: var(--text-muted);
+      }
+      .fmini-disclaimer {
+        max-width: 900px;
+        margin: 8px auto 0;
+        text-align: center;
+      }
+      .fmini-disclaimer p {
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      @media(max-width:640px) {
+        .fmini-wrap {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+        }
+        .fmini-brand,
+        .fmini-links,
+        .fmini-contact {
+          justify-self: center;
+        }
+      }
+
+      /* ── REVEAL ANIM ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .d1 { transition-delay: 0.1s; }
+      .d2 { transition-delay: 0.2s; }
+      .d3 { transition-delay: 0.3s; }
+      .d4 { transition-delay: 0.4s; }
+    </style>
+  </head>
+  <body>
+    <!-- NAV DESKTOP -->
+    <nav>
+      <a href="https://iaExpo.ai" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+        <span>IA Expo Internacional 2027</span>
+      </a>
+      <div class="nav-tabs">
+        <a href="https://convocatoria.iaExpo.ai" class="ntab"><span class="ico">✍️</span> Convocatoria</a>
+        <a href="https://programa.iaExpo.ai" class="ntab"><span class="ico">📅</span> Programa</a>
+        <a href="https://contacto.iaExpo.ai" class="ntab"><span class="ico">📍</span> Más Información</a>
+      </div>
+      <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mmenu">
+      <a href="https://convocatoria.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">✍️</span> Convocatoria</a>
+      <a href="https://programa.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">📅</span> Programa</a>
+      <a href="https://contacto.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Más Información</a>
+    </div>
+
+    <!-- SPEAKERS -->
+    <section id="speakers">
+      <div class="si">
+        <div class="eyebrow">Speakers</div>
+        <h2 class="stitle reveal" style="margin-top:0;">Las Voces de la<br><span class="accent">IA Expo Internacional 2027</span></h2>
+        <p class="sdesc reveal d1">Líderes, expertos y creadores que están usando la IA para transformar negocios, carreras y vidas — compartiendo lo que realmente funciona.</p>
+
+        <div class="spk-grid">
+
+          <!-- Dr. Eduardo Pérez -->
+          <div class="spk-card reveal">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a99074f5ef685bda0.jpg" alt="Dr. Eduardo Pérez"></div>
+            <div class="spk-name">Dr. Eduardo Pérez</div>
+            <div class="spk-role">Chair · IA Expo Internacional</div>
+            <div class="spk-bio">CEO de Digital Gap Inc. Más de 20 años conectando tecnología, negocios y personas en LATAM y EE. UU.</div>
+          </div>
+
+          <!-- Dr. Javier Novoa -->
+          <div class="spk-card reveal d1">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a99074f5ef685bd9b.jpg" alt="Dr. Javier Novoa"></div>
+            <div class="spk-name">Dr. Javier Novoa</div>
+            <div class="spk-role">Director General · Cultura Ágil</div>
+            <div class="spk-bio">Experto en cultura organizacional con 25+ años transformando empresas. Autor de "Cultura Organizacional Ágil" y coach de más de 3,000 ejecutivos.</div>
+          </div>
+
+          <!-- Martín Sierra -->
+          <div class="spk-card reveal d2">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a5fc842636e8cecde.jpg" alt="Martín Sierra"></div>
+            <div class="spk-name">Martín Sierra</div>
+            <div class="spk-role">PMO &amp; VMO Leader · Aeroméxico</div>
+            <div class="spk-bio">30+ años en gestión de proyectos y gobierno de TI. PMP®, con estudios en IA y diseño de productos en el MIT.</div>
+          </div>
+
+          <!-- Max Quiroz -->
+          <div class="spk-card reveal d3">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Max Quiroz"></div>
+            <div class="spk-name">Max Quiroz</div>
+            <div class="spk-role">Director · Max &amp; Ruth Training</div>
+            <div class="spk-bio">30+ años en educación a distancia, desde la Universidad Virtual del Tecnológico de Monterrey. Creador de Cursos Que Dejan Huella®.</div>
+          </div>
+
+          <!-- Noelia González -->
+          <div class="spk-card reveal">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a733fdbac7d7ffc64ffc480.jpg" alt="Noelia González"></div>
+            <div class="spk-name">Noelia González</div>
+            <div class="spk-role">Directora · Voiceinteractivos</div>
+            <div class="spk-bio">Guía a personas y empresas de cero a resultados reales con IA, con un enfoque humano y sin miedo.</div>
+          </div>
+
+          <!-- Pau Martí Felip -->
+          <div class="spk-card reveal d1">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7b6982c94680bcf1fbcf02.jpg" alt="Pau Martí Felip"></div>
+            <div class="spk-name">Pau Martí Felip</div>
+            <div class="spk-role">Profesor &amp; Divulgador · IA Aplicada</div>
+            <div class="spk-bio">Enseña a profesionales y empresas a crear proyectos y automatizar procesos con IA, en vivo y en directo.</div>
+          </div>
+
+          <!-- Tere Olvera -->
+          <div class="spk-card reveal d2">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a255b571c8ef048b1.jpg" alt="Tere Olvera"></div>
+            <div class="spk-name">Lic. Tere Olvera</div>
+            <div class="spk-role">Producción &amp; ExperiencIA</div>
+            <div class="spk-bio">Especialista en producción de eventos de alto impacto, cuidando cada detalle logístico y operativo.</div>
+          </div>
+
+          <!-- Alejandra Díaz -->
+          <div class="spk-card reveal d3">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0afe4291bd106a19fd.jpg" alt="Alejandra Díaz"></div>
+            <div class="spk-name">Alejandra Díaz</div>
+            <div class="spk-role">CEO &amp; Cofundadora · CREAVIZER</div>
+            <div class="spk-bio">Especialista en marketing digital y producción audiovisual con IA generativa. Combina creatividad humana e IA para llevar ideas a la realidad sin límites.</div>
+          </div>
+
+          <!-- Paola Pérez -->
+          <div class="spk-card reveal">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a81045da6a03cda06d633b9.jpg" alt="Paola Pérez"></div>
+            <div class="spk-name">Paola Pérez</div>
+            <div class="spk-role">Cofundadora &amp; COO · Creavizer</div>
+            <div class="spk-bio">Dirige la narrativa creativa de Creavizer: campañas y piezas audiovisuales que unen dirección creativa humana con inteligencia artificial.</div>
+          </div>
+
+          <!-- Andrea Olivero -->
+          <div class="spk-card reveal d1">
+            <span class="spk-tag">Speaker</span>
+            <div class="spk-avatar-wrap"><img class="spk-avatar-photo" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0aa6a03cda06605cbd.jpg" alt="Andrea Olivero"></div>
+            <div class="spk-name">Andrea Olivero</div>
+            <div class="spk-role">IA Expo Redes Sociales</div>
+            <div class="spk-bio">Gestiona la presencia digital de IA Expo Internacional, conectando con la comunidad en toda LATAM.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="fmini">
+      <div class="fmini-wrap">
+        <a href="https://iaExpo.ai" class="fmini-brand">
+          <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+          <span>IA Expo 2027</span>
+        </a>
+        <nav class="fmini-links">
+          <a href="https://iaExpo.ai#boletos" class="fmini-link">Participa</a>
+          <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
+          <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
+          <a href="https://patrocinios.iaExpo.ai" class="fmini-link">Patrocinios</a>
+          <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
+          <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
+          <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
+        </nav>
+        <div class="fmini-contact">
+          <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a>
+          <a href="https://wa.me/525559632687" target="_blank" rel="noopener">+52 55 5963-2687</a>
+        </div>
+      </div>
+      <div class="fmini-legal">
+        <a href="https://iaExpo.ai/terminos" target="_blank" rel="noopener">Términos y Condiciones</a>
+        <span class="sep">|</span>
+        <a href="https://iaExpo.ai/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>
+      </div>
+      <div class="fmini-bottom">
+        <p>© 2025-2026 IA Expo Internacional · Todos los Derechos Reservados · Ciudad de México, México</p>
+      </div>
+      <div class="fmini-disclaimer">
+        <p>La información contenida en este sitio, incluyendo precios, fechas, programas, ponentes y condiciones de participación, es de carácter informativo y está sujeta a cambios sin previo aviso. Para información actualizada y confirmada, comuníquese directamente con el equipo organizador.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        document.getElementById('hbtn').classList.toggle('open');
+        document.getElementById('mmenu').classList.toggle('open');
+      }
+
+      function closeNav() {
+        document.getElementById('hbtn').classList.remove('open');
+        document.getElementById('mmenu').classList.remove('open');
+      }
+
+      const obs = new IntersectionObserver(es => {
+        es.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+  </body>
+</html>

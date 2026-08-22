@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrocinios — IA Expo Internacional 2027</title>
+    <meta name="description" content="Niveles de patrocinio y activaciones de marca en IA Expo Internacional 2027: conecta tu marca con 200+ líderes de IA en LATAM.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cyan: #00d4ff;
+        --cyan-dim: rgba(0, 212, 255, 0.15);
+        --blue: #0066ff;
+        --purple: #7c3aed;
+        --purple-light: #a855f7;
+        --gold: #f59e0b;
+        --dark: #030712;
+        --dark-2: #0a0f1e;
+        --dark-3: #111827;
+        --glass: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --text: #f9fafb;
+        --text-muted: #9ca3af;
+        --text-dim: #6b7280;
+        --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c3aed 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--dark);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--cyan);
+        border-radius: 2px;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 300;
+        background: rgba(3, 7, 18, 0.97);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 56px;
+        gap: 12px;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-brand img {
+        height: 38px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 6px;
+        display: block;
+      }
+      .nav-brand span {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 4px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .ntab {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 6px 11px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.72rem;
+        font-weight: 600;
+        font-family: inherit;
+        transition: all 0.2s;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+      }
+
+      .ntab .ico {
+        font-size: 0.85rem;
+      }
+
+      .ntab:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        border-radius: 9px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        padding: 12px 20px 16px;
+        background: rgba(3, 7, 18, 0.99);
+        border-bottom: 1px solid var(--glass-border);
+        position: sticky;
+        top: 56px;
+        z-index: 299;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+      }
+
+      .mobile-menu .ntab {
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
+        font-size: 0.88rem;
+      }
+
+      @media(max-width:768px) {
+        .nav-tabs {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+
+      /* ── SECTION BASE ── */
+      section {
+        position: relative;
+        z-index: 1;
+      }
+
+      .si {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 100px 5%;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 20px;
+      }
+
+      .eyebrow::before {
+        content: '';
+        width: 24px;
+        height: 2px;
+        background: var(--cyan);
+        border-radius: 1px;
+      }
+
+      .stitle {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(30px, 4vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        margin-bottom: 20px;
+      }
+
+      .stitle .accent {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .sdesc {
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 580px;
+        line-height: 1.7;
+      }
+
+      .gd {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent);
+        opacity: 0.3;
+      }
+
+      /* ── PATROCINIOS ── */
+      #patrocinios {
+        background: var(--dark-3);
+      }
+
+      .pat-scroll-hint {
+        display: none;
+        text-align: center;
+        font-size: 0.72rem;
+        color: var(--text-dim);
+        padding: 10px 0 6px;
+        letter-spacing: 0.05em;
+        animation: pulse-hint 2s ease-in-out infinite;
+      }
+      @keyframes pulse-hint {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+      }
+      @media(max-width: 700px) {
+        .pat-scroll-hint { display: block; }
+      }
+      .pat-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 40px 0;
+        border-radius: 20px;
+        border: 1px solid rgba(0,212,255,0.2);
+        box-shadow: 0 0 40px rgba(0,212,255,0.06), 0 20px 60px rgba(0,0,0,0.4);
+        background: rgba(10,15,30,0.7);
+      }
+      .pat-cmp-table {
+        width: 100%;
+        min-width: 400px;
+        border-collapse: collapse;
+        font-size: 0.75rem;
+      }
+      .pat-cmp-table thead th > .pat-th-icon {
+        font-size: 1.1rem;
+        margin-bottom: 3px;
+        display: block;
+      }
+      .pat-cmp-table thead tr {
+        background: linear-gradient(135deg, rgba(0,102,255,0.18), rgba(0,212,255,0.10));
+        border-bottom: 2px solid rgba(0,212,255,0.25);
+      }
+      .pat-cmp-table thead th {
+        padding: 12px 7px;
+        text-align: center;
+        font-weight: 800;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        white-space: normal;
+        word-break: keep-all;
+      }
+      .pat-cmp-table thead th:first-child {
+        text-align: left;
+        padding-left: 14px;
+        font-size: 0.82rem;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-transform: none;
+        white-space: nowrap;
+        background: linear-gradient(90deg, #00d4ff, #0066ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .pat-cmp-table thead th:nth-child(2) {
+        color: #C0C0C0;
+        text-shadow: 0 0 12px rgba(192,192,192,0.4);
+      }
+      .pat-cmp-table thead th:nth-child(3) {
+        color: #D4AF37;
+        text-shadow: 0 0 12px rgba(212,175,55,0.5);
+      }
+      .pat-cmp-table thead th:nth-child(4) {
+        color: #e8eef8;
+        text-shadow: 0 0 12px rgba(232,238,248,0.5);
+      }
+      .pat-cmp-table thead th:nth-child(5) {
+        color: var(--cyan);
+        text-shadow: 0 0 16px rgba(0,212,255,0.6);
+        background: rgba(0,212,255,0.05);
+        border-left: 1px solid rgba(0,212,255,0.2);
+        border-right: 1px solid rgba(0,212,255,0.2);
+      }
+      .pat-cmp-table tbody td {
+        padding: 9px 7px;
+        text-align: center;
+        color: #6b7280;
+        border-bottom: 1px solid rgba(255,255,255,0.035);
+        transition: background 0.15s;
+      }
+      .pat-cmp-table tbody td:first-child {
+        text-align: left;
+        padding-left: 14px;
+        color: #d1d5db;
+        font-weight: 500;
+        font-size: 0.75rem;
+      }
+      .pat-cmp-table tbody td:nth-child(5) {
+        background: rgba(0,212,255,0.03);
+        border-left: 1px solid rgba(0,212,255,0.1);
+        border-right: 1px solid rgba(0,212,255,0.1);
+      }
+      .pat-cmp-table tbody tr:hover td { background: rgba(0,212,255,0.04); }
+      .pat-cmp-table tbody tr:hover td:nth-child(5) { background: rgba(0,212,255,0.09); }
+      .pat-cmp-table .pat-cat-row td {
+        background: linear-gradient(90deg, rgba(0,212,255,0.12), rgba(0,102,255,0.08), transparent);
+        font-weight: 800;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--cyan);
+        padding: 10px 14px;
+        border-top: 1px solid rgba(0,212,255,0.15);
+        border-bottom: 1px solid rgba(0,212,255,0.15);
+        text-shadow: 0 0 10px rgba(0,212,255,0.4);
+      }
+      .pat-cmp-table .t-check {
+        color: #00E676;
+        font-weight: 900;
+        font-size: 1rem;
+        text-shadow: 0 0 8px rgba(0,230,118,0.5);
+      }
+      .pat-cmp-table .t-x    { color: #2d3748; font-size: 0.9rem; }
+      .pat-cmp-table .t-val  { color: #fff; font-weight: 700; font-size: 0.72rem; }
+
+      @media(max-width: 500px) {
+        .pat-cmp-table { min-width: 0; width: 100%; }
+        .pat-cmp-table thead th { padding: 10px 4px; font-size: 0.58rem; letter-spacing: 0.5px; }
+        .pat-cmp-table thead th > .pat-th-icon { font-size: 0.9rem; margin-bottom: 2px; }
+        .pat-cmp-table thead th:first-child { font-size: 0.72rem; padding-left: 8px; }
+        .pat-cmp-table tbody td { padding: 8px 4px; font-size: 0.65rem; }
+        .pat-cmp-table tbody td:first-child { padding-left: 8px; font-size: 0.65rem; max-width: 100px; }
+        .pat-cmp-table .pat-cat-row td { padding: 8px; font-size: 0.58rem; letter-spacing: 1.2px; }
+        .pat-cmp-table .t-val { font-size: 0.62rem; }
+        .pat-cmp-table .t-check { font-size: 0.85rem; }
+      }
+
+      .pat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 64px;
+        margin-bottom: 32px;
+      }
+      @media(max-width:900px) {
+        .pat-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .pat {
+        padding: 36px 28px;
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+        background: var(--glass);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .pat::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+
+      .p-ti::before {
+        background: linear-gradient(90deg, #FFD54F, #FF8F00, #FFD54F);
+      }
+      .p-ti .pat-tier { color: var(--gold); }
+      .p-ti {
+        background: linear-gradient(135deg, rgba(255, 213, 79, 0.06), rgba(255, 183, 77, 0.03));
+        border-color: rgba(255, 213, 79, 0.35);
+      }
+      .p-ti h3 { color: var(--gold); }
+
+      .p-micro::before {
+        background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
+      }
+      .p-micro .pat-tier { color: var(--cyan); }
+
+      @media(max-width:768px) {
+        .p-micro {
+          grid-column: span 1 !important;
+        }
+        .p-micro ul {
+          grid-template-columns: 1fr !important;
+        }
+      }
+
+      .p-pl::before { background: linear-gradient(90deg, #e5e7eb, #9ca3af, #e5e7eb); }
+      .p-or::before { background: linear-gradient(90deg, var(--gold), #fbbf24); }
+      .p-si::before { background: linear-gradient(90deg, #60a5fa, var(--blue)); }
+
+      .pat:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .pat-tier {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .p-pl .pat-tier { color: #9ca3af; }
+      .p-or .pat-tier { color: var(--gold); }
+      .p-si .pat-tier { color: #60a5fa; }
+
+      .pat h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .pat ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+
+      .pat ul li {
+        font-size: 13px;
+        color: var(--text-muted);
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .pat ul li::before {
+        content: '✓';
+        color: var(--cyan);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      /* ── TARJETAS PRINCIPALES DE PATROCINIO: texto centrado y grande ── */
+      .p-ti, .p-pl, .p-or, .p-si {
+        text-align: center;
+      }
+      .p-ti h3, .p-pl h3, .p-or h3, .p-si h3 {
+        font-size: 30px;
+      }
+      .p-ti .pat-tier, .p-pl .pat-tier, .p-or .pat-tier, .p-si .pat-tier {
+        font-size: 13px;
+      }
+      .p-ti ul, .p-pl ul, .p-or ul, .p-si ul {
+        text-align: left;
+        align-items: flex-start;
+      }
+      .p-ti ul li, .p-pl ul li, .p-or ul li, .p-si ul li {
+        font-size: 15px;
+      }
+      .p-ti .tkt-launch, .p-pl .tkt-launch, .p-or .tkt-launch, .p-si .tkt-launch {
+        margin: 20px 0 24px !important;
+        font-size: 2rem !important;
+      }
+
+      .tkt-launch {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .pat-btn {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        background: transparent;
+        color: var(--cyan);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .pat-btn:hover {
+        background: var(--gradient-1);
+        border-color: transparent;
+        color: white;
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        transform: translateY(-1px);
+      }
+
+      /* ── ACTIVACIONES DE MARCA: lista horizontal ── */
+      .act-list {
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 28px;
+      }
+      .act-row {
+        display: grid;
+        grid-template-columns: 1fr 140px 200px;
+        gap: 20px;
+        align-items: center;
+        padding: 20px 28px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        transition: background 0.2s;
+      }
+      .act-row:last-child { border-bottom: none; }
+      .act-row:hover { background: rgba(0,212,255,0.04); }
+      .act-left { display: flex; align-items: center; gap: 16px; }
+      .act-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+      .act-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+      .act-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+      .act-price { font-size: 20px; font-weight: 800; color: var(--cyan); text-align: center; white-space: nowrap; }
+      .act-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+      .act-sub-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.12em; }
+      .act-sub-btns { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+      .act-pill {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: 1px solid rgba(0,212,255,0.35);
+        color: var(--cyan);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .act-pill:hover { background: rgba(0,212,255,0.12); border-color: var(--cyan); }
+      @media(max-width: 780px) {
+        .act-row { grid-template-columns: 1fr; gap: 12px; padding: 20px 20px; }
+        .act-price { text-align: left; }
+        .act-cta { align-items: flex-start; }
+        .act-sub-btns { justify-content: flex-start; }
+      }
+
+      /* ── FOOTER MINI: navegador secundario ── */
+      .fmini {
+        background: var(--dark-2);
+        border-top: 1px solid var(--glass-border);
+        padding: 20px 5% 16px;
+      }
+
+      .fmini-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .fmini-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        justify-self: start;
+      }
+      .fmini-brand img {
+        height: 26px;
+        width: auto;
+        object-fit: contain;
+        border-radius: 5px;
+        display: block;
+      }
+      .fmini-brand span {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .fmini-links {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        justify-self: center;
+      }
+
+      .fmini-link {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--glass-border);
+        color: var(--text);
+        padding: 5px 10px;
+        border-radius: 7px;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .fmini-link:hover {
+        border-color: var(--cyan);
+        color: var(--cyan);
+      }
+
+      .fmini-contact {
+        display: flex;
+        gap: 14px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        justify-self: end;
+      }
+      .fmini-contact a {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-contact a:hover {
+        color: var(--cyan);
+      }
+
+      .fmini-legal {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .fmini-legal a {
+        color: var(--text-muted);
+        font-size: 0.68rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .fmini-legal a:hover {
+        color: var(--cyan);
+      }
+      .fmini-legal .sep {
+        color: var(--text-dim);
+        font-size: 0.68rem;
+      }
+
+      .fmini-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .fmini-bottom p {
+        font-size: 0.66rem;
+        color: var(--text-muted);
+      }
+      .fmini-disclaimer {
+        max-width: 900px;
+        margin: 8px auto 0;
+        text-align: center;
+      }
+      .fmini-disclaimer p {
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      @media(max-width:640px) {
+        .fmini-wrap {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+        }
+        .fmini-brand,
+        .fmini-links,
+        .fmini-contact {
+          justify-self: center;
+        }
+      }
+
+      /* ── REVEAL ANIM ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .d1 { transition-delay: 0.1s; }
+      .d2 { transition-delay: 0.2s; }
+      .d3 { transition-delay: 0.3s; }
+      .d4 { transition-delay: 0.4s; }
+    </style>
+  </head>
+  <body>
+    <!-- NAV DESKTOP -->
+    <nav>
+      <a href="https://iaExpo.ai" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+        <span>IA Expo Internacional 2027</span>
+      </a>
+      <div class="nav-tabs">
+        <a href="https://alianzas.iaExpo.ai" class="ntab"><span class="ico">🤝</span> Alianzas</a>
+        <a href="https://speakers.iaExpo.ai" class="ntab"><span class="ico">🎙️</span> Speakers</a>
+        <a href="https://contacto.iaExpo.ai" class="ntab"><span class="ico">📍</span> Más Información</a>
+      </div>
+      <button class="hamburger" id="hbtn" onclick="toggleNav()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mmenu">
+      <a href="https://alianzas.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">🤝</span> Alianzas</a>
+      <a href="https://speakers.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">🎙️</span> Speakers</a>
+      <a href="https://contacto.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Más Información</a>
+    </div>
+
+    <!-- PATROCINIOS -->
+    <section id="patrocinios">
+      <div class="si">
+        <div class="eyebrow">Patrocinios</div>
+        <h2 class="stitle reveal">No es Publicidad.<br><span class="accent">Es Posicionamiento Estratégico.</span></h2>
+        <p class="sdesc reveal d1">IA Expo Internacional no es un evento masivo. Es una experiencia curada donde cada asistente toma decisiones de inversión, adopción e implementación de IA. Tu marca no compite por atención — la tiene garantizada.</p>
+
+        <div class="pat-table-wrap reveal">
+          <div class="pat-scroll-hint">← Desliza para comparar todos los niveles →</div>
+          <table class="pat-cmp-table">
+            <thead>
+              <tr>
+                <th>Beneficio</th>
+                <th><div class="pat-th-icon">🥈</div>Plata</th>
+                <th><div class="pat-th-icon">🥇</div>Oro</th>
+                <th><div class="pat-th-icon">🏆</div>Platino</th>
+                <th><div class="pat-th-icon">💎</div>Diamante</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pat-cat-row"><td colspan="5">Visibilidad y Marca</td></tr>
+              <tr><td>Naming rights del evento</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td></tr>
+              <tr><td>Logo en comunicación</td><td class="t-val">Pequeño</td><td class="t-val">Mediano</td><td class="t-val">Grande</td><td class="t-val">Principal</td></tr>
+              <tr><td>Mención en keynote</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Video en pantallas LED</td><td class="t-val">15 seg</td><td class="t-val">30 seg</td><td class="t-val">60 seg</td><td class="t-val">2+ min</td></tr>
+              <tr><td>Naming de track vertical</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Branding en escenografía</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Posts en redes sociales</td><td class="t-val">2</td><td class="t-val">4</td><td class="t-val">8</td><td class="t-val">12+</td></tr>
+              <tr><td>Entrevista en video</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+
+              <tr class="pat-cat-row"><td colspan="5">Presencia en Evento</td></tr>
+              <tr><td>Stand / Exhibición</td><td class="t-val">Compartido</td><td class="t-val">Estándar</td><td class="t-val">Premium</td><td class="t-val">Premium doble</td></tr>
+              <tr><td>Ponencia / Keynote propia</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-val">20 min</td><td class="t-val">30 min</td></tr>
+              <tr><td>Participación en panel</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Demo de producto</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Material en kit asistente</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+
+              <tr class="pat-cat-row"><td colspan="5">Networking y Acceso</td></tr>
+              <tr><td>Boletos VIP incluidos</td><td class="t-val">1</td><td class="t-val">2</td><td class="t-val">3</td><td class="t-val">5</td></tr>
+              <tr><td>Boletos generales incluidos</td><td class="t-val">1</td><td class="t-val">2</td><td class="t-val">3</td><td class="t-val">5</td></tr>
+              <tr><td>Cena privada VIP</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Cóctel de bienvenida</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Networking con ponentes</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Directorio de asistentes</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+
+              <tr class="pat-cat-row"><td colspan="5">Digital y Post-Evento</td></tr>
+              <tr><td>Logo en iaExpo.ai</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Banner en página principal</td><td class="t-x">—</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Campañas de email</td><td class="t-val">1</td><td class="t-val">2</td><td class="t-val">3</td><td class="t-val">Todas</td></tr>
+              <tr><td>Grabaciones del evento</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Reporte post-evento</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+              <tr><td>Derecho preferencia 2028</td><td class="t-x">—</td><td class="t-check">✓</td><td class="t-check">✓</td><td class="t-check">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pat-grid">
+          <div class="pat p-ti reveal">
+            <div class="pat-tier">💎 Diamante</div>
+            <h3>Patrocinio Nivel Diamante</h3>
+            <ul>
+              <li>Naming rights — "IA Expo 2027 presentado por [Tu Marca]"</li>
+              <li>Keynote propia de 30 min en escenario principal</li>
+              <li>Stand premium doble en ubicación privilegiada</li>
+              <li>Naming de un track vertical completo</li>
+              <li>Logo principal en todo material gráfico y digital</li>
+              <li>12+ publicaciones en redes sociales + entrevista</li>
+              <li>Acceso a cena privada VIP con patrocinadores</li>
+            </ul>
+            <div class="tkt-launch" style="color:var(--gold);font-size:1.4rem;font-weight:800;margin:12px 0 4px;">$10,000 USD</div>
+            <a href="https://iaExpo.ai/patrocinios/nivel-diamante" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Diamante →</a>
+          </div>
+          <div class="pat p-pl reveal">
+            <div class="pat-tier">Platino</div>
+            <h3>Patrocinio Nivel Platino</h3>
+            <ul>
+              <li>Naming rights del evento o track principal</li>
+              <li>Keynote de apertura o clausura</li>
+              <li>Stand premium de doble espacio</li>
+              <li>10 pases VIP completos</li>
+              <li>Logo en todas las comunicaciones</li>
+              <li>Mención en todos los keynotes</li>
+              <li>Activación de marca personalizada</li>
+            </ul>
+            <div class="tkt-launch" style="color:var(--cyan);font-size:1.3rem;font-weight:800;margin:12px 0 4px;">$8,000 USD</div>
+            <a href="https://iaExpo.ai/patrocinios/nivel-platino" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Platino →</a>
+          </div>
+          <div class="pat p-or reveal d1">
+            <div class="pat-tier">Oro</div>
+            <h3>Patrocinio Nivel Oro</h3>
+            <ul>
+              <li>Stand en área principal del evento</li>
+              <li>5 pases completos al evento</li>
+              <li>Logo en comunicaciones digitales</li>
+              <li>Mención en keynotes</li>
+              <li>Participación en panel de industria</li>
+              <li>Presencia en pantallas del evento</li>
+            </ul>
+            <div class="tkt-launch" style="color:#FFB74D;font-size:1.2rem;font-weight:800;margin:12px 0 4px;">$6,000 USD</div>
+            <a href="https://iaExpo.ai/patrocinios/nivel-oro" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Oro →</a>
+          </div>
+          <div class="pat p-si reveal d2">
+            <div class="pat-tier">Plata</div>
+            <h3>Patrocinio Nivel Plata</h3>
+            <ul>
+              <li>Stand en área de networking</li>
+              <li>3 pases completos al evento</li>
+              <li>Logo en programa del evento</li>
+              <li>Mención en redes sociales</li>
+              <li>Presencia en pantallas digitales</li>
+            </ul>
+            <div class="tkt-launch" style="color:#B0BEC5;font-size:1.2rem;font-weight:800;margin:12px 0 4px;">$5,000 USD</div>
+            <a href="https://iaExpo.ai/patrocinios/nivel-plata" class="pat-btn" target="_blank" rel="noopener">Inversión Nivel Plata →</a>
+          </div>
+          <div class="pat p-micro reveal d2" style="grid-column: span 2;">
+            <div class="pat-tier">✨ Activaciones de Marca</div>
+            <h3>Conecta tu Marca con 200+ Líderes de IA</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.7;">Cada activación te conecta directamente con 200+ líderes de IA. Elige la que mejor se alinea con tus objetivos de marca.</p>
+
+            <div class="act-list">
+
+              <!-- Cena VIP -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🍽️</span>
+                  <div>
+                    <div class="act-name">Cena VIP</div>
+                    <div class="act-desc">Branding exclusivo en la cena privada con speakers y patrocinadores top</div>
+                  </div>
+                </div>
+                <div class="act-price">$1,000 USD</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/cena-vip" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
+              </div>
+
+              <!-- Cóctel de Bienvenida -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🥂</span>
+                  <div>
+                    <div class="act-name">Cóctel de Bienvenida</div>
+                    <div class="act-desc">Primera impresión memorable con todos los asistentes al inicio del evento</div>
+                  </div>
+                </div>
+                <div class="act-price">$1,000 USD</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/coctel-de-bienvenida" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
+              </div>
+
+              <!-- Cóctel de Networking -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🤝</span>
+                  <div>
+                    <div class="act-name">Cóctel de Networking</div>
+                    <div class="act-desc">Tu marca presente en el momento de mayor conexión entre líderes de IA</div>
+                  </div>
+                </div>
+                <div class="act-price">$1,000 USD</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/coctel-de-networking" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
+              </div>
+
+              <!-- Conferencias -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎙️</span>
+                  <div>
+                    <div class="act-name">Conferencias</div>
+                    <div class="act-desc">Sala principal nombrada con tu marca durante un día completo de keynotes</div>
+                  </div>
+                </div>
+                <div class="act-price">$500 USD</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el día</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/conferencias-dia-1" class="act-pill" target="_blank" rel="noopener">Día 1 →</a>
+                    <a href="https://iaExpo.ai/patrocinios/conferencias-dia-2" class="act-pill" target="_blank" rel="noopener">Día 2 →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Patrocinio de Taller -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎤</span>
+                  <div>
+                    <div class="act-name">Patrocinio de Taller</div>
+                    <div class="act-desc">Exposición exclusiva ante 20 participantes en sesión hands-on de IA</div>
+                  </div>
+                </div>
+                <div class="act-price">$500 USD</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el taller</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/taller-a" class="act-pill" target="_blank" rel="noopener">Taller A →</a>
+                    <a href="https://iaExpo.ai/patrocinios/taller-b" class="act-pill" target="_blank" rel="noopener">Taller B →</a>
+                    <a href="https://iaExpo.ai/patrocinios/taller-c" class="act-pill" target="_blank" rel="noopener">Taller C →</a>
+                    <a href="https://iaExpo.ai/patrocinios/taller-d" class="act-pill" target="_blank" rel="noopener">Taller D →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- WiFi Taller -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">📶</span>
+                  <div>
+                    <div class="act-name">WiFi Taller</div>
+                    <div class="act-desc">Tu nombre en cada dispositivo conectado durante la sesión — visibilidad constante</div>
+                  </div>
+                </div>
+                <div class="act-price">$500 USD</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el taller</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-a" class="act-pill" target="_blank" rel="noopener">Taller A →</a>
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-b" class="act-pill" target="_blank" rel="noopener">Taller B →</a>
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-c" class="act-pill" target="_blank" rel="noopener">Taller C →</a>
+                    <a href="https://iaExpo.ai/patrocinios/wifi-taller-d" class="act-pill" target="_blank" rel="noopener">Taller D →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Coffee Break -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">☕</span>
+                  <div>
+                    <div class="act-name">Coffee Break</div>
+                    <div class="act-desc">Networking espontáneo con tu logo en cada mesa y estación de café</div>
+                  </div>
+                </div>
+                <div class="act-price">$500 USD</div>
+                <div class="act-cta">
+                  <div class="act-sub-label">Selecciona el día</div>
+                  <div class="act-sub-btns">
+                    <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-1" class="act-pill" target="_blank" rel="noopener">Día 1 →</a>
+                    <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-2" class="act-pill" target="_blank" rel="noopener">Día 2 →</a>
+                    <a href="https://iaExpo.ai/patrocinios/coffee-break-dia-3" class="act-pill" target="_blank" rel="noopener">Día 3 →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bolsa de Registro -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎒</span>
+                  <div>
+                    <div class="act-name">Bolsa de Registro</div>
+                    <div class="act-desc">Tu marca en manos de cada asistente desde el primer momento del evento</div>
+                  </div>
+                </div>
+                <div class="act-price">$1,000 USD</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/bolsa-de-registro" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
+              </div>
+
+              <!-- Goodies -->
+              <div class="act-row">
+                <div class="act-left">
+                  <span class="act-icon">🎁</span>
+                  <div>
+                    <div class="act-name">Goodies</div>
+                    <div class="act-desc">Recuerdo físico de tu marca que cada asistente se lleva a casa</div>
+                  </div>
+                </div>
+                <div class="act-price">$500 USD</div>
+                <div class="act-cta">
+                  <a href="https://iaExpo.ai/patrocinios/goodies" class="pat-btn" target="_blank" rel="noopener">Me interesa →</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:28px;font-size:0.72rem;color:var(--text-dim);opacity:0.7;">Todos los precios en dólares americanos (USD)<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
+      </div>
+    </section>
+
+    <footer class="fmini">
+      <div class="fmini-wrap">
+        <a href="https://iaExpo.ai" class="fmini-brand">
+          <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+          <span>IA Expo 2027</span>
+        </a>
+        <nav class="fmini-links">
+          <a href="https://iaExpo.ai#boletos" class="fmini-link">Participa</a>
+          <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
+          <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
+          <a href="https://patrocinios.iaExpo.ai" class="fmini-link">Patrocinios</a>
+          <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
+          <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
+          <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
+        </nav>
+        <div class="fmini-contact">
+          <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a>
+          <a href="https://wa.me/525559632687" target="_blank" rel="noopener">+52 55 5963-2687</a>
+        </div>
+      </div>
+      <div class="fmini-legal">
+        <a href="https://iaExpo.ai/terminos" target="_blank" rel="noopener">Términos y Condiciones</a>
+        <span class="sep">|</span>
+        <a href="https://iaExpo.ai/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>
+      </div>
+      <div class="fmini-bottom">
+        <p>© 2025-2026 IA Expo Internacional · Todos los Derechos Reservados · Ciudad de México, México</p>
+      </div>
+      <div class="fmini-disclaimer">
+        <p>La información contenida en este sitio, incluyendo precios, fechas, programas, ponentes y condiciones de participación, es de carácter informativo y está sujeta a cambios sin previo aviso. Para información actualizada y confirmada, comuníquese directamente con el equipo organizador.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        document.getElementById('hbtn').classList.toggle('open');
+        document.getElementById('mmenu').classList.toggle('open');
+      }
+
+      function closeNav() {
+        document.getElementById('hbtn').classList.remove('open');
+        document.getElementById('mmenu').classList.remove('open');
+      }
+
+      const obs = new IntersectionObserver(es => {
+        es.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+  </body>
+</html>
