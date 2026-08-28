@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Estás Dentro? — IA Expo Internacional 2027</title>
+    <meta name="description" content="IA Expo 2027 no busca reunir a la mayor cantidad de personas, sino a las personas correctas para vivir una experiencia extraordinaria. 28-30 de enero, Ciudad de México.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --cyan: #00d4ff;
+        --cyan-dim: rgba(0, 212, 255, 0.15);
+        --blue: #0066ff;
+        --purple: #7c3aed;
+        --purple-light: #a855f7;
+        --gold: #f59e0b;
+        --green: #00E676;
+        --orange: #FFB74D;
+        --dark: #030712;
+        --dark-2: #0a0f1e;
+        --dark-3: #111827;
+        --glass: rgba(255, 255, 255, 0.04);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --text: #f9fafb;
+        --text-muted: #9ca3af;
+        --text-dim: #6b7280;
+        --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c3aed 100%);
+        --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: var(--dark); }
+      ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
+
+      /* ── NAV ── */
+      nav {
+        position: sticky; top: 0; z-index: 300;
+        background: rgba(3, 7, 18, 0.97);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 20px; height: 56px; gap: 12px;
+      }
+      .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+      .nav-brand img { height: 38px; width: auto; object-fit: contain; border-radius: 6px; display: block; }
+      .nav-brand span { font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan); }
+      .nav-tabs { display: flex; gap: 4px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .nav-tabs::-webkit-scrollbar { display: none; }
+      .ntab {
+        background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border); color: var(--text);
+        padding: 6px 11px; border-radius: 8px; cursor: pointer; font-size: 0.72rem; font-weight: 600;
+        font-family: inherit; transition: all 0.2s; white-space: nowrap; display: flex; align-items: center;
+        gap: 5px; text-decoration: none;
+      }
+      .ntab .ico { font-size: 0.85rem; }
+      .ntab:hover { border-color: var(--cyan); color: var(--cyan); }
+      .ntab.gold { border-color: rgba(245,158,11,0.35); color: var(--gold); }
+      .ntab.gold:hover { border-color: var(--gold); }
+      .hamburger {
+        display: none; flex-direction: column; gap: 5px; width: 38px; height: 38px;
+        background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border); border-radius: 9px;
+        cursor: pointer; align-items: center; justify-content: center; flex-shrink: 0;
+      }
+      .hamburger span { display: block; width: 18px; height: 2px; background: var(--cyan); border-radius: 2px; transition: all 0.3s; }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .mobile-menu {
+        display: none; flex-direction: column; gap: 6px; padding: 12px 20px 16px;
+        background: rgba(3, 7, 18, 0.99); border-bottom: 1px solid var(--glass-border);
+        position: sticky; top: 56px; z-index: 299;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu .ntab { width: 100%; text-align: left; padding: 12px 14px; font-size: 0.88rem; }
+      @media(max-width:960px) { .nav-tabs { display: none; } .hamburger { display: flex; } }
+
+      /* ── SECTION BASE ── */
+      section { position: relative; z-index: 1; }
+      .si { max-width: 1200px; margin: 0 auto; padding: 100px 5%; }
+      .eyebrow {
+        display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;
+        letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 20px;
+      }
+      .eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--cyan); border-radius: 1px; }
+      .eyebrow.gold { color: var(--gold); }
+      .eyebrow.gold::before { background: var(--gold); }
+      .stitle {
+        font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 4vw, 52px); font-weight: 700;
+        letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 20px;
+      }
+      .stitle .accent { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .stitle .accent-gold { background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .sdesc { font-size: 18px; color: var(--text-muted); max-width: 640px; line-height: 1.7; }
+      .gd { height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent); opacity: 0.3; }
+
+      .btn-primary {
+        padding: 16px 36px; background: var(--gradient-1); border: none; border-radius: 12px; color: white;
+        font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-flex;
+        align-items: center; gap: 8px; box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), 0 4px 24px rgba(0, 102, 255, 0.3);
+        transition: all 0.3s ease; position: relative; overflow: hidden;
+      }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0, 212, 255, 0.4), 0 8px 32px rgba(0, 102, 255, 0.4); }
+      .btn-gold {
+        background: var(--gradient-gold); box-shadow: 0 0 40px rgba(245,158,11,0.3), 0 4px 24px rgba(245,158,11,0.25);
+      }
+      .btn-gold:hover { box-shadow: 0 0 50px rgba(245,158,11,0.4), 0 8px 32px rgba(245,158,11,0.35); }
+      .btn-secondary {
+        padding: 15px 34px; background: transparent; border: 1px solid var(--glass-border); border-radius: 12px;
+        color: var(--text); font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none;
+        display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease;
+      }
+      .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+
+      /* ── PLACEHOLDER MARKER (contenido pendiente por confirmar) ── */
+      .ph {
+        background: repeating-linear-gradient(45deg, rgba(255,183,77,0.07), rgba(255,183,77,0.07) 10px, rgba(255,183,77,0.02) 10px, rgba(255,183,77,0.02) 20px);
+        border: 1px dashed rgba(255,183,77,0.5); border-radius: 12px; padding: 16px 20px; font-size: 13px;
+        color: var(--orange); line-height: 1.6; display: block;
+      }
+      .ph strong { color: var(--orange); }
+
+      /* ── HERO ── */
+      #hero {
+        min-height: 96vh; display: flex; align-items: center; justify-content: center; text-align: center;
+        padding: 150px 5% 80px; position: relative; overflow: hidden;
+      }
+      .hero-bg-img {
+        position: absolute; inset: 0; z-index: 0;
+        background: url('https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg') center 30%/cover no-repeat;
+      }
+      #hero::before {
+        content: ''; position: absolute; inset: 0; z-index: 1;
+        background: linear-gradient(180deg, rgba(3,7,18,0.6) 0%, rgba(3,7,18,0.8) 60%, rgba(3,7,18,0.98) 100%);
+      }
+      .hero-inner { position: relative; z-index: 2; max-width: 920px; margin: 0 auto; }
+      .access-badge {
+        display: inline-flex; align-items: center; gap: 8px; background: rgba(245,158,11,0.08);
+        border: 1px solid rgba(245,158,11,0.35); border-radius: 100px; padding: 8px 20px; margin-bottom: 22px;
+        font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+      }
+      .hero-eyebrow {
+        display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700;
+        letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px;
+      }
+      .hero-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); animation: pulse 2s infinite; }
+      @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+      .hero-h1 {
+        font-family: 'Space Grotesk', sans-serif; font-size: clamp(46px, 8vw, 96px); font-weight: 800;
+        line-height: 1; letter-spacing: -0.02em; margin-bottom: 18px;
+      }
+      .hero-h1 .accent { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .hero-sub {
+        font-family: 'Space Grotesk', sans-serif; font-size: clamp(18px, 2.4vw, 26px); font-weight: 600;
+        color: var(--text); max-width: 720px; margin: 0 auto 22px; line-height: 1.45;
+      }
+      .hero-desc { font-size: 17px; color: var(--text-muted); max-width: 640px; margin: 0 auto 36px; line-height: 1.75; }
+      .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+      .hero-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+      .hstat { text-align: center; }
+      .hstat-n { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .hstat-l { font-size: 12px; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+      .hashtag-chip {
+        display: inline-block; margin-top: 30px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+        color: var(--text-dim);
+      }
+
+      /* ── MANIFIESTO (pull-quote) ── */
+      #manifiesto {
+        text-align: center; padding: 100px 5%; position: relative; overflow: hidden;
+        background: radial-gradient(ellipse at center, rgba(245,158,11,0.07) 0%, var(--dark) 70%);
+        border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+      }
+      .manifest-mark { font-family: 'Space Grotesk', sans-serif; font-size: 60px; color: rgba(245,158,11,0.3); line-height: 1; margin-bottom: 8px; }
+      .manifest-quote {
+        font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 3.6vw, 42px); font-weight: 700;
+        max-width: 880px; margin: 0 auto 28px; line-height: 1.4;
+      }
+      .manifest-sub { font-size: 15px; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+      /* ── PROBLEMA / TRANSFORMACIÓN ── */
+      #problema { background: var(--dark-2); }
+      .transform-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: stretch; margin-top: 48px; }
+      .transform-col { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 36px 32px; }
+      .transform-col.before { border-top: 3px solid var(--text-dim); }
+      .transform-col.after { border-top: 3px solid var(--gold); }
+      .transform-label { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+      .transform-col.before .transform-label { color: var(--text-dim); }
+      .transform-col.after .transform-label { color: var(--gold); }
+      .transform-list { display: flex; flex-direction: column; gap: 14px; }
+      .transform-item { display: flex; gap: 10px; font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
+      .transform-col.after .transform-item { color: var(--text); }
+      .transform-arrow { display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--gold); }
+      @media(max-width:800px) { .transform-grid { grid-template-columns: 1fr; } .transform-arrow { transform: rotate(90deg); } }
+
+      /* ── PROPUESTA DE VALOR (5 dimensiones) ── */
+      .value-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 48px; }
+      .value-card {
+        background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; padding: 28px 22px;
+        transition: all 0.3s; position: relative; overflow: hidden;
+      }
+      .value-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-1); opacity: 0.7; }
+      .value-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-4px); }
+      .value-num { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 800; color: var(--text-dim); margin-bottom: 12px; }
+      .value-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+      .value-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+      .value-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+      @media(max-width:1000px) { .value-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media(max-width:560px) { .value-grid { grid-template-columns: 1fr; } }
+
+      /* ── OFERTA / VALUE STACK ── */
+      #oferta { background: var(--dark-2); }
+      .stack-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 48px; }
+      .stack-item {
+        display: flex; gap: 14px; align-items: flex-start; background: var(--glass); border: 1px solid var(--glass-border);
+        border-radius: 14px; padding: 18px 20px;
+      }
+      .stack-ico { font-size: 20px; flex-shrink: 0; }
+      .stack-title { font-size: 14.5px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+      .stack-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+      @media(max-width:800px) { .stack-wrap { grid-template-columns: 1fr; } }
+
+      /* ── PRUEBA ── */
+      .proof-stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 48px 0 56px; }
+      .pstat {
+        background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px 30px; text-align: center; min-width: 140px;
+      }
+      .pstat-n { font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .pstat-l { font-size: 11.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+
+      .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 48px; }
+      .testi-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; padding: 26px 24px; }
+      .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+      .testi-quote { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px; }
+      .testi-person { display: flex; align-items: center; gap: 10px; }
+      .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gradient-1); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+      .testi-name { font-size: 13px; font-weight: 700; color: var(--text); display: block; }
+      .testi-role { font-size: 11.5px; color: var(--text-dim); display: block; }
+      @media(max-width:900px) { .testi-grid { grid-template-columns: 1fr; } }
+
+      .videos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .video-card { border-radius: 14px; overflow: hidden; background: var(--glass); border: 1px solid var(--glass-border); }
+      .video-wrap { position: relative; display: block; aspect-ratio: 16/9; overflow: hidden; }
+      .video-wrap img { width: 100%; height: 100%; object-fit: cover; }
+      .video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); }
+      .video-play-btn svg { filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+      .video-meta { padding: 10px 12px; }
+      .vm-name { font-size: 12.5px; font-weight: 700; color: var(--text); }
+      .vm-desc { font-size: 11px; color: var(--text-muted); }
+      @media(max-width:900px) { .videos-grid { grid-template-columns: repeat(2, 1fr); } }
+
+      .authority-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 40px; }
+      .authority-chip { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 100px; padding: 8px 18px; font-size: 12.5px; font-weight: 600; color: var(--text-muted); }
+
+      /* ── SPEAKERS ── */
+      #speakers { background: var(--dark-2); }
+      .spk-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 48px; }
+      .spk-card {
+        background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; padding: 24px 16px 20px;
+        text-align: center; position: relative; overflow: hidden; transition: all 0.3s;
+      }
+      .spk-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-3px); }
+      .spk-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-1); opacity: 0.7; }
+      .spk-avatar {
+        width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 14px; object-fit: cover;
+        border: 2px solid rgba(0,212,255,0.35); display: block;
+      }
+      .spk-name { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; line-height: 1.25; }
+      .spk-role { font-size: 10.5px; color: var(--cyan); font-weight: 600; line-height: 1.4; }
+      @media(max-width:900px) { .spk-grid { grid-template-columns: repeat(3, 1fr); } }
+      @media(max-width:560px) { .spk-grid { grid-template-columns: repeat(2, 1fr); } }
+
+      /* ── EXPERIENCIA (galería) ── */
+      .exp-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 48px; }
+      .exp-photo { border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; border: 1px solid var(--glass-border); }
+      .exp-photo img { width: 100%; height: 100%; object-fit: cover; }
+      .exp-photo.wide { grid-column: span 2; aspect-ratio: 2/1; }
+      @media(max-width:800px) { .exp-gallery { grid-template-columns: repeat(2, 1fr); } .exp-photo.wide { grid-column: span 2; } }
+
+      /* ── OBJECIONES ── */
+      #objeciones { background: var(--dark-2); }
+      .obj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+      .obj-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 24px 26px; }
+      .obj-q { font-size: 14.5px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
+      .obj-a { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+      @media(max-width:800px) { .obj-grid { grid-template-columns: 1fr; } }
+
+      /* ── RISK REVERSAL ── */
+      .risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+      .risk-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px; }
+      .risk-ico { font-size: 22px; margin-bottom: 10px; display: block; }
+      .risk-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+      @media(max-width:800px) { .risk-grid { grid-template-columns: 1fr; } }
+
+      /* ── TICKETS ── */
+      #tickets { background: var(--dark-2); }
+      .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+      .tier-card {
+        background: var(--glass); border: 1px solid var(--glass-border); border-radius: 22px; padding: 32px 28px;
+        display: flex; flex-direction: column; position: relative;
+      }
+      .tier-card.featured { border-color: rgba(245,158,11,0.4); background: linear-gradient(160deg, rgba(245,158,11,0.06), rgba(255,255,255,0.03)); }
+      .tier-badge {
+        position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--gradient-gold);
+        color: #1a1200; font-size: 11px; font-weight: 800; padding: 5px 16px; border-radius: 100px; white-space: nowrap;
+      }
+      .tier-name { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+      .tier-for { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; min-height: 40px; }
+      .tier-price { font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 800; margin-bottom: 20px; }
+      .tier-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; flex: 1; }
+      .tier-feature { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); align-items: flex-start; }
+      .tier-feature.new { color: var(--text); font-weight: 600; }
+      .tier-feature .ico-yes { color: var(--green); flex-shrink: 0; }
+      .tier-cupos { text-align: center; margin-bottom: 14px; }
+      .tier-badge-cupos {
+        display: inline-block; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 100px;
+        background: rgba(255,183,77,0.1); border: 1px solid rgba(255,183,77,0.3); color: var(--orange);
+      }
+      .tier-btn { text-align: center; padding: 14px; border-radius: 12px; background: var(--gradient-1); color: white; font-weight: 700; font-size: 14px; text-decoration: none; display: block; }
+      .tier-card.featured .tier-btn { background: var(--gradient-gold); color: #1a1200; }
+      @media(max-width:900px) { .tier-grid { grid-template-columns: 1fr; } }
+
+      .addon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 24px; }
+      .addon-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .addon-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+      .addon-desc { font-size: 12.5px; color: var(--text-muted); }
+      .addon-price { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 800; color: var(--cyan); white-space: nowrap; }
+      @media(max-width:700px) { .addon-grid { grid-template-columns: 1fr; } }
+
+      /* ── URGENCIA ── */
+      .urgency-banner {
+        background: linear-gradient(135deg, rgba(255,183,77,0.12), rgba(255,82,82,0.07)); border: 1px solid rgba(255,183,77,0.35);
+        border-radius: 20px; padding: 40px 40px; margin-top: 44px; text-align: center;
+      }
+      .urgency-cupos-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+      .ucupo { text-align: center; }
+      .ucupo-n { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 800; color: var(--orange); }
+      .ucupo-l { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+      /* ── FAQ ── */
+      #faq { background: var(--dark-2); }
+      .faq-list { max-width: 780px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 12px; }
+      .faq-item { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+      .faq-item.open { border-color: rgba(0,212,255,0.3); }
+      .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--text); gap: 16px; user-select: none; }
+      .faq-q:hover { color: var(--cyan); }
+      .faq-arrow { font-size: 18px; transition: transform 0.3s; flex-shrink: 0; color: var(--cyan); }
+      .faq-item.open .faq-arrow { transform: rotate(45deg); }
+      .faq-a { max-height: 0; overflow: hidden; padding: 0 24px; font-size: 13.5px; color: var(--text-muted); line-height: 1.65; transition: all 0.3s ease; }
+      .faq-item.open .faq-a { max-height: 320px; padding: 0 24px 20px; }
+
+      /* ── CIERRE ── */
+      #cierre {
+        text-align: center; padding: 130px 5%; position: relative; overflow: hidden;
+        background: radial-gradient(ellipse at center, rgba(0,212,255,0.08) 0%, var(--dark) 70%);
+      }
+      .cierre-lema {
+        font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 7vw, 84px); font-weight: 800;
+        max-width: 780px; margin: 0 auto 24px; line-height: 1.05;
+      }
+      .cierre-lema .accent { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+      /* ── CHECKOUT (CTA final) ── */
+      .checkout-bar {
+        max-width: 1000px; margin: 0 auto; background: var(--glass); border: 1px solid var(--glass-border);
+        border-radius: 20px; padding: 30px 36px; display: flex; align-items: center; justify-content: space-between;
+        gap: 24px; flex-wrap: wrap;
+      }
+      .checkout-tiers { display: flex; gap: 10px; flex-wrap: wrap; }
+      .checkout-chip {
+        padding: 12px 20px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
+        color: var(--text); text-decoration: none; font-size: 13px; font-weight: 700; text-align: center;
+      }
+      .checkout-chip:hover { border-color: var(--cyan); color: var(--cyan); }
+      .checkout-chip .cc-price { display: block; font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+      /* ── FOOTER MINI ── */
+      .fmini { background: var(--dark-2); border-top: 1px solid var(--glass-border); padding: 20px 5% 16px; }
+      .fmini-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+      .fmini-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; white-space: nowrap; flex-shrink: 0; justify-self: start; }
+      .fmini-brand img { height: 26px; width: auto; object-fit: contain; border-radius: 5px; display: block; }
+      .fmini-brand span { font-size: 0.68rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .fmini-links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; justify-self: center; }
+      .fmini-link { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border); color: var(--text); padding: 5px 10px; border-radius: 7px; font-size: 0.68rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.2s; }
+      .fmini-link:hover { border-color: var(--cyan); color: var(--cyan); }
+      .fmini-contact { display: flex; gap: 14px; justify-content: flex-end; flex-wrap: wrap; flex-shrink: 0; justify-self: end; }
+      .fmini-contact a { color: var(--text-muted); font-size: 0.72rem; font-weight: 600; text-decoration: none; transition: color 0.2s; }
+      .fmini-contact a:hover { color: var(--cyan); }
+      .fmini-legal { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+      .fmini-legal a { color: var(--text-muted); font-size: 0.68rem; text-decoration: none; transition: color 0.2s; }
+      .fmini-legal a:hover { color: var(--cyan); }
+      .fmini-legal .sep { color: var(--text-dim); font-size: 0.68rem; }
+      .fmini-bottom { max-width: 1200px; margin: 0 auto; text-align: center; }
+      .fmini-bottom p { font-size: 0.66rem; color: var(--text-muted); }
+      .fmini-disclaimer { max-width: 900px; margin: 8px auto 0; text-align: center; }
+      .fmini-disclaimer p { font-size: 0.62rem; color: var(--text-muted); line-height: 1.6; }
+      @media(max-width:640px) {
+        .fmini-wrap { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+        .fmini-brand, .fmini-links, .fmini-contact { justify-self: center; }
+      }
+
+      /* ── REVEAL ANIM ── */
+      .reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+      .d1 { transition-delay: 0.1s; }
+      .d2 { transition-delay: 0.2s; }
+      .d3 { transition-delay: 0.3s; }
+      .d4 { transition-delay: 0.4s; }
+
+      /* ── STRATEGY NOTE BANNER (solo visible en este borrador) ── */
+      .strategy-note {
+        background: linear-gradient(90deg, rgba(245,158,11,0.12), rgba(124,58,237,0.1));
+        border-bottom: 1px solid var(--glass-border); text-align: center; padding: 10px 20px;
+        font-size: 12px; color: var(--text-muted);
+      }
+      .strategy-note strong { color: var(--gold); }
+    </style>
+  </head>
+  <body>
+
+    <div class="strategy-note">📐 <strong>Borrador de estrategia v2</strong> — posicionamiento boutique/exclusivo · campaña "¿Estás Dentro?". No está enlazada al sitio en vivo.</div>
+
+    <!-- NAV DESKTOP -->
+    <nav>
+      <a href="https://iaExpo.ai" class="nav-brand">
+        <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+        <span>IA Expo Internacional 2027</span>
+      </a>
+      <div class="nav-tabs">
+        <a href="#manifiesto" class="ntab"><span class="ico">🎯</span> El Principio</a>
+        <a href="#valor" class="ntab"><span class="ico">💡</span> Valor</a>
+        <a href="#prueba" class="ntab"><span class="ico">⭐</span> Prueba</a>
+        <a href="#speakers" class="ntab"><span class="ico">🎙️</span> Speakers</a>
+        <a href="#tickets" class="ntab"><span class="ico">🎟️</span> Tickets</a>
+        <a href="#faq" class="ntab"><span class="ico">❓</span> FAQ</a>
+      </div>
+      <div class="hamburger" id="hbtn" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
+    <!-- NAV MOBILE -->
+    <div class="mobile-menu" id="mmenu">
+      <a href="#manifiesto" class="ntab" onclick="closeNav()"><span class="ico">🎯</span> El Principio</a>
+      <a href="#valor" class="ntab" onclick="closeNav()"><span class="ico">💡</span> Valor</a>
+      <a href="#prueba" class="ntab" onclick="closeNav()"><span class="ico">⭐</span> Prueba</a>
+      <a href="#speakers" class="ntab" onclick="closeNav()"><span class="ico">🎙️</span> Speakers</a>
+      <a href="#tickets" class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
+      <a href="#faq" class="ntab" onclick="closeNav()"><span class="ico">❓</span> FAQ</a>
+    </div>
+
+    <!-- ═══════════ 01 · HERO — CAPTURAR EL DESEO ═══════════ -->
+    <section id="hero">
+      <div class="hero-bg-img"></div>
+      <div class="hero-inner">
+        <div class="access-badge">🔒 Acceso Limitado · Evento Boutique, No Masivo</div>
+        <div class="hero-eyebrow"><div class="dot"></div>28 · 29 · 30 de Enero de 2027 · Westin Santa Fe · Ciudad de México</div>
+        <h1 class="hero-h1">¿Estás <span class="accent">Dentro</span>?</h1>
+        <p class="hero-sub">IA Expo Internacional 2027 no busca reunir a la mayor cantidad de personas — busca a las personas correctas para vivir una experiencia extraordinaria.</p>
+        <p class="hero-desc">3 días donde conocimiento, conexiones y oportunidades reales se concentran en un mismo lugar. Si estás leyendo esto, es porque perteneces aquí. La pregunta es si vas a asegurar tu lugar antes de que se agote.</p>
+        <div class="hero-ctas">
+          <a href="#tickets" class="btn-primary btn-gold">🔑 Quiero Estar Dentro</a>
+          <a href="#manifiesto" class="btn-secondary">Descubre qué significa pertenecer →</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat"><div class="hstat-n">250+</div><div class="hstat-l">Líderes en IA</div></div>
+          <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Días de Impacto</div></div>
+          <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Talleres Prácticos</div></div>
+        </div>
+        <div class="hashtag-chip">#EstásDentro · #GetIn</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ MANIFIESTO — EL PRINCIPIO ═══════════ -->
+    <section id="manifiesto">
+      <div class="manifest-mark">"</div>
+      <p class="manifest-quote reveal">IA Expo 2027 no busca reunir a la mayor cantidad de personas,<br>sino a <span class="accent-gold" style="background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">las personas correctas</span><br>para vivir una experiencia extraordinaria.</p>
+      <p class="manifest-sub reveal d1">No medimos el éxito en número de asistentes. Lo medimos en la calidad de las conexiones que se forman dentro.</p>
+    </section>
+
+    <!-- ═══════════ 02 · PROBLEMA — HACER VISIBLE LA OPORTUNIDAD ═══════════ -->
+    <section id="problema">
+      <div class="si">
+        <div class="eyebrow">El Reto Real</div>
+        <h2 class="stitle reveal">No te falta información sobre IA.<br>Te falta <span class="accent">el círculo correcto</span> para aplicarla.</h2>
+        <p class="sdesc reveal d1">Cada semana hay una herramienta nueva, un video viral, una opinión contraria a la anterior. El ruido no se va a filtrar solo. Lo que necesitas no es más contenido — es entrar al espacio donde están las personas que ya lo están resolviendo, y quedarte ahí el tiempo suficiente para que se abran puertas reales.</p>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 03 · TRANSFORMACIÓN — ANTES → DESPUÉS ═══════════ -->
+    <section id="transformacion">
+      <div class="si">
+        <div class="eyebrow">La Transformación</div>
+        <h2 class="stitle reveal">De demasiadas pestañas abiertas a <span class="accent">un lugar dentro del círculo correcto</span></h2>
+        <div class="transform-grid">
+          <div class="transform-col before reveal">
+            <div class="transform-label">Antes</div>
+            <div class="transform-list">
+              <div class="transform-item">✕ Docenas de tutoriales sueltos y contradictorios entre sí</div>
+              <div class="transform-item">✕ Herramientas nuevas cada semana, sin saber cuáles importan</div>
+              <div class="transform-item">✕ Ninguna red de personas con quien validar decisiones de IA</div>
+              <div class="transform-item">✕ La sensación de ir siempre un paso atrás de tu competencia</div>
+            </div>
+          </div>
+          <div class="transform-arrow reveal">→</div>
+          <div class="transform-col after reveal d1">
+            <div class="transform-label">Después de IA Expo</div>
+            <div class="transform-list">
+              <div class="transform-item">✓ Claridad sobre qué aplica realmente a tu industria y tu etapa</div>
+              <div class="transform-item">✓ Conexiones reales con quienes ya están implementando IA</div>
+              <div class="transform-item">✓ Herramientas y flujos de trabajo que puedes usar el lunes siguiente</div>
+              <div class="transform-item">✓ Una comunidad activa con quien seguir aprendiendo después del evento</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 04 · PROPUESTA DE VALOR — 5 DIMENSIONES ═══════════ -->
+    <section id="valor">
+      <div class="si">
+        <div class="eyebrow">Lo Que Realmente Compras</div>
+        <h2 class="stitle reveal">El ticket es la entrada.<br><span class="accent">Esto es lo que te llevas.</span></h2>
+        <p class="sdesc reveal d1">No compras un boleto. Compras la posibilidad de que tu próxima gran conexión, tu próxima idea o tu próximo cliente esté a una conversación de distancia. Cinco dimensiones de valor que se viven en 3 días.</p>
+        <div class="value-grid">
+          <div class="value-card reveal">
+            <div class="value-num">01</div>
+            <span class="value-icon">🧠</span>
+            <div class="value-title">Knowledge</div>
+            <div class="value-desc">Perspectivas, speakers, conversaciones y casos reales. Mayor claridad y nuevas formas de entender la IA aplicada a tu industria.</div>
+          </div>
+          <div class="value-card reveal d1">
+            <div class="value-num">02</div>
+            <span class="value-icon">🤝</span>
+            <div class="value-title">Connections</div>
+            <div class="value-desc">Acceso a una audiencia relevante. Nuevas relaciones, partners, clientes, inversionistas o colaboradores potenciales.</div>
+          </div>
+          <div class="value-card reveal d2">
+            <div class="value-num">03</div>
+            <span class="value-icon">🔍</span>
+            <div class="value-title">Discovery</div>
+            <div class="value-desc">Tecnologías, empresas, herramientas y aplicaciones. Descubre posibilidades antes de que sean obvias para todos.</div>
+          </div>
+          <div class="value-card reveal d3">
+            <div class="value-num">04</div>
+            <span class="value-icon">✨</span>
+            <div class="value-title">Experience</div>
+            <div class="value-desc">La experiencia presencial, el ambiente, las demostraciones y los encuentros. Se vive distinto a como se replica en línea.</div>
+          </div>
+          <div class="value-card reveal d4">
+            <div class="value-num">05</div>
+            <span class="value-icon">🚪</span>
+            <div class="value-title">Opportunity</div>
+            <div class="value-desc">El entorno donde pueden comenzar nuevas conversaciones. No garantizamos resultados — creamos el contexto para que las posibilidades aparezcan.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 05 · OFERTA / VALUE STACK ═══════════ -->
+    <section id="oferta">
+      <div class="si">
+        <div class="eyebrow">La Oferta</div>
+        <h2 class="stitle reveal">Todo lo que está <span class="accent">tangiblemente incluido</span></h2>
+        <p class="sdesc reveal d1">Nada de esto es abstracto. Esto es exactamente lo que vives en 3 días.</p>
+        <div class="stack-wrap">
+          <div class="stack-item reveal">
+            <span class="stack-ico">🎤</span>
+            <div><div class="stack-title">Keynotes + Conferencias</div><div class="stack-desc">2 días de escenario principal con speakers que ya están aplicando IA en industrias reales.</div></div>
+          </div>
+          <div class="stack-item reveal d1">
+            <span class="stack-ico">🛠️</span>
+            <div><div class="stack-title">4 Talleres prácticos hands-on</div><div class="stack-desc">Sesiones en vivo con instructores expertos, cupo limitado a 20 personas por taller.</div></div>
+          </div>
+          <div class="stack-item reveal d2">
+            <span class="stack-ico">🥂</span>
+            <div><div class="stack-title">Networking estructurado</div><div class="stack-desc">Sesión de matchmaking diseñada para conectar con los líderes más relevantes del ecosistema IA de LATAM.</div></div>
+          </div>
+          <div class="stack-item reveal d3">
+            <span class="stack-ico">🍸</span>
+            <div><div class="stack-title">Cóctel de bienvenida + Cena VIP</div><div class="stack-desc">Espacios de conexión informal, disponibles en los niveles VIP y Executive.</div></div>
+          </div>
+          <div class="stack-item reveal d1">
+            <span class="stack-ico">📁</span>
+            <div><div class="stack-title">Acceso a Actas, Presentaciones y Videos</div><div class="stack-desc">Todo el contenido del evento disponible después, para revisar o compartir con tu equipo.</div></div>
+          </div>
+          <div class="stack-item reveal d2">
+            <span class="stack-ico">🏛️</span>
+            <div><div class="stack-title">Zona de Expo con demos en vivo</div><div class="stack-desc">Herramientas de IA más innovadoras del mercado, probadas de primera mano.</div></div>
+          </div>
+          <div class="stack-item reveal d3">
+            <span class="stack-ico">☕</span>
+            <div><div class="stack-title">Coffee breaks y alimentos incluidos</div><div class="stack-desc">Espacios diseñados también para seguir conversando entre sesiones.</div></div>
+          </div>
+          <div class="stack-item reveal d4">
+            <span class="stack-ico">🌐</span>
+            <div><div class="stack-title">Comunidad IA Expo</div><div class="stack-desc">Una red activa de personas que usan, aprenden y se apoyan mutuamente en el uso de IA — no termina cuando termina el evento.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 06 · PRUEBA — AUMENTAR CERTEZA ═══════════ -->
+    <section id="prueba">
+      <div class="si">
+        <div class="eyebrow">Autoridad y Prueba</div>
+        <h2 class="stitle reveal">No es solo <span class="accent">nuestra palabra</span></h2>
+        <p class="sdesc reveal d1">Esto no es una promesa. Es lo que ya vivieron quienes estuvieron dentro en la edición 2026, en Ciudad de México.</p>
+
+        <div class="proof-stats reveal">
+          <div class="pstat"><div class="pstat-n">16+</div><div class="pstat-l">Speakers</div></div>
+          <div class="pstat"><div class="pstat-n">10+</div><div class="pstat-l">Países</div></div>
+          <div class="pstat"><div class="pstat-n">9</div><div class="pstat-l">Alianzas</div></div>
+          <div class="pstat"><div class="pstat-n">250+</div><div class="pstat-l">Líderes en IA</div></div>
+        </div>
+
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;">Lo que dicen quienes ya vivieron la experiencia</h3>
+        <div class="testi-grid" style="margin-top:24px;">
+          <div class="testi-card reveal">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"Tanto mi esposa como yo estuvimos asombrados con la dinámica, el contenido, la diversidad de ponentes y los temas abordados. Maravilloso y para alguien como yo, apasionado con aprender diario cosas nuevas, me voy sumamente emocionado y satisfecho."</p>
+            <div class="testi-person">
+              <div class="testi-avatar">W</div>
+              <div><span class="testi-name">Dr. William McKee</span><span class="testi-role">Director Ejecutivo · Multi Radiance Medical</span></div>
+            </div>
+          </div>
+          <div class="testi-card reveal d1">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"Escuchar a los expertos compartir no solo las herramientas que están desarrollando, sino los desafíos reales de implementar IA en los negocios, fue sumamente enriquecedor. El éxito de la tecnología no depende solo del código, sino de la colaboración humana estratégica."</p>
+            <div class="testi-person">
+              <div class="testi-avatar">J</div>
+              <div><span class="testi-name">José Ángel Govela</span><span class="testi-role">Project Manager · Nextia</span></div>
+            </div>
+          </div>
+          <div class="testi-card reveal d2">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"Estoy más que satisfecha por los aprendizajes que tuvimos. 'Inteligencia Artificial para la Vida Real' tocó todos los temas en un lenguaje que todos podemos entender. Como coach, valoro especialmente que también abordaron la ética."</p>
+            <div class="testi-person">
+              <div class="testi-avatar">M</div>
+              <div><span class="testi-name">Mireya González Corona</span><span class="testi-role">Business &amp; Cognitive Coaching · Integral Coaching</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="videos-grid">
+          <div class="video-card reveal">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=g4OrN7KXgB4" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/g4OrN7KXgB4/hqdefault.jpg" alt="Dr. Jaime García · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            </a>
+            <div class="video-meta"><div class="vm-name">Dr. Jaime García</div><div class="vm-desc">Radiología e Imagen · Médica Sur</div></div>
+          </div>
+          <div class="video-card reveal d1">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=yKQCUhmKcBQ" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/yKQCUhmKcBQ/hqdefault.jpg" alt="José Antonio González · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            </a>
+            <div class="video-meta"><div class="vm-name">José Antonio González</div><div class="vm-desc">CEO · Zahoree</div></div>
+          </div>
+          <div class="video-card reveal d2">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=OU2M1WALPls" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/OU2M1WALPls/hqdefault.jpg" alt="Dr. Gabriel Barrera · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            </a>
+            <div class="video-meta"><div class="vm-name">Dr. Gabriel Barrera</div><div class="vm-desc">Coordinador · Grupo Cal y Mayor</div></div>
+          </div>
+          <div class="video-card reveal d3">
+            <a class="video-wrap" href="https://www.youtube.com/watch?v=S433rtbAjgs" target="_blank" rel="noopener">
+              <img src="https://img.youtube.com/vi/S433rtbAjgs/hqdefault.jpg" alt="Mireya González Corona · IA Expo 2026" loading="lazy">
+              <div class="video-play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            </a>
+            <div class="video-meta"><div class="vm-name">Mireya González Corona</div><div class="vm-desc">Business &amp; Cognitive Coaching</div></div>
+          </div>
+        </div>
+
+        <div class="authority-row reveal">
+          <span class="authority-chip">⭐ NVIDIA — Aliado Global</span>
+          <span class="authority-chip">⭐ Meta — Aliado Global</span>
+          <span class="authority-chip">🎓 Tec de Monterrey — Aliado Académico</span>
+          <span class="authority-chip">🏥 Médica Sur — Aliado de Salud</span>
+          <span class="authority-chip">🎓 IQAI Institute</span>
+          <span class="authority-chip">📰 Mexico Business — Media Partner</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 07 · SPEAKERS / AUDIENCIA ═══════════ -->
+    <section id="speakers">
+      <div class="si">
+        <div class="eyebrow">Speakers</div>
+        <h2 class="stitle reveal">No cualquiera sube a <span class="accent">este escenario</span></h2>
+        <p class="sdesc reveal d1">Líderes, expertos y creadores que están usando la IA para transformar negocios, carreras y vidas — compartiendo lo que realmente funciona.</p>
+        <div class="spk-grid">
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a99074f5ef685bda0.jpg" alt="Dr. Eduardo Pérez" loading="lazy"><div class="spk-name">Dr. Eduardo Pérez</div><div class="spk-role">Chair · IA Expo Internacional</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a99074f5ef685bd9b.jpg" alt="Dr. Javier Novoa" loading="lazy"><div class="spk-name">Dr. Javier Novoa</div><div class="spk-role">Director General · Cultura Ágil</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a5fc842636e8cecde.jpg" alt="Martín Sierra" loading="lazy"><div class="spk-name">Martín Sierra</div><div class="spk-role">PMO &amp; VMO Leader · Aeroméxico</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Max Quiroz" loading="lazy"><div class="spk-name">Max Quiroz</div><div class="spk-role">Director · Max &amp; Ruth Training</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a733fdbac7d7ffc64ffc480.jpg" alt="Noelia González" loading="lazy"><div class="spk-name">Noelia González</div><div class="spk-role">Directora · Voiceinteractivos</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7b6982c94680bcf1fbcf02.jpg" alt="Pau Martí Felip" loading="lazy"><div class="spk-name">Pau Martí Felip</div><div class="spk-role">Profesor &amp; Divulgador · IA Aplicada</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0a255b571c8ef048b1.jpg" alt="Lic. Tere Olvera" loading="lazy"><div class="spk-name">Lic. Tere Olvera</div><div class="spk-role">Producción &amp; ExperiencIA</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7e0e0afe4291bd106a19fd.jpg" alt="Alejandra Díaz" loading="lazy"><div class="spk-name">Alejandra Díaz</div><div class="spk-role">CEO &amp; Cofundadora · CREAVIZER</div></div>
+          <div class="spk-card reveal"><img class="spk-avatar" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a81045da6a03cda06d633b9.jpg" alt="Paola Pérez" loading="lazy"><div class="spk-name">Paola Pérez</div><div class="spk-role">Cofundadora &amp; COO · Creavizer</div></div>
+        </div>
+        <div style="text-align:center;margin-top:36px;" class="reveal">
+          <a href="https://speakers.iaExpo.ai" class="btn-secondary">Ver todos los speakers →</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 08 · EXPERIENCIA — HACER QUE SE IMAGINE ALLÍ ═══════════ -->
+    <section id="experiencia-viva">
+      <div class="si">
+        <div class="eyebrow">La Experiencia</div>
+        <h2 class="stitle reveal">Así se vive <span class="accent">estar dentro</span></h2>
+        <p class="sdesc reveal d1">Escenario, audiencia, demostraciones y encuentros reales — la parte que no se replica de la misma manera en línea.</p>
+        <div class="exp-gallery">
+          <div class="exp-photo wide reveal"><img src="https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg" alt="Audiencia IA Expo 2026" loading="lazy"></div>
+          <div class="exp-photo reveal d1"><img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a733fdbac7d7ffc64ffc480.jpg" alt="Instructora en taller IA Expo" loading="lazy"></div>
+          <div class="exp-photo reveal d2"><img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Instructor en taller IA Expo" loading="lazy"></div>
+          <div class="exp-photo reveal d3"><img src="https://img.youtube.com/vi/g4OrN7KXgB4/hqdefault.jpg" alt="Speaker IA Expo 2026" loading="lazy"></div>
+          <div class="exp-photo reveal d4"><img src="https://img.youtube.com/vi/OU2M1WALPls/hqdefault.jpg" alt="Speaker IA Expo 2026" loading="lazy"></div>
+        </div>
+        <p class="ph reveal" style="margin-top:24px;"><strong>Contenido pendiente:</strong> agregar video del evento y más fotografía propia de la sede (Westin Santa Fe) cuando esté disponible, para reforzar esta sección según el punto 7 de la estrategia.</p>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 09 · OBJECIONES — ELIMINAR RAZONES PARA NO COMPRAR ═══════════ -->
+    <section id="objeciones">
+      <div class="si">
+        <div class="eyebrow">Objeciones</div>
+        <h2 class="stitle reveal">Sabemos lo que estás pensando.<br><span class="accent">Aquí las respuestas — sin rodeos.</span></h2>
+        <div class="obj-grid">
+          <div class="obj-card reveal">
+            <div class="obj-q">"Puedo aprender esto en línea."</div>
+            <div class="obj-a">Puedes encontrar información en línea. Lo que no encuentras ahí es el contexto, el acceso directo a las personas que ya lo están aplicando, y las conversaciones que solo pasan cuando estás en la misma sala que alguien que puede responder tu pregunta específica de inmediato.</div>
+          </div>
+          <div class="obj-card reveal d1">
+            <div class="obj-q">"No soy experto en IA."</div>
+            <div class="obj-a">IA Expo está diseñado para personas de todas las industrias y niveles técnicos. Nuestro lema es "IA Para la Vida Real" — el contenido se enfoca en aplicaciones prácticas para marketing, ventas, finanzas, salud, educación y más. Los perfiles más técnicos también tienen su propio espacio.</div>
+          </div>
+          <div class="obj-card reveal d2">
+            <div class="obj-q">"No conozco a nadie."</div>
+            <div class="obj-a">El networking está diseñado, no improvisado: sesión de matchmaking estructurado, cóctel de bienvenida y — en el nivel Executive — cena VIP con asientos preferenciales. Vas a estar rodeado de 250+ líderes de más de 10 países que están exactamente en la misma búsqueda que tú.</div>
+          </div>
+          <div class="obj-card reveal d3">
+            <div class="obj-q">"Es caro."</div>
+            <div class="obj-a">Antes de evaluar el precio, revisa todo lo que incluye: 2 días de conferencias, talleres prácticos, networking estructurado, acceso a materiales post-evento, zona de Expo y una comunidad activa que continúa después del evento. La pregunta no es "cuánto cuesta un boleto" — es cuánto vale concentrar meses de exploración en 3 días y quedarte dentro del círculo correcto.</div>
+          </div>
+          <div class="obj-card reveal d4">
+            <div class="obj-q">"No tengo tiempo."</div>
+            <div class="obj-a">Por eso el evento concentra en 3 días lo que normalmente tomaría semanas o meses de exploración dispersa: perspectivas, conexiones y descubrimientos en un mismo lugar, sin tener que armar tú mismo el itinerario.</div>
+          </div>
+          <div class="obj-card reveal">
+            <div class="obj-q">"¿Y si no puedo asistir?"</div>
+            <div class="obj-a"><span class="ph"><strong>Contenido pendiente:</strong> aquí debe ir la política real de transferencia, cambio o cancelación de boletos (si existe). No se debe publicar una promesa que la organización no pueda cumplir — completar antes de publicar esta sección.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 10 · RISK REVERSAL — REDUCIR RIESGO ═══════════ -->
+    <section id="risk-reversal">
+      <div class="si">
+        <div class="eyebrow">Risk Reversal</div>
+        <h2 class="stitle reveal">Reducir el riesgo de <span class="accent">decidir hoy</span></h2>
+        <p class="ph reveal">⚠️ <strong>Sección pendiente de completar con políticas reales.</strong> El PDF de estrategia indica: "políticas claras, soporte, transferencia, cambios o cancelación cuando realmente existan — no prometer garantías que la organización no pueda cumplir." Actualmente no hay políticas publicadas de transferencia/cancelación en el sitio. Confirmar con el equipo antes de publicar esta sección en vivo.</p>
+        <div class="risk-grid">
+          <div class="risk-card reveal"><span class="risk-ico">🔁</span><div class="risk-title">Transferencia de boleto</div><div class="obj-a" style="font-size:12.5px;">[Pendiente: ¿se permite transferir el boleto a otra persona? ¿bajo qué condiciones?]</div></div>
+          <div class="risk-card reveal d1"><span class="risk-ico">🔄</span><div class="risk-title">Cambio de nivel de acceso</div><div class="obj-a" style="font-size:12.5px;">[Pendiente: ¿se puede hacer upgrade de General a VIP/Executive después de comprar?]</div></div>
+          <div class="risk-card reveal d2"><span class="risk-ico">💬</span><div class="risk-title">Soporte directo</div><div class="obj-a" style="font-size:12.5px;">Escríbenos a <a href="mailto:info@iaExpo.ai" style="color:var(--cyan);">info@iaExpo.ai</a> — el equipo responde dudas de registro y facturación.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 11 · TICKETS — VENDER NIVELES DE EXPERIENCIA ═══════════ -->
+    <section id="tickets">
+      <div class="si">
+        <div class="eyebrow">Tickets</div>
+        <h2 class="stitle reveal">No vendemos paquetes.<br>Vendemos <span class="accent">niveles de pertenencia</span></h2>
+        <p class="sdesc reveal d1">29 y 30 de enero de 2027. Cada nivel representa una diferencia real y demostrable en acceso, comodidad y experiencia — no solo un nombre distinto. Y cada nivel tiene un límite físico real.</p>
+
+        <div class="tier-grid">
+          <!-- GENERAL -->
+          <div class="tier-card reveal">
+            <div class="tier-name" style="color:var(--cyan);">General</div>
+            <div class="tier-for">Para quienes quieren formar parte de la experiencia principal: escenario, contenido y Expo.</div>
+            <div class="tier-price" style="color:var(--cyan);">$500 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
+            <div class="tier-features">
+              <div class="tier-feature"><span class="ico-yes">✓</span> Área de Expo + Coffee Break</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Complementos alimenticios</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Keynotes + Conferencias (2 días)</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Actas, Presentaciones y Videos</div>
+            </div>
+            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 250 lugares</span></div>
+            <a href="https://iaExpo.ai/admisiones/conferencias" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar General →</a>
+          </div>
+
+          <!-- VIP -->
+          <div class="tier-card reveal d1">
+            <div class="tier-name" style="color:var(--green);">VIP</div>
+            <div class="tier-for">Para quienes buscan mayor nivel de comodidad, acceso y experiencia de conexión.</div>
+            <div class="tier-price" style="color:var(--green);">$800 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
+            <div class="tier-features">
+              <div class="tier-feature new"><span class="ico-yes">✓</span> Todo lo de General, más:</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Networking estructurado (matchmaking)</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Cóctel de bienvenida</div>
+            </div>
+            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 25 lugares</span></div>
+            <a href="https://iaExpo.ai/admisiones/network" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar VIP →</a>
+          </div>
+
+          <!-- EXECUTIVE -->
+          <div class="tier-card featured reveal d2">
+            <div class="tier-badge">⭐ Más Exclusivo</div>
+            <div class="tier-name" style="color:var(--gold);">Executive</div>
+            <div class="tier-for">Para líderes que buscan el nivel superior de acceso, comodidad y conexión.</div>
+            <div class="tier-price" style="color:var(--gold);">$1,000 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
+            <div class="tier-features">
+              <div class="tier-feature new"><span class="ico-yes">✓</span> Todo lo de VIP, más:</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Asientos preferenciales</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Cena VIP</div>
+            </div>
+            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 20 lugares</span></div>
+            <a href="https://iaExpo.ai/admisiones/vip-all-access" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar Executive →</a>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;margin:56px 0 4px;">Complementa tu experiencia</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Disponibles con cualquier nivel de acceso.</p>
+        <div class="addon-grid">
+          <div class="addon-card reveal">
+            <div><div class="addon-title">🏛️ Expo Pass</div><div class="addon-desc">Solo el piso de Expo — demos en vivo, 2 días, sin conferencias.</div></div>
+            <div style="text-align:right;">
+              <div class="addon-price">$200 USD</div>
+              <a href="https://iaExpo.ai/admisiones/expo" class="fmini-link" style="margin-top:6px;display:inline-block;" target="_blank" rel="noopener">Reservar →</a>
+            </div>
+          </div>
+          <div class="addon-card reveal d1">
+            <div><div class="addon-title">🛠️ Talleres prácticos</div><div class="addon-desc">28 de enero, 3:00–7:00 PM. 4 talleres, cupo de 20 personas c/u.</div></div>
+            <div style="text-align:right;">
+              <div class="addon-price">$200 USD c/u</div>
+              <a href="https://iaExpo.ai/#talleres" class="fmini-link" style="margin-top:6px;display:inline-block;" target="_blank" rel="noopener">Ver talleres →</a>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:32px;text-align:center;">Todos los precios en dólares americanos (USD) · Precio por persona · 1 boleto.<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 12 · URGENCIA — DAR UNA RAZÓN PARA ACTUAR AHORA ═══════════ -->
+    <section id="urgencia">
+      <div class="si">
+        <div class="eyebrow">Urgencia</div>
+        <h2 class="stitle reveal">Los cupos son reales.<br><span class="accent">No todos van a estar dentro.</span></h2>
+        <p class="sdesc reveal d1">Esto no es escasez artificial de marketing. Es el límite físico real de la sede — cuando se llenan los lugares, la puerta se cierra. Executive y VIP tienen la capacidad más reducida y suelen agotarse primero en cada edición.</p>
+        <div class="urgency-banner reveal">
+          <p style="font-size:16px;color:var(--text);font-weight:700;">🔥 Solo 20 lugares Executive y 25 lugares VIP en toda la edición 2027.</p>
+          <div class="urgency-cupos-row">
+            <div class="ucupo"><div class="ucupo-n">20</div><div class="ucupo-l">Lugares Executive</div></div>
+            <div class="ucupo"><div class="ucupo-n">25</div><div class="ucupo-l">Lugares VIP</div></div>
+            <div class="ucupo"><div class="ucupo-n">250</div><div class="ucupo-l">Lugares General</div></div>
+            <div class="ucupo"><div class="ucupo-n">20</div><div class="ucupo-l">Lugares por Taller</div></div>
+          </div>
+          <div style="margin-top:28px;">
+            <a href="#tickets" class="btn-primary btn-gold">🔑 Asegurar mi Acceso Ahora</a>
+          </div>
+        </div>
+        <p class="ph reveal" style="margin-top:20px;">⚠️ <strong>Pendiente:</strong> si existe un calendario real de Early Bird / cambio de precio por etapas, agregarlo aquí con fechas específicas. No se incluyó porque no hay una etapa de precios activa confirmada al momento de crear esta página.</p>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 13 · FAQ ═══════════ -->
+    <section id="faq">
+      <div class="si">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="stitle reveal">Preguntas <span class="accent">Frecuentes</span></h2>
+        <div class="faq-list reveal">
+          <div class="faq-item open">
+            <div class="faq-q" onclick="toggleFaq(this)">¿Qué es la Comunidad IA Expo?<span class="faq-arrow">+</span></div>
+            <div class="faq-a">La Comunidad IA Expo es una red exclusiva de personas que usan, aprenden y se apoyan mutuamente en el uso de Inteligencia Artificial para la vida real. No es solo un evento anual — es una comunidad activa de emprendedores, ejecutivos, profesionistas y visionarios que comparten lo que funciona con IA en sus industrias.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">¿Tengo que saber programar para beneficiarme de IA Expo?<span class="faq-arrow">+</span></div>
+            <div class="faq-a">Para nada. IA Expo está diseñado para personas de todas las industrias y niveles técnicos. Nuestro lema es "IA Para la Vida Real" — enfocamos el contenido en aplicaciones prácticas que cualquier persona puede implementar: marketing, ventas, finanzas, salud, educación, creatividad y más.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">¿Cuándo y dónde es IA Expo Internacional 2027?<span class="faq-arrow">+</span></div>
+            <div class="faq-a">IA Expo Internacional 2027 se realizará los días 28, 29 y 30 de Enero de 2027 en el Westin Santa Fe, Ciudad de México.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta asistir y qué incluye cada nivel?<span class="faq-arrow">+</span></div>
+            <div class="faq-a">General ($500 USD): Expo, Coffee Break y 2 días de Conferencias. VIP ($800 USD): todo lo de General más Networking estructurado y Cóctel de bienvenida. Executive ($1,000 USD): todo lo de VIP más asientos preferenciales y Cena VIP. También hay Expo Pass ($200 USD) y Talleres ($200 USD c/u) como complementos.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo ser speaker o presentar un paper?<span class="faq-arrow">+</span></div>
+            <div class="faq-a">Tenemos una convocatoria abierta para conferencistas e investigadores. Si tienes un caso de uso real de IA, investigación relevante o experiencia transformadora que compartir, puedes enviar tu propuesta escribiéndonos a info@iaExpo.ai. El equipo la revisará y te contactará en menos de 5 días hábiles.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">¿Hay opciones de patrocinio o alianzas estratégicas?<span class="faq-arrow">+</span></div>
+            <div class="faq-a">Sí. Tenemos diferentes niveles de patrocinio: Diamante ($10,000 USD), Platino ($8,000 USD), Oro ($6,000 USD) y Plata ($5,000 USD), así como alianzas académicas, de contenido y de tecnología. Escríbenos a info@iaExpo.ai para recibir el dossier de patrocinios completo.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">¿Puedo obtener factura fiscal por mi boleto?<span class="faq-arrow">+</span></div>
+            <div class="faq-a">Sí, emitimos facturas fiscales válidas en México. Al completar tu registro podrás solicitar tu factura o enviarnos tus datos fiscales a info@iaExpo.ai. Para empresas con múltiples asistentes también tenemos paquetes corporativos con facturación simplificada.</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;" class="reveal">
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">¿Tienes otra pregunta?</p>
+          <a href="https://faq.iaExpo.ai" class="btn-secondary" style="margin-right:12px;">Ver FAQ completo →</a>
+          <a href="https://contacto.iaExpo.ai" class="btn-primary">🚀 Más Información</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 14 · CIERRE — CONVERTIR VALOR EN DECISIÓN ═══════════ -->
+    <section id="cierre">
+      <div class="hero-eyebrow" style="justify-content:center;"><div class="dot"></div>28 · 29 · 30 de Enero de 2027 · Ciudad de México</div>
+      <p class="cierre-lema reveal">¿Estás <span class="accent">Dentro</span>?</p>
+      <p class="sdesc reveal d1" style="margin:0 auto 40px;text-align:center;">250 lugares. Las personas correctas. Una experiencia que no se repite. El conocimiento inspira. Las conexiones abren posibilidades. La decisión es tuya — pero el cupo no espera.</p>
+      <a href="#tickets" class="btn-primary btn-gold reveal d2">🔑 Sí, Quiero Estar Dentro</a>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 15 · CHECKOUT — CTA FINAL ═══════════ -->
+    <section id="checkout" style="padding:80px 5%;">
+      <div class="checkout-bar reveal">
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">Confirma tu lugar</div>
+          <div style="font-size:13px;color:var(--text-muted);">28–30 de enero de 2027 · Westin Santa Fe, CDMX</div>
+        </div>
+        <div class="checkout-tiers">
+          <a href="https://iaExpo.ai/admisiones/conferencias" class="checkout-chip" target="_blank" rel="noopener">General<span class="cc-price">$500 USD</span></a>
+          <a href="https://iaExpo.ai/admisiones/network" class="checkout-chip" target="_blank" rel="noopener">VIP<span class="cc-price">$800 USD</span></a>
+          <a href="https://iaExpo.ai/admisiones/vip-all-access" class="checkout-chip" target="_blank" rel="noopener">Executive<span class="cc-price">$1,000 USD</span></a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="fmini">
+      <div class="fmini-wrap">
+        <a href="https://iaExpo.ai" class="fmini-brand">
+          <img src="https://raw.githubusercontent.com/iaExpo/www/main/logos/IAx%20Logo.jpg" alt="IA Expo Internacional" onerror="this.style.display='none'">
+          <span>IA Expo 2027</span>
+        </a>
+        <nav class="fmini-links">
+          <a href="https://iaExpo.ai#boletos" class="fmini-link">Participa</a>
+          <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
+          <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
+          <a href="https://patrocinios.iaExpo.ai" class="fmini-link">Patrocinios</a>
+          <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
+          <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
+          <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
+        </nav>
+        <div class="fmini-contact">
+          <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a>
+          <a href="https://wa.me/525559632687" target="_blank" rel="noopener">+52 55 5963-2687</a>
+        </div>
+      </div>
+      <div class="fmini-legal">
+        <a href="https://iaExpo.ai/terminos" target="_blank" rel="noopener">Términos y Condiciones</a>
+        <span class="sep">|</span>
+        <a href="https://iaExpo.ai/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>
+      </div>
+      <div class="fmini-bottom">
+        <p>© 2025-2026 IA Expo Internacional · Todos los Derechos Reservados · Ciudad de México, México</p>
+      </div>
+      <div class="fmini-disclaimer">
+        <p>La información contenida en este sitio, incluyendo precios, fechas, programas, ponentes y condiciones de participación, es de carácter informativo y está sujeta a cambios sin previo aviso. Para información actualizada y confirmada, comuníquese directamente con el equipo organizador.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        document.getElementById('hbtn').classList.toggle('open');
+        document.getElementById('mmenu').classList.toggle('open');
+      }
+      function closeNav() {
+        document.getElementById('hbtn').classList.remove('open');
+        document.getElementById('mmenu').classList.remove('open');
+      }
+      const obs = new IntersectionObserver(es => {
+        es.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+      function toggleFaq(el) {
+        const item = el.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      }
+    </script>
+  </body>
+</html>
