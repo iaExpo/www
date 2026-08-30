@@ -372,6 +372,59 @@
       .exp-photo.wide { grid-column: span 2; aspect-ratio: 2/1; }
       @media(max-width:800px) { .exp-gallery { grid-template-columns: repeat(2, 1fr); } .exp-photo.wide { grid-column: span 2; } }
 
+      /* ── CARRUSEL GALERÍA IA EXPO 2026 ── */
+      .iax-carousel-wrap {
+        margin-top: 32px;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 60px rgba(0,212,255,0.12), 0 20px 60px rgba(0,0,0,0.5);
+        border: 1px solid rgba(0,212,255,0.15);
+        aspect-ratio: 16/9;
+      }
+      .iax-carousel-track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+      }
+      .iax-carousel-slide {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .iax-carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .iax-carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(3,7,18,0.7);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(0,212,255,0.3);
+        color: var(--cyan);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.25s ease;
+      }
+      .iax-carousel-btn:hover {
+        background: rgba(0,212,255,0.15);
+        border-color: var(--cyan);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .iax-carousel-btn.prev { left: 14px; }
+      .iax-carousel-btn.next { right: 14px; }
+
       /* ── OBJECIONES ── */
       #objeciones { background: var(--dark-2); }
       .obj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
@@ -848,7 +901,15 @@
           <div class="exp-photo reveal d3"><img src="https://img.youtube.com/vi/g4OrN7KXgB4/hqdefault.jpg" alt="Speaker IA Expo 2026" loading="lazy"></div>
           <div class="exp-photo reveal d4"><img src="https://img.youtube.com/vi/OU2M1WALPls/hqdefault.jpg" alt="Speaker IA Expo 2026" loading="lazy"></div>
         </div>
-        <p class="ph reveal" style="margin-top:24px;"><strong>Contenido pendiente:</strong> agregar video del evento y más fotografía propia de la sede (Westin Santa Fe) cuando esté disponible, para reforzar esta sección según el punto 7 de la estrategia.</p>
+
+        <!-- Carrusel de fotos — galería IA Expo 2026 (github.com/iaExpo/www/galeria) -->
+        <div class="iax-carousel-wrap reveal" id="iaxCarouselWrap">
+          <div class="iax-carousel-track" id="iaxTrack"></div>
+          <button class="iax-carousel-btn prev" onclick="iaxMove(-1)">❮</button>
+          <button class="iax-carousel-btn next" onclick="iaxMove(1)">❯</button>
+        </div>
+
+        <p class="ph reveal" style="margin-top:24px;"><strong>Contenido pendiente:</strong> agregar video del evento cuando esté disponible, para reforzar esta sección según el punto 7 de la estrategia.</p>
       </div>
     </section>
 
@@ -1133,6 +1194,65 @@
         document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
         if (!isOpen) item.classList.add('open');
       }
+
+      // ── Carrusel galería IA Expo 2026 (github.com/iaExpo/www/galeria) ──
+      (function() {
+        const BASE  = 'https://raw.githubusercontent.com/iaExpo/www/main/galeria/';
+        const TOTAL = 43; // iaExpo2026-001.jpg … iaExpo2026-043.jpg
+        const DELAY = 4000; // 4 segundos
+
+        const all = [];
+        for (let i = 1; i <= TOTAL; i++) all.push(i);
+        const photos = all.sort(() => Math.random() - 0.5);
+
+        function pad(n) { return String(n).padStart(3, '0'); }
+
+        let cur = 0, timer;
+
+        function render() {
+          const track = document.getElementById('iaxTrack');
+          if (!track) return;
+
+          photos.forEach((n, i) => {
+            const slide = document.createElement('div');
+            slide.className = 'iax-carousel-slide';
+            slide.innerHTML = `<img src="${BASE}iaExpo2026-${pad(n)}.jpg"
+              alt="IA Expo 2026" loading="${i === 0 ? 'eager' : 'lazy'}">`;
+            track.appendChild(slide);
+          });
+
+          startTimer();
+        }
+
+        function update() {
+          const track = document.getElementById('iaxTrack');
+          if (track) track.style.transform = `translateX(-${cur * 100}%)`;
+        }
+
+        window.iaxMove = function(dir) {
+          cur = (cur + dir + photos.length) % photos.length;
+          update();
+          resetTimer();
+        };
+
+        function startTimer() {
+          timer = setInterval(() => iaxMove(1), DELAY);
+        }
+        function resetTimer() {
+          clearInterval(timer); startTimer();
+        }
+
+        // Pausar al salir del viewport para ahorrar recursos
+        const iaxObserver = new IntersectionObserver(entries => {
+          entries[0].isIntersecting ? startTimer() : clearInterval(timer);
+        }, { threshold: 0.2 });
+
+        document.addEventListener('DOMContentLoaded', () => {
+          render();
+          const wrap = document.getElementById('iaxCarouselWrap');
+          if (wrap) iaxObserver.observe(wrap);
+        });
+      })();
 
       function tick() {
         const t = new Date('2027-01-28T09:00:00-06:00'),
