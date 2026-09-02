@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Estás Dentro? — IA Expo Internacional 2027</title>
+    <title>IA Expo 2027</title>
     <meta name="description" content="IA Expo 2027 no busca reunir a la mayor cantidad de personas, sino a las personas correctas para vivir una experiencia extraordinaria. 28-30 de enero, Ciudad de México.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -135,7 +135,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         text-align: left;
-        padding: 96px 6% 16px;
+        padding: 48px 6% 16px;
         z-index: 1;
         background: var(--gradient-hero);
         overflow: hidden;
@@ -217,7 +217,7 @@
       }
       .hero-desc {
         font-size: clamp(15px, 1.8vw, 19px);
-        color: var(--text-muted);
+        color: #d1d5db;
         max-width: 640px;
         margin: 0 0 48px;
         line-height: 1.7;
@@ -238,7 +238,7 @@
         border-radius: 20px;
         padding: 20px 20px;
       }
-      .cd-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+      .cd-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #d1d5db; margin-bottom: 16px; }
       .countdown { display: flex; justify-content: center; gap: 8px; flex-wrap: nowrap; }
       .cd-unit { display: flex; flex-direction: column; align-items: center; }
       .cd-num {
@@ -248,7 +248,7 @@
         border: 1px solid var(--glass-border); border-radius: 12px; min-width: 68px; text-align: center; position: relative;
       }
       .cd-num::after { content: ''; position: absolute; top:0; left:0; right:0; height:1px; background: var(--gradient-1); opacity: 0.5; }
-      .cd-unit span:last-child { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-top: 8px; }
+      .cd-unit span:last-child { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #d1d5db; margin-top: 8px; }
       .cd-sep { font-size: 24px; color: var(--text-dim); align-self: center; padding-bottom: 20px; font-weight: 300; }
       .hero-stats {
         display: flex; justify-content: flex-start; gap: 48px; flex-wrap: wrap;
@@ -256,22 +256,7 @@
       }
       .hstat { text-align: center; display: flex; flex-direction: column; align-items: center; }
       .hstat-n { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-      .hstat-l { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
-
-      /* ── MANIFIESTO (pull-quote) ── */
-      #manifiesto {
-        text-align: center; padding: 48px 5% 64px; position: relative; overflow: hidden;
-        background: radial-gradient(ellipse at center, rgba(245,158,11,0.07) 0%, var(--dark) 70%);
-        border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
-      }
-      .manifest-quote {
-        font-family: 'Space Grotesk', sans-serif; font-size: clamp(20px, 3vw, 36px); font-weight: 700;
-        max-width: 880px; margin: 0 auto 28px; line-height: 1.4;
-      }
-      .manifest-sub { font-size: 19px; color: var(--text-muted); max-width: 620px; margin: 28px auto 0; }
-      .manifest-attrib { margin-top: 0; max-width: 880px; margin-left: auto; margin-right: auto; text-align: right; }
-      .manifest-attrib-name { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); }
-      .manifest-attrib-title { font-size: 12px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+      .hstat-l { font-size: 12px; color: #d1d5db; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
 
       /* ── PROBLEMA / TRANSFORMACIÓN ── */
       #problema { background: var(--dark-2); }
@@ -282,6 +267,20 @@
       .transformacion-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: stretch; margin-top: 48px; }
       .transformacion-img-wrap { border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); }
       .transformacion-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+      /* ── HOSPEDAJE INTRO ── */
+      .hosp-intro-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: stretch; text-align: left; }
+      .hosp-intro-content { display: flex; flex-direction: column; justify-content: space-between; }
+      .hosp-intro-img-wrap { border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; background: var(--glass); }
+      .hosp-intro-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+      @media(max-width:800px) { .hosp-intro-grid { grid-template-columns: 1fr; } .hosp-intro-img-wrap { order: -1; height: 260px; } }
+
+      /* ── URGENCIA INTRO ── */
+      .urg-intro-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: stretch; text-align: left; margin-bottom: 40px; }
+      .urg-intro-content { display: flex; flex-direction: column; justify-content: space-between; }
+      .urg-intro-img-wrap { border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; background: var(--glass); }
+      .urg-intro-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+      @media(max-width:800px) { .urg-intro-grid { grid-template-columns: 1fr; } .urg-intro-img-wrap { order: -1; height: 260px; } }
       @media(max-width:800px) { .transformacion-grid { grid-template-columns: 1fr; } .transformacion-img-wrap { height: 260px; } }
 
       /* ── PROPUESTA DE VALOR (5 dimensiones) ── */
@@ -366,12 +365,6 @@
       @media(max-width:560px) { .spk-grid { grid-template-columns: repeat(2, 1fr); } }
 
       /* ── EXPERIENCIA (galería) ── */
-      .exp-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 48px; }
-      .exp-photo { border-radius: 16px; overflow: hidden; aspect-ratio: 1/1; border: 1px solid var(--glass-border); }
-      .exp-photo img { width: 100%; height: 100%; object-fit: cover; }
-      .exp-photo.wide { grid-column: span 2; aspect-ratio: 2/1; }
-      @media(max-width:800px) { .exp-gallery { grid-template-columns: repeat(2, 1fr); } .exp-photo.wide { grid-column: span 2; } }
-
       /* ── CARRUSEL GALERÍA IA EXPO 2026 ── */
       .iax-carousel-wrap {
         margin-top: 32px;
@@ -442,7 +435,7 @@
 
       /* ── TICKETS ── */
       #tickets { background: var(--dark-2); }
-      .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
+      .tier-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 48px; }
       .tier-card {
         background: var(--glass); border: 1px solid var(--glass-border); border-radius: 22px; padding: 32px 28px;
         display: flex; flex-direction: column; position: relative;
@@ -468,7 +461,7 @@
       .tier-card.featured .tier-btn { background: var(--gradient-gold); color: #1a1200; }
       @media(max-width:900px) { .tier-grid { grid-template-columns: 1fr; } }
 
-      .addon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 24px; }
+      .addon-grid { display: grid; grid-template-columns: 1fr; max-width: 460px; gap: 18px; margin-top: 24px; }
       .addon-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
       .addon-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
       .addon-desc { font-size: 12.5px; color: var(--text-muted); }
@@ -555,18 +548,136 @@
       .d3 { transition-delay: 0.3s; }
       .d4 { transition-delay: 0.4s; }
 
-      /* ── STRATEGY NOTE BANNER (solo visible en este borrador) ── */
-      .strategy-note {
-        background: linear-gradient(90deg, rgba(245,158,11,0.12), rgba(124,58,237,0.1));
-        border-bottom: 1px solid var(--glass-border); text-align: center; padding: 10px 20px;
-        font-size: 12px; color: var(--text-muted);
+      /* ── HOSPEDAJE / CONTACTO ── */
+      #contacto {
+        background: var(--dark-2);
       }
-      .strategy-note strong { color: var(--gold); }
+
+      .bol-reg-box {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+
+      .bol-reg-hdr {
+        padding: 24px 28px 20px;
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .bol-reg-hdr h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .bol-reg-hdr p {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+
+      .bol-reg-form {
+        padding: 0;
+      }
+
+      .con-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 72px;
+        align-items: start;
+        margin-top: 64px;
+      }
+
+      .con-info h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .con-info p {
+        color: var(--text-muted);
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 32px;
+      }
+
+      .con-items {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .ci {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 20px;
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .ci:hover {
+        border-color: rgba(0, 212, 255, 0.3);
+        background: rgba(0, 212, 255, 0.04);
+      }
+
+      .ci-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(0, 212, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .ci-text strong {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .ci-text span {
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      @media(max-width:900px) {
+        .con-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      .stitle-sub {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(20px, 3vw, 34px);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.15;
+        margin-bottom: 8px;
+        margin-top: 48px;
+      }
+      .stitle-sub .accent { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+      .sub-date {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--cyan);
+        margin-bottom: 28px;
+        letter-spacing: 0.04em;
+      }
     </style>
   </head>
   <body>
-
-    <div class="strategy-note">📐 <strong>Borrador de estrategia v2</strong> — posicionamiento boutique/exclusivo · campaña "¿Estás Dentro?". No está enlazada al sitio en vivo.</div>
 
     <!-- NAV DESKTOP -->
     <nav>
@@ -575,29 +686,32 @@
         <span>IA Expo Internacional 2027</span>
       </a>
       <div class="nav-tabs">
-        <a href="#manifiesto" class="ntab"><span class="ico">🎯</span> El Principio</a>
         <a href="#valor" class="ntab"><span class="ico">💡</span> Valor</a>
         <a href="#prueba" class="ntab"><span class="ico">⭐</span> Prueba</a>
         <a href="#speakers" class="ntab"><span class="ico">🎙️</span> Speakers</a>
+        <a href="#experiencia-viva" class="ntab"><span class="ico">📸</span> Experiencia</a>
         <a href="#tickets" class="ntab"><span class="ico">🎟️</span> Tickets</a>
         <a href="#faq" class="ntab"><span class="ico">❓</span> FAQ</a>
+        <a href="#hospedaje" class="ntab"><span class="ico">🏨</span> Hospedaje</a>
+        <a href="#contacto" class="ntab"><span class="ico">📍</span> Contacto</a>
       </div>
       <div class="hamburger" id="hbtn" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </nav>
     <!-- NAV MOBILE -->
     <div class="mobile-menu" id="mmenu">
-      <a href="#manifiesto" class="ntab" onclick="closeNav()"><span class="ico">🎯</span> El Principio</a>
       <a href="#valor" class="ntab" onclick="closeNav()"><span class="ico">💡</span> Valor</a>
       <a href="#prueba" class="ntab" onclick="closeNav()"><span class="ico">⭐</span> Prueba</a>
       <a href="#speakers" class="ntab" onclick="closeNav()"><span class="ico">🎙️</span> Speakers</a>
+      <a href="#experiencia-viva" class="ntab" onclick="closeNav()"><span class="ico">📸</span> Experiencia</a>
       <a href="#tickets" class="ntab" onclick="closeNav()"><span class="ico">🎟️</span> Tickets</a>
       <a href="#faq" class="ntab" onclick="closeNav()"><span class="ico">❓</span> FAQ</a>
+      <a href="#hospedaje" class="ntab" onclick="closeNav()"><span class="ico">🏨</span> Hospedaje</a>
+      <a href="#contacto" class="ntab" onclick="closeNav()"><span class="ico">📍</span> Contacto</a>
     </div>
 
     <!-- ═══════════ 01 · HERO — CAPTURAR EL DESEO ═══════════ -->
     <section id="hero">
       <div class="hero-bg-img"></div>
-      <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(to right, rgba(3,7,18,0.2) 0%, rgba(3,7,18,0.1) 45%, rgba(3,7,18,0.0) 100%);pointer-events:none;"></div>
       <div class="cd-wrap">
         <div class="cd-label">Cuenta regresiva al evento</div>
         <div class="countdown">
@@ -626,8 +740,11 @@
         <div class="hero-sub">Internacional 2027</div>
         <div class="hero-lema">IA Para la Vida Real 2.0</div>
         <div class="hero-loc" id="ev-hero-loc">📍 Westin Santa fe · Ciudad de México</div>
-        <p class="hero-desc" id="ev-hero-desc">El futuro de la IA no es para espectadores. <strong>Es para quienes deciden vivirlo, crearlo y liderarlo.</strong> Entra a una <strong>ExperiencIA</strong> exclusiva donde líderes, visionarios y empresas se reúnen para descubrir, conectar y transformar conexiones que abren oportunidades reales. <strong>Una experiencia que tienes que vivir.</strong></p>
-        <div class="hero-lema">"¿Estás Dentro?"</div>
+        <p class="hero-desc" id="ev-hero-desc">En la IA Expo Internacional 2027 no vienes solo a escuchar acerca de IA: <strong>vienes a vivir una ExperiencIA</strong>. Podrás explorar, probar e interactuar con <strong>soluciones reales</strong> para descubrir cómo la IA te ayuda a <strong>crear, decidir y trabajar mejor</strong>. Cada experiencia, demostración y conexión estará diseñada para que te lleves <strong>ideas útiles y aplicaciones prácticas</strong> que puedas poner en marcha en <strong>tu vida, tu profesión y tu empresa</strong>.</p>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;">
+          <div class="hero-lema" style="margin-bottom:0;font-size:clamp(18px, 2.4vw, 26px);font-weight:700;">"¿Estás Dentro?"</div>
+          <a href="#tickets" class="btn-primary">Asegura tu Lugar</a>
+        </div>
         <div class="hero-stats">
           <div class="hstat">
             <div class="hstat-n">250+</div>
@@ -643,16 +760,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ═══════════ MANIFIESTO — EL PRINCIPIO ═══════════ -->
-    <section id="manifiesto">
-      <p class="manifest-quote reveal">&ldquo;IA Expo 2027 no busca reunir a la mayor cantidad de personas, sino a <span class="accent-gold" style="background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">las personas correctas</span> para vivir una experiencia extraordinaria.&rdquo;</p>
-      <div class="manifest-attrib reveal d1">
-        <div class="manifest-attrib-name">Dr. Eduardo Pérez</div>
-        <div class="manifest-attrib-title">Chair IA Expo Internacional</div>
-      </div>
-      <p class="manifest-sub reveal d1">No medimos el éxito en número de asistentes. Lo medimos en la calidad de las conexiones que se forman dentro.</p>
     </section>
 
     <!-- ═══════════ 02 · PROBLEMA — HACER VISIBLE LA OPORTUNIDAD ═══════════ -->
@@ -697,7 +804,7 @@
         <div class="eyebrow">El Valor de Estar Dentro</div>
         <div class="valor-grid">
           <div class="valor-content">
-            <h2 class="stitle reveal">Convierte la IA en <span class="accent">oportunidades reales</span>.</h2>
+            <h2 class="stitle reveal">Convierte la IA en <span class="accent">oportunidades reales</span></h2>
             <p class="sdesc reveal d1">IA Expo Internacional 2027 es una ExperiencIA exclusiva y cuidadosamente curada para llevarte del ruido a la claridad y de la claridad a la acción. Descubrirás soluciones útiles, aprenderás de quienes ya están transformando industrias, probarás la IA de forma práctica y conectarás con líderes, expertos y empresas capaces de abrir nuevas oportunidades. Lo que realmente experimentas en la IA Expo Internacional son las cinco dimensiones de valor.</p>
           </div>
           <div class="valor-img-wrap reveal d1">
@@ -753,7 +860,7 @@
           </div>
           <div class="stack-item reveal d3">
             <span class="stack-ico">🍸</span>
-            <div><div class="stack-title">Cóctel de bienvenida + Cena VIP</div><div class="stack-desc">Espacios de conexión informal, disponibles en los niveles VIP y Executive.</div></div>
+            <div><div class="stack-title">Cóctel de bienvenida + Cena VIP</div><div class="stack-desc">Espacios de conexión informal, disponibles en el nivel VIP All Access.</div></div>
           </div>
           <div class="stack-item reveal d1">
             <span class="stack-ico">📁</span>
@@ -781,6 +888,7 @@
     <section id="prueba">
       <div class="si">
         <div class="eyebrow">Testimoniales</div>
+        <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a98a382da522bf173aa8bf2.png" alt="Testimoniales" style="width:100%;max-width:100%;border-radius:20px;display:block;margin-bottom:32px;box-shadow:0 20px 50px rgba(0,0,0,0.35);">
         <h2 class="stitle reveal">No es solo <span class="accent">nuestra palabra</span></h2>
         <p class="sdesc reveal d1">Esto no es una promesa. Es lo que ya vivieron quienes estuvieron dentro en la edición 2026, en Ciudad de México.</p>
 
@@ -894,13 +1002,6 @@
         <div class="eyebrow">La Experiencia</div>
         <h2 class="stitle reveal">Así se vive <span class="accent">estar dentro</span></h2>
         <p class="sdesc reveal d1">Escenario, audiencia, demostraciones y encuentros reales — la parte que no se replica de la misma manera en línea.</p>
-        <div class="exp-gallery">
-          <div class="exp-photo wide reveal"><img src="https://raw.githubusercontent.com/iaExpo/www/main/images/IA%20Expo%202026%20Audiencia.jpg" alt="Audiencia IA Expo 2026" loading="lazy"></div>
-          <div class="exp-photo reveal d1"><img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a733fdbac7d7ffc64ffc480.jpg" alt="Instructora en taller IA Expo" loading="lazy"></div>
-          <div class="exp-photo reveal d2"><img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Instructor en taller IA Expo" loading="lazy"></div>
-          <div class="exp-photo reveal d3"><img src="https://img.youtube.com/vi/g4OrN7KXgB4/hqdefault.jpg" alt="Speaker IA Expo 2026" loading="lazy"></div>
-          <div class="exp-photo reveal d4"><img src="https://img.youtube.com/vi/OU2M1WALPls/hqdefault.jpg" alt="Speaker IA Expo 2026" loading="lazy"></div>
-        </div>
 
         <!-- Carrusel de fotos — galería IA Expo 2026 (github.com/iaExpo/www/galeria) -->
         <div class="iax-carousel-wrap reveal" id="iaxCarouselWrap">
@@ -908,8 +1009,6 @@
           <button class="iax-carousel-btn prev" onclick="iaxMove(-1)">❮</button>
           <button class="iax-carousel-btn next" onclick="iaxMove(1)">❯</button>
         </div>
-
-        <p class="ph reveal" style="margin-top:24px;"><strong>Contenido pendiente:</strong> agregar video del evento cuando esté disponible, para reforzar esta sección según el punto 7 de la estrategia.</p>
       </div>
     </section>
 
@@ -918,7 +1017,7 @@
     <!-- ═══════════ 09 · OBJECIONES — ELIMINAR RAZONES PARA NO COMPRAR ═══════════ -->
     <section id="objeciones">
       <div class="si">
-        <div class="eyebrow">Objeciones</div>
+        <div class="eyebrow">Resolviendo tus Dudas</div>
         <h2 class="stitle reveal">Sabemos lo que estás pensando.<br><span class="accent">Aquí las respuestas — sin rodeos.</span></h2>
         <div class="obj-grid">
           <div class="obj-card reveal">
@@ -931,7 +1030,7 @@
           </div>
           <div class="obj-card reveal d2">
             <div class="obj-q">"No conozco a nadie."</div>
-            <div class="obj-a">El networking está diseñado, no improvisado: sesión de matchmaking estructurado, cóctel de bienvenida y — en el nivel Executive — cena VIP con asientos preferenciales. Vas a estar rodeado de 250+ líderes de más de 10 países que están exactamente en la misma búsqueda que tú.</div>
+            <div class="obj-a">El networking está diseñado, no improvisado: sesión de matchmaking estructurado, cóctel de bienvenida y — en el nivel VIP All Access — cena VIP con asientos preferenciales. Vas a estar rodeado de 250+ líderes de más de 10 países que están exactamente en la misma búsqueda que tú.</div>
           </div>
           <div class="obj-card reveal d3">
             <div class="obj-q">"Es caro."</div>
@@ -943,7 +1042,7 @@
           </div>
           <div class="obj-card reveal">
             <div class="obj-q">"¿Y si no puedo asistir?"</div>
-            <div class="obj-a"><span class="ph"><strong>Contenido pendiente:</strong> aquí debe ir la política real de transferencia, cambio o cancelación de boletos (si existe). No se debe publicar una promesa que la organización no pueda cumplir — completar antes de publicar esta sección.</span></div>
+            <div class="obj-a">No te quedas fuera. Como asistente registrado tienes acceso a las actas, presentaciones y videos del evento, para que puedas repasar el contenido a tu ritmo — aunque no puedas estar presente en cada sesión.</div>
           </div>
         </div>
       </div>
@@ -954,13 +1053,12 @@
     <!-- ═══════════ 10 · RISK REVERSAL — REDUCIR RIESGO ═══════════ -->
     <section id="risk-reversal">
       <div class="si">
-        <div class="eyebrow">Risk Reversal</div>
-        <h2 class="stitle reveal">Reducir el riesgo de <span class="accent">decidir hoy</span></h2>
-        <p class="ph reveal">⚠️ <strong>Sección pendiente de completar con políticas reales.</strong> El PDF de estrategia indica: "políticas claras, soporte, transferencia, cambios o cancelación cuando realmente existan — no prometer garantías que la organización no pueda cumplir." Actualmente no hay políticas publicadas de transferencia/cancelación en el sitio. Confirmar con el equipo antes de publicar esta sección en vivo.</p>
+        <div class="eyebrow">Invierte con Confianza</div>
+        <h2 class="stitle reveal">Tu entrada está protegida para que tomes la <span class="accent">decisión con tranquilidad</span></h2>
         <div class="risk-grid">
-          <div class="risk-card reveal"><span class="risk-ico">🔁</span><div class="risk-title">Transferencia de boleto</div><div class="obj-a" style="font-size:12.5px;">[Pendiente: ¿se permite transferir el boleto a otra persona? ¿bajo qué condiciones?]</div></div>
-          <div class="risk-card reveal d1"><span class="risk-ico">🔄</span><div class="risk-title">Cambio de nivel de acceso</div><div class="obj-a" style="font-size:12.5px;">[Pendiente: ¿se puede hacer upgrade de General a VIP/Executive después de comprar?]</div></div>
-          <div class="risk-card reveal d2"><span class="risk-ico">💬</span><div class="risk-title">Soporte directo</div><div class="obj-a" style="font-size:12.5px;">Escríbenos a <a href="mailto:info@iaExpo.ai" style="color:var(--cyan);">info@iaExpo.ai</a> — el equipo responde dudas de registro y facturación.</div></div>
+          <div class="risk-card reveal"><span class="risk-ico">🛡️</span><div class="risk-title">Compra sin Riesgo</div><div class="obj-a" style="font-size:12.5px;">Tienes 15 días desde tu compra para solicitar un reembolso completo, sin preguntas. Aplica a compras realizadas hasta el 31 de diciembre de 2026.</div></div>
+          <div class="risk-card reveal d1"><span class="risk-ico">🔁</span><div class="risk-title">Boleto Transferible</div><div class="obj-a" style="font-size:12.5px;">Si tus planes cambian, puedes ceder tu boleto a otra persona sin costo adicional hasta 72 horas antes del inicio del evento.</div></div>
+          <div class="risk-card reveal d2"><span class="risk-ico">💰</span><div class="risk-title">Precio Garantizado</div><div class="obj-a" style="font-size:12.5px;">Tu tarifa queda fija desde el momento de tu compra: si el precio sube, tú no pagas la diferencia; si baja, te la reembolsamos.</div></div>
         </div>
       </div>
     </section>
@@ -971,13 +1069,15 @@
     <section id="tickets">
       <div class="si">
         <div class="eyebrow">Tickets</div>
-        <h2 class="stitle reveal">No vendemos paquetes.<br>Vendemos <span class="accent">niveles de pertenencia</span></h2>
-        <p class="sdesc reveal d1">29 y 30 de enero de 2027. Cada nivel representa una diferencia real y demostrable en acceso, comodidad y experiencia — no solo un nombre distinto. Y cada nivel tiene un límite físico real.</p>
+        <h2 class="stitle reveal">No vendemos paquetes.<br>Vendemos <span class="accent">niveles de ExperiencIA</span></h2>
+
+        <h3 class="stitle-sub reveal">¿Qué <span class="accent">ExperiencIA</span> quieres vivir?</h3>
+        <p class="sub-date reveal">📅 29 y 30 de enero de 2027</p>
 
         <div class="tier-grid">
-          <!-- GENERAL -->
+          <!-- PROFESIONAL -->
           <div class="tier-card reveal">
-            <div class="tier-name" style="color:var(--cyan);">General</div>
+            <div class="tier-name" style="color:var(--cyan);">Profesional</div>
             <div class="tier-for">Para quienes quieren formar parte de la experiencia principal: escenario, contenido y Expo.</div>
             <div class="tier-price" style="color:var(--cyan);">$500 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
             <div class="tier-features">
@@ -987,36 +1087,24 @@
               <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Actas, Presentaciones y Videos</div>
             </div>
             <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 250 lugares</span></div>
-            <a href="https://iaExpo.ai/admisiones/conferencias" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar General →</a>
+            <a href="https://iaExpo.ai/admisiones/conferencias" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar Profesional →</a>
           </div>
 
-          <!-- VIP -->
-          <div class="tier-card reveal d1">
-            <div class="tier-name" style="color:var(--green);">VIP</div>
-            <div class="tier-for">Para quienes buscan mayor nivel de comodidad, acceso y experiencia de conexión.</div>
-            <div class="tier-price" style="color:var(--green);">$800 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
-            <div class="tier-features">
-              <div class="tier-feature new"><span class="ico-yes">✓</span> Todo lo de General, más:</div>
-              <div class="tier-feature"><span class="ico-yes">✓</span> Networking estructurado (matchmaking)</div>
-              <div class="tier-feature"><span class="ico-yes">✓</span> Cóctel de bienvenida</div>
-            </div>
-            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 25 lugares</span></div>
-            <a href="https://iaExpo.ai/admisiones/network" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar VIP →</a>
-          </div>
-
-          <!-- EXECUTIVE -->
-          <div class="tier-card featured reveal d2">
-            <div class="tier-badge">⭐ Más Exclusivo</div>
-            <div class="tier-name" style="color:var(--gold);">Executive</div>
+          <!-- VIP ALL ACCESS -->
+          <div class="tier-card featured reveal d1">
+            <div class="tier-badge">⭐ Más Completo</div>
+            <div class="tier-name" style="color:var(--gold);">VIP All Access</div>
             <div class="tier-for">Para líderes que buscan el nivel superior de acceso, comodidad y conexión.</div>
             <div class="tier-price" style="color:var(--gold);">$1,000 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
             <div class="tier-features">
-              <div class="tier-feature new"><span class="ico-yes">✓</span> Todo lo de VIP, más:</div>
+              <div class="tier-feature new"><span class="ico-yes">✓</span> Todo lo de Profesional, más:</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Networking estructurado (matchmaking)</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Cóctel de bienvenida</div>
               <div class="tier-feature"><span class="ico-yes">✓</span> Asientos preferenciales</div>
               <div class="tier-feature"><span class="ico-yes">✓</span> Cena VIP</div>
             </div>
-            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 20 lugares</span></div>
-            <a href="https://iaExpo.ai/admisiones/vip-all-access" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar Executive →</a>
+            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 25 lugares</span></div>
+            <a href="https://iaExpo.ai/admisiones/vip-all-access" class="tier-btn" target="_blank" rel="noopener">Quiero mi VIP All Access →</a>
           </div>
         </div>
 
@@ -1024,13 +1112,6 @@
         <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Disponibles con cualquier nivel de acceso.</p>
         <div class="addon-grid">
           <div class="addon-card reveal">
-            <div><div class="addon-title">🏛️ Expo Pass</div><div class="addon-desc">Solo el piso de Expo — demos en vivo, 2 días, sin conferencias.</div></div>
-            <div style="text-align:right;">
-              <div class="addon-price">$200 USD</div>
-              <a href="https://iaExpo.ai/admisiones/expo" class="fmini-link" style="margin-top:6px;display:inline-block;" target="_blank" rel="noopener">Reservar →</a>
-            </div>
-          </div>
-          <div class="addon-card reveal d1">
             <div><div class="addon-title">🛠️ Talleres prácticos</div><div class="addon-desc">28 de enero, 3:00–7:00 PM. 4 talleres, cupo de 20 personas c/u.</div></div>
             <div style="text-align:right;">
               <div class="addon-price">$200 USD c/u</div>
@@ -1047,22 +1128,27 @@
     <!-- ═══════════ 12 · URGENCIA — DAR UNA RAZÓN PARA ACTUAR AHORA ═══════════ -->
     <section id="urgencia">
       <div class="si">
-        <div class="eyebrow">Urgencia</div>
-        <h2 class="stitle reveal">Los cupos son reales.<br><span class="accent">No todos van a estar dentro.</span></h2>
-        <p class="sdesc reveal d1">Esto no es escasez artificial de marketing. Es el límite físico real de la sede — cuando se llenan los lugares, la puerta se cierra. Executive y VIP tienen la capacidad más reducida y suelen agotarse primero en cada edición.</p>
+        <div class="eyebrow">Los Cupos son Limitados</div>
+        <div class="urg-intro-grid">
+          <div class="urg-intro-content">
+            <h2 class="stitle reveal">Los cupos son reales.<br><span class="accent">Asegura tu lugar antes de que se agote.</span></h2>
+            <p class="sdesc reveal d1">IA Expo Internacional 2027 está diseñada para que puedas interactuar directamente con expertos y líderes de IA, sin perderte entre miles de personas. No buscamos llenar un salón — buscamos reunir a las personas correctas.</p>
+          </div>
+          <div class="urg-intro-img-wrap reveal d1">
+            <img class="urg-intro-img" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a989fdfda522bf173aa4413.png" alt="Los Cupos son Limitados">
+          </div>
+        </div>
         <div class="urgency-banner reveal">
-          <p style="font-size:16px;color:var(--text);font-weight:700;">🔥 Solo 20 lugares Executive y 25 lugares VIP en toda la edición 2027.</p>
+          <p style="font-size:16px;color:var(--text);font-weight:700;">🔥 Solo 25 lugares VIP All Access en toda la edición 2027.</p>
           <div class="urgency-cupos-row">
-            <div class="ucupo"><div class="ucupo-n">20</div><div class="ucupo-l">Lugares Executive</div></div>
-            <div class="ucupo"><div class="ucupo-n">25</div><div class="ucupo-l">Lugares VIP</div></div>
-            <div class="ucupo"><div class="ucupo-n">250</div><div class="ucupo-l">Lugares General</div></div>
+            <div class="ucupo"><div class="ucupo-n">25</div><div class="ucupo-l">Lugares VIP All Access</div></div>
+            <div class="ucupo"><div class="ucupo-n">250</div><div class="ucupo-l">Lugares Profesional</div></div>
             <div class="ucupo"><div class="ucupo-n">20</div><div class="ucupo-l">Lugares por Taller</div></div>
           </div>
           <div style="margin-top:28px;">
             <a href="#tickets" class="btn-primary btn-gold">🔑 Asegurar mi Acceso Ahora</a>
           </div>
         </div>
-        <p class="ph reveal" style="margin-top:20px;">⚠️ <strong>Pendiente:</strong> si existe un calendario real de Early Bird / cambio de precio por etapas, agregarlo aquí con fechas específicas. No se incluyó porque no hay una etapa de precios activa confirmada al momento de crear esta página.</p>
       </div>
     </section>
 
@@ -1088,7 +1174,7 @@
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta asistir y qué incluye cada nivel?<span class="faq-arrow">+</span></div>
-            <div class="faq-a">General ($500 USD): Expo, Coffee Break y 2 días de Conferencias. VIP ($800 USD): todo lo de General más Networking estructurado y Cóctel de bienvenida. Executive ($1,000 USD): todo lo de VIP más asientos preferenciales y Cena VIP. También hay Expo Pass ($200 USD) y Talleres ($200 USD c/u) como complementos.</div>
+            <div class="faq-a">Profesional ($500 USD): Expo, Coffee Break y 2 días de Conferencias. VIP All Access ($1,000 USD): todo lo de Profesional más Networking estructurado, Cóctel de bienvenida, asientos preferenciales y Cena VIP. También hay Talleres ($200 USD c/u) como complemento.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo ser speaker o presentar un paper?<span class="faq-arrow">+</span></div>
@@ -1111,7 +1197,131 @@
       </div>
     </section>
 
-    <!-- ═══════════ 14 · CIERRE — CONVERTIR VALOR EN DECISIÓN ═══════════ -->
+    <div class="gd"></div>
+
+    <!-- ═══════════ 14 · HOSPEDAJE ═══════════ -->
+    <section id="hospedaje">
+      <div class="si">
+        <div class="eyebrow">Sede Oficial</div>
+        <div class="hosp-intro-grid">
+          <div class="hosp-intro-content">
+            <h2 class="stitle reveal">Hospedaje del <span class="accent">Evento</span></h2>
+            <p class="sdesc reveal d1">Reserva directamente en el hotel sede de IA Expo 2027 y disfruta de tarifas preferenciales negociadas exclusivamente para nuestros asistentes.</p>
+            <div class="reveal d1" style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(0,230,118,0.10),rgba(0,200,100,0.05));border:1px solid rgba(0,230,118,0.3);border-radius:14px;padding:14px 24px;">
+              <span style="font-size:28px;">🏷️</span>
+              <div>
+                <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:800;color:#00E676;line-height:1;">40% de Descuento</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-top:3px;">Tarifa exclusiva para asistentes de IA Expo 2027</div>
+              </div>
+            </div>
+          </div>
+          <div class="hosp-intro-img-wrap reveal d1">
+            <img class="hosp-intro-img" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a988f5ea1de6b8a2279d642.jpg" alt="Hospedaje del Evento">
+          </div>
+        </div>
+
+        <div class="reveal d1 hosp-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1000px;margin:36px auto 0;">
+          <!-- Imagen del hotel -->
+          <div style="border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);aspect-ratio:16/10;">
+            <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/690d2d7f006d90733a112a5a.jpg"
+                 alt="Westin Santa Fe Ciudad de México"
+                 style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+
+          <!-- Info del hotel -->
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:30px;padding:6px 16px;font-size:12px;font-weight:700;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px;">
+              🏆 Hotel Sede Oficial
+            </div>
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px;">The Westin Santa Fe</h3>
+            <p style="font-size:14px;color:var(--cyan);font-weight:600;margin-bottom:20px;">📍 Ciudad de México, CDMX</p>
+
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+              <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted);">
+                <span style="color:#00E676;font-size:16px;font-weight:800;">✓</span> <strong style="color:#00E676;">40% de descuento</strong>&nbsp;exclusivo para asistentes de IA Expo
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted);">
+                <span style="color:var(--cyan);font-size:16px;">✓</span> A pasos del venue del evento
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted);">
+                <span style="color:var(--cyan);font-size:16px;">✓</span> Alberca, spa, fitness center y restaurantes
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted);">
+                <span style="color:var(--cyan);font-size:16px;">✓</span> Disponibilidad limitada — reserva con anticipación
+              </div>
+            </div>
+
+            <a href="https://www.marriott.com/event-reservations/reservation-link.mi?app=resvlink&id=1781217443074&key=GRP"
+               target="_blank" rel="noopener"
+               class="btn-primary"
+               style="display:inline-flex;align-items:center;gap:8px;font-size:15px;">
+              🏨 Reservar Habitación
+            </a>
+            <p style="font-size:11px;color:var(--text-dim);margin-top:12px;">Enlace de reservación grupal exclusivo para IA Expo 2027</p>
+          </div>
+        </div>
+
+        <!-- Responsive: stack on mobile -->
+        <style>
+          @media(max-width:768px){
+            #hospedaje .hosp-grid { grid-template-columns:1fr !important; gap:24px !important; }
+          }
+        </style>
+
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 15 · CONTACTO ═══════════ -->
+    <section id="contacto">
+      <div class="si">
+        <div class="eyebrow">Contacto</div>
+        <h2 class="stitle reveal">Estamos aquí para<br><span class="accent">Ayudarte</span></h2>
+        <div class="con-grid" style="margin-top:48px;">
+          <div class="con-info reveal">
+            <h3>Escríbenos</h3>
+            <p>¿Tienes preguntas sobre el evento, ponencias o alianzas estratégicas? Nuestro equipo responde en menos de 24 horas.</p>
+            <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a988d04a1f3f48f4ba32a62.jpg" alt="Contacto IA Expo" style="width:100%;border-radius:16px;overflow:hidden;display:block;margin-bottom:28px;box-shadow:0 20px 50px rgba(0,0,0,0.35);">
+            <div class="con-items">
+              <a href="mailto:info@iaExpo.ai?subject=Información IA Expo 2027" class="ci">
+                <div class="ci-icon">📧</div>
+                <div class="ci-text"><strong>Email</strong><span>info@iaExpo.ai</span></div>
+              </a>
+              <a href="https://wa.me/525559632687?text=Hola%2C%20me%20interesa%20la%20IA%20Expo%202027" target="_blank" class="ci">
+                <div class="ci-icon">📲</div>
+                <div class="ci-text"><strong>WhatsApp</strong><span>+52 55 5963-2687</span></div>
+              </a>
+              <div class="ci">
+                <div class="ci-icon">📅</div>
+                <div class="ci-text"><strong>Fechas</strong><span>28, 29 y 30 de Enero de 2027</span></div>
+              </div>
+              <div class="ci">
+                <div class="ci-icon">📍</div>
+                <div class="ci-text"><strong>Sede</strong><span id="ev-info-sede">Westin Santa fe • Ciudad de México</span></div>
+              </div>
+              <a href="https://iaExpo.ai" class="ci">
+                <div class="ci-icon">🌐</div>
+                <div class="ci-text"><strong>Web</strong><span>iaExpo.ai</span></div>
+              </a>
+            </div>
+          </div>
+          <div class="bol-reg-box reveal d1">
+            <div class="bol-reg-hdr">
+              <h3>IA Expo Internacional 2027</h3>
+            </div>
+            <div class="bol-reg-form">
+              <iframe src="https://api.fanforce.online/widget/form/ZytHIX9hH3aKeNV1fVt0" style="width:100%;height:780px;border:none;display:block;" id="inline-ZytHIX9hH3aKeNV1fVt0" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="IA Expo Registro" data-height="780" data-layout-iframe-id="inline-ZytHIX9hH3aKeNV1fVt0" data-form-id="ZytHIX9hH3aKeNV1fVt0" title="IA Expo Registro"></iframe>
+              <script src="https://api.fanforce.online/js/form_embed.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gd"></div>
+
+    <!-- ═══════════ 16 · CIERRE — CONVERTIR VALOR EN DECISIÓN ═══════════ -->
     <section id="cierre">
       <div class="hero-eyebrow" style="justify-content:center;"><div class="dot"></div>28 · 29 · 30 de Enero de 2027 · Ciudad de México</div>
       <p class="cierre-lema reveal">¿Estás <span class="accent">Dentro</span>?</p>
@@ -1121,7 +1331,7 @@
 
     <div class="gd"></div>
 
-    <!-- ═══════════ 15 · CHECKOUT — CTA FINAL ═══════════ -->
+    <!-- ═══════════ 17 · CHECKOUT — CTA FINAL ═══════════ -->
     <section id="checkout" style="padding:80px 5%;">
       <div class="checkout-bar reveal">
         <div>
@@ -1129,9 +1339,8 @@
           <div style="font-size:13px;color:var(--text-muted);">28–30 de enero de 2027 · Westin Santa Fe, CDMX</div>
         </div>
         <div class="checkout-tiers">
-          <a href="https://iaExpo.ai/admisiones/conferencias" class="checkout-chip" target="_blank" rel="noopener">General<span class="cc-price">$500 USD</span></a>
-          <a href="https://iaExpo.ai/admisiones/network" class="checkout-chip" target="_blank" rel="noopener">VIP<span class="cc-price">$800 USD</span></a>
-          <a href="https://iaExpo.ai/admisiones/vip-all-access" class="checkout-chip" target="_blank" rel="noopener">Executive<span class="cc-price">$1,000 USD</span></a>
+          <a href="https://iaExpo.ai/admisiones/conferencias" class="checkout-chip" target="_blank" rel="noopener">Profesional<span class="cc-price">$500 USD</span></a>
+          <a href="https://iaExpo.ai/admisiones/vip-all-access" class="checkout-chip" target="_blank" rel="noopener">VIP All Access<span class="cc-price">$1,000 USD</span></a>
         </div>
       </div>
     </section>
@@ -1146,7 +1355,6 @@
           <a href="https://iaExpo.ai#boletos" class="fmini-link">Participa</a>
           <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
           <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
-          <a href="https://patrocinios.iaExpo.ai" class="fmini-link">Patrocinios</a>
           <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
           <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
           <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
@@ -1198,7 +1406,7 @@
       // ── Carrusel galería IA Expo 2026 (github.com/iaExpo/www/galeria) ──
       (function() {
         const BASE  = 'https://raw.githubusercontent.com/iaExpo/www/main/galeria/';
-        const TOTAL = 43; // iaExpo2026-001.jpg … iaExpo2026-043.jpg
+        const TOTAL = 48; // iaExpo2026-001.jpg … iaExpo2026-048.jpg
         const DELAY = 4000; // 4 segundos
 
         const all = [];

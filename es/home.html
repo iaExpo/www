@@ -268,7 +268,7 @@
         position: absolute;
         inset: 0;
         background: url('https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a91df8a626105f955a5b0cc.png') center 30%/cover no-repeat;
-        opacity: 0.85;
+        opacity: 1;
         animation: slowzoom 20s ease-out forwards;
       }
 
@@ -2014,10 +2014,8 @@
         <span>IA Expo Internacional 2027</span>
       </a>
       <div class="nav-tabs">
-        <a href="https://iaexpo.ai/#experiencia" class="ntab"><span class="ico">👑</span> VIP All Access</a>
-        <a href="https://iaexpo.ai/#experiencia" class="ntab"><span class="ico">🥂</span> Networking</a>
-        <a href="https://iaexpo.ai/#experiencia" class="ntab"><span class="ico">🎤</span> Conferencias</a>
-        <a href="https://iaexpo.ai/#experiencia" class="ntab"><span class="ico">🏛️</span> Expo</a>
+        <a href="https://iaexpo.ai/#experiencia" class="ntab"><span class="ico">🏟️</span> Profesional</a>
+        <a href="https://iaexpo.ai/#experiencia" class="ntab"><span class="ico">💎</span> VIP All Access</a>
         <a href="#talleres" class="ntab"><span class="ico">🛠️</span> Talleres</a>
         <a href="https://sede.iaExpo.ai" class="ntab"><span class="ico">🏨</span> Hospedaje</a>
         <a href="https://faq.iaExpo.ai" class="ntab"><span class="ico">❓</span> FAQ</a>
@@ -2030,10 +2028,8 @@
 
     <!-- MENÚ MÓVIL -->
     <div class="mobile-menu" id="mmenu">
-      <a href="https://iaexpo.ai/#experiencia" class="ntab" onclick="closeNav()"><span class="ico">👑</span> VIP All Access</a>
-      <a href="https://iaexpo.ai/#experiencia" class="ntab" onclick="closeNav()"><span class="ico">🥂</span> Networking</a>
-      <a href="https://iaexpo.ai/#experiencia" class="ntab" onclick="closeNav()"><span class="ico">🎤</span> Conferencias</a>
-      <a href="https://iaexpo.ai/#experiencia" class="ntab" onclick="closeNav()"><span class="ico">🏛️</span> Expo</a>
+      <a href="https://iaexpo.ai/#experiencia" class="ntab" onclick="closeNav()"><span class="ico">🏟️</span> Profesional</a>
+      <a href="https://iaexpo.ai/#experiencia" class="ntab" onclick="closeNav()"><span class="ico">💎</span> VIP All Access</a>
       <a href="#talleres" class="ntab" onclick="closeNav()"><span class="ico">🛠️</span> Talleres</a>
       <a href="https://sede.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">🏨</span> Hospedaje</a>
       <a href="https://faq.iaExpo.ai" class="ntab" onclick="closeNav()"><span class="ico">❓</span> FAQ</a>
@@ -2043,7 +2039,6 @@
     <!-- HERO -->
     <section id="hero">
       <div class="hero-bg-img"></div>
-      <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(to right, rgba(3,7,18,0.60) 0%, rgba(3,7,18,0.35) 45%, rgba(3,7,18,0.05) 100%);pointer-events:none;"></div>
       <div class="cd-wrap">
         <div class="cd-label">Cuenta regresiva al evento</div>
         <div class="countdown">
@@ -2104,6 +2099,55 @@
         <h3 class="stitle-sub reveal">¿Qué <span class="accent">ExperiencIA</span> quieres vivir?</h3>
         <p class="sub-date reveal">📅 29 y 30 de enero de 2027</p>
         <div class="exp-grid reveal">
+          <!-- NETWORKING
+          <div class="exp-card green" id="ticket-networking">
+            <div class="exp-header">
+              <span class="tkt-icon">🥂</span>
+              <span class="exp-name" style="color:#00E676">Networking Estructurado</span>
+            </div>
+            <div class="tkt-desc">Todo lo de Conferencias + sesión de matchmaking estructurado con los líderes más relevantes del ecosistema IA de LATAM.</div>
+            <div class="exp-price" style="color:#00E676">$800 USD</div>
+            <ul class="exp-features">
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Área de Expo</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Coffee Break</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Complementos Alimenticios</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Keynotes + Conferencias</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Actas</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Presentaciones</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Videos</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Networking estructurado</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Cóctel de bienvenida</li>
+              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Asientos preferenciales</li>
+              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Cena VIP</li>
+            </ul>
+            <div class="exp-cupos"><span class="tkt-badge green">⚠️ Solo 25 cupos</span></div>
+            <a href="https://iaExpo.ai/admisiones/network" class="tkt-btn" target="_blank" rel="noopener">Asegura tu Networking →</a>
+          </div>
+          -->
+          <!-- PROFESIONAL -->
+          <div class="exp-card cyan" id="ticket-profesional">
+            <div class="exp-header">
+              <span class="tkt-icon">🏟️</span>
+              <span class="exp-name" style="color:var(--cyan)">Profesional</span>
+            </div>
+            <div class="tkt-desc">Acceso a los 2 días de conferencias (29–30 enero) con keynotes, paneles y los mejores speakers de IA en LATAM. Incluye Expo + Coffee Break.</div>
+            <div class="exp-price" style="color:var(--cyan)">$500 USD</div>
+            <ul class="exp-features">
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Área de Expo</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Coffee Break</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Complementos Alimenticios</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Keynotes + Conferencias</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Actas</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Presentaciones</li>
+              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Videos</li>
+              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Networking estructurado</li>
+              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Cóctel de bienvenida</li>
+              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Asientos preferenciales</li>
+              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Cena VIP</li>
+            </ul>
+            <div class="exp-cupos"><span class="tkt-badge green">⚠️ Solo 250 cupos</span></div>
+            <a href="https://iaExpo.ai/admisiones/conferencias" class="tkt-btn" target="_blank" rel="noopener">Asegura tu Profesional →</a>
+          </div>
           <!-- VIP ALL ACCESS -->
           <div class="exp-card gold" id="ticket-vip">
             <span class="tkt-badge gold" style="margin-bottom:10px;">⭐ Más Completo</span>
@@ -2129,55 +2173,7 @@
             <div class="exp-cupos"><span class="tkt-badge gold">⚠️ Solo 20 cupos</span></div>
             <a href="https://iaExpo.ai/admisiones/vip-all-access" class="tkt-btn" target="_blank" rel="noopener">Asegura tu VIP All Access →</a>
           </div>
-          <!-- NETWORKING -->
-          <div class="exp-card green" id="ticket-networking">
-            <div class="exp-header">
-              <span class="tkt-icon">🥂</span>
-              <span class="exp-name" style="color:#00E676">Networking Estructurado</span>
-            </div>
-            <div class="tkt-desc">Todo lo de Conferencias + sesión de matchmaking estructurado con los líderes más relevantes del ecosistema IA de LATAM.</div>
-            <div class="exp-price" style="color:#00E676">$800 USD</div>
-            <ul class="exp-features">
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Área de Expo</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Coffee Break</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Complementos Alimenticios</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Keynotes + Conferencias</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Actas</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Presentaciones</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Videos</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Networking estructurado</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Cóctel de bienvenida</li>
-              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Asientos preferenciales</li>
-              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Cena VIP</li>
-            </ul>
-            <div class="exp-cupos"><span class="tkt-badge green">⚠️ Solo 25 cupos</span></div>
-            <a href="https://iaExpo.ai/admisiones/network" class="tkt-btn" target="_blank" rel="noopener">Asegura tu Networking →</a>
-          </div>
-          <!-- CONFERENCIAS -->
-          <div class="exp-card cyan" id="ticket-conferencias">
-            <div class="exp-header">
-              <span class="tkt-icon">🏟️</span>
-              <span class="exp-name" style="color:var(--cyan)">Conferencias</span>
-            </div>
-            <div class="tkt-desc">Acceso a los 2 días de conferencias (29–30 enero) con keynotes, paneles y los mejores speakers de IA en LATAM. Incluye Expo + Coffee Break.</div>
-            <div class="exp-price" style="color:var(--cyan)">$500 USD</div>
-            <ul class="exp-features">
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Área de Expo</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Coffee Break</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Complementos Alimenticios</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Keynotes + Conferencias</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Actas</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Presentaciones</li>
-              <li class="exp-feature"><span class="exp-ico yes">✓</span> Acceso a Videos</li>
-              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Networking estructurado</li>
-              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Cóctel de bienvenida</li>
-              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Asientos preferenciales</li>
-              <li class="exp-feature muted"><span class="exp-ico no">✕</span> Cena VIP</li>
-            </ul>
-            <div class="exp-cupos"><span class="tkt-badge green">⚠️ Solo 250 cupos</span></div>
-            <a href="https://iaExpo.ai/admisiones/conferencias" class="tkt-btn" target="_blank" rel="noopener">Asegura tus Conferencias →</a>
-          </div>
-          <!-- EXPO -->
+          <!-- EXPO
           <div class="exp-card orange">
             <div class="exp-header">
               <span class="tkt-icon">🏛️</span>
@@ -2201,6 +2197,7 @@
             <div class="exp-cupos"><span class="tkt-badge green">⚠️ Solo 200 cupos</span></div>
             <a href="https://iaExpo.ai/admisiones/expo" class="tkt-btn" target="_blank" rel="noopener">Asegura tu Expo →</a>
           </div>
+          -->
         </div>
 
         <!-- ── TALLERES ── -->
@@ -2487,7 +2484,6 @@
           <a href="#boletos" class="fmini-link">Participa</a>
           <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
           <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
-          <a href="https://patrocinios.iaExpo.ai" class="fmini-link">Patrocinios</a>
           <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
           <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
           <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
