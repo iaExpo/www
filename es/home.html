@@ -794,7 +794,7 @@
       .exp-header .tkt-icon { font-size: 1.4rem; }
       .exp-price {
         font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.9rem;
+        font-size: 2.4rem;
         font-weight: 800;
         margin-bottom: 18px;
       }
@@ -1126,20 +1126,29 @@
       }
 
       .tkt-launch {
-        font-size: 1.25rem;
+        font-size: 1.7rem;
         font-weight: 900;
         line-height: 1;
       }
 
       .tkt-orig {
-        font-size: 1rem;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--text-muted);
         text-decoration: line-through;
         text-decoration-thickness: 2px;
         text-decoration-color: rgba(255,255,255,0.45);
-        margin-top: 4px;
         letter-spacing: 0.01em;
+      }
+
+      .tkt-price-block {
+        margin-top: -6px;
+        text-align: center;
+      }
+
+      .tkt-price-block:first-of-type {
+        margin-top: 6px;
       }
 
       .tkt-badge {
@@ -2131,7 +2140,14 @@
               <span class="exp-name" style="color:var(--cyan)">Profesional</span>
             </div>
             <div class="tkt-desc">Acceso a los 2 días de conferencias (29–30 enero) con keynotes, paneles y los mejores speakers de IA en LATAM. Incluye Expo + Coffee Break.</div>
-            <div class="exp-price" style="color:var(--cyan)">$500 USD</div>
+            <div class="tkt-price-block">
+              <div class="tkt-orig" id="tkt-profesional-orig">$1,000 USD</div>
+            <!--
+            </div>
+            <div class="tkt-price-block">
+            -->
+              <div class="exp-price" id="tkt-profesional-eb" style="color:var(--cyan)">$250 USD</div>
+            </div>
             <ul class="exp-features">
               <li class="exp-feature"><span class="exp-ico yes">✓</span> Área de Expo</li>
               <li class="exp-feature"><span class="exp-ico yes">✓</span> Coffee Break</li>
@@ -2150,13 +2166,20 @@
           </div>
           <!-- VIP ALL ACCESS -->
           <div class="exp-card gold" id="ticket-vip">
-            <span class="tkt-badge gold" style="margin-bottom:10px;">⭐ Más Completo</span>
             <div class="exp-header">
               <span class="tkt-icon">💎</span>
               <span class="exp-name" style="color:var(--gold)">VIP All Access</span>
             </div>
             <div class="tkt-desc">Acceso completo al evento (28–30 enero) — Expo + Conferencias + Networking + Cena de bienvenida. Lounge VIP y beneficios exclusivos.</div>
-            <div class="exp-price" style="color:var(--gold)">$1,000 USD</div>
+            <br>
+            <div class="tkt-price-block">
+              <div class="tkt-orig" id="tkt-vip-orig">$2,000 USD</div>
+            <!--
+            </div>
+            <div class="tkt-price-block">
+            -->
+              <div class="exp-price" id="tkt-vip-eb" style="color:var(--gold)">$500 USD</div>
+            </div>
             <ul class="exp-features">
               <li class="exp-feature"><span class="exp-ico yes">✓</span> Área de Expo</li>
               <li class="exp-feature"><span class="exp-ico yes">✓</span> Coffee Break</li>
@@ -2170,7 +2193,7 @@
               <li class="exp-feature"><span class="exp-ico yes">✓</span> Asientos preferenciales</li>
               <li class="exp-feature"><span class="exp-ico yes">✓</span> Cena VIP</li>
             </ul>
-            <div class="exp-cupos"><span class="tkt-badge gold">⚠️ Solo 20 cupos</span></div>
+            <div class="exp-cupos"><span class="tkt-badge gold">⚠️ Solo 50 cupos</span></div>
             <a href="https://iaExpo.ai/admisiones/vip-all-access" class="tkt-btn" target="_blank" rel="noopener">Asegura tu VIP All Access →</a>
           </div>
           <!-- EXPO
@@ -2240,7 +2263,8 @@
             </div>
             <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
               <div style="margin-bottom:10px;">
-                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;">$200 USD</div>
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-a-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-a-eb">$100 USD</div>
                 <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
               </div>
               <a href="https://iaExpo.ai/admisiones/taller-a" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>
@@ -2272,7 +2296,8 @@
             </div>
             <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
               <div style="margin-bottom:10px;">
-                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;">$200 USD</div>
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-b-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-b-eb">$100 USD</div>
                 <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
               </div>
               <a href="https://iaExpo.ai/admisiones/taller-b" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>
@@ -2315,7 +2340,8 @@
             </div>
             <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
               <div style="margin-bottom:10px;">
-                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;">$200 USD</div>
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-c-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-c-eb">$100 USD</div>
                 <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
               </div>
               <a href="https://iaExpo.ai/admisiones/taller-c" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>
@@ -2348,7 +2374,8 @@
             </div>
             <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
               <div style="margin-bottom:10px;">
-                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;">$200 USD</div>
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-d-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-d-eb">$100 USD</div>
                 <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
               </div>
               <a href="https://iaExpo.ai/admisiones/taller-d" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>

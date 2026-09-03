@@ -238,6 +238,7 @@
         border-radius: 20px;
         padding: 20px 20px;
       }
+      @media(max-width:768px) { .cd-wrap { display: none !important; } }
       .cd-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #d1d5db; margin-bottom: 16px; }
       .countdown { display: flex; justify-content: center; gap: 8px; flex-wrap: nowrap; }
       .cd-unit { display: flex; flex-direction: column; align-items: center; }
@@ -447,11 +448,37 @@
       }
       .tier-name { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
       .tier-for { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; min-height: 40px; }
-      .tier-price { font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 800; margin-bottom: 20px; }
-      .tier-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; flex: 1; }
-      .tier-feature { display: flex; gap: 8px; font-size: 13px; color: var(--text-muted); align-items: flex-start; }
+      .tier-price { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 800; margin-bottom: 20px; text-align: center; }
+      .tier-price-orig {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-muted);
+        text-align: center;
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+        text-decoration-color: rgba(255,255,255,0.45);
+        margin-bottom: -6px;
+      }
+      .tier-features { display: flex; flex-direction: column; gap: 11px; margin-bottom: 20px; flex: 1; }
+      .tier-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.82rem; color: #fff; line-height: 1.4; }
       .tier-feature.new { color: var(--text); font-weight: 600; }
-      .tier-feature .ico-yes { color: var(--green); flex-shrink: 0; }
+      .tier-feature.muted { color: var(--text-dim); opacity: 0.55; }
+      .tier-feature .ico-yes,
+      .tier-feature .ico-no {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 900;
+        border-radius: 50%;
+        margin-top: 1px;
+      }
+      .tier-feature .ico-yes { background: rgba(0,230,118,0.15); color: #00E676; }
+      .tier-feature .ico-no { background: rgba(255,255,255,0.06); color: var(--text-dim); }
       .tier-cupos { text-align: center; margin-bottom: 14px; }
       .tier-badge-cupos {
         display: inline-block; font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 100px;
@@ -675,6 +702,75 @@
         margin-bottom: 28px;
         letter-spacing: 0.04em;
       }
+
+      /* ── Talleres (copiado de home.html) ── */
+      .taller-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      @media(max-width: 640px) { .taller-2col { grid-template-columns: 1fr; } }
+      .taller-card {
+        background: var(--glass);
+        border: 1px solid rgba(0,102,255,0.25);
+        border-radius: 14px;
+        padding: 24px 16px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        transition: border-color 0.2s, transform 0.2s;
+      }
+      .taller-card:hover { transform: translateY(-3px); border-color: rgba(0,212,255,0.45); }
+      .taller-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: var(--gradient-1);
+      }
+      .tkt-btn {
+        display: block;
+        width: 100%;
+        margin-top: 16px;
+        padding: 11px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.06);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        text-decoration: none;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+      }
+      .tkt-btn:hover {
+        background: rgba(255,255,255,0.14);
+        border-color: rgba(255,255,255,0.4);
+        transform: translateY(-1px);
+      }
+      .tkt-launch {
+        font-size: 1.7rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+      .tkt-badge {
+        display: inline-block;
+        font-size: 0.6rem;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 99px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-top: 6px;
+      }
+      .tkt-badge.green {
+        background: rgba(0, 230, 118, 0.12);
+        color: #00E676;
+        border: 1px solid rgba(0, 230, 118, 0.3);
+      }
     </style>
   </head>
   <body>
@@ -740,7 +836,7 @@
         <div class="hero-sub">Internacional 2027</div>
         <div class="hero-lema">IA Para la Vida Real 2.0</div>
         <div class="hero-loc" id="ev-hero-loc">📍 Westin Santa fe · Ciudad de México</div>
-        <p class="hero-desc" id="ev-hero-desc">En la IA Expo Internacional 2027 no vienes solo a escuchar acerca de IA: <strong>vienes a vivir una ExperiencIA</strong>. Podrás explorar, probar e interactuar con <strong>soluciones reales</strong> para descubrir cómo la IA te ayuda a <strong>crear, decidir y trabajar mejor</strong>. Cada experiencia, demostración y conexión estará diseñada para que te lleves <strong>ideas útiles y aplicaciones prácticas</strong> que puedas poner en marcha en <strong>tu vida, tu profesión y tu empresa</strong>.</p>
+        <p class="hero-desc" id="ev-hero-desc">No solo vienes a escuchar acerca de IA: <strong>vienes a vivir una ExperiencIA</strong>. Podrás interactuar con <strong>soluciones reales</strong> para descubrir cómo la IA te ayuda a <strong>crear, decidir y trabajar mejor</strong>. Cada experiencia está diseñada para que te lleves <strong>ideas útiles y aplicaciones prácticas</strong> para <strong>tu vida, tu profesión y tu empresa</strong>.</p>
         <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;">
           <div class="hero-lema" style="margin-bottom:0;font-size:clamp(18px, 2.4vw, 26px);font-weight:700;">"¿Estás Dentro?"</div>
           <a href="#tickets" class="btn-primary">Asegura tu Lugar</a>
@@ -1079,12 +1175,20 @@
           <div class="tier-card reveal">
             <div class="tier-name" style="color:var(--cyan);">Profesional</div>
             <div class="tier-for">Para quienes quieren formar parte de la experiencia principal: escenario, contenido y Expo.</div>
-            <div class="tier-price" style="color:var(--cyan);">$500 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
+            <div class="tier-price-orig">$1,000 USD</div>
+            <div class="tier-price" style="color:var(--cyan);">$250 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
             <div class="tier-features">
-              <div class="tier-feature"><span class="ico-yes">✓</span> Área de Expo + Coffee Break</div>
-              <div class="tier-feature"><span class="ico-yes">✓</span> Complementos alimenticios</div>
-              <div class="tier-feature"><span class="ico-yes">✓</span> Keynotes + Conferencias (2 días)</div>
-              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Actas, Presentaciones y Videos</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Área de Expo</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Coffee Break</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Complementos Alimenticios</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Keynotes + Conferencias</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Actas</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Presentaciones</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Videos</div>
+              <div class="tier-feature muted"><span class="ico-no">✕</span> Networking estructurado</div>
+              <div class="tier-feature muted"><span class="ico-no">✕</span> Cóctel de bienvenida</div>
+              <div class="tier-feature muted"><span class="ico-no">✕</span> Asientos preferenciales</div>
+              <div class="tier-feature muted"><span class="ico-no">✕</span> Cena VIP</div>
             </div>
             <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 250 lugares</span></div>
             <a href="https://iaExpo.ai/admisiones/conferencias" class="tier-btn" target="_blank" rel="noopener">Quiero mi lugar Profesional →</a>
@@ -1095,30 +1199,190 @@
             <div class="tier-badge">⭐ Más Completo</div>
             <div class="tier-name" style="color:var(--gold);">VIP All Access</div>
             <div class="tier-for">Para líderes que buscan el nivel superior de acceso, comodidad y conexión.</div>
-            <div class="tier-price" style="color:var(--gold);">$1,000 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
+            <div class="tier-price-orig">$2,000 USD</div>
+            <div class="tier-price" style="color:var(--gold);">$500 <span style="font-size:15px;color:var(--text-muted);font-weight:600;">USD</span></div>
             <div class="tier-features">
-              <div class="tier-feature new"><span class="ico-yes">✓</span> Todo lo de Profesional, más:</div>
-              <div class="tier-feature"><span class="ico-yes">✓</span> Networking estructurado (matchmaking)</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Área de Expo</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Coffee Break</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Complementos Alimenticios</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Keynotes + Conferencias</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Actas</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Presentaciones</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Acceso a Videos</div>
+              <div class="tier-feature"><span class="ico-yes">✓</span> Networking estructurado</div>
               <div class="tier-feature"><span class="ico-yes">✓</span> Cóctel de bienvenida</div>
               <div class="tier-feature"><span class="ico-yes">✓</span> Asientos preferenciales</div>
               <div class="tier-feature"><span class="ico-yes">✓</span> Cena VIP</div>
             </div>
-            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 25 lugares</span></div>
+            <div class="tier-cupos"><span class="tier-badge-cupos">🔒 Capacidad total: 50 lugares</span></div>
             <a href="https://iaExpo.ai/admisiones/vip-all-access" class="tier-btn" target="_blank" rel="noopener">Quiero mi VIP All Access →</a>
           </div>
         </div>
 
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;margin:56px 0 4px;">Complementa tu experiencia</h3>
-        <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Disponibles con cualquier nivel de acceso.</p>
-        <div class="addon-grid">
-          <div class="addon-card reveal">
-            <div><div class="addon-title">🛠️ Talleres prácticos</div><div class="addon-desc">28 de enero, 3:00–7:00 PM. 4 talleres, cupo de 20 personas c/u.</div></div>
-            <div style="text-align:right;">
-              <div class="addon-price">$200 USD c/u</div>
-              <a href="https://iaExpo.ai/#talleres" class="fmini-link" style="margin-top:6px;display:inline-block;" target="_blank" rel="noopener">Ver talleres →</a>
+        <!-- ── TALLERES ── -->
+        <div id="talleres" style="scroll-margin-top:70px;"></div>
+        <h3 class="stitle-sub reveal">Complementa tu <span class="accent">ExperiencIA</span> con <span class="accent">Talleres Prácticos</span></h3>
+        <p class="sub-date reveal">📅 28 de enero de 2027, 3:00 – 7:00 PM</p>
+
+        <!-- Sesión 1 -->
+        <div class="reveal" style="display:flex;align-items:center;gap:12px;margin:32px 0 16px;">
+          <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.3));"></div>
+          <div style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);border-radius:30px;padding:6px 18px;font-size:12px;font-weight:700;color:var(--cyan);white-space:nowrap;letter-spacing:0.08em;">
+            🕒 Sesión 1 &nbsp;·&nbsp; 3:00 – 4:45 PM
+          </div>
+          <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(0,212,255,0.3),transparent);"></div>
+        </div>
+
+        <div class="taller-2col reveal" style="margin-bottom:8px;">
+          <!-- TALLER A — Sesión 1, Salón Cedro -->
+          <div class="taller-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,rgba(0,200,100,0.12),rgba(0,150,80,0.06));border-bottom:1px solid rgba(0,200,100,0.2);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;font-weight:700;color:#00E676;letter-spacing:0.1em;text-transform:uppercase;">🌿 Salón Cedro</span>
+              <span style="font-size:10px;font-weight:700;color:var(--text-muted);background:rgba(255,255,255,0.05);border-radius:20px;padding:3px 10px;">Taller A</span>
+            </div>
+            <div style="padding:20px 20px 0;">
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">¡Hola IA! ¿Nos Conocemos?</div>
+              <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;">De Cero a Resultados Reales con IA</div>
+              <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a733fdbac7d7ffc64ffc480.jpg" alt="Noelia González" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,200,100,0.4);flex-shrink:0;">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#fff;">Noelia González Pereyra</div>
+                  <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Directora · Voiceinteractivos<br>19+ años · 200+ personas capacitadas</div>
+                </div>
+              </div>
+              <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;">Aprende IA desde cero con un enfoque humano, empático y sin miedo. Tres ediciones con resultados comprobados — transformación desde el primer día.</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#00E676;">✓</span>Sin conocimientos previos requeridos</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#00E676;">✓</span>Herramientas prácticas aplicables desde hoy</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#00E676;">✓</span>Metodología accesible y dinámica</div>
+              </div>
+            </div>
+            <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
+              <div style="margin-bottom:10px;">
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-a-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-a-eb">$100 USD</div>
+                <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
+              </div>
+              <a href="https://iaExpo.ai/admisiones/taller-a" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>
+            </div>
+          </div>
+
+          <!-- TALLER B — Sesión 1, Salón Nogal -->
+          <div class="taller-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,rgba(0,102,255,0.12),rgba(0,60,200,0.06));border-bottom:1px solid rgba(0,102,255,0.25);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;font-weight:700;color:#60a5fa;letter-spacing:0.1em;text-transform:uppercase;">🌳 Salón Nogal</span>
+              <span style="font-size:10px;font-weight:700;color:var(--text-muted);background:rgba(255,255,255,0.05);border-radius:20px;padding:3px 10px;">Taller B</span>
+            </div>
+            <div style="padding:20px 20px 0;">
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">Tu Equipo de IA: 5 Asistentes para Multiplicar tu Productividad</div>
+              <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;visibility:hidden;height:0;">‎</div>
+              <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Max Quiroz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,102,255,0.4);flex-shrink:0;">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#fff;">Max Quiroz Martínez</div>
+                  <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Director · Max & Ruth Training<br>30+ años · Miles de personas impactadas</div>
+                </div>
+              </div>
+              <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;">Descubre los 5 asistentes de IA que van a transformar tu forma de trabajar. Metodología comprobada del creador de Cursos Que Dejan Huella®.</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#60a5fa;">✓</span>5 herramientas de IA listas para usar</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#60a5fa;">✓</span>Productividad multiplicada desde el día 1</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#60a5fa;">✓</span>Visión estratégica de IA en tu empresa</div>
+              </div>
+            </div>
+            <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
+              <div style="margin-bottom:10px;">
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-b-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-b-eb">$100 USD</div>
+                <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
+              </div>
+              <a href="https://iaExpo.ai/admisiones/taller-b" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>
             </div>
           </div>
         </div>
+
+        <!-- Sesión 2 -->
+        <div class="reveal" style="display:flex;align-items:center;gap:12px;margin:32px 0 16px;">
+          <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.3));"></div>
+          <div style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.25);border-radius:30px;padding:6px 18px;font-size:12px;font-weight:700;color:var(--purple-light);white-space:nowrap;letter-spacing:0.08em;">
+            🕔 Sesión 2 &nbsp;·&nbsp; 5:00 – 6:45 PM
+          </div>
+          <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(124,58,237,0.3),transparent);"></div>
+        </div>
+
+        <div class="taller-2col reveal">
+          <!-- TALLER C — Sesión 2, Salón Cedro -->
+          <div class="taller-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,rgba(0,200,100,0.12),rgba(0,150,80,0.06));border-bottom:1px solid rgba(0,200,100,0.2);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;font-weight:700;color:#00E676;letter-spacing:0.1em;text-transform:uppercase;">🌿 Salón Cedro</span>
+              <span style="font-size:10px;font-weight:700;color:var(--text-muted);background:rgba(255,255,255,0.05);border-radius:20px;padding:3px 10px;">Taller C</span>
+            </div>
+            <div style="padding:20px 20px 0;">
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">Tu Equipo de IA: 5 Asistentes para Multiplicar tu Productividad</div>
+              <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;visibility:hidden;height:0;">&#8203;</div>
+              <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a558fef0bc316e6a67cc189.jpg" alt="Max Quiroz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,200,100,0.4);flex-shrink:0;">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#fff;">Max Quiroz Martínez</div>
+                  <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Director · Max &amp; Ruth Training<br>30+ años · Miles de personas impactadas</div>
+                </div>
+              </div>
+              <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;">Descubre los 5 asistentes de IA que van a transformar tu forma de trabajar. Metodología comprobada del creador de Cursos Que Dejan Huella®.</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#00E676;">✓</span>5 herramientas de IA listas para usar</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#00E676;">✓</span>Productividad multiplicada desde el día 1</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#00E676;">✓</span>Visión estratégica de IA en tu empresa</div>
+              </div>
+            </div>
+            <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
+              <div style="margin-bottom:10px;">
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-c-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-c-eb">$100 USD</div>
+                <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
+              </div>
+              <a href="https://iaExpo.ai/admisiones/taller-c" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>
+            </div>
+          </div>
+
+          <!-- TALLER D — Sesión 2, Salón Nogal -->
+          <div class="taller-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="background:linear-gradient(135deg,rgba(0,102,255,0.12),rgba(0,60,200,0.06));border-bottom:1px solid rgba(0,102,255,0.25);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="font-size:11px;font-weight:700;color:#60a5fa;letter-spacing:0.1em;text-transform:uppercase;">🌳 Salón Nogal</span>
+              <span style="font-size:10px;font-weight:700;color:var(--text-muted);background:rgba(255,255,255,0.05);border-radius:20px;padding:3px 10px;">Taller D</span>
+            </div>
+            <div style="padding:20px 20px 0;">
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px;">Tu oficina inteligente en una mochila</div>
+              <div style="font-size:13px;color:var(--cyan);font-weight:600;margin-bottom:14px;">Nivel: Intermedio / Intermedio+</div>
+              <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,0.04);border-radius:10px;padding:12px;margin-bottom:14px;">
+                <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a7b6982c94680bcf1fbcf02.jpg" alt="Pau Martí Felip" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,102,255,0.4);flex-shrink:0;">
+                <div>
+                  <div style="font-size:13px;font-weight:700;color:#fff;">Pau Martí Felip</div>
+                  <div style="font-size:11px;color:var(--text-muted);line-height:1.4;">Profesor, conferenciante y divulgador · IA aplicada<br>6+ años de experiencia</div>
+                </div>
+              </div>
+              <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;">Taller práctico para diseñar un sistema personal de trabajo con IA: investigar, crear contenidos, analizar documentos, automatizar tareas y coordinar proyectos desde cualquier lugar.</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#60a5fa;">✓</span>Flujo de trabajo propio al salir del taller</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#60a5fa;">✓</span>Selección razonada de herramientas de IA</div>
+                <div style="font-size:12px;color:var(--text-muted);display:flex;gap:8px;"><span style="color:#60a5fa;">✓</span>Primera automatización aplicable a tu actividad</div>
+              </div>
+            </div>
+            <div style="margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.15);">
+              <div style="margin-bottom:10px;">
+                <div style="font-size:1.15rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,255,255,0.45);margin:0 0 3px;" id="tkt-taller-d-orig">$400 USD</div>
+                <div class="tkt-launch" style="color:var(--cyan);margin:0 0 4px;" id="tkt-taller-d-eb">$100 USD</div>
+                <span class="tkt-badge green" style="margin:0;">⚠️ Solo 20 cupos</span>
+              </div>
+              <a href="https://iaExpo.ai/admisiones/taller-d" class="tkt-btn" target="_blank" rel="noopener" style="width:100%;text-align:center;display:block;">Reservar Taller →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" style="background:rgba(255,183,77,0.06);border:1px solid rgba(255,183,77,0.2);border-radius:12px;padding:14px 20px;margin-top:20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:20px;">🔥</span>
+          <p style="font-size:13px;color:var(--text-muted);margin:0;line-height:1.5;"><strong style="color:#FFB74D;">Cupo muy limitado — máximo 20 personas por sesión.</strong> Cada taller ofrece atención personalizada con el instructor. Los lugares se agotan rápido — elige tu sesión y reserva hoy.</p>
+        </div>
+
         <p style="font-size:0.78rem;color:var(--text-muted);margin-top:32px;text-align:center;">Todos los precios en dólares americanos (USD) · Precio por persona · 1 boleto.<br>Esta información es preliminar. Los precios y disponibilidad están sujetos a cambios sin previo aviso.</p>
       </div>
     </section>
@@ -1139,9 +1403,9 @@
           </div>
         </div>
         <div class="urgency-banner reveal">
-          <p style="font-size:16px;color:var(--text);font-weight:700;">🔥 Solo 25 lugares VIP All Access en toda la edición 2027.</p>
+          <p style="font-size:16px;color:var(--text);font-weight:700;">🔥 Solo 50 lugares VIP All Access en toda la edición 2027.</p>
           <div class="urgency-cupos-row">
-            <div class="ucupo"><div class="ucupo-n">25</div><div class="ucupo-l">Lugares VIP All Access</div></div>
+            <div class="ucupo"><div class="ucupo-n">50</div><div class="ucupo-l">Lugares VIP All Access</div></div>
             <div class="ucupo"><div class="ucupo-n">250</div><div class="ucupo-l">Lugares Profesional</div></div>
             <div class="ucupo"><div class="ucupo-n">20</div><div class="ucupo-l">Lugares por Taller</div></div>
           </div>
@@ -1174,7 +1438,7 @@
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta asistir y qué incluye cada nivel?<span class="faq-arrow">+</span></div>
-            <div class="faq-a">Profesional ($500 USD): Expo, Coffee Break y 2 días de Conferencias. VIP All Access ($1,000 USD): todo lo de Profesional más Networking estructurado, Cóctel de bienvenida, asientos preferenciales y Cena VIP. También hay Talleres ($200 USD c/u) como complemento.</div>
+            <div class="faq-a">Profesional ($250 USD): Expo, Coffee Break y 2 días de Conferencias. VIP All Access ($500 USD): todo lo de Profesional más Networking estructurado, Cóctel de bienvenida, asientos preferenciales y Cena VIP. También hay Talleres ($200 USD c/u) como complemento.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">¿Cómo puedo ser speaker o presentar un paper?<span class="faq-arrow">+</span></div>
@@ -1339,8 +1603,8 @@
           <div style="font-size:13px;color:var(--text-muted);">28–30 de enero de 2027 · Westin Santa Fe, CDMX</div>
         </div>
         <div class="checkout-tiers">
-          <a href="https://iaExpo.ai/admisiones/conferencias" class="checkout-chip" target="_blank" rel="noopener">Profesional<span class="cc-price">$500 USD</span></a>
-          <a href="https://iaExpo.ai/admisiones/vip-all-access" class="checkout-chip" target="_blank" rel="noopener">VIP All Access<span class="cc-price">$1,000 USD</span></a>
+          <a href="https://iaExpo.ai/admisiones/conferencias" class="checkout-chip" target="_blank" rel="noopener">Profesional<span class="cc-price">$250 USD</span></a>
+          <a href="https://iaExpo.ai/admisiones/vip-all-access" class="checkout-chip" target="_blank" rel="noopener">VIP All Access<span class="cc-price">$500 USD</span></a>
         </div>
       </div>
     </section>
