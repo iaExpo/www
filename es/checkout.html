@@ -1,0 +1,64 @@
+<style>
+#iax-checkout-frame {
+  height: clamp(720px, 82vh, 840px) !important;
+}
+
+@media (max-width: 767px) {
+  #iax-checkout-frame {
+    height: clamp(900px, 115vh, 1120px) !important;
+  }
+}
+</style>
+
+<div
+  id="iax-checkout-container"
+  style="
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    box-sizing:border-box !important;
+  "
+>
+  <iframe
+    id="iax-checkout-frame"
+    src="https://api.fanforce.online/payment-link/6a9a20d4ceb12d9fc1a8afe0?couponCode=IAXVIP"
+    title="Checkout seguro de IA Expo Internacional"
+    width="100%"
+    height="840"
+    frameborder="0"
+    scrolling="auto"
+    loading="eager"
+    allow="payment"
+    style="
+      display:block !important;
+      width:100% !important;
+      min-width:100% !important;
+      max-width:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      background:#ffffff;
+      box-sizing:border-box !important;
+    "
+  ></iframe>
+
+  <div
+    style="
+      width:100%;
+      margin-top:10px;
+      text-align:center;
+      font-size:14px;
+    "
+  >
+    ¿No aparece el formulario?
+    <a
+      href="https://api.fanforce.online/payment-link/6a9a20d4ceb12d9fc1a8afe0?couponCode=IAXVIP"
+      target="_blank"
+      rel="noopener"
+    >
+      Abre el checkout seguro aquí
+    </a>
+  </div>
+</div>
