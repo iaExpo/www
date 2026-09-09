@@ -828,7 +828,7 @@
       </a>
       <div class="nav-tabs">
         <a href="#valor" class="ntab"><span class="ico">💡</span> Valor</a>
-        <a href="#prueba" class="ntab"><span class="ico">⭐</span> Prueba</a>
+        <a href="#testimoniales" class="ntab"><span class="ico">⭐</span> Testimoniales</a>
         <a href="#speakers" class="ntab"><span class="ico">🎙️</span> Speakers</a>
         <a href="#programa" class="ntab"><span class="ico">🗓️</span> Programa</a>
         <div class="ntab-dropdown">
@@ -847,7 +847,7 @@
     <!-- NAV MOBILE -->
     <div class="mobile-menu" id="mmenu">
       <a href="#valor" class="ntab" onclick="closeNav()"><span class="ico">💡</span> Valor</a>
-      <a href="#prueba" class="ntab" onclick="closeNav()"><span class="ico">⭐</span> Prueba</a>
+      <a href="#testimoniales" class="ntab" onclick="closeNav()"><span class="ico">⭐</span> Testimoniales</a>
       <a href="#speakers" class="ntab" onclick="closeNav()"><span class="ico">🎙️</span> Speakers</a>
       <a href="#programa" class="ntab" onclick="closeNav()"><span class="ico">🗓️</span> Programa</a>
       <div class="mobile-submenu">
@@ -1038,11 +1038,11 @@
     <div class="gd"></div>
 
     <!-- ═══════════ 06 · PRUEBA — AUMENTAR CERTEZA ═══════════ -->
-    <section id="prueba">
+    <section id="testimoniales">
       <div class="si">
         <div class="eyebrow">Testimoniales</div>
-        <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a98a382da522bf173aa8bf2.png" alt="Testimoniales" style="width:100%;max-width:100%;border-radius:20px;display:block;margin-bottom:32px;box-shadow:0 20px 50px rgba(0,0,0,0.35);">
         <h2 class="stitle reveal">No es solo <span class="accent">nuestra palabra</span></h2>
+        <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6a98a382da522bf173aa8bf2.png" alt="Testimoniales" style="width:100%;max-width:100%;border-radius:20px;display:block;margin-bottom:32px;box-shadow:0 20px 50px rgba(0,0,0,0.35);">
         <p class="sdesc reveal d1">Esto no es una promesa. Es lo que ya vivieron quienes estuvieron dentro en la edición 2026, en Ciudad de México.</p>
 
         <div class="proof-stats reveal">
@@ -1109,6 +1109,16 @@
             </a>
             <div class="video-meta"><div class="vm-name">Mireya González Corona</div><div class="vm-desc">Business &amp; Cognitive Coaching</div></div>
           </div>
+        </div>
+
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;margin:56px 0 8px;">Así se vive la <span style="background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">IA Expo Internacional</span></h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:24px;max-width:640px;">Escenario, audiencia, demostraciones y encuentros reales — la parte que no se replica de la misma manera en línea.</p>
+
+        <!-- Carrusel de fotos — galería IA Expo 2026 (github.com/iaExpo/www/galeria) -->
+        <div class="iax-carousel-wrap reveal" id="iaxCarouselWrap">
+          <div class="iax-carousel-track" id="iaxTrack"></div>
+          <button class="iax-carousel-btn prev" onclick="iaxMove(-1)">❮</button>
+          <button class="iax-carousel-btn next" onclick="iaxMove(1)">❯</button>
         </div>
 
         <div class="authority-row reveal">
@@ -1189,24 +1199,6 @@
 
         <div style="text-align:center;margin-top:36px;" class="reveal">
           <a href="https://programa.iaExpo.ai" class="btn-primary">Ver Programa Completo →</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="gd"></div>
-
-    <!-- ═══════════ 08 · EXPERIENCIA — HACER QUE SE IMAGINE ALLÍ ═══════════ -->
-    <section id="experiencia-viva">
-      <div class="si">
-        <div class="eyebrow">La Experiencia</div>
-        <h2 class="stitle reveal">Así se vive <span class="accent">estar dentro</span></h2>
-        <p class="sdesc reveal d1">Escenario, audiencia, demostraciones y encuentros reales — la parte que no se replica de la misma manera en línea.</p>
-
-        <!-- Carrusel de fotos — galería IA Expo 2026 (github.com/iaExpo/www/galeria) -->
-        <div class="iax-carousel-wrap reveal" id="iaxCarouselWrap">
-          <div class="iax-carousel-track" id="iaxTrack"></div>
-          <button class="iax-carousel-btn prev" onclick="iaxMove(-1)">❮</button>
-          <button class="iax-carousel-btn next" onclick="iaxMove(1)">❯</button>
         </div>
       </div>
     </section>
@@ -1558,8 +1550,7 @@
         </div>
         <div style="text-align:center;margin-top:40px;" class="reveal">
           <p style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">¿Tienes otra pregunta?</p>
-          <a href="https://faq.iaExpo.ai" class="btn-secondary" style="margin-right:12px;">Ver FAQ completo →</a>
-          <a href="https://contacto.iaExpo.ai" class="btn-primary">🚀 Más Información</a>
+          <a href="#contacto" class="btn-primary">🚀 Más Información</a>
         </div>
       </div>
     </section>
@@ -1706,8 +1697,8 @@
           <div style="font-size:13px;color:var(--text-muted);">28–30 de enero de 2027 · Westin Santa Fe, CDMX</div>
         </div>
         <div class="checkout-tiers">
-          <a href="https://iaExpo.ai/admisiones/conferencias" class="checkout-chip" target="_blank" rel="noopener">Profesional<span class="cc-price">$250 USD</span></a>
-          <a href="https://iaExpo.ai/admisiones/vip-all-access" class="checkout-chip" target="_blank" rel="noopener">VIP All Access<span class="cc-price">$500 USD</span></a>
+          <a href="https://iaexpo.ai/profesional" class="checkout-chip" target="_blank" rel="noopener">Profesional<span class="cc-price">$250 USD</span></a>
+          <a href="https://iaexpo.ai/vip" class="checkout-chip" target="_blank" rel="noopener">VIP All Access<span class="cc-price">$500 USD</span></a>
         </div>
       </div>
     </section>
@@ -1719,12 +1710,11 @@
           <span>IA Expo 2027</span>
         </a>
         <nav class="fmini-links">
-          <a href="https://iaExpo.ai#boletos" class="fmini-link">Participa</a>
+          <a href="#tickets" class="fmini-link">Participa</a>
           <a href="https://programa.iaExpo.ai" class="fmini-link">Programa</a>
           <a href="https://convocatoria.iaExpo.ai" class="fmini-link">Convocatoria</a>
-          <a href="https://alianzas.iaExpo.ai" class="fmini-link">Alianzas</a>
-          <a href="https://sede.iaExpo.ai" class="fmini-link">Sede</a>
-          <a href="https://faq.iaExpo.ai" class="fmini-link">FAQ</a>
+          <a href="#hospedaje" class="fmini-link">Sede</a>
+          <a href="#faq" class="fmini-link">FAQ</a>
         </nav>
         <div class="fmini-contact">
           <a href="mailto:info@iaExpo.ai">info@iaExpo.ai</a>
