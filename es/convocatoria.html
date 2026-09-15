@@ -311,7 +311,7 @@
       }
 
       .tl-date {
-        font-size: 11px;
+        font-size: 14px;
         color: var(--cyan);
         font-weight: 600;
         letter-spacing: 0.1em;
@@ -320,15 +320,21 @@
       }
 
       .tl-title {
-        font-size: 15px;
+        font-size: 19px;
         font-weight: 700;
         margin-bottom: 2px;
       }
 
       .tl-desc {
-        font-size: 13px;
+        font-size: 16px;
         color: var(--text-muted);
       }
+
+      .cfp-dates-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; justify-items: center; max-width: 1000px; margin: 48px auto 0; }
+      .cfp-dates-img-wrap { border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); }
+      .cfp-dates-img { width: 100%; height: auto; display: block; }
+      .cfp-dates-content { display: flex; flex-direction: column; align-items: center; }
+      @media(max-width:800px) { .cfp-dates-grid { grid-template-columns: 1fr; } .cfp-dates-img-wrap { order: -1; } }
 
       .cfp-cta {
         margin-top: 48px;
@@ -646,11 +652,16 @@
       <a href="https://iaExpo.ai/#tickets" class="nav-cta" onclick="closeNav()">💎 Asegura tu Lugar</a>
     </div>
 
+    <!-- HERO  -->
+    <section id="cfp-hero">
+      <img src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6aa863609f8b31b6ab0f22de.jpg" alt="Convocatoria IA Expo Internacional" style="width:100%;display:block;">
+    </section>
+
     <!-- CALL FOR PAPERS -->
     <section id="convocatoria">
-      <div class="si">
+      <div class="si" style="padding-bottom:0;">
         <div class="eyebrow">Convocatoria</div>
-        <h2 class="stitle reveal">Call for Papers<br><span class="accent">IA: Impacto en las Empresas</span></h2>
+        <h2 class="stitle reveal">Call for Papers<br><span class="accent">Tu voz pertenece en un foro internacional</span></h2>
         <p class="sdesc reveal d1">¿Tu empresa está cambiando el mundo con IA? Envía tu paper y preséntalo ante 200 líderes, académicos e innovadores de LATAM.</p>
         <div class="cfp-g">
           <div class="reveal" style="grid-column:1/-1;">
@@ -670,12 +681,48 @@
           <div class="cfp-tags"><span class="cfp-tag">4–8 páginas</span><span class="cfp-tag">ES / EN</span><span class="cfp-tag">Revisión por IA Expo</span><span class="cfp-tag">Cierre: 24 Oct 2026</span></div>
           <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
             <a href="https://drive.google.com/uc?export=download&id=1jrGEMopP9w32cyi_-1cK2PpauiVybdH_" class="btn-primary" download>⬇️ Descargar Plantilla</a>
-            <a href="https://iaexpo.ai/articulos" class="btn-secondary">📄 Enviar mi Paper</a>
           </div>
         </div>
-        <div class="reveal d1" style="text-align:center;margin-top:48px;">
-            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px;">📅 Fechas Clave</h3>
-            <div style="display:flex;justify-content:center;">
+      </div>
+    </section>
+
+    <div> &nbsp </div>
+    <div> &nbsp </div>
+
+    <!-- GHL Submit Form -->
+    <iframe
+        src="https://api.fanforce.online/widget/form/koGEwkwaw7UKM3FUnymO"
+        style="width:100%;height:100%;border:none;border-radius:0px"
+        id="inline-koGEwkwaw7UKM3FUnymO" 
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="IA Expo Artículos"
+        data-height="1058"
+        data-layout-iframe-id="inline-koGEwkwaw7UKM3FUnymO"
+        data-form-id="koGEwkwaw7UKM3FUnymO"
+        data-cookie-consent="true"
+        data-cookie-consent-provider="auto"
+        title="IA Expo Artículos"
+    >
+    </iframe>
+    <script src="https://api.fanforce.online/js/form_embed.js"></script>
+
+    <div> &nbsp </div>
+
+    <!-- Fechas Clave -->
+    <section id="fechas">
+      <div class="si" style="padding-top:0;">
+        <div class="cfp-dates-grid reveal d1">
+          <div class="cfp-dates-img-wrap">
+            <img class="cfp-dates-img" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/6aa866d955634d996774252d.png" alt="Fechas Clave">
+          </div>
+          <div class="cfp-dates-content">
+            <h3 style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;margin-bottom:24px;">📅 Fechas Clave</h3>
             <div class="tl">
               <div class="tli">
                 <div class="tld"></div>
@@ -685,13 +732,13 @@
               </div>
               <div class="tli">
                 <div class="tld" style="background:var(--blue);box-shadow:0 0 10px rgba(0,102,255,0.5);"></div>
-                <div class="tl-date" style="color:#60a5fa;">24 de Octubre de 2026</div>
+                <div class="tl-date" style="color:#60a5fa;">16 de Noviembre de 2026</div>
                 <div class="tl-title">Cierre de Envíos</div>
                 <div class="tl-desc">Fecha límite para papers completos</div>
               </div>
               <div class="tli">
                 <div class="tld" style="background:var(--purple);box-shadow:0 0 10px rgba(124,58,237,0.5);"></div>
-                <div class="tl-date" style="color:var(--purple-light);">20 de Noviembre de 2026</div>
+                <div class="tl-date" style="color:var(--purple-light);">30 de Noviembre de 2026</div>
                 <div class="tl-title">Notificación de Aceptación</div>
                 <div class="tl-desc">Resultados de revisión doble ciego</div>
               </div>
@@ -708,8 +755,8 @@
                 <div class="tl-desc">Ciudad de México</div>
               </div>
             </div>
-            </div>
           </div>
+        </div>
       </div>
     </section>
 
