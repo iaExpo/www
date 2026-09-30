@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anthropic lanza Claude Fable 5 — LinkedIn Article</title>
+  <style>
+
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+                   Arial, sans-serif;
+      background: #f3f2ef;  /* LinkedIn background color */
+      color: #1d1d1d;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── ARTICLE CONTAINER ── */
+    .article-wrapper {
+      max-width: 740px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 2px;
+    }
+
+    /* ── HERO IMAGE AREA ── */
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #e8e4f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: #666;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-image svg {
+      opacity: 0.3;
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      padding: 40px 60px 60px;
+    }
+
+    /* ── KICKER ── */
+    .kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #0a66c2;
+      margin-bottom: 20px;
+    }
+
+    /* ── HEADLINE ── */
+    h1.headline {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 700;
+      color: #0b1f3a;
+      letter-spacing: -0.4px;
+      margin-bottom: 24px;
+    }
+
+    /* ── STANDFIRST / DECH ── */
+    .standfirst {
+      font-size: 19px;
+      line-height: 1.55;
+      color: #4a4a4a;
+      font-weight: 400;
+      border-left: 3px solid #0a66c2;
+      padding-left: 20px;
+      margin-bottom: 32px;
+    }
+
+    /* ── AUTHOR LINE ── */
+    .author-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 36px;
+    }
+
+    .author-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0b1f3a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .author-meta {
+      flex: 1;
+    }
+
+    .author-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0b1f3a;
+      line-height: 1.3;
+    }
+
+    .author-title {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .article-date {
+      font-size: 12px;
+      color: #999;
+      white-space: nowrap;
+    }
+
+    /* ── BODY TEXT ── */
+    .article-body p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #2d2d2d;
+      margin-bottom: 22px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin: 44px 0 20px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #0a66c2;
+      white-space: nowrap;
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: #e0e0e0;
+    }
+
+    h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 23px;
+      font-weight: 700;
+      color: #0b1f3a;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      margin: 36px 0;
+      padding: 28px 32px;
+      background: #f7f8fa;
+      border-left: 4px solid #0a66c2;
+    }
+
+    .pull-quote p {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 21px !important;
+      line-height: 1.45 !important;
+      color: #0b1f3a !important;
+      font-style: italic;
+      margin-bottom: 12px !important;
+    }
+
+    .pull-quote cite {
+      font-size: 12px;
+      color: #888;
+      font-style: normal;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── CAPABILITY LIST ── */
+    .capability-list {
+      list-style: none;
+      margin: 4px 0 24px;
+    }
+
+    .capability-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .capability-list li:last-child {
+      border-bottom: none;
+    }
+
+    .cap-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0a66c2;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      line-height: 1.6;
+      padding-top: 1px;
+    }
+
+    .cap-text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #2d2d2d;
+    }
+
+    .cap-text strong {
+      color: #0b1f3a;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      margin: 36px 0;
+      padding: 24px 28px;
+      background: #0b1f3a;
+      border-radius: 2px;
+    }
+
+    .highlight-box .hl-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #7DD3FC;
+      margin-bottom: 10px;
+    }
+
+    .highlight-box p {
+      color: #e2e8f0 !important;
+      font-size: 15px !important;
+      line-height: 1.65 !important;
+      margin-bottom: 8px !important;
+    }
+
+    .highlight-box p:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    /* ── CLOSING ── */
+    .closing-question {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      line-height: 1.45;
+      color: #0b1f3a;
+      font-style: italic;
+      font-weight: 400;
+      text-align: center;
+      margin: 48px 0 36px;
+      padding: 0 20px;
+    }
+
+    /* ── TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 32px;
+      border-top: 1px solid #e0e0e0;
+      margin-top: 40px;
+    }
+
+    .tag {
+      font-size: 13px;
+      color: #0a66c2;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    .article-footer {
+      padding: 20px 60px 28px;
+      border-top: 1px solid #e0e0e0;
+      background: #fafafa;
+      text-align: center;
+    }
+
+    .article-footer p {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+
+    .article-footer a {
+      color: #0a66c2;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ── DROPCAP ── */
+    .dropcap::first-letter {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 58px;
+      line-height: 48px;
+      float: left;
+      color: #0a66c2;
+      font-weight: 700;
+      padding: 4px 10px 0 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="article-wrapper">
+
+    <!-- HERO IMAGE PLACEHOLDER -->
+    <div class="hero-image">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0b1f3a" stroke-width="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <span>Sube aquí la imagen de Claude Fable 5</span>
+    </div>
+
+    <!-- ARTICLE BODY -->
+    <div class="article-body">
+
+      <!-- Kicker -->
+      <div class="kicker">Inteligencia Artificial · 9 de junio de 2026</div>
+
+      <!-- Headline -->
+      <h1 class="headline">
+        Anthropic lanza Fable 5: el primer modelo de clase Mythos para el
+        público general realiza investigación científica autónoma, diseña
+        fármacos y comprimió meses de ingeniería en un día
+      </h1>
+
+      <!-- Standfirst -->
+      <p class="standfirst">
+        Hoy llega a todos los suscriptores lo que hasta ayer solo existía
+        para gobiernos y empresas de infraestructura crítica. Este es el
+        salto de capacidad más grande en la historia de Claude, y posiblemente
+        el lanzamiento de modelo de IA más significativo del año.
+      </p>
+
+      <!-- Author -->
+      <div class="author-line">
+        <div class="author-avatar">LP</div>
+        <div class="author-meta">
+          <div class="author-name">Dr. Eduardo "Lalo" Pérez</div>
+          <div class="author-title">CEO, Digital Gap · Chair, IA Expo Internacional</div>
+        </div>
+        <div class="article-date">9 jun 2026</div>
+      </div>
+
+      <!-- Body 1 -->
+      <p class="dropcap">
+        Anthropic lanzó hoy dos modelos que redefinen lo que significa la
+        inteligencia artificial de frontera: Claude Fable 5, el primer modelo
+        de clase Mythos disponible para el público general, y Claude Mythos 5,
+        la versión completa reservada para socios de ciberseguridad en Project
+        Glasswing. El nombre no es accidental — "Fable" proviene del latín
+        <em>fabula</em>, "lo que se cuenta", emparentado etimológicamente con el
+        griego <em>mythos</em>. Ambos modelos comparten la misma arquitectura
+        subyacente; la diferencia está en las salvaguardas.
+      </p>
+
+      <p>
+        Fable 5 supera en capacidad a todos los modelos que Anthropic ha puesto
+        jamás a disposición pública. La empresa lo describe con una frase directa:
+        "Cuanto más larga y compleja es la tarea, mayor es la ventaja de Fable 5
+        sobre nuestros otros modelos." El lanzamiento llega acompañado de un
+        artículo del Anthropic Institute titulado <em>"When AI builds itself"</em>
+        que documenta el contexto más amplio: como mayo de 2026, más del 80% del
+        código integrado en la base de código de Anthropic fue escrito por Claude.
+        En términos prácticos, Fable 5 fue en parte construido por versiones
+        anteriores de Claude. El ciclo de mejora recursiva ya comenzó.
+      </p>
+
+      <!-- Pull quote -->
+      <div class="pull-quote">
+        <p>"En una base de código de 50 millones de líneas de Ruby, Fable 5
+        realizó en un día una migración que hubiera tomado a un equipo completo
+        más de dos meses a mano."</p>
+        <cite>— Stripe, prueba de ingeniería durante el acceso anticipado a Claude Fable 5</cite>
+      </div>
+
+      <!-- Section: Capacidades -->
+      <div class="section-header">
+        <span class="section-label">Las capacidades</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2>Lo que Fable 5 y Mythos 5 pueden hacer que ningún modelo podía antes</h2>
+
+      <ul class="capability-list">
+        <li>
+          <span class="cap-label">Ingeniería<br>SWE-Bench 80.3%</span>
+          <span class="cap-text">
+            <strong>El mejor modelo de codificación del mercado.</strong>
+            Frente al 69.2% de Opus 4.8. Stripe comprimió dos meses de trabajo
+            de equipo en un día sobre un codebase de 50 millones de líneas.
+            Primer lugar en FrontierCode de Cognition, que evalúa calidad de
+            producción real bajo restricciones de tokens.
+          </span>
+        </li>
+        <li>
+          <span class="cap-label">Trabajo intelectual complejo</span>
+          <span class="cap-text">
+            <strong>Primer lugar en el Finance Benchmark de Hebbia</strong>
+            para razonamiento de nivel ejecutivo senior. IMC reporta que aprobó
+            sus evaluaciones de análisis de trading prácticamente en su totalidad:
+            análisis factual, razonamiento conceptual, análisis de causa raíz
+            y valor esperado.
+          </span>
+        </li>
+        <li>
+          <span class="cap-label">Visión</span>
+          <span class="cap-text">
+            <strong>Nuevo estado del arte.</strong>
+            Reconstruyó el código fuente completo de una app web solo a partir
+            de capturas de pantalla. Completó Pokémon FireRed usando solo visión
+            sin herramientas auxiliares — modelos anteriores necesitaban arneses
+            complejos para lograrlo.
+          </span>
+        </li>
+        <li>
+          <span class="cap-label">Diseño de fármacos<br>(Mythos 5)</span>
+          <span class="cap-text">
+            <strong>10 veces más rápido que un equipo humano experto.</strong>
+            Ejecuta de forma autónoma todas las tareas de un científico:
+            elegir sitios de unión, seleccionar herramientas de diseño de
+            proteínas y recuperarse de fallos. 9 de 14 proteínas objetivo
+            generaron candidatos sólidos para desarrollo farmacéutico.
+          </span>
+        </li>
+        <li>
+          <span class="cap-label">Investigación en genómica<br>(Mythos 5)</span>
+          <span class="cap-text">
+            <strong>Superó un modelo publicado en <em>Science</em> — con 100 veces menos parámetros.</strong>
+            Ensambló datos de célula única de millones de células en 138 especies
+            animales y entrenó su propio modelo de machine learning en más de una
+            semana de trabajo mayormente autónomo.
+          </span>
+        </li>
+      </ul>
+
+      <!-- Section: Fable vs Mythos -->
+      <div class="section-header">
+        <span class="section-label">Fable 5 vs Mythos 5</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2>El mismo modelo — dos niveles de acceso</h2>
+
+      <p>
+        Fable 5 y Mythos 5 comparten la misma arquitectura subyacente. La
+        diferencia es exclusivamente de salvaguardas. En áreas de alto riesgo
+        — ciberseguridad, biología, química — Fable 5 bloquea respuestas y
+        transfiere la sesión a Claude Opus 4.8. Las salvaguardas se activan en
+        menos del 5% de las sesiones en promedio. Mythos 5, en cambio, opera
+        sin esas restricciones para los socios verificados de Project Glasswing,
+        que incluyen al gobierno de Estados Unidos, AWS, Microsoft, Apple, Google,
+        Cisco y JPMorgan Chase.
+      </p>
+
+      <div class="highlight-box">
+        <div class="hl-label">Disponibilidad y precio</div>
+        <p>
+          <strong style="color:#7DD3FC;">Fable 5</strong> está disponible hoy en la API
+          (modelo: <code style="font-family:monospace; background:#ffffff20; padding:2px 6px; border-radius:3px;">claude-fable-5</code>),
+          Claude Platform, Claude Code, AWS, Google Cloud y Microsoft Foundry.
+        </p>
+        <p>
+          Incluido en planes <strong style="color:#ffffff;">Pro, Max, Team y Enterprise</strong>
+          hasta el 22 de junio de 2026. A partir del 23 de junio requerirá créditos
+          de uso mientras se expande la capacidad.
+        </p>
+        <p>
+          Precio: <strong style="color:#ffffff;">USD $10</strong> por millón de tokens de entrada ·
+          <strong style="color:#ffffff;">USD $50</strong> por millón de salida — menos de la mitad
+          del precio de Claude Mythos Preview, con 90% de descuento en prompt caching.
+        </p>
+      </div>
+
+      <!-- Section: Por qué importa -->
+      <div class="section-header">
+        <span class="section-label">Lo que esto significa</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2>El ciclo de mejora recursiva ya comenzó</h2>
+
+      <p>
+        El lanzamiento de Fable 5 no es simplemente el anuncio de un modelo
+        más capaz. Es la demostración pública de que la IA ya cruzó el umbral
+        del trabajo cognitivo profundo.
+      </p>
+
+      <p>
+        Cuando Stripe comprime dos meses de trabajo de un equipo completo en
+        un día, no describe una mejora incremental. Describe la obsolescencia
+        de un flujo de trabajo entero. Cuando Mythos 5 diseña candidatos
+        farmacéuticos con supervisión mínima y supera modelos publicados en
+        <em>Science</em> con una fracción de sus parámetros, no está asistiendo
+        a un investigador — está ejecutando el proceso completo.
+      </p>
+
+      <p>
+        El artículo del Anthropic Institute publicado el mismo día lo pone en
+        perspectiva: en marzo de 2024, Claude Opus 3 completaba tareas de cuatro
+        minutos de duración humana. En mayo de 2026, Claude Opus 4.6 llegaba a
+        12 horas. Fable 5 y Mythos 5 empujan ese límite aún más lejos — y
+        fueron construidos, en parte, por versiones anteriores de Claude. El
+        ciclo ya no es una hipótesis. Es un hecho documentado por la propia
+        empresa que lo desarrolla.
+      </p>
+
+      <p>
+        Para los líderes empresariales en LATAM, la implicación es directa:
+        por primera vez, las capacidades que hasta ayer solo existían en
+        proyectos ultra restringidos como Glasswing están disponibles en los
+        mismos planes de suscripción que millones de profesionales ya usan.
+      </p>
+
+      <!-- Closing question -->
+      <p class="closing-question">
+        La única pregunta relevante ya no es si la IA puede igualar a un
+        experto senior en ingeniería, finanzas o investigación científica.<br><br>
+        Fable 5 confirma que puede.<br><br>
+        ¿Qué haces tú, como líder, con el tiempo que eso libera?
+      </p>
+
+      <!-- Tags -->
+      <div class="tags">
+        <span class="tag">#InteligenciaArtificial</span>
+        <span class="tag">#Claude</span>
+        <span class="tag">#Anthropic</span>
+        <span class="tag">#FuturoDelTrabajo</span>
+        <span class="tag">#IAExpo</span>
+        <span class="tag">#LiderazgoDigital</span>
+        <span class="tag">#Innovacion</span>
+        <span class="tag">#LATAM</span>
+      </div>
+
+    </div><!-- /article-body -->
+
+    <!-- FOOTER -->
+    <div class="article-footer">
+      <p>Artículo publicado originalmente en <a href="https://iaexpo.ai">iaExpo.ai</a></p>
+      <p style="color:#bbb; font-size:12px;">
+        IA Expo Internacional · La conferencia de inteligencia artificial para LATAM
+      </p>
+    </div>
+
+  </div><!-- /article-wrapper -->
+
+</body>
+</html>
