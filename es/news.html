@@ -7,6 +7,10 @@
   /* ---------- Menú lateral (escritorio) ---------- */
   .iab-menu { width:290px; flex:0 0 290px; background:var(--fondo); border-right:1px solid var(--borde);
               overflow-y:auto; padding:14px; -webkit-overflow-scrolling:touch; }
+  .iab-inicio { display:inline-flex; align-items:center; gap:6px; margin:0 0 12px; padding:6px 10px; font-size:13px;
+                 font-weight:bold; color:var(--azul); text-decoration:none; border:1px solid var(--borde); border-radius:20px; background:#fff; }
+  .iab-inicio:hover { border-color:var(--acento); color:var(--acento); }
+  .iab-casa { display:none; }
   .iab-menu h2 { margin:0 0 12px; font-size:16px; color:var(--azul); letter-spacing:.5px; }
   .iab-buscar { width:100%; margin:0 0 10px; padding:9px 12px; font-size:16px; font-family:inherit; color:var(--texto);
                 border:1px solid var(--borde); border-radius:8px; background:#fff; outline:none; }
@@ -57,6 +61,9 @@
     .iab-nav { flex:none; width:40px; height:40px; border:1px solid rgba(255,255,255,.35); border-radius:8px;
                background:transparent; color:#fff; font-size:22px; line-height:1; cursor:pointer; }
     .iab-nav:disabled { opacity:.3; cursor:default; }
+    .iab-casa { display:flex; align-items:center; justify-content:center; flex:none; width:40px; height:40px;
+                border:1px solid rgba(255,255,255,.35); border-radius:8px; color:#fff; }
+    .iab-casa svg { width:20px; height:20px; }
 
     /* Cajón deslizable */
     .iab-menu { position:absolute; top:var(--barra); left:0; bottom:0; z-index:3; width:88%; max-width:360px; flex:none;
@@ -84,9 +91,13 @@
     </button>
     <button type="button" class="iab-nav" id="iab-prev" aria-label="Noticia anterior (más reciente)">&#8249;</button>
     <button type="button" class="iab-nav" id="iab-next" aria-label="Noticia siguiente (más antigua)">&#8250;</button>
+    <a class="iab-casa" href="https://iaexpo.ai" target="_top" aria-label="Regresar a iaExpo.ai" title="Regresar a iaExpo.ai">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
+    </a>
   </div>
 
   <nav class="iab-menu" id="iab-menu" aria-label="Noticias por fecha">
+    <a class="iab-inicio" href="https://iaexpo.ai" target="_top">&#8592; Regresar a iaExpo.ai</a>
     <h2>NOTICIAS DE IA</h2>
     <input type="search" class="iab-buscar" id="iab-buscar" placeholder="Buscar noticia…" aria-label="Buscar noticia" autocomplete="off">
     <p class="iab-vacio" id="iab-vacio">Sin resultados.</p>
@@ -109,14 +120,153 @@
     { fecha:"2026-09-27", titulo:"Ejemplo: Video con IA para la vida real",                 url:"https://TU-DOMINIO.com/noticias/2026-09-27-a.html" }
     */
     { fecha:"2026-09-28", titulo:"NVIDIA limita Agentes de IA", url:"https://iaexpo.github.io/www/news/2026.09.28 IA Expo News AM.html" },
-    { fecha:"2026-02-05", titulo:"Kling 3.0 Mejora Video", url:"https://iaexpo.github.io/www/news/2026.02.05 Kling 3.0 vs Veo 3.1" }
+    { fecha:"2026-09-27", titulo:"Trump recibirá a Dario Amodei", url:"https://iaexpo.github.io/www/news/2026.09.27 IA Expo News PM.html" },
+    { fecha:"2026-09-26", titulo:"EE. UU. y China acuerdan un canal de incidentes", url:"https://iaexpo.github.io/www/news/2026.09.26 IA Expo News PM.html" },
+    { fecha:"2026-09-25", titulo:"MIT: usar IA para aprender mejor", url:"https://iaexpo.github.io/www/news/2026.09.25 eMail News.html" },
+    { fecha:"2026-09-25", titulo:"Andrew Ng: pruebas según la etapa del proyecto", url:"https://iaexpo.github.io/www/news/2026.09.25 DeepLearning.AI.html" },
+    { fecha:"2026-09-24", titulo:"Una web inaccesible frena a los agentes de IA", url:"https://iaexpo.github.io/www/news/2026.09.24 IA Expo News.html" },
+    { fecha:"2026-09-22", titulo:"Red de citas falsas con 4,700 perfiles de IA", url:"https://iaexpo.github.io/www/news/2026.09.22 IA Para Todos.html" },
+    { fecha:"2026-09-22", titulo:"Alibaba presenta un nuevo chip de IA", url:"https://iaexpo.github.io/www/news/2026.09.22 IA Expo Actualidad.html" },
+    { fecha:"2026-09-21", titulo:"Líderes de IA y la desaceleración", url:"https://iaexpo.github.io/www/news/2026.09.21 eMail News.html" },
+    { fecha:"2026-09-21", titulo:"El valor recurrente retiene suscriptores", url:"https://iaexpo.github.io/www/news/2026.09.21 The AI Journal.html" },
+    { fecha:"2026-09-21", titulo:"Jev abre su modelo de decisiones", url:"https://iaexpo.github.io/www/news/2026.09.21 IA en Español.html" },
+    { fecha:"2026-09-21", titulo:"Líderes de IA y la desaceleración", url:"https://iaexpo.github.io/www/news/2026.09.21 IA Para Todos.html" },
+    { fecha:"2026-09-21", titulo:"Canal EE. UU.–China para incidentes de IA", url:"https://iaexpo.github.io/www/news/2026.09.21 IA Expo News.html" },
+    { fecha:"2026-09-20", titulo:"GPT-6 Astra: agentes más autónomos", url:"https://iaexpo.github.io/www/news/2026.09.01-20 IA Expo News.html" },
+    { fecha:"2026-09-20", titulo:"Adobe lleva IA de video y música a Premiere", url:"https://iaexpo.github.io/www/news/2026.09.01-20 Artes.html" },
+    { fecha:"2026-09-19", titulo:"Jensen Huang: \"la AGI ha llegado\"", url:"https://iaexpo.github.io/www/news/2026.09.07-19 eMail News.html" },
+    { fecha:"2026-09-18", titulo:"Andrew Ng: responsabilidad sobre los agentes", url:"https://iaexpo.github.io/www/news/2026.09.18 DeepLearning.AI.html" },
+    { fecha:"2026-09-11", titulo:"Andrew Ng: qué construir con IA", url:"https://iaexpo.github.io/www/news/2026.09.11 DeepLearning.AI.html" },
+    { fecha:"2026-09-04", titulo:"Las agencias de marketing deben vender criterio", url:"https://iaexpo.github.io/www/news/2026.09.04 The AI Journal.html" },
+    { fecha:"2026-09-04", titulo:"Hoja de ruta de 90 días para IA empresarial", url:"https://iaexpo.github.io/www/news/2026.09.04 LinkedIn.html" },
+    { fecha:"2026-09-04", titulo:"GPT-6 Astra ejecuta trabajos completos", url:"https://iaexpo.github.io/www/news/2026.09.04 IA en Español.html" },
+    { fecha:"2026-09-04", titulo:"10 atajos de ChatGPT para marketing", url:"https://iaexpo.github.io/www/news/2026.09.04 FuturIA.html" },
+    { fecha:"2026-09-03", titulo:"NVIDIA compra Hugging Face", url:"https://iaexpo.github.io/www/news/2026.09.03 NVIDIA.html" },
+    { fecha:"2026-09-03", titulo:"NVIDIA propone medir la IA en tokens", url:"https://iaexpo.github.io/www/news/2026.09.03 NVIDIA Tokenomics.html" },
+    { fecha:"2026-09-02", titulo:"Convertir el tiempo ahorrado en resultados", url:"https://iaexpo.github.io/www/news/2026.09.02 The AI Journal.html" },
+    { fecha:"2026-09-02", titulo:"Claude Fable 5.1", url:"https://iaexpo.github.io/www/news/2026.09.02 IA en Español.html" },
+    { fecha:"2026-09-02", titulo:"Por qué la IA necesita más contexto que un niño", url:"https://iaexpo.github.io/www/news/2026.09.02 IA Para Todos.html" },
+    { fecha:"2026-09-02", titulo:"Soberanía tecnológica en América Latina", url:"https://iaexpo.github.io/www/news/2026.09.02 FuturIA.html" },
+    { fecha:"2026-09-01", titulo:"Iconos de la UE para contenido de IA", url:"https://iaexpo.github.io/www/news/2026.09.01 IA Para Todos.html" },
+    { fecha:"2026-09-01", titulo:"Claude Fable 5.1, más barato", url:"https://iaexpo.github.io/www/news/2026.09.01 IA Expo News.html" },
+    { fecha:"2026-08-31", titulo:"OpenClaw 2.0", url:"https://iaexpo.github.io/www/news/2026.08.31 IA en Español.html" },
+    { fecha:"2026-08-31", titulo:"La IA planea tus viajes", url:"https://iaexpo.github.io/www/news/2026.08.31 IA Para Todos.html" },
+    { fecha:"2026-08-31", titulo:"La UE clasifica a ChatGPT como gran buscador", url:"https://iaexpo.github.io/www/news/2026.08.31 IA Expo News.html" },
+    { fecha:"2026-08-30", titulo:"China mantiene su ventaja en drones y robots", url:"https://iaexpo.github.io/www/news/2026.08.30 IA Expo News.html" },
+    { fecha:"2026-08-29", titulo:"OpenAI rompe con Cursor", url:"https://iaexpo.github.io/www/news/2026.08.29 IA Expo News.html" },
+    { fecha:"2026-08-28", titulo:"Gigantes de IA piden actuar ante ciberataques", url:"https://iaexpo.github.io/www/news/2026.08.28 IA en Espanol.html" },
+    { fecha:"2026-08-28", titulo:"Claude firma todo lo que escribe", url:"https://iaexpo.github.io/www/news/2026.08.28 IA Para Todos.html" },
+    { fecha:"2026-08-27", titulo:"5 activos de carrera en la economía de IA", url:"https://iaexpo.github.io/www/news/2026.08.27 The AI Journal.html" },
+    { fecha:"2026-08-26", titulo:"Gemini Enterprise for Legal", url:"https://iaexpo.github.io/www/news/2026.08.26 IA en Espanol.html" },
+    { fecha:"2026-08-26", titulo:"La IA y la economía de la mala evaluación", url:"https://iaexpo.github.io/www/news/2026.08.26 IA Para Todos.html" },
+    { fecha:"2026-08-25", titulo:"El \"prompt monstruo\" de 12 capas", url:"https://iaexpo.github.io/www/news/2026.08.25 IA Para Todos.html" },
+    { fecha:"2026-08-24", titulo:"Por qué los equipos abandonan productos de IA", url:"https://iaexpo.github.io/www/news/2026.08.24 The AI Journal.html" },
+    { fecha:"2026-08-24", titulo:"Un modelo potente y gratis de origen desconocido", url:"https://iaexpo.github.io/www/news/2026.08.24 IA en Español.html" },
+    { fecha:"2026-08-21", titulo:"Vacuna contra el cáncer de su perra con ChatGPT", url:"https://iaexpo.github.io/www/news/2026.08.21 IA Para Todos.html" },
+    { fecha:"2026-08-20", titulo:"Instrucciones ocultas para engañar a la IA de un tribunal", url:"https://iaexpo.github.io/www/news/2026.08.20 IA Para Todos.html" },
+    { fecha:"2026-08-19", titulo:"Usar más IA no te hace aprender más rápido", url:"https://iaexpo.github.io/www/news/2026.08.19 The AI Journal.html" },
+    { fecha:"2026-08-19", titulo:"Microsoft Scout revisa tu correo y calendario", url:"https://iaexpo.github.io/www/news/2026.08.19 Microsoft Scout.html" },
+    { fecha:"2026-08-19", titulo:"OpenAI frena el desarrollo de Astra", url:"https://iaexpo.github.io/www/news/2026.08.19 IA en Espanol.html" },
+    { fecha:"2026-08-19", titulo:"La experiencia profesional vale más con IA", url:"https://iaexpo.github.io/www/news/2026.08.19 FuturIA N96.html" },
+    { fecha:"2026-08-18", titulo:"ChatGPT ya genera \"Artefactos\"", url:"https://iaexpo.github.io/www/news/2026.08.18 FuturIA.html" },
+    { fecha:"2026-08-09", titulo:"DeepSeek sube sus precios", url:"https://iaexpo.github.io/www/news/2026.08.09 DeepSeek.html" },
+    { fecha:"2026-08-09", titulo:"Anthropic y OpenAI aíslan sus agentes", url:"https://iaexpo.github.io/www/news/2026.08.09 Ciberataques IA.html" },
+    { fecha:"2026-08-07", titulo:"Grok, \"riesgo inaceptable\" para adolescentes", url:"https://iaexpo.github.io/www/news/2026.08.07 FuturIA.html" },
+    { fecha:"2026-08-07", titulo:"Lo que escasea es la prueba de aprendizaje", url:"https://iaexpo.github.io/www/news/2026.08.07 AI Journal.html" },
+    { fecha:"2026-08-06", titulo:"Lo que tu voz le revela a la IA", url:"https://iaexpo.github.io/www/news/2026.08.06 IA Para Todos.html" },
+    { fecha:"2026-08-05", titulo:"Apple vs. OpenAI: secretos comerciales", url:"https://iaexpo.github.io/www/news/2026.08.05 IA en Español.html" },
+    { fecha:"2026-08-05", titulo:"La habilidad clave para aprender con IA", url:"https://iaexpo.github.io/www/news/2026.08.05 IA Para Todos.html" },
+    { fecha:"2026-08-05", titulo:"Quien controla el hardware controla la IA", url:"https://iaexpo.github.io/www/news/2026.08.05 FuturIA.html" },
+    { fecha:"2026-08-05", titulo:"IA y reconversión laboral", url:"https://iaexpo.github.io/www/news/2026.08.05 Economía y Empleo IA.html" },
+    { fecha:"2026-08-04", titulo:"El \"prompt maestro\" de 6 bloques", url:"https://iaexpo.github.io/www/news/2026.08.04 IA Para Todos.html" },
+    { fecha:"2026-08-03", titulo:"Los avances de Astra, de OpenAI", url:"https://iaexpo.github.io/www/news/2026.08.03 IA en Español.html" },
+    { fecha:"2026-08-03", titulo:"La UE exige etiquetar contenido de IA", url:"https://iaexpo.github.io/www/news/2026.08.03 IA Para Todos.html" },
+    { fecha:"2026-08-03", titulo:"Alibaba lanza Qwen3.8-Max", url:"https://iaexpo.github.io/www/news/2026.08.03 Alibaba Qwen3.8-Max.html" },
+    { fecha:"2026-08-03", titulo:"El costo por respuesta, nuevo diferenciador", url:"https://iaexpo.github.io/www/news/2026.08.03 AI Journal.html" },
+    { fecha:"2026-07-31", titulo:"Kimi K3 y Qwen 3.8 inquietan a Silicon Valley", url:"https://iaexpo.github.io/www/news/2026.07.31 Primicias.html" },
+    { fecha:"2026-07-31", titulo:"El auge del \"solopreneur\" millonario", url:"https://iaexpo.github.io/www/news/2026.07.31 LinkedIn News.html" },
+    { fecha:"2026-07-31", titulo:"El riesgo de una IA que te da la razón", url:"https://iaexpo.github.io/www/news/2026.07.31 IA Para Todos.html" },
+    { fecha:"2026-07-31", titulo:"Claude y los algoritmos criptográficos", url:"https://iaexpo.github.io/www/news/2026.07.31 Actualidad Global IA.html" },
+    { fecha:"2026-07-30", titulo:"ChatGPT vs. agente de IA: el ciclo", url:"https://iaexpo.github.io/www/news/2026.07.30 IA Para Todos.html" },
+    { fecha:"2026-07-29", titulo:"OpenAI entrenó una IA para hackear sus modelos", url:"https://iaexpo.github.io/www/news/2026.07.29 IA Para Todos.html" },
+    { fecha:"2026-07-28", titulo:"Guía de OpenAI para docentes", url:"https://iaexpo.github.io/www/news/2026.07.28 IA Para Todos.html" },
+    { fecha:"2026-07-28", titulo:"Claude halla debilidades criptográficas", url:"https://iaexpo.github.io/www/news/2026.07.28 Anthropic.html" },
+    { fecha:"2026-07-28", titulo:"Moonshot libera los pesos de Kimi K3", url:"https://iaexpo.github.io/www/news/2026.07.28 Actualidad Global IA.html" },
+    { fecha:"2026-07-27", titulo:"Andrew Ng: los modelos abiertos dan más seguridad", url:"https://iaexpo.github.io/www/news/2026.07.27 The Batch.html" },
+    { fecha:"2026-07-26", titulo:"Lo que los CIO esperan de la IA", url:"https://iaexpo.github.io/www/news/2026.07.26 Salesforce CIO IA.html" },
+    { fecha:"2026-07-26", titulo:"Anthropic lanza Claude Opus 5", url:"https://iaexpo.github.io/www/news/2026.07.26 Noticias del Fin de Semana.html" },
+    { fecha:"2026-07-26", titulo:"Dataland, primer museo de arte con IA", url:"https://iaexpo.github.io/www/news/2026.07.26 IA Creativa y Divertida.html" },
+    { fecha:"2026-07-24", titulo:"Stripe negocia comprar OpenRouter", url:"https://iaexpo.github.io/www/news/2026.07.24 Stripe OpenRouter y Amazon AGI Lab.html" },
+    { fecha:"2026-07-24", titulo:"OpenAI: $750,000 M en cómputo", url:"https://iaexpo.github.io/www/news/2026.07.24 OpenAI Compute 750B.html" },
+    { fecha:"2026-07-24", titulo:"Casa Blanca acusa a Moonshot de destilar a Claude", url:"https://iaexpo.github.io/www/news/2026.07.24 Moonshot Destilacion Anthropic.html" },
+    { fecha:"2026-07-24", titulo:"Moonshot AI rumbo a su IPO", url:"https://iaexpo.github.io/www/news/2026.07.24 Moonshot DeepSeek IPO.html" },
+    { fecha:"2026-07-24", titulo:"Magnific estrena el corto \"Candela\"", url:"https://iaexpo.github.io/www/news/2026.07.24 Magnific.html" },
+    { fecha:"2026-07-24", titulo:"Modo de voz de Claude", url:"https://iaexpo.github.io/www/news/2026.07.24 IA en Español.html" },
+    { fecha:"2026-07-24", titulo:"ChatGPT Work: la IA que ejecuta", url:"https://iaexpo.github.io/www/news/2026.07.24 IA Para Todos.html" },
+    { fecha:"2026-07-24", titulo:"Apple demanda a OpenAI", url:"https://iaexpo.github.io/www/news/2026.07.24 Apple Demanda a OpenAI.html" },
+    { fecha:"2026-07-24", titulo:"Ley de \"botón de apagado\" para la IA", url:"https://iaexpo.github.io/www/news/2026.07.24 AI Kill Switch Act.html" },
+    { fecha:"2026-07-24", titulo:"\"Novias\" de IA: lo que dicen los chatbots", url:"https://iaexpo.github.io/www/news/2026.07.24 AI Girlfriends BBC Science Focus.html" },
+    { fecha:"2026-07-23", titulo:"Mitad de canciones nuevas en Deezer son IA", url:"https://iaexpo.github.io/www/news/2026.07.23 Impacto IA Música y Cine.html" },
+    { fecha:"2026-07-23", titulo:"Claude detecta un pensamiento falso", url:"https://iaexpo.github.io/www/news/2026.07.23 IA Para Todos.html" },
+    { fecha:"2026-07-23", titulo:"OpenAI lanza Presence para empresas", url:"https://iaexpo.github.io/www/news/2026.07.23 IA Empresarial OpenAI y Anthropic.html" },
+    { fecha:"2026-07-22", titulo:"Disney recorta empleos en Pixar y ESPN", url:"https://iaexpo.github.io/www/news/2026.07.22 LinkedIn News.html" },
+    { fecha:"2026-07-22", titulo:"Google lanza tres nuevos Gemini", url:"https://iaexpo.github.io/www/news/2026.07.22 IA en Español.html" },
+    { fecha:"2026-07-18", titulo:"Mayo Clinic usa 150 modelos de IA", url:"https://iaexpo.github.io/www/news/2026.07.18 Medicina y Cine IA Expo.html" },
+    { fecha:"2026-07-18", titulo:"Apple Intelligence llega a China con Qwen", url:"https://iaexpo.github.io/www/news/2026.07.18 Actualidad Global IA Expo.html" },
+    { fecha:"2026-07-17", titulo:"Andrew Ng: profesionales \"full-stack\"", url:"https://iaexpo.github.io/www/news/2026.07.17 The Batch.html" },
+    { fecha:"2026-07-17", titulo:"Kimi K3, modelo abierto de primer nivel", url:"https://iaexpo.github.io/www/news/2026.07.17 IA en Español.html" },
+    { fecha:"2026-07-15", titulo:"OpenAI prepara altavoz con Jony Ive", url:"https://iaexpo.github.io/www/news/2026.07.15 IA en Español.html" },
+    { fecha:"2026-07-15", titulo:"Nueva película de Kore-eda sobre IA", url:"https://iaexpo.github.io/www/news/2026.07.15 Cultura y Ciencia IA Expo.html" },
+    { fecha:"2026-07-15", titulo:"Google presenta Gemini Enterprise", url:"https://iaexpo.github.io/www/news/2026.07.15 Briefing IA Expo.html" },
+    { fecha:"2026-07-14", titulo:"NotebookLM se vuelve estudio multimedia", url:"https://iaexpo.github.io/www/news/2026.07.14 IA Para Todos.html" },
+    { fecha:"2026-07-14", titulo:"Nolan: la generación Z rechaza el cine con IA", url:"https://iaexpo.github.io/www/news/2026.07.14 Briefing IA Expo.html" },
+    { fecha:"2026-07-13", titulo:"GPT-5.6 y Grok 4.5 el mismo día", url:"https://iaexpo.github.io/www/news/2026.07.13 Briefing Semanal IA Expo.html" },
+    { fecha:"2026-07-10", titulo:"Andrew Ng: prototipos con agentes de código", url:"https://iaexpo.github.io/www/news/2026.07.10 The Batch.html" },
+    { fecha:"2026-07-10", titulo:"OpenAI lanza GPT-5.6 y ChatGPT Work", url:"https://iaexpo.github.io/www/news/2026.07.10 IA en Español.html" },
+    { fecha:"2026-07-10", titulo:"Bristol-Myers Squibb da Claude a 30,000 empleados", url:"https://iaexpo.github.io/www/news/2026.07.10 IA Para Todos.html" },
+    { fecha:"2026-07-08", titulo:"Meta presenta Muse Image", url:"https://iaexpo.github.io/www/news/2026.07.08 IA en Español.html" },
+    { fecha:"2026-07-08", titulo:"EE. UU. suspende a Anthropic y frena a OpenAI", url:"https://iaexpo.github.io/www/news/2026.07.08 IA Para Todos.html" },
+    { fecha:"2026-07-04", titulo:"La historia completa del bloqueo a Fable 5", url:"https://iaexpo.github.io/www/news/2026.07.04 Fable 5 Revelacion Completa.html" },
+    { fecha:"2026-07-03", titulo:"GPT-5.6, solo para el gobierno de EE. UU.", url:"https://iaexpo.github.io/www/news/2026.07.03 The Batch.html" },
+    { fecha:"2026-07-03", titulo:"Andrew Ng: cursos sin pagos de socios", url:"https://iaexpo.github.io/www/news/2026.07.03 Carta de Andrew Ng.html" },
+    { fecha:"2026-06-30", titulo:"Washington bloquea Fable 5 y Mythos 5", url:"https://iaexpo.github.io/www/news/2026.06 Noticias IA - Bloque Semana.html" },
+    { fecha:"2026-06-18", titulo:"IA diagnostica enfermedades raras en niños", url:"https://iaexpo.github.io/www/news/2026.06.18 IA Diagnostica Enfermedades Raras.html" },
+    { fecha:"2026-06-12", titulo:"Más de 25 herramientas de IA de Google", url:"https://iaexpo.github.io/www/news/2026.06.12 Google 25 Herramientas IA.html" },
+    { fecha:"2026-06-09", titulo:"OpenAI presenta su S-1 ante la SEC", url:"https://iaexpo.github.io/www/news/2026.06.09 OpenAI IPO.html" },
+    { fecha:"2026-06-09", titulo:"Anthropic lanza Claude Fable 5 y Mythos 5", url:"https://iaexpo.github.io/www/news/2026.06.09 Claude Fable 5.html" },
+    { fecha:"2026-06-09", titulo:"Anthropic lanza Fable 5 (LinkedIn)", url:"https://iaexpo.github.io/www/news/2026.06.09 Claude Fable 5 - LinkedIn.html" },
+    { fecha:"2026-06-08", titulo:"Apple reconstruye Siri con Gemini", url:"https://iaexpo.github.io/www/news/2026.06.08 Apple WWDC Siri Gemini.html" },
+    { fecha:"2026-06-04", titulo:"Gran Ley Americana de IA", url:"https://iaexpo.github.io/www/news/2026.06.04 Gran Ley Americana IA.html" },
+    { fecha:"2026-06-04", titulo:"ChatGPT Dreaming V3: memoria personal", url:"https://iaexpo.github.io/www/news/2026.06.04 ChatGPT Dreaming.html" },
+    { fecha:"2026-06-03", titulo:"ChatGPT supera 1,000 M de usuarios", url:"https://iaexpo.github.io/www/news/2026.06.03 ChatGPT 1 Billion.html" },
+    { fecha:"2026-06-02", titulo:"Trump firma orden ejecutiva de IA", url:"https://iaexpo.github.io/www/news/2026.06.02 Trump AI Executive Order.html" },
+    { fecha:"2026-06-02", titulo:"Proyecto Glasswing llega a 150 organizaciones", url:"https://iaexpo.github.io/www/news/2026.06.02 Project Glasswing.html" },
+    { fecha:"2026-06-02", titulo:"Microsoft Build: Windows para agentes", url:"https://iaexpo.github.io/www/news/2026.06.02 Microsoft Build.html" },
+    { fecha:"2026-06-01", titulo:"NVIDIA lanza Nemotron 3 Ultra", url:"https://iaexpo.github.io/www/news/2026.06.01 NVIDIA Nemotron.html" },
+    { fecha:"2026-06-01", titulo:"GitHub Copilot cobra por tokens", url:"https://iaexpo.github.io/www/news/2026.06.01 GitHub Copilot Billing.html" },
+    { fecha:"2026-06-01", titulo:"Anthropic presenta su IPO", url:"https://iaexpo.github.io/www/news/2026.06.01 Anthropic IPO.html" },
+    { fecha:"2026-05-30", titulo:"SoftBank invierte €75,000 M en Francia", url:"https://iaexpo.github.io/www/news/2026.05.30 SoftBank Francia.html" },
+    { fecha:"2026-05-29", titulo:"Préstamo de $36,000 M para TPUs de Anthropic", url:"https://iaexpo.github.io/www/news/2026.05.29 Apollo Blackstone TPU.html" },
+    { fecha:"2026-05-28", titulo:"Anthropic lanza Claude Opus 4.8", url:"https://iaexpo.github.io/www/news/2026.05.28 Opus 4.8.html" },
+    { fecha:"2026-05-28", titulo:"Google Flow suma música", url:"https://iaexpo.github.io/www/news/2026.05.28 Google Flow Music.html" },
+    { fecha:"2026-05-28", titulo:"Dell sube 38% por servidores de IA", url:"https://iaexpo.github.io/www/news/2026.05.28 Dell Technologies.html" },
+    { fecha:"2026-05-27", titulo:"Meta entra a la carrera por la nube", url:"https://iaexpo.github.io/www/news/2026.05.27 iaexpo news.html" },
+    { fecha:"2026-05-26", titulo:"Anthropic, a punto de superar a OpenAI", url:"https://iaexpo.github.io/www/news/2026.05.26 iaexpo news.html" },
+    { fecha:"2026-05-26", titulo:"Robot de Figure AI trabaja 200 horas", url:"https://iaexpo.github.io/www/news/2026.05.26 Figure AI.html" },
+    { fecha:"2026-05-22", titulo:"La inversión en IA impulsa la economía global", url:"https://iaexpo.github.io/www/news/2026.05.22 CommBank.html" },
+    { fecha:"2026-05-21", titulo:"Runway Gen-4.5 con audio nativo", url:"https://iaexpo.github.io/www/news/2026.05.21 Runway Gen-4.5.html" },
+    { fecha:"2026-05-20", titulo:"Anthropic paga $1,250 M al mes a SpaceX", url:"https://iaexpo.github.io/www/news/2026.05.20 Anthropic SpaceX xAI.html" },
+    { fecha:"2026-05-01", titulo:"La IA transforma la moda", url:"https://iaexpo.github.io/www/news/2026.05.01 IA en Moda.html" },
+    { fecha:"2026-04-30", titulo:"Midjourney v8.1, 4 veces más rápido", url:"https://iaexpo.github.io/www/news/2026.04.30 Midjourney v8.1.html" },
+    { fecha:"2026-03-24", titulo:"OpenAI cierra Sora y Disney retira su inversión", url:"https://iaexpo.github.io/www/news/2026.03.24 Sora Disney.html" },
+    { fecha:"2026-03-14", titulo:"ElevenLabs v3: voces con emociones", url:"https://iaexpo.github.io/www/news/2026.03.14 ElevenLabs v3.html" },
+    { fecha:"2026-02-05", titulo:"Kling 3.0 Mejora Video", url:"https://iaexpo.github.io/www/news/2026.02.05 Kling 3.0 vs Veo 3.1.html" }
   ];
 
   /* 2) LÓGICA (no es necesario modificar) */
   var MESES = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
   function fmt(iso) { var p = iso.split("-"); return p[2] + " " + MESES[parseInt(p[1],10)-1] + " " + p[0]; }
   function norm(t) { return String(t).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
-  function slug(n) { return n.fecha + "-" + norm(n.titulo).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
   function urlSegura(u) { return /%[0-9a-f]{2}/i.test(u) ? u : encodeURI(u); }
 
   var raiz   = document.getElementById("iab");
@@ -149,7 +299,7 @@
     grupos[f].forEach(function (n) {
       var idx = orden.length; orden.push(n);
       var li = document.createElement("li"), a = document.createElement("a");
-      a.href = "#" + slug(n); a.textContent = n.titulo;
+      a.href = "#"; a.textContent = n.titulo;
       a.setAttribute("data-busca", norm(n.titulo + " " + fmt(f) + " " + f));
       a.addEventListener("click", function (e) { e.preventDefault(); abrir(idx, { desplazar:true }); });
       links.push(a); li.appendChild(a); ul.appendChild(li);
@@ -187,7 +337,6 @@
     txtF.textContent = fmt(n.fecha); txtT.textContent = n.titulo;
     bPrev.disabled = (i === 0); bNext.disabled = (i === orden.length - 1);
     if (movil.matches && buscar.value) { buscar.value = ""; filtrar(); }
-    if (!op.inicial) { try { history.replaceState(null, "", "#" + slug(n)); } catch (e) {} }
     cerrarMenu();
     if (op.desplazar && movil.matches) {
       var top = raiz.getBoundingClientRect().top;
@@ -214,9 +363,7 @@
   }
   buscar.addEventListener("input", filtrar);
 
-  /* Inicio: abrir la noticia del enlace (#...) o la más reciente */
-  var h = decodeURIComponent((location.hash || "").slice(1)), ini = 0;
-  orden.forEach(function (n, i) { if (slug(n) === h) ini = i; });
-  if (orden.length) abrir(ini, { inicial:true });
+  /* Inicio: abrir la noticia más reciente */
+  if (orden.length) abrir(0);
 })();
 </script>
