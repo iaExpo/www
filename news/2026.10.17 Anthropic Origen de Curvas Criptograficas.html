@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claude reconstruye el origen de parámetros criptográficos y aclara un misterio que alimentó años de sospechas</title><meta name="description" content="Anthropic publicó un procedimiento reproducible para explicar varias semillas de curvas NIST; el hallazgo no representa una vulneración de Bitcoin."><style>body{margin:0;background:#f4f5f7}a{overflow-wrap:anywhere}img{max-width:100%}@media(max-width:520px){h1{font-size:29px!important}.article-card>tbody>tr:not(:nth-child(2))>td{padding-left:22px!important;padding-right:22px!important}}</style></head><body><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f4f5f7;padding:32px 12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;"><tr><td align="center"><table class="article-card" role="presentation" cellpadding="0" cellspacing="0" border="0" width="720" style="max-width:720px; width:100%; background:#ffffff; border-radius:14px; box-shadow:0 8px 24px rgba(15,23,42,0.08); overflow:hidden;">
+
+  
+  <tr>
+    <td style="background:linear-gradient(135deg,#0b1f3a 0%,#0a66c2 100%); padding:18px 32px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td align="left" valign="middle" style="color:#ffffff; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:700;">
+            <img referrerpolicy="no-referrer" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/68fd1b0147cb3b35acb31d75.jpeg" alt="IAx" width="28" height="28" style="vertical-align:middle; border-radius:6px; margin-right:10px; display:inline-block;">
+            <span style="vertical-align:middle;">IA Expo Internacional &nbsp;•&nbsp; Noticias</span>
+          </td>
+          <td align="right" valign="middle" style="color:#cbd5e1; font-size:12px; letter-spacing:1px; text-transform:uppercase; font-weight:500;">
+            17 de octubre de 2026
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td style="line-height:0; font-size:0;">
+      <img referrerpolicy="no-referrer" src="https://assets.cdn.filesafe.space/5RXj1eDQIjNx7eCHKaZA/media/d4bdea10-34d4-46c0-abc9-47afae2ffa01.jpg" alt="IA Expo Internacional" width="720" style="display:block; width:100%; max-width:720px; height:auto;">
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td style="padding:36px 40px 0 40px;">
+      <p style="margin:0 0 14px; display:inline-block; background:#0a66c2; color:#ffffff; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:6px 12px; border-radius:4px;">DESCUBRIMIENTO CON IA</p>
+      <h1 style="margin:0; font-family:Georgia,'Times New Roman',serif; font-size:36px; line-height:1.15; color:#0b1f3a; font-weight:700; letter-spacing:-0.5px;">
+        Claude reconstruye el origen de parámetros criptográficos y aclara un misterio que alimentó años de sospechas
+      </h1>
+      <p style="margin:18px 0 0; font-size:18px; line-height:1.5; color:#475569; font-weight:400;">
+        Anthropic publicó un procedimiento reproducible para explicar varias semillas de curvas NIST; el hallazgo no representa una vulneración de Bitcoin.
+      </p>
+
+      
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px;">
+        <tr>
+          <td style="padding:0;">
+            <img referrerpolicy="no-referrer" src="https://www-cdn.anthropic.com/images/4zrzovbb/website/e4948d016f5879d721c3297b1ee1073b1e6b5734-2912x1064.png" alt="Tabla de Anthropic con cinco curvas NIST, marcas de tiempo de 1997 y 1998 y las semillas reconstruidas" style="display:block; width:100%; max-width:640px; height:auto; border-radius:8px; margin:0 auto;">
+          </td>
+        </tr>
+      </table>
+
+<p style="font-size:12px;line-height:1.5;color:#64748b;margin:10px 0 0;">Tabla publicada por Anthropic con los parámetros cuya procedencia reconstruyó el modelo. El artículo fuente permite consultar y reproducir el cálculo. Crédito: <a href="https://www.anthropic.com/research/ecdsa-curve-origins" style="color:#0a66c2;">Anthropic</a>.</p>
+      <p style="margin:20px 0 0; font-size:13px; color:#64748b; letter-spacing:0.3px;">
+        Anuncio de Anthropic: 16 de octubre de 2026. Cobertura de Yahoo y BeInCrypto: 17 de octubre. Preparado para IA Expo: 18 de octubre.<br><br>Por la redacción de <strong style="color:#0b1f3a;">IA Expo Internacional</strong> &nbsp;|&nbsp; Tiempo de lectura: 2 min
+      </p>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td style="padding:24px 40px 0 40px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr><td style="border-top:3px solid #0a66c2; line-height:0; font-size:0;">&nbsp;</td></tr>
+      </table>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td style="padding:24px 40px 8px 40px; font-size:16px; line-height:1.7; color:#1e293b;">
+      <p style="margin:0;">
+        <span style="float:left; font-family:Georgia,'Times New Roman',serif; font-size:62px; line-height:50px; color:#0a66c2; font-weight:700; padding:4px 12px 0 0;">U</span>na firma digital permite verificar que un mensaje procede de una clave determinada sin revelar esa clave. Parte de la confianza en estos sistemas depende de cómo se eligieron sus ingredientes matemáticos. Durante décadas quedó abierta una pregunta sobre algunos números utilizados por las curvas criptográficas estandarizadas por NIST.
+      </p><p style="margin:18px 0 0;">Anthropic informó el 16 de octubre que un modelo interno de Claude reconstruyó el origen de las semillas de cinco curvas. Según la empresa, el sistema encontró en menos de media hora que procedían de un generador habitual de las bibliotecas de programación de los años noventa, inicializado con marcas de tiempo de 1997 y 1998.</p><p style="margin:18px 0 0;">La publicación incluye código para reproducir los resultados y plantea una explicación comprobable para una elección históricamente poco documentada. Anthropic sostiene que el hallazgo reduce las sospechas de manipulación deliberada, aunque reconoce preguntas pendientes sobre candidatos omitidos y parámetros cuyo origen todavía no pudo reconstruir.</p><p style="margin:18px 0 0;">La cobertura de BeInCrypto, difundida por Yahoo el 17, trasladó la discusión a Bitcoin, que usa una curva diferente. Ese debate no demuestra que su creador se equivocara. El resultado explica la procedencia de parámetros de otros estándares: no constituye un ataque nuevo ni exige a los usuarios cambiar sus carteras.</p><h2 style="font-family:Georgia,serif;font-size:24px;line-height:1.3;color:#0b1f3a;margin:26px 0 12px;">Qué revisar para entender el hallazgo</h2><ol style="padding-left:23px;margin:0;"><li style="margin-bottom:12px;">Abre el informe de Anthropic y consulta la tabla que relaciona las semillas con sus marcas de tiempo.</li><li style="margin-bottom:12px;">Revisa las preguntas abiertas antes de interpretar el hallazgo como una explicación de todos los parámetros del estándar.</li><li style="margin-bottom:12px;">Si tienes conocimientos de programación y criptografía, examina el código de reproducción. Para el lector general, la conclusión práctica es que este resultado no pide modificar sus cuentas o claves.</li></ol>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td style="padding:36px 40px 0 40px;">
+      <p style="margin:0 0 16px; font-size:11px; color:#0a66c2; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Análisis</p>
+      <h2 style="margin:0 0 14px; font-family:Georgia,'Times New Roman',serif; font-size:24px; color:#0b1f3a; font-weight:700;">
+        Por qué importa para la comunidad IA<sup>x</sup>
+      </h2>
+      <p style="margin:0 0 14px; font-size:16px; line-height:1.7; color:#1e293b;">
+        Para estudiantes y comunicadores, el caso permite explicar una diferencia esencial: descubrir cómo se construyó un sistema no equivale a haberlo roto. También ofrece una manera de evaluar noticias científicas con IA: buscar un procedimiento que otras personas puedan repetir y revisar dónde termina la evidencia.
+      </p>
+      <p style="margin:0; font-size:16px; line-height:1.7; color:#1e293b;">
+        En <strong>IA Expo Internacional</strong> vemos valor en los descubrimientos que permiten pasar de una afirmación sorprendente a una comprobación pública. La relevancia de la IA crece cuando ayuda a formular mejores explicaciones y deja materiales que la comunidad especializada puede examinar.
+      </p>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td style="padding:36px 40px 0 40px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#0b1f3a; border-radius:10px;">
+        <tr>
+          <td style="padding:22px 26px;">
+            <p style="margin:0 0 6px; font-size:10px; color:#7DD3FC; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Fuente</p>
+            <p style="margin:0; font-size:14px; line-height:1.6; color:#e2e8f0;">
+              <a href="https://www.anthropic.com/research/ecdsa-curve-origins" style="color:#ffffff; text-decoration:underline; font-weight:600;">Anthropic: origen de las curvas ECDSA</a><br>
+              <span style="color:#94a3b8;">El modelo utilizado era de investigación interna. La nota de Yahoo se publicó el 17 de octubre a las 17:29 UTC; el anuncio de Anthropic corresponde al día 16.</span><br><a href="https://es.finance.yahoo.com/noticias/satoshi-equivoc%C3%B3-bitcoin-hallazgo-claude-172900013.html" style="color:#ffffff;text-decoration:underline;">Yahoo Finanzas: cobertura de BeInCrypto</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td align="center" style="padding:36px 40px 8px 40px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="background:#0a66c2; border-radius:999px;">
+            <a href="https://iaexpo.ai/#contacto" style="display:inline-block; padding:14px 36px; font-size:14px; font-weight:700; letter-spacing:0.5px; color:#ffffff; text-decoration:none; text-transform:uppercase;">
+              Únete a la comunidad IA Expo →
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <td style="padding:24px 40px 32px 40px; border-top:1px solid #e2e8f0;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td style="font-size:12px; color:#64748b; line-height:1.6;">
+            Publicado por <strong style="color:#0b1f3a;">IA Expo Internacional</strong><br>
+            <a href="https://iaexpo.ai" style="color:#0a66c2; text-decoration:none; font-weight:600;">iaExpo.ai</a>
+          </td>
+          <td align="right" style="font-size:11px; color:#94a3b8; letter-spacing:1px; text-transform:uppercase;">
+            © 2026
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table></td></tr></table></body></html>
