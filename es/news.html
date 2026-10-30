@@ -113,7 +113,12 @@
 (function () {
   /* 1) TUS NOTICIAS  (fecha AAAA-MM-DD, título del submenú, URL del HTML) */
   var NOTICIAS = [
+    {"fecha": "2026-10-30", "titulo": "Editoriales debaten reglas de autoría con IA", "url": "https://iaexpo.github.io/www/news/2026.10.30%20El%20Pais%20Editores%20IA.html"},
+    {"fecha": "2026-10-29", "titulo": "Google prueba IA en aulas de Reino Unido e Italia", "url": "https://iaexpo.github.io/www/news/2026.10.29%20Google%20Educacion%20Gemini.html"},
+    {"fecha": "2026-10-29", "titulo": "Google capacita en IA a personal de salud", "url": "https://iaexpo.github.io/www/news/2026.10.29%20Google%20Salud%20IA.html"},
+    {"fecha": "2026-10-29", "titulo": "Phonic presenta agente de voz para negocios", "url": "https://iaexpo.github.io/www/news/2026.10.29%20Phonic%20Voz.html"},
     {"fecha": "2026-10-29", "titulo": "Cinco medidas ante instrucciones ocultas para la IA", "url": "https://iaexpo.github.io/www/news/2026.10.29%20IA%20Para%20Todos%20Prompt%20Injection.html"},
+    {"fecha": "2026-10-29", "titulo": "Microsoft pide medir el valor de IA en empresas mexicanas", "url": "https://iaexpo.github.io/www/news/2026.10.29%20Microsoft%20Mexico%20Frontier%20Tour.html"},
     {"fecha": "2026-10-28", "titulo": "ServiceNow conecta sus flujos con ChatGPT", "url": "https://iaexpo.github.io/www/news/2026.10.28%20OpenAI%20ServiceNow.html"},
     {"fecha": "2026-10-28", "titulo": "Agentes de IA y cantos homéricos", "url": "https://iaexpo.github.io/www/news/2026.10.28%20The%20Economist%20Cantos%20Homericos.html"},
     {"fecha": "2026-10-28", "titulo": "Gemini ofrece exploraciones visuales para aprender", "url": "https://iaexpo.github.io/www/news/2026.10.28%20Google%20Exploraciones%20Gemini.html"},
@@ -135,6 +140,8 @@
     {"fecha": "2026-10-27", "titulo": "Gemini Notebook como tutor socrático", "url": "https://iaexpo.github.io/www/news/2026.10.27%20IA%20Para%20Todos%20Gemini%20Notebook.html"},
     {"fecha": "2026-10-27", "titulo": "OpenAI presenta tres resultados científicos para revisión", "url": "https://iaexpo.github.io/www/news/2026.10.27%20Anadolu%20OpenAI%20Ciencia.html"},
     {"fecha": "2026-10-27", "titulo": "DeepSeek: evaluación independiente de seguridad", "url": "https://iaexpo.github.io/www/news/2026.10.27%20Reuters%20DeepSeek%20Evaluacion.html"},
+    {"fecha": "2026-10-27", "titulo": "Amazon evalúa resultados, no tokens de IA", "url": "https://iaexpo.github.io/www/news/2026.10.27%20Amazon%20IA%20Ingenieros.html"},
+    {"fecha": "2026-10-27", "titulo": "ChatGPT conecta iCloud Mail y Calendar", "url": "https://iaexpo.github.io/www/news/2026.10.27%20OpenAI%20iCloud.html"},
     {"fecha": "2026-10-26", "titulo": "Siri AI ya conversa en español", "url": "https://iaexpo.github.io/www/news/2026.10.26%20Apple%20Siri%20AI%20Espanol.html"},
     {"fecha": "2026-10-26", "titulo": "Runway App Studio crea herramientas creativas", "url": "https://iaexpo.github.io/www/news/2026.10.26%20Runway%20App%20Studio.html"},
     {"fecha": "2026-10-26", "titulo": "Matemáticos debaten comprensión de pruebas con IA", "url": "https://iaexpo.github.io/www/news/2026.10.26%20ABC%20Fin%20del%20misterio.html"},
@@ -150,6 +157,7 @@
     {"fecha": "2026-10-26", "titulo": "SK Telecom publica guía para gobernar agentes", "url": "https://iaexpo.github.io/www/news/2026.10.26%20SK%20Telecom.html"},
     {"fecha": "2026-10-26", "titulo": "Conow gestiona energía solar con IA", "url": "https://iaexpo.github.io/www/news/2026.10.26%20Conow.html"},
     {"fecha": "2026-10-26", "titulo": "O’Leary propone servicios de IA para pymes", "url": "https://iaexpo.github.io/www/news/2026.10.26%20elEconomista%20Kevin%20OLeary.html"},
+    {"fecha": "2026-10-26", "titulo": "Anthropic detalla riesgos de IA en su S-1", "url": "https://iaexpo.github.io/www/news/2026.10.26%20Anthropic%20Riesgos%20S1.html"},
     {"fecha": "2026-10-25", "titulo": "Apollo busca señales del retorno de la IA", "url": "https://iaexpo.github.io/www/news/2026.10.25%20Infobae%20Retorno%20IA.html"},
     {"fecha": "2026-10-25", "titulo": "Bee Frontier: memoria y privacidad a prueba", "url": "https://iaexpo.github.io/www/news/2026.10.25%20Spyglass%20Bee.html"},
     {"fecha": "2026-10-25", "titulo": "AgentGrid reúne trabajo de personas y agentes", "url": "https://iaexpo.github.io/www/news/2026.10.25%20AgentGrid.html"},
@@ -157,6 +165,7 @@
     {"fecha": "2026-10-25", "titulo": "IA y matemática: una prueba aún bajo revisión", "url": "https://iaexpo.github.io/www/news/2026.10.25%20Infobae%20Prueba%20Matematica%20IA.html"},
     {"fecha": "2026-10-25", "titulo": "Robots con IA tardan 30 minutos por tarea", "url": "https://iaexpo.github.io/www/news/2026.10.25%2020%20Minutos%20Robot%20IA.html"},
     {"fecha": "2026-10-25", "titulo": "Destilación de IA: la dependencia que debate The Economist", "url": "https://iaexpo.github.io/www/news/2026.10.25%20The%20Economist%20Destilacion%20China.html"},
+    {"fecha": "2026-10-25", "titulo": "Bill Gates pide preparar transición laboral ante IA", "url": "https://iaexpo.github.io/www/news/2026.10.25%20The%20Observer%20Bill%20Gates.html"},
     {"fecha": "2026-10-24", "titulo": "Kimi reduce capacidad de ciberataque antes de abrir pesos", "url": "https://iaexpo.github.io/www/news/2026.10.24%20Reuters%20Kimi%20Ciberseguridad.html"},
     {"fecha": "2026-10-24", "titulo": "zCAD AI convierte ideas en piezas 3D editables", "url": "https://iaexpo.github.io/www/news/2026.10.24%20zCAD%20AI.html"},
     {"fecha": "2026-10-24", "titulo": "Kimi K3.1 Pro: precio frente a seguridad", "url": "https://iaexpo.github.io/www/news/2026.10.24%20El%20Confidencial%20Kimi%20Precio%20y%20Seguridad.html"},
